@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<title>申请成功-移动支付优惠套餐</title>
+<link href="/static/ant/css/header.css" rel="stylesheet" />
+<link href="/static/ant/css/index.css" rel="stylesheet" />
+<link href="/static/ant/css/footer.css" rel="stylesheet" />
+<link href="/static/ant/css/antGroup.css" rel="stylesheet" />
+<style>
+
+</style>
+</head>
+
+<body>
+{{template "/ant/Public/header.html" }}
+<div class="process">
+    <div class="item">基本流程</div>
+
+    <ul>
+        <li class="step1 ok nobefore"><img src="/static/ant/img/step1_0.png">选择套餐</li>
+        <li class="step2 ok"><img src="/static/ant/img/step2_0.png">购买成功</li>
+        <li class="step3"><img src="/static/ant/img/step3.png">提交支付宝申请信息</li>
+        <li class="step4"><img src="/static/ant/img/step4.png">提交微信申请信息<br><span>需提前开通服务号</span></li>
+        <li class="step5"><img src="/static/ant/img/step5.png">提交成功等待审核</li>
+    </ul>
+</div>
+<div class="message">
+    <img src="/static/ant/img/alipayFor.png" alt="支付宝申请">
+	<h2>您已成功申请订购“<i id='typename'>套餐一</i>”</h2>
+	<span>请点击“填写申请信息”开通牙医管家支付宝支付并绑定微信支付</span><br>
+    <a href='/member/alipayinfo' target='_parent' id='gourl'>填写基本信息</a>
+</div>
+<div class="service">
+    <h3>如有疑问请致电人工客服：86 400-660-5770 &nbsp;&nbsp;周一至周五（09：00-18：00）</h3>
+    <h3></h3>
+</div>
+{{template "/ant/Public/footer.html" }}
+</body>
+<script type="text/javascript" src="/static/ant/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="/static/ant/js/header.js"></script>
+<script type="text/javascript" src="/static/ant/js/index.js"></script>
+<script type="text/javascript" src="/static/ant/js/jquery.bxslider.js"></script>
+
+<script>
+var t=parent.location.href;
+var tid=t.substring(t.indexOf('tid=')+4)
+//console.log("tid:",tid);
+var type='';
+switch(tid){
+    case "ant_1":
+        type="套餐一";
+        break;
+    case "ant_2":
+        type="套餐二";
+        break;
+    case "ant_3":
+        type="套餐三";
+        break;
+    case "ant_4":
+        type="套餐四";
+        break;
+    case "ant_5":
+        type="套餐五";
+        break;
+    case "ant_6":
+        type="套餐六";
+        break;
+}
+$("#typename").text((type));
+
+</script>
+</html>

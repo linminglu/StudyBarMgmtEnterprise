@@ -1,0 +1,11 @@
+/*-------------------------------
+整个分站样式重置
+zlb 2016-11-20
+/*-------------------------------*/
+body{font-family:微软雅黑,arial;}
+input,textarea,select{font-family:inherit}
+body,h1,h2,h3,h4,h5,h6,p,ul,ol,form{margin:0}
+h4,h5,h6{font-size:1em}
+ul,ol{padding-left:0;list-style-type:none}
+img{border:0}
+a{text-decoration: none;}

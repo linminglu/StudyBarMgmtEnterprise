@@ -1,0 +1,34 @@
+/*农历日历控件样式 start*/
+.calend_panel,#cn_month_sel_panel{position:absolute; z-index:3;width:354px; height:318px; box-shadow:0px 0px 10px #999;top:0px; background-color:#fff; display:none}
+.calend_panel .titlearea,#cn_month_sel_panel .titlearea{ width:100%; font-size:14px; height:36px; line-height:36px; box-sizing:border-box; border-bottom:solid 1px #e0e0e0; padding-left:10px; -webkit-user-select:none}
+.calend_panel .titlearea span,#cn_month_sel_panel .titlearea span{display:inline-block; margin-right:5px}
+.calend_panel .titlearea .tdy,#cn_month_sel_panel .titlearea .tdy{cursor:pointer}
+.calend_panel .titlearea .pre,#cn_month_sel_panel .titlearea .pre{ background:url(/static/netconsult/img/left_ico.png) no-repeat; width:17px; height:17px; vertical-align:-4px;cursor:pointer}
+.calend_panel .titlearea .pre:hover,#cn_month_sel_panel .titlearea .pre:hover{background:url(/static/netconsult/img/left_click.png) no-repeat;}
+.calend_panel .titlearea .pre:active,#cn_month_sel_panel .titlearea .pre:active{margin-top:1px}
+.calend_panel .titlearea .nxt:active,#cn_month_sel_panel .titlearea .nxt:active{margin-top:1px}
+.calend_panel .titlearea .nxt,#cn_month_sel_panel .titlearea .nxt{ background:url(/static/netconsult/img/right_ico.png) no-repeat; width:17px; height:17px;vertical-align:-4px;cursor:pointer}
+.calend_panel .titlearea .nxt:hover,#cn_month_sel_panel .titlearea .nxt:hover{background:url(/static/netconsult/img/right_click.png) no-repeat;}
+.calend_panel .content,#cn_month_sel_panel .content{ width:100%; height:280px;  box-sizing:border-box;}
+.calend_panel .content table{border-collapse:collapse;}
+.calend_panel .content table th{text-align:center; font-weight:normal; height:26px}
+.calend_panel .content table td{border-collapse:collapse;text-align:center; border:none; position:relative}
+.calend_panel .content table td u{ position:absolute; text-decoration:none; font-size:9px; width:15px; height:15px; display:none; text-align:center; line-height:15px; color:#fff; background-color:#eee; border-radius:50%; top:0px; right:0px}
+.calend_panel .content table td .au{ background-color:#47a6a0}
+.calend_panel .content table td .d{width:40px; height:40px;box-sizing:border-box; padding-top:2px; cursor:pointer; -webkit-user-select:none;user-select:none; border:solid 1px transparent;}
+.calend_panel .content table td .d:active{ background-color:#f8f8f8;}
+.calend_panel .content table td .d:hover,
+.calend_panel .content table td .dsel{border:solid 1px  #47a6a0;border-radius:50%;box-sizing:border-box;}
+.calend_panel .content table .wekmde{background-color:#f8f8f8}
+.calend_panel .content table td b{font-weight:normal; color:#a0a0a0; font-size:12px; display:inline-block; width:38px; white-space:nowrap; overflow:hidden;text-overflow:ellipsis; margin-top:-3px}
+.calend_panel .content table td i,.calend_panel .content table td em{ font-style:normal; color:#000;}
+.calend_panel .content table .invalid{ color:#a0a0a0; }
+.calend_panel .content table .invalid ._day{ color:#ddd !important}
+.calend_panel .content table .invalid b{ color:#ddd !important}
+.calend_panel .content table .invalid b span{ color:#ddd !important}
+.calend_panel .content table .invalid .d{cursor:default}
+.calend_panel .content table td ._day{font-size:14px; font-weight:bold;}
+.calend_panel .content table td:nth-child(6) ._day{color:#f00}
+.calend_panel .content table td:nth-child(7) ._day{color:#f00}
+.calend_panel .content table td  .tdplus_td_is_today{ width:40px; height:40px;  /*border:solid 1px  #47a6a0;*/ background-color:#dffdfb; border-radius:50%; }
+/*农历日历控件样式 end*/

@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>支付宝申请用户详情</title>
+	<link href="/static/ant/css/antManage.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+    	html,body{width:100%; height:100%;}
+    	body{background-color: #3c3c3c;}
+    </style>
+</head>
+<body>
+	<div class="container">
+		<!-- 左边：头部，左侧栏 -->
+		{{template "/ant/Public/antManLeftNav.html"}}
+		<!-- 右边：主体内容 -->
+		<div id="body_right">
+			{{template "/ant/Public/adminUserBtn.html"}}
+			<div id="mainBody">
+				<!-- 面包碎 -->
+				<ul class="breadcrumb">
+					<li>主页</lfile:///d%3A/Go/src/doggy/controllers/member/Antmange.goi>
+					<li>支付宝申请用户详情</li>
+				</ul>
+				{{range $k,$vo :=.infolist}}
+				<div  id="detaInfo">
+					<div class="info">
+						<ul class="stateList">
+
+							<li>诊所名称：{{$vo.clinicname}}</li>
+							<li>管家号：{{$vo.dentalid}}</li>
+							<li>申请编号：{{$vo.uid}}</li>
+							<li>套餐：{{if eq $vo.ordertype  "1"}}
+									套餐一
+								{{else if eq $vo.ordertype  "2"}}
+									套餐二
+								{{else if eq $vo.ordertype  "3"}}
+									套餐三
+								{{else if eq $vo.ordertype  "4"}}
+									套餐四
+								{{else if eq $vo.ordertype  "5"}}
+									套餐五
+								{{else if eq $vo.ordertype  "6"}}
+									套餐六
+								{{end}}
+							</li>
+							<li>支付宝状态：<span class="state">
+								{{if eq $vo.status  "1"}}
+									已开通
+									{{else}}
+									未开通
+								{{end}}
+							</span></li>
+							<li><a href="javascript:history.go(-1);">返回上一页</a></li>
+
+						</ul>
+
+						<h2>申报信息</h2>
+						<table>
+							<tr>
+								<td>*单位性质：</td>
+								<td>
+									{{if eq $vo.type  "1"}}
+										个体商户
+										{{else}}
+										企业
+									{{end}}
+								</td>
+								<td>我有推广码：</td>
+								<td>{{$vo.promocode}}</td>
+							</tr>
+							<tr>
+								<td>*联系人名称：</td>
+								<td>{{$vo.contact_name}}</td>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>*邮箱：</td>
+								<td>{{$vo.contact_email}}</td>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>*手机：</td>
+								<td>{{$vo.contact_mobile}}</td>
+								<td></td>
+								<td></td>
+							</tr>
+						</table>
+					</div>
+
+					<div class="info">
+						<h2>基本信息</h2>
+						<table>
+							<tr>
+								<td>*名称：</td>
+								<td>{{$vo.company_name}}</td>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>*账户名：</td>
+								<td>{{$vo.login_id}}</td>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>*营业执照照片：</td>
+								<td>
+									<div class="zoomPic compCredImg">
+										<img class="pic" src="{{$vo.business_license_pic}}" alt="" data-src-wide="{{$vo.business_license_pic}}">
+										<div>点击放大</div>
+									</div>
+								</td>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>*营业执照授权函：</td>
+								<td>
+									{{if eq $vo.business_license_auth_pic  "NULL"}}
+									无
+									{{else}}
+									<div class="zoomPic compCredImg">
+										<img class="pic" src="{{$vo.business_license_auth_pic}}" alt="" data-src-wide="{{$vo.business_license_pic}}">
+										<div>点击放大</div>
+									</div>
+									{{end}}
+								</td>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>*执照所属地区：：</td>
+								<td>{{$vo.business_license_province}}&nbsp;&nbsp;&nbsp;&nbsp;{{$vo.business_license_city}}</td>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>*注册号：</td>
+								<td>{{$vo.business_license_no}}</td>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>*住所：</td>
+								<td>{{$vo.company_address}}</td>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>*经营范围：</td>
+								<td>{{$vo.business_scope}}</td>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>*营业期限：</td>
+								<td>{{$vo.business_license_indate_start}} {{$vo.business_license_indate_end}}</td>
+								<td></td>
+								<td></td>
+							</tr>
+						</table>
+					</div>
+
+					<div class="info">
+						<h2>法人信息</h2>
+						<table>
+							<tr>
+								<td>*法人名字：</td>
+								<td>{{$vo.legal_representative_name}}</td>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>*证件号码：</td>
+								<td>{{$vo.legal_representative_cert_no}}</td>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>*证件有效期：</td>
+								<td id="lR_cert_indate">{{$vo.legal_representative_cert_indate}}</td>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>*证件照：</td>
+								<td style="width: 300px;">
+									<div class="zoomPic corpCredImgF">
+										<img class="pic" src="{{$vo.legal_representative_cert_pic_front}}" alt="证件照" data-src-wide="{{$vo.legal_representative_cert_pic_front}}">
+										<div>点击放大</div>
+										<span>证件照正面</span>
+									</div>
+								</td>
+								<td>
+									<div class="zoomPic corpCredImgF">
+										<img class="pic" src="{{$vo.legal_representative_cert_pic_back}}" alt="证件照" data-src-wide="{{$vo.legal_representative_cert_pic_back}}">
+										<div>点击放大</div>
+										<span>证件照反面</span>
+									</div>
+								</td>
+							</tr>
+						</table>
+					</div>
+
+					<div class="info">
+						<h2>商家经营类目</h2>
+						<p><span class="BusinCate">专业服务-专业医疗服务-牙科医生</span>{{if $vo.special_license_pic}}类目，需要提供相应证件{{end}}</p>
+						<table>
+							<tr>
+								<td></td>
+								<td>
+									{{if $vo.special_license_pic}}
+										<div class="zoomPic businTypeImg" id="BusinCatePic">
+											<img class="pic" src="{{$vo.special_license_pic}}" alt="许可证" data-src-wide="{{$vo.special_license_pic}}">
+											<div>点击放大</div>
+										</div>
+									{{end}}
+								</td>
+								<td></td>
+								<td></td>
+							</tr>
+						</table>
+					</div>
+
+					<div class="info">
+						<h2>补充信息</h2>
+						<table>
+							<tr>
+								<td>*门店招牌照：</td>
+								<td>
+									<div class="zoomPic businTypeImg">
+										<img class="pic" src="{{$vo.shop_sign_board_pic}}" alt="门店招牌照" data-src-wide="{{$vo.shop_sign_board_pic}}">
+										<div>点击放大</div>
+									</div>
+								</td>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>*门店内景照：</td>
+								<td style="width: 300px;">
+									<div class="zoomPic businTypeImg">
+										<img class="pic  shopPic0" src="{{$vo.shop_scene_pic_one}}" alt="门店内景照1" data-src-wide="{{$vo.shop_scene_pic_one}}">
+										<div>点击放大</div>
+										<p>图片一</p>
+									</div>
+								</td>
+								<td style="text-align: center;">
+									<div class="zoomPic businTypeImg">
+										<img class="pic shopPic1" src="{{$vo.shop_scene_pic_two}}" alt="门店内景照2" data-src-wide="{{$vo.shop_scene_pic_two}}">
+										<div>点击放大</div>
+										<p>图片二</p>
+									</div>
+								</td>
+								<td  style="text-align: center;">
+									<div class="zoomPic businTypeImg" style="left: -50px;">
+										<img class="pic shopPic2" src="{{$vo.shop_scene_pic_three}}" alt="门店内景照3" data-src-wide="{{$vo.shop_scene_pic_three}}">
+										<div>点击放大</div>
+										<p>图片三</p>
+									</div>
+								</td>
+							</tr>
+						</table>
+					</div>
+
+					<div class="info">
+						<h2>银行账户</h2>
+						<table>
+							<tr>
+								<td>*户名：</td>
+								<td>{{$vo.business_bank_account_name}}</td>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>*银行账户：</td>
+								<td>{{$vo.business_bank_card_no}}</td>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>*手机号：</td>
+								<td>{{$vo.personal_bank_account_mobile}}</td>
+								<td></td>
+								<td></td>
+							</tr>
+						</table>
+					</div>
+				</div>
+					{{if ne $vo.status  "1"}}
+					<input type="button" class="btn-default" value="确定开通" onclick="Articledel(this,'{{$vo.uid}}')">
+					{{end}}
+				{{end}}
+			</div>
+		</div>
+	</div>
+	<!--  -->
+	<div class="copyright">
+		<p>Copyright 2016  ©  www.dental360.cn. All Rights Reserved.</p>
+	</div>
+
+	<!-- 确定开通弹窗 -->
+	<input type="hidden" id="tmp" />
+	<!-- 图片zoom弹窗 -->
+	<div class="carrousel">
+		<span class="close entypo-cancel">&Chi;</span>
+		<div class="wrapper"> <img src="" alt="BINGOO" /> </div>
+	</div>
+
+    <script type="text/javascript" src="/static/ant/js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="/static/ant/js/placeholade.min.js"></script>
+	<script type="text/javascript" src="/static/ant/js/yg_call_ui_dialog.js"></script>
+	<script type="text/javascript" src="/static/ant/js/BusinessCategory.js"></script>
+	<script type="text/javascript" src="/static/ant/js/antManage.js"></script>
+	<script type="text/javascript">
+	isCurr_left(0);
+	$(document).ready(function(e) {
+	     var cj_api=null;
+	     var thisID='';
+
+	     //console.log({{.infolist}});
+	     var infolist = {{.infolist}};
+	     var mcc_code = infolist[0].mcc_code;
+	     var special_license_pic = infolist[0].special_license_pic;
+	     var legal_representative_cert_indate =  infolist[0].legal_representative_cert_indate;
+	     var business_license_indate_start =  infolist[0].business_license_indate_start;
+	     update_BusinCate(mcc_code);
+	     console.log(infolist);
+
+	     zoomPic();
+
+	     if(special_license_pic){
+	     	$("#BusinCatePic").css("display","block");
+	     }else{
+	     	$("#BusinCatePic").css("display","none");
+	     }
+
+	     var cert_indate_data = legal_representative_cert_indate.split("||");
+	     var license_indate_data = business_license_indate_start.split("||");
+	     console.log(cert_indate_data);
+	     // $("#lR_cert_indate").text(cert_indate_data[0] + " " + cert_indate_data[1])
+	     $("#BL_license_indate_start").text(license_indate_data[0] + " " + license_indate_data[1])
+	});
+	//开通的弹窗
+	 $(".btn-default").uiDialog({
+		  //digText:'已添加成功是否返回上一页',
+		  buttons:{
+		  	'width':'400px',
+		  	'no_btn_title':'取消',
+		  	"no_btn_event":function(){
+		  		cj_api.close();
+		  	},
+		  	'ok_btn_title':"确定开通",
+		  	'ok_btn_event':function(){
+		  		statusChange(thisObj,0);
+		  		cj_api.close();
+		  	}
+			}// end buttons
+			},function(){
+				cj_api=this;
+			});
+	function Articledel(obj,id){
+	 	thisObj=obj;
+	 	thisID=id;
+	 	cj_api.show({content:"提交后该申请状态将变为已开通，请确定是否开通",leftBtnTitle:"取消",rightBtnTitle:"确定开通"});
+	 }
+
+ 	  //图片zoomPic
+ 	  function zoomPic(){
+ 	  	var carrousel = $( ".carrousel" );
+ 	  	$( ".zoomPic" ).click( function(e){
+ 	  		var src = $(this).find(".pic").attr("src");
+ 	  		carrousel.find("img").attr( "src", src );
+ 	  		carrousel.fadeIn( 200 );
+ 	  	});
+
+ 	  	carrousel.find( ".close" ).click( function(e){
+ 	  		carrousel.find( "img" ).attr( "src", '' );
+ 	  		carrousel.fadeOut( 200 );
+ 	  	} );
+ 	  }
+
+	function statusChange(obj,id){
+	 	var _this = $(obj);
+	 	var _status = $(".state");
+	 	$.ajax({
+                url: '/member/Open',
+                type: 'POST',
+                dataType: 'json',
+                data: {uid:thisID},
+            })
+	 	.done(function(data) {
+	 		console.log(data);
+	 		if( data.code ==1){
+	 			_this.addClass('hide');
+	 			_status.text("已开通");
+	 		}
+          })
+	 	.fail(function() {
+	 	})
+	 	.always(function() {
+	 		//_this.removeClass('load');
+	 	});
+
+	 }
+
+
+	 //更新商家经营类目
+	 function update_BusinCate(data){
+	 	var str = "专业服务-专业医疗服务-牙科医生";
+	 	var categoryArr = data.split("_");
+
+	 	if(categoryArr != ''){
+	 		console.log("categoryArr");
+	 		console.log(categoryArr);
+		 	var str1 =  CategoryLevel1[categoryArr[0]];
+		 	var str2 =  CategoryLevel2[categoryArr[0]][categoryArr[1]];
+		 	var str3 =  CategoryLevel3[categoryArr[1]][data];
+
+	 		var str= str1 + '-' + str2 + '-' + str3;
+	 	}
+
+	 	$(".BusinCate").text(str);
+	 }
+
+
+	</script>
+</body>
+</html>

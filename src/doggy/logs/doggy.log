@@ -1,0 +1,450 @@
+0,2020/05/19 14:58:56 [I] [asm_amd64.s:2086] http server Running on http://:8189
+2,2020/05/19 14:59:18 [C] [asm_amd64.s:479] the request url is  /
+2,2020/05/19 14:59:18 [C] [asm_amd64.s:479] Handler crashed with error can't find templatefile in the path:account/Login/login.html
+2,2020/05/19 14:59:18 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2,2020/05/19 14:59:18 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2,2020/05/19 14:59:18 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/template.go:64
+2,2020/05/19 14:59:18 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:249
+2,2020/05/19 14:59:18 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:200
+2,2020/05/19 14:59:18 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:184
+2,2020/05/19 14:59:18 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/router.go:802
+2,2020/05/19 14:59:18 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2,2020/05/19 14:59:18 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2,2020/05/19 14:59:18 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+2,2020/05/19 14:59:19 [C] [asm_amd64.s:479] the request url is  /favicon.ico
+2,2020/05/19 14:59:19 [C] [asm_amd64.s:479] Handler crashed with error can't find templatefile in the path:404.html
+2,2020/05/19 14:59:19 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2,2020/05/19 14:59:19 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2,2020/05/19 14:59:19 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/template.go:64
+2,2020/05/19 14:59:19 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:249
+2,2020/05/19 14:59:19 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:200
+2,2020/05/19 14:59:19 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:184
+2,2020/05/19 14:59:19 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/error.go:444
+2,2020/05/19 14:59:19 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/error.go:408
+2,2020/05/19 14:59:19 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/router.go:700
+2,2020/05/19 14:59:19 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2,2020/05/19 14:59:19 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2,2020/05/19 14:59:19 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+2,2020/05/19 14:59:29 [C] [asm_amd64.s:479] the request url is  /
+2,2020/05/19 14:59:29 [C] [asm_amd64.s:479] Handler crashed with error can't find templatefile in the path:account/Login/login.html
+2,2020/05/19 14:59:29 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2,2020/05/19 14:59:29 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2,2020/05/19 14:59:29 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/template.go:64
+2,2020/05/19 14:59:29 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:249
+2,2020/05/19 14:59:29 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:200
+2,2020/05/19 14:59:29 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:184
+2,2020/05/19 14:59:29 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/router.go:802
+2,2020/05/19 14:59:29 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2,2020/05/19 14:59:29 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2,2020/05/19 14:59:29 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+2,2020/05/19 14:59:30 [C] [asm_amd64.s:479] the request url is  /
+2,2020/05/19 14:59:30 [C] [asm_amd64.s:479] Handler crashed with error can't find templatefile in the path:account/Login/login.html
+2,2020/05/19 14:59:30 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2,2020/05/19 14:59:30 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2,2020/05/19 14:59:30 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/template.go:64
+2,2020/05/19 14:59:30 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:249
+2,2020/05/19 14:59:30 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:200
+2,2020/05/19 14:59:30 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:184
+2,2020/05/19 14:59:30 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/router.go:802
+2,2020/05/19 14:59:30 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2,2020/05/19 14:59:30 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2,2020/05/19 14:59:30 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+2,2020/05/19 14:59:31 [C] [asm_amd64.s:479] the request url is  /erp
+2,2020/05/19 14:59:31 [C] [asm_amd64.s:479] Handler crashed with error can't find templatefile in the path:404.html
+2,2020/05/19 14:59:31 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2,2020/05/19 14:59:31 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2,2020/05/19 14:59:31 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/template.go:64
+2,2020/05/19 14:59:31 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:249
+2,2020/05/19 14:59:31 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:200
+2,2020/05/19 14:59:31 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:184
+2,2020/05/19 14:59:31 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/error.go:444
+2,2020/05/19 14:59:31 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/error.go:408
+2,2020/05/19 14:59:31 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/router.go:700
+2,2020/05/19 14:59:31 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2,2020/05/19 14:59:31 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2,2020/05/19 14:59:31 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+2,2020/05/19 14:59:31 [C] [asm_amd64.s:479] the request url is  /favicon.ico
+2,2020/05/19 14:59:31 [C] [asm_amd64.s:479] Handler crashed with error can't find templatefile in the path:404.html
+2,2020/05/19 14:59:31 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2,2020/05/19 14:59:31 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2,2020/05/19 14:59:31 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/template.go:64
+2,2020/05/19 14:59:31 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:249
+2,2020/05/19 14:59:31 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:200
+2,2020/05/19 14:59:31 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:184
+2,2020/05/19 14:59:31 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/error.go:444
+2,2020/05/19 14:59:31 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/error.go:408
+2,2020/05/19 14:59:31 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/router.go:700
+2,2020/05/19 14:59:31 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2,2020/05/19 14:59:31 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2,2020/05/19 14:59:31 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+2,2020/05/19 14:59:36 [C] [asm_amd64.s:479] the request url is  /erp/college
+2,2020/05/19 14:59:36 [C] [asm_amd64.s:479] Handler crashed with error can't find templatefile in the path:404.html
+2,2020/05/19 14:59:36 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2,2020/05/19 14:59:36 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2,2020/05/19 14:59:36 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/template.go:64
+2,2020/05/19 14:59:36 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:249
+2,2020/05/19 14:59:36 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:200
+2,2020/05/19 14:59:36 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:184
+2,2020/05/19 14:59:36 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/error.go:444
+2,2020/05/19 14:59:36 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/error.go:408
+2,2020/05/19 14:59:36 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/router.go:700
+2,2020/05/19 14:59:36 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2,2020/05/19 14:59:36 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2,2020/05/19 14:59:36 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+2,2020/05/19 14:59:36 [C] [asm_amd64.s:479] the request url is  /favicon.ico
+2,2020/05/19 14:59:36 [C] [asm_amd64.s:479] Handler crashed with error can't find templatefile in the path:404.html
+2,2020/05/19 14:59:36 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2,2020/05/19 14:59:36 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2,2020/05/19 14:59:36 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/template.go:64
+2,2020/05/19 14:59:36 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:249
+2,2020/05/19 14:59:36 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:200
+2,2020/05/19 14:59:36 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:184
+2,2020/05/19 14:59:36 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/error.go:444
+2,2020/05/19 14:59:36 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/error.go:408
+2,2020/05/19 14:59:36 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/router.go:700
+2,2020/05/19 14:59:36 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2,2020/05/19 14:59:36 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2,2020/05/19 14:59:36 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+2,2020/05/19 15:00:03 [C] [asm_amd64.s:479] the request url is  /
+2,2020/05/19 15:00:03 [C] [asm_amd64.s:479] Handler crashed with error can't find templatefile in the path:account/Login/login.html
+2,2020/05/19 15:00:03 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2,2020/05/19 15:00:03 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2,2020/05/19 15:00:03 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/template.go:64
+2,2020/05/19 15:00:03 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:249
+2,2020/05/19 15:00:03 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:200
+2,2020/05/19 15:00:03 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:184
+2,2020/05/19 15:00:03 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/router.go:802
+2,2020/05/19 15:00:03 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2,2020/05/19 15:00:03 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2,2020/05/19 15:00:03 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+2,2020/05/19 15:00:03 [C] [asm_amd64.s:479] the request url is  /
+2,2020/05/19 15:00:03 [C] [asm_amd64.s:479] Handler crashed with error can't find templatefile in the path:account/Login/login.html
+2,2020/05/19 15:00:03 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2,2020/05/19 15:00:03 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2,2020/05/19 15:00:03 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/template.go:64
+2,2020/05/19 15:00:03 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:249
+2,2020/05/19 15:00:03 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:200
+2,2020/05/19 15:00:03 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:184
+2,2020/05/19 15:00:03 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/router.go:802
+2,2020/05/19 15:00:03 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2,2020/05/19 15:00:03 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2,2020/05/19 15:00:03 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+2,2020/05/19 15:00:26 [C] [asm_amd64.s:479] the request url is  /
+2,2020/05/19 15:00:26 [C] [asm_amd64.s:479] Handler crashed with error can't find templatefile in the path:account/Login/login.html
+2,2020/05/19 15:00:26 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2,2020/05/19 15:00:26 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2,2020/05/19 15:00:26 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/template.go:64
+2,2020/05/19 15:00:26 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:249
+2,2020/05/19 15:00:26 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:200
+2,2020/05/19 15:00:26 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:184
+2,2020/05/19 15:00:26 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/router.go:802
+2,2020/05/19 15:00:26 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2,2020/05/19 15:00:26 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2,2020/05/19 15:00:26 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+2,2020/05/19 15:00:30 [C] [asm_amd64.s:479] the request url is  /butlerp
+2,2020/05/19 15:00:30 [C] [asm_amd64.s:479] Handler crashed with error can't find templatefile in the path:erp/base/login.html
+2,2020/05/19 15:00:30 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2,2020/05/19 15:00:30 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2,2020/05/19 15:00:30 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/template.go:64
+2,2020/05/19 15:00:30 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:249
+2,2020/05/19 15:00:30 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:200
+2,2020/05/19 15:00:30 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:184
+2,2020/05/19 15:00:30 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/router.go:802
+2,2020/05/19 15:00:30 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2,2020/05/19 15:00:30 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2,2020/05/19 15:00:30 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+2,2020/05/19 15:00:30 [C] [asm_amd64.s:479] the request url is  /favicon.ico
+2,2020/05/19 15:00:30 [C] [asm_amd64.s:479] Handler crashed with error can't find templatefile in the path:404.html
+2,2020/05/19 15:00:30 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2,2020/05/19 15:00:30 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2,2020/05/19 15:00:30 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/template.go:64
+2,2020/05/19 15:00:30 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:249
+2,2020/05/19 15:00:30 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:200
+2,2020/05/19 15:00:30 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:184
+2,2020/05/19 15:00:30 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/error.go:444
+2,2020/05/19 15:00:30 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/error.go:408
+2,2020/05/19 15:00:30 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/router.go:700
+2,2020/05/19 15:00:30 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2,2020/05/19 15:00:30 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2,2020/05/19 15:00:30 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+2,2020/05/19 15:00:51 [C] [asm_amd64.s:479] the request url is  /ˇÅˇÇ   ˇÇ  
+2,2020/05/19 15:00:51 [C] [asm_amd64.s:479] Handler crashed with error can't find templatefile in the path:404.html
+2,2020/05/19 15:00:51 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2,2020/05/19 15:00:51 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2,2020/05/19 15:00:51 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/template.go:64
+2,2020/05/19 15:00:51 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:249
+2,2020/05/19 15:00:51 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:200
+2,2020/05/19 15:00:51 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:184
+2,2020/05/19 15:00:51 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/error.go:444
+2,2020/05/19 15:00:51 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/error.go:408
+2,2020/05/19 15:00:51 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/router.go:700
+2,2020/05/19 15:00:51 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2,2020/05/19 15:00:51 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2,2020/05/19 15:00:51 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+2,2020/05/19 15:00:51 [C] [asm_amd64.s:479] the request url is  /favicon.ico
+2,2020/05/19 15:00:51 [C] [asm_amd64.s:479] Handler crashed with error can't find templatefile in the path:404.html
+2,2020/05/19 15:00:51 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2,2020/05/19 15:00:51 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2,2020/05/19 15:00:51 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/template.go:64
+2,2020/05/19 15:00:51 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:249
+2,2020/05/19 15:00:51 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:200
+2,2020/05/19 15:00:51 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:184
+2,2020/05/19 15:00:51 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/error.go:444
+2,2020/05/19 15:00:51 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/error.go:408
+2,2020/05/19 15:00:51 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/router.go:700
+2,2020/05/19 15:00:51 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2,2020/05/19 15:00:51 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2,2020/05/19 15:00:51 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+2,2020/05/19 15:02:12 [C] [asm_amd64.s:479] the request url is  /ˇÅˇÇ   ˇÇ  
+2,2020/05/19 15:02:12 [C] [asm_amd64.s:479] Handler crashed with error can't find templatefile in the path:404.html
+2,2020/05/19 15:02:12 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2,2020/05/19 15:02:12 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2,2020/05/19 15:02:12 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/template.go:64
+2,2020/05/19 15:02:12 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:249
+2,2020/05/19 15:02:12 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:200
+2,2020/05/19 15:02:12 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:184
+2,2020/05/19 15:02:12 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/error.go:444
+2,2020/05/19 15:02:12 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/error.go:408
+2,2020/05/19 15:02:12 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/router.go:700
+2,2020/05/19 15:02:12 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2,2020/05/19 15:02:12 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2,2020/05/19 15:02:12 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+2,2020/05/19 15:02:12 [C] [asm_amd64.s:479] the request url is  /
+2,2020/05/19 15:02:12 [C] [asm_amd64.s:479] Handler crashed with error can't find templatefile in the path:account/Login/login.html
+2,2020/05/19 15:02:12 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2,2020/05/19 15:02:12 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2,2020/05/19 15:02:12 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/template.go:64
+2,2020/05/19 15:02:12 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:249
+2,2020/05/19 15:02:12 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:200
+2,2020/05/19 15:02:12 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:184
+2,2020/05/19 15:02:12 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/router.go:802
+2,2020/05/19 15:02:12 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2,2020/05/19 15:02:12 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2,2020/05/19 15:02:12 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+2,2020/05/19 15:02:15 [C] [asm_amd64.s:479] the request url is  /butlerp
+2,2020/05/19 15:02:15 [C] [asm_amd64.s:479] Handler crashed with error can't find templatefile in the path:erp/base/login.html
+2,2020/05/19 15:02:15 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2,2020/05/19 15:02:15 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2,2020/05/19 15:02:15 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/template.go:64
+2,2020/05/19 15:02:15 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:249
+2,2020/05/19 15:02:15 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:200
+2,2020/05/19 15:02:15 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:184
+2,2020/05/19 15:02:15 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/router.go:802
+2,2020/05/19 15:02:15 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2,2020/05/19 15:02:15 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2,2020/05/19 15:02:15 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+2,2020/05/19 15:02:17 [C] [asm_amd64.s:479] the request url is  /butlerp
+2,2020/05/19 15:02:17 [C] [asm_amd64.s:479] Handler crashed with error can't find templatefile in the path:erp/base/login.html
+2,2020/05/19 15:02:17 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2,2020/05/19 15:02:17 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2,2020/05/19 15:02:17 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/template.go:64
+2,2020/05/19 15:02:17 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:249
+2,2020/05/19 15:02:17 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:200
+2,2020/05/19 15:02:17 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:184
+2,2020/05/19 15:02:17 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/router.go:802
+2,2020/05/19 15:02:17 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2,2020/05/19 15:02:17 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2,2020/05/19 15:02:17 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+2,2020/05/19 15:02:30 [C] [asm_amd64.s:479] the request url is  /butlerp
+2,2020/05/19 15:02:30 [C] [asm_amd64.s:479] Handler crashed with error can't find templatefile in the path:erp/base/login.html
+2,2020/05/19 15:02:30 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2,2020/05/19 15:02:30 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2,2020/05/19 15:02:30 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/template.go:64
+2,2020/05/19 15:02:30 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:249
+2,2020/05/19 15:02:30 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:200
+2,2020/05/19 15:02:30 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:184
+2,2020/05/19 15:02:30 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/router.go:802
+2,2020/05/19 15:02:30 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2,2020/05/19 15:02:30 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2,2020/05/19 15:02:30 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+2,2020/05/19 15:02:31 [C] [asm_amd64.s:479] the request url is  /butlerp
+2,2020/05/19 15:02:31 [C] [asm_amd64.s:479] Handler crashed with error can't find templatefile in the path:erp/base/login.html
+2,2020/05/19 15:02:31 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2,2020/05/19 15:02:31 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2,2020/05/19 15:02:31 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/template.go:64
+2,2020/05/19 15:02:31 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:249
+2,2020/05/19 15:02:31 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:200
+2,2020/05/19 15:02:31 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:184
+2,2020/05/19 15:02:31 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/router.go:802
+2,2020/05/19 15:02:31 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2,2020/05/19 15:02:31 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2,2020/05/19 15:02:31 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+2,2020/05/19 15:03:27 [C] [asm_amd64.s:479] the request url is  /butlerp/college/userpage
+2,2020/05/19 15:03:27 [C] [asm_amd64.s:479] Handler crashed with error can't find templatefile in the path:erp/college/account/userslist.html
+2,2020/05/19 15:03:27 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2,2020/05/19 15:03:27 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2,2020/05/19 15:03:27 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/template.go:64
+2,2020/05/19 15:03:27 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:249
+2,2020/05/19 15:03:27 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:200
+2,2020/05/19 15:03:27 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:184
+2,2020/05/19 15:03:27 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/router.go:802
+2,2020/05/19 15:03:27 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2,2020/05/19 15:03:27 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2,2020/05/19 15:03:27 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+2,2020/05/19 15:03:27 [C] [asm_amd64.s:479] the request url is  /favicon.ico
+2,2020/05/19 15:03:27 [C] [asm_amd64.s:479] Handler crashed with error can't find templatefile in the path:404.html
+2,2020/05/19 15:03:27 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2,2020/05/19 15:03:27 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2,2020/05/19 15:03:27 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/template.go:64
+2,2020/05/19 15:03:27 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:249
+2,2020/05/19 15:03:27 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:200
+2,2020/05/19 15:03:27 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:184
+2,2020/05/19 15:03:27 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/error.go:444
+2,2020/05/19 15:03:27 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/error.go:408
+2,2020/05/19 15:03:27 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/router.go:700
+2,2020/05/19 15:03:27 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2,2020/05/19 15:03:27 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2,2020/05/19 15:03:27 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+0,2020/05/19 15:05:13 [I] [asm_amd64.s:2086] http server Running on http://:8189
+2,2020/05/19 15:05:19 [E] [orm_raw.go:913] <RawSeter> readValues Error 1054: Unknown column 'd.integral' in 'field list' , sql: select u.userid,u.mobile,d.name as doctorname,ifnull(d.integral,0) as integral from t_user u inner join t_doctor d on u.userid=d.doctorid
+	 		where u.roleid=3 and d.isintegral=1 
+2,2020/05/19 15:05:19 [E] [orm_raw.go:913] <RawSeter> readValues Error 1054: Unknown column 'd.integral' in 'field list' , sql: select u.userid,u.mobile,d.name as doctorname,ifnull(d.integral,0) as integral from t_user u inner join t_doctor d on u.userid=d.doctorid
+	 		where u.roleid=3 and d.isintegral=1  LIMIT 0,10
+2,2020/05/19 15:05:31 [E] [orm_raw.go:913] <RawSeter> readValues Error 1054: Unknown column 'd.integral' in 'field list' , sql: select u.userid,u.mobile,d.name as doctorname,ifnull(d.integral,0) as integral from t_user u inner join t_doctor d on u.userid=d.doctorid
+	 		where u.roleid=3 and d.isintegral=1 
+2,2020/05/19 15:05:31 [E] [orm_raw.go:913] <RawSeter> readValues Error 1054: Unknown column 'd.integral' in 'field list' , sql: select u.userid,u.mobile,d.name as doctorname,ifnull(d.integral,0) as integral from t_user u inner join t_doctor d on u.userid=d.doctorid
+	 		where u.roleid=3 and d.isintegral=1  LIMIT 0,10
+2,2020/05/19 15:05:37 [E] [orm_raw.go:913] <RawSeter> readValues Error 1054: Unknown column 'd.integral' in 'field list' , sql: select u.userid,u.mobile,d.name as doctorname,ifnull(d.integral,0) as integral from t_user u inner join t_doctor d on u.userid=d.doctorid
+	 		where u.roleid=3 and d.isintegral=1 
+2,2020/05/19 15:05:37 [E] [orm_raw.go:913] <RawSeter> readValues Error 1054: Unknown column 'd.integral' in 'field list' , sql: select u.userid,u.mobile,d.name as doctorname,ifnull(d.integral,0) as integral from t_user u inner join t_doctor d on u.userid=d.doctorid
+	 		where u.roleid=3 and d.isintegral=1  LIMIT 0,10
+2,2020/05/19 15:08:06 [E] [orm_raw.go:913] <RawSeter> readValues Error 1054: Unknown column 'd.integral' in 'field list' , sql: select u.userid,u.mobile,d.name as doctorname,ifnull(d.integral,0) as integral from t_user u inner join t_doctor d on u.userid=d.doctorid
+	 		where u.roleid=3 and d.isintegral=1 
+2,2020/05/19 15:08:06 [E] [orm_raw.go:913] <RawSeter> readValues Error 1054: Unknown column 'd.integral' in 'field list' , sql: select u.userid,u.mobile,d.name as doctorname,ifnull(d.integral,0) as integral from t_user u inner join t_doctor d on u.userid=d.doctorid
+	 		where u.roleid=3 and d.isintegral=1  LIMIT 0,10
+2,2020/05/19 15:08:07 [E] [orm_raw.go:913] <RawSeter> readValues Error 1054: Unknown column 'd.integral' in 'field list' , sql: select u.userid,u.mobile,d.name as doctorname,ifnull(d.integral,0) as integral from t_user u inner join t_doctor d on u.userid=d.doctorid
+	 		where u.roleid=3 and d.isintegral=1 
+2,2020/05/19 15:08:07 [E] [orm_raw.go:913] <RawSeter> readValues Error 1054: Unknown column 'd.integral' in 'field list' , sql: select u.userid,u.mobile,d.name as doctorname,ifnull(d.integral,0) as integral from t_user u inner join t_doctor d on u.userid=d.doctorid
+	 		where u.roleid=3 and d.isintegral=1  LIMIT 0,10
+2,2020/05/19 15:08:09 [E] [orm_raw.go:913] <RawSeter> readValues Error 1054: Unknown column 'd.integral' in 'field list' , sql: select u.userid,u.mobile,d.name as doctorname,ifnull(d.integral,0) as integral from t_user u inner join t_doctor d on u.userid=d.doctorid
+	 		where u.roleid=3 and d.isintegral=1 
+2,2020/05/19 15:08:09 [E] [orm_raw.go:913] <RawSeter> readValues Error 1054: Unknown column 'd.integral' in 'field list' , sql: select u.userid,u.mobile,d.name as doctorname,ifnull(d.integral,0) as integral from t_user u inner join t_doctor d on u.userid=d.doctorid
+	 		where u.roleid=3 and d.isintegral=1  LIMIT 0,10
+0,2020/05/19 15:27:10 [I] [asm_amd64.s:2086] http server Running on http://:8189
+2,2020/05/19 15:29:35 [C] [asm_amd64.s:479] the request url is  /learn/anchor/login
+2,2020/05/19 15:29:35 [C] [asm_amd64.s:479] Handler crashed with error can't find templatefile in the path:alogincontrollers/login.tpl
+2,2020/05/19 15:29:35 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2,2020/05/19 15:29:35 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2,2020/05/19 15:29:35 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/template.go:64
+2,2020/05/19 15:29:35 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:249
+2,2020/05/19 15:29:35 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:200
+2,2020/05/19 15:29:35 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:184
+2,2020/05/19 15:29:35 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/router.go:802
+2,2020/05/19 15:29:35 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2,2020/05/19 15:29:35 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2,2020/05/19 15:29:35 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+2,2020/05/19 15:29:48 [C] [asm_amd64.s:479] the request url is  /learn/anchor/login
+2,2020/05/19 15:29:48 [C] [asm_amd64.s:479] Handler crashed with error can't find templatefile in the path:alogincontrollers/login.tpl
+2,2020/05/19 15:29:48 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2,2020/05/19 15:29:48 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2,2020/05/19 15:29:48 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/template.go:64
+2,2020/05/19 15:29:48 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:249
+2,2020/05/19 15:29:48 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:200
+2,2020/05/19 15:29:48 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:184
+2,2020/05/19 15:29:48 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/router.go:802
+2,2020/05/19 15:29:48 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2,2020/05/19 15:29:48 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2,2020/05/19 15:29:48 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+2,2020/05/19 15:30:16 [C] [asm_amd64.s:479] the request url is  /learn/anchor/login
+2,2020/05/19 15:30:16 [C] [asm_amd64.s:479] Handler crashed with error can't find templatefile in the path:alogincontrollers/login.tpl
+2,2020/05/19 15:30:16 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2,2020/05/19 15:30:16 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2,2020/05/19 15:30:16 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/template.go:64
+2,2020/05/19 15:30:16 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:249
+2,2020/05/19 15:30:16 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:200
+2,2020/05/19 15:30:16 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:184
+2,2020/05/19 15:30:16 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/router.go:802
+2,2020/05/19 15:30:16 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2,2020/05/19 15:30:16 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2,2020/05/19 15:30:16 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+2,2020/05/19 15:30:16 [C] [asm_amd64.s:479] the request url is  /learn/anchor/login
+2,2020/05/19 15:30:16 [C] [asm_amd64.s:479] Handler crashed with error can't find templatefile in the path:alogincontrollers/login.tpl
+2,2020/05/19 15:30:16 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2,2020/05/19 15:30:16 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2,2020/05/19 15:30:16 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/template.go:64
+2,2020/05/19 15:30:16 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:249
+2,2020/05/19 15:30:16 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:200
+2,2020/05/19 15:30:16 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:184
+2,2020/05/19 15:30:16 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/router.go:802
+2,2020/05/19 15:30:16 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2,2020/05/19 15:30:16 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2,2020/05/19 15:30:16 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+0,2020/06/02 10:28:09 [I] [asm_amd64.s:2086] http server Running on http://:8189
+0,2020/06/02 10:54:50 [I] [asm_amd64.s:2086] http server Running on http://:8189
+2,2020/06/02 10:55:27 [C] [asm_amd64.s:479] the request url is  /
+2,2020/06/02 10:55:27 [C] [asm_amd64.s:479] Handler crashed with error can't find templatefile in the path:account/Login/login.html
+2,2020/06/02 10:55:27 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2,2020/06/02 10:55:27 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2,2020/06/02 10:55:27 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/template.go:64
+2,2020/06/02 10:55:27 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:249
+2,2020/06/02 10:55:27 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:200
+2,2020/06/02 10:55:27 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:184
+2,2020/06/02 10:55:27 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/router.go:802
+2,2020/06/02 10:55:27 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2,2020/06/02 10:55:27 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2,2020/06/02 10:55:27 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+2,2020/06/02 10:55:27 [C] [asm_amd64.s:479] the request url is  /favicon.ico
+2,2020/06/02 10:55:27 [C] [asm_amd64.s:479] Handler crashed with error can't find templatefile in the path:404.html
+2,2020/06/02 10:55:27 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2,2020/06/02 10:55:27 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2,2020/06/02 10:55:27 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/template.go:64
+2,2020/06/02 10:55:27 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:249
+2,2020/06/02 10:55:27 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:200
+2,2020/06/02 10:55:27 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:184
+2,2020/06/02 10:55:27 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/error.go:444
+2,2020/06/02 10:55:27 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/error.go:408
+2,2020/06/02 10:55:27 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/router.go:700
+2,2020/06/02 10:55:27 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2,2020/06/02 10:55:27 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2,2020/06/02 10:55:27 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+2,2020/06/02 10:55:51 [C] [asm_amd64.s:479] the request url is  /learn/platform/login
+2,2020/06/02 10:55:51 [C] [asm_amd64.s:479] Handler crashed with error can't find templatefile in the path:erp/collegenew/studybar_login.html
+2,2020/06/02 10:55:51 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2,2020/06/02 10:55:51 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2,2020/06/02 10:55:51 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/template.go:64
+2,2020/06/02 10:55:51 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:249
+2,2020/06/02 10:55:51 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:200
+2,2020/06/02 10:55:51 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:184
+2,2020/06/02 10:55:51 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/router.go:802
+2,2020/06/02 10:55:51 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2,2020/06/02 10:55:51 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2,2020/06/02 10:55:51 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+2,2020/06/02 10:55:59 [C] [asm_amd64.s:479] the request url is  /learn/platform/login
+2,2020/06/02 10:55:59 [C] [asm_amd64.s:479] Handler crashed with error can't find templatefile in the path:erp/collegenew/studybar_login.html
+2,2020/06/02 10:55:59 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2,2020/06/02 10:55:59 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2,2020/06/02 10:55:59 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/template.go:64
+2,2020/06/02 10:55:59 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:249
+2,2020/06/02 10:55:59 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:200
+2,2020/06/02 10:55:59 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:184
+2,2020/06/02 10:55:59 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/router.go:802
+2,2020/06/02 10:55:59 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2,2020/06/02 10:55:59 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2,2020/06/02 10:55:59 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+0,2020/06/02 10:56:57 [I] [asm_amd64.s:2086] http server Running on http://:8189
+0,2020/06/02 11:01:06 [I] [asm_amd64.s:2086] http server Running on http://:8189
+2,2020/06/02 11:04:02 [E] [ErpBusiness.go:852] <RawSet> Exec Error 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ':applystatus,updatetime='2020-06-02 11:04:02' where seriesid='363805115192360960' at line 1,sql:  update t_college_series set datastatus=?,applystatus=:applystatus,updatetime=? where seriesid=? 
+1,2020/06/02 11:04:02 [W] [orm_raw.go:98] Param:2|2020-06-02 11:04:02|363805115192360960|
+2,2020/06/02 11:05:52 [E] [ErpBusiness.go:852] <RawSet> Exec Error 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ':applystatus,updatetime='2020-06-02 11:05:52' where seriesid='363805115192360960' at line 1,sql:  update t_college_series set datastatus=?,applystatus=:applystatus,updatetime=? where seriesid=? 
+1,2020/06/02 11:05:52 [W] [orm_raw.go:98] Param:2|2020-06-02 11:05:52|363805115192360960|
+2,2020/06/02 11:06:16 [E] [ErpBusiness.go:852] <RawSet> Exec Error 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ':applystatus,updatetime='2020-06-02 11:06:16' where seriesid='363805115192360960' at line 1,sql:  update t_college_series set datastatus=?,applystatus=:applystatus,updatetime=? where seriesid=? 
+1,2020/06/02 11:06:16 [W] [orm_raw.go:98] Param:2|2020-06-02 11:06:16|363805115192360960|
+0,2020/06/02 11:24:18 [I] [asm_amd64.s:2086] http server Running on http://:8189
+0,2020/06/02 11:32:16 [I] [asm_amd64.s:2086] http server Running on http://:8189
+0,2020/06/02 11:51:04 [I] [asm_amd64.s:2086] http server Running on http://:8189
+0,2020/06/02 13:43:07 [I] [asm_amd64.s:2086] http server Running on http://:8189
+0,2020/06/02 13:55:40 [I] [asm_amd64.s:2086] http server Running on http://:8189
+2,2020/06/02 13:55:53 [C] [asm_amd64.s:479] the request url is  /
+2,2020/06/02 13:55:53 [C] [asm_amd64.s:479] Handler crashed with error can't find templatefile in the path:account/Login/login.html
+2,2020/06/02 13:55:53 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2,2020/06/02 13:55:53 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2,2020/06/02 13:55:53 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/template.go:64
+2,2020/06/02 13:55:53 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:249
+2,2020/06/02 13:55:53 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:200
+2,2020/06/02 13:55:53 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/controller.go:184
+2,2020/06/02 13:55:53 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/router.go:802
+2,2020/06/02 13:55:53 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2,2020/06/02 13:55:53 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2,2020/06/02 13:55:53 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+0,2020/06/02 13:56:25 [I] [asm_amd64.s:2086] http server Running on http://:8189
+0,2020/06/02 13:58:04 [I] [asm_amd64.s:2086] http server Running on http://:8189

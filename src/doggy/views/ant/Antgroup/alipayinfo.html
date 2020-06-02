@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+<title>申请信息填写-移动支付优惠套餐</title>
+<link href="/static/ant/css/header.css" rel="stylesheet" />
+<link href="/static/ant/css/index.css" rel="stylesheet" />
+<link href="/static/ant/css/footer.css" rel="stylesheet" />
+<link href="/static/ant/css/antGroup.css" rel="stylesheet" />
+<link href="/static/ant/css/common.css" rel="stylesheet" />
+</head>
+
+<body>
+{{template "/ant/Public/header.html" }}
+
+<div class="process">
+    <div class="item">基本流程</div>
+
+    <ul>
+        <li class="step1 ok nobefore"><img src="/static/ant/img/step1_0.png">选择套餐</li>
+        <li class="step2 ok"><img src="/static/ant/img/step2_0.png">购买成功</li>
+        <li class="step3 ok"><img src="/static/ant/img/step3_0.png">提交支付宝申请信息</li>
+        <li class="step4"><img src="/static/ant/img/step4.png">提交微信申请信息<br><span>需提前开通服务号</span></li>
+        <li class="step5"><img src="/static/ant/img/step5.png">提交成功等待审核</li>
+    </ul>
+</div>
+<div class="hr"><br>支付宝申请 ></div>
+<input type="hidden" name="uid" id="uid" value="{{.uid}}"/>
+<form  id="form1" name="form1" method="post" action='/member/ChangeAliInfo'>
+<input type="hidden" name="return_url" id="return_url" value="/member/wechatinfo"/>
+
+<div class="baseinfo">
+    <div class="item">申报信息</div>
+    <ul>
+        <li id="ss"><span class="required">单位性质：    </span><span class="_radio mr10 vm"></span>个体工商户<span class="_radio mr10 ml50 vm active"></span>企业
+        <input type="hidden" name="type" id="type" value="2">
+            </li>
+        <li><span class="required">联系人名称：</span><input type="text" name="contact_name" required placeholder="请输入申报负责人名称"></li>
+        <li><span class="required">邮箱：      </span><input type="text" name="contact_email" data-type="mail" required placeholder="请输入有效邮箱"></li>
+        <li><span class="required">手机：      </span><input type="text" name="contact_mobile" data-type="mobile" onkeyup="checkform(this,'number')" required placeholder="请输入联系人手机号码"></li>
+        <li><span>我有推广码：</span><input type="text" name="promocode" placeholder="请输入推荐人的推广码，若无可不填写"></li>
+        
+    </ul>
+</div>
+<div class="baseinfo">
+    <div class="item">企业基本信息</div>
+    <ul>
+        <li><span class="required name_switch" >企业名称    ：</span><input type="text" name="company_name" required placeholder="名称与营业执照上的名称保持一致"></li>
+        <li><span class="required">账户名： </span><input type="text" name="login_id" required  class="account_name" data-type="mail" placeholder="请输入企业的邮箱作为账户名"><span class="tips word">已开通支付宝的商家请输入自己的账户名</span></li>
+        <li class="private"><span class="required">证件类型：    </span><span class="_radio mr10 vm active"></span>普通营业执照<span class="tips ml0">（存在独立组织机构代码）</span> <span class="_radio mr10 ml50 vm"></span>三证合一<span class="tips ml0">（不存在独立组织机构代码）</span>
+        <input type="hidden" name="three_in_one" id="credtype" value="1">
+        </li>
+        <li class="mb100"><span class="required">证件照：   </span>
+            <span class="uploadpic" data-id="business_license_pic" data-type="required">
+
+             </span>
+
+            <span class="tips w140 mt10">提供营业执照/三证合一照正面信息 ,不超过5M(.jpg格式)，图片请确保信息清晰可见</span></li>
+
+        <li><span class="required">执照所属地区：</span><div class="_select mr22 vm w121">
+            <input class="province " type="hidden" name="business_license_province"  value="" data-id="license">
+            <p>省份</p>
+            <ul class="province_ul"></ul>
+            </div>
+            <div class="_select vm  w121">
+            <input class="city _sel" type="hidden" name="business_license_city" value="" required  data-id="license">
+            <p>市</p>
+            <ul class="city_ul"></ul>
+            </div><span class="tips word">请与营业执照上的省份城市保持一致</span>
+        </li>
+        <li><span class="required">注册号： </span><input type="text" name="business_license_no" required placeholder="请输入营业执照上的注册号"><span class="tips word">“三证合一”请填写社会统一信用代码</span></li>
+        <li><span class="required">住所：      </span><input type="text" name="company_address" required placeholder="请与营业执照上的信息保持一致"></li>
+        <li><span class="required">经营范围：    </span><input type="text" name="business_scope" required placeholder="请与营业执照上的信息保持一致"></li>
+        <li><span class="required" >营业期限：   </span><input type="text" name="business_license_indate_start" id="deadline_s" data-f="cla2" class="vm w121 mr5" required><input type="text" name="business_license_indate_end" id="deadline_e" data-f="cla2" class="vm w121" required >
+            <span id="notNull" class="_checkbox"></span>
+                    <label for="notNull" class="mr10">长期</label><span class="tips word">请与营业执照上的信息保持一致</span></li>
+        <li class="private credtype_1"><span class="required">组织机构代码：   </span><input type="text" name="org_code_certificate_no" required placeholder="请输入组织机构代码证上的代码"></li>
+        <li class="private mb100 credtype_1"><span class="required">组织机构代码证照片：   </span>
+            <span class="uploadpic" data-id="org_code_certificate_pic" data-type="required">
+
+             </span>
+            <span class="tips w140 mt10">提供组织机构代码照正面信息 ,不超过5M(.jpg格式)，图片请确保信息清晰可见</span></li>
+        <li class="notPrivate mb100"><span>营业执照授权函：   </span>
+            <span class="uploadpic" data-id="business_license_auth_pic">
+
+             </span>
+            <span class="tips w140 mt10">提供营业执照授权函正面照片 ,不超过5M(jpg格式)，图片请确保信息清晰可见</span><span class="tips word auth_pic" style="left: -17px;top:21px">个体工商户如果使用总公司或其他公司的营业执照认证需上传该授权函图片</span></li>
+    </ul>
+</div>
+<div class="baseinfo">
+    <div class="item">法人信息</div>
+    <ul>
+        <li><span class="required p_name">法人姓名：</span><input type="text"  name="legal_representative_name" required placeholder="名称与营业执照上的名称保持一致"></li>
+        <li><span class="required">证件类型：</span><div class="_select mr10 vm">
+                                                        <input id="idtype" type="hidden" value="" class="_sel" name="legal_representative_cert_type" required>
+                                                        <p>请选择证件类型</p>
+                                                        <ul id="idtype_ul">
+                                                            <li value="0">大陆身份证</li>
+                                                            <li value="1">港澳通行证</li>
+                                                            <li value="2">台湾通行证</li>
+                                                            <li value="3">护照</li>
+                                                        </ul>
+                                                    </div><span class='tips word'>个体工商户仅支持大陆身份证</span>
+                                                </li>
+        <li><span class="required">证件号码：</span><input type="text" name="legal_representative_cert_no" required placeholder="与法人证件内容保持一致"></li>
+        <li><span class="required">证件有效期：</span><input type="text" name="legal_representative_cert_indate_start" id="cert_range_e" data-f="cla" class="vm w300 mr5" required>
+        <span id="notNull_cert" class="_checkbox"></span>
+                    <label for="notNull" class="mr10">长期</label><span class="tips word">请与证件上的信息保持一致</span>
+        </li>
+    </ul>
+</div>
+
+
+    <div class="tlc mt50 mb58"><input type="submit" value="下一步" ></div>
+    <div class="tlc fs14 mb20">请确保填写的信息完整准确，并点击“下一步”提交，如有疑问请致电人工客服：86 400-660-5770 &nbsp;&nbsp;周一至周五（09：00-18：00）</div>
+
+</form>
+{{template "/ant/Public/footer.html" }}
+
+</body>
+
+<script type="text/javascript" src="/static/ant/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="/static/ant/js/area.js"></script>
+<script type="text/javascript" src="/static/ant/js/header.js"></script>
+<script type="text/javascript" src="/static/ant/js/index.js"></script>
+<script type="text/javascript" src="/static/ant/js/jquery.bxslider.js"></script>
+<script type="text/javascript" src="/static/ant/js/local_upload.js"></script>
+<script type="text/javascript" src="/static/ant/js/BusinessCategory.js"></script>
+<script type="text/javascript" src="/static/ant/js/localImg.js"></script>
+<script type="text/javascript" src="/static/ant/js/lyz.calendar.min.js"></script>
+<script type="text/javascript" src="/static/ant/js/public.js"></script>
+<script type="text/javascript">
+
+var AppPath='__APP__';
+function getip(){
+     // var url = 'https://api.map.baidu.com/location/ip?ak=1EXTqYDUBqih2rr21gWnb5sIIqYCP4Ve&'
+   //$.get(url,function(data){
+        //console.log(data.address)
+        setcity(data.address);
+        //$("#b").html("显示：IP【"+data.Ip+"】 地址【"+data.Isp+"】 浏览器【"+data.Browser+"】 系统【"+data.OS+"】");
+   //});
+}
+function setcity(city){
+    $(".province_ul li").each(function(index,el){
+        if(city.indexOf($(this).attr("value"))>=0){
+            $(this).parent().siblings("input").val($(this).text())
+            $(this).parent().siblings("p").text($(this).text())
+            var type=$(this).parent().siblings("input").attr("data-id")
+            change_city('0_'+$(this).attr("data-index"),type);
+        }
+    })
+    $(".city_ul li").each(function(index,el){
+        if(city.indexOf($(this).attr("value"))>=0){
+            $(this).parent().siblings("input").val($(this).text())
+            $(this).parent().siblings("p").text($(this).text())
+        }
+    })
+}
+$(document).ready(function(e) {
+    _init_area();
+    var up_api=null
+    load_uploadPara();
+   //getip()
+
+    var Day=new Date();
+    var tDay=new Date(Day.getTime()).Format("yyyy-MM-dd")
+    //Calender插件
+    $("#deadline_s").calendar({
+        'cls':'w131',
+        callback: function () {
+            if ($("#deadline_s").val() && $("#deadline_e").val()) {
+                if(!$.dateCompare($("#deadline_s").val(),$("#deadline_e").val())){
+                      $("#deadline_s").val('')
+                      $("#deadline_e").val('')
+                      $("#deadline_e").nextAll('.tips').addClass('error');
+                      //$("#deadline_e").nextAll('.tips').text('请检查营业期限日期！')
+                };
+                if($.dateCompare($("#deadline_e").val(),tDay)){
+                      $("#deadline_s").val('')
+                      $("#deadline_e").val('')
+                      $("#deadline_e").nextAll('.tips').addClass('error');
+                      //$("#deadline_e").nextAll('.tips').text('请检查营业期限日期！')
+                };
+            }
+            
+            $("#deadline_s").removeClass('active');
+        }
+    });
+     $("#deadline_e").calendar({
+        'cls':'w131',
+        callback: function () {
+            if ($("#deadline_s").val() && $("#deadline_e").val()) {
+                if(!$.dateCompare($("#deadline_s").val(),$("#deadline_e").val())){
+                      $("#deadline_s").val('')
+                      $("#deadline_e").val('')
+                      $("#deadline_e").nextAll('.tips').addClass('error');
+                      //$("#deadline_e").nextAll('.tips').text('请检查营业期限日期！')
+                }; 
+                if($.dateCompare($("#deadline_e").val(),tDay)){
+                      $("#deadline_s").val('')
+                      $("#deadline_e").val('')
+                      $("#deadline_e").nextAll('.tips').addClass('error');
+                      //$("#deadline_e").nextAll('.tips').text('请检查营业期限日期！')
+                };
+            }
+            
+            $("#deadline_e").removeClass('active');
+        }
+    });
+
+   
+    $("#cert_range_e").calendar({
+        'cls':'w270',
+        callback: function () {
+            if ($("#cert_range_e").val()) {
+               
+                if($.dateCompare($("#cert_range_e").val(),tDay)){    //不能低于今天
+                      $("#cert_range_e").val('')
+                      $("#cert_range_e").val('')
+                      $("#cert_range_e").nextAll('.tips').addClass('error');
+                }else{
+                      $("#cert_range_e").nextAll('.tips').addClass('correct');
+                };
+            }
+            
+            $("#cert_range_e").removeClass('active');
+        }
+    });
+
+    //检测必填项
+    $("body").delegate("input[required],input[required=required]","focusout onkeyup",function(){
+    //$("input[required],input[required=required]").bind("focusout",function(){
+        var bool=false;
+        var _tips=null;
+        var _selectinput=null
+        var errorTips="不能为空";
+        if($(this).attr("data-type")!=undefined){
+            bool=checkform($(this),$(this).attr("data-type"));
+            errorTips=$(this).attr("errorWord")
+        }else{
+            if($.trim($(this).val())!=''){
+                bool=true;
+            }
+            
+        }
+        //是否为图片控件
+        /*if($(this).hasClass("uploadsq")){
+            _tips=$(this).prev("label")
+        }else{
+            if($(this).next(".tips").length==0){
+                $(this).after("<span class='tips'></span>")
+            }
+
+        }*/
+        if($(this).attr("data-f")=='cla2' || $(this).attr("data-f")=='cla'){
+            _tips=$(this).nextAll('.tips')
+        }else{
+            if($(this).next(".tips").length==0 && !$(this).hasClass("_sel")){
+                $(this).after("<span class='tips'></span>")
+            }
+            _tips=$(this).next(".tips");
+        }
+
+        if($(this).attr("data-pic")=="1"){
+            errorTips='请上传图片';
+        }
+        // if($(this).attr("id")=="shop_scene_pic_one"){
+        //     errorTips='请上传图片'
+        // }
+        // if($(this).attr("id")=="shop_scene_pic_two"){
+        //     errorTips='请上传图片'
+        // }
+
+        if($(this).hasClass("_sel")){
+            _tips=$(this).parent().next(".tips");
+            _selectinput=$(this).parent()
+            if(bool){
+                _selectinput.removeClass("lineheight");
+                if($(this).attr("data-id")){
+                    $("input[data-id="+$(this).attr("data-id")+"]").parent().removeClass("lineheight");
+                }
+            }else{
+                if($(this).attr("data-id")){
+                    $("input[data-id="+$(this).attr("data-id")+"]").parent().addClass("lineheight");
+                }
+                _selectinput.addClass("lineheight");
+            }
+        }
+        _tips.removeClass("word")
+        if(bool){
+            $(this).removeClass("lineheight")
+            _tips.addClass("correct").removeClass("error")
+            _tips.text(' ')
+        }else{
+            $(this).addClass("lineheight")
+            _tips.text(errorTips)
+            _tips.addClass("error").removeAttr("correct");
+        }
+
+        
+    })
+
+    //******************************
+    //补充信息填写
+    // $(".paytype li").click(function(el,index){
+    //     $(this).parent().hide();
+    //     $(".paytype_0,.paytype_1").hide();
+    //     $(".paytype_"+$(this).index()).show();
+    // })
+     //清空选填项
+    $(".otherinfo.cancel").click(function(){
+        $(this).parent().parent().find("input[type=text]").val('');
+        $(this).parent().parent().hide();
+        $(this).parent().parent().find("img").attr("src",'/static/ant/img/none.png');
+        $(".paytype").show();
+    })
+    $(".complate").click(function(){
+        $(this).parent().parent().hide();
+        $(".paytype").show();
+    })
+    //******************************
+
+    //复选框
+    $("._checkbox").click(function(event) {
+            $(this).hasClass('checked')?$(this).removeClass('checked'):$(this).addClass('checked');
+            if( this.id == 'notNull'){
+                if($(this).hasClass('checked')){
+                    $("#deadline_s").attr('disabled','true').val('0000-00-00').addClass("disable");
+                    $("#deadline_e").attr('disabled','true').val('0000-00-00').addClass("disable");
+                    $("#deadline_e").nextAll('.tips').removeClass('error').addClass("correct");
+                    $(".tips.correct").text('')
+                }else{
+                    $("#deadline_s").removeAttr('disabled').val('').removeClass("disable");
+                    $("#deadline_e").removeAttr('disabled').val('').removeClass("disable");
+                }
+            }
+
+            if( this.id == 'notNull_cert'){
+                if($(this).hasClass('checked')){
+                    $("#cert_range_e").attr('disabled','true').val('0000-00-00').addClass("disable");
+                    $("#cert_range_e").nextAll('.tips').removeClass('error').addClass("correct").removeClass('word');
+                    $(".tips.correct").text('')
+                }else{
+                    $("#cert_range_e").removeAttr('disabled').val('').removeClass("disable");
+                }
+            }
+        });
+    $("._checkbox").next().click(function(event) {
+            $(this).prev().click();
+            });
+     //下拉框
+    $("._select")._select('active');
+
+    //单选按钮组
+    $("._radio").click(function(){
+        $(this).addClass("active").siblings().removeClass("active");
+        $(this).siblings("input").val($(this).index())
+        if($(this).siblings("input").attr("id")=="type"){
+            if($(this).index()==2){//企业 
+                $(".private").show();
+                $(".private").attr("required","true");
+                $(".baseinfo .item").eq(1).text("企业基本信息");
+                $(".baseinfo .item").eq(2).text("法人信息");
+                $(".baseinfo .p_name").text("法人姓名：")
+                $(".name_switch").text("企业名称：");
+                $(".account_name").attr({
+                    "placeholder":"请输入企业的邮箱作为账户名",
+                    "data-type":"mail"
+                })
+                $(".notPrivate").hide();
+                $(".notPrivate input").removeAttr("required");
+                $("#idtype_ul").html('<li value="0">大陆身份证</li><li value="1">港澳通行证</li><li value="2">台湾通行证</li><li value="3">护照</li>');
+            }else{
+                //个体工商户
+                $("#idtype_ul").html('<li value="0">大陆身份证</li>');
+                $(".notPrivate").show();
+                $(".notPrivate input[type=text]").attr("required","true");
+
+                $(".private").hide();
+                $(".notPrivate").show();
+                $(".private input").removeAttr("required");
+                if($("#credtype").val()=='2'){
+                    $("#credtype").val('1');
+                    $(".credtype_1").show()
+                    $(".credtype_1 input[type=text]").attr("required","true");
+                    $(".credtype_1 input[type=hidden]").attr("required","true");
+                }
+                $(".baseinfo .item").eq(1).text("基本信息");
+                $(".baseinfo .item").eq(2).text("经营者信息");
+                $(".baseinfo .p_name").text("经营者姓名：")
+                $(".name_switch").text("名称：");
+                $(".account_name").attr({
+                    "placeholder":"请输入个人的邮箱或手机号作为账户名",
+                    "data-type":"mobileMail"
+                })
+            }
+        }
+
+        if($(this).siblings("input").attr("id")=="credtype"){
+            if($(this).index()==1){
+                $(".credtype_1").show()
+                $(".credtype_1 input[type=text]").attr("required","true");
+                $(".credtype_1 input[type=hidden]").attr("required","true");
+            }else{
+                $(".credtype_1").hide()
+                $(".credtype_1 input").removeAttr("required");
+            }
+        }
+    })
+
+    //经营类目填充
+    /*setCategory("#businessClass1",CategoryLevel1)
+    $("#businessClass1").val('P');
+    $("#businessClass1").next("p").text("专业服务");
+    setCategory("#businessClass2",CategoryLevel2,"#businessClass1")
+    $("#businessClass2").val('P01');
+    $("#businessClass2").next("p").text("医疗服务");
+    setCategory("#businessClass3",CategoryLevel3,"#businessClass2")
+    $("#businessClass3").val('P_P01_8021');
+    $("#businessClass3").next("p").text("牙科医生");
+
+    //P_P01_8021 牙科医生 
+    
+    
+    
+    $(".cate_li").show();
+    var n=notice[$("#businessClass3").val()];
+    $(".classTips").html('<font class="mark">专业服务-医疗服务-牙科医生</font>类目，需要'+n);
+        $(".classTips").addClass("word");
+
+    $(".BClass1 li").click(function(){
+        setCategory("#businessClass2",CategoryLevel2,"",$(this).attr("value"))
+        setCategory("#businessClass3",CategoryLevel3,"#businessClass2")
+    })
+    $("body").on('click',".BClass2 li",function(){
+        setCategory("#businessClass3",CategoryLevel3,"",$(this).attr("value"))
+    })
+    $("body").on('click',".BClass3 li",function(){
+        setCategory();
+    })*/
+    
+
+});
+
+function setCategory(obj,level,target,sVal){
+    if(obj!=undefined){
+        var _level=[];
+        var json=level
+        var firstVal='';
+        var firstText='';
+        if(target!=undefined){
+            json=level[$(target).val()]
+        }
+        if(sVal!=undefined){
+            json=level[sVal];
+        }
+        $.each(json,function(index, el){
+            if(firstVal==''){firstVal=index;firstText=el}
+            _level.push('<li value='+index+' data-val="'+el+'">'+el+'</li>')
+        })
+        $(obj).val(firstVal);
+        $(obj).next().text(firstText);
+        $(obj).next().next().empty().append(_level.join(''));
+    }
+    var n=notice[$("#businessClass3").val()];
+    $("#mcc_code").val($("#businessClass3").val());
+    if(n!=undefined){
+        $(".classTips").html('<font class="mark">'+
+            $("#businessClass1").next("p").text()+'-'+
+            $("#businessClass2").next("p").text()+'-'+
+            $("#businessClass3").next("p").text()+'</font>类目，需要'+n);
+        $(".classTips").addClass("word");
+        $(".cate_li").show();
+        //$(".cate_li .uploadpic").attr("data-type","required");
+        //$(".cate_li .uploadpic input[type=hidden]").attr("required","true");
+    }else{
+        $(".classTips").html('');
+        $(".classTips").removeClass('word');
+        $(".cate_li").hide();
+        //$(".cate_li .uploadpic").removeAttr("data-type")
+        //$(".cate_li .uploadpic input").removeAttr("required");
+
+    }
+}
+
+function load_uploadPara(){
+    $('.uploadpic').each(function(index, element) {
+        var id=$(this).attr("data-id");
+        var req=$(this).attr("data-type");
+        var str='';
+
+         str = '<input type="file" id="'+id+'_upload" data-id='+id+' value="上传" class="uploadsq" accept="image/jpeg,image/jpg" onchange="previewImage(this)" tabindex="-1" unselectable="on">'+
+         '<img id="'+id+'_img" src="/static/ant/img/none.png" /><br />'+
+                               ' '+
+                               ' '
+       /* str = '<img id="'+id+'_img" src="/static/ant/img/none.png" /><br />'+
+                               ' <label class="ui_button_primary" for="'+id+'_upload"></label>'+
+                               ' <input type="file" id="'+id+'_upload" value="上传" class="uploadsq" accept="image/*"  style="position:absolute;clip:rect(0 0 0 0);"/>'*/
+        str = str + ' <input data-pic="1" type="hidden" id="'+id+'" name="'+id+'" '+req+'/><span class="tips"></span>';
+        //店内3张图片，只显示一个tips(shop_scene_pic3)
+       /* if(id.indexOf("shop_scene_pic1")=='0'|id.indexOf("shop_scene_pic2")=='0'|id.indexOf("business_license_auth_pic")=='0'){
+            str = str + ' <input type="hidden" id="'+id+'" name="'+id+'" '+req+'/>';
+        }else{
+            str = str + ' <input type="hidden" id="'+id+'" name="'+id+'" '+req+'/><span class="tips"></span>';
+        }*/
+        $(this).append(str);
+
+
+    });
+}
+
+
+
+//表单验证
+function checkform(obj,type){
+    var t=$(obj).val();
+    var re=false;
+    var reg='';
+    switch(type){
+        case 'number':
+            reg=/^[0-9]+$/;
+            if(!reg.test(t)){
+                t=t.substring(0,t.length-1);
+            }
+            re=true;
+            break;
+        case 'mobile':
+            reg=/^1[3|4|5|7|8]\d{9}$/;
+            $(obj).attr("errorWord",'请输入正确的手机号码');
+            break;
+        case 'mail':
+            reg=/^(\w)+(\.\w+)*@(\w)+((\.\w+)+)$/;
+            $(obj).attr("errorWord",'请输入正确的邮件地址');
+            break;
+        case 'mobileMail':
+            reg=/^((\w)+(\.\w+)*@(\w)+((\.\w+)+))|(1[3|4|5|7|8]\d{9})$/;
+            $(obj).attr("errorWord",'请输入正确的邮件地址或手机号码');
+            break;
+        default:
+            break;
+    }
+    if(reg.test(t)){
+        re=true;
+    }
+    $(obj).val(t);
+    return re;
+}
+
+//提交验证
+$("input[type='submit']").click(function(){
+    var form = $("input[required],input[required=required]");
+    var errPos = 0;
+
+
+    for(var i= 0,length = form.length;i<length;i++){
+        form.eq(i).focusout();
+    }
+
+    //修改img后警告图标位置
+   var imgTips =  $(".tips").prev("input[type='hidden']").next();
+       imgTips.css({
+        "top":"20px",
+        "left":"302px",
+       })
+
+    var imgTips2=$(".tips").prev("input[id='shop_scene_pic_one']").next();
+       imgTips2.css({
+        "top":"127px",
+        "left":"-15px",
+       })
+     var imgTips3=$(".tips").prev("input[id='shop_scene_pic_two']").next();
+       imgTips3.css({
+        "top":"127px",
+        "left":"-15px",
+       })
+      var imgTips4=$(".tips").prev("input[id='business_license_auth_pic']").next();
+       imgTips4.css({
+        "top":"-100px",
+        "left":"-11px",
+       })
+
+   
+    //表单校验-focu错误描点
+    if(form.next().hasClass("error")){
+        var firstErrTop = form.next('.error').eq(0).offset().top;
+        $('html, body').animate({
+                scrollTop: firstErrTop-50
+            },500);
+        form.next('.error').eq(0).prev().focus();
+        return false;
+    }
+    $("#return_url").val("/member/wechatinfo?name="+$("input[name=contact_name]").val()+"&tel="+$("input[name=contact_mobile]").val())
+    return true;
+})
+
+
+
+</script>
+
+</html>

@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head>
+<title>我的诊所</title>
+<meta charset="utf-8" />
+<!--<include file="Public:css_inc"/>-->
+{{template "/account/Public/per_css_inc.html" .}}
+<link rel="stylesheet" type="text/css" href="/static/account/css/memberCenter.css">
+</head>
+
+
+<body>
+<!-- 头部 -->
+<input type="hidden" name="navtags" value="2">
+<div class="mask"></div>
+{{template "/account/Public/memberCen_hea_new.html" .}}
+<div class="main_con">
+  <div class="main_left">
+    {{template "/account/Public/left_nav.html" .}}
+  </div>
+  
+  <!-- 未开通的服务 -->
+  <div class="main_right">
+    <div class="right_box">
+      <div class="service" id="useNo">
+      <h2>我的诊所 <a href="/member/regrelclinicanother" target="_blank" alt="" id="association_clinic" class="acb ac_btn_bf">+关联其他诊所</a></h2> 
+           <!--{{range $k,$vo :=.cliniclist}}
+                <p>{{$vo.defaulttype}}aa</p>
+            {{end}} -->
+            <ul id="mycreat">
+                <h3 class="create"><i></i>我创建的诊所</h3>
+                <div id="Creat">
+
+                </div>
+            </ul>
+            <ul id="myjoin">
+                <h3 class="join"><i></i>我加入的诊所</h3>
+                <div id="Join"></div>
+            </ul>
+     </div>     
+    </div>
+  </div>
+</div>
+<!--<include file="Public:footer_new"/>-->
+ <!--<include file="Public:js_inc"/> -->
+ {{template "/account/Public/footer_new.html" .}}
+ {{template "/account/Public/js_inc.html" .}}
+ <script src="/static/public/yayigj_dialog_box.js"></script>
+ <script type="text/javascript" src="/static/account/js/myclinic.js"></script>
+<script type="text/javascript">
+   $(function(){  
+        // var p='',li='';
+        //   if($("#myjoin").find("li").length==0) {
+        //       p="尚未加入诊所";
+        //           li+='<li class="no_info">';
+        //           li+='<img src="/static/account/img/no_creat.png" alt="">';
+        //           li+='<p class="no_clinic">'+p+'</p></li>'  
+        //       $("#myjoin").append(li);
+        //   }
+        //   if($("#mycreat").find("li").length==0) {
+        //       p="尚未创建诊所";
+        //           li+='<li class="no_info">';
+        //           li+='<img src="/static/account/img/no_creat.png" alt="">';
+        //           li+='<p class="no_clinic">'+p+'</p></li>'  
+        //       $("#myjoin").append(li);
+        //   }
+   })
+</script>
+</body>
+</html>

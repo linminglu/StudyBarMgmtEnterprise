@@ -1,0 +1,16 @@
+.fee_detail{position: absolute;margin:auto;top:0;left:0;right:0;
+border-radius:2px;z-index: 101;box-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);background: #fff;display: none;}
+#clist{width: 365px;height: 350px;}
+#error_box{width: 760px;height: 420px;}
+.detail_tit{height: 50px;line-height: 50px;border-bottom: 1px solid #f0f0f0;}
+.detail_tit span{font-size: 14px;color: #696969;}
+.detail_tit .detail_cli{float: left;margin-left: 20px;font-size: 16px;color: #333;}
+.detail_tit .detail_close{float:right;margin-right: 20px;}
+.detail_tit .detail_close img{vertical-align: middle;cursor: pointer;}
+.detail_tit .detail_close .line{margin: 0 15px;color: #e0e0e0;}
+.detail_tit .detail_close .excel{cursor: pointer;}
+.detail_tit .detail_close .excel img{margin-right: 5px;}
+.table_con_detail .table_tit{padding-left: 0;height: 36px!important;line-height: 36px!important;}
+.table_con_detail {padding: 10px}
+.table_con_detail ul{ width: 100%}
+.table_con_detail li{ text-align:left; padding: 10px}

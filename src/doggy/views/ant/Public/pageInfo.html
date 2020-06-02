@@ -1,0 +1,72 @@
+<span class="w999 rowCount f_r">共 条&nbsp;每页显示</span>
+  <input type="hidden" name="rows_n" VALUE="10" class="rows_n" id="rows_n">
+  <input type="hidden" name="pageCurr" id="pageCurr" class="pageCurr" VALUE="1">
+<div class="f_r pageno"></div>
+<script>
+	var thisBox='';
+	$(".setpageRow li").click(function(){
+		$("div.content.active .rows_n").val($(this).attr("value"));
+		searchInfo(1,$(this).attr("value"));
+	})
+	//页码显示count条目总数，displayNum页面中显示多少个页码
+	function setPageList(count,displayNum){
+		var str='',_curr=1,_totalpage=0,_row=0;
+		_row=$("#rows_n").val();
+		if(count==undefined){count=0;}
+		_totalpage=Math.ceil(count/_row);
+		displayNum=displayNum!=undefined?displayNum:4
+		///////
+		//alert(_totalpage)
+		if(_totalpage<=1){
+			$(".table_footer").hide();
+		}else{
+			$(".table_footer").show();
+		}
+		$(".rowCount").html("共"+count+"条&nbsp;每页显示10条");
+		var c_p=parseInt($(".pageCurr").val());//取页码起始值和结束值
+		var prev= c_p-1>0?c_p-1:1;
+		var next= c_p+1<=_totalpage?c_p+1:_totalpage;
+		var pageNum=function(){
+			 var r='';
+			 var c_start = c_p - Math.ceil(displayNum/2) ;
+			 var c_end = c_p + Math.ceil(displayNum/2);
+			 if ( c_start < 1){
+			 	c_start=1;c_end = displayNum+c_start;
+			 }
+			 if ( c_end > _totalpage ){
+			 	c_start = _totalpage -displayNum;c_end=_totalpage;
+			 }
+			 if( _totalpage < displayNum+1 ){
+			 	c_start = 1;c_end=_totalpage;
+			 }
+			  //c_start=c_p-(displayNum/2)	<1 ? 1 : c_p-(displayNum/2)
+			 // c_end=c_p+(displayNum/2) >_totalpage ? _totalpage : c_p+(displayNum/2);
+
+			  for(var i=c_start;i<=c_end;i++){
+				// var temp=("0"+i).substr(-2)
+				var temp=i;
+				if(c_p==i){
+					r+='<span class="nums active" onclick="setpage('+i+','+_totalpage+')">'+temp+'</span>';
+				}else{
+					r+='<span class="nums" onclick="setpage('+i+','+_totalpage+')">'+temp+'</span>';
+				}
+			 }
+			 return r;
+		}
+		var str='';
+		str='<span onclick="setpage(1,'+_totalpage+')">&lt;&lt;</span><span onclick="setpage('+(prev)+','+_totalpage+')">&lt;</span>';
+		//str='<span>&lt;&lt;</span><span>&lt;</span>';
+		str+=pageNum();
+		str+='<span onclick="setpage('+(next)+','+_totalpage+')">&gt;</span><span onclick="setpage('+_totalpage+','+_totalpage+')">&gt;&gt;</span>';
+
+		$(".pageno").empty().html(str);
+
+	}
+	function setpage(num,_totalpage){
+			num=num==0?1:num;
+			num=num>_totalpage?_totalpage:num
+			$(".pageCurr").val(num);
+			searchInfo(num,$('.rows_n').val());
+	}
+
+</script>

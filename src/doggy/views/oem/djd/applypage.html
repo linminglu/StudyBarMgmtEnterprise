@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>申请页面</title>
+        <link href="/static/public/css/public/r_ico.css" rel="stylesheet">
+        <link href="/static/public/css/public/r_input.css" rel="stylesheet">
+        <link rel="stylesheet" href="/static/public/css/public/r_m_input.css" />
+        <link rel="stylesheet" href="/static/oem/djd/css/m_djd.css" />
+        <style>
+           #v_up_div{display: none;width: 500px;height: 250px;position: absolute;left: 50%;top: 250px;margin-left: -250px;background: #fff;z-index: 999;border: 1px solid #f0f0f0;} 
+           .img_title{width: 100%;height: 30px;line-height: 30px;text-align: center;margin-top: -28px;border-bottom: 1px solid #f0f0f0;}
+           .close_btn{text-align: right;padding-right: 10px;padding-top: 5px;cursor: pointer;}
+           .up_viedo{width: 100px;height: 30px;line-height: 30px;margin-top: 8px;}
+           #upload_from_if{text-align: center;;margin-top: 30px;}
+           #from_val{display: none;opacity: 1;position: relative;}
+           input.input_hide{float: none;margin-right: 10px;margin-left: 10px;width: 270px;display: none;}
+           #file{opacity: 0;width: 100px;height: 100px;position: absolute;top: 60px;left: 50%;margin-left: -50px;cursor: pointer;}
+           .input_show{width: 80px;height:28px;line-height:28px;border: 1px solid #fff;color: #00c5b5;text-align: center;display: inline-block;margin-left: -80px;vertical-align: -1px;}
+           #remark{display: none}
+           #addimg{width: 100px;height: 100px;overflow: hidden;display: table-cell;vertical-align:middle;text-align:center;margin:0 auto;padding-left: 200px;}
+           #addimg > img{width: 100%;vertical-align:middle;}
+           .bg{width: 100%;height: 100%;z-index: 99;background: #000;opacity: 0.5;display:none;position: fixed;top: 0; left:0;}
+           .window_xieyi {position: fixed;top: 50%!important;margin-top: -265px;}
+        </style>
+	</head>
+	<body>
+<div id="v_up_div">
+    <div class="close_btn" id="close_btn">&#10005</div>
+    <div class="img_title">图片上传</div>
+    <form target="v_upload_if" name="uploadForm" id="upload_from_if" action="/djd/uploadpic" method="post" enctype="multipart/form-data">
+        <input type='text' name='filetype' value='jpg' id="from_val"  />
+        <input class="input_hide" type="text"><input id="file" name="file" type="file"/><span id="addimg" class="input_show"><img id="addimg_img" src="/static/oem/djd/img/add.png"></span><br>
+        <hr style="margin-top: 7px;border:none;height:1px;background: #f0f0f0;">
+    <input style="display: none" type="submit" id="subfrom" name="submit" class="up_viedo fillBtn" value="确定上传"/>
+    <input type="button" id="incfrom" name="submit" class="up_viedo fillBtn" value="确定上传"/>
+    </form>
+    <iframe src="" name="v_upload_if" id="v_upload_if" width="200" height="200" style="display:none;"></iframe>
+</div>
+	<div class="content">
+        <div class="content_title">
+            <div class="title_info">
+                <div class="title_left head_left">基本信息</div>
+                <div class="title_right head_right">选择经营良好的诊所，可提高申请成功率及额度</div>
+                <div class="c"></div>
+            </div>
+        </div>
+        <div class="content_info">
+            <div id="remark" class="con_info">
+                <div class="title_left info_left">拒绝理由</div>
+                <div class="title_right info_right" id="remarkinfo" style="width: 430px;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;"></div>
+            </div>
+            <div class="con_info">
+                <div class="title_left sign info_left">管家号</div>
+                <div class="title_right info_right" id="dentalid"></div>
+                <div class="c"></div>
+            </div>
+            <div class="con_info">
+                <div class="title_left sign info_left">诊所实际名称</div>
+                <div class="title_right info_right"><input type="text" class="m_text" id="clinicname" placeholder="请输入诊所名称"></div>
+                <div class="c"></div>
+            </div>
+            <div class="con_info">
+                <div class="title_left sign info_left">法人或股东</div>
+                <div class="title_right info_right"><input type="text" class="m_text" id="applyerrole" readonly></div>
+                <div class="c"></div>
+            </div>
+            <div class="con_info">
+                <div class="title_left sign info_left">姓名</div>
+                <div class="title_right info_right"><input type="text" class="m_text" id="applyername" placeholder="请输入姓名"></div>
+                <div class="c"></div>
+            </div>
+            <div class="con_info">
+                <div class="title_left sign info_left">身份证</div>
+                <div class="title_right info_right"><input type="text" class="m_text" id="idnumber" placeholder="请输入身份证号码"></div>
+                <div class="c"></div>
+            </div>
+            <div class="con_info">
+                <div class="title_left sign info_left">手机号</div>
+                <div class="title_right info_right"><input type="text" class="m_text" id="applyermobile" placeholder="请输入手机号码"></div>
+                <div class="c"></div>
+            </div>
+            <div class="con_info" style="">
+                <div class="title_left info_left">身份证正面</div>
+                <div class="title_right info_right">
+                    <input type="text" class="m_text" placeholder="正面，不超过5M(JGP格式)" id="idcardfrontpic" readonly>
+                    <a href="javascript:;" class="uploadBtn" id="upload1">上传<!-- <input type="file"> --></a>
+                    <input type="button" class="fillBtn v_img" value="预览" />
+                </div>
+                <div class="c"></div>
+            </div>
+            <div class="con_info" style="display: ;">
+                <div class="title_left info_left">身份证反面</div>
+                <div class="title_right info_right">
+                    <input type="text" class="m_text" placeholder="反面，不超过5M(JGP格式)" id="idcardreversepic" readonly>
+                    <a href="javascript:;" class="uploadBtn" id="upload2">上传<!-- <input type="file"> --></a>
+                    <input type="button" class="fillBtn v_img" value="预览" />
+                </div>
+                <div class="c"></div>
+            </div>
+            <div class="con_info">
+                <div class="title_left sign info_left">营业执照</div>
+                <div class="title_right info_right"><input type="text" class="m_text" id="licenseid" placeholder="请输入营业执照"></div>
+                <div class="c"></div>
+            </div>
+            <div class="con_info" style="display: ;">
+                <div class="title_left info_left">营业执照正面</div>
+                <div class="title_right info_right">
+                    <input type="text" class="m_text" id="licensepic" placeholder="不超过5M(JGP格式)" readonly>
+                    <a href="javascript:;" class="uploadBtn" id="upload3">上传<!-- <input  type="file"> --></a>
+                    <input type="button" class="fillBtn v_img" value="预览" />
+                </div>
+                <div class="c"></div>
+            </div>
+            <div class="con_info">
+                <div class="title_left info_left">&nbsp;</div>
+                <div class="title_right info_right">
+                    <label><input type="checkbox" class="m_check n_checkbox" id="m_check">我已阅读并同意</label><span id="xieyi" class="m_xieyi">《牙医管家金融协议》</span>
+                </div>
+                <div class="c"></div>
+            </div>
+            <div class="con_info">
+                <div class="title_left info_left">&nbsp;</div>
+                <div class="title_right info_right">
+                    <input type="button" class="fillBtn m_text no_button" value="立即申请" style="height: 40px;line-height: 40px;margin-left: 0" id="in_button">
+                </div>
+                <div class="c"></div>
+            </div>
+        </div>
+    </div>
+    <div class="bg" id="bg"></div>
+    <div id="window_xieyi" class="window_xieyi">
+        <div class="window_title">
+            牙医管家金融用户协议
+            <div class="window_close" id="window_close">✕</div>
+        </div>
+        <div class="window_content">
+            <p>本用户协议（“本协议”）是您（“用户”）与牙医管家（在协议中，指深圳市菲森科技有限公司及其关联方）之间就牙医管家服务（如下文定义）相关事宜一致同意而订立。</p>
+            <p>请您审慎阅读并充分理解本协议，特别是其中与风险和免责、送达、争议解决相关的条款，以及以粗体字标识的部分。</p>
+            <p>您访问牙医管家网站、牙医管家PC客户端、牙医管家微信公众号或牙医管家APP、使用或继续使用牙医管家服务、点击“同意”本协议的按钮或其他任何方式同意和签署与牙医管家服务相关的用户协议（“《相关用户协议》”），即代表您理解并同意本协议，并同意受本协议约束。若您不同意本协议（包括牙医管家此后对其不时做出的修订），应不使用或立即停止使用牙医管家提供的服务。</p>
+            <p>定义</p>
+            <p>牙医管家：除另有明确约定外，指深圳市菲森科技有限公司及其关联方。</p>
+            <p>牙医管家网站：指由牙医管家运营的网站，包括但不限于：https://dental360.cn、、http://www.fussengroup.com、https://shop.dental360.cn。</p>
+            <p>牙医管家APP：指由牙医管家运营的移动互联网应用程序,包括但不限于，在IOS及安卓平台发布的“牙医管家”。</p>
+            <p>牙医管家服务：指通过牙医管家网站、牙医管家PC客户端或牙医管家APP，由牙医管家提供的任何产品、服务。</p>
+            <p>法律法规：指任何适用的法律、行政法规、司法解释、地方法规、地方规章、部门规章及其他规范性文件，包括但不限于中国大陆的法律法规及相关服务发生地的法律法规。</p>
+            <p>个人信息和账户</p>
+            <p>您向牙医管家或通过牙医管家向第三方提供的任何注册、申请资料等信息（“个人信息”），包括但不限于姓名、证件号码、银行账号、地址、联系方式等，应当是真实、有效、完整和准确的。您须对上述个人信息承担全部责任并及时维护上述信息。必要时，牙医管家将向您索取有关证件的原件、复印件、影印件等，以核实您提供信息的真实性。一旦发现您提供的个人信息存在虚假、无效、不完整和/或不准确等情形，牙医管家有权采取删除相关信息、要求您重新提供和/或暂停提供相关服务等措施。</p>
+            <p>同时，您须谨慎保管您的用户名、密码等个人信息并定期更换密码。通过您的用户名和密码编辑、发布的任何信息或做出的任何行为都将被视为您本人的行为。对因账号外借、除牙医管家原因造成的账号遗失（包括但不限于您的设备遭受他人攻击、遭受诈骗等）产生的任何损失，牙医管家不承担任何责任。您在此授权牙医管家为开展和提供牙医管家服务，或根据任何适用的法律法规或自律监管组织规则等留存、使用和/或向第三方提供您的个人信息。未经牙医管家同意，您不得转让您的牙医管家账户。</p>
+            <p>隐私保护</p>
+            <p>隐私权是您的重要权利。为了安全使用牙医管家服务并减少交易风险，确认您使用牙医管家或相关第三方服务的资格，您同意并授权牙医管家在不违反法律法规相关规定的前提下，牙医管家和相应的第三方服务机构要求提供可以查询、使用、存储您的个人信息及经营信息。</p>
+            <p>向牙医管家提供您的信息是基于您对牙医管家的信任，牙医管家将尽一切可能严格保护您的信息，您的信息只能用于帮助牙医管家为您提供更好的服务。</p>
+            <p>我们收集您的信息主要用于：（1）提供我们的服务并处理您的交易；（2）提供客户服务帮助。（3）经您确认需要通过牙医管家获得第三方的服务。除非基于法律法规或有权机关的要求，牙医管家都不会将您的信息透给第三方。</p>
+            <p>服务及费用</p>
+            <p>牙医管家通过牙医管家网站、牙医管家PC客户端或牙医管家APP及其他方式，向您提供多样化的服务，具体内容可以通过登录牙医管家网站、牙医管家或牙医管家APP查看。</p>
+            <p>牙医管家有权根据法律法规和业务规则，对网站、PC客户端或APP的特定内容的展示范围及服务的对象设置一些限制。</p>
+            <p>在法律法规允许的范围内，牙医管家有权随时设定、调整和免除牙医管家服务的费用，并以合理合法的方式展示和告知用户，充分保障用户的知情权和选择权。您应自行承担访问牙医管家网站、PC客户端、APP所需的软硬件和网络接入费用，以及依照法律法规应承担的其他费用。</p>
+            <p>合法依约使用</p>
+            <p>您在使用牙医管家服务时，应严格遵守所有适用的法律法规及本协议。您应自行承担违反上述法律法规（“违法行为”）和/或本协议（“违约行为”）所产生的责任和损失，并赔偿牙医管家、牙医管家的其他用户及相关第三方因您的违法行为、违约行为所产生的全部实际损失。您授权牙医管家在法律法规允许的范围内自您在牙医管家的任何账户中划扣相应款项以偿付牙医管家、牙医管家的其他用户及相关第三方的实际损失。牙医管家代为支付的，有权自您在牙医管家的任何账户中直接划扣。</p>
+            <p>鉴于互联网传播的特性，牙医管家通过其网站、PC客户端、APP等所提供的信息并非针对或意图发送给任何可能因提供、获取或使用这些信息而使牙医管家和/或用户违反当地法律法规的地区。您应自行甄别并在合法的情况下使用牙医管家服务。</p>
+            <p>建议您主动了解并遵守中华人民共和国法律法规及其他地区适用的法律法规对您、您所接受的服务的相关规定。</p>
+            <p>对于您的任何违法、违约行为，除其他救济方式外，牙医管家有权随时根据自己的判断，视情节采取警示、删除相关内容、限制功能、暂停服务、冻结账户、（临时或永久）关闭账户等处置措施，保存记录并向有关主管部门报告。</p>
+            <p>知识产权</p>
+            <p>牙医管家在其网站、PC客户端、APP等中使用的商标或标记均为牙医管家或其他特别注明的权利人所有。牙医管家在其网站、PC客户端、APP等中所包含、展示的任何文字、图像、视频、图表、软件及其他材料等均为牙医管家及其他特别注明的权利人所有，仅供您根据本协议个人使用，牙医管家及相应权利人并未通过本协议授予您对上述信息和内容的任何其他权利。除非经相应权利人事先书面同意，您不得以任何形式向任何第三方公开发表、传输、复制或以其他方式使用牙医管家提供的全部或部分信息，不得更改、虚化或删除任何署名、商标、版权标识和/或其他权利声明。</p>
+            <p>您在牙医管家网站、PC客户端、APP等中发布的任何信息和内容，不得侵犯第三方的知识产权和/或其他权利。若有任何第三方对您在牙医管家网站、PC客户端、APP发布的信息和内容提出权利主张或提起诉讼/仲裁，您应当自行自费解决此类纠纷，并赔偿牙医管家因您的侵权或涉嫌侵权行为产生的任何损失。</p>
+            <p>风险和免责</p>
+            <p>牙医管家将尽力促使牙医管家服务的正确、持续、及时和安全，但在法律法规允许的最大范围内，不就此负担任何明示或默示的保证责任。您同意承担使用牙医管家服务的所有风险及因该风险可能造成的任何损害，牙医管家对于您所使用的各项服务或无法使用各项服务所导致的任何直接、间接、衍生或特别的损害，不负任何赔偿责任。若牙医管家服务因服务器、通信网络和移动终端的软硬件故障、计算机病毒、恶意攻击及其他不可预测的因素而受到影响，造成您无法通过牙医管家网站、PC客户端、APP访问和使用任何第三方提供的服务，您可尝试使用该第三方提供的其他渠道或尽快联系牙医管家、该第三方寻求帮助。</p>
+            <p>牙医管家在牙医管家服务中提供的任何内容（包括但不限于新闻资讯、股评、投资分析报告、股市预测文章等）仅供参考，除明确声明外，不构成对任何人的投资、法律、会计或税务建议，不保证切合您的个别情况，请您独立谨慎地判断投资风险。牙医管家将尽力保证所提供内容的来源可靠，但无法核实并不能保证上述内容的真实性、准确性及完整性，您不应对上述内容作不适当的依赖。任何牙医管家转载的内容仅代表其原作者的观点和态度，牙医管家对此不作任何判断。</p>
+            <p>在适用法律允许的范围内，牙医管家有权随时自行决定暂停、终止、修改牙医管家服务，或对部分用户暂停、终止、修改牙医管家服务，且毋须另行通知。在适用法律允许的范围内，牙医管家有权随时自行决定更换提供服务的主体，且毋须另行通知；上述更换后的主体自动适用本协议，不需要您重新签署。</p>
+            <p>牙医管家可能会在牙医管家服务中集成由第三方提供的产品及服务、链接至第三方和/或展示第三方的标记或内容，牙医管家提供该等集成、链接、展示的目的仅在于向您提供方便，牙医管家对此不作任何保证，亦不代表牙医管家对该等第三方、其产品及服务的任何推荐、支持或授权，您应当自行甄别并自担风险。您在使用上述第三方的任何产品和服务时，应当了解并接受该等第三方的条款和规则。</p>
+            <p>协议的组成和修订</p>
+            <p>就每一特定的牙医管家服务，牙医管家可能制定专门的业务协议、业务规则、免责声明等（合称为“《业务协议》”），请您在接受相关服务前仔细阅读；这些《业务协议》是本协议不可分割的组成部分，对于该特定服务而言，上述《业务协议》优先于并取代本协议的相关规定。牙医管家可能在其网站、PC客户端、APP等的不同页面中，规定与本协议不一致的条款，该等条款在其适用范围内优先于并取代本协议的相关规定。</p>
+            <p>牙医管家有权根据其业务模式、互联网的发展状况、法律法规和行业监管规定变化等，不时对本协议进行修订，并通过其认为合理的方式予以公布，但毋须另行通知。用户应随时关注并阅读最新版的协议及网站公告。</p>
+            <p>通知和送达</p>
+            <p>除法律法规或监管规定另有强制性规定外，本协议履行过程中，递给您的书面通知将按照您向牙医管家提供的通讯地址（包括但不限于证件地址、以本人作为收货人的收货地址等）交邮后的第三个自然日即视为送达；书面通知的形式还包括（但不限于）在牙医管家网站公告、向您发送电子邮件、牙医管家或者牙医管家站内信、系统信息、手机短信和传真等电子方式，在采用电子方式进行书面通知的情况下发送当日即视为送达。采用一种以上方式发出通知的，以最先送达的时间为送达时间。为维护您的合法权益，请您始终保持上述通讯地址和联系方式准确、有效。</p>
+            <p>对于您与牙医管家的任何纠纷，您同意并授权司法机关在全部诉讼阶段和程序中按照上述方式向您送达任何法律文书。</p>
+            <p>不可抗力及第三方原因免责</p>
+            <p>因任何牙医管家不能预见、不能避免且不能克服的情形（“不可抗力事件”）或第三方原因造成牙医管家的无法提供或迟延提供服务的，在不可抗力事件或第三方原因影响的范围内，牙医管家不承担相关违约责任，包括：</p>
+            <p>（1）自然灾害、罢工、骚乱、战争、政府行为、司法行政命令等不可抗力事件；</p>
+            <p>（2）电力供应故障、通讯网络故障等公共服务因素；</p>
+            <p>（3）任何第三方原因。</p>
+            <p>管辖法律和争议解决</p>
+            <p>本协议的签订、效力、履行、终止及其解释适用中华人民共和国法律（为本条款的目的，不包括香港特别行政区、澳门特别行政区及台湾地区的法律）。牙医管家特别提示您，牙医管家服务中集成、链接、展示的第三方产品及服务，可能适用服务发生地、服务提供者所在地的法律法规。</p>
+            <p>因本协议引起的或与本协议有关的争议，您可与牙医管家协商解决。协商不成的，任何一方均有权向牙医管家所在地有管辖权的人民法院提起诉讼。</p>
+            <p>其他约定</p>
+            <p>本协议的标题仅为阅读方便，不视为本协议的组成部分。</p>
+            <p>若本协议的任一条款被视为无效或不可执行，不影响本协议其余条款的有效性及可执行性。牙医管家有权随时对其进行修订，以在法律允许的范围内最大限度的实现该条款预期的法律效果。</p>
+        </div>
+        <div class="window_button" id="window_button">阅读完毕并确认</div>
+    </div>
+                    
+	</body>
+    <script type="text/javascript" src="/static/public/js/jquery/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="/static/public/yayigj_mp_dialog_box.js"></script>
+    <script src="/static/public/yayigj_downlist.js"></script>
+    <script type="text/javascript" src="/static/public/yayigj_dialog_box.js"></script>
+	<script>
+        jQuery.createAniCss();
+        var dentalid=getUrlParam('dentalid');
+        var _H=$(window).height();
+        var _W=$(window).width();
+        var infoid='';
+        var clinicid='';
+        var cliniccreatetime='';
+        var clinicmobile='';
+        var list_1=null;
+        var _id='';
+        var remark='';
+        var t1 = window.setTimeout(prompt,500);
+        var data1=[
+                    {key: "法人",val: "0"},
+                    {key: "股东",val: "1"}
+                ];
+        $('#bg').css('height',_H);
+        if (_W>800) {
+            $('#window_xieyi').css('left',(_W-800)/2);
+        }else{
+            $('#window_xieyi').css('left',0);
+        }
+        if (_H>530) {
+            $('#window_xieyi').css('top',(_H-530)/2)
+        }else{
+            $('#window_xieyi').css('top',0)
+        }
+       
+       window.onresize=function(){
+            var _h=$(window).height();
+            var _w=$(window).width();
+            $('#bg').css('height',_h);
+            if (_w>800) {
+                $('#window_xieyi').css('left',(_w-800)/2);
+            }else{
+                $('#window_xieyi').css('left',0);
+            };
+            if (_h>530) {
+                $('#window_xieyi').css('top',(_h-530)/2)
+            }else{
+               $('#window_xieyi').css('top',0)
+            }
+        }
+       $(function(){
+            $('#incfrom').on('click',function(){
+                if ($('#addimg img').attr('src')=="/static/oem/djd/img/add.png") {
+                    jQuery.postFail('fadeInUp', '请选择图片');
+                }else{
+                    $('#subfrom').click()
+                    $(this).val('上传中...')
+                }
+            })
+            $('#dentalid').text(dentalid);
+            $('#applyerrole').yayigj_downlist({
+                _data:data1,
+              },function(api){
+                   list_1 = api;
+              });
+            $('#xieyi').on('click',function(){
+                $('#bg').show();
+                $('#window_xieyi').show();
+                $('body').css('overflow','hidden');
+            });
+            $('#window_close').on('click',function(){
+                $('#bg').hide();
+                $('#window_xieyi').hide();
+                $('body').css('overflow','');
+            });
+            $('#window_button').on('click',function(){
+                $('#window_close').click();
+                $('#m_check').prop("checked", true);
+                $('#in_button').removeClass('no_button');
+            });
+            $('#m_check').on('click',function(){
+                if ($('#m_check').is(':checked')){
+                    $('#in_button').removeClass('no_button');
+                }else{
+                    $('#in_button').addClass('no_button');
+                }
+            });
+            $(".v_img").on("click", function() {
+                $("#centerDiv").remove();
+                var src = $(this).prev().prev("input[type='text']").val();
+                var img = "<img src='" + src + "' />";
+                if (src == "") {
+                    jQuery.loading_close();
+                    return;
+                } else if (src.indexOf("http") == -1) {
+                    jQuery.postFail("fadeInUp", '图片地址错误！！');
+                    jQuery.loading_close();
+                    return;
+                }
+                jQuery.loading();
+                $(img).load(function() {
+                    $("body").append("<div id='centerDiv'>" + img + "<span id='close_ico' title='关闭' onclick='closeFuc()' /></span></div>");
+                    var l_h = $(window).height();
+                    if ($("#centerDiv img").height() > $(window).height()) {
+                         $("#centerDiv img").css({width:'auto',height:$(window).height()+"px"});
+                    };
+                    $("#centerDiv").css("line-height", l_h + "px");
+                    jQuery.loading_close();
+                })
+            });
+            $('#in_button').off('click').on('click',function(){
+                    if ($(this).hasClass('no_button')) {
+                        return
+                    }
+                    // var dentalid=$('#dentalid').text();
+                    var clinicname=$('#clinicname').val();
+                    var applyerrole=$('#applyerrole').val();
+                    var applyername=$('#applyername').val();
+                    var idnumber=$('#idnumber').val();
+                    var applyermobile=$('#applyermobile').val();
+                    var idcardfrontpic=$('#idcardfrontpic').val();
+                    var idcardreversepic=$('#idcardreversepic').val();
+                    var licenseid=$('#licenseid').val();
+                    var licensepic=$('#licensepic').val();
+                    var str = /^[A-Za-z0-9]{18}/;
+                    var _str = /^[A-Za-z0-9]{15}/;
+                    var expr = /^1[3,4,5,7,8]\d{9}$/;
+                    var zhizhao =isValidBusCode(licenseid);
+                    var applyermobile_=IdCardRegCheck(idnumber);
+                    var aaa=isCardNo(idnumber);
+                    if (!expr.test(applyermobile) || applyermobile.length == ""){
+                      jQuery.postFail('fadeInUp', '请输入正确的手机号码');
+                      return false;
+                    };
+                    if (!aaa) {
+                       jQuery.postFail('fadeInUp', '身份证错误，只能是数字字母组成的18位长度的字符串');
+                       return false; 
+                    }
+                    // if(str.test(idnumber)){
+                    //   }else if(idnumber == ""){
+                    //     jQuery.postFail('fadeInUp', '身份证错误，只能是数字字母组成的18位长度的字符串');
+                    //     return false;
+                    //   }else{
+
+                    //     jQuery.postFail('fadeInUp', '身份证错误，只能是数字字母组成的18位长度的字符串');
+                    //     return false;
+                    //   }
+                    if (applyerrole=='') {
+                        jQuery.postFail('fadeInUp', '法人或股东不能为空');
+                        return false
+                    };
+                    if (clinicname=='') {
+                        jQuery.postFail('fadeInUp', '诊所名不能为空');
+                        return false
+                    };
+                    if (applyername=='') {
+                        jQuery.postFail('fadeInUp', '申请人姓名不能为空');
+                        return false
+                    };
+                    if (idnumber=='') {
+                        jQuery.postFail('fadeInUp', '身份证号不能为空');
+                        return false
+                    };
+                    if (idnumber.length=='16'||idnumber.length=='18') {
+
+                    }else{
+                        jQuery.postFail('fadeInUp', '身份证号长度不对');
+                        return false
+                    }
+                    if (applyermobile=='') {
+                        jQuery.postFail('fadeInUp', '手机号不能为空');
+                        return false
+                     };
+                    if (licenseid=='') {
+                        jQuery.postFail('fadeInUp', '营业执照号不能为空');
+                        return false
+                    };
+                    if (!_str.test(licenseid) || licenseid.length == ""){
+                      jQuery.postFail('fadeInUp', '营业执照号不正确');
+                      return false;
+                    };
+                    if (licenseid.length=='15'||licenseid.length=='18') {
+
+                    }else{
+                        jQuery.postFail('fadeInUp', '营业执照长度不对');
+                        return false
+                    }
+                    var obj={
+                            "infoid":infoid,   //申请记录ID
+                            "dentalid":dentalid, //管家号
+                            "clinicid":clinicid, //诊所ID
+                            "clinicname":clinicname,   //诊所名
+                            "applyerrole":applyerrole,  //角色(股东、法人)
+                            "applyername":applyername,  //申请人姓名
+                            "clinicmobile":clinicmobile,    //诊所手机号
+                            "cliniccreatetime":cliniccreatetime,      //诊所注册时间
+                            "applyermobile":applyermobile,   //申请人手机号
+                            "idnumber":idnumber, //身份证号
+                            "idcardfrontpic":idcardfrontpic,    //身份证正面
+                            "idcardreversepic":idcardreversepic, //身份证反面
+                            "licenseid":licenseid,    //营业执照号
+                            "licensepic":licensepic,   //营业执照证件照
+                    }
+                    $.post('/djd/commitapply',obj,function(data){
+                        if (data.code==1) {
+                            window.location.href="/djd/redirecturl"
+                        }else{
+                            jQuery.postFail('fadeInUp', data.info);
+                        }
+                    })
+            })
+            getjson()
+            bindUpload();
+       });
+       function getjson(){
+            $.ajax({
+              type:"post",
+              url:"/djd/getdata",
+              dataType:"json",
+              data:'',
+              beforeSend:function(){  
+                jQuery.loading('',-1);
+              },
+              complete: function(json){jQuery.loading_close(-1);},
+              success: function(json){
+                    if(json.code==1){
+                       if (json.list) {
+                        var list=json.list[0];
+                        infoid=list.infoid;
+                        clinicid=list.clinicid;
+                        clinicmobile=list.clinicmobile;
+                        cliniccreatetime=list.cliniccreatetime;
+                        remark=list.remark;
+                        if (parseInt(remark.length)>0) {
+                            $('#remark').show();
+                        }
+                        $('#clinicname').val(list.clinicname);
+                        $('#applyerrole').val(list.applyerrole);
+                        $('#applyername').val(list.applyername);
+                        $('#idnumber').val(list.idnumber);
+                        $('#applyermobile').val(list.applyermobile);
+                        $('#idcardfrontpic').val(list.idcardfrontpic);
+                        $('#idcardreversepic').val(list.idcardreversepic);
+                        $('#licenseid').val(list.licenseid);
+                        $('#licensepic').val(list.licensepic);
+                        $('#remarkinfo').text(remark);
+                        $('#remarkinfo').attr('title',remark);
+                       }
+                    }
+              }
+            })
+       }
+       function IdCardRegCheck(obj){
+         var str = obj.value;
+         var reg = /^([0-9]{15}|[0-9]{18})$/;
+         var flag = reg.test(str);
+         return flag;
+        }
+        function isCardNo(card){  
+            var _flag=true;
+           // 身份证号码为15位或者18位，15位时全为数字，18位前17位为数字，最后一位是校验位，可能为数字或字符X  
+           var reg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;  
+           if(reg.test(card) === false)  {  
+               _flag = false;  
+           }  
+           return _flag
+        }
+       function isValidBusCode(busCode){
+        //return true;
+        var ret=false;
+        if(busCode.length==15){
+            var sum=0;
+            var s=[];
+            var p=[];
+            var a=[];
+            var m=10;
+            p[0]=m;
+            for(var i=0;i<busCode.length;i++){
+               a[i]=parseInt(busCode.substring(i,i+1),m);
+               s[i]=(p[i]%(m+1))+a[i];
+               if(0==s[i]%m){
+                 p[i+1]=10*2;
+               }else{
+                 p[i+1]=(s[i]%m)*2;
+                }    
+            }                                       
+            if(1==(s[14]%m)){
+               //营业执照编号正确!
+                ret=true;
+                //alert("营业执照编号正确!");
+            }else{
+               //营业执照编号错误!
+                ret=false;
+                //alert("营业执照编号错误!");
+             }
+        }
+        return ret;
+    }
+       //图片上传
+        function bindUpload(){
+            //身份证正面
+            $("#upload1").on("click",function(){
+                uploadImgurl(this,"idcardfrontpic");
+            });
+            //身份证反面
+            $("#upload2").on("click",function(){
+                uploadImgurl(this,"idcardreversepic");
+            });
+            //营业执照
+            $("#upload3").on("click",function(){
+                uploadImgurl(this,"licensepic");
+            });
+        }
+        function uploadImgurl(obj,id){
+            $('#v_up_div').show();
+            $('#incfrom').val('确定上传');
+            $('#addimg img').attr('src','/static/oem/djd/img/add.png')
+            $('#bg').show();
+             _id=id;
+        }
+  
+        function closeFuc(){
+            $("#centerDiv").remove();
+            jQuery.loading_close();
+        }
+        function getUrlParam(name) {
+          var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+          var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+          if (r != null) return unescape(r[2]);
+            return null; //返回参数值
+        }
+        function prompt(){
+          var htmls = $(window.frames["v_upload_if"].document).find("body").text();
+          if (htmls.length > 1) {
+              window.clearTimeout(t1);//去掉定时器
+              var htmlobj=JSON.parse(htmls);
+              if (htmlobj.code==1) {
+                var filesize = htmlobj.list.filesize;
+                var url = htmlobj.list.url;
+                $('#incfrom').val('确定上传')
+                jQuery.postOk('','上传成功');
+                $('#v_up_div').hide();
+                $('#bg').hide();
+                $('#'+_id).val(url);
+                $(window.frames["v_upload_if"].document).find("body").text('');
+                window.setTimeout(prompt,500);
+              }else{
+                jQuery.postFail('fadeInUp',htmlobj.info);
+                $('#v_up_div').hide();
+                $('#bg').hide();
+                $(window.frames["v_upload_if"].document).find("body").text('');
+                window.setTimeout(prompt,500);
+              }
+          }else{
+            window.setTimeout(prompt,500);
+          }
+          
+        }
+        $('#close_btn').on('click',function(){
+            $('#bg').hide();
+            $('#v_up_div').hide();
+        })
+        $('#file').on('change',function(){
+            if (this.files[0].size>5*1024*1024) {
+                jQuery.postFail('fadeInUp', '请选择小于5M的图片');
+                return false
+            }
+            if(this.files[0]){
+                var objUrl = getObjectURL(this.files[0]);
+                $('#addimg img').attr('src',objUrl);
+                var _h=$('img#addimg_img').height()
+            }else{
+                $('#addimg img').attr('src','/static/oem/djd/img/add.png')
+            }
+        })
+        function getObjectURL(file) {
+            var url = null ;
+            if (window.createObjectURL!=undefined) { // basic
+                url = window.createObjectURL(file) ;
+            } else if (window.URL!=undefined) { // mozilla(firefox)
+                url = window.URL.createObjectURL(file) ;
+            } else if (window.webkitURL!=undefined) { // webkit or chrome
+                url = window.webkitURL.createObjectURL(file) ;
+            }
+            return url ;
+        }
+	</script>
+
+</html>

@@ -1,0 +1,17 @@
+/*=======================
+	整个分站公用样式
+	zlb 2016-11-20
+/*=======================*/
+
+#loading_info{  /*载入动画*/
+	width:66px; 
+	height:66px; 
+	background-image:url(../img/loading.gif); 
+	z-index:100; 
+	position:absolute;
+	left:50%;
+	margin-left: -33px;
+	top:50%;
+	margin-top: -33px;
+	position: fixed !important; 
+	display: none;}

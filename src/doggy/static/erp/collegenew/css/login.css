@@ -1,0 +1,59 @@
+/*登录页面*/
+.login_body{background: #252a2f;}
+.login_main{width: 415px;height: 320px;position: absolute;left: 
+50%;top: 50%;margin-top: -160px;margin-left: -207.5px;}
+.login_head{margin-top: 30px;margin-bottom: 20px;display: flex;align-items: center;justify-content: center;}
+.back_man{font-size: 20px;color: #fcfcfc;position: relative;bottom: 8px;margin-left: 5px;}
+.pw_icon input[type=number]{ height: 28px; line-height: 28px; border: 1px solid #00c5b5; float: left; border-radius: 2px; padding: 0 5px; color: #696969; font-size: 14px;}
+.pw_icon input[type=number]:focus{border:solid 1px #00c5b5;}
+
+.pw_icon input[type=password]{ height: 28px; line-height: 28px; border: 1px solid #00c5b5; float: left; border-radius: 2px; padding: 0 5px; color: #696969; font-size: 14px;}
+.pw_icon input[type=password]:focus{border:solid 1px #00c5b5;}
+.input_area{overflow: hidden;}
+.input_area input{width: 325px;height: 25px!important;margin: 20px 0 0 22.5px;padding:5px 5px 5px 40px!important;border-radius: 2px;}
+#msgcode_input{width: 225px;}
+
+.user_icon{position: relative;}
+.user_icon img{position: absolute;left: 32px;top: 27px;width: 20px;}
+.pw_icon{position: relative;}
+.pw_icon img{position: absolute;left: 32px;top: 85px;width: 20px;}
+.pw_operate ul{width: 100%;}
+.pw_operate ul li{font-size: 14px;color: #fff;margin-top: 10px;}
+#rem_pw{-webkit-appearance: checkbox;}
+.rem_pw{float: left;margin-left: 22.5px;}
+.rem_pw input{position: relative;top: 2px;}
+.for_pw{float: right;margin-right: 22.5px;cursor: pointer;}
+#login_button{width: 370px;height: 35px;background: #146082;border-radius: 2px;margin: 20px 0 0 22.5px;color: #fff;cursor: pointer;
+font-size: 14px;}
+/* 新增 by WY */
+.code_btn{cursor:pointer;display: inline-block;line-height: 30px;margin-left: 25px;color: white;font-size: 14px;}
+.code_btn_sel{color: #146082;border-bottom:solid 2px #146082;font-size: 14px;}
+.account_btn{cursor:pointer;display: inline-block;line-height: 30px; margin-left: 20px;color: white;font-size: 14px;background-color: rgba(0, 0, 0, 0)}
+.account_btn_sel{color: #146082;border-bottom:solid 2px #146082;font-size: 14px;}
+.sendcode_btn{text-align: center;width: 90px; height: 35px; line-height: 35px; float: left; border-radius: 1px; color:white;background-color: #146082; font-size: 14px;margin: 21px 0px 0 10px;}
+
+
+/*后台管理仪表板*/
+.board_items{width: 820px;height: 580px;position: absolute;left: 50%;top: 50%;margin-left: -410px;margin-top: -290px;}
+.board_items ul li{float: left;background: url(../img/login/enterbg.png) no-repeat;width: 335px;height: 260px;background-size: 394px 200px;background-position: -27px 0;text-align: center;cursor: pointer;}
+.board_items ul li a:hover{text-decoration: none;}
+.board_items ul li img{width: 250px;height: 170px;margin-top: 10px;margin-left: 5px;}
+.board_items ul li p{font-size: 24px;color: #333;font-weight: 500;margin-top:30px; }
+.low_one{margin-bottom: 60px;}
+.row_one{margin-right: 150px;}
+
+/*=============================
+2016-12-21罗杨
+==============================*/
+/*牙医管家后台管理---修改密码*/
+.swpass_content{background-color: #fff;}
+.swpass_title{padding: 20px 0 10px 20px;border-bottom:1px solid #e0e0e0; }
+#pwform{margin:40px 0 0 20px;font-size: 14px;overflow:hidden;}
+#pwform li{list-style:none;margin-bottom:20px;}
+#pwform label{width:100px;display:inline-block;text-align:right;margin-right: 70px;cursor:default;}
+#pwform input[type='password']{width:260px;height:30px;line-height: 30px; border:1px solid #e0e0e0;padding-left: 5px;margin-right: 10px;}
+.errTip{visibility: hidden;margin-right:20px;color: #f86d5a;display: inline-block; width:150px;text-align:left;}
+#pwform input[type='button']{width:120px;text-align:center;height: 30px;line-height:30px;margin-top: 40px;}
+#pwform input[name='cancel']{margin-left:170px;}
+#pwform input[name='confirm']{margin-left:70px;}
+#pwform input[type='password'].erractive{border:1px solid #f86d5a;}

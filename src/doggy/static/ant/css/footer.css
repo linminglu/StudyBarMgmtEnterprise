@@ -1,0 +1,22 @@
+.footerWrap{ width:100%; height:470; overflow:hidden; background:#3e3e3e;}
+.footer{ width:1200px; height:370px; overflow:hidden; padding-top:100px; margin:0px auto;}
+.footer dl{ width:300px; height:auto; overflow:hidden; float:left;}
+.footer dl dt{ font-size:20px; color:#fff; font-weight:500; margin-bottom:20px;}
+.footer dl dd{ font-size:14px; color:#b0b0b0; line-height:40px;}
+.footer dl dd a{ color:#b0b0b0; text-decoration:none;}
+.footer dl dd a:hover{ color:#fff;}
+.copyrightWrap{ width:100%; height:52px; background:#000;}
+.copyright{ width:1200px; height:52px; margin:0px auto; color:#a6a6a6; line-height:52px; font-size:14px; position:relative;}
+.copyright > a{ color:#a6a6a6; text-decoration:none;}
+.copyright i.i1{ width:19px; height:22px; background:url(../img/share_bg.png) no-repeat 0px 0px; float:right; cursor:pointer; margin-top:15px;}
+.copyright i.i1:hover{ background:url(../img/share_bg.png) no-repeat -19px 0px;}
+.copyright i.i2{ width:27px; height:22px; background:url(../img/share_bg.png) no-repeat -40px 0px; float:right; margin-right:34px; margin-top:15px;}
+.copyright i.i2:hover{ background:url(../img/share_bg.png) no-repeat -67px 0px;}
+.copyright i.i2 a{ width:27px; height:22px; display:block;}
+.copyright i.i3{ width:28px; height:23px; background:url(../img/share_bg.png) no-repeat 0px -25px; float:right; margin-right:34px; margin-top:15px;}
+.copyright i.i3:hover{ background:url(../img/share_bg.png) no-repeat -28px -25px;}
+.qrcodeAct{ width:120px; height:177px; background:url(../img/footer_qrcode_act.png) no-repeat; position:absolute; top:-150px; right:12px; display:none;}
+.qqAct{ width:120px; height:177px; background:url(../img/footer_qq_act.png) no-repeat; position:absolute; top:-150px; right:-52px; display:none;}
+.qqAct a{ width:120px; height:150px; display:block;}
+.copyright i.i1:hover > div.qqAct{ display:block;}
+.copyright i.i3:hover > div.qrcodeAct{ display:block;}

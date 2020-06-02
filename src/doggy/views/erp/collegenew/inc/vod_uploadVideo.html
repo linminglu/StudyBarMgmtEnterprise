@@ -1,0 +1,38 @@
+<template id="uploadvodvideo_id">
+    <div class="yayigj_pop_window"
+        style="min-width: 360px;text-align:center;position:fixed;left: 50%;top: 20%;background-color: white;    box-shadow: 0px 0px 20px #333;">
+        <div class="title unSelect" id="yjgjupvideo_wndTitle"><span>视频上传</span><span class="closebtn"></span><span
+                class="closebtn" @click="cancelAction">✕</span></div>
+        <video style="padding-top: 15px;" id="videofile" height="120" controls :src="playurl">
+        </video>
+        <div class="upload">
+            <!-- <div> -->
+            <input style="padding: 5px;padding-top: 10px;padding-left: 10px;padding-right: 10px;" type="file" id="fileUpload" accept="video/*" @change="fileChange($event)">
+            <!-- </div> -->
+         
+        </div>
+        <div class="fz-15" style="margin-left: 35px;text-align: left;padding-bottom: 5px;padding-left: 10px;padding-right: 10px;"> 上传状态: <span>
+            <{statusText}>
+        </span></div>
+        <div class="fz-15" style="text-align: left;margin-left: 35px;">
+            <span class="progress" style="text-align: left !important;padding-bottom: 5px;padding-left: 10px;padding-right: 10px;">上传进度: <i id="auth-progress">
+                    <{authProgress}>
+                </i> %</span>
+        </div>
+        <div class="upload-type" style="margin-top: 15px;margin-bottom: 15px;">
+            <button @click="authUpload" :disabled="uploadDisabled">开始上传</button>
+            <button @click="refreshVideo" :disabled="!isfinished">刷新</button>
+            <!-- <button @click="pauseUpload" :disabled="pauseDisabled">暂停</button>
+            <button :disabled="resumeDisabled" @click="resumeUpload">恢复上传</button> -->
+        </div>
+        <div class="submit_from" style="margin-bottom: 15px;">
+            <input type="submit" style="padding-left: 20px;padding-right: 20px;" class="cancelBtn" id="cancelBtn_set"
+                name="" value="取消" @click="cancelAction">
+            <input type="submit" style="padding-left: 20px;padding-right: 20px;" class="fillBtn" id="fillBtn_set" name=""
+                value="确定" @click="confirmAction" :disabled="!isfinished">
+        </div>
+    </div>
+   
+    </div>
+</template>
+

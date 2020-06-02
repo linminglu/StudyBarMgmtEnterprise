@@ -1,0 +1,56 @@
+<script type="text/javascript">
+    var vueModal_dialog_com = {
+        template: `<div class="ygdialog" v-show="isshow">
+                                <transition name="bounce">                                                                                                                                              
+                                    <div class="modalbody"> 
+                                        <div class="modal_card">                   
+                                            <div class="modal_card_body">
+                                                <slot name="modal_body"><p v-html="title"></p></slot>
+                                            </div>
+                                            <div class="modal_card_foot">
+                                                <slot name="footer">                            
+                                                    <a class="abutton" @click="close(1)" >取消</a>
+                                                    <a class="abutton del" @click="submit">删除</a>
+                                                </slot>
+                                            </div>
+                                        </div>                            
+                                    </div>
+                                </transition>
+                            </div>
+                            `,
+        delimiters: ['<{', '}>'],
+        props: {},
+        computed: {},
+        data: function() {
+            return {
+                title: '是否确认删除?',
+                isshow: false,
+                msg: 'hello world!',
+                resolve: null, //确定没有关闭
+                reject: null, //取消状态
+                promise: null, //对象
+            }
+        },
+        methods: {
+            submit:function() {
+                this.resolve('submit');
+            },
+            close:function(type) {
+                this.isshow = false;
+                this.reject(type);
+            },
+            confirm:function() {
+                this.show = true;
+                this.promise = new Promise((resolve, reject) => {
+                    this.resolve = resolve;
+                    this.reject = reject;
+                });
+                return this.promise;
+            }
+        },
+        watch: {},
+        mounted:function() {},
+        beforeDestroy:function() {},
+        created:function() {}
+    }
+</script>

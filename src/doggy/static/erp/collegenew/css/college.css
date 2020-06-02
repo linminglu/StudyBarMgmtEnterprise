@@ -1,0 +1,176 @@
+.loginUser:hover>.userWindow{visibility:visible}
+.inx_left_nav dl dt{width:100%; background-color:#192129; height:40px; line-height:40px; color:#6e8399; box-sizing:border-box; padding-left:30px; font-weight:bold;font-size: 15px}
+.inx_left_nav dl dd{background-color:#2f353b; margin:0px;  box-sizing:border-box; height:40px;font-size: 14px}
+.inx_left_nav a{color:#fff; display:inline-block;width:100%;height:100%; line-height:40px; box-sizing:border-box;padding-left:45px;}
+.inx_left_nav div{cursor:pointer;color:#fff; display:inline-block;width:100%;height:100%; line-height:40px; box-sizing:border-box;padding-left:45px;}
+/* .inx_left_nav a:hover{background-color: #146487;} */
+.inx_left_nav .router-link-active{background-color:#146487}
+.login_area{display: flex;align-items: center}
+.loginout_btn {cursor:pointer;width: 25px;height: 25px;background: url(/static/erp/collegenew/img/icon_college_loginout.png);background-repeat:no-repeat;background-position: center;background-size:60% 60%;-moz-background-size:100% 100%;}
+/*所有主播*/
+.classname{height: 80px;padding-left: 100px;box-sizing: border-box;background: no-repeat left center;padding-top: 22px;padding-bottom: 10px;}
+dl.classname  dt{line-height: 20px;font-size: 18px;}
+/*  #466dc4 */
+.inc_operation>span{display: inline-block;color:#146487;cursor: pointer;}
+.inc_operation>span.disabled {color: #ccc;cursor: default;}
+.inc_operation>i {color: #ccc;font-style: initial;padding: 0px 5px;margin: 0px;}
+/* .classname{background-image: url(/static/erp/collegenew/img/ceshi.png);} */
+
+.allanchors_img{width: 50px;height: 50px;border-radius: 50%;background: no-repeat center / contain;margin:10px;}
+.allanchors_img {background-image: url(/static/erp/collegenew/img/ceshi2.png)}
+
+.allanchors_seeinfo_table table tr:nth-child(even) {background: #fff;}
+.allanchors_seeinfo_table table tr:hover {background-color: #fff;}
+.allanchors_seeinfo_table table tr td{padding: 10px;}
+.allanchors_seeinfo_table table tr td:nth-child(1){width: 150px;text-align: right;}
+.allanchors_seeinfo_table table tr td:last-child{text-align: left;}
+.zupfile{margin-left: 80px;}
+.upfile{top: 11px;left: 80px;width: 80px;height: 30px;opacity: 0;cursor: pointer;}
+
+.upfileimg{top: 61px;left: 320px;width: 80px;height: 30px;opacity: 0;cursor: pointer;}
+
+.choosevideo{top: 20px;left: 320px;}
+.uploadvideo{top: 55px;left: 320px;}
+.delevideo{top: 90px;left: 320px;}
+.upsigninfo{position: relative;}
+.upsigninfo::before{content: '最大可上传3G以内的视频文件，仅支持mp4视频格式上传';color:#888888;position:absolute;width:420px;height: 30px;left: 0;bottom: -26px;}
+.upclassimg{position: relative;background: #f0f0f0}
+.upclassimg::before{content: '支持JPG,PNG格式 , 图片Size小于5M,宽高比16:9';position:absolute;color:#888888;width:420px;height: 30px;left: 0;bottom: -36px;}
+.upheadiconimg{position: relative;background: #f0f0f0}
+
+.upheadfileimg{top: 61px;left: 150px;width: 100px;height: 30px;opacity: 0;cursor: pointer;}
+.upheadiconimg::before{content: '支持JPG,PNG格式 , 图片Size小于5M,宽高比1:1';position:absolute;color:#888888;width:420px;height: 30px;left: 0;bottom: -36px;}
+.upallimg{position: relative;}
+/* .upallimg::before{content: '图片类型(JPG or PNG),图片Size小于500KB';clear:both;color:blue;position:absolute;width:420px;height: 30px;left: 0;bottom: -36px;} */
+.upallimg>img{width: 240px;margin-right: 10px;}
+.upallimg>img{border: 1px solid #fff;}
+.upallimg>div>div.active{border: 3px solid  #146487;}
+.upmoveimg span{display: inline-block;width: 60px;height: 30px;text-align: center;border-radius: 2px;margin-right: 5px;float: left;}
+.upmoveimg{height: 40px;margin-top: 5px;}
+.pptDiv{border:3px solid #f0f0f0;height:80px;background-color: #f0f0f0}
+.inc_save{width: 100%;padding:30px;box-sizing: border-box;}
+.inc_save>span{display: inline-block;width: 80px;margin-left: 33px;}
+
+.seedetailsinfo{width: 100%;}
+/* width: 85%; */
+.vuepage{float: right;height: 50px;margin-right: 10px;margin-top: 10px;padding-bottom: 10px;padding-left: 100px;display: flex;align-items: center;justify-content: flex-end;}
+.vuepage::before{clear:both;}
+.vuepage>div{float: left;}
+.vuepage>div::nth-child(2){width: auto;}
+.page-bar{display: flex;width: auto;margin: 0!important;}
+
+
+/*添加主播弹窗*/
+.popanchors_search{width: 100%;box-sizing: border-box;text-align: center;padding-top: 50px;}
+.popcancel{width: 102px;height: 26px;bottom: 12px;right: 120px;display: none;z-index: 555;}
+.resurtsearch{display: none;width: 100%;text-align: center;}
+.resurtsearch p{font-size: 14px;text-align: center;line-height: 50px;}
+.resurtsearchinfo{width: 280px;height: 80px;margin:0 auto;}
+.resurtsearchinfo li{float: left;height: 80px;text-align: left;padding-top: 10px;box-sizing: border-box;padding-left: 20px;}
+.resurtsearchinfo li:nth-child(1){width: 80px;background: url(/static/erp/collegenew/img/ceshi2.png) no-repeat center center;border-radius: 50%;background-size: 80px;}
+.resurtsearchinfo li dl dt{line-height: 30px;}
+
+/*所有主播 单系列课程*/
+.sifnplayactive{display: inline-block;width: 100px;height: 30px;line-height:30px;border-radius: 2px;text-align: center;}
+.starplay{color: #333;background-color: #ccc;cursor: pointer;}
+.starplay::before{content: '即将开始';}
+.staring{color: #333;background-color: green;cursor: pointer;}
+.staring::before{content: '直播中';}
+.endplay{color: #333;background-color: #ccc;}
+.endplay::before{content: '直播结束';}
+.nodplay{color: #fff;background-color:#ff92e9;}
+.nodplay::before{content: '已禁播';}
+
+.signclass_code{width: 120px;height: 120px;margin: 0 auto}
+.signclass_code img{width: 120px;}
+.signclass_url{width: 100%;text-align: center;font-size: 14px;color: #696969;}
+.signclass_url span{display: inline-block;margin-right: 20px;}
+
+.chooseclass{width: 130px;height: 130px;cursor:pointer;border: 1px solid #e0e0e0;border-radius: 2px;margin-top: 15px;}
+.chooseclass dl{padding-top:60px;font-size:14px;margin-top: 20px;text-align: center;background: url(/static/erp/collegenew/img/icon_video_ppt.png) no-repeat center top;}
+.chooseclass dl dt{line-height: 35px;}
+
+.chooseclassvidow.chooseclass dl{background-image: url(/static/erp/collegenew/img/icon_video_record.png);}
+
+.chooseonlinevidow.chooseclass dl{background: url(/static/erp/collegenew/img/icon_video_online.png) no-repeat center top;background-size:45%;}
+
+.chooseproportion{width: 100%;text-align: center;margin-top: 50px;}
+
+.addclasscheck span{display: inline-block;padding-left: 15px;padding-right: 15px;height: 25px;cursor:pointer;line-height: 25px;margin-right: 10px;border-radius: 15px;text-align: center;border: 1px solid #55c6bf;color: #55c6bf;background-color: #fff;}
+.addclasscheck span:hover{background-color: #55c6bf !important;border: solid 1px #55c6bf;color: #fff;}
+.addclasscheck span.active{background-color: #47a6a0;color: #fff;border: solid 1px #47a6a0;}
+.addclasscheck span.active:hover{background-color: #55c6bf !important;border: solid 1px #55c6bf;color: #fff;}
+.seedetailsinfo{width: 900px;}
+.seedetailsinfo table tr td:nth-child(1){text-align: left;padding-left: 0;}
+
+/*分佣设置*/
+.setproportion{width: 100%;text-align: center;margin-top: 30px;}
+.classetsign{width: 100%;text-align: center;color: red;font-size: 14px;margin-top: 10px;}
+
+
+/*banner*/
+.upshowimg img{background-image: url(/static/erp/collegenew/img/ceshi.png);}
+table.bannerpoptable tr td:nth-child(1){width: 130px;text-align: right;}
+table.bannerpoptable tr td:last-child{text-align: left;}
+.bannerupimg{width: 100px;height: 50px;background: red;top: 0;left: 100px;opacity: 0;}
+table.bannerpoptable tr:nth-child(even) {background: #fff;}
+table.bannerpoptable tr:hover {background-color: #fff;}
+
+/*系列课*/
+.addseriescourse_table{height: 340px;width: 100%;overflow-y: auto;}
+
+/*上传图片*/
+i,em {font-style: normal}
+#pic_upload_div .title {height: 40px;line-height: 40px;position: relative;padding-left: 10px;box-sizing: border-box;border-bottom: solid 1px #eee;}
+#pic_upload_div .title .uploadBtnE {position: absolute;right: 50px;top: 5px;}
+#pic_upload_div .closeBtn {width: 40px;height: 40px;line-height: 40px;text-align: center;position: absolute;right: 0px;top: 0px;cursor: pointer;display: inline-block;font-size: 20px}
+#pic_upload_div .closeBtn:hover {background-color: #f00;color: #fff}
+#pic_upload_div .closeBtn:acrive {background-color: #900;color: #fff}
+#pic_upload_div {display:none;background: #fff;box-shadow: 0px 0px 20px #000;width: 1000px;height: 600px;box-sizing: border-box;position: fixed;z-index: 5;left: 50%;margin-left: -500px;top: 50%;margin-top: -300px;}
+#pic_upload_div .title span {display: inline-block;font-size: 13px}
+#pic_upload_div .paramarea {margin-left: 20px;}
+#pic_upload_div #picupinfo {width: 323px;}
+#pic_upload_div .pic_upload_area {height: 560px;box-sizing: border-box;padding: 10px;overflow: auto;position: relative;}
+#pic_upload_div .footerarea {background-color: rgba(0, 0, 0, 0.7);height: 40px;line-height: 40px;width: 100%;bottom: 0;left: 0;position: absolute;text-align: right;padding-right: 10px;box-sizing: border-box}
+#pic_upload_div .pic_upload_area {box-sizing: border-box;padding-top: 10px;padding-bottom: 10px;text-align: center}
+#pic_upload_div .pic_upload_area img {box-shadow: 0px 0px 10px #666;}
+.noborder {border: none !important}
+.hide {display: none !important}
+.lvse {color: #0C0}
+.w70px {width: 70px !important}
+.ml10 {margin-left: 10px}
+
+.fc-f86d5a{color: #f86d5a;}
+.fc-0{color: #000000;}
+.fc-333333{color: #333333;}
+.fc-888888{color: #888888;}
+.bg-146487{background-color:#146487}
+.bg-2f353b{background-color:#2f353b}
+.bg-cb0202{background-color: #cb0202}
+
+.switch_btn{cursor:pointer;display: inline-block;line-height: 30px;color: #000000;font-size: 14px;}
+.switch_btn_sel{color: #146082;line-height: 30px;border-bottom:solid 2px #146082;font-size: 14px;}
+
+.courselist_banner{width: 80px;height: 45px;margin-top: 5px;margin-bottom: 5px;}
+
+/* 运营中心 */
+.boutiquecourse_bg{background: url(/static/erp/collegenew/img/operation/super_course.png) no-repeat center top !important; background-size:45% !important;}
+.superanchor_bg{background: url(/static/erp/collegenew/img/operation/super_anchor.png) no-repeat center top !important; background-size:45% !important;}
+.freecourse_bg{background: url(/static/erp/collegenew/img/operation/free_course.png) no-repeat center top !important; background-size:45% !important;}
+.limitdiscount_bg{background: url(/static/erp/collegenew/img/operation/limit_lowprice.png) no-repeat center top !important; background-size:45% !important;}
+
+.location_bg1{width: 40px;height: 40px; background: url(/static/erp/collegenew/img/operation/operation_location1.png) no-repeat center  !important;}
+.location_bg2{width: 40px;height: 40px;background: url(/static/erp/collegenew/img/operation/operation_location2.png) no-repeat center  !important; }
+.location_bg3{width: 40px;height: 40px;background: url(/static/erp/collegenew/img/operation/operation_location3.png) no-repeat center  !important; }
+.opacity{opacity: 0;cursor: pointer;}
+
+
+#yjgjupvideo.yayigj_pop_window{box-shadow:0px 0px 20px #333;position:absolute;z-index:2001;display:table;left:355px;top:196px;width:440px;height:389px}
+.yayigj_pop_window .title{border-bottom:solid 1px #F0F0F0;height:44px; width:100%;box-sizing:border-box;padding-left:20px;line-height:44px;text-align:center;position:relative;font-size:16px}
+.yayigj_pop_window .title .closebtn{width:44px;height:44px;position:absolute;right:0px;top:0px;line-height:44px;text-align:center}
+.yayigj_pop_window .title .closebtn:hover{background-color:#F86D5A;cursor:pointer;color:#fff;}
+.yayigj_pop_window .title .closebtn:active{background-color:#DF6251;color:#fff;}
+.yayigj_pop_window .popFooter{position:absolute;width:100%; height:60px;line-height:60px; border-top:undefined; bottom:0px;left:0px;text-align:undefined;box-sizing:border-box; padding-left:20px; padding-right:20px}
+.unSelect{-webkit-user-select: none; -moz-user-select: none;    -khtml-user-select: none;  -ms-user-select: none; -o-user-select: none;user-select: none; cursor:default}
+
+  

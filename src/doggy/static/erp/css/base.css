@@ -1,0 +1,113 @@
+body{ font-size:12px; font-family:"Microsoft YaHei","微软雅黑","Hiragino Sans GB",tahoma,arial,simhei;}
+body,html{width: 100%;height: 100%;}
+body,button,code,dd,dl,dt,em,fieldset,form,h1,h2,h3,h4,h5,h6,iframe,img,input,label,li,ol,p,pre,sub,sup,td,textarea,th,ul {margin: 0;padding: 0;}
+
+a:link { text-decoration:none; }
+a:visited {text-decoration:none;}
+a:hover { text-decoration:underline;}
+
+em,i{font-style:normal}
+ol,ul{list-style:none;float:left;}
+
+img{-ms-interpolation-mode:bicubic}
+button,label{cursor:pointer}
+input, button, img, abbr, acronym, iframe {border: none;}
+input:focus{outline: none;}
+input[type=button]::-moz-focus-inner,input[type=file]>input[type=button]::-moz-focus-inner,input[type=reset]::-moz-focus-inner,input[type=submit]::-moz-focus-inner { padding: 0;border: 0;}
+input{ -webkit-appearance:none; font-family:"Microsoft YaHei","微软雅黑","Hiragino Sans GB",tahoma,arial,simhei;}
+a,li,input,button,section,span,div{-webkit-tap-highlight-color:rgba(0,0,0,0);tap-highlight-color:rgba(0,0,0,0)}
+input[type='button'].cancelBtn{border:1px solid #00c5b5;background-color:#fff;color: #00c5b5;}
+input[type='button'].cancelBtn:hover{background-color: #00c5b5;color: #fff;}
+
+.headArea{ width: 100%; height:40px; position:fixed; top: 0; background: #292929; z-index: 9999;}
+.mainFrme{ width: 100%; height: 100%; padding: 40px 0 30px 0; overflow: hidden; box-sizing:border-box}
+.leftFrme{ width: auto; height: 100%; background: #3C3C3C; float: left;}
+.rightFrme{ height: 100%; background: #f2f2f2; overflow: auto;}
+.footerArea{position:fixed; left:0px; right:0px;bottom:0px; height:30px; background: #3C3C3C; text-align: center; line-height: 30px; color: #fff; z-index: 9999;}
+
+.logo{ width: 90px;height: 24px;float: left; margin: 8px 10px 0 20px;}
+.headArea span{ line-height: 40px; font-size: 14px; color: #fff;}
+.loginUser{ width: auto; height: 40px; float: right; font-size: 14px; color: #fff; position: relative; padding: 0 30px; line-height: 40px; cursor: pointer; -ms-user-select:none; -moz-user-select: none; -webkit-user-select: none;}
+.loginUser:before{ width: 20px; height: 20px; position: absolute; content: ''; background: url(/static/erp/img/base/user-ico.png); top: 10px; left: 0;}
+.loginUser i{ width: 9px; height: 5px; position: absolute; right: 10px; top: 19px;}
+.loginUser i.down{ background: url(/static/erp/img/base/down.png);}
+.loginUser i.up{ background: url(/static/erp/img/base/up.png);}
+.userWindow{ width: 112px; height: auto; overflow: hidden; position: absolute; top: 38px; right: 2px; background: #fff; border-radius: 2px; box-shadow: 0 0 12px #888888; display: none;z-index: 10;}
+.userWindow p{ width: 100%; display: inline-block; float: left; border-top: 1px solid #E4E4E4; line-height: 34px; font-size: 13px; text-indent: 30px;}
+.userWindow p:first-child{ border: none;}
+.userWindow a{ display: block; color: #666; text-decoration: none;}
+
+.leftTitle{ width: 100%; height: 36px; float: left; position: relative; cursor: pointer; -ms-user-select:none; -moz-user-select: none; -webkit-user-select: none;}
+.leftTitle i{ width: 18px; height: 17px; position: absolute; left: 13px; top: 9px;}
+.leftTitle i.show{ background: url(/static/erp/img/base/nav_show.png);}
+.leftTitle i.hide{ background: url(/static/erp/img/base/nav_hide.png);}
+.leftNav{ width: 200px; height: auto; overflow: hidden; float: left;}
+.leftNavSmall{ width: 44px; height: auto; float: left; display: none;}
+
+.leftNav > div{ width: 100%; height: 44px; line-height: 44px; font-size: 14px; color: #fff; float: left; position: relative; text-indent: 50px; cursor: pointer;}
+.leftNav > div > a{ width: 100%; display: block; color: #fff; text-decoration: none;}
+#navItem1:before{ width: 24px; height: 24px; position: absolute; content: ''; top: 10px; left: 10px; background: url(/static/erp/img/base/nav_ico_1.png);}
+#navItem2:before{ width: 24px; height: 24px; position: absolute; content: ''; top: 10px; left: 10px; background: url(/static/erp/img/base/nav_ico_2.png);}
+#navItem3:before{ width: 24px; height: 24px; position: absolute; content: ''; top: 10px; left: 10px; background: url(/static/erp/img/base/nav_ico_3.png);}
+#navItem4:before{ width: 24px; height: 24px; position: absolute; content: ''; top: 10px; left: 10px; background: url(/static/erp/img/base/nav_ico_4.png);}
+#navItem5:before{ width: 24px; height: 24px; position: absolute; content: ''; top: 10px; left: 10px; background: url(/static/erp/img/base/nav_ico_5.png);}
+#navItem6:before{ width: 24px; height: 24px; position: absolute; content: ''; top: 10px; left: 10px; background: url(/static/erp/img/base/nav_ico_6.png);}
+.leftNav > div:hover{ background: #292929;}
+.leftNav > div.act,.leftNavSmall > div.act{ background: #292929;}
+.leftNav > div.act:after,.leftNavSmall > div.act:after{ width: 7px; height: 14px; position: absolute; content: ''; top: 15px; right: 0px; background: url(/static/erp/img/base/nav_act_ico.png);}
+.leftNavSmall > div{ width: 100%; height: 44px; line-height: 44px; font-size: 14px; color: #fff; float: left; position: relative; cursor: pointer; position: relative;}
+.leftNavSmall > div:hover{ background: #292929;}
+.leftNavSmall p{ width: 100px; height: 44px; background: #292929; display: none; position: absolute; top: 0px; left: 44px; z-index: 9999;}
+.leftNavSmall a{ color: #fff;}
+
+/*面包屑*/
+.crumbs{ height: 36px; background: #fff; font-size: 13px; color: #666; line-height: 36px; position: relative;text-indent: 36px;}
+.crumbs:before{ width: 15px;height: 15px;position: absolute;content: '';background: url(/static/erp/img/crumbs-ico.png);top: 10px;left: 14px;}
+.crumbs a{ color: #666;}
+.crumbs a:hover{ color: #21C1AA; text-decoration: none;}
+
+.cont{ height: calc(100% - 56px); background: #fff; margin: 10px 14px; overflow: auto;}
+
+.excel{ width: 85px; height: 30px; float: right; margin-right: 30px; text-align: right; position: relative; cursor: pointer;}
+.excel:before{ width: 18px; height: 18px; position: absolute; content: ''; left: 0; top: 6px; background: url(/static/erp/img/basic_out.png);}
+
+/*公共控件*/
+.calendar{ width:120px; height:28px; line-height:28px; border:solid 1px #e0e0e0;float: left; text-indent: 10px;}
+.calendar:hover{border-color: #00c5b5;}
+input[type=text]{ height: 28px; line-height: 28px; border: 1px solid #e0e0e0; float: left; border-radius: 2px; padding: 0 5px; color: #696969; font-size: 14px;}
+input[type=text]:focus{border:solid 1px #00c5b5;}
+input[type=text]:hover{border:solid 1px #00c5b5;}
+input[type=button]{ width: 90px; height: 30px; background: #00C5B5;float: left; margin-left: 10px; border-radius: 2px;color: #fff;cursor: pointer;}
+input[type=button]:hover{ background: #00d4c3;}
+
+/*上传按钮*/
+.uploadBtn {position:relative;display: inline-block;background: #FFF;border: 1px solid #47a6a0;border-radius: 2px;font-size:14px;overflow: hidden;color: #47a6a0;text-decoration: none;line-height: 30px; height:30px;min-width:80px;text-align:center; cursor:pointer}
+.uploadBtn input {position: absolute;right: 0px;top: 0px;height: 100%;left: 0px;width: 100%; height:100%; font-size:20px; opacity:0}
+.uploadBtn:hover {background: #55c6bf;border-color: #55c6bf;color: #FFF;text-decoration: none;}
+.uploadBtn:active{background: #328b83;}
+.uploadBtn[data-disabled='1']{background: #fff; color:#F1FBF9}
+
+.ml20{ margin-left: 20px;}
+.w240{ width: 240px;}
+.w120{width: 120px;}
+
+::-webkit-input-placeholder { color: #b0b0b0;} 
+::-moz-placeholder { color: #b0b0b0;}
+:-ms-input-placeholder { color: #b0b0b0;}
+
+::-webkit-scrollbar{width:12px;height:12px;}
+::-webkit-scrollbar-thumb:horizontal:hover {background-color:#00c5b5;transition: 0.5s all;}
+::-webkit-scrollbar-thumb:vertical:hover {background-color:#00c5b5;transition: 0.5s all;}
+::-webkit-scrollbar-track-piece{background-color:#fafafa;-webkit-border-radius: 0px;}
+::-webkit-scrollbar-thumb:vertical{height:4px;background-color:#d9d9d9;-webkit-border-radius:6px;}
+::-webkit-scrollbar-thumb:horizontal{width:4px;background-color:#d9d9d9;-webkit-border-radius:6px;}
+
+#pager{ height: 30px; margin: 10px 0; display: none;}
+
+.loading{ width: 72px; height: 72px; position: absolute; background:url(/static/public/img/loading.png); top: 50%; margin-top:-36px; left: 50%; margin-left: -36px; -webkit-animation:circle 1s infinite linear; z-index:99999999;}
+@-webkit-keyframes circle{
+0%{ transform:rotate(0deg); }
+100%{ transform:rotate(360deg); }
+}
+
+.tc{text-align:center!important;}

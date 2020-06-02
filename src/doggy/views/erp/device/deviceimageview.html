@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>设备管理</title>
+    {{template "../public/link/css_inc.html" .}}
+    <!-- <link href="/static/erp/css/device.css" rel="stylesheet" /> -->
+    <link href="/static/erp/css/product.css" rel="stylesheet" />
+    <link href="/static/erp/css/user.css" rel="stylesheet" />
+
+</head>
+
+<style>
+    .f_data tbody td {
+        text-align: left
+    }
+    
+    .title {
+        border-bottom: solid 1px #c0c0c0;
+        height: 44px;
+        width: 100%;
+        box-sizing: border-box;
+        padding-left: 20px;
+        line-height: 44px;
+        text-align: center;
+        font-size: 16px;
+        position: relative;
+    }
+    
+    ._operating {
+        height: 40px;
+        width: 100%;
+        line-height: 40px;
+        text-align: right;
+        right: 40px;
+        position: relative;
+        font-size: 16px;
+    }
+    
+    ._in_content {
+        height: 515px;
+        width: 100%;
+        border-bottom: solid 1px #c0c0c0;
+    }
+    
+    ._in_content ul {
+        padding: 0px;
+        margin: 0px;
+        /* list-style: none; */
+    }
+    
+    ._in_content ul li {
+        width: 180px;
+        height: 180px;
+        margin-left: 10px;
+        margin-top: 10px;
+        outline: solid 1px #f0f0f0;
+        margin-bottom: 30px;
+        overflow: visible;
+        float: left;
+        position: relative;
+    }
+    
+    ._in_content ul li::after {
+        content: attr(data-dt);
+        position: absolute;
+        width: 100%;
+        text-align: center;
+        line-height: 20px;
+        bottom: -30px;
+        left: 0px;
+        font-size: 12px;
+        z-index: 10;
+    }
+    
+    ._in_content ul li .imgdiv {
+        height: 180px;
+        width: 180px;
+        /* border-bottom: solid 1px #c0c0c0; */
+        display: box;
+        display: -webkit-box;
+        display: -webkit-inline-box;
+        display: -moz-box;
+        overflow: hidden;
+        -webkit-box-pack: center;
+        -moz-box-pack: center;
+        -webkit-box-align: center;
+        -moz-box-align: center;
+    }
+    
+    ._in_content ul li .imgdiv img {
+        max-width: 100%;
+        max-height: 100%;
+    }
+    
+    ._in_table {
+        border: 1px solid #f0f0f0;
+        border-spacing: 1px;
+        border-collapse: collapse;
+        outline: 1px;
+        width: 100%;
+    }
+    
+    ._in_table tr {}
+    
+    ._in_table tr th {
+        width: auto;
+        height: 30px;
+        font-size: 14px;
+    }
+    
+    ._in_table tr td {
+        width: auto;
+        height: 30px;
+        font-size: 12px;
+    }
+</style>
+
+<body>
+    {{template "../public/public/header.html" .}}
+    <div class="mainFrme">
+        {{template "../public/public/left.html" .}}
+        <div class="rightFrme">
+            <div class="crumbs"><a href="/butlerp/dashboard">主页</a> > <a href="###">设备影像</a></div>
+            <div class="cont">
+                <div class="pageHeader">
+                    <a class="head_link" href="/butlerp/device/devicemanageview">设备管理</a><a class="head_link head_link_active" href="/butlerp/device/deviceimageview">设备影像</a>
+                    <!--隐藏的标记，用来判断左边的显影-->
+                    <input type="hidden" name="htag" value="4">
+                </div>
+                <div class="search">
+                    <label>创建(申请)时间</label>
+                    <input id="BeginDate" class="calendar" readonly>
+                    <label>至</label>
+                    <input id="EndDate" class="calendar" readonly>
+                    <input type="button" value="查询" id="device_Cus_search" class='search_btn' />
+                </div>
+                <div class="f_data" id="scroll_div_1">
+                    <table>
+                        <thead id="_in_img_thead">
+                            <tr>
+                                <th align="left">诊所</th>
+                                <th align="left">口扫仪ID</th>
+                                <th align="left">患者姓名</th>
+                                <th align="left">检查时间</th>
+                                <th align="left">创建(申请)时间</th>
+                                <th align="left">查看详情</th>
+                            </tr>
+                        </thead>
+                        <tbody id="MList">
+                        </tbody>
+                    </table>
+                </div>
+                <div id="TablelistPage"></div>
+            </div>
+        </div>
+    </div>
+
+    <!--选择图片 start-->
+    <div id="erp_device_sel" style="width:800px; height:600px;display:none;background-color:#fff">
+        <div class="title"><span>影像图片</span></div>
+
+        <!-- <div class="_in_content">
+        </div> -->
+        <div class="f_data">
+            <table class="_in_table">
+                <thead id="_in_img_thead">
+                    <tr>
+                        <th align="left">图片名称</th>
+                        <th align="left">创建时间</th>
+                        <th align="left">操作</th>
+                    </tr>
+                </thead>
+                <tbody id="in_img_table">
+                    <tr>
+                        <td>诊所</td>
+                        <td>口扫仪ID</td>
+                        <td>患者姓名</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="popConent">
+            <div class="_operating">
+                <input type="button" class="pop_cancelbtn cancelBtn" onclick="erp_exit()" value="退出" />
+            </div>
+        </div>
+    </div>
+    <!--选择图片 end-->
+    {{template "../public/public/footer.html" .}}
+</body>
+{{template "../public/link/js_inc.html" .}}
+<script type="text/javascript" src="/static/public/yayigj_pop_window.js"></script>
+<script src="/static/public/axios.min.js"></script>
+<script type="text/javascript">
+    jQuery.createAniCss();
+    var pageApi = null,
+        popApi1;
+    var pageobj = {
+        pageSize: 10,
+        pageNo: 1,
+        totalcount: 0
+    };
+
+    $(document).ready(function(e) {
+        bind();
+        datalist(pageobj); //获取数据
+    });
+
+    function bind() {
+        $("#BeginDate").yayigj_date_Sel({
+            varType: "val"
+        });
+        $("#EndDate").yayigj_date_Sel({
+            varType: "val"
+        });
+        //加载页面获取当天日期
+        $("#BeginDate").getCurrday();
+        $("#EndDate").getCurrday();
+
+        $("#scroll_div_1").scroll(function(event) {
+            var head = $("#t_in_img_head");
+            if ($(this).scrollTop() >= 30) {
+                head.css('transform', 'translateY(' + ($(this).scrollTop()) + 'px)');
+            } else {
+                head.css('transform', 'translateY(' + (0) + 'px)');
+            }
+        });
+        $("#device_data_search").on("click", function() {
+            pageApi.filling(1);
+            datalist(pageobj);
+        });
+        $("#TablelistPage").pagination({
+            totalData: 0,
+            showData: 0,
+            pageCount: 0,
+            coping: true,
+            count: 2,
+            jumpCallBack: jump,
+            callback: function(index) {
+                pageobj.pageNo = index.getCurrent();
+                // datalist(param);
+            }
+        }, function(api) {
+            pageApi = api;
+        });
+
+        function jump(params) {
+            pageobj.pageSize = params;
+            pageobj.pageNo = 1;
+            // datalist(param);
+            pageApi.reSetPageSize(params);
+        };
+    }
+
+    function datalist(pageobj) {
+        var s_time = $("#BeginDate").val();
+        var e_time = $("#EndDate").val();
+        s_time = new Date(s_time);
+        e_time = new Date(e_time);
+        if (s_time > e_time) {
+            jQuery.postFail("fadeInup", "查询时间错误");
+            return;
+        };
+        var parmas = {
+            "start_time": $("#BeginDate").val(), //开始时间
+            "end_time": $("#EndDate").val(), //结束时间
+            "per_page": pageobj.pageSize, //每页数量  int
+            "page": pageobj.pageNo, //页码  int
+            "totalcount": pageobj.totalcount, //总数，第一次传-1 int
+        };
+        jQuery.loading();
+        $.post("/butlerp/device/getdevicepatient", parmas, function(json) {
+            jQuery.loading_close();
+            if (json.code == 1) {
+                pageApi.ReSet(parseInt(json.totalcount), parseInt(json.pagesize));
+                device_data_list(json.list)
+            } else {
+                jQuery.postFail("fadeInup", json.info);
+            }
+        })
+    }
+    $("#device_Cus_search").on("click", function() {
+        pageApi.filling(1);
+        datalist(pageobj);
+    });
+    //初始数据
+    function device_data_list(json) {
+        var tmp = [];
+        if (json != null) {
+            $.each(json, function(k, v) {
+                tmp.push("<tr ><td data_id='" + v.orderuid + "_" + v.clinicid + "'>" + v.clinicname + "</td><td>" + v.deviceid + "</td><td>" + v.patientname + "</td><td>" + v.studydate + "</td><td>" + v.createtime + "</td><td><a onclick='get_cus_imglist(\"" + v.orderuid + "\")'>查看详情</td></tr>");
+            });
+            $("#MList").empty().append(tmp.join(''));
+        }
+    }
+    var popapi = "";
+    $("#erp_device_sel").yayigj_pop_window({
+        _coverOpacity: 0.2,
+        _isShow: false,
+        _isAskClose: true,
+        _coverOpacity: 0,
+        _close_callBackFunc: function() {
+            erp_exit();
+        },
+        _fotTopLine: 'none',
+        _zindex: 14,
+        _isAddCoverDiv: true
+    }, function(api) {
+        popapi = api;
+    });
+
+    function erp_exit() {
+        popapi.closePopwnd();
+    }
+
+    function get_cus_imglist(clist) {
+        axios.post('/butlerp/device/getdevicepatientimg?orderuid=' + clist)
+            .then(response => {
+                var results = response.data
+                try {
+                    var tmp = [];
+                    $.each(results.list, function(k, v) {
+                        tmp.push("<tr><td>" + v.sopuid + "." + v.imagetype + "</td><td>" + v.createtime + "</td><td><a onclick=''>浏览" + "&nbsp;|&nbsp;" + "</a><a onclick='downImages(\"" + v.orderuid + "\",\"" + v.sopuid + "\",\"" + v.imagetype + "\")'>下载 </a></td></tr>");
+                    });
+                    $("#in_img_table").empty().html(tmp.join(''));
+                } catch (e) {
+                    console.log(e)
+                }
+            });
+        $("#erp_device_sel").show();
+    }
+    //导出图像（单张)
+    function downImages(orderuid, sopuid, imagetype) {
+        var type; //你想要什么图片格式 就选什么吧, 接口获取图片转换的BASE64流媒体, 
+        $.post("/butlerp/device/downloadimage", {
+            orderuid: orderuid,
+            sopuid: sopuid,
+            imagetype: imagetype
+        }, function(data) {
+            console.log(data);
+
+
+            // imgdata = data.list.img;
+            // var type = imagetype;
+            // var fixtype = function(type) {
+            //     type = type.toLocaleLowerCase().replace("/" + imagetype + "/i", imagetype);
+            //     var r = type.match("/" + imagetype + "/");
+            //     return 'image/' + r;
+            // };
+            // imgdata = imgdata.replace(fixtype(type), 'image/octet-stream');
+            // // var filename = '' + data.list.cname + '_' + new Date().getTime() + '.' + type;
+            // var filename = '' + sopuid + '.' + type;
+            // savaFile(imgdata, filename);
+            if (data.code == "1") {
+                if (data.list.url != null) {
+                    download(data.list.url);
+                }
+            }
+        });
+
+        function download(src) {
+            console.log(src);
+            var $a = $("<a></a>").attr("download", "Image").attr("href", src);
+            $a[0].click();
+        }
+        // // 将图片保存到本地
+        // var savaFile = function(data, filename) {
+        //     var save_link = document.createElementNS('http://www.w3.org/1999/xhtml', 'a');
+        //     save_link.href = data;
+        //     save_link.download = filename;
+        //     var event = document.createEvent('MouseEvents');
+        //     event.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+        //     save_link.dispatchEvent(event);
+        // };
+    }
+</script>
+
+</html>

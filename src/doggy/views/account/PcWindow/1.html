@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<body>
+<head></head>
+<script language="javascript">
+    document.onreadystatechange = subSomething;//当页面加载状态改变的时候执行这个方法. 
+      function subSomething() { 
+        if(document.readyState == "complete"){ //当页面加载状态为完全结束时进入 
+          document.getElementById("zlb").style.display='block';
+          document.getElementById("loading").style.display='none';
+      } 
+    } 
+</script>
+<script language="javascript">
+    var i=j=k=0;
+    function loadScript(url, index,callback){ 
+        var result=function(p){
+            switch(p){
+                case 1:
+                    i=1;
+                    break;
+                case 2:
+                    j=1;
+                    break;
+                case 3:
+                    k=1;
+                    break;  
+            }
+        }
+        var script = document.createElement("script") 
+        script.type = "text/javascript"; 
+        
+        if (script.readyState){ //IE 
+            script.onreadystatechange = function(){ 
+        if (script.readyState == "loaded" || 
+            script.readyState == "complete"){ 
+            script.onreadystatechange = nil; 
+            result(index);
+            callback(); 
+            } 
+        }; 
+        } else { 
+        script.onload = function(){ 
+            result(index);
+            callback(); 
+        }; 
+        } 
+        script.src = url; 
+        document.body.appendChild(script); 
+    }   
+    
+    function finish(){
+            var nResult=i+j+k;
+            if(nResult==3){
+            $("#zlb").text("我加载完成了!");
+            //$("#loading").hide();
+            }
+    }
+    loadScript('http://www.yayiguanjia.com/Account/public/js/jquery-1.9.1.min.js',1,finish);
+    loadScript('http://www.yayiguanjia.com/Account/public/js/kindeditor-min.js',2,finish);
+    loadScript('http://www.yayiguanjia.com/Account/public/js/area.js',3,finish);
+</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>无数据</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="author" content="lock">
+<!--[if lt IE 9]>
+    <script src="/static/js/html5shiv.js"></script>
+    <script src="/static/js/respond.min.js"></script>
+<![endif]-->
+<style type="text/css"> 
+body{ padding-top:50px;}
+.content{ width:1200px; height:506px; margin:0px auto;}
+.errorBg{ width:307px; height:324px; margin:100px auto 0px auto; background:url(/static/account/img/no-data.png) no-repeat;}
+.goHome{ width:180px; height:40px;margin:24px auto 0px auto; border-radius:2px; -webkit-border-radius:2px; -moz-border-radius:2px; -o-border-radius:2px; -ms-border-radius:2px; line-height:40px;text-align:center;}
+.goHome a{float:left;text-decoration:none;font-size:14px;color:#696969;cursor:pointer;width:68px;margin-right:40px;height:28px;border-radius:2px;border:1px solid #e0e0e0;line-height:28px;text-align:center;}
+.goHome a:last-child{margin:0;}
+.goHome a:hover{ background:#f0f0f0;}
+</style>
+<script>var ispc=parseInt('{{.PCLoad}}');if(!isNaN(ispc) && ispc==1){document.write('<style type="text/css">.goHome{display:none;}</style>');};</script>
+</head>
+<body>
+  <div class="content">
+	<div class="errorBg"></div>
+</div>
+</body>
+</html>

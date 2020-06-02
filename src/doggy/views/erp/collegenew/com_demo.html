@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>商学院新后台</title>
+    {{template "/erp/collegenew/inc/css_inc.html" .}}
+    <!---->
+    {{template "/erp/collegenew/inc/js_inc.html" .}}
+</head>
+
+<body class="mall0 pall0">
+
+    {{template "/erp/collegenew/vcomponent/yayigj_modal.html" .}}
+    <!--总体框架-->
+    <div id="college_admin">
+        <{msg}>
+            <addedt-modal :paramcnf="modal">
+                <div slot='modal_body' id="modal_content">
+                    这里是你自己的内容
+                </div>
+            </addedt-modal>
+    </div>
+
+    <script>
+        var demo_app = new Vue({
+            el: '#college_admin',
+            delimiters: ['<{', '}>'],
+            data: {
+                msg: 'hello',
+                modal: {
+                    isShow: true,
+                    isActive: true,
+                    showHeader: true,
+                    showFooter: true,
+                    showCancel: true,
+                    showOk: true,
+                    transition: 'fade',
+                    backdrop: false,
+                    title: '上传视频',
+                    okText: '确定',
+                    cancelText: '取消',
+                    width: 640,
+                    height: 480,
+                    z_index: 2,
+                    backdrop: false,
+                    backdropClosable: false,
+                    okLoading: false,
+                    onOk: function(param) {
+                        console.log('param= OkBtn', param)
+                    },
+                    onCancel: function(param) {
+                        console.log('param canBtn=', param)
+                    }
+                },
+            },
+            components: {
+                'addedtModal': vueModal_com,
+            }
+        });
+    </script>
+</body>
+
+</html>

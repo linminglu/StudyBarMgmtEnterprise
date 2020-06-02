@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>商品购买用户Excel下载</title>
+
+    <style type="text/css">
+    	body{background-color: #e2e9ef;color: #fff;text-align:center; }
+    	.table{visibility: hidden;}
+    	div{margin:5% auto;}
+    	a{color: blue;}
+    </style>
+</head>
+<body>
+	<div>
+		<a href="javascript:void(0);">如<span id="timeOut">3</span>秒后没有下载，请点击此连接</a>
+	</div>
+	<div class="table">
+		<table id="m">
+			<thead>
+				<tr>
+					<th>商品购买用户列表</th>
+					<th>开始日期：</th>
+					<th id="sendTimeStar">00</th>
+					<th>结束日期：</th>
+					<th id="sendTimeEnd">00</th>
+				</tr>
+				<tr>
+					<th>申请编号</th>
+					<th>申请诊所</th>
+					<th>管家号</th>
+					<th>套餐</th>
+					<th>套餐价格</th>
+					<th>下单时间</th>
+					<th>地推名称</th>
+					<th>套餐商品</th>
+					<th>商品状态</th>
+					<th>收货人</th>
+					<th>联系方式</th>
+					<th>发货地址</th>
+				</tr>
+			</thead>
+			<tbody id="list">
+				<!-- 渲染数据区域 -->
+			</tbody>
+		</table>
+	</div>
+	<script type="text/javascript" src="/static/ant/js/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="/static/ant/js/table2Excel/jquery.base64.js"></script>
+	<script type="text/javascript" src="/static/ant/js/table2Excel/tableExport.js"></script>
+
+
+	<script type="text/javascript">
+	var i = 2;
+	var sendTimeStar = GetQueryString("sendTimeStar");
+	var sendTimeEnd = GetQueryString("sendTimeEnd");
+	$(document).ready(function(e) {
+		loadingData();
+		$("a").click(function(){
+			if(getBrowser() == "ie") {
+				alert("此功能暂不支持IE浏览器，请使用chrome或其他浏览器下载");
+			}else{
+				$("#sendTimeStar").text(sendTimeStar);
+				$("#sendTimeEnd").text(sendTimeEnd);
+				$('#m').tableExport({type: 'excel', escape: 'false',tableName:'excel'});
+			}
+		})
+	});
+
+	//计时下载
+	$(function () {
+        //iCount获取setInterval句柄
+        var i = 2;
+        var timer = setInterval(function(){
+        	if(i==0){
+        		if(getBrowser() == "ie") {
+        			alert("此功能暂不支持IE浏览器，请使用chrome或其他浏览器下载");
+        		}else{
+        			$("#sendTimeStar").text(sendTimeStar);
+					$("#sendTimeEnd").text(sendTimeEnd);
+        			$('#m').tableExport({type: 'excel', escape: 'false',tableName:'excel'});
+        		}
+        		clearInterval(timer);
+        	}
+        	document.getElementById('timeOut').innerHTML=i--;
+        }, 1000);
+    });
+
+	function getBrowser(getVersion)
+	{
+	    //注意关键字大小写
+	    var ua_str = navigator.userAgent.toLowerCase(), ie_Tridents, trident, match_str, ie_aer_rv, browser_chi_Type;
+
+
+	    //判断IE 浏览器,
+	    if("ActiveXObject" in self){
+	        // ie_aer_rv:  指示IE 的版本.
+	        // It can be affected by the current document mode of IE.
+	        ie_aer_rv= (match_str = ua_str.match(/msie ([\d.]+)/)) ?match_str[1] :
+	        (match_str = ua_str.match(/rv:([\d.]+)/)) ?match_str[1] : 0;
+
+	        // ie: Indicate the really version of current IE browser.
+	        ie_Tridents = {"trident/7.0": 11, "trident/6.0": 10, "trident/5.0": 9, "trident/4.0": 8};
+	        //匹配 ie8, ie11, edge
+	        trident = (match_str = ua_str.match(/(trident\/[\d.]+|edge\/[\d.]+)/)) ?match_str[1] : undefined;
+	        browser_chi_Type = (ie_Tridents[trident] || ie_aer_rv) > 0 ? "ie" : undefined;
+	    }else{
+	        //判断 windows edge 浏览器
+	        // match_str[1]: 返回浏览器及版本号,如: "edge/13.10586"
+	        // match_str[1]: 返回版本号,如: "edge"
+	        //若要返回 "edge" 请把下行的 "ie" 换成 "edge"。 注意引号及冒号是英文状态下输入的
+	        browser_chi_Type = (match_str = ua_str.match(/edge\/([\d.]+)/)) ? "ie" :
+	            //判断firefox 浏览器
+	            (match_str = ua_str.match(/firefox\/([\d.]+)/)) ? "firefox" :
+	            //判断chrome 浏览器
+	            (match_str = ua_str.match(/chrome\/([\d.]+)/)) ? "chrome" :
+	            //判断opera 浏览器
+	            (match_str = ua_str.match(/opera.([\d.]+)/)) ? "opera" :
+	            //判断safari 浏览器
+	            (match_str = ua_str.match(/version\/([\d.]+).*safari/)) ? "safari" : undefined;
+	        }
+
+	    //返回浏览器类型和版本号
+	    var verNum, verStr;
+	    verNum = trident && ie_Tridents[trident] ? ie_Tridents[trident] : match_str[1];
+	    verStr = (getVersion != undefined) ? browser_chi_Type+"/"+verNum : browser_chi_Type;
+	    return verStr;
+	}
+	function loadingData(){
+		$.ajax({
+            url: '/member/ExportOrderList',
+            type: 'get',
+            dataType: 'json',
+            data:{start_time:sendTimeStar,end_time:sendTimeEnd}
+        })
+        .done(function(re) {
+			console.log(re);
+			if(re["code"]=='1'){
+				var str = '';
+				$.each(re["list"],function(index,el){
+					var package = '套餐一';
+					switch(el.ordertype){
+						case "1":
+						package = '套餐一';
+						break;
+						case "2":
+						package = '套餐二';
+						break;
+						case "3":
+						package = '套餐三';
+						break;
+						case "4":
+						package = '套餐四';
+						break;
+						case "5":
+						package = '套餐五';
+						break;
+						case "6":
+						package = '套餐六';
+						break;
+						case 'undefined':
+						package = '';
+						break;
+						default:
+						package = '';
+						break;
+					}
+
+
+					str+='<tr><td>\"'+el.uid+'\"</td>'+				//申请编号
+							'<td>'+ el.createtime+ '</td>'+				//申请诊所
+							'<td>'+	el.dentalid + '</td>'+			//管家号
+							'<td>'+ package +'</td>'+				//套餐
+							'<td>'+ el.real_price + '</td>'+				//套餐价格
+							'<td>'+ el.createtime + '</td>'+			//下单时间
+							'<td>'+ el.staff + '</td>'+				//地推名称
+							'<td>'+ el.summary + '</td>'+				//套餐商品
+
+							'<td>'+ el.mallstatus + '</td>'+			//商品状态
+							'<td>'+ el.receiver + '</td>'+			//收货人
+							'<td>'+ el.mobile + '</td>'+			//联系方式
+							'<td>'+ el.address+ '</td>'		//发货地址
+						'</tr>'
+				})
+				$("#list").empty().append(str);
+            }
+		})
+		.fail(function(err){
+			console.log(err);
+		})
+	}
+	function GetQueryString(name){
+		var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+		var r = window.location.search.substr(1).match(reg);
+		if(r!=null)return  unescape(r[2]); return null;
+	}
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+.add_integral{width: 70%;margin:0 auto;padding-top: 20px;}
+
+.add_integral label{display: inline-block;width: 100%;margin-top: 12px;margin-bottom: 12px;}
+.add_integral label input{float: left;width:250px;}
+.add_integral label span{float: left;width:100px;display: inline-block;text-align: right;padding-right: 5px;box-sizing: border-box;line-height: 30px;font-size: 16px;}
+
+.submit_from{text-align: center;box-sizing: border-box;}
+.submit_from input{width:100px;margin-left: 10px;margin-right: 10px;}

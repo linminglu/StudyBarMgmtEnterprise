@@ -1,0 +1,227 @@
+@charset "utf-8";
+/* CSS Document */
+/*诊所档案*/
+.clinic {
+}
+h2 {
+	font-size: 18px;
+	font-weight: normal;
+	padding: 20px;
+	border-bottom: 1px solid #999;
+}
+h2 span {
+	display: inline-block;
+}
+h2 span img {
+	width: 30px;
+	height: 30px;
+	vertical-align: bottom;
+	margin-right: 10px;
+}
+.clinic #clinic_list {
+	float: left;
+	border-right: 1px solid #999;
+}
+#clinic_list li {
+	padding: 12px 24px;
+	border-bottom: 1px solid #999;
+	font-size: 14px;
+	cursor: pointer;
+	border-left: 3px solid #fff;
+}
+#clinic_list li[data-f='1'] {
+	color: #00BB9C;
+	border-left: 3px solid #00BB9C;
+}
+#clinic_list span {
+}
+#clinic_list img {
+	width: 26px;
+	height: 26px;
+	vertical-align: middle;
+	margin-right: 10px;
+}
+.clinic .clinic_box {
+	float: left
+}
+.clinic_box #clinic_f {
+	width: 400px;
+	font-size: 14px;
+	padding-left: 40px;
+	overflow: hidden;
+}
+.clinic_f .cre_receptionist {
+	width: 640px;
+	height: 600px;
+	overflow: scroll;
+	background-color: #fff;
+	text-align: left;
+	border-radius: 4px;
+	box-shadow: 2px 2px 2px #999;
+}
+.cre_receptionist .receptionist_body {
+	margin: 0 auto;
+}
+.receptionist_body .receptionist {
+	margin: 16px auto;
+	color: #666;
+	width: 100%;
+}
+.receptionist .receptionist_logo {
+	float: left;
+	width: 64px;
+	height: 64px;
+	border: 1px dotted #999;
+	margin-right: 6px;
+	position: relative;
+	cursor: pointer;
+}
+.receptionist .receptionist_logo:before {
+	position: absolute;
+	content: attr(data-logo);
+	font-size: 64px;
+	left: 5px;
+	top: -12px;
+}
+.receptionist p {
+	line-height: 30px;
+}
+.receptionist p span {
+	color: red;
+}
+.receptionist input {
+	width: 100%;
+	border: 1px solid #ccc;
+	-webkit-box-sizing: border-box;
+}
+.receptionist select {
+	border: 1px solid #ccc;
+	color: #666;
+	margin-bottom: 16px;
+}
+.clinic_box ul.selc {
+	width: 100%;
+	display: -webkit-flex; /* Safari and Chrome */
+}
+ul.selc li {
+	-webkit-flex: 1.0;
+	text-align: center;
+	margin-right: 0;
+	text-align: left;
+}
+ul.selc li select {
+	width: 100%;
+	border: 1px solid #ccc;
+	-webkit-box-sizing: border-box;
+}
+ul.selc li:nth-child(2) {
+	margin: 0 5%;
+}
+.receptionist textarea {
+	width: 100%;
+	height: 80px;
+	border: 1px solid #ccc;
+	-webkit-box-sizing: border-box;
+}
+.cre_receptionist .receptionist_footer {
+	margin: 20px auto;
+	overflow: hidden;
+}
+.receptionist_footer input {
+	float: right;
+	width: 116px;
+	height: 36px;
+	color: #00BB9C;
+	text-align: center;
+	line-height: 36px;
+	margin-left: 16px;
+	margin-right: 0;
+	padding: 0;
+	border: 1px solid #00BB9C;
+	cursor: pointer;
+}
+.receptionist_footer .input_active {
+	background-color: #00BB9C;
+	color: #fff;
+}
+#clinic_s {
+	margin-left: 40px;
+	font-size: 14px;
+	padding-top: 13px;
+}
+#clinic_s img {
+	width: 100px;
+	height: 100px;
+	cursor: pointer;
+}
+#clinic_s p {
+	line-height: 30px;
+	color: #666;
+}
+#clinic_s input[type=text] {
+	width: 100%;
+	height: 12px;
+	border: 1px solid #ccc;
+	padding: 12px;
+	color: #ccc;
+	margin: 10px 0;
+}
+#clinic_s .receptionist_logo {
+	cursor: pointer;
+}
+#clinic_s .receptionist_logo:after {
+	width: 100px;
+	height: 100px;
+	content: attr(data-logo);
+	font-size: 80px;
+	border: 1px dotted #999;
+}
+#clinic_t {
+	padding-left: 40px;
+	font-size: 14px;
+	color: #333;
+}
+#clinic_t section:first-child {
+	border-bottom: 1px solid #999;
+	padding-bottom: 20px;
+}
+#clinic_t p {
+	line-height: 40px;
+}
+#clinic_t p label {
+	display: inline-block;
+	width: 68px;
+	text-align: left;
+}
+#clinic_t p b {
+	display: inline-block;
+	margin-right: 2px;
+	width: 86px;
+	height: 9px;
+	background: #ffa94c;
+}
+#clinic_t section ul {
+}
+#clinic_t section ul li {
+	margin: 22px 0;
+}
+#clinic_t section ul li:before {
+	content: attr(data-icon);
+	text-align: center;
+	vertical-align: middle;
+	color: #390;
+	display: inline-block;
+	font-size: 24px;
+	line-height: 24px;
+	width: 24px;
+	height: 24px;
+	margin-right: 6px;
+}
+#clinic_t section ul li:last-child:before {
+	color: #999;
+	border-radius: 50%;
+	border: 1px solid #999;
+}
+#clinic_t section ul li a {
+	float: right;
+}

@@ -1,0 +1,63 @@
+::-webkit-scrollbar{width:12px;height:12px;}	
+::-webkit-scrollbar-track{border-radius:0px;background: #fafafa;}	
+::-webkit-scrollbar-thumb{border-radius: 0px;background: #eaeaea;}	
+::-webkit-scrollbar-thumb:hover{border-radius:0px;background:#e0e0e0;}
+.content{width: 100%;}
+.c{clear: both;}
+input[type=text] {height: 30px;line-height: 30px;border: 1px solid #e0e0e0;float: left;border-radius: 2px;padding: 0 5px;color: #696969;font-size: 14px;}
+input[type=text]:hover {border: solid 1px #00c5b5;}
+input[type='file'] {opacity: 0;cursor: pointer;width:60px;}
+
+.content_title{width: 100%;height: 100px;border-bottom: 1px solid #f0f0f0;box-sizing: border-box;}
+.title_info{width: 700px;margin: 0 auto;box-sizing: border-box;line-height: 50px;padding-top: 40px;}
+.title_left{float: left;width: 200px;text-align: right;box-sizing: border-box;padding-right: 25px;position: relative;}
+.head_left{font-size: 22px;color: #000;}
+.head_left:before{content: '';position: absolute;height: 14px;width: 1px;border-right: 1px solid #e0e0e0;right: 0;bottom: 17px;}
+.title_right{float: left;text-align: left;box-sizing: border-box;}
+.head_right{font-size: 14px;color: #ff8000;padding-left: 15px;}
+
+.content_info{width: 100%;height: 100px;margin-top: 34px;}
+.con_info{width: 700px;margin: 0 auto;box-sizing: border-box;height: 50px;}
+.info_left{font-size: 14px;color: #696969;line-height: 32px;}
+.sign:before{content: '*';width: 10px;height:10px;color: #ff8000;top: 3px;right: 15px;position: absolute;}
+.info_right{font-size: 14px;color: #000;line-height: 32px;}
+input[type=text].no_text{background: #f5f5f5;}
+.m_text{width: 300px!important;}
+.uploadBtn{width: 80px;text-align: center;margin-left: 10px;height: 28px;}
+.uploadBtn input {position: absolute;right: 0px;top: 0px;height: 100%;left: 0px;width: 100%;height: 100%;font-size: 20px;opacity: 0;}
+.uploadBtn {position: relative;display: inline-block;background: #FFF;border: 1px solid #47a6a0;border-radius: 2px;font-size: 14px;overflow: hidden;color: #47a6a0;text-decoration: none;line-height: 28px;height: 28px;min-width: 80px;text-align: center;cursor: pointer;float: left;}
+
+input[type='button'], button {border-radius: 2px !important;min-width: 80px;vertical-align: 10px;margin-left: 6px;}
+input[type='checkbox']{width: 17px;height: 17px;vertical-align: -6px;}
+.m_xieyi{color: #466dc4;cursor: pointer;}
+
+.bg{width: 100%;height: 100%;z-index: 99;background: #000;opacity: 0.5;display:none;position: fixed;top: 0; left:0;}
+.window_xieyi{width: 800px;height: 530px;position: absolute;z-index: 100;display:none;background: #fff;}
+.window_title{width: 100%;text-align:center;height: 44px;line-height: 50px;font-size: 16px;color: #333;position: relative;}
+.window_close{width: 44px;height: 44px;position: absolute;right: 0px;top: 0px;line-height: 44px;text-align: center;}
+.window_close:hover{background-color: #F86D5A;cursor: pointer;color: #fff;}
+.window_content{width: 758px;height: 406px;margin:0 auto;margin-top:6px;background:#fcfcfc;border:1px solid #f0f0f0;box-sizing: border-box;overflow-x: hidden;font-size: 16px;color: #333;padding:15px 10px 12px 10px;}
+.window_content p{margin:0;padding:0;line-height: 30px;text-indent:2em;word-wrap:break-word;}
+.window_button{width: 130px;height: 40px;line-height:40px;margin:15px auto;color: #fff;text-align: center;background-color: #47a6a0;cursor: pointer;}
+.window_button:hover{background:#55c6bf;}
+.no_button{background: #c7e4e2!important;border: 1px solid #c7e4e2!important;}
+.no_button:hover{background: #c7e4e2!important;border: 1px solid #c7e4e2!important;}
+
+#centerDiv{position:fixed;background-color:#fff;text-align: center;width:100%;height:100%;z-index: 1000000;top: 0;left: 0;}
+#centerDiv img{vertical-align:middle;}
+
+#close_ico{width:40px;height:40px;display:block;cursor:pointer;background: url(/static/oem/djd/img/img_pop.png) center no-repeat;
+background-size:40px;position:absolute;top: 20px;right:20px;}
+#close_ico:hover{background-image:url(/static/oem/djd/img/img_pop_over.png);}
+
+.m_success{width: 400px;margin: 165px auto;text-align: center;}
+.wait_img img{height: 125px;margin-bottom: 10px;}
+.wait_title{font-size: 22px;color: #000;line-height: 50px;}
+
+.m_success dl dt{font-size: 18px;color: #000;line-height: 30px;}
+.m_success dl dd{font-size: 14px;color: #696969;}
+.m_success dl dd span{color: #47a6a0;}
+
+.backhome{width: 120px;height: 40px;margin:0 auto;text-align: center;;color: #fff;background: #47a6a0;line-height: 40px;}
+.backhome:hover{background: #55c6bf;}
+.m_success .backhome{text-decoration : none;text-align: center;cursor: pointer;}

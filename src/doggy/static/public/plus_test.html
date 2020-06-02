@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>插件测试</title>
+<style type="text/css">
+	.date{width:200px; height:30px; line-height:30px; text-align:center; background-color:#eee; font-weight:normal; }
+</style>
+</head>
+
+<body>
+	<div id="zlbmss" class="date" style="border:solid 1px #ccc"></div><br />
+    <div id='data_sel' class="date"  style="border:solid 1px #ccc"></div><br/>
+    <div id='data_ym' class="date"  style="border:solid 1px #ccc"></div><br/>
+    <div id='data_ym2' class="date"  style="border:solid 1px #ccc"></div><br/>
+    <div id='date_hv' class="date"  style="border:solid 1px #ccc; margin-left:100px"></div>
+    <div id="debug"  style="float:right;width:500px; height:800px;border:solid 1px #ccc; display:none"></div>
+
+	<script src="jquery-1.9.1.min.js"></script>
+    <script src="yayigj_plus_date.js"></script>    
+    <script type="text/javascript">
+		function callBackFunc(param){
+			alert(param);
+			//console.log(api);
+		}
+		$("#zlbmss").yayigj_date_Sel({callBackFunc:callBackFunc});
+		$("#data_sel").yayigj_date_Sel({callBackFunc:callBackFunc});
+/*		$("#data_ym").yayigj_date_ymSel({callBackFunc:callBackFunc});
+		$("#data_ym2").yayigj_date_ymSel({callBackFunc:callBackFunc});*/
+		$("#date_hv").yayigj_plus_date_hv({callBackFunc:callBackFunc});
+		
+		 data=[
+                ['延期',   45.0],
+                ['改约',       26.8],
+                /*{
+                    name: 'Chrome',
+                    y: 12.8,
+                    sliced: true,
+                    selected: true
+                },*/
+                ['流失',    8.5],
+                ['到诊',     6.2]
+            ]
+		//console.log(data);	
+	</script>
+    
+</body>
+</html>

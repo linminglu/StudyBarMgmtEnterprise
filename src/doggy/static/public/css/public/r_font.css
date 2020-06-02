@@ -1,0 +1,69 @@
+/*=======================
+	整个分站字体配置
+	zlb 2016-11-20
+/*=======================*/
+/*-------------------------------
+  网站的常链接颜色 
+*-------------------------------*/
+a{text-decoration:none; color:#666; font-size:14px; color:#333}
+a:hover{color:#333}
+a:focus{outline:none}
+a:active{color:#000}
+/*-------------------------------
+  字色
+*-------------------------------*/
+.c888{color:#888}
+.c333{color:#333}
+.c69{color:#696969}
+.cb4{color:#B4B4B4}
+
+.cNumCol{color:#00c5b5} /*文本中夹杂的数字色 zlb*/
+.cGray{color:#888} /*灰色文本*/
+.cGeneral{color:#333}/*通用文本,正文大规模使用文本色*/
+.cDarkGray{color:#696969}/*深灰色*/
+
+/*-------------------------------
+  字体
+*-------------------------------*/
+*{font-family:微软雅黑;}
+/*-------------------------------
+  字号
+*-------------------------------*/
+.fz12{font-size:12px}		/*用在辅助性文字,如主界面顶部名称下面的管家号文字*/				 
+.fz14{font-size:14px}		/*用于主要大面积文字内容,如表格文本、内容文本*/						
+.fz16{font-size:16px}		/*用在大多数图标跟文字组合模块，如左侧导航图标+文字*/	
+.fz20{font-size:20px}		/*用在一些特殊情况的文字，今日收费金额的数字，比较长的情况下可使用*/					 
+.fz24{font-size:24px}		/*用在一些重要图标主要文字，如库房功能的主文字*/						
+.fz30{font-size:30px}		/*用在少量重要数量，如各种数据展示的数量*/	
+/*-------------------------------
+  行距对应
+*-------------------------------*/
+.lh18{line-height:18px}
+.lh22{line-height:22px}
+.lh24{line-height:24px}
+.lh26{line-height:26px}
+.lh30{line-height:30px}
+.lh36{line-height:36px}
+/*-------------------------------
+ 圆角文本
+*-------------------------------*/
+.radiusTxt{display:inline-block; 
+	margin:1px 5px; 
+	padding-left:10px; 
+	padding-right:10px; 
+	border-radius:12.5px;
+	height:25px;
+	border:solid 1px #F0F0F0;
+	font-size:14px; 
+	color:#696969; 
+	line-height:25px;
+	/*background:url(/static/public/ico/span_close_icon.png) right center no-repeat*/
+}
+
+
+
+
+
+
+
+

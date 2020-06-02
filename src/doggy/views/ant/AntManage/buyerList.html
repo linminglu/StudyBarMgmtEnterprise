@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>商品购买用户列表</title>
+	<link href="/static/ant/css/calendarCommon.css" rel="stylesheet" type="text/css">
+	<link href="/static/ant/css/antManage.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="/static/ant/js/jquery-1.9.1.min.js"></script>
+    <style type="text/css">
+    	html,body{width:100%; height:100%;}
+    	body{background-color: #3c3c3c;}
+    </style>
+</head>
+<body>
+	<div class="container">
+		<!-- 左边：头部，左侧栏 -->
+		{{template "/ant/Public/antManLeftNav.html"}}
+		<!-- 右边：主体内容 -->
+		<div id="body_right">
+			{{template "/ant/Public/adminUserBtn.html"}}
+			<div id="mainBody">
+				<!-- 面包碎 -->
+				<ul class="breadcrumb">
+					<li>主页</li>
+					<li>订单中心</li>
+				</ul>
+				<div  id="mainContent">
+					<div class="title">
+						<h1>商品购买用户<a id="excelUrl" href="/member/OrderListTable?sendTimeStar=&sendTimeEnd=" onClick="$('#m').tableExport({type: 'excel', escape: 'false',tableName:'excel'});">Excel导出</a></h1>
+					</div>
+					<div id="search">
+							购买时间：<input name="sendTimeStar" id="sendTimeStar" type="text" data-f="cla2">至&nbsp;<input name="newsSendTime1" id="sendTimeEnd" type="text" data-f="cla2">
+							&nbsp;&nbsp;&nbsp;
+							套餐：<select name="type" value="" id="terminal">
+								<option value="" selected="selected">全部</option>
+								<option value="1">套餐一</option>
+								<option value="2">套餐二</option>
+								<option value="3">套餐三</option>
+								<option value="4">套餐四</option>
+								<option value="5">套餐五</option>
+								<option value="6">套餐六</option>
+								</select>
+							&nbsp;&nbsp;&nbsp;
+							状态：<select name="state" id="status">
+							<option value="" selected="selected">全部</option>
+							<option value="尚未确认">尚未确认</option>
+							<option value="待发货">待发货</option>
+							<option value="待收货">待收货</option>
+							<option value="已完成">已完成</option>
+							<option value="部分发货">部分发货</option>
+							</select>
+							&nbsp;&nbsp;&nbsp;
+							订单状态：<select name="orderstatus" id="orderstatus">
+							<option value="" selected="selected">全部</option>
+							<option value="-2">刚刚提交</option>
+							<option value="1">支付成功</option>
+							<option value="0">支付失败</option>
+							</select>
+							<br>
+							<input type="hidden" name="m" value="Admin">
+							<input name="newsTitle" type="text" id="txtFind" placeholder="请输入诊所名称/管家号/收货人/联系方式等关键词搜索" value=""><input type="submit" class="btn_find" value="搜索">
+
+						</form>
+					</div>
+					<div id="m">
+						<table border="0" cellspacing="1">
+							<thead>
+							<tr>
+								<th width='80'>订单状态</th>
+								<th>申请编号</th>
+								<th>申请诊所/管家号</th>
+								<th>套餐</th>
+								<th>套餐价格</th>
+								<th>下单时间</th>
+								<th>推广人名称/推广码</th>
+								<th>套餐商品</th>
+								<th>商品状态</th>
+								<th>收货人/联系方式</th>
+								<th>收货地址</th>
+							</tr>
+							</thead>
+							<tbody id="list">
+							</tbody>
+							<!-- <tr>
+								<td><strong>小计</strong></td>
+								<td></td>
+								<td></td>
+								<td>&yen;<span id="totalPrice">1996.23</span></td>
+								<td></td>
+								<td>数量：<span id="totalNum">0</span></td>
+								<td></td>
+								<td></td>
+								<td style="180px"></td>
+							</tr> -->
+						</table>
+					</div>
+					<div class="table_footer">{{template "/ant/Public/pageInfo.html"}}</div>
+				</div>
+				<!-- title -->
+
+			</div>
+		</div>
+	</div>
+	<!-- copyright -->
+	<div class="copyright">
+		<p>Copyright 2016  ©  www.dental360.cn. All Rights Reserved.</p>
+	</div>
+
+
+
+    <script type="text/javascript" src="/static/ant/js/placeholade.min.js"></script>
+	<script type="text/javascript" src="/static/ant/js/lyz.calendar.min.js"></script>
+	<script type="text/javascript" src="/static/ant/js/antManage.js"></script>
+
+	<script type="text/javascript">
+	isCurr_left(2);
+	$(document).ready(function(e) {
+	     var cj_api=null;
+	     var thisID='';
+	     var thisObj="";
+		 searchInfo(1,10);		//默认第一页
+		 //caclTotal();
+		 $('.btn_find').click(function(){
+		 	searchInfo(1,10);
+			$(".pageCurr").val(1)
+		 })
+	});
+	//Calender插件
+	$("#sendTimeStar").on({
+		focus:function(){$(".calendar_ico").attr("src","/static/ant/img/calendar_ico2.png")},
+		blur:function(){$(".calendar_ico").attr("src","/static/ant/img/calendar_ico.png")},
+	})
+	$("#sendTimeStar").calendar({
+		callback: function () {
+			detectionDate();
+			$("#sendTimeStar").removeClass('active');
+		}
+	});
+	$("#sendTimeEnd").on({
+		focus:function(){$(".calendar_ico").attr("src","/static/ant/img/calendar_ico2.png")},
+		blur:function(){$(".calendar_ico").attr("src","/static/ant/img/calendar_ico.png")},
+	})
+	$("#sendTimeEnd").calendar({
+		callback: function () {
+			detectionDate();
+			$("#sendTimeEnd").removeClass('active');
+			//更新excelUrl参数
+			$("#excelUrl").attr("href","/member/OrderListTable?sendTimeStar=" + $("#sendTimeStar").val() +"&sendTimeEnd=" +  $("#sendTimeEnd").val())
+		}
+	});
+	function detectionDate(){
+		if($("#sendTimeStar").val() != '' && $("#sendTimeEnd").val()!=''){
+			var reg = new RegExp("-","g")
+			var start = $("#sendTimeStar").val().replace(reg,"");
+			console.log(start);
+			var end = $("#sendTimeEnd").val().replace(reg,"");
+			console.log(end);
+			if(start > end){
+				alert("结束时间不应可以早于开始时间!");
+				$("#sendTimeStar").val('');
+				$("#sendTimeEnd").val('');
+			}
+		}
+	}
+
+	//计算总价
+	function caclTotal(){
+		console.log($(".price").length);
+		var priceEl = $(".price");
+		var totalPrice = $("#totalPrice");
+		var total = 0;
+		for(var i=0,length = $(".price").length;i<length;i++){
+			console.log(priceEl.eq(i).text());
+			 total += parseInt(priceEl.eq(i).text());
+		}
+		totalPrice.text(total);
+
+	}
+	//查询列表-渲染数据
+	function searchInfo(num,val){
+		var data={};
+		data.start_time=$("#sendTimeStar").val();	//起始时间
+		data.end_time=$("#sendTimeEnd").val();		//结束时间
+		data.per_page=parseInt($("#rows_n").val());	//每页数量
+		// data.page=parseInt($("#pageCurr").val());//页数
+		data.page=num;								//页数
+		data.ordertype=$("#terminal").val();		//套餐类型
+		data.status=$("#status").val();				//状态
+		data.datastatus=$('#orderstatus').val();	//订单状态
+		data.conditon=$("#txtFind").val();			//输入框搜索条件
+
+		//清空没有数据的搜索条件
+		for(name in data){
+ 			if( data[name] == ''){
+ 				delete data[name];
+ 			}
+ 		}
+		$.ajax({
+            url: '/member/GetOrderList',
+            type: 'post',
+            dataType: 'json',
+            data:data
+        })
+        .done(function(re) {
+        	$("#list").empty();
+            if(re["code"]=='1'  && re["list"]){
+            	var str='';
+            	console.log(re['list']);
+            	$("#list").empty();
+				$.each(re['list'],function(index,el){
+
+					var package = '套餐一';
+					var uid = '' +el.uid ;
+					var real_price =0;
+					var orderStatus='';
+					switch(el.ordertype){
+						case "1":
+						package = '套餐一';
+						break;
+						case "2":
+						package = '套餐二';
+						break;
+						case "3":
+						package = '套餐三';
+						break;
+						case "4":
+						package = '套餐四';
+						break;
+						case "5":
+						package = '套餐五';
+						break;
+						case "6":
+						package = '套餐六';
+						break;
+						case '':
+						package = '';
+						break;
+						default:
+						package = '';
+						break;
+					}
+					if(el.real_price){
+						real_price = el.real_price;
+					}else{
+						real_price = 0;
+					}
+					switch(el.datastatus){
+						case '-2':
+							orderStatus='刚刚提交<span class="reCheck"><input value="刷新" type="button"></span>';
+							break;
+						case '1':
+							orderStatus='支付成功';
+							break;
+						case '0':
+							orderStatus='支付失败<span class="reCheck"><input value="刷新" type="button"></span>';
+							break;
+					}
+					str+='<tr data-uid="'+el.uid+'" data-cid="'+el.clinicuniqueid+'"><td>'+orderStatus+'</td>'+
+							'<td class="uid">'+el.uid+'</td>'+
+							'<td>'+
+								'<p>'+el.clinicname+'</p>'+
+								'<p>'+el.dentalid+'</p>'+
+							'</td>'+
+							'<td>'+	package +'</td>'+
+							'<td>&yen;<span class="price">'+ real_price +'</span></td>'+
+							'<td>'+ el.createtime + '</td>'+
+							'<td><p>'+ el.staff + '</p><p>'
+									 +el.code + '</p>' +
+							'</td>'+
+							'<td>'+
+								'<p>' + el.summary + '</p>' +
+							'</td>'+
+							'<td>'+ el.mallstatus +'</td>'+
+							'<td><p>'+ el.receiver + '</p><p>'
+									 +el.mobile + '</p>' +
+							'</td>'+
+							'<td>'+  el.address + '</td>'+
+						'</tr>'
+				})
+				setPageList(re['totalcount']);
+				$("#list").empty().append(str);
+
+            }else{
+            	setPageList(re['totalcount']);
+            	$("#list").empty();
+            	$("totalPrice").empty();
+            	$("totalNum").empty();
+            }
+		  })
+	}
+
+	$("body").on('click','.reCheck input',function(){
+		var _tr=$(this).parent().parent().parent();
+		var _this=$(this);
+		$.post('/member/ChangePayStatus',
+			{uid:_tr.attr('data-uid'),clinicid:_tr.attr('data-cid')},
+			function(data){
+				//console.log(data);
+				if(data.code=='1'){
+					_this.parent().parent().html('支付成功');
+				}else{
+					alert('未成功支付');
+				}
+			})
+	})
+	</script>
+</body>
+</html>

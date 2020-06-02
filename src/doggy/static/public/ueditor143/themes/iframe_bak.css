@@ -1,0 +1,47 @@
+/*可以在这里添加你自己的css*/
+body{font-family:微软雅黑;}
+body,html{font-family:微软雅黑; margin:0px; padding:0px; width:100%; height:100%; border:solid 0px #FF6600}
+div,td,input{font-family:微软雅黑;}
+
+::-webkit-scrollbar{width:6px;height:6px;}
+::-webkit-scrollbar-track-piece{background-color:#FFF;-webkit-border-radius: 0px;}
+::-webkit-scrollbar-thumb:vertical{height:5px;background-color:#eee;-webkit-border-radius:6px;}
+::-webkit-scrollbar-thumb:horizontal{width:5px;background-color:#EEE;-webkit-border-radius:6px;}
+
+.activity_div{position:absolute;z-index:1;   top:20px; text-align:left; font-size:100%; min-height:20px; color:#fff; padding:5px;}
+.activity_div:hover{border:dashed 1px #FF0000;resize: both; overflow:auto;}
+.activity_sel{border:dashed 1px #FF0000}
+#activity_mov,#activity_clear{position:absolute; left:50px; top:50px; z-index:2; width:20px; height:20px; line-height:20px; text-align:center; border-radius:50%;font-size:12px;}
+#activity_mov{/*background-color:#FFF;*/ border:solid 1px #090; color:#090; font-size:12px; -webkit-user-select:none;}
+#activity_clear{/*background-color:#FFF;*/ border:solid 1px #FF0000;color:#FF0000; font-size:12px; -webkit-user-select:none;}
+
+/*文字阴影*/
+.txt_shadow{text-shadow:2px 2px 3px #CCCCCC}
+
+/*盒子阴影*/
+.box_shadow{box-shadow:2px 2px 3px #CCCCCC}
+
+/*旋转角度*/
+.obj_rotate_Inverse{-webkit-transform:rotate(-7deg);z-index:2}	/*逆时方向*/
+.obj_rotate_Along{-webkit-transform:rotate(7deg);z-index:2}		/*顺时方向*/
+
+/*循环旋转*/
+.my_rotate{animation: 9.5s linear 0s normal none infinite rotate;-webkit-animation:9.5s linear 0s normal none infinite rotate;}
+@-webkit-keyframes rotate{
+from{-webkit-transform:rotate(0deg)}
+to{-webkit-transform:rotate(360deg)}
+}
+
+/*透明闪烁效果*/
+.wink_ling{-webkit-animation: twinkling 1s infinite ease-in-out}
+@-webkit-keyframes twinkling{
+0%{opacity: 0.5;}
+100%{opacity:1;}
+}
+
+/*缩放大小效果*/
+.scalesize{-webkit-animation: scalesize 0.3s infinite ease-in-out}
+@-webkit-keyframes scalesize{
+from{-webkit-transform:rotate(0deg) scale(1,1);}
+to{-webkit-transform:rotate(10deg) scale(1.1,1.1);}
+}

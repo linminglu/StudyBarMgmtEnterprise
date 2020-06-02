@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>学习吧后台</title>
+    {{template "/erp/collegenew/inc/css_inc.html" .}}
+    <!---->
+    {{template "/erp/collegenew/inc/js_inc.html" .}}
+</head>
+
+<body class="mall0 pall0">
+    <!--总体框架-->
+    {{template "/erp/collegenew/vcomponent/yayigj_modal.html" .}}
+    <div id="college_admin">
+        <!--顶部bar-->
+        <div class="headArea wp100 lh40 h40 bg-252a prela">
+            <div class="logo w120 boxsz pl15 dtbcell" style="vertical-align: middle;">
+                <img src="/static/erp/collegenew/img/operation/logo.png" width="267" style="vertical-align:text-top;">
+            </div>
+            <div class="login_area pabs h40 lh40 r-5 t-0  fc-white">
+                <span><img width="20px" :src="userData.picture" class="alv-f3" style="border-radius:20px; "></span>
+                <span class="fz-15" style="margin-left:5px;margin-right:5px" v-html='userData.name'>
+                </span>
+                <span class="loginout_btn" style="margin-right:5px" @click="loginOut"></span>
+            </div>
+            <!-- <span class="dinblock fc-1180b0" style="font-weight:bold;font-size:18px;">APP学习管理后台</span> -->
+            <!-- <div class="loginUser pabs  r-5 t-3  fc-white"><img src="/static/erp/img/base/user-ico.png" class="alv-f3">admin<i class="down"></i>
+                <div class="userWindow bg-white box-shadow boxsz pall5 fz-14 plr20 vhide">
+                    <p class="mall0"><a class="fc-666" href="/butlerp/account/switchpass">修改密码</a></p>
+                    <p class="mall0 tline" id="logout"><a class="fc-666" href="#">退出登录</a></p>
+                </div>
+            </div> -->
+        </div>
+        <!--顶部bar-->
+
+        <div class="main_frme bg-3c pabs t-40 b-0 l-0 r-0">
+            <table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+                <tr>
+                    <td width="200" valign="top" class="inx_left_nav pd20 bg-2f353b">
+                        <dl class="mall0">
+                            <dt v-if='tabbarArr[0]' style="padding-left: 14px">
+                                <img style="margin-right:10px" :src="tabbarArr[0].icon" width="16px" height="16px"
+                                    align="absmiddle">
+                                <span v-html='tabbarArr[0].name'></span>
+                            </dt>
+                            <dd v-for="item in tabbarArr[0].child" @click='clickItem(item)'>
+                                <div v-html='item.name' :class="item.actived?'bg-146487':''"></div>
+                            </dd>
+
+                            <dt v-if='tabbarArr[1]' style="padding-left: 14px">
+                                <img style="margin-right:10px" :src="tabbarArr[1].icon" width="16px" height="16px"
+                                    align="absmiddle">
+                                <span v-html='tabbarArr[1].name'></span>
+                            </dt>
+                            <dd v-for="item in tabbarArr[1].child" @click='clickItem(item)'>
+                                <div v-html='item.name' :class="item.actived?'bg-146487':''"></div>
+                            </dd>
+
+                            <dt v-if='tabbarArr[2]' style="padding-left: 14px">
+                                <img style="margin-right:10px" :src="tabbarArr[2].icon" width="16px" height="16px"
+                                    align="absmiddle">
+                                <span v-html='tabbarArr[2].name'></span>
+                            </dt>
+                            <div style="padding-left:0" v-if='tabbarArr[2]'>
+                                <dd v-for="item in tabbarArr[2].child" @click='clickItem(item)'>
+                                    <div v-html='item.name' :class="item.actived?'bg-146487':''"></div>
+                                </dd>
+
+                            </div>
+
+                        </dl>
+                    </td>
+                    <td class="bg-3c prela" valign="top">
+                        <!-- b-30 -->
+                        <div class="router_area pabs t-0 b-0 l-0 r-0 ovauto bg-f2 pall10 boxsz">
+                            <keep-alive>
+                                <router-view v-if="$route.meta.keepAlive"></router-view>
+                            </keep-alive>
+                            <router-view v-if="!$route.meta.keepAlive"></router-view>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    {{template "/erp/collegenew/vcomponent/yayigj_dowlist_v.html" .}}
+    {{template "/erp/collegenew/vcomponent/yayigj_date_sel_v.html" .}}
+    <!--所有主播html-->
+    {{template "/erp/collegenew/inc/allanchors.html" .}}
+    <!--分佣设置html-->
+    {{template "/erp/collegenew/inc/classset.html" .}}
+    <!--兑换码html-->
+    {{template "/erp/collegenew/inc/code.html" .}}
+    <!--BANNER管理html-->
+    {{template "/erp/collegenew/inc/banner.html" .}}
+    <!--系列课html-->
+    {{template "/erp/collegenew/inc/seriescourse.html" .}}
+    <!--单次课html-->
+    {{template "/erp/collegenew/inc/singlecourse.html" .}}
+    <!--概述html-->
+    {{template "/erp/collegenew/inc/summary.html" .}}
+    <!--收入html-->
+    {{template "/erp/collegenew/inc/income.html" .}}
+    <!--支出html-->
+    {{template "/erp/collegenew/inc/expenditure.html" .}}
+
+    <!--课程管理-->
+    {{template "/erp/collegenew/inc/course/courselist.html" .}}
+    <!--账号管理-->
+    {{template "/erp/collegenew/inc/accountlist.html" .}}
+
+    <!--编辑课程组件-->
+    {{template "/erp/collegenew/inc/course/edt_series_course.html" .}}
+    {{template "/erp/collegenew/inc/course/edt_signle_course.html" .}}
+    {{template "/erp/collegenew/inc/course/edt_offline_course.html" .}}
+    <!--分佣弹窗html-->
+
+    <!--主播审批组件-->
+    {{template "/erp/collegenew/inc/approval/approvalist.html" .}}
+    {{template "/erp/collegenew/inc/approval/approval_detail.html" .}}
+    <!--运营中心-->
+    {{template "/erp/collegenew/inc/operation/operation.html" .}}
+
+
+    <!-- 限时低价 -->
+    {{template "/erp/collegenew/inc/operation/limitdiscount.html" .}}
+    <!-- 免费课程 -->
+    {{template "/erp/collegenew/inc/operation/freecourse.html" .}}
+    <!-- 精品好课 -->
+    {{template "/erp/collegenew/inc/operation/boutiquecourse.html" .}}
+    <!-- 明星主播 -->
+    {{template "/erp/collegenew/inc/operation/superanchor.html" .}}
+
+    <!-- 学习吧统计 -->
+    {{template "/erp/collegenew/inc/statistics/studybarstatistics.html" .}}
+    <!-- 直播间统计 -->
+    {{template "/erp/collegenew/inc/statistics/onlineroomstatistic.html" .}}
+
+    <!-- 客服设置 -->
+    {{template "/erp/collegenew/inc/consult/consultantsetting.html" .}}
+    {{template "/erp/collegenew/inc/consult/consultcourselist.html" .}}
+
+     <!-- 点播视频 -->
+     {{template "/erp/collegenew/inc/vod_uploadVideo.html" .}}
+
+     <!-- 上传点播视频 -->
+     <script type="text/javascript" src="/static/erp/collegenew/js/vod_uploadVideo.js"></script>
+    <!-- 分页 -->
+    <script type="text/javascript" src="/static/erp/collegenew/js/area.js"></script>
+    <script type="text/javascript" src="/static/public/yayigj_public_pwdcall.js"></script>
+    <script type="text/javascript" src="/static/erp/collegenew/js/public.js"></script>
+    <!-- 上传图片 -->
+    <script type="text/javascript" src="/static/erp/collegenew/js/yayigjPicUploadClass.js"></script>
+    <!--总体框架-->
+    <!--所有主播组件-->
+    <script type="text/javascript" src="/static/erp/collegenew/js/lib/plupload-2.1.2/js/plupload.full.min.js"></script>
+    <script type="text/javascript" src="/static/erp/collegenew/js/allanchors.js"></script>
+    <!--分佣设置组件-->
+    <script type="text/javascript" src="/static/erp/collegenew/js/classset.js"></script>
+    <!-- 兑换码 -->
+    <script type="text/javascript" src="/static/erp/collegenew/js/code.js"></script>
+    <!--BANNER管理组件-->
+    <script type="text/javascript" src="/static/erp/collegenew/js/banner.js"></script>
+    <!--系列课组件-->
+    <script type="text/javascript" src="/static/erp/collegenew/js/seriescourse.js"></script>
+    <!--单次课组件-->
+    <script type="text/javascript" src="/static/erp/collegenew/js/singlecourse.js"></script>
+    <!--概述组件-->
+    <script type="text/javascript" src="/static/erp/collegenew/js/summary.js"></script>
+    <!--收入组件-->
+    <script type="text/javascript" src="/static/erp/collegenew/js/income.js"></script>
+    <!--支出组件-->
+    <script type="text/javascript" src="/static/erp/collegenew/js/expenditure.js"></script>
+
+    <!--课程管理-->
+    <script type="text/javascript" src="/static/erp/collegenew/js/course/courselist.js"></script>
+    <!--账号管理-->
+    <script type="text/javascript" src="/static/erp/collegenew/js/accountlist.js"></script>
+
+    <!--编辑课程组件-->
+    <script type="text/javascript" src="/static/erp/collegenew/js/course/edt_series_course.js"></script>
+    <script type="text/javascript" src="/static/erp/collegenew/js/course/edt_signle_course.js"></script>
+    <script type="text/javascript" src="/static/erp/collegenew/js/course/edt_offline_course.js"></script>
+    <!--主播审批组件-->
+    <script type="text/javascript" src="/static/erp/collegenew/js/approval/approvalist.js"></script>
+    <script type="text/javascript" src="/static/erp/collegenew/js/approval/approval_detail.js"></script>
+
+    <!--运营中心-->
+    <script type="text/javascript" src="/static/erp/collegenew/js/operation/operation.js"></script>
+
+    <!-- 限时低价 -->
+    <script type="text/javascript" src="/static/erp/collegenew/js/operation/limitdiscount.js"></script>
+    <!-- 免费课程 -->
+    <script type="text/javascript" src="/static/erp/collegenew/js/operation/freecourse.js"></script>
+    <!-- 精品好课 -->
+    <script type="text/javascript" src="/static/erp/collegenew/js/operation/boutiquecourse.js"></script>
+    <!-- 明星主播 -->
+    <script type="text/javascript" src="/static/erp/collegenew/js/operation/superanchor.js"></script>
+
+    <!-- 学习吧统计 -->
+    <script type="text/javascript" src="/static/erp/collegenew/js/statistics/studybarstatistics.js"></script>
+    <!-- 直播间统计 -->
+    <script type="text/javascript" src="/static/erp/collegenew/js/statistics/onlineroomstatistic.js"></script>
+
+    <!-- 客服设置 -->
+    <script type="text/javascript" src="/static/erp/collegenew/js/consult/consultantsetting.js"></script>
+    <!-- 客服课程列表 -->
+    <script type="text/javascript" src="/static/erp/collegenew/js/consult/consultcourselist.js"></script>
+    <!--主控逻辑-->
+    <script type="text/javascript" src="/static/erp/collegenew/js/index.js"></script>
+
+
+</body>
+
+</html>

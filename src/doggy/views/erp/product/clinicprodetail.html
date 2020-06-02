@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>查看门诊产品</title>
+		{{template "../public/link/css_inc.html" .}}
+		<link href="/static/erp/css/user.css" rel="stylesheet" />
+		<link href="/static/erp/css/product.css" rel="stylesheet" />	
+        <style>
+            .backPage{top:15px;right:20px;}
+            .search{padding:14px 14px 0 14px;}
+			.search label,.search div{margin-bottom:20px;}
+			.excel{float:left!important;margin-left:14px;}
+            .sendState,.sendType,.sendStage{width: 80px;height: 28px;line-height: 28px;border: solid 1px #00c5b5;float: left!important;text-indent: 10px;}
+            .sendStage{width:180px;}
+			#BeginDate{width: 120px;float:left!important;}
+			#EndDate{width: 120px;float:left!important;}
+			#province{width: 120px;float:left!important;}
+			#city{width: 120px;float:left!important;}
+            .clinicprodetail .l_span{vertical-align: baseline;}
+        </style>
+	</head>
+	<body>
+		{{template "../public/public/header.html" .}}
+			<div class="mainFrme">
+				{{template "../public/public/left.html" .}}
+				<div class="rightFrme">
+					<div class="crumbs"><a href="###">产品管理</a> > <a href="">查看门诊产品</a></div>
+					<div class="cont product_con clinicprodetail">
+                        <input type="hidden" name="htag" value="2"> <!--隐藏的标记，用来判断左边的显影-->
+						<h2>基本信息</h2>
+                        <div>
+                            <li><span class="l_span">门诊编号：</span><span id="proID"></span></li>
+                            <!--<li><span class="l_span">产品销量：</span><span id="proNum"></span>份</li>
+                            <li><span class="l_span">签约诊所：</span><span id="SignedNum"></span>家</li>-->
+                            <li><span class="l_span">门诊名称：</span><span id="clinicname"></span></li>
+                            <li><span class="l_span vt">门诊管家号：</span><span id="prdeID"></span></li>
+                            <li><span class="l_span vt">门诊联系人：</span><span id="proTreat"></span></li>
+                            <li><span class="l_span">门诊电话：</span><span id="proPhone"></span></li>
+                            <li><span class="l_span">门诊星级：</span><span id="proStar"></span></li>
+                            <li><span class="l_span">门诊地址：</span><span id="proAddress"></span></li>
+                            <!--<li><span class="l_span">地图定位：</span><span id="proTreat"></span></li>-->
+                            <li><span class="l_span">营业时间：</span><span id="proTime"></span></li>
+                            <li><span class="l_span">合同期限：</span><span id="proSandE"></span></li>
+             
+                            <li><span class="l_span">*合同产品包：</span>
+                                   <span id="clinicpackage"></span>
+                            <!--<input type="radio" id="release_platform1" name="release_platform" value="100"><label for="release_platform1">年度牙齿健康维护套餐</label>
+                            <input type="radio" id="release_platform2" name="release_platform" value="200"><label for="release_platform2">年度牙齿健康维护套餐</label>
+                            <input type="radio" id="release_platform3" name="release_platform" value="300"><label for="release_platform3">年度牙齿健康维护套餐</label>-->
+                            </li>
+                            <input type="hidden" id="h_img">
+                        </div>
+                        <div class="pro_cz_list">
+                            <h2>门诊接单列表</h2>
+                            <div id="proA" class="pro_list">
+                               
+                            </div>
+                        </div>
+                        <!--<div class="tc">
+                            <input type="button" value="取消" class="cancelBtn" onclick="history.go(-1)"><input type="button" value="确定" onclick="addProBtn(this)">
+                        </div>-->
+					</div>
+				</div>
+			</div>
+		{{template "../public/public/footer.html" .}}
+	</body>
+	{{template "../public/link/js_inc.html" .}}
+    <script src="/static/public/yayigj_dialog_box.js"></script>
+    <script src="/static/public/yayigj_date_sel.js"></script>
+    <script src="/static/public/yayigj_downlist.js"></script>
+	<script type="text/javascript">
+        jQuery.createAniCss();
+        var id=getUrlParam("cid");
+        var signid=getUrlParam("signid");
+        $(function(){
+            $("input,textarea").attr("disabled",true);
+            getdata();
+            $("#proID").text(id);
+        });
+        function getdata(){
+            var parmas={
+                "signid":signid,//签约ID
+                "clinicid":id,//诊所ID
+            }
+            jQuery.loading();
+            $.post("/butlerp/product/getclinicprodetail",parmas,function(json){
+                jQuery.loading_close();
+                    if(json.code==1){
+                       if(json.list){
+                           var v=json.list[0];
+                           var clinicname=v.clinicname,
+                               dentalid=v.dentalid,
+                               contact=v.contact,
+                               bindmobile=v.bindmobile,
+                               starrating=v.starrating,
+                               province=v.province,
+                               city=v.city,
+                               //area=v.area,
+                               address=v.address,
+                               startdate=v.startdate,
+                               enddate=v.enddate,
+                               starthour=v.starthour,
+                               startminute=v.startminute,
+
+                               endhour=v.endhour,
+                               endminute=v.endminute;
+      
+                               $("#clinicname").html(clinicname);
+                               $("#proID").html(id);
+                               $("#prdeID").html(dentalid);
+                               $("#proTreat").html(contact);
+                               $("#proPhone").html(bindmobile);
+                               $("#proStar").html(starrating);
+                               $("#proAddress").html(province+city+address);
+                               $("#proTime").html(starthour+":"+startminute+" 至 "+endhour+":"+endminute);
+                               $("#proSandE").html(startdate+" - "+enddate);
+                               
+                               var usedpackage=v.usedpackage;
+                               if(v.clinicpackage){
+                                   var span="";
+                                   $.each(v.clinicpackage,function(key,val){
+                                    //    {
+                                    //     "packageinfoid":string,
+                                    //     "clinicid":string,
+                                    //     "packagename":string,
+                                    //     "datastatus":int
+                                    //     },
+                                        // if(val.datastatus==1){
+                                        //     span+='<span class="mr20"><input type="checkbox" class="mr10">'+val.packagename+'</span>';
+                                        // }else{
+                                        //     span+='<span class="mr20"><input type="checkbox" class="mr10">'+val.packagename+'</span>';
+                                        // }
+                                        span+='<span class="mr20">'+val.packagename+'</span>';
+                                   });
+                                   $("#clinicpackage").html(span);
+                               }
+                               if(usedpackage){
+                                   var html="<table><thead><tr><td>产品名称</td><td>接单人次</td></tr></thead><tbody>";
+                                   $.each(usedpackage,function(k,v){
+                                       html+="<tr><td>"+v.packagename+"</td><td>"+v.num+"</td></tr>";
+                                   });
+                                   html+"</tbody>";
+                                   $("#proA").html(html);
+                               }
+
+                       }
+                    }else{
+                        jQuery.postFail("fadeInup",json.info);
+                    }
+                }
+            )
+        }
+        
+    </script>
+</html>

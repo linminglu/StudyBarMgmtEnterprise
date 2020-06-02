@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>新增产品</title>
+		{{template "../public/link/css_inc.html" .}}
+		<link href="/static/erp/css/profile.css" rel="stylesheet" />
+        <link href="/static/erp/css/user.css" rel="stylesheet" />
+	</head>
+	<body>
+		{{template "../public/public/header.html" .}}
+			<div class="mainFrme">
+				{{template "../public/public/left.html" .}}
+				<div class="rightFrme">
+                    <div class="crumbs"><a href="###">主页</a> > <a href="###">产品订单中心</a> > <a href="###">产品中心</a> > <a href="###">新增产品</a></div>
+                    <div class="cont">
+                        <div class="orderInfo">
+                            <span class="orderInfoTit">基本信息</span>
+                            <ul>
+                                <li><span class="of_sp1">*产品名称：</span>
+                                    <span class="of_sp2">
+                                        <input type="text" id="proName" placeholder="请输入产品名称">
+                                        <div class="wordNum"><label>0</label>/<label>20</label></div>
+                                    </span>
+                                </li>
+                                <li>
+                                    <span class="of_sp1">*所属类别：</span>
+                                    <span class="of_sp2">
+                                        <div id="belongType" class="slectDiv"></div>
+                                    </span>
+                                </li>
+                                <li>
+                                    <span class="of_sp1">*产品类型：</span>
+                                    <span class="of_sp2">
+                                        <div id="proType" class="slectDiv"></div>
+                                    </span>
+                                </li>
+                                <li>
+                                    <span class="of_sp1">*产品介绍：</span>
+                                    <span class="of_sp2">
+                                        <textarea id="proIntro" class="textImport"></textarea>
+                                        <div class="wordNum textWordNum"><label>0</label>/<label>100</label></div>
+                                    </span>
+                                </li>
+                                <li>
+                                    <span class="of_sp1">*购买须知：</span>
+                                    <span class="of_sp2">
+                                        <textarea id="buyKnow" class="textImport"></textarea>
+                                        <div class="wordNum textWordNum"><label>0</label>/<label>100</label></div>
+                                    </span>
+                                </li>
+                                <li>
+                                    <span class="of_sp1">*有效时间：</span>
+                                    <span class="of_sp2 add_of_sp2">
+                                        <div id="BeginDate" class="calendar"></div>
+                                        <label>至</label>
+                                        <div id="EndDate" class="calendar"></div>
+                                    </span>
+                                </li>
+                                <li>
+                                    <span class="of_sp1">*试用范围：</span>
+                                    <span class="of_sp2"><div id="useArage" class="slectDiv"></div></span>
+                                </li>
+                                <li>
+                                    <span class="of_sp1">*原价：</span>
+                                    <span class="of_sp2">
+                                        <input type="text" id="originPrice" placeholder="请输入原价">
+                                         <div class="wordNum priWordNum">元</div>
+                                    </span>
+                                </li>
+                                <li>
+                                    <span class="of_sp1">*展示图：</span>
+                                    <span class="of_sp2 showpic_of_sp2">
+                                        <img src="/static/erp/img/profile/add_pic.png">
+                                        <label>图片尺寸为240x150px,大小<br>不超过5M(jpg格式)，图片请<br>确保信息清晰可见</label>
+                                    </span>
+                                </li>
+                                <li>
+                                    <span class="of_sp1">*发布平台：</span>
+                                    <span class="of_sp2">
+                                        <input type="checkbox" id="safeDoc">平安医生
+                                        <input type="checkbox" id="seeTeeth">看牙
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="centerBgDiv"></div>
+                        <div class="orderInfo">
+                            <span class="orderInfoTit">产品服务项</span>
+                            <div class="proSeviceTit">
+                                <ul><li class="packgeNum">A套餐</li><li class="packgeNum">B套餐</li></ul>
+                                <input type="button" value="添加套餐" id="addPackge">
+                            </div>
+                            <div class="proSeviceCon">
+                                <ul>
+                                    <li>
+                                        <span class="of_sp1 prosev_ofsp1">套餐名称：</span><span class="of_sp2"><input type="text" id="packgeName" placeholder="请输入套餐名称"></span>
+                                    </li>
+                                    <li>
+                                        <span class="of_sp1 prosev_ofsp1">*处置一：</span><span class="of_sp2"><input type="text" id="packgeName" placeholder="请输入处置名称"></span><span class="of_sp3">*价格：</span><span class="of_sp4"><input type="text" placeholder="请输入价格"></span><span class="of_sp5">元</span><span class="of_sp6"><img src="/static/erp/img/addone.png" width="20" height="20"></span><span class="of_sp7"><img src="/static/erp/img/clearall.png" width="20" height="20"></span>
+                                    </li>
+                                     <li>
+                                        <span class="of_sp1 prosev_ofsp1">*处置二：</span><span class="of_sp2"><input type="text" id="packgeName" placeholder="请输入处置名称"></span><span class="of_sp3">*价格：</span><span class="of_sp4"><input type="text" placeholder="请输入价格"></span><span class="of_sp5">元</span><span class="of_sp6"><img src="/static/erp/img/addone.png" width="20" height="20"></span><span class="of_sp7"><img src="/static/erp/img/clearall.png" width="20" height="20"></span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="packgeSum">
+                                <ul>
+                                    <li>
+                                        <span class="of_sp1">*套餐使用人次：</span>
+                                        <span class="of_sp2">A套餐</span><span class="of_sp3"><input type="text" placeholder="请输入套餐人数"></span>
+                                        <span class="of_sp4">B套餐</span><span class="of_sp5"><input type="text" placeholder="请输入套餐人数"></span>
+                                    </li>
+                                    <li><span class="of_sp1">*套餐总价：</span><span class="of_sp2">880元</span></li>
+                                </ul>
+                            </div>
+                            <div class="add_save">
+                                <input type="button" id="add_cancel" value="取消">
+                                <input type="button" id="add_confim" value="确定">
+                            </div>
+                        </div>
+					</div>
+				</div>
+			</div>
+		{{template "../public/public/footer.html" .}}
+	</body>
+	{{template "../public/link/js_inc.html" .}}
+    <script type="text/javascript">
+		$(function(){
+            $("#BeginDate").yayigj_date_Sel();
+			$("#EndDate").yayigj_date_Sel();
+			
+			//加载页面获取当天日期
+			$("#BeginDate").getCurrday();
+			$("#EndDate").getCurrday();
+
+             $("#belongType").yayigj_downlist({    //所属类别
+                _hiddenID:'clinicid2',
+                _valtype:'text',
+                _data:[
+                    {'key':'洁牙'},
+                    {'key':'换牙'}
+                ]	 
+            });
+             $("#proType").yayigj_downlist({    //产品类型
+                _hiddenID:'clinicid2',
+                _valtype:'text',
+                _data:[
+                    {'key':'增值型-A'},
+                    {'key':'增值型-B'}
+                ]	 
+            });
+            $("#useArage").yayigj_downlist({    //适用范围
+                _hiddenID:'clinicid2',
+                _valtype:'text',
+                _data:[
+                    {'key':'家庭'},
+                    {'key':'学校'}
+                ]	 
+            });
+        })
+	</script>
+</html>

@@ -1,0 +1,160 @@
+/*========================
+  网站的常用文字颜色 zlb 2016-09-26
+*========================*/
+.txt_00c5b5{color:#00c5b5}
+.txt_333{color:#333}
+.txt_666{color:#666}
+.txt_999{color:#999}
+.txt_ccc{color:#ccc}
+
+/*========================
+  网站的常链接颜色 zlb 2016-09-26
+*========================*/
+a{text-decoration:underline; color:#666}
+a:hover{color:#333}
+a:focus{outline:none}
+a:active{color:#000}
+
+/*========================
+  网站的常见背景颜色 zlb 2016-09-26
+*========================*/
+.bgc_00c5b5{background-color:#00c5b5}
+.bgc_F0F0F0{background-color:#f0f0f0}
+
+/*========================
+  网站的常见边框颜色  zlb 2016-09-26
+*========================*/
+.bd{border:solid 1px}
+.bdL{border-left:solid 1px}
+.bdR{border-right:solid 1px}
+.bdT{border-top:solid 1px}
+.bdB{border-bottom:solid 1px}
+.bd_cf0{border-color:#F0F0F0; }
+.bd_ce0{border-color:#e0e0e0}
+.bd_c00c5b5{border-color:#00c5b5}
+
+/*========================
+  网站的常见按钮风格定义 zlb 2016-09-26
+*========================*/
+/*按钮禁用色*/
+input[disabled]{background-color:#f5f5f5;color:#FFF;border:solid 1px #f5f5f5;} 
+input[disabled]:hover{background-color:#f5f5f5;}
+
+/*按钮公共样式*/
+.acb{border-radius: 2px; font-size:14px; height:30px; width:100px;outline:none;cursor:pointer} 	
+
+/*实底填充*/
+.ac_btn_bf{background-color: #00c5b5;color:#fff!important; border:solid 1px #00c5b5; } 
+.ac_btn_bf:hover{background-color:#00d4c3;color:#fff;}/*悬浮变色*/
+.ac_btn_bf:active{background-color:#00bcaa;color:#fff;}/*按下变色*/
+.ac_btn_bf_disable{background-color: #b2ede9!important;color:#fff!important;border:1px solid #b2ede9!important;}/*禁用状态按钮*/
+/*橘黄色按钮实底填充*/
+.ac_btn_bf_y{background-color: #f86d5a;color:#fff!important; border:solid 1px #f86d5a; } 
+.ac_btn_bf_y:hover{background-color:#ff5d40;color:#fff;}/*悬浮变色*/
+.ac_btn_bf_y:active{background-color:#f85748;color:#fff;}/*按下变色*/
+  
+/*空心按钮类*/
+.ac_btn_nf{background-color:#fff;border:solid 1px #e0e0e0; color:#a4a4a4;}
+.ac_btn_nf:hover{color:#888;border-color:#b0b0b0;}/*悬浮变色*/
+.ac_btn_nf:active{ color:#696969;border-color:#a0a0a0;}/*按下变色*/
+/*.ac_btn_nf{background-color:#fff;border:solid 1px #00c5b5; color:#00c5b5;}
+.ac_btn_nf:hover{background-color:#00c5b5; color:#fff;}悬浮变色
+.ac_btn_nf:active{background-color:#00bcaa; color:#fff;}按下变色*/
+.ac_btn_nf_disable{background-color: #f7f7f7;color:#fff;border:1px solid #f7f7f7;}/*禁用状态按钮*/
+
+
+
+/*大小规格*/
+.w120h32{width:120px; height:32px;} /* w=120 h=32*/
+.w100h30{width:100px!important; height:30px!important;}
+.w90h30{width:90px!important; height:30px!important;}
+.w110h35{width:110px; height:35px;}
+.w150h30{width:150px; height:30px;}
+.w106h40{width:106px;height:40px;}
+.w200h40{width:300px;height:40px;}
+.w96h30{width: 96px;height: 30px;}
+.w210h30{width: 210px;height: 30px;}
+.w110h30{width: 110px;height: 30px;}
+.w212h30{width: 212px!important;height: 30px;}
+.w196h30{width: 196px;height: 30px;}
+.w360h40{width: 360px;height: 40px;}
+.w200{width: 200px;}
+.w164{width: 164px;}
+
+
+/*========================
+ 网站表单控件风格定义【不含button,已经在上面定义】 
+ zlb 2016-09-26
+*========================*/
+input[type='password'],input[type='text'],select{height:18px}
+textarea,select,input[type='text'],input[type='password']{padding:5px 5px 5px 5px; 
+border-radius:2px; border:solid 1px #e0e0e0; color:#333; font-size:14px}
+textarea:focus,input[type='text']:focus,select:focus,
+input[type='password']:focus{outline:solid 1px  #00c5b5;}
+
+/*大小规格*/
+.box_w260{width:260px;}
+.box_w200{width:200px;}
+.box_w300{width:288px;}
+.box_w190{width:178px;}
+.box_w196{width: 184px;}
+.box_160{width: 148px;}
+.box_w372_h32{width: 372px;height: 32px!important;}
+.box_w260_h32{width: 260px;height: 32px!important;}
+.box_w248_h18{width: 248px;}
+.box_w233_h18{width: 238px;}
+.box_w138_h18{width: 138px;}
+.box_w288_h18{width: 288px;}
+.box_w268_h18{width: 268px;}
+.box_w280_h32{width: 280px;height: 32px!important;}
+.box_w117_h32{width: 117px;height: 32px!important;}
+.box_w360_h20{width: 360px;}
+.box_w360_h90{width: 360px;height: 88px!important;}
+.box_w240_h20{width: 240px;}
+.box_h18{height: 28px!important;}
+.box_w348{width: 348px;}
+.box_w348_h28{width: 348px;height: 28px!important;}
+.box_w152{width: 152px;}
+
+/*input:-webkit-autofill{background-color:transparent;background-image:none;color:#000;}*/
+
+/*========================
+  带黑色背景弹窗 弹窗部分阴影与圆角
+  2016-9-30 黄凯
+*========================*/
+.pop_sha_rad{box-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);border-radius: 2px;}
+
+
+/*---------------------------------------
+  网站中需要用到背景图片的放到下面区域 
+  小图片背景做成一张大图使用postion方法
+  定位。命名使用带编号形式如:ico1,ico2...;
+*---------------------------------------*/
+.b_lg_bg{ background-image:url(../img/bg1.jpg); background-size:100% 100%}
+
+#loading_info{width: 66px;height: 66px;background-image: url(../img/loading.gif);z-index: 102;position: absolute;left: 50%;margin-left: 67px;top: 50%;margin-top: -33px;position: absolute !important;display: none;}
+#no_data{width: 240px;height: 280px;background-image: url(../img/no-data.png);z-index: 102;position: absolute;left: 50%;margin-left:-120px;top: 50%;margin-top: -140px;position: absolute !important;display: none;}
+/*登入注册输入框和提交按钮样式*/
+/*#form1 input[type=submit],#form1 input[type=button]{
+  width: 283px;
+  height: 40px;
+  color: #fff;
+  background: #00c5b5;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 3px;
+  outline: none;
+  padding-bottom: 6px;
+}
+#form1 input[type=submit]:hover{background-color: #00d4c3;}
+#form1 input[type=button]:hover{background-color: #00d4c3;}
+#form1 input[type=text],#form1 input[type=password]{
+  width: 283px;
+  height: 28px;
+  line-height: 28px;
+  border:1px solid #cecece;
+  color :#999;
+  font-size: 14px;
+  border-radius: 2px;
+  color: #333;
+}*/

@@ -1,0 +1,199 @@
+/*---------------------------------------
+  网站通用样式库，可适当添加,影响全局
+*----------------------------------------*/
+.l{float:left;}
+.r{float:right;}
+.cl{clear:both;}
+.n{font-weight:normal; font-style:normal;}
+.b{font-weight:bold;}
+.i{font-style:italic;}
+.fa{font-family:Arial;}
+.fg{font-family:Georgia;}
+.ft{font-family:Tahoma;}
+.fl{font-family:Lucida Console;}
+.fs{font-family:'宋体';}
+.fw{font-family:'微软雅黑';}
+.tc{text-align:center;}
+.t_r{text-align:right;}
+.tl{text-align:left;}
+.tdl{text-decoration:underline;}
+.tdn,.tdn:hover,a.tdl:hover{text-decoration:none;}
+.g0{color:#000000;}
+.g3{color:#333333;}
+.g6{color:#666666;}
+.g9{color:#999999;}
+.gray_tr {background-color: #fafafa;}
+.red{color:red;}
+.wh{color:white;}
+.f0{font-size:0;}
+.f10{font-size:10px;}
+.f12{font-size:12px;}
+.f13{font-size:13px;}
+.f14{font-size:14px;}
+.f15{font-size:15px;}
+.f16{font-size:16px;}
+.f20{font-size:20px;}
+.f24{font-size:24px;}
+.vm{vertical-align:middle;}
+.vtb{vertical-align:text-bottom;}
+.vt{vertical-align:top;}
+.vn{vertical-align:-2px;}
+.vimg{margin-bottom:-3px;}
+.m0{margin:0;}
+.ml1{margin-left:1px;}
+.ml2{margin-left:2px;}
+.ml5{margin-left:5px;}
+.ml10{margin-left:10px;}
+.ml20{margin-left:20px;}
+.ml34{margin-left:34px;}
+.mr1{margin-right:1;}
+.mr2{margin-right:2px;}
+.mr5{margin-right:5px;}
+.mr10{margin-right:10px;}
+.mr20{margin-right:20px;}
+.mt1{margin-top:1;}
+.mt2{margin-top:2px;}
+.mt5{margin-top:5px;}
+.mt10{margin-top:10px;}
+.mt20{margin-top:20px;}
+.mb1{margin-bottom:1px;}
+.mb2{margin-bottom:2px;}
+.mb5{margin-bottom:5px;}
+.mb10{margin-bottom:10px;}
+.mb20{margin-bottom:20px;}
+.ml-1{margin-left:-1px;}
+.mt-1{margin-top:-1px;}
+.pl1{padding-left:1px;}
+.pt1{padding-top:1px;}
+.pr1{padding-right:1px;}
+.pb1{padding-bottom:1px;}
+.p2{padding:2px;}
+.pl2{padding-left:2px;}
+.pt2{padding-top:2px;}
+.pr2{padding-right:2px;}
+.pb2{padding-bottom:2px;}
+.pl5{padding-left:5px;}
+.p5{padding:5px;}
+.pt5{padding-top:5px;}
+.pr5{padding-right:5px;}
+.pb5{padding-bottom:5px;}
+.p10{padding:10px;}
+.pl10{padding-left:10px;}
+.pt10{padding-top:10px;}
+.pr10{padding-right:10px;}
+.pb10{padding-bottom:10px;}
+.p20{padding:20px;}
+.pl20{padding-left:20px;}
+.pt20{padding-top:20px;}
+.pr20{padding-right:20px;}
+.pb20{padding-bottom:20px;}
+.pb15{padding-bottom:15px;}
+.rel{position:relative;}
+.abs{position:absolute;}
+.dn{display:none;}
+.db{display:block;}
+.dib{-moz-inline-stack:inline-block; display:inline-block;}
+.di{display:inline;}
+.ovh{overflow:hidden;}
+.ovs{overflow:scroll;}
+.vh{visibility:hidden;}
+.vv{visibility:visible;}
+.lh14{line-height:14px;}
+.lh16{line-height:16px;}
+.lh18{line-height:18px;}
+.lh20{line-height:20px;}
+.lh22{line-height:22px;}
+.lh24{line-height:24px;}
+.w330{width: 328px}
+.fix{*zoom:1;}
+.fix:after,
+.fix:before{display:block; content:"clear"; height:0; clear:both; overflow:hidden; visibility:hidden;}
+.z{_zoom:1;}
+/*一般弹出框样式*/
+.ale_box{ border:1px solid #ccc; border-radius:5px; box-shadow:2px 2px 2px #999; background-color:#fff;}
+/*--------------------------------------------------------------
+  c_表示通用样式库前前缀
+/*--------------------------------------------------------------*/
+.c_w{width:100%}
+.c_h{height:100%}
+.c_bg_nrept{ background-repeat:no-repeat} /*背景不重复*/
+.c_bg_allsize{background-size:100%} /*背景填充*/
+.c_d_box{display:-webkit-box;display:box; }/*盒子模型*/
+.c_hv_c{-webkit-box-orient:horizontal; -webkit-box-pack:center; -webkit-box-align:center;box-orient:horizontal; box-pack:center; box-align:center;}/*水平垂直居中,搭配盒子模型使用*/
+.c_d_inblk{display:inline-block}
+.c_b_r50{border-radius:50%}
+.c_wh20{ width:20px; height:20px}
+.c_wh30{ width:30px; height:30px}
+.c_wh40{ width:40px; height:40px}
+/*--------------------------------------------------------------*/				  
+
+:-ms-input-placeholder{color: #b4b4b4;}
+::-webkit-input-placeholder{color: #b4b4b4;}
+::-moz-placeholder{color: #b4b4b4;}
+:-moz-placeholder{color: #b4b4b4;}
+::-o-input-placeholder{color: #b4b4b4;}
+
+/*载入动画*/
+/*#loading_info{width:66px; height:66px; background-image:url(../img/loading.gif); z-index:100; position:absolute;left:50%;margin-left: -33px;top:50%;margin-top: -33px;position: fixed !important; display: none;}*/
+
+
+
+/*黄凯  2016-11-23*/
+/*头部公共样式*/
+.clinic_head{height: 50px;padding: 0 20px;}
+.clinic_head ul li{float: left;font-size: 14px;color: #333;}
+.nav_btn img{padding-right: 14px;/*border-right: 1px solid #e6e6e6;*/margin-top: 16px;cursor: pointer;}
+.clinic_icon img{margin: 9px 10px 0 14px;}
+.clinic_word{margin-top: 15px;cursor: pointer;}
+.clinic_word img{margin-left: 6px;}
+.clinic_head ul .li_default_pho{float: right;margin-top: 12px;cursor: pointer;margin-right: 2px;margin-left: 20px;}
+.clinic_head ul .enter_mes{float: right;margin-top: 15px;cursor: pointer;padding-right: 20px;/*border-right: 1px solid #e0e0e0;*/}
+.clinic_head ul .enter_rel_clinic{float: right;margin-top: 15px;cursor: pointer;margin-right: 30px;}
+
+/*关联诊所*/
+.rel_clinic{font-size: 14px;color: #696969;padding: 10px;position: absolute;right: 116px;top: 50px;
+box-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);background: #fff;z-index: 10;display: none;border-radius: 2px;}
+
+/*消息提醒*/
+.system_mes{font-size: 14px;color: #696969;padding: 10px;position: absolute;right: 65px;top: 50px;
+box-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);background: #fff;z-index: 100;display: none;border-radius: 2px;}
+.head_mes_tip{width: 260px;height: 80px;background: #fff;box-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);position: absolute;
+right: 0;top: 47px;border-radius: 2px;z-index: 100;display: none;}
+.head_mes_tip2{height: 150px!important;}
+.head_mes_tip_t{height: 50px;line-height: 50px;}
+.head_mes_tip_t2{height:120px!important; text-align: center;}
+.head_mes_tip_t2 img{margin-top: 22px;}
+.head_mes_tip_t2 p{font-size: 14px;color: #696969;line-height: 0;}
+.head_mes_tip_t .sp_1{font-size: 14px;color: #333;}
+.head_mes_tip_t .sp_2{font-size: 12px;color: #696969;}
+.head_mes_tip_b{border-top: 1px solid #f0f0f0;text-align: center;line-height: 26px;}
+.head_mes_tip_b a{font-size: 12px; color: #333;}
+.head_mes_tip_b:hover{background: #f7f9fa;}
+
+
+/*门诊管理下拉框*/
+.clinic_select_hea{width:364px;height: 206px;padding: 22px 24px 0px 24px;background: #fff;
+box-shadow: 0 0 12px #888888;position: absolute;top: 45px;left: 92px;z-index: 120;display: none;}
+/*.clinic_select_hea ul{overflow: hidden;margin-right: -20px;}*/
+.clinic_select_hea ul li{float: left;margin-right: 26px;cursor: pointer;}
+.clinic_select_hea ul li a{display: block;position: relative; text-decoration: none;}
+.clinic_select_hea ul li span{display: block;width: 52px;height: 52px;}
+.clinic_select_hea ul li p{font-size: 12px;color: #333;margin-bottom: 26px;margin-top: 12px;}
+
+/*诊所名字下拉菜单*/
+.clinic_name_select{overflow: hidden;position: absolute;top: 80px;left: 20px;
+box-shadow: 0 0 12px #888888;z-index: 100;display: none;}
+.clinic_name_select p{height: 40px;width: 200px;font-size: 14px;color: #333;
+line-height: 40px;background: #fff;cursor: pointer;}
+.clinic_name_select p:hover{background: #fafafa;}
+.fir_p{border:1px solid #fafafa;}
+.clinic_name_select span{margin-left: 20px;}
+.clinic_name_select span img{width: 5px;margin-left: 25px;}
+
+/*个人信息头像下拉菜单*/
+.per_pho_select{position: absolute;top: 45px;right: 20px;overflow: hidden;width: 120px;
+box-shadow: 0 0 12px #888888;z-index: 200;display: none;background: #fff;}
+.per_pho_select p{height: 40px;line-height: 40px;padding-left: 24px;border-bottom: 1px solid #fafafa;}
+.per_pho_select p:hover{background: #fafafa!important;}
+.per_pho_select p a{font-size: 14px;color: #333;display: block;}
+.per_pho_select p span{color: #00c5b5;}

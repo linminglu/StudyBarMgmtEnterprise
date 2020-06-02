@@ -1,0 +1,251 @@
+/*=======================
+	整个分站表单控件样式  zlb 2016-11-20
+	线色，背景色在此控制，考虑后期风格切换
+/*=======================*/
+/*---------------------------------------
+  该节前面请不要再添加新样式
+  插件调用区 跟input[text]保持同步 2017/1/19
+  该代码只供插件读取，不做class引用,详情请联系zlb
+  下面代码必须为本文件的最顶端，如果在此前加代码将会引起插件样式问题
+ ----------------------------------------*/ 
+ .plugin_input{border-color:#e0e0e0; color:#b4b4b4}
+ .plugin_input:focus{ border-color:#47a6a0;color:#333}
+ .plugin_input:hover{border-color:#47a6a0;color:#333}  /*#55c6bf*/ 
+ .plugin_btn{background-color:#47a6a0;color:#fff;}
+ .plugin_btn:hover{background-color:#55c6bf;border-color:#55c6bf}
+ .plugin_btn:active{background-color:#328b83;border-color:#328b83}  
+ .plugin_btn:disabled{background-color:#c7e4e2;border-color:#c7e4e2}
+ .plugin_cancelbtn{background-color:#fff7e0;border-color:#f1cf66;color:#333}
+ .plugin_cancelbtn:hover{background-color:#ffefe0;border-color:#ea8800;color:#333}
+ .plugin_cancelbtn:active{background-color:#F52D00;border-color:#F52D00;color:#fff}  
+ .plugin_cancelbtn:disabled{background-color:#fffdf6;border-color:#fbf1d1;color:#fbf1d9}
+ .plugin_okbtn{background-color:#47a6a0;border-color:#47a6a0;color:#fff}
+ .plugin_okbtn:hover{background-color:#55c6bf;border-color:#55c6bf;color:#fff}
+ .plugin_okbtn:active{background-color:#328b83;border-color:#328b83 ;color:#fff}  
+ .plugin_okbtn:disabled{background-color:#c7e4e2;border-color:#c7e4e2;color:#fff}
+ .plugin_hfbgcolr{background-color:#F2FFFE}
+/*---------------------------------------
+  总控设置
+ ----------------------------------------*/ 
+input,button,textarea{font-family:微软雅黑; outline:none;} 
+/*---------------------------------------
+ 文本框
+ ----------------------------------------*/ 
+::-webkit-input-placeholder { color: #b0b0b0; } 
+:-moz-placeholder { color: #b0b0b0; } 
+::-moz-placeholder { color: #b0b0b0; } 
+:-ms-input-placeholder { color: #b0b0b0; } 
+textarea,
+input[type='text'],
+input[type='date'],
+input[type='datetime'],
+input[type='datetime-local'],
+input[type='month'],
+input[type='week'],
+input[type='time'],
+input[type='email'],
+input[type='number'],
+input[type='password'],
+input[type='tel'],
+input[type='url']{ box-sizing:border-box; padding:5px 5px 5px 10px; border:solid 1px #e0e0e0; color:#333;border-radius:2px;outline:none}
+textarea:focus,
+input[type='text']:focus,
+input[type='date']:focus,
+input[type='datetime']:focus,
+input[type='datetime-local']:focus,
+input[type='month']:focus,
+input[type='week']:focus,
+input[type='time']:focus,
+input[type='email']:focus,
+input[type='number']:focus,
+input[type='password']:focus,
+input[type='tel']:focus,
+input[type='url']:focus{border:solid 1px #146487 !important;background-color:#F2FFFE} /*55c6bf*/
+textarea:hover,
+input[type='text']:hover,
+input[type='date']:hover,
+input[type='datetime']:hover,
+input[type='datetime-local']:hover,
+input[type='month']:hover,
+input[type='week']:hover,
+input[type='time']:hover,
+input[type='email']:hover,
+input[type='number']:hover,
+input[type='password']:hover,
+input[type='tel']:hover,
+input[type='url']:hover{border:solid 1px #146487 !important; background-color:#F2FFFE}
+/*47a6a0*/
+input[type='text'][disabled='disabled'],
+textarea[disabled='disabled'],
+input[disabled='disabled'][type='number'],
+input[type='text'][disabled='disabled']:hover,
+input[type='number'][disabled='disabled']:hover,
+textarea[disabled='disabled']:hover{background-color: #f5f5f5!important;border:solid 1px #e0e0e0!important;cursor: default;}
+textarea{outline: none;resize: none;}
+/*20170207 lq*/
+
+/*---------------------------------------
+ 复选按钮
+ ----------------------------------------*/ 
+input[type="checkbox"] {-webkit-appearance: none;background:url(/static/public/ico/chk.png) no-repeat;height: 18px;vertical-align: middle;width: 14px;background-position: 0px 2px;	}
+input[type="checkbox"]:focus,
+input[type="checkbox"]:hover {background-position:-23px 2px;; outline: none;cursor:pointer}
+input[type="checkbox"]:checked {background-position: -46px 2px;}
+input[type="checkbox"]:checked:hover {background-position: -69px 2px;}
+input[type="checkbox"][disabled] {background-position: 0px 2px;}
+input[type="checkbox"][disabled]:checked {background-position: -92px 2px;}	
+/*---------------------------------------
+ 单选按钮
+ ----------------------------------------*/ 
+input[type="radio"] {-webkit-appearance: none;background: #fff url(/static/public/ico/radio.png) no-repeat;height: 20px;vertical-align: middle;width: 20px;background-position: 0px 2px;	}
+input[type="radio"]:focus,
+input[type="radio"]:hover {background-position: -25px 2px; outline: none;cursor:pointer}
+input[type="radio"]:checked {background-position: -50px 2px;}
+input[type="radio"]:checked:hover {background-position: -75px 2px;}
+input[type="radio"][disabled] {background-position: 0px 2px;}
+input[type="radio"][disabled]:checked {background-position: -100px 2px;}	
+/*---------------------------------------
+ 按钮
+  .plugin_okbtn{background-color:#47a6a0;border-color:#47a6a0;color:#fff}
+ .plugin_okbtn:hover{background-color:#55c6bf;border-color:#55c6bf;color:#fff}
+ .plugin_okbtn:active{background-color:#328b83;border-color:#328b83;color:#fff}  
+ .plugin_okbtn:disabled{background-color:#c7e4e2;border-color:#c7e4e2;color:#fff}
+ ----------------------------------------*/ 
+ input[type='button'],button{border-radius:2px !important; min-width:80px;}
+.fillBtn{height:30px; line-height: 30px; background-color:#47a6a0  !important;color:#fff;border:solid 1px #47a6a0  !important; cursor:pointer}   /*实色类似确定按钮*/
+	.fillBtn:hover{background-color:#55c6bf  !important;border:solid 1px #55c6bf  !important;color:#fff;} 
+	.fillBtn:active{background-color:#328b83  !important;border:solid 1px #328b83  !important} 
+	.fillBtn:disabled{background-color:#c7e4e2  !important;border:solid 1px #c7e4e2  !important} 
+	
+.frmeBtn{height:30px; background-color:#fff;color:#a4a4a4;border:solid 1px #e0e0e0; cursor:pointer}	 /*白底线框按钮*/
+	.frmeBtn:hover{color:#888;border:solid 1px #b0b0b0;}
+	.frmeBtn:active{color:#696969;border:solid 1px #a0a0a0;}
+	.frmeBtn:disabled{color:#ccc;border:solid 1px #f7f7f7;}
+.fillredBtn{height:30px; background-color:#f86d5a; color:#fff;border:solid 1px #f86d5a; cursor:pointer}	/*红颜色实色按钮 比如删除*/
+	.fillredBtn:hover{background-color:#ff5d40;border:solid 1px #ff5d40;color:#fff;}
+	.fillredBtn:active{background-color:#f85748;border:solid 1px #f85748;}
+	.fillredBtn:disabled{background-color:#dce5f9;border:solid 1px #dce5f9;}
+.frmeRedBtn{height:30px; background-color:#fff; color:#f86d5a;border:solid 1px #47a6a0; cursor:pointer}									/*红颜色空框按钮 比如删除*/
+	.frmeRedBtn:hover{color:#fff;border:solid 1px #ff5d40;}
+	.frmeRedBtn:active{color:#fff;border:solid 1px #328b83;}
+	.frmeRedBtn:disabled{color:#888;border:solid 1px #dce5f9;}		
+.frmehlBtn{height:30px; background-color:#fff; color:#47a6a0;border:solid 1px #47a6a0; cursor:pointer}	/*zlb 17/08/08*/								
+	.frmehlBtn:hover{color:#fff;border:solid 1px #55c6bf;background-color:#55c6bf}
+	.frmehlBtn:active{color:#fff;border:solid 1px #328b83;background-color:#328b83}
+	.frmehlBtn:disabled{color:#888;border:solid 1px #c7e4e2;background-color:#c7e4e2}		
+.blueBtn{height:30px; background-color:#47a6a0; color:#fff;border:solid 1px #47a6a0; cursor:pointer}	/*蓝色空框按钮 比如查询*/	
+	.blueBtn:hover{background-color:#55c6bf; color:#fff;border:solid 1px #55c6bf}
+	.blueBtn:active{background-color:#328b83; color:#fff;border:solid 1px #328b83}
+	.blueBtn:disabled{background-color:#c7e4e2; color:#fff;border:solid 1px #c7e4e2}
+.cancelBtn{height:30px; line-height: 30px;background-color:#fff7e0;color:#333;border:solid 1px #f1cf66; cursor:pointer}   /*取消按钮*/
+	.cancelBtn:hover{background-color:#ffefe0;border:solid 1px #ea8800; color:#333} 
+	.cancelBtn:active{background-color:#F52D00;border:solid 1px #F52D00;color:#fff;} 
+	.cancelBtn:disabled{background-color:#fffdf6;border:solid 1px #fbf1d1;color:#333} 
+.searchBtn{height:30px; line-height: 30px;background-color:#fff7e0;color:#333;border:solid 1px #f1cf66; cursor:pointer}   /*查询按钮*/
+	.searchBtn:hover{background-color:#ffefe0;border:solid 1px #ea8800; color:#333} 
+	.searchBtn:active{background-color:#F52D00;border:solid 1px #F52D00;color:#fff;} 
+	.searchBtn:disabled{background-color:#fffdf6;border:solid 1px #fbf1d1;color:#333} 
+/*选择按钮*/
+.frmefillBtn{height:30px; background-color:#fff;color:#B4B4B4;border:solid 1px #e0e0e0; cursor:pointer}	 /*白底线框按钮*/
+.frmefillBtn:hover{color:#FFFFFF;border:solid 1px #00c5b5;background:#00c5b5;}
+.frmefillBtn:active{color:#FFFFFF;border:solid 1px #00bcaa;background-color: #00bcaa;}
+.frmefillBtn:disabled{color:#e7f5f4;border:solid 1px #e7f5f4;background-color: #FFFFFF;}
+/*上传按钮*/
+.uploadBtn {position:relative;display: inline-block;background: #FFF;border: 1px solid #47a6a0;border-radius: 2px;font-size:14px;overflow: hidden;color: #47a6a0;text-decoration: none;line-height: 30px; height:30px;min-width:80px;text-align:center; cursor:pointer}
+.uploadBtn input {position: absolute;right: 0px;top: 0px;height: 100%;left: 0px;width: 100%; height:100%; font-size:20px; opacity:0}
+.uploadBtn:hover {background: #55c6bf;border-color: #55c6bf;color: #FFF;text-decoration: none;}
+.uploadBtn:active{background: #328b83;}
+.uploadBtn[data-disabled='1'],.uploadBtn[data-disabled='1']:hover{background: #fff; color:#a3d2cf;border: 1px solid #a3d2cf;}
+/*分页*/
+.pageinfo{height:30px; display:inline-block; position:absolute !important;right:0px; top:7px;}	
+
+
+/*表格样式区*/
+/*表格统一样式风格*/
+.unite_table{ background-color:#fff;border-collapse: collapse;}
+.unite_table thead{height:35px; background-color:#fafafa; box-sizing:border-box}
+.unite_table th{height:33px; color:#696969;font-size:14px; padding:0 10px; font-weight:normal; text-align:left; box-sizing:border-box;}
+.unite_table td{height:30px;color:#333; font-size:13px;padding:0 10px;box-sizing:border-box;}
+.unite_table tbody tr:nth-child(even){background:#fafafa;}
+.unite_table tbody tr:hover{ background-color:#e4f9f7}
+.unite_table tbody tr.table_nodata:hover{ background-color:#fff}
+.unite_table tbody tr.table_nodata:active{ background-color:#fff}
+.unite_table tbody tr.table_nodata.active{ background-color:#fff}
+.unite_table tbody tr:active{ background-color:#ccf3f0}
+.unite_table tbody tr.active{ background-color:#ccf3f0}/*liqin 2017610*/
+
+.unite_table tbody tr td:last-child,.unite_table tr th:last-child{text-align:right; padding-right:10px;}
+.unite_table tbody tr.last{background-color: #ededed;font-weight: bold;}
+.unite_table tbody tr.last:hover{ background-color:#ededed}
+.unite_table .t_r{text-align: right;}/*liqin*/
+.unite_table.noTopborder th{border-top: none};/*去掉表格最上方的线*/
+
+.noRBorder .unite_table th,.noRBorder .unite_table tbody td{border-right: none;}
+.noLBorder .unite_table th,.noLBorder .unite_table tbody td{border-left: none;}
+
+/*表格中要用到的颜色在下面添加*/
+.unite_table  .red{color:#F00} /*红色*/
+.unite_table  .s55c6bf{color:#55c6bf} /*祖母绿*/
+.unite_table  .s47a6a0{ color:#47a6a0} /*已经开始*/
+.unite_table  .s69{ color:#696969} /*未开始*/
+.unite_table  .ccc{ color:#cccccc} /*已失效*/
+.unite_table  .s8aa8ec{color:#8aa8ec} /*编辑色*/
+.unite_table  .f86d5a{color: #f86d5a;}/*待跟进*/
+
+
+/*liqin 页面中特殊文字和边框，*/
+.mark{color: #47a6a0}
+a.mark:hover{color: #55c6bf}
+.main_color{color: #55c6bf !important;}
+.main_bColor{border-color: #55c6bf}
+.main_hover:hover,.main_css{color: #47a6a0}
+.main_bg,.main_bg_after:after,.main_bg_before:before{background-color: #47a6a0}
+.cur{background: #ffffff;box-sizing: border-box !important;border-left-style: solid;border-left-width: 2px;} /*横向第二列导航当前选中项*/
+
+/*营销重置颜色样式 */
+.choose, .top_tab a:hover {
+     border-bottom: 2px solid #55c6bf; 
+     color: #55c6bf; 
+}
+.fillBtn.disable,a.fillBtn.disable,a.fillBtn.disable:hover{background-color:#c7e4e2 !important;border:solid 1px #c7e4e2 !important;cursor: default;color: #fff}
+._checkbox {-webkit-appearance: none;background:url(/static/public/ico/chk.png) no-repeat;height: 16px;vertical-align: middle;width: 16px;background-position: 0px 2px; border: none}
+._checkbox:hover {background-position:-23px 2px;; outline: none;cursor:pointer}
+._checkbox.checked{background-position: -46px 2px;}
+._checkbox.checked:after{content: '';}
+
+#massTitle .active, #massTitle li:hover{color: #55c6bf; border-bottom: 2px solid #55c6bf}
+.act10{ border-bottom: 3px solid #06bfb7; color: #55c6bf;}
+div._date.disable,div._date.disable:hover{background-color: #f5f5f5;border:solid 1px #e0e0e0;cursor: default;}
+._select:hover{border-color: #47a6a0!important;background-color: #F2FFFE;}
+._select:hover.disable,._select.disable{border-color: #e0e0e0!important;background-color: #f5f5f5 !important;}
+._select.disable:after{background:url(/static/public/img/selecticon.png) no-repeat; }
+._select.active ul {border-color: #47a6a0;}
+._select ul li:hover {background-color: #47a6a0;color: #fff;}
+a.disable,a.disable:hover{color:#ccc;cursor: default;}
+.unite_table a.disable,.unite_table a.disable:hover{color:#ccc;cursor: default;}
+
+.Pager span.current{background-color: #47a6a0;color: #fff;border: 1px solid #47a6a0;}
+.Pager span.current:hover{background-color:#55c6bf;border: 1px solid #55c6bf;}
+.Pager a:hover, .Pager .current.prev:hover, .Pager .current.next:hover{border: 1px solid #47a6a0;background-color:#fff;}
+.Pager a, .Pager .current.prev, .Pager .current.next{background-color: #fff;color: #696969; border: 1px solid #e0e0e0}
+/*营销end*/
+
+/*验证start*/
+.ipt_valid{position:relative; background-color:#FFF;}
+.ipt_valid:after{content:url(/static/public/ico/waring_ico.png);width:16px; height:16px;position:absolute; bottom:-24px; z-index:10;right:-20px}
+.ipt_valid:before{content:attr(data-vtext); width:100%; white-space:nowrap; position:absolute;  bottom:-25px; color:#ff0; z-index:10; color:#f00; font-size:13px ;right:-100%}
+.ipt_valid_red{border-color:#F00 !important}
+/*验证end*/
+/*必填提示文字*/
+.tiprequire{color:#ff8000 !important}
+.tiprequire:after{content:'*';color:#ff8000}
+
+/*头部切换页面-fml*/
+.headPagerNav{ width: auto; height: 30px; overflow: hidden; float: left; margin: 10px 0 0 25px;}
+.headPagerNav a{ width: auto; height: 28px; overflow: hidden; float: left; line-height: 28px; font-size: 14px; text-align: center; border: 1px solid #E0E0E0; display: inline-block; color: #696969; padding: 0 16px; cursor: pointer;}
+.headPagerNav a:first-child{ border-radius: 2px 0 0 2px; border-right: none;}
+.headPagerNav a:last-child{ border-radius: 0 2px 2px 0; border-left: none;}
+.headPagerNav a.act{ background: #47a6a0; color: #fff; border-color: #47a6a0;}
+.headPagerNav a.act:hover { background: #55c6bf; color: #fff; border-color: #55c6bf;}
+
+

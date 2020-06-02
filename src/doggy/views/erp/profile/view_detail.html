@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>查看详情</title>
+		{{template "../public/link/css_inc.html" .}}
+		<link href="/static/erp/css/profile.css" rel="stylesheet" />
+        <link href="/static/erp/css/user.css" rel="stylesheet" />
+	</head>
+	<body>
+		{{template "../public/public/header.html" .}}
+			<div class="mainFrme">
+				{{template "../public/public/left.html" .}}
+				<div class="rightFrme">
+                    <div class="crumbs"><a href="###">主页</a> > <a href="###">产品订单中心</a> > <a href="###">订单中心</a> > <a href="###">查看详情</a></div>
+                    <div class="cont">
+                        <div class="orderInfo">
+                            <span class="orderInfoTit">订单信息</span>
+                            <ul>
+                                <li><span class="of_sp1">*订单编号：</span><span class="of_sp2">289514457454</span></li>
+                                <li><span class="of_sp1">*订单状态：</span><span class="of_sp2">未使用</span></li>
+                                <!--退款详情页面增加以下两个选项-->
+                                <li><span class="of_sp1">*申请退款时间：</span><span class="of_sp2">2016.12.14   12:25:36</span></li>
+                                <li><span class="of_sp1">*确认退款时间：</span><span class="of_sp2">2016.12.14   12:25:36</span></li>
+                                <!--退款详情页面增加以上两个选项-->
+                                <li><span class="of_sp1">*下单时间：</span><span class="of_sp2">2016.12.14   12:25:36</span></li>
+                                <li><span class="of_sp1">*下单用户：</span><span class="of_sp2">13800138000</span></li>
+                                <li><span class="of_sp1">*购买产品：</span><span class="of_sp2">年度牙齿健康高级维护套餐</span></li>
+                                <li><span class="of_sp1">*购买平台：</span><span class="of_sp2">平安好医生</span></li>
+                                <li><span class="of_sp1">*购买数量：</span><span class="of_sp2">1</span></li>
+                                <li><span class="of_sp1">*支付方式：</span><span class="of_sp2">微信支付</span></li>
+                                <li><span class="of_sp1">*金额：</span><span class="of_sp2">1888元</span></li>
+                                <li><span class="of_sp1">*支付流水号：</span><span class="of_sp2">47854 44554 14544 54445</span></li>
+                                <li><span class="of_sp1">*用验证码：</span><span class="of_sp2">A：95347  95421  95412   B：95347  95421</span></li>
+                            </ul>
+                        </div>
+                        <div class="centerBgDiv"></div>
+                        <div class="orderInfo">
+                            <span class="orderInfoTit">就诊信息</span>
+                             <ul>
+                                <li><span class="of_sp1">*接单门诊：</span><span class="of_sp2">南山桃园美牙</span></li>
+                                <li><span class="of_sp1">*门诊管家号：</span><span class="of_sp2">888888</span></li>
+                                <li><span class="of_sp1">*就诊人信息：</span>
+                                    <span class="of_sp2">
+                                        <table width="760" border="1" class="vd_table">
+                                            <thead align="center">
+                                                <tr>
+                                                    <th>就诊名额</th>
+                                                    <th>就诊人名称</th>
+                                                    <th>就诊人电话</th>
+                                                    <th>套餐</th>
+                                                    <th>验证码</th>
+                                                    <th>就诊时间</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody align="center">
+                                                <tr>
+                                                    <td>就诊人一</td>
+                                                    <td>张三</td>
+                                                    <td>13800138000</td>
+                                                    <td>A</td>
+                                                    <td>957232211</td>
+                                                    <td>2016.12.14  12:12:15</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>就诊人二</td>
+                                                    <td>李四</td>
+                                                    <td>13800138000</td>
+                                                    <td>A</td>
+                                                    <td>957232211</td>
+                                                    <td>2016.12.14  12:12:15</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>就诊人二</td>
+                                                    <td>李四</td>
+                                                    <td>13800138000</td>
+                                                    <td>A</td>
+                                                    <td>957232211</td>
+                                                    <td>2016.12.14  12:12:15</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>就诊人二</td>
+                                                    <td>李四</td>
+                                                    <td>13800138000</td>
+                                                    <td>A</td>
+                                                    <td>957232211</td>
+                                                    <td>2016.12.14  12:12:15</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+				</div>
+			</div>
+		{{template "../public/public/footer.html" .}}
+        <!--确认退款弹窗-->
+        <div class="reFoundWin"></div>
+        <div class="reFoundCon">
+            <div class="rfc_tit">请核实已退款后操作<img src="/static/erp/img/close.png"></div>
+            <ul>
+                <li><span class="rfc_sp1">申请退款订单号：</span><span class="rfc_sp2">98563321410441</span></li>
+                <li><span class="rfc_sp1">申请退款时间：</span><span class="rfc_sp2">2016.12.15  12:25:30</span></li>
+                <li><span class="rfc_sp1">订单金额：</span><span class="rfc_sp2">¥ 688</span></li>
+                <li><span class="rfc_sp1">退款金额：</span><span class="rfc_sp2">¥ 688</span></li>
+            </ul>
+            <input type="button" value="确认退款" id="refoundConfim">
+        </div>
+	</body>
+	{{template "../public/link/js_inc.html" .}}
+    <script type="text/javascript">
+		$(function(){
+			$("#BeginDate").yayigj_date_Sel();
+			$("#EndDate").yayigj_date_Sel();
+			
+			//加载页面获取当天日期
+			$("#BeginDate").getCurrday();
+			$("#EndDate").getCurrday();
+
+            $("#buyPro").yayigj_downlist({    //购买产品
+                _hiddenID:'clinicid2',
+                _valtype:'text',
+                _data:[
+                    {'key':'年度牙齿健康套餐'},
+                ]	 
+            });
+
+            $("#orderState").yayigj_downlist({    //订单状态
+                _hiddenID:'clinicid2',
+                _valtype:'text',
+                _data:[
+                    {'key':'已使用'},
+                    {'key':'待使用'},
+                    {'key':'申请退款'},
+                    {'key':'申请未通过'},
+                    {'key':'退款中'},
+                    {'key':'已退款'}
+                ]	 
+            });
+
+            $("#buyStage").yayigj_downlist({    //购买平台
+                _hiddenID:'clinicid2',
+                _valtype:'text',
+                _data:[
+                    {'key':'平安医生'},
+                ]	 
+            });
+
+            $("#payWay").yayigj_downlist({    //支付方式
+                _hiddenID:'clinicid2',
+                _valtype:'text',
+                _data:[
+                    {'key':'微信支付'},
+                ]	 
+            });
+		});
+	</script>
+</html>

@@ -1,0 +1,518 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>权限管理</title>
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE10" />
+<meta http-equiv="X-UA-Compatible" content="edge" />
+{{template "/account/Public/css_inc.html" .}}
+<link rel="stylesheet" type="text/css" href="/static/account/css/chain_strom.css">
+<link rel="stylesheet" type="text/css" href="/static/public/css/publicFrame.css">   
+ <!--<link rel="stylesheet"  type="text/css" href="/static/account/css/oneStrom.css" /> -->
+</head>
+
+<body>
+	<div class="headArea"><!--头部-->
+            	{{template "/Public/public/r_header.html" .}}
+        </div>        
+        <div class="outerFrame"><!--外层主框架s-->        	
+            <div class="mainFrme"><!--主框架s-->
+            	<div class="leftFrme" id="leftFrme">
+                	{{template "/account/Public/clinic_left_nav.html" .}}
+                </div>
+                <div class="rightFrme"><!--右框架s-->
+                			<div class="main_right">
+                                    <div class="perm_box"> 
+                                      <!-- 头部标题和右边保存按钮-->
+                                      <div class="right_nav">
+                                             <div class="clinic_tit">
+                                                 <img src="/static/account/img/per_mana_ico.png">
+                                                 <span>权限管理</span>
+                                             </div>
+                                             <div class="estblish_one" id="save_per">保存</div>
+                                      </div>
+                                      <!---->
+                                  <div class="perm_content fix"> 
+                                    <!--左边的职位列表选项-->
+                                    <div class="perm_l">
+                                        <input type="hidden" name="clinicList" value="0" />
+                                        <input type="hidden" name="uidType" value="0" />
+                                        <input type="hidden" name="clinicname" id="clinicname" />
+                                        <!--判断是否为连锁-->
+								                        <input type="hidden" name="isChain" id="isChain" value="" /> 
+                                        <!--<select name="clinicList"></select>-->
+                                        <div id="clinicList"></div>
+                              			    <input type="hidden" id="clinicid" value="1" />
+                                      <div class="f_head">
+                                        职位列表<i></i>
+                                      </div>
+                                      <div id="clinic_lists"></div>
+                                      
+                                    </div>
+                                    <!-- 右边的具体选项-->
+                                    <div class="perm_r">
+                                      <div class="r_title">
+                                        <li class="actTitle">PC版</li>
+                                        <li>移动版</li>
+                                        <li class="chain_per">Web版</li>
+                                      </div>
+                                      <div class="f_privileges_cont">
+                                          <div class="PC_box" id="PC">
+                                            <section>
+                                        <div class="sec_icon sec_icon_show"></div>
+                                        <span class="ch_box"><input class="input_check" type="checkbox" id="check_s1" /><label for="check_s1"></label></span> 
+                                        <span class="vm">数据安全</span>
+                                        <ul>
+                                         <!--<li><span class="ch_box"><input class="input_check" type="checkbox" value="2101" id="check_2101" /><label for="check_2101"></label></span><span class="vm">修改诊所云端信息</span><span class="txt_999">(是否可以新增连锁店)</span></li>-->
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="2102" id="check_2102" /><label for="check_2102"></label></span><span class="vm">云端数据备份</span><span class="txt_999">(备份数据到云端，重装电脑后可从云端恢复数据)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="2103" id="check_2103" /><label for="check_2103"></label></span><span class="vm">导出数据</span><span class="txt_999">(能否Excel导出统计数据)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="2104" id="check_2104" /><label for="check_2104"></label></span><span class="vm">电话盒录音</span><span class="txt_999">(能否设置电话盒录音)</span></li>
+                                        </ul>
+                                       </section>
+                                       <section>
+                                        <div class="sec_icon sec_icon_show"></div>
+                                        <span class="ch_box"><input class="input_check" type="checkbox" id="check_s2" /><label for="check_s2"></label></span> 
+                                        <span class="vm">系统配置</span>
+                                        <ul>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="3001" id="check_3001" /><label for="check_3001"></label></span><span class="vm">设置诊所信息</span><span class="txt_999">(设置诊所名、地址联系人、电话)</span></li>
+                                         <!--<li><span class="ch_box"><input class="input_check" type="checkbox" value="3003" id="check_3003" /><label for="check_3003"></label></span><span class="vm">设置诊所员工</span><span class="txt_999">(维护员工的基本信息，通过职位设置员工权限)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="3002" id="check_3002" /><label for="check_3002"></label></span><span class="vm">设置用户权限</span><span class="txt_999">(设置不同职位的人能使用系统的哪些模块，查看哪些数据)</span></li>-->
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1506" id="check_1506" /><label for="check_1506"></label></span><span class="vm">维护病历模板</span><span class="txt_999">(维护诊所常用病历模板和短语，这样写病历时就能从模板直接引用)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1005" id="check_1005" /><label for="check_1005"></label></span><span class="vm">设置病历号规则</span><span class="txt_999">(设置病历号生成规则，如001，150101，150001等)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="3005" id="check_3005" /><label for="check_3005"></label></span><span class="vm">设置预约界面</span><span class="txt_999">(设置上下班时间、预约最小时间等)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="3006" id="check_3006" /><label for="check_3006"></label></span><span class="vm">设置系统数据项</span><span class="txt_999">(维护职业、患者分类、会员类型等)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="3007" id="check_3007" /><label for="check_3007"></label></span><span class="vm">设置短信模板</span><span class="txt_999">(新增修改删除短信模板)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="3008" id="check_3008" /><label for="check_3008"></label></span><span class="vm">考勤管理</span><span class="txt_999">(记录员工每月考勤)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="3009" id="check_3009" /><label for="check_3009"></label></span><span class="vm">支出管理</span><span class="txt_999">(查看并管理每日常支出)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="3010" id="check_3010" /><label for="check_3010"></label></span><span class="vm">消毒中心</span><span class="txt_999">(查看并记录每日消毒记录)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="3011" id="check_3011" /><label for="check_3011"></label></span><span class="vm">危险废物处理</span><span class="txt_999">(查看并记录危险废物处理记录)</span></li>
+                                        </ul>
+                                       </section>
+                                       <section>
+                                        <div class="sec_icon sec_icon_show"></div>
+                                        <span class="ch_box"><input class="input_check" type="checkbox" id="check_s3" /><label for="check_s3"></label></span> 
+                                        <span class="vm">网上商城</span>
+                                        <ul>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="3012" id="check_3012" /><label for="check_3012"></label></span><span class="vm">商城下单</span><span class="txt_999">(上网上商城购买耗材)</span></li>
+                                        </ul>
+                                       </section>
+                                       <section>
+                                        <div class="sec_icon sec_icon_show"></div>
+                                        <span class="ch_box"><input class="input_check" type="checkbox" id="check_s4" /><label for="check_s4"></label></span> 
+                                        <span class="vm">患者操作</span>
+                                        <ul>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1003" id="check_1003" /><label for="check_1003"></label></span><span class="vm">浏览所有患者</span><span class="txt_999">(能否查看所有患者，否则只能看自己接诊过的患者)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1002" id="check_1002" /><label for="check_1002"></label></span><span class="vm">诊疗患者</span><span class="txt_999">(能否有独诊疗患者，完成消费，如检查、治疗、洗牙等)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1006" id="check_1006" /><label for="check_1006"></label></span><span class="vm">患者登记信息</span><span class="txt_999">(登记患者基本信息)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1007" id="check_1007" /><label for="check_1007"></label></span><span class="vm">修改患者信息</span><span class="txt_999">(修改自己接诊过的患者的基本信息)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1001" id="check_1001" /><label for="check_1001"></label></span><span class="vm">删除患者信息</span><span class="txt_999">(删除自己接诊过的患者的基本信息)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1008" id="check_1008" /><label for="check_1008"></label></span><span class="vm">修改所有患者</span><span class="txt_999">(能修改所有患者的基本信息，否则只能修改自己接诊过的患者)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1009" id="check_1009" /><label for="check_1009"></label></span><span class="vm">删除所有患者</span><span class="txt_999">(能删除所有患者的基本信息，否则只能删除自己接诊过的患者)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1004" id="check_1004" /><label for="check_1004"></label></span><span class="vm">修改初诊信息</span><span class="txt_999">(修改初诊医生与初诊日期)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1010" id="check_1010" /><label for="check_1010"></label></span><span class="vm">发送短信</span><span class="txt_999">(发送短信给患者)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1011" id="check_1011" /><label for="check_1011"></label></span><span class="vm">恢复已删除患者</span><span class="txt_999">(在删除的数据中找出并还原误删的患者！)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1012" id="check_1012" /><label for="check_1012"></label></span><span class="vm">查看患者电话号码</span><span class="txt_999">(在所有患者信息显示界面是否能够看到患者的电话号码)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1013" id="check_1013" /><label for="check_1013"></label></span><span class="vm">患者分诊</span><span class="txt_999">(在今日工作中给‘待分诊’患者指定医生)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1014" id="check_1014" /><label for="check_1014"></label></span><span class="vm">患者改派医生</span><span class="txt_999">(治疗中的患者改派给其他医生)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1016" id="check_1016" /><label for="check_1016"></label></span><span class="vm">问诊交流</span><span class="txt_999">(可查看问诊交流界面和发送消息与患者进行沟通)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1017" id="check_1017" /><label for="check_1017"></label></span><span class="vm">删除挂号信息</span><span class="txt_999">(删除待分诊患者的挂号信息)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1019" id="check_1019" /><label for="check_1019"></label></span><span class="vm">录入病历号</span><span class="txt_999">(可以手工录入患者病历号)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1020" id="check_1020" /><label for="check_1020"></label></span><span class="vm">标记治疗完成</span><span class="txt_999">(可以在今日工作将治疗中患者标记为已完成)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1021" id="check_1021" /><label for="check_1021"></label></span><span class="vm">设置隐私患者</span><span class="txt_999">(可以在患者信息查询中将患者设置为隐私患者)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1022" id="check_1022" /><label for="check_1022"></label></span><span class="vm">查看隐私患者</span><span class="txt_999">(可以查看隐私患者的信息)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1023" id="check_1023" /><label for="check_1023"></label></span><span class="vm">接待患者咨询</span><span class="txt_999">(可以接待患者进行相关咨询服务)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1024" id="check_1024" /><label for="check_1024"></label></span><span class="vm">直接复诊</span><span class="txt_999">(医生可无需通过分诊直接对患者进行复诊，关闭则不可)</span></li>
+                                        </ul>
+                                       </section>
+                                       <section>
+                                        <div class="sec_icon sec_icon_show"></div>
+                                        <span class="ch_box"><input class="input_check" type="checkbox" id="check_s5" /><label for="check_s5"></label></span> 
+                                        <span class="vm">处置操作</span>
+                                        <ul>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1101" id="check_1101" /><label for="check_1101"></label></span><span class="vm">浏览处置</span><span class="txt_999">(查看患者所有处置)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1102" id="check_1102" /><label for="check_1102"></label></span><span class="vm">录入处置</span><span class="txt_999">(新增、修改检查医生是自己的处置)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1103" id="check_1103" /><label for="check_1103"></label></span><span class="vm">编辑所有处置</span><span class="txt_999">(能修改、删除所有处置，否则只能修改、删除检查医生是自己的处置)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1104" id="check_1104" /><label for="check_1104"></label></span><span class="vm">填写咨询</span><span class="txt_999">(能在处置界面点出咨询情况界面进行填写)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1105" id="check_1105" /><label for="check_1105"></label></span><span class="vm">修改处置价格</span><span class="txt_999">(能在处置界面对处置价格进行修改)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1106" id="check_1106" /><label for="check_1106"></label></span><span class="vm">录入治疗计划</span><span class="txt_999">(新增、修改接诊医生是自己的计划)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1107" id="check_1107" /><label for="check_1107"></label></span><span class="vm">编辑所有计划</span><span class="txt_999">(能修改、删除所有治疗)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1108" id="check_1108" /><label for="check_1108"></label></span><span class="vm">浏览治疗计划</span><span class="txt_999">(查看患者所有治疗计划)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1109" id="check_1109" /><label for="check_1109"></label></span><span class="vm">编辑其他处置项</span><span class="txt_999">(能编辑自己为主诊医生的其他医生处置项)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1110" id="check_1110" /><label for="check_1110"></label></span><span class="vm">删除咨询录音</span><span class="txt_999">(能删除通话产生的咨询录音)</span></li>
+                                        </ul>
+                                       </section>
+                                       <section>
+                                        <div class="sec_icon sec_icon_show"></div>
+                                        <span class="ch_box"><input class="input_check" type="checkbox" id="check_s6" /><label for="check_s6"></label></span> 
+                                        <span class="vm">收费操作</span>
+                                        <ul>
+                                        <li><span class="ch_box"><input class="input_check" type="checkbox" value="868686" id="minInput" /><label for="minInput"></label></span><span class="vm">设置最低折扣度</span>&nbsp;&nbsp;<input type="text" id="minDiscount" maxlength="3" disabled>&nbsp;&nbsp;%</li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1401" id="check_1401" /><label for="check_1401"></label></span><span class="vm">查看收费信息</span><span class="txt_999">(查看患者的所有收费信息)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="3004" id="check_3004" /><label for="check_3004"></label></span><span class="vm">设置收费项目</span><span class="txt_999">(新增、修改、删除处置(收费项目))</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1402" id="check_1402" /><label for="check_1402"></label></span><span class="vm">收费打单</span><span class="txt_999">(结帐收费，并打印收费单)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1403" id="check_1403" /><label for="check_1403"></label></span><span class="vm">划价时折扣账单</span><span class="txt_999">(划价时填写本单折扣金额)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1406" id="check_1406" /><label for="check_1406"></label></span><span class="vm">会员升级</span><span class="txt_999">(查询患者一段时间内的消费额，修改患者会员等级)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1407" id="check_1407" /><label for="check_1407"></label></span><span class="vm">预交款充值</span><span class="txt_999">(录入患者预交款)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1408" id="check_1408" /><label for="check_1408"></label></span><span class="vm">修改结帐的收费单</span><span class="txt_999">(修改账单金额或退款)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1409" id="check_1409" /><label for="check_1409"></label></span><span class="vm">作废收费单</span><span class="txt_999">(是否具有作废已收费的权限)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1410" id="check_1410" /><label for="check_1410"></label></span><span class="vm">撤销账单</span><span class="txt_999">(是否具有撤销账单的权限)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1411" id="check_1411" /><label for="check_1411"></label></span><span class="vm">新增零售</span><span class="txt_999">(是否具有零售商品的权限)</span></li>
+                                         
+                                        </ul>
+                                       </section>
+                                       <section>
+                                        <div class="sec_icon sec_icon_show"></div>
+                                        <span class="ch_box"><input class="input_check" type="checkbox" id="check_s7" /><label for="check_s7"></label></span> 
+                                        <span class="vm">影像操作</span>
+                                        <ul>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1601" id="check_1601" /><label for="check_1601"></label></span><span class="vm">浏览影像</span><span class="txt_999">(查看患者影像)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1602" id="check_1602" /><label for="check_1602"></label></span><span class="vm">插入影像</span><span class="txt_999">(从内窥镜、硬盘、U盘等导入患者影像到牙医管家)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1603" id="check_1603" /><label for="check_1603"></label></span><span class="vm">导出影像</span><span class="txt_999">(从牙医管家导出影像到硬盘、U盘等)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1604" id="check_1604" /><label for="check_1604"></label></span><span class="vm">删除影像</span><span class="txt_999">(删除患者影像)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1605" id="check_1605" /><label for="check_1605"></label></span><span class="vm">拍片模块</span><span class="txt_999">(可以查看拍片模块)</span></li>
+                                        </ul>
+                                       </section>
+                                       <section>
+                                        <div class="sec_icon sec_icon_show"></div>
+                                        <span class="ch_box"><input class="input_check" type="checkbox" id="check_s8" /><label for="check_s8"></label></span> 
+                                        <span class="vm">病历操作</span>
+                                        <ul>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1501" id="check_1501" /><label for="check_1501"></label></span><span class="vm">浏览病例</span><span class="txt_999">(查看患者所有病历)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1502" id="check_1502" /><label for="check_1502"></label></span><span class="vm">录入病例</span><span class="txt_999">(新增、修改检查医生是自己的病历)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1503" id="check_1503" /><label for="check_1503"></label></span><span class="vm">修改所有病历</span><span class="txt_999">(能修改所有病历，否则只能修改检查医生是自己的病历)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1504" id="check_1504" /><label for="check_1504"></label></span><span class="vm">删除病例</span><span class="txt_999">(删除检查医生是自己的病历)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1505" id="check_1505" /><label for="check_1505"></label></span><span class="vm">删除所有病历</span><span class="txt_999">(能删除所有病历，否则只能删除检查医生是自己的病历)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="10408" id="check_10408" /><label for="check_10408"></label></span><span class="vm">打印病历</span><span class="txt_999">(能打印病历)</span></li>
+                                        </ul>
+                                       </section>
+                                       <section>
+                                        <div class="sec_icon sec_icon_show"></div>
+                                        <span class="ch_box"><input class="input_check" type="checkbox" id="check_s9" /><label for="check_s9"></label></span> 
+                                        <span class="vm">外加工操作</span>
+                                        <ul>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="2201" id="check_2201" /><label for="check_2201"></label></span><span class="vm">浏览外加工</span><span class="txt_999">(查看患者所有外加工数据)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="2202" id="check_2202" /><label for="check_2202"></label></span><span class="vm">录入外加工</span><span class="txt_999">(录入患者外加工数据)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="2203" id="check_2203" /><label for="check_2203"></label></span><span class="vm">删除外加工</span><span class="txt_999">(删除患者的外加工数据)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="2204" id="check_2204" /><label for="check_2204"></label></span><span class="vm">修改所有外加工</span><span class="txt_999">(能修改所有外加工，否则只能修改检查医生是自己的外加工单)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="2205" id="check_2205" /><label for="check_2205"></label></span><span class="vm">删除所有外加工</span><span class="txt_999">(能删除所有外加工，否则只能删除检查医生是自己的外加工单)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="2206" id="check_2206" /><label for="check_2206"></label></span><span class="vm">设置外加工工厂价</span><span class="txt_999">(查看、修改外加工材料的工厂价格)</span></li>
+                                        </ul>
+                                       </section>
+                                       <section>
+                                        <div class="sec_icon sec_icon_show"></div>
+                                        <span class="ch_box"><input class="input_check" type="checkbox" id="check_s10" /><label for="check_s10"></label></span> 
+                                        <span class="vm">回访操作</span>
+                                        <ul>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1701" id="check_1701" /><label for="check_1701"></label></span><span class="vm">浏览回访</span><span class="txt_999">(查看患者的所有回访信息)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1702" id="check_1702" /><label for="check_1702"></label></span><span class="vm">录入回访</span><span class="txt_999">(录入患者的回访信息)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1703" id="check_1703" /><label for="check_1703"></label></span><span class="vm">删除回访</span><span class="txt_999">(删除患者的回访信息)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1704" id="check_1704" /><label for="check_1704"></label></span><span class="vm">修改其他医生的回访</span><span class="txt_999">(能修改所有患者的回访信息，否则只能修改回访属于自己的患者)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1705" id="check_1705" /><label for="check_1705"></label></span><span class="vm">删除其他医生的回访</span><span class="txt_999">(能删除所有患者的回访信息，否则只能删除回访属于自己的患者)</span></li>
+                                        </ul>
+                                       </section>
+                                       <section>
+                                        <div class="sec_icon sec_icon_show"></div>
+                                        <span class="ch_box"><input class="input_check" type="checkbox" id="check_s11" /><label for="check_s11"></label></span> 
+                                        <span class="vm">预约操作</span>
+                                        <ul>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1201" id="check_1201" /><label for="check_1201"></label></span><span class="vm">接受预约</span><span class="txt_999">(能接收患者的预约，及查看自己的预约)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1204" id="check_1204" /><label for="check_1204"></label></span><span class="vm">查看所有预约</span><span class="txt_999">(能查看所有人的预约，否则只能查看自己的预约)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1205" id="check_1205" /><label for="check_1205"></label></span><span class="vm">修改所有预约</span><span class="txt_999">(能修改别人的预约数据，否则只能修改自己的预约)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1202" id="check_1202" /><label for="check_1202"></label></span><span class="vm">维护预约事项</span><span class="txt_999">(新增、修改、删除预约事项)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1203" id="check_1203" /><label for="check_1203"></label></span><span class="vm">设置医生排班</span><span class="txt_999">(设置医生某天上班还是不上班，预约时避免预到医生的休息日)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1206" id="check_1206" /><label for="check_1206"></label></span><span class="vm">取消预约</span><span class="txt_999">(取消自己的预约)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1207" id="check_1207" /><label for="check_1207"></label></span><span class="vm">取消其他医生的预约</span><span class="txt_999">(能取消所有医生的预约，否则只能取消属于自己的预约)</span></li>
+                                        </ul>
+                                       </section>
+                                       <section>
+                                        <div class="sec_icon sec_icon_show"></div>
+                                        <span class="ch_box"><input class="input_check" type="checkbox" id="check_s12" /><label for="check_s12"></label></span> 
+                                        <span class="vm">统计操作</span>
+                                        <ul>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="2001" id="check_2001" /><label for="check_2001"></label></span><span class="vm">统计诊所运营</span><span class="txt_999">(查看诊所运营整体运营情况)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="2003" id="check_2003" /><label for="check_2003"></label></span><span class="vm">查询患者预交款</span><span class="txt_999">(查询患者预交款)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="2004" id="check_2004" /><label for="check_2004"></label></span><span class="vm">统计外加工</span><span class="txt_999">(统计外加工情况)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="2005" id="check_2005" /><label for="check_2005"></label></span><span class="vm">收费对帐</span><span class="txt_999">(查看诊所对帐，录入诊所支出)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="2007" id="check_2007" /><label for="check_2007"></label></span><span class="vm">员工绩效</span><span class="txt_999">(查看员工绩效)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="2008" id="check_2008" /><label for="check_2008"></label></span><span class="vm">查看所有收银</span><span class="txt_999">(流水单查询查看所有收费员明细)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="2009" id="check_2009" /><label for="check_2009"></label></span><span class="vm">消费明细</span><span class="txt_999">(查看消费明细)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="2010" id="check_2010" /><label for="check_2010"></label></span><span class="vm">患者查询</span><span class="txt_999">(患者信息查询)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="2011" id="check_2011" /><label for="check_2011"></label></span><span class="vm">就诊流水</span><span class="txt_999">(查看就诊流水)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="2012" id="check_2012" /><label for="check_2012"></label></span><span class="vm">客服查询</span><span class="txt_999">(查看客服查询)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="2013" id="check_2013" /><label for="check_2013"></label></span><span class="vm">收银查询</span><span class="txt_999">(查看收银查询)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="2014" id="check_2014" /><label for="check_2014"></label></span><span class="vm">日结查询</span><span class="txt_999">(查看日结统计)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="2015" id="check_2015" /><label for="check_2015"></label></span><span class="vm">医生大类</span><span class="txt_999">(查看医生大类统计)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="2016" id="check_2016" /><label for="check_2016"></label></span><span class="vm">医生工作</span><span class="txt_999">(查看医生工作统计)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="2017" id="check_2017" /><label for="check_2017"></label></span><span class="vm">客服统计</span><span class="txt_999">(能查看所有受理人的电网统计，否则只能看自己的)</span></li>
+                                        </ul>
+                                       </section>
+                                       <section>
+                                        <div class="sec_icon sec_icon_show"></div>
+                                        <span class="ch_box"><input class="input_check" type="checkbox" id="check_s13" /><label for="check_s13"></label></span> 
+                                        <span class="vm">库存操作</span>
+                                        <ul>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1803" id="check_1803" /><label for="check_1803"></label></span><span class="vm">统计库存</span><span class="txt_999">(查询当前库存中药品等消耗品数量)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1801" id="check_1801" /><label for="check_1801"></label></span><span class="vm">浏览入库单</span><span class="txt_999">(查看入库单所有数据)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1807" id="check_1807" /><label for="check_1807"></label></span><span class="vm">录入入库单</span><span class="txt_999">(录入入库单数据)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1808" id="check_1808" /><label for="check_1808"></label></span><span class="vm">删除入库单</span><span class="txt_999">(删除自己的入库单数据)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1805" id="check_1805" /><label for="check_1805"></label></span><span class="vm">审核入库单</span><span class="txt_999">(入库审核权限)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1823" id="check_1823" /><label for="check_1823"></label></span><span class="vm">审核盘盈单</span><span class="txt_999">(盘盈审核权限)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1821" id="check_1821" /><label for="check_1821"></label></span><span class="vm">取消入库单</span><span class="txt_999">(取消入库单的审核)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1809" id="check_1809" /><label for="check_1809"></label></span><span class="vm">修改所有入库单</span><span class="txt_999">(能修改所有人的入库单数据)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1810" id="check_1810" /><label for="check_1810"></label></span><span class="vm">删除所有入库单</span><span class="txt_999">(能删除所有人的入库单数据)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1802" id="check_1802" /><label for="check_1802"></label></span><span class="vm">浏览出库单</span><span class="txt_999">(查看出库单所有数据)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1811" id="check_1811" /><label for="check_1811"></label></span><span class="vm">录入出库单</span><span class="txt_999">(录入出库单数据)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1812" id="check_1812" /><label for="check_1812"></label></span><span class="vm">删除出库单</span><span class="txt_999">(删除自己的出库单数据)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1806" id="check_1806" /><label for="check_1806"></label></span><span class="vm">审核出库单</span><span class="txt_999">(出库审核权限)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1824" id="check_1824" /><label for="check_1824"></label></span><span class="vm">审核盘亏单</span><span class="txt_999">(盘亏审核权限)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1822" id="check_1822" /><label for="check_1822"></label></span><span class="vm">取消出库单</span><span class="txt_999">(取消出库单的审核)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1813" id="check_1813" /><label for="check_1813"></label></span><span class="vm">修改所有出库单</span><span class="txt_999">(能修改所有人的出库单数据)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1814" id="check_1814" /><label for="check_1814"></label></span><span class="vm">删除所有出库单</span><span class="txt_999">(能删除所有人的出库单数据)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1815" id="check_1815" /><label for="check_1815"></label></span><span class="vm">库房初盘</span><span class="txt_999">(药品等消耗品的初盘录入)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1816" id="check_1816" /><label for="check_1816"></label></span><span class="vm">录入初盘单</span><span class="txt_999">(录入初盘单数据)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1817" id="check_1817" /><label for="check_1817"></label></span><span class="vm">删除初盘单</span><span class="txt_999">(删除自己的初盘单数据)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1820" id="check_1820" /><label for="check_1820"></label></span><span class="vm">生成盘盈盘亏</span><span class="txt_999">(生成盘盈盘亏权限)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1818" id="check_1818" /><label for="check_1818"></label></span><span class="vm">修改所有初盘单</span><span class="txt_999">(能修改所有人的初盘单数据)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1819" id="check_1819" /><label for="check_1819"></label></span><span class="vm">删除所有初盘单</span><span class="txt_999">(能删除所有人的初盘单数据)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="1804" id="check_1804" /><label for="check_1804"></label></span><span class="vm">设置库房基础项</span><span class="txt_999">(包括供应商、物品资料、物品分类等)</span></li>
+                                        </ul>
+                                       </section>
+                                       <section>
+                                        <div class="sec_icon sec_icon_show"></div>
+                                        <span class="ch_box"><input class="input_check" type="checkbox" id="check_s14" /><label for="check_s14"></label></span> 
+                                        <span class="vm">客服中心</span>
+                                        <ul>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="3013" id="check_3013" /><label for="check_3013"></label></span><span class="vm">客服中心模块</span><span class="txt_999">(可使用客服中心模块)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="3015" id="check_3015" /><label for="check_3015"></label></span><span class="vm">取消电网咨询</span><span class="txt_999">(可取消录入电网咨询)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="3016" id="check_3016" /><label for="check_3016"></label></span><span class="vm">取消电网预约</span><span class="txt_999">(可取消录入客服预约)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="3017" id="check_3017" /><label for="check_3017"></label></span><span class="vm">电网咨询模块</span><span class="txt_999">(客服中心可看到电网咨询模块)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="3018" id="check_3018" /><label for="check_3018"></label></span><span class="vm">修改电网受理人</span><span class="txt_999">(设定电网受理人)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="3019" id="check_3019" /><label for="check_3019"></label></span><span class="vm">查看所有电网信息</span><span class="txt_999">(能看到所有受理人的电网信息，否则自能看自己的)</span></li>
+                                        </ul>
+                                       </section>
+                                       <section>
+                                        <div class="sec_icon sec_icon_show"></div>
+                                        <span class="ch_box"><input class="input_check" type="checkbox" id="check_s15" /><label for="check_s15"></label></span> 
+                                        <span class="vm">首页</span>
+                                        <ul>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="3021" id="check_3021" /><label for="check_3021"></label></span><span class="vm">今日工作</span><span class="txt_999">(是否查看今日工作)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="3022" id="check_3022" /><label for="check_3022"></label></span><span class="vm">今日待回访</span><span class="txt_999">(是否查看今日待回访)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="3023" id="check_3023" /><label for="check_3023"></label></span><span class="vm">今日到件</span><span class="txt_999">(是否查看今日到件)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="3024" id="check_3024" /><label for="check_3024"></label></span><span class="vm">今日结算</span><span class="txt_999">(是否查看今日结算)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="3025" id="check_3025" /><label for="check_3025"></label></span><span class="vm">查看所有今日结算</span><span class="txt_999">(是否查看所有今日结算)</span></li>
+                                         <li><span class="ch_box"><input class="input_check" type="checkbox" value="3026" id="check_3026" /><label for="check_3026"></label></span><span class="vm">今日生日</span><span class="txt_999">(是否查看今日生日)</span></li>
+                                        </ul>
+                                       </section>
+                                      </div>
+                                              <div class="Mobile_box" id="Mobile">
+
+
+                                                  <section>
+                                                    <div class="sec_icon sec_icon_show"></div>
+                                                    <span class="ch_box"><input class="input_check" type="checkbox" id="check_s16" /><label for="check_s16"></label></span> 
+                                                    <span class="vm">患者</span>
+                                                    <ul>
+                                                     <li><span class="ch_box"><input class="input_check" type="checkbox" value="10001" id="check_10001" /><label for="check_10001"></label></span><span class="vm">接诊患者</span><span class="txt_999">(能否独立接诊患者，完成消费)</span></li>
+                                                     <li><span class="ch_box"><input class="input_check" type="checkbox" value="10002" id="check_10002" /><label for="check_10002"></label></span><span class="vm">添加患者</span><span class="txt_999">(可添加自己的患者)</span></li>
+                                                     <li><span class="ch_box"><input class="input_check" type="checkbox" value="10003" id="check_10003" /><label for="check_10003"></label></span><span class="vm">修改患者资料</span><span class="txt_999">(能修改自己的患者资料)</span></li>
+                                                     <li><span class="ch_box"><input class="input_check" type="checkbox" value="10004" id="check_10004" /><label for="check_10004"></label></span><span class="vm">删除患者</span><span class="txt_999">(能删除自己的患者)</span></li>
+                                                     <li><span class="ch_box"><input class="input_check" type="checkbox" value="10005" id="check_10005" /><label for="check_10005"></label></span><span class="vm">添加同事的患者</span><span class="txt_999">(能给其他人添加患者)</span></li>
+                                                     <li><span class="ch_box"><input class="input_check" type="checkbox" value="10006" id="check_10006" /><label for="check_10006"></label></span><span class="vm">查看所有患者</span><span class="txt_999">(能查看所有的患者)</span></li>
+                                                     <li><span class="ch_box"><input class="input_check" type="checkbox" value="10007" id="check_10007" /><label for="check_10007"></label></span><span class="vm">修改所有患者资料</span><span class="txt_999">(能修改所有人的患者信息)</span></li>
+                                                     <li><span class="ch_box"><input class="input_check" type="checkbox" value="10008" id="check_10008" /><label for="check_10008"></label></span><span class="vm">删除所有患者</span><span class="txt_999">(能删除所有的患者)</span></li>
+                                                     <li><span class="ch_box"><input class="input_check" type="checkbox" value="10009" id="check_10009" /><label for="check_10009"></label></span><span class="vm">查看患者电话号码/发送短信</span><span class="txt_999">(能查看患者的电话号码，并且发送短信)</span></li>
+                                                    </ul>
+                                                </section>
+                                                <section>
+                                                    <div class="sec_icon sec_icon_show"></div>
+                                                    <span class="ch_box"><input class="input_check" type="checkbox" id="check_s17" /><label for="check_s17"></label></span> 
+                                                    <span class="vm">处置</span>
+                                                    <ul>
+                                                     <li><span class="ch_box"><input class="input_check" type="checkbox" value="10101" id="check_10101" /><label for="check_10101"></label></span><span class="vm">查看患者处置</span><span class="txt_999">(能查看患者的所有处置)</span></li>
+                                                     <li><span class="ch_box"><input class="input_check" type="checkbox" value="10102" id="check_10102" /><label for="check_10102"></label></span><span class="vm">添加并编辑处置</span><span class="txt_999">(新增修改检查医生是自己的处置)</span></li>
+                                                     <li><span class="ch_box"><input class="input_check" type="checkbox" value="10103" id="check_10103" /><label for="check_10103"></label></span><span class="vm">编辑所有处置</span><span class="txt_999">(能修改所有处置)</span></li>
+                                                     <li><span class="ch_box"><input class="input_check" type="checkbox" value="10104" id="check_10104" /><label for="check_10104"></label></span><span class="vm">设置处方模板</span><span class="txt_999">(能编辑处方模板)</span></li>
+                                                    </ul>
+                                                  </section>
+                                                  <section>
+                                                    <div class="sec_icon sec_icon_show"></div>
+                                                    <span class="ch_box"><input class="input_check" type="checkbox" id="check_s18" /><label for="check_s18"></label></span> 
+                                                    <span class="vm">影像</span>
+                                                    <ul>
+                                                     <li><span class="ch_box"><input class="input_check" type="checkbox" value="10301" id="check_10301" /><label for="check_10301"></label></span><span class="vm">查看影像</span><span class="txt_999">(能查看患者的所有影像)</span></li>
+                                                     <li><span class="ch_box"><input class="input_check" type="checkbox" value="10302" id="check_10302" /><label for="check_10302"></label></span><span class="vm">添加并编辑影像</span><span class="txt_999">(能新增和编辑影像)</span></li>
+                                                     <li><span class="ch_box"><input class="input_check" type="checkbox" value="10303" id="check_10303" /><label for="check_10303"></label></span><span class="vm">删除影像</span><span class="txt_999">(能删除影像)</span></li>
+                                                     <li><span class="ch_box"><input class="input_check" type="checkbox" value="10304" id="check_10304" /><label for="check_10304"></label></span><span class="vm">下载影像</span><span class="txt_999">(能下载影像)</span></li>
+                                                     <li><span class="ch_box"><input class="input_check" type="checkbox" value="10305" id="check_10305" /><label for="check_10305"></label></span><span class="vm">发送所有影像</span><span class="txt_999">(能发送所有患者病历影像)</span></li>
+                                                     <li><span class="ch_box"><input class="input_check" type="checkbox" value="10306" id="check_10306" /><label for="check_10306"></label></span><span class="vm">发送影像</span><span class="txt_999">(发送检查医生是自己的影像)</span></li>
+                                                    </ul>
+                                                  </section>
+                                                   <section>
+                                                      <div class="sec_icon sec_icon_show"></div>
+                                                      <span class="ch_box"><input class="input_check" type="checkbox" id="check_s66" /><label for="check_s66"></label></span> 
+                                                      <span class="vm">收费</span>
+                                                      <ul>
+                                                          <li><span class="ch_box"><input class="input_check" type="checkbox" value="10201" id="check_10201" /><label for="check_10201"></label></span><span class="vm">查看收费账单</span><span class="txt_999">(查看患者的所有收费信息)</span></li>
+                                                      </ul>
+                                                  </section>
+                                                  <section>
+                                                    <div class="sec_icon sec_icon_show"></div>
+                                                    <span class="ch_box"><input class="input_check" type="checkbox" id="check_s19" /><label for="check_s19"></label></span> 
+                                                    <span class="vm">病历</span>
+                                                    <ul>
+                                                     <li><span class="ch_box"><input class="input_check" type="checkbox" value="10401" id="check_10401" /><label for="check_10401"></label></span><span class="vm">查看病历</span><span class="txt_999">(能查看病历)</span></li>
+                                                     <li><span class="ch_box"><input class="input_check" type="checkbox" value="10402" id="check_10402" /><label for="check_10402"></label></span><span class="vm">添加并编辑病历</span><span class="txt_999">(能新增、修改检查医生是自己的病历)</span></li>
+                                                     <li><span class="ch_box"><input class="input_check" type="checkbox" value="10403" id="check_10403" /><label for="check_10403"></label></span><span class="vm">删除病历</span><span class="txt_999">(删除检查医生是自己的病历)</span></li>
+                                                     <li><span class="ch_box"><input class="input_check" type="checkbox" value="10404" id="check_10404" /><label for="check_10404"></label></span><span class="vm">添加并编辑所有病历</span><span class="txt_999">(能添加、编辑所有患者病历)</span></li>
+                                                     <li><span class="ch_box"><input class="input_check" type="checkbox" value="10405" id="check_10405" /><label for="check_10405"></label></span><span class="vm">删除所有病历</span><span class="txt_999">(能删除所有患者病历)</span></li>
+                                                     <li><span class="ch_box"><input class="input_check" type="checkbox" value="10406" id="check_10406" /><label for="check_10406"></label></span><span class="vm">发送所有病历</span><span class="txt_999">(能发送所有患者病历)</span></li>
+                                                     <li><span class="ch_box"><input class="input_check" type="checkbox" value="10407" id="check_10407" /><label for="check_10407"></label></span><span class="vm">发送病历</span><span class="txt_999">(发送检查医生是自己的病历)</span></li>
+                                                    </ul>
+                                                  </section>
+                                                  <section>
+                                                    <div class="sec_icon sec_icon_show"></div>
+                                                    <span class="ch_box"><input class="input_check" type="checkbox" id="check_s20" /><label for="check_s20"></label></span> 
+                                                    <span class="vm">咨询沟通</span>
+                                                    <ul>
+                                                     <li><span class="ch_box"><input class="input_check" type="checkbox" value="10501" id="check_10501" /><label for="check_10501"></label></span><span class="vm">查看咨询沟通</span><span class="txt_999">(能查看所有的咨询沟通记录)</span></li>
+                                                     <li><span class="ch_box"><input class="input_check" type="checkbox" value="10502" id="check_10502" /><label for="check_10502"></label></span><span class="vm">添加并编辑咨询沟通</span><span class="txt_999">(能新增、修改所有咨询沟通（其中咨询中的‘接诊医生’设置根据【添加同事的患者】权限生效）)</span></li>
+                                                     <li><span class="ch_box"><input class="input_check" type="checkbox" value="10503" id="check_10503" /><label for="check_10503"></label></span><span class="vm">删除沟通咨询</span><span class="txt_999">(能删除所有的咨询沟通记录)</span></li>
+                                                    </ul>
+                                                  </section>
+                                                  <section>
+                                                    <div class="sec_icon sec_icon_show"></div>
+                                                    <span class="ch_box"><input class="input_check" type="checkbox" id="check_s21" /><label for="check_s21"></label></span> 
+                                                    <span class="vm">预约</span>
+                                                    <ul>
+                                                     <li><span class="ch_box"><input class="input_check" type="checkbox" value="10601" id="check_10601" /><label for="check_10601"></label></span><span class="vm">接收预约</span><span class="txt_999">(能接收患者的预约)</span></li>
+                                                     <li><span class="ch_box"><input class="input_check" type="checkbox" value="10602" id="check_10602" /><label for="check_10602"></label></span><span class="vm">查看预约</span><span class="txt_999">(能查看与自己相关患者的所有预约)</span></li>
+                                                     <li><span class="ch_box"><input class="input_check" type="checkbox" value="10603" id="check_10603" /><label for="check_10603"></label></span><span class="vm">添加和编辑预约</span><span class="txt_999">(能新增、修改预约医生为自己的预约)</span></li>
+                                                     <li><span class="ch_box"><input class="input_check" type="checkbox" value="10604" id="check_10604" /><label for="check_10604"></label></span><span class="vm">删除患者预约</span><span class="txt_999">(可以删除预约医生为自己的预约)</span></li>
+                                                     <li><span class="ch_box"><input class="input_check" type="checkbox" value="10605" id="check_10605" /><label for="check_10605"></label></span><span class="vm">查看所有患者预约</span><span class="txt_999">(能查看所有的预约)</span></li>
+                                                     <li><span class="ch_box"><input class="input_check" type="checkbox" value="10606" id="check_10606" /><label for="check_10606"></label></span><span class="vm">添加和编辑所有预约</span><span class="txt_999">(能新增、修改所有的预约)</span></li>
+                                                     <li><span class="ch_box"><input class="input_check" type="checkbox" value="10607" id="check_10607" /><label for="check_10607"></label></span><span class="vm">删除所有预约</span><span class="txt_999">(能删除所有的预约)</span></li>
+                                                     <li><span class="ch_box"><input class="input_check" type="checkbox" value="10608" id="check_10608" /><label for="check_10608"></label></span><span class="vm">微信预约提醒</span><span class="txt_999">(能接收所有的微信预约提醒)</span></li>
+                                                     <li><span class="ch_box"><input class="input_check" type="checkbox" value="10609" id="check_10609" /><label for="check_10609"></label></span><span class="vm">所有预约到期提醒</span><span class="txt_999">(能收到所有的预约到期提醒，否则只能收到自己的预约过期提醒)</span></li>
+                                                     <li><span class="ch_box"><input class="input_check" type="checkbox" value="10610" id="check_10610" /><label for="check_10610"></label></span><span class="vm">设置排班</span><span class="txt_999">(能设置排班)</span></li>
+                                                    </ul>
+                                                  </section>
+                                                  <section>
+                                                    <div class="sec_icon sec_icon_show"></div>
+                                                    <span class="ch_box"><input class="input_check" type="checkbox" id="check_s22" /><label for="check_s22"></label></span> 
+                                                    <span class="vm">回访</span>
+                                                    <ul>
+                                                     <li><span class="ch_box"><input class="input_check" type="checkbox" value="10701" id="check_10701" /><label for="check_10701"></label></span><span class="vm">成为回访人</span><span class="txt_999">(能成为回访人)</span></li>
+                                                     <li><span class="ch_box"><input class="input_check" type="checkbox" value="10702" id="check_10702" /><label for="check_10702"></label></span><span class="vm">查看患者回访</span><span class="txt_999">(能查看与自己相关患者的所有回访)</span></li>
+                                                     <li><span class="ch_box"><input class="input_check" type="checkbox" value="10703" id="check_10703" /><label for="check_10703"></label></span><span class="vm">添加并编辑患者回访</span><span class="txt_999">(能新增、修改回访人为自己的回访)</span></li>
+                                                     <li><span class="ch_box"><input class="input_check" type="checkbox" value="10704" id="check_10704" /><label for="check_10704"></label></span><span class="vm">删除患者回访</span><span class="txt_999">(能删除回访人为自己的回访)</span></li>
+                                                     <li><span class="ch_box"><input class="input_check" type="checkbox" value="10705" id="check_10705" /><label for="check_10705"></label></span><span class="vm">查看所有回访</span><span class="txt_999">(能查看所有的回访)</span></li>
+                                                     <li><span class="ch_box"><input class="input_check" type="checkbox" value="10706" id="check_10706" /><label for="check_10706"></label></span><span class="vm">添加并编辑所有回访</span><span class="txt_999">(能新增、修改所有的回访)</span></li>
+                                                     <li><span class="ch_box"><input class="input_check" type="checkbox" value="10707" id="check_10707" /><label for="check_10707"></label></span><span class="vm">删除所有患者回访</span><span class="txt_999">(能删除所有的回访)</span></li>
+                                                    </ul>
+                                                  </section>
+                                                  <section>
+                                                    <div class="sec_icon sec_icon_show"></div>
+                                                    <span class="ch_box"><input class="input_check" type="checkbox" id="check_s23" /><label for="check_s23"></label></span> 
+                                                    <span class="vm">业绩</span>
+                                                    <ul>
+                                                     <li><span class="ch_box"><input class="input_check" type="checkbox" value="10801" id="check_10801" /><label for="check_10801"></label></span><span class="vm">能查看业绩</span><span class="txt_999">(只能查看自己的业绩)</span></li>
+                                                     <li><span class="ch_box"><input class="input_check" type="checkbox" value="10802" id="check_10802" /><label for="check_10802"></label></span><span class="vm">查看诊所的业绩</span><span class="txt_999">(即APP首页默认显示的为诊所业绩，否则为个人业绩)</span></li>
+                                                     <li><span class="ch_box"><input class="input_check" type="checkbox" value="10803" id="check_10803" /><label for="check_10803"></label></span><span class="vm">查看同事业绩</span><span class="txt_999">(能查看其他同事的业绩)</span></li>
+                                                    </ul>
+                                                  </section>
+                                                </div>
+                                                <div class="web" id="web">
+                                                  <section>
+                                                        <div class="sec_icon sec_icon_show"></div>
+                                                        <span class="ch_box"><input class="input_check" type="checkbox" id="check_s31" value="10000" /><label for="check_s31"></label></span> 
+                                                        <span class="vm">电网中心</span>
+                                                        <section>
+                                                        <div class="sec_icon sec_icon_show"></div>
+                                                        <span class="ch_box"><input class="input_check" type="checkbox" id="check_s32" value="20000"/><label for="check_s32"></label></span> 
+                                                        <span class="vm">市场营销</span>
+                                                        <section>
+                                                        <div class="sec_icon sec_icon_show"></div>
+                                                        <span class="ch_box"><input class="input_check" type="checkbox" id="check_s33" value="30000"/><label for="check_s33"></label></span> 
+                                                        <span class="vm">运营中心</span>
+                                                        <section>
+                                                        <div class="sec_icon sec_icon_show"></div>
+                                                        <span class="ch_box"><input class="input_check" type="checkbox" id="check_s34" value="40000"/><label for="check_s34"></label></span> 
+                                                        <span class="vm">财务统计</span>
+                                                      <section>
+                                                        <div class="sec_icon sec_icon_show"></div>
+                                                        <span class="ch_box"><input class="input_check" type="checkbox" id="check_s35" value="50000"/><label for="check_s35"></label></span> 
+                                                        <span class="vm">库房管理</span>
+                                                      </section>
+                                                      <section>
+                                                        <div class="sec_icon sec_icon_show"></div>
+                                                        <span class="ch_box"><input class="input_check" type="checkbox" id="check_s36" value="60000"/><label for="check_s36"></label></span> 
+                                                        <span class="vm">系统管理</span>
+                                                        <ul>
+                                                            <li><span class="ch_box"><input class="input_check" type="checkbox" value="60001" id="check_60001" /><label for="check_60001"></label></span><span class="vm">员工管理浏览查看权限</span></li>
+                                                            <li><span class="ch_box"><input class="input_check" type="checkbox" value="60002" id="check_60002" /><label for="check_60002"></label></span><span class="vm">导出员工列表权限</span></li>
+                                                            <li><span class="ch_box"><input class="input_check" type="checkbox" value="60003" id="check_60003" /><label for="check_60003"></label></span><span class="vm">群发短信权限</span></li>
+                                                            <li><span class="ch_box"><input class="input_check" type="checkbox" value="60004" id="check_60004" /><label for="check_60004"></label></span><span class="vm">发送激活短信权限</span></li>
+                                                            <li><span class="ch_box"><input class="input_check" type="checkbox" value="60005" id="check_60005" /><label for="check_60005"></label></span><span class="vm">管理员工信息权限</span><span class="txt_999">(新增/编辑/删除)</span></li>
+                                                            <li><span class="ch_box"><input class="input_check" type="checkbox" value="60006" id="check_60006" /><label for="check_60006"></label></span><span class="vm">部门管理浏览查看权限</span></li>
+                                                            <li><span class="ch_box"><input class="input_check" type="checkbox" value="60007" id="check_60007" /><label for="check_60007"></label></span><span class="vm">管理部门权限</span><span class="txt_999">(新增/编辑/删除)</span></li>
+                                                            <li><span class="ch_box"><input class="input_check" type="checkbox" value="60008" id="check_60008" /><label for="check_60008"></label></span><span class="vm">权限管理浏览查看</span></li>
+                                                            <li><span class="ch_box"><input class="input_check" type="checkbox" value="60009" id="check_60009" /><label for="check_60009"></label></span><span class="vm">职位列表及权限参数设置权限</span><span class="txt_999">(新增/编辑/删除)</span></li>
+                                                            <li><span class="ch_box"><input class="input_check" type="checkbox" value="60010" id="check_60010" /><label for="check_60010"></label></span><span class="vm">门诊管理浏览查看</span></li>
+                                                            <li><span class="ch_box"><input class="input_check" type="checkbox" value="60011" id="check_60011" /><label for="check_60011"></label></span><span class="vm">管理门诊权限</span><span class="txt_999">(新增/编辑/删除)</span></li>
+                                                        </ul>
+                                                      </section>
+                                                      <section>
+				                                        <div class="sec_icon sec_icon_show"></div>
+				                                        <span class="ch_box"><input class="input_check" type="checkbox" id="check_s37" /><label for="check_s37"></label></span> 
+				                                        <span class="vm">连锁店患者管理</span>
+				                                        <ul>
+				                                            <li><span class="ch_box"><input class="input_check" type="checkbox" value="70001" id="check_70001" /><label for="check_70001"></label></span><span class="vm">连锁店患者管理</span><span class="txt_999">(能对连锁店的患者进行管理)</span></li>
+				                                            <li><span class="ch_box"><input class="input_check" type="checkbox" value="70002" id="check_70002" /><label for="check_70002"></label></span><span class="vm">连锁店统计</span><span class="txt_999">(能查看连锁店统计)</span></li>
+				                                        </ul>
+				                                       </section>
+                                                </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                  </div>
+                                </div>
+                                <div class="ale_box pop_sha_rad" id="job_new">
+                                    <div class="ale_head">新增职位<img src="/static/account/img/close_2.png" id="close_per"> </div>
+                                    <div class="ale_content">
+                                      <p class="import">职位名称：</p>
+                                      <input type="text" id="UserGroupName" name="UserGroupName" placeholder="请输入职位名称"/>
+                                      <label class="errinfo" id="job_err">请输入职位名称</label>
+                                      <p class="import">员工角色：</p>
+                                      <select id="role"></select>
+                                      <label class="errinfo">请</label>
+                                      <p class="import">工作场所：</p>
+                                      <div id="places"></div>
+                                      <label class="errinfo">请</label>
+                                      <p>权限复制：</p>
+                                      <select id="position_name"></select>
+                                      <label class="errinfo">请</label>
+                                      <p id="aciton">
+                                          <input type="button" name="js_save" class="acb ac_btn_bf" value="创建" id="save"/>
+                                          <input type="button" class="acb ac_btn_nf" value="取消" id="cancel"/>
+                                      </p>
+                                    </div>
+                </div><!--右框架e-->
+            </div><!--主框架e-->
+        </div><!--外层主框架e-->
+
+<!--遮罩层黑色透明背景-->
+<div class="mask"></div>
+<!---->
+ 
+
+</body>
+<script language="javascript" src="/static/account/js/jquery-1.7.2.min.js"></script>
+<!--<include file="Public:clinic_js_inc"/>-->
+{{template "/account/Public/clinic_js_inc.html" .}}
+<script language="javascript" src="/static/account/js/placeholade.min.js"></script>
+<!--<script type="text/javascript" src="/static/account/js/chain_strom.js"></script>-->
+<script type="text/javascript" src="/static/public/yayigj_dialog_box.js"></script>
+<script type="text/javascript" src="/static/public/yayigj_downlist.js"></script>
+<script type="text/javascript" src="/static/account/js/per_manage.js"></script>
+</html>

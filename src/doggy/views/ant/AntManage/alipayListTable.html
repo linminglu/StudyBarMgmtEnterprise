@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>支付宝详情列表Excel下载</title>
+	<script type="text/javascript" src="/static/ant/js/jquery-1.9.1.min.js"></script>
+    <style type="text/css">
+    	body{background-color: #e2e9ef;color: #fff;text-align:center; }
+    	.table{visibility: hidden;}
+    	div{margin:5% auto;}
+    	a{color: blue;font-size: 16px;}
+    </style>
+</head>
+<body>
+	<div>
+		<a href="javascript:void(0);">如<span id="timeOut">3</span>秒后没有下载，请点击此连接</a>
+	</div>
+	<div class="table">
+		<table id="m">
+			<thead>
+				<tr>
+					<th>支付宝用户列表</th>
+					<th>开始日期：</th>
+					<th id="sendTimeStar">00</th>
+					<th>结束日期：</th>
+					<th id="sendTimeEnd">00</th>
+				</tr>
+				<tr>
+					<th>申请编号</th>
+					<th>申请诊所</th>
+					<th>管家号</th>
+					<th>套餐</th>
+					<th>申请时间</th>
+					<th>状态</th>
+					<th>单位性质</th>
+					<!-- <th>绑定诊所</th> -->
+					<th>推广码</th>
+					<th>联系人名称</th>
+					<th>邮箱</th>
+					<th>手机</th>
+					<th>企业名称</th>
+					<th>账户名</th>
+					<th>证件类型</th>
+					<th>执照所属地区</th>
+					<th>组织机构代码</th>
+					<th>注册号</th>
+					<th>住所</th>
+					<th>经营范围</th>
+					<th>营业期限</th>
+					<th>法人姓名</th>
+					<th>证件类型</th>
+					<th>证件号码</th>
+					<th>证件有效期</th>
+					<th>商家经营类目</th>
+					<th>银行户名</th>
+					<th>开户银行</th>
+					<th>开户银行所在地</th>
+					<th>支行名</th>
+					<th>银行账号</th>
+					<th>手机号码</th>
+				</tr>
+			</thead>
+			<tbody id="list">
+				<!-- 渲染excel数据区域 -->
+			</tbody>
+		</table>
+	</div>
+
+	<script type="text/javascript" src="/static/ant/js/table2Excel/jquery.base64.js"></script>
+	<script type="text/javascript" src="/static/ant/js/table2Excel/tableExport.js"></script>
+	<script type="text/javascript" src="/static/ant/js/BusinessCategory.js"></script>
+
+
+	<script type="text/javascript">
+	var i = 2;
+	var sendTimeStar = GetQueryString("sendTimeStar");
+	var sendTimeEnd = GetQueryString("sendTimeEnd");
+	$(document).ready(function(e) {
+		loadingData();
+		$("a").click(function(){
+			if(getBrowser() == "ie") {
+				alert("此功能暂不支持IE浏览器，请使用chrome或其他浏览器下载");
+			}else{
+				$("#sendTimeStar").text(sendTimeStar);
+				$("#sendTimeEnd").text(sendTimeEnd);
+				$('#m').tableExport({type: 'excel', escape: 'false',tableName:'excel'});
+			}
+		})
+	});
+
+
+	//计时下载
+	$(function () {
+        //iCount获取setInterval句柄
+        var i = 2;
+        var timer = setInterval(function(){
+        	if(i==0){
+        		if(getBrowser() == "ie") {
+        			alert("此功能暂不支持IE浏览器，请使用chrome或其他浏览器下载");
+        		}else{
+        			$("#sendTimeStar").text(sendTimeStar);
+					$("#sendTimeEnd").text(sendTimeEnd);
+        			$('#m').tableExport({type: 'excel', escape: 'false',tableName:'excel'});
+        		}
+        		clearInterval(timer);
+        	}
+        	document.getElementById('timeOut').innerHTML=i--;
+        }, 1000);
+    });
+
+	function getBrowser(getVersion)
+	{
+	    //注意关键字大小写
+	    var ua_str = navigator.userAgent.toLowerCase(), ie_Tridents, trident, match_str, ie_aer_rv, browser_chi_Type;
+
+
+	    //判断IE 浏览器,
+	    if("ActiveXObject" in self){
+	        // ie_aer_rv:  指示IE 的版本.
+	        // It can be affected by the current document mode of IE.
+	        ie_aer_rv= (match_str = ua_str.match(/msie ([\d.]+)/)) ?match_str[1] :
+	        (match_str = ua_str.match(/rv:([\d.]+)/)) ?match_str[1] : 0;
+
+	        // ie: Indicate the really version of current IE browser.
+	        ie_Tridents = {"trident/7.0": 11, "trident/6.0": 10, "trident/5.0": 9, "trident/4.0": 8};
+	        //匹配 ie8, ie11, edge
+	        trident = (match_str = ua_str.match(/(trident\/[\d.]+|edge\/[\d.]+)/)) ?match_str[1] : undefined;
+	        browser_chi_Type = (ie_Tridents[trident] || ie_aer_rv) > 0 ? "ie" : undefined;
+	    }else{
+	        //判断 windows edge 浏览器
+	        // match_str[1]: 返回浏览器及版本号,如: "edge/13.10586"
+	        // match_str[1]: 返回版本号,如: "edge"
+	        //若要返回 "edge" 请把下行的 "ie" 换成 "edge"。 注意引号及冒号是英文状态下输入的
+	        browser_chi_Type = (match_str = ua_str.match(/edge\/([\d.]+)/)) ? "ie" :
+	            //判断firefox 浏览器
+	            (match_str = ua_str.match(/firefox\/([\d.]+)/)) ? "firefox" :
+	            //判断chrome 浏览器
+	            (match_str = ua_str.match(/chrome\/([\d.]+)/)) ? "chrome" :
+	            //判断opera 浏览器
+	            (match_str = ua_str.match(/opera.([\d.]+)/)) ? "opera" :
+	            //判断safari 浏览器
+	            (match_str = ua_str.match(/version\/([\d.]+).*safari/)) ? "safari" : undefined;
+	        }
+
+	    //返回浏览器类型和版本号
+	    var verNum, verStr;
+	    verNum = trident && ie_Tridents[trident] ? ie_Tridents[trident] : match_str[1];
+	    verStr = (getVersion != undefined) ? browser_chi_Type+"/"+verNum : browser_chi_Type;
+	    return verStr;
+	}
+
+	function loadingData(){
+		$.ajax({
+            url: '/member/ExportAlipayinfo',
+            type: 'get',
+            dataType: 'json',
+            data:{start_time:sendTimeStar,end_time:sendTimeEnd}
+        })
+        .done(function(re) {
+			console.log(re);
+			if(re["code"]=='1'){
+				var str = '';
+				$.each(re["list"],function(index,el){
+					var package = '套餐一';
+					var type = '个人商户';
+					var status = '';
+					var uid = '' +el.uid ;
+					var cardType = '普通营业执照';
+					var operator_cert_type = '证件类型';
+
+					var businCate= '商家经营类目';
+					businCate = update_BusinCate(el.mcc_code);
+					switch(el.ordertype){
+						case "1":
+						package = '套餐一';
+						break;
+						case "2":
+						package = '套餐二';
+						break;
+						case "3":
+						package = '套餐三';
+						break;
+						case "4":
+						package = '套餐四';
+						break;
+						case "5":
+						package = '套餐五';
+						break;
+						case "6":
+						package = '套餐六';
+						break;
+						case '':
+						package = '';
+						break;
+						default:
+						package = '';
+						break;
+					}
+					if(el.status == 0){
+						status = '未开通';
+					}else{
+						status = '已开通';
+					}
+					if(el.type == 1){
+						type = '个人商户';
+					}else{
+						type = '企业';
+					}
+					if(el.business_license_is_three_in_one){
+						cardType = '三证合一';
+					}else{
+						cardType = '普通营业执照';
+					}
+					if(el.operator_cert_type == 0){
+						operator_cert_type = '大陆身份证';
+					}else if(el.operator_cert_type == 1){
+						operator_cert_type = '港澳通行证';
+					}else if(el.operator_cert_type == 2){
+						operator_cert_type = '台湾通行证';
+					}else if(el.operator_cert_type == 3){
+						operator_cert_type = '护照';
+					}
+					str+='<tr><td>'+el.uid+'</td>'+					//申请编号
+							'<td>'+ el.name+ '</td>'+				//申请诊所
+							'<td>'+	el.dentalid + '</td>'+			//管家号
+							'<td>'+ package +'</td>'+				//套餐
+							'<td>'+ el.createtime+ '</td>'+		//申请时间
+							'<td>'+ status + '</td>'+				//状态
+							'<td>'+ type +'</td>'+					//单位性质
+							'<td>'+ el.promocode + '</td>'+			//推广码
+							'<td>'+ el.receiver + '</td>'+			//联系人名称
+							'<td>'+ el.contact_email + '</td>'+		//邮箱
+							'<td>'+ el.contact_mobile + '</td>'+	//手机
+							'<td>'+ el.company_name + '</td>'+		//企业名称
+							'<td>'+ el.legal_representative_cert_no + '</td>'+	//账户名
+							'<td>'+ cardType  + '</td>'+			//证件类型
+							'<td>'+ el.business_license_province + '-' + el.business_license_city +  '</td>'+	//执照所属地区
+							'<td>'+ el.org_code_certificate_no + '</td>'+	//组织机构代码
+							'<td>'+ el.business_license_no + '</td>'+		//注册号
+							'<td>'+ el.company_address + '</td>'+	//住所
+							'<td>'+ el.business_scope + '</td>'+	//经营范围
+							'<td>'+ el.business_license_indate_start + '-' + el.business_license_indate_end +  '</td>'+								//营业期限
+							'<td>'+ el.legal_representative_name + '</td>'+	//法人姓名
+							'<td>'+ operator_cert_type + '</td>'+//证件类型
+							'<td>'+ el.operator_cert_no + '</td>'+	//证件号码
+							'<td>'+ el.operator_cert_indate +  '</td>'+	//证件有效期
+							'<td>'+ businCate + '</td>'+	//商家经营类目
+							'<td>'+ el.business_bank_account_name + '</td>'+//银行户名
+							'<td>'+ el.business_bank_name + '</td>'+	//开户银行
+							'<td>'+ el.business_bank_province + '-' + el.business_bank_city + '</td>'+		//开户银行所在地
+							'<td>'+ el.business_bank_sub + '</td>'+	//支行名
+							'<td>\"'+ el.business_bank_card_no + '\"</td>'+	//银行账号
+							'<td>'+ el.personal_bank_account_mobile + '</td>'	//手机号码
+
+						'</tr>'
+				})
+				$("#list").empty().append(str);
+            }
+		})
+		.fail(function(err){
+			console.log(err);
+		})
+	}
+	function GetQueryString(name){
+		var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+		var r = window.location.search.substr(1).match(reg);
+		if(r!=null)return  unescape(r[2]); return null;
+	}
+
+	 //更新商家经营类目
+	 function update_BusinCate(data){
+	 	var str = "专业服务-专业医疗服务-牙科医生";
+	 	var categoryArr = data.split("_");
+
+	 	if(categoryArr != ''){
+	 		console.log("categoryArr");
+	 		console.log(categoryArr);
+		 	var str1 =  CategoryLevel1[categoryArr[0]];
+		 	var str2 =  CategoryLevel2[categoryArr[0]][categoryArr[1]];
+		 	var str3 =  CategoryLevel3[categoryArr[1]][data];
+
+	 		return str= str1 + '-' + str2 + '-' + str3;
+	 	}
+	 }
+
+	</script>
+</body>
+</html>

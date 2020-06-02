@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="UTF-8">
+        <meta content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" name="viewport">
+        <meta content="yes" name="apple-mobile-web-app-capable">
+        <meta content="black" name="apple-mobile-web-app-status-bar-style">
+        <meta content="telephone=no" name="format-detection">
+        <meta http-equiv="Cache-Control" content="no-transform ">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+        <!--<include file="Public:css_inc"/>-->
+        {{template "/account/Public/css_inc.html" .}}
+        <link rel="stylesheet" type="text/css" href="/static/account/css/calendarCommon.css">
+        <link rel="stylesheet" type="text/css" href="/static/account/css/chain_strom.css">
+        <link rel="stylesheet" type="text/css" href="/static/public/css/publicFrame.css">     
+        <title>编辑员工资料</title>    
+    </head>
+    <body>
+		<input type="hidden" name="edit" value="edit">
+    <!--遮罩层黑色透明背景-->
+    <div class="mask"></div>
+    <!--弹出框背景-->
+        <div class="sta_man_bg"></div>
+    <!---->
+    <div class="headArea"><!--头部-->
+            {{template "/Public/public/r_header.html" .}}
+    </div>
+    <div class="outerFrame"><!--外层主框架s-->        	
+        <div class="mainFrme"><!--主框架s-->
+            <div class="leftFrme" id="leftFrme">
+              {{template "/account/Public/one_left_nav.html" .}}
+            </div>
+            <div class="rightFrme"><!--右框架s-->
+				<div class="main_right">
+					<div class="right_nav">
+						<div class="clinic_tit">
+							<a href="/clinic/index"><img class="worker_info_img" src="/static/account/img/back_round1.png" id="work_info_back"></a>
+							<span class="fgline">|</span>
+							<span>编辑员工资料</span>
+						</div>
+						<div class="estblish_one add_info_save" id="add_staff_save">保存</div>
+						</div>
+						<div>
+							<li class="creatID">
+								<span>创建账号</span><input type="text" id="login_phone"  name="login_phone" class="login_phone ronly" placeholder="请输入员工手机号码" readonly/><span id="remind_info_pho">将作为员工登录账号</span>
+								<p id="err_info" class="err_info">此号码已被占用!请重新输入</p>
+							</li>
+							<div class="essenatial_info person_info">
+							<!--<img class="vm" src="/static/account/img/defalut_info.png">-->
+								<p class="staff_tit">基本信息
+									<!--<img class="jp_line" src="/static/account/img/jp_line.png" alt="" />-->
+									<i class="jp_line"> </i>
+								</p>
+								<ul>
+								<li class="name">
+									<span>姓名</span><input type="text" name="worker_name" class="worker_name"/>
+									<label id="err_info2" class="err_info"></label>
+								</li>
+								<li class="phonenum">
+									<span>手机号</span><input type="text"  name="worker_phone" class="worker_phone" />
+									<label id="err_phone" class="err_info"></label>            
+								</li>
+								<li class="birthday">
+									<span>生日</span><input type="text"  name="worker_birthday" class="worker_birthday"  id="bir_a" />
+								</li>
+								<li class="sex">
+									<span>性别</span>
+									<span>
+									<span class="mL26">
+										<input type="radio" name="sex" value="男" id="man"><label for="man"></label><label for="man">&nbsp;&nbsp;男</label>
+									</span>
+									<span class="mL50">
+										<input type="radio" name="sex" value="女" id="woman"><label for="woman"></label><label for="woman">&nbsp;&nbsp;女</label>
+									</span>
+									</span>
+								</li>
+								</ul>
+							</div>
+							<div class="essenatial_info"  id="work_info_ul">
+							<p class="staff_tit staff_tit2">工作信息
+								<!--<img class="jp_line" src="/static/account/img/jp_line.png" alt="" />-->
+								<i class="jp_line"> </i>
+							</p>
+							<div id="ddInfo">
+                              
+                            </div>
+							<!--<ul class="work_info_ul one_br" style="border-right:none">
+								<img src="/static/account/img/close.png" class="close_ul">
+								<li>
+									<span>工作诊所</span>
+									
+									<input type="text" class="worker_clinic ronly" id="dept_1" readonly>
+									<p class="errinfo err_clinic" id="err_clinic">请选择工作诊所</p>
+								</li>
+								<li>
+									<span>员工编号</span>
+									<input type="text" class="worker_id"  name="worker_id"  id="employee_1"/>
+									<p class="errinfo err_id" id="err_id"></p>
+								</li>
+								<li>
+									<span>员工职位</span>
+									<select class="worker_char" id="office_1">
+										
+									</select>
+									<p class="errinfo err_char" id="err_char"></p>
+								</li>
+								</li>
+								<li>
+									<span>所属科室</span>
+									<select class="work_depart" id="depart_1">
+										
+									</select>
+								</li>
+							</ul>-->
+								
+							</div>
+						</div>
+				</div>
+       		</div>
+		</div>
+	</div>
+       <script type="text/javascript" src="/static/account/js/jquery-1.9.1.min.js"></script>
+       <!--<include file="Public:clinic_js_inc"/>-->
+       {{template "/account/Public/clinic_js_inc.html" .}}
+       <script type="text/javascript" src="/static/account/js/chain_strom.js"></script>
+       <script language="javascript" src="/static/account/js/placeholade.min.js"></script>
+       <script type="text/javascript" src="/static/public/yayigj_date_sel.js"></script>
+	   <script src="/static/public/yayigj_dialog_box.js"></script>
+       <script src="/static/public/yayigj_downlist.js"></script>
+       <script type="text/javascript" src="/static/account/js/edit_staff_info.js"></script>
+    </body>
+</html>

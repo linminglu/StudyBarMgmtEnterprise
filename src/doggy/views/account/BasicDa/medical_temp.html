@@ -1,0 +1,309 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>病例模板</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" 
+    name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta http-equiv="Cache-Control" content="no-transform ">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+    <!--<include file="Public:css_inc"/>-->
+    {{template "/account/Public/css_inc.html" .}}
+    <link rel="stylesheet" type="text/css" href="/static/account/css/chain_strom.css">
+    <link rel="stylesheet" type="text/css" href="/static/account/css/basicData.css">
+</head>
+
+<body>
+<!--<include file="Public:clinic_header"/>-->
+{{template "/Public/public/r_header.html" .}}
+   <div class="main_con">
+       <!--<include file="Public:clinic_left_nav"/>-->
+       {{template "/account/Public/clinic_left_nav.html" .}}
+		<div class="main_right">
+            <div class="right_nav">
+               <div class="clinic_tit">
+                   <img src="/static/account/img/medical_temp.png">
+                   <span>病例模板</span>
+               </div>
+               <div class="estblish_one" id="temp_edit">编辑</div>
+               <div class="estblish_one dsn" id="temp_save">保存</div>
+               <div class="estblish_one dsn" id="temp_cancel">取消</div>
+            </div>
+            <div class="temp_content">
+            	<div class="temp_l">
+                	<h2>大纲目录</h2>
+                    <div class="temp_l_clinics">
+                        <div class="temp_l_clinics">
+                        
+  <!--<div class="temp_clinic" id="37818324573059363">
+    <p class="hove" data-c="0">
+      <img class="stretch" src="/Account/public/img/per_mana_icon_3.png">严晶晶的测试诊所
+      <img class="temp_ico add" src="/Account/public/img/add_temp1.png"></p>
+    <div class="add_depart">
+      <input type="text" name="first" class="catalog" placeholder="请输入次级目录名称">
+      <span class="create" data-par="37818324573059363" data-c="1">创建</span></div>
+    <ul class="temp_depart_ul">
+      <li class="temp_depart_list" id="37958156337557973">
+        <p class="hove" data-c="1">
+          <img class="temp_ico2 fd" src="/Account/public/img/unflod_gray_2.png">1-b
+          <img class="temp_ico up" src="/Account/public/img/up2.png">
+          <img class="temp_ico down" src="/Account/public/img/down2.png">
+          <img class="temp_ico add" src="/Account/public/img/add_temp1.png">
+          <img class="temp_ico delete" src="/Account/public/img/delete_big.png"></p>
+        <div class="add_depart" style="display: block;">
+          <input type="text" name="first" class="catalog" placeholder="请输入次级目录名称">
+          <span class="create" data-par="37958156337557973" data-c="2" data-dir="1">创建</span></div>
+        <ol class="temp_disease_list">
+          <div>暂无二级目录！请新增</div></ol>
+      </li>
+    </ul>
+  </div>
+  <div class="temp_clinic" id="37844711775819607">
+    <p class="hove" data-c="0">
+      <img class="stretch" src="/Account/public/img/per_mana_icon_3.png">严晶晶的测试诊所B
+      <img class="temp_ico up" src="/Account/public/img/up2.png">
+      <img class="temp_ico down" src="/Account/public/img/down2.png">
+      <img class="temp_ico add" src="/Account/public/img/add_temp1.png"></p>
+    <div class="add_depart">
+      <input type="text" name="first" class="catalog" placeholder="请输入次级目录名称">
+      <span class="create" data-par="37844711775819607" data-c="1">创建</span></div>
+    <ul class="temp_depart_ul">
+      <li class="temp_depart_list" id="37958888329351085">
+        <p class="hove" data-c="1">
+          <img class="temp_ico2 fd" src="/Account/public/img/unflod_gray_2.png">CCCCC
+          <img class="temp_ico up" src="/Account/public/img/up2.png">
+          <img class="temp_ico down" src="/Account/public/img/down2.png">
+          <img class="temp_ico add" src="/Account/public/img/add_temp1.png">
+          <img class="temp_ico delete" src="/Account/public/img/delete_big.png"></p>
+        <div class="add_depart">
+          <input type="text" name="first" class="catalog" placeholder="请输入次级目录名称">
+          <span class="create" data-par="37958888329351085" data-c="2" data-dir="1">创建</span></div>
+        <ol class="temp_disease_list">
+          <li class="temp_disease" id="37958910277340204">
+            <p class="hove" data-c="2">
+              <img class="temp_ico2 fd" src="/Account/public/img/unflod_gray_2.png">DDDDDD
+              <img class="temp_ico up" src="/Account/public/img/up2.png">
+              <img class="temp_ico down" src="/Account/public/img/down2.png">
+              <img class="temp_ico add" src="/Account/public/img/add_temp1.png">
+              <img class="temp_ico delete" src="/Account/public/img/delete_big.png"></p>
+            <div class="add_depart">
+              <input type="text" name="first" class="catalog" placeholder="请输入次级目录名称">
+              <span class="create" data-par="37958910277340204" data-c="3" data-dir="1">创建</span></div>
+            <ul class="disease_p_lists">
+              <p class="temp_disease_p hove" data-c="3" id="37958914392571669">DDDDDD
+                <img class="temp_ico up" src="/Account/public/img/up2.png">
+                <img class="temp_ico down" src="/Account/public/img/down2.png">
+                <img class="temp_ico delete" src="/Account/public/img/delete_big.png"></p></ul>
+          </li>
+          <li class="temp_disease" id="37958976898030644">
+            <p class="hove" data-c="2">
+              <img class="temp_ico2 fd" src="/Account/public/img/unflod_gray_2.png">EEEEEE
+              <img class="temp_ico up" src="/Account/public/img/up2.png">
+              <img class="temp_ico down" src="/Account/public/img/down2.png">
+              <img class="temp_ico add" src="/Account/public/img/add_temp1.png">
+              <img class="temp_ico delete" src="/Account/public/img/delete_big.png"></p>
+            <div class="add_depart">
+              <input type="text" name="first" class="catalog" placeholder="请输入次级目录名称">
+              <span class="create" data-par="37958976898030644" data-c="3" data-dir="1">创建</span></div>
+            <ul class="disease_p_lists">
+              <div>暂无三级目录！请新增</div></ul>
+          </li>
+        </ol>
+      </li>
+    </ul>
+  </div>-->
+  						<div class="clinic">
+                        	<p><img src="" />杨晶晶的测试诊所<img src="" /></p>
+                            <div class="add_depart">
+                            	<input type="text" ><label>创建</label>
+                            </div>
+                            <ul>
+                                <li>
+                               	 <p><img src="" />杨晶晶的测试内科<img src="" /><img src="" /><img src="" /></p>
+                                 <div class="add_depart"><input type="text" ><label>创建</label></div>
+                                 <ol>
+                                 	<li>
+                                     <p><img src="" />杨晶晶的测试牙周炎<img src="" /><img src="" /><img src="" /></p>
+                                     <div class="add_depart"><input type="text" ><label>创建</label></div>
+                                     <ul>
+                                        <li> <p><img src="" />杨晶晶的测试牙周炎具体疾病<img src="" /><img src="" /><img src="" /></p></li>
+                                     </ul>
+                                </li>
+                                 </ol>
+                                </li>
+                            	
+                            </ul>
+                        </div>
+  
+						</div>
+                    </div>
+                  
+                </div>
+                <div class="temp_r">
+                	<ol id="temp_index">
+                        <li data-flag="1">模板</li>
+                        <li>主诉/现病史/既往史</li>
+                        <li>检查/辅助检查</li>
+                        <li>诊断</li>
+                        <li>治疗/治疗方案</li>
+                        <li>医嘱</li>
+                    </ol>
+                    <div id="temp_tables">
+                        <section id="temp" class="temp">
+                            <dl><dt>主诉</dt><dd><input  type="tetx" value="左上后牙钝痛数日"/></dd></dl>
+                            <dl><dt>现病史</dt><dd><input  type="tetx" value="左上后牙钝痛数日"/></dd></dl>
+                            <dl><dt>既往史</dt><dd><input  type="tetx" value=""/></dd></dl>
+                            <dl><dt>检查</dt><dd><input  type="tetx" value="左上后牙钝痛数日"/></dd></dl>
+                            <dl><dt>辅助检查</dt><dd><input  type="tetx" value="左上后牙钝痛数日"/></dd></dl>
+                            <dl><dt>诊断</dt><dd><input  type="tetx" value="左上后牙钝痛数日"/></dd></dl>
+                            <dl><dt>治疗方案</dt><dd><input  type="tetx" value="左上后牙钝痛数日"/></dd></dl>
+                            <dl><dt>治疗</dt><dd><input  type="tetx" value="左上后牙钝痛数日"/></dd></dl>
+                            <dl><dt>医嘱</dt><dd><input  type="tetx" value="左上后牙钝痛数日"/></dd></dl>
+                        </section>
+                        <section>
+                            <div class="sec_ul">
+                                <ul>
+                                    <li class="li_title"><label>部位</label><span class="delete">删除</span></li>
+                                    <li class="li_input"><label><input type="text" value="左下"></label><span><img src="/static/account/img/delete_big.png"/></span></li>
+                                    <li class="li_input"><label><input type="text" value="右下"></label><span><img src="/static/account/img/delete_big.png"/></span></li>
+                                    <li class="li_input"><label><input type="text" value="左上"></label><span><img src="/static/account/img/delete_big.png"/></span></li>
+                                    <li class="li_input"><label><input type="text" value="右下"></label><span><img src="/static/account/img/delete_big.png"/></span></li>
+                                    <li class="li_input"><label><input type="text" value="前牙"></label><span><img src="/static/account/img/delete_big.png"/></span></li>
+                                    <li class="li_input"><label><input type="text" value="后牙"></label><span><img src="/static/account/img/delete_big.png"/></span></li>
+                                    <li class="li_blank"><label></label><span></span></li>
+                                </ul>
+                                 <ul>
+                                    <li class="li_title"><label>性质</label><span class="delete">删除</span></li>
+                                    <li class="li_input"><label><input type="text" value="牙疼"></label><span><img src="/static/account/img/delete_big.png"/></span></li>
+                                    <li class="li_input"><label><input type="text" value="牙龈未见肿痛"></label><span><img src="/static/account/img/delete_big.png"/></span></li>
+                                    <li class="li_input"><label><input type="text" value="呀伸长感"></label><span><img src="/static/account/img/delete_big.png"/></span></li>
+                                    <li class="li_blank"><label></label><span></span></li>
+                                </ul>
+                            </div>
+                            <div class="sec_ul">
+                                <ul>
+                                    <li class="li_title"><label>时间</label><span class="delete">删除</span></li>
+                                    <li  class="li_input"><label><input type="text" value="近日"></label><span><img src="/static/account/img/delete_big.png"/></span></li>
+                                    <li  class="li_input"><label><input type="text" value="一周"></label><span><img src="/static/account/img/delete_big.png"/></span></li>
+                                    <li  class="li_input"><label><input type="text" value="一周"></label><span><img src="/static/account/img/delete_big.png"/></span></li>
+                                    <li class="li_blank"><label></label><span></span></li>
+                                </ul>
+                                <ul>
+                                    <li class="li_title"><label>其他</label><span class="delete">删除</span></li>
+                                    <li class="li_input"><label><input type="text" value="患牙无不适"></label><span><img src="/static/account/img/delete_big.png"/></span></li>
+                                    <li class="li_input"><label><input type="text" value="要求补牙"></label><span><img src="/static/account/img/delete_big.png"/></span></li>
+                                    <li class="li_input"><label><input type="text" value="呀伸长感"></label><span><img src="/static/account/img/delete_big.png"/></span></li>
+                                    <li class="li_blank"><label></label><span></span></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="sec_ul">
+                                <ul>
+                                    <li class="li_title"><label>部位</label><span class="delete">删除</span></li>
+                                    <li class="li_blank"><label></label><span></span></li>
+                                </ul>
+                                 <ul>
+                                    <li class="li_title"><label>症状</label><span class="delete">删除</span></li>
+                                    <li class="li_input"><label><input type="text" value="疼痛"></label><span><img src="/static/account/img/delete_big.png"/></span></li>
+                                    <li class="li_input"><label><input type="text" value="牙龈未见异常"></label><span><img src="/static/account/img/delete_big.png"/></span></li>
+                                    <li class="li_input"><label><input type="text" value="牙伸长感"></label><span><img src="/static/account/img/delete_big.png"/></span></li>
+                                    <li class="li_input"><label><input type="text" value="颗谈及穿碎空"></label><span><img src="/static/account/img/delete_big.png"/></span></li>
+                                    <li class="li_blank"><label></label><span></span></li>
+                                </ul>
+                            </div>
+                            <div class="sec_ul">
+                                <ul>
+                                    <li class="li_title"><label>诊法</label><span class="delete">删除</span></li>
+                                    <li class="li_input"><label><input type="text" value="叩（+）"></label><span><img src="/static/account/img/delete_big.png"/></span></li>
+                                    <li class="li_input"><label><input type="text" value="冷（+）"></label><span><img src="/static/account/img/delete_big.png"/></span></li>
+                                    <li class="li_input"><label><input type="text" value="探针（-）"></label><span><img src="/static/account/img/delete_big.png"/></span></li>
+                                    <li class="li_blank"><label></label><span></span></li>
+                                </ul>
+                                <ul>
+                                    <li class="li_title"><label>程度</label><span class="delete">删除</span></li>
+                                    <li class="li_input"><label><input type="text" value="松（+）"></label><span><img src="/static/account/img/delete_big.png"/></span></li>
+                                    <li class="li_input"><label><input type="text" value="牙石（++）"></label><span><img src="/static/account/img/delete_big.png"/></span></li>
+                                    <li class="li_input"><label><input type="text" value="色素（+++）"></label><span><img src="/static/account/img/delete_big.png"/></span></li>
+                                    <li class="li_blank"><label></label><span></span></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="sec_ul">
+                                <ul>
+                                    <li class="li_title"><label>诊断</label><span class="delete">删除</span></li>
+                                    <li class="li_input"><label><input type="text" value="牙周牙髓联合病变"></label><span><img src="/static/account/img/delete_big.png"/></span></li>
+                                    <li class="li_input"><label><input type="text" value="急性化脓性根尖周炎"></label><span><img src="/static/account/img/delete_big.png"/></span></li>
+                                    <li class="li_input"><label><input type="text" value="慢性根尖周炎"></label><span><img src="/static/account/img/delete_big.png"/></span></li>
+                                    <li class="li_input"><label><input type="text" value="慢性龈缘炎"></label><span><img src="/static/account/img/delete_big.png"/></span></li>
+                                    <li class="li_input"><label><input type="text" value="牙周牙髓联合病变"></label><span><img src="/static/account/img/delete_big.png"/></span></li>
+                                    <li class="li_input"><label><input type="text" value="急性化脓性根尖周炎"></label><span><img src="/static/account/img/delete_big.png"/></span></li>
+                                    <li class="li_input"><label><input type="text" value="慢性根尖周炎"></label><span><img src="/static/account/img/delete_big.png"/></span></li>
+                                    <li class="li_input"><label><input type="text" value="慢性龈缘炎"></label><span><img src="/static/account/img/delete_big.png"/></span></li>
+                                    <li class="li_blank"><label></label><span></span></li>
+                                </ul>
+                                 <ul>
+                                    <li class="li_title"><label>症状</label><span class="delete">删除</span></li>
+                              
+                                    <li class="li_blank"><label></label><span></span></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="sec_ul">
+                                <ul>
+                                    <li class="li_title"><label>部位</label><span class="delete">删除</span></li>
+                                    <li class="li_blank"><label></label><span></span></li>
+                                </ul>
+                                 <ul>
+                                    <li class="li_title"><label>填充</label><span class="delete">删除</span></li>
+                                   
+                                    <li class="li_blank"><label></label><span></span></li>
+                                </ul>
+                            </div>
+                            <div class="sec_ul">
+                                <ul>
+                                    <li class="li_title"><label>药物</label><span class="delete">删除</span></li>
+                                    <li class="li_input"><label><input type="text" value="3%双氧水含漱半分钟"></label><span><img src="/static/account/img/delete_big.png"/></span></li>
+                                    <li class="li_input"><label><input type="text" value="双氧水，生理盐水交替冲洗"></label><span><img src="/static/account/img/delete_big.png"/></span></li>
+                                    <li class="li_blank"><label></label><span></span></li>
+                                </ul>
+                                <ul>
+                                    <li class="li_title"><label>其他</label><span class="delete">删除</span></li>
+                                    <li class="li_input"><label><input type="text" value="隔湿干燥"></label><span><img src="/static/account/img/delete_big.png"/></span></li>
+                                    <li class="li_input"><label><input type="text" value="根管口无异物"></label><span><img src="/static/account/img/delete_big.png"/></span></li>
+                                    <li class="li_input"><label><input type="text" value="口服抗生素"></label><span><img src="/static/account/img/delete_big.png"/></span></li>
+                                    <li class="li_input"><label><input type="text" value="去腐，封FC"></label><span><img src="/static/account/img/delete_big.png"/></span></li>
+                                    <li class="li_input"><label><input type="text" value="冠修复"></label><span><img src="/static/account/img/delete_big.png"/></span></li>
+                                    <li class="li_input"><label><input type="text" value="干髓治疗"></label><span><img src="/static/account/img/delete_big.png"/></span></li>
+                                    <li class="li_blank"><label></label><span></span></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="last_temp">
+                            <div class="sec_ul">
+                                 <ul>
+                                    <li class="li_title"><label>部位</label><span class="delete">删除</span></li>
+                                    <li class="li_input"><label><input type="text" value="常规医嘱"></label><span><img src="/static/account/img/delete_big.png"/></span></li>
+                                    <li class="li_input"><label><input type="text" value="三个月复诊"></label><span><img src="/static/account/img/delete_big.png"/></span></li>
+                                    <li class="li_input"><label><input type="text" value="因FC刺激性大，且有半抗原性，故若有不适随诊。"></label><span><img src="/static/account/img/delete_big.png"/></span></li>
+                                    <li class="li_blank"><label></label><span></span></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </div>
+                    
+                </div>
+            </div>
+         </div>
+    </div>
+    <script type="text/javascript" src="/static/account/js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="/static/account/js/medical_temp.js"></script>
+</body>
+</html>

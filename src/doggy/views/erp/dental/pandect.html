@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>门诊总览</title>
+		{{template "../public/link/css_inc.html" .}}
+		<link href="/static/erp/css/dental.css" rel="stylesheet"/>
+	</head>
+	<body>
+		{{template "../public/public/header.html" .}}
+		<div class="mainFrme">
+			{{template "../public/public/left.html" .}}
+			<div class="rightFrme">
+				<div class="crumbs"><a href="###">主页</a> > <a href="###">门诊分级管理</a></div>
+				<div class="cont">
+					<div class="content1">
+						<div class="contentHead">
+							<span>门诊统计概况</span>
+							<a href="###">查看全部门诊</a>
+						</div>
+						<div id="container"></div>
+						<ul class="chart1Info">
+							<li>
+								<div class="d1">一星门诊数量</div>
+								<div class="d2"><span><i class="xxfull"></i><i></i><i></i><i></i><i></i></span></div>
+								<div class="d3">154家 <b>15%</b></div>
+								<div class="d4"><a href="###">查看详情</a></div>
+							</li>
+							<li>
+								<div class="d1">二星门诊数量</div>
+								<div class="d2"><span><i class="xxfull"></i><i class="xxfull"></i><i></i><i></i><i></i></span></div>
+								<div class="d3">154家 <b>15%</b></div>
+								<div class="d4"><a href="###">查看详情</a></div>
+							</li>
+							<li>
+								<div class="d1">三星门诊数量</div>
+								<div class="d2"><span><i class="xxfull"></i><i class="xxfull"></i><i class="xxfull"></i><i></i><i></i></span></div>
+								<div class="d3">154家 <b>15%</b></div>
+								<div class="d4"><a href="###">查看详情</a></div>
+							</li>
+							<li>
+								<div class="d1">四星门诊数量</div>
+								<div class="d2"><span><i class="xxfull"></i><i class="xxfull"></i><i class="xxfull"></i><i class="xxfull"></i><i></i></span></div>
+								<div class="d3">154家 <b>15%</b></div>
+								<div class="d4"><a href="###">查看详情</a></div>
+							</li>
+							<li>
+								<div class="d1">五星门诊数量</div>
+								<div class="d2"><span><i class="xxfull"></i><i class="xxfull"></i><i class="xxfull"></i><i class="xxfull"></i><i class="xxfull"></i></span></div>
+								<div class="d3">154家 <b>15%</b></div>
+								<div class="d4"><a href="###">查看详情</a></div>
+							</li>
+						</ul>
+					</div>
+					<div class="content2">
+						<div class="content2_tit">
+							<span>日</span><span>周</span><span>月</span><span>年</span><span>自定义</span>
+							<div id="BeginDate" class="calendar"></div>
+							<label>至</label>
+							<div id="EndDate" class="calendar"></div>
+							<input type="button" value="查询" id="dentalCheck">
+						</div>
+						<div id="container2"></div>
+					</div>
+					<div id="container3">
+						<div id="container3_left">
+							<div class="container3_lr_t">
+								<span class="spa1">申请评级门诊</span>
+								<span class="spa2"><a href="#">查看全部申请</a></span>
+							</div>
+							<table>
+								<thead>
+									<tr>
+										<th>申请时间</th>
+										<th>门诊名称</th>
+										<th>管家号</th>
+										<th>地区</th>
+										<th>所属账号</th>
+										<th>操作</th>
+									</tr>
+								</thead>
+								<tbody align="center">
+									<tr>
+										<td>2016.12.12</td>
+										<td>桃园美牙</td>
+										<td>80868</td>
+										<td>广东深圳</td>
+										<td>13800138000</td>
+										<td><a href="#">审核</a></td>
+									</tr>
+									<tr>
+										<td>2016.12.12</td>
+										<td>桃园美牙</td>
+										<td>80868</td>
+										<td>广东深圳</td>
+										<td>13800138000</td>
+										<td><a href="#">审核</a></td>
+									</tr>
+									<tr>
+										<td>2016.12.12</td>
+										<td>桃园美牙</td>
+										<td>80868</td>
+										<td>广东深圳</td>
+										<td>13800138000</td>
+										<td><a href="#">审核</a></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div id="container3_right">
+							<div class="container3_lr_t">
+								<span class="spa1">评级变化门诊</span>
+								<span class="spa2"><a href="#">查看全部评级变化门诊</a></span>
+							</div>
+							<table>
+								<thead>
+									<tr>
+										<th>趋势</th>
+										<th>最近变化时间</th>
+										<th>门诊名称</th>
+										<th>管家号</th>
+										<th>原星级/现星级</th>
+										<th>变化原因</th>
+										<th>操作</th>
+									</tr>
+								</thead>
+								<tbody align="center">
+									<tr>
+										<td><img src="/static/erp/img/up.png" height="25"></td>
+										<td>2016.12.12</td>		
+										<td>桃园美牙</td>		
+										<td>80868</td>		
+										<td>四星级/三星级</td>		
+										<td>用户评级降低......</td>		
+										<td><a href="#">查看详情</a></td>
+									</tr>
+									<tr>
+										<td><img src="/static/erp/img/down.png" height="25"></td>
+										<td>2016.12.12</td>		
+										<td>桃园美牙</td>		
+										<td>80868</td>		
+										<td>四星级/三星级</td>		
+										<td>用户评级降低......</td>		
+										<td><a href="#">查看详情</a></td>
+									</tr>
+									<tr>
+										<td><img src="/static/erp/img/up.png" height="25"></td>
+										<td>2016.12.12</td>		
+										<td>桃园美牙</td>		
+										<td>80868</td>		
+										<td>四星级/三星级</td>		
+										<td>用户评级降低......</td>		
+										<td><a href="#">查看详情</a></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		{{template "../public/public/footer.html" .}}
+	</body>
+	{{template "../public/link/js_inc.html" .}}
+	<script type="text/javascript" src="/static/erp/js/public/highcharts.js"></script>
+	<!--<script type="text/javascript" src="https://img.hcharts.cn/highcharts/modules/exporting.js"></script>
+	<script type="text/javascript" src="https://img.hcharts.cn/highcharts/modules/data.js"></script>-->
+	<!--<script type="text/javascript" src="/static/erp/js/public/highstock.js"></script>-->
+	<script type="text/javascript" src="/static/erp/js/dentalIndexAno.js"></script>
+	<script type="text/javascript" src="/static/erp/js/dentalIndex.js"></script>
+</html>

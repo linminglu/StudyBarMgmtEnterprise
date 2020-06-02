@@ -1,0 +1,57 @@
+/*---------------------------------------
+  网站公共繞样式文件
+  说明：主要为最外框div的样式，内容包含:
+  文档的左(left_area)
+  		右(right_area)
+  		头(top_area)
+  		尾(footer_area)
+  此处仅仅用来定位宽和高，设置浮动属性，切
+  不可在结构样式上添加margin或是padding,这
+  样会影响重用性。		
+*----------------------------------------*/
+.head_area{ width:100%; height:85px; line-height:85px }
+.head_area,
+.body_area{ display:table-row;}
+
+.h_left,
+.h_right,
+.left_area,
+.right_area{display:table-cell; }
+
+.left_area{width:250px; height:100%}
+.right_area{height:100%}
+
+/*---------------------------------------
+	公共部分
+/*---------------------------------------*/
+.head_area .h_left_title{font-size:22px; color:#fff; cursor:pointer}
+.icon-angle-down{color:#fff}
+.b_r_w_40{width:40px; height:40px; text-align:center; line-height:40px;border-radius:50%; }
+/*---------------------------------------
+	公共导航部分
+/*---------------------------------------*/
+#site_nav{position:absolute; z-index:2; width:150px; padding:10px; height:160px; box-shadow:0px 0px 5px #666;  left:10px; top:70px; background-color:rgba(255,255,255,1); display:none; }
+#site_nav a{display:inline-block; width:96%; height:30px; line-height:30px; transition:all ease-out 0.1s; color:#333; text-decoration:none; border:solid 0px #ccc; padding-left: 4%}
+#site_nav a:hover{background-color:#eee; border-radius: 2px}
+/*---------------------------------------
+结果提醒弹层[zlb] 2016-09-22
+/*---------------------------------------*/
+#info_pop_div{position:absolute; z-index:200; animation-duration: 0.8s;animation-delay: 0.1s; font-weight:bold; font-size:16px; width:450px; height:40px; line-height:40px;left:50%;top:200px;margin-left:-225px;  background-color:#fff; border:solid 1px #00d4c3; border-radius:1px; border-radius:5px; text-align:center; color:#00d4c3; display:none}
+.animated {-webkit-animation-duration: 1s;animation-duration: 1s;-webkit-animation-fill-mode: both;animation-fill-mode: both;z-index: 100;}
+.animated.infinite {-webkit-animation-iteration-count: infinite;animation-iteration-count: infinite;}
+.animated.hinge {-webkit-animation-duration: 2s;animation-duration: 2s;}
+@-webkit-keyframes bounceInDown {0% {opacity: 0;-webkit-transform: translateY(-2000px);transform: translateY(-2000px);}
+60% {opacity: 1;-webkit-transform: translateY(30px);    transform: translateY(30px);}
+80% {-webkit-transform: translateY(-10px);transform: translateY(-10px);}
+100% {-webkit-transform: translateY(0);transform: translateY(0);}}
+@keyframes bounceInDown {0% {opacity: 0;-webkit-transform: translateY(-2000px);-ms-transform: translateY(-2000px);transform: translateY(-2000px);}
+60% {opacity: 1;-webkit-transform: translateY(30px);-ms-transform: translateY(30px);transform: translateY(30px);}
+80% {-webkit-transform: translateY(-10px);-ms-transform: translateY(-10px);    transform: translateY(-10px);}
+100% {-webkit-transform: translateY(0);-ms-transform: translateY(0);transform: translateY(0);}}
+.bounceInDown {-webkit-animation-name: bounceInDown;animation-name: bounceInDown;}
+
+
+
+
+
+

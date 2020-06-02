@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>牙医管家口腔管理平台</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta charset="UTF-8">
+    <meta content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta http-equiv="Cache-Control" content="no-transform ">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+    <!--<include file="Public:css_inc"/>-->
+    {{template "/account/Public/css_inc.html" .}}
+    <link rel="stylesheet" type="text/css" href="/static/account/css/chain_strom.css" />
+    <link rel="stylesheet" type="text/css" href="/static/account/css/oneStrom.css" />  
+    <style type="text/css">
+	*{font-family:微软雅黑; font-size:18px;}	
+	body,html{width:100%; height:100%; margin:0px; padding:0px}
+	/*------------------------------------------------------------------------------------*/
+	.bg1{background-image:url(/static/public/img/plus.png);background-position:top; background-repeat:repeat-x; background-color:#fff;}/*专业版*/
+	#header{width:100%; height:40px; box-sizing:border-box; padding:16px 20px 0px 20px; position:relative}	
+	#header .right{ position:absolute; right:20px; top:16px; margin:0px; padding:0px; list-style:none; display:table-cell; }
+	#header .right li{ float:left;} .t_hover{cursor:pointer}
+	#header .right .right_li{margin:auto 24px auto 25px; width:22px; height:22px; }	
+	#header .right .vline{ width:1px; height:20px; border-left:solid 1px #fff; opacity:0.3; font-size:1px; margin-right:24px;}	
+	#header img,#header span{float:left}
+	#userface{margin-top:-5px}
+	.clinicLogo{ margin-top:-2px;}
+	#clincname{font-size:18px; color:#fff; margin-left:12px;}
+	#mycreate{ width:59px; height:22px; background-image:url(/static/public/img/mycreate.png); margin-left:8px; font-size:12px; margin-top:3px; line-height:22px; text-align:center; color:#fff;}
+	
+	.tdimg{height:138px; vertical-align:middle; display:table; width:100%;position:relative;}
+
+	.tdimg .imgCell{display:table-cell; vertical-align:middle; text-align:center;}
+    .tdimg .no_mission{display:table-cell; vertical-align:middle; text-align:center;position:absolute;left:0px;top:10px;display:none; width:100%;}
+	#content{width:100%; height:100%; box-sizing:border-box; padding-top:150px; }
+	#maintable td{ vertical-align:middle; text-align:center; width:25%;background-repeat:no-repeat; background-position:center 66%; cursor:pointer;  position:relative}
+	p{line-height:40px;}
+	.td1{background-image:url(/static/public/img/homeImg/Outpatient_s.png)}
+	.td2{background-image:url(/static/public/img/homeImg/powernet_s.png)}
+	.td3{background-image:url(/static/public/img/homeImg/market_s.png)}
+	.td4{background-image:url(/static/public/img/homeImg/Outpatient_s.png)}
+	.td5{background-image:url(/static/public/img/homeImg/finance_s.png)}
+	.td6{background-image:url(/static/public/img/homeImg/store_s.png)}
+	.td7{background-image:url(/static/public/img/homeImg/system_s.png)}	
+	/*------------------------------------------------------------------------------------*/
+    </style>
+    
+</head>
+<body class="bg1">
+    <!--头部 start-->
+    <div id="header">
+            <img src="/static/public/img/grouplogo.png" class="clinicLogo">
+            <span id="clincname">深圳菲森口腔</span>
+            <span id="mycreate">我创建</span>
+            <ul class="right">
+                <!--<li class="r_add t_hover"><img src="/static/public/img/relation.png"></li>-->
+                <li class="right_li  t_hover"><img src="/static/public/img/message.png"></li>
+                <li class="vline"></li>
+                <li><img id="userface" src="/static/account/img/default_pho.png"></li>
+            </ul>
+    </div>
+    <!--头部 end-->
+        
+    <!--正文 start-->
+    <div id="content">
+        <table border="0" width="1000" height="550" align="center" id="maintable">
+            <tbody>
+                <tr height="50%">
+                    <td class="td1">
+                        <div class="tdimg">
+                            <div class="imgCell">
+                                <img src="/static/public/img/homeImg/Outpatient.png" />
+                            </div>
+                            <div class="no_mission">
+                                <img src="/static/public/img/homeImg/no_mission.png" />
+                            </div>
+                        </div>
+                        <p class="txtfot">门诊业务</p>
+                    </td>
+                    <td class="td2">
+                        <div class="tdimg">
+                            <div class="imgCell"><img src="/static/public/img/homeImg/powernet.png" /></div>
+                            <div class="no_mission">
+                                <img src="/static/public/img/homeImg/no_mission.png" />
+                            </div>
+                        </div>
+                        <p class="txtfot">电网中心</p>
+                    </td>
+                    <td class="td3">
+                        <div class="tdimg"><div class="imgCell"><img src="/static/public/img/homeImg/market.png" /></div>
+                                      <div class="no_mission">
+                                <img src="/static/public/img/homeImg/no_mission.png" />
+                            </div>
+                        </div>
+                        <p class="txtfot">市场营销</p>
+                    </td>
+                    <td class="td4">
+                        <div class="tdimg"><div class="imgCell"><img src="/static/public/img/homeImg/Operation.png" /></div>
+                                      <div class="no_mission">
+                                <img src="/static/public/img/homeImg/no_mission.png" />
+                            </div>
+                        </div>
+                        <p class="txtfot">运营中心</p>
+                    </td>
+                </tr>
+                <tr  height="50%">
+                    <td class="td5">
+                        <div class="tdimg"><div class="imgCell"><img src="/static/public/img/homeImg/finance.png" /></div>
+                                      <div class="no_mission">
+                                <img src="/static/public/img/homeImg/no_mission.png" />
+                            </div>
+                        </div>
+                        <p class="txtfot">财务管理</p>
+                    </td>
+                    <td class="td6">
+                        <div class="tdimg"><div class="imgCell"><img src="/static/public/img/homeImg/store.png" /></div>
+                                      <div class="no_mission">
+                                <img src="/static/public/img/homeImg/no_mission.png" />
+                            </div>
+                        </div>
+                        <p class="txtfot">库存管理</p>
+                    </td>
+                    <td class="td7">
+                        <div class="tdimg"><div class="imgCell"><img src="/static/public/img/homeImg/system.png" /></div>
+                                      <div class="no_mission">
+                                <img src="/static/public/img/homeImg/no_mission.png" />
+                            </div>
+                        </div>
+                        <p class="txtfot">系统管理</p>
+                    </td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!--正文 end-->
+    <script type="text/javascript" src="/static/account/js/jquery-1.9.1.min.js"></script>
+    <script>
+    $(".imgCell img").mouseenter(
+        function(e){
+            //console.log(e);
+            if($(e.relatedTarget)[0].tagName=='IMG'){
+                return;
+            }
+           // console.log(e.relatedTarget());
+            //if(e.relatedTarget())
+            $(".no_mission").hide();
+            $(this).stop().animate({"width":"128px","height":"128px"},200).animate({"width":"118px","height":"118px"},100);
+            $(this).parent(".imgCell").siblings(".no_mission").show();
+        }
+    )
+    $(".no_mission").mouseleave(function(){
+        $(".no_mission").hide();
+    })
+     $(".imgCell img").mouseleave(
+        function(){
+            $(this).stop().animate({"width":"113px","height":"113px"},100);
+        }
+    )
+
+    
+
+    </script>
+</body>
+</html>

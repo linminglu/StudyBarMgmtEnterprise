@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>投诉建议</title>
+		{{template "../public/link/css_inc.html" .}}
+		<link href="/static/erp/css/chancle.css" rel="stylesheet" />
+        <link href="/static/erp/css/user.css" rel="stylesheet" />
+	</head>
+	<body>
+		{{template "../public/public/header.html" .}}
+			<div class="mainFrme">
+				{{template "../public/public/left.html" .}}
+				<div class="rightFrme">
+                    <div class="crumbs"><a href="###">主页</a> > <a href="###">投送管理</a></div>
+                    <div class="cont">
+                        <div class="pageHeader">投诉建议列表</div>
+                        <div class="search">
+                            <label>提交时间</label>
+                            <div id="BeginDate" class="calendar"></div>
+                            <label>至</label>
+                            <div id="EndDate" class="calendar"></div>
+                            <label>投诉平台</label>
+                            <div id="mesState" class="mesState"></div>
+                            <input name="condition" class="ml20 w240" type="text" placeholder="请输入用户名/手机等关键词查询" />
+                            <input type="button" name="userlist_btn" value="查询" />
+                            <div class="excel">导出excel</div>
+					    </div>
+                        <table width="100%" class="off_web_table">
+                            <thead>
+                                <tr>
+                                    <th>编号</th>
+                                    <th>投诉平台</th>
+                                    <th>类型</th>
+                                    <th>提交账号</th>
+                                    <th>提交时间</th>
+                                    <th>内容</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody align="center">
+                                <tr>
+                                    <td>56499</td>
+                                    <td>看牙</td>
+                                    <td>提建议</td>
+                                    <td>1380013800</td>
+                                    <td>2016.12.15.  12:21:00</td>
+                                    <td>经常出现闪退的情况，页面缓冲不出来...</td>
+                                    <td class="operate"><span>查看详情</span></td>
+                                </tr>
+                                <tr>
+                                    <td>56499</td>
+                                    <td>看牙</td>
+                                    <td>提建议</td>
+                                    <td>1380013800</td>
+                                    <td>2016.12.15.  12:21:00</td>
+                                    <td>经常出现闪退的情况，页面缓冲不出来...</td>
+                                    <td class="operate"><span>查看详情</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+					</div>
+				</div>
+			</div>
+		{{template "../public/public/footer.html" .}}
+	</body>
+	{{template "../public/link/js_inc.html" .}}
+    <script type="text/javascript">
+        $(function(){
+            $("#BeginDate").yayigj_date_Sel();
+            $("#EndDate").yayigj_date_Sel();
+            
+            //加载页面获取当天日期
+            $("#BeginDate").getCurrday();
+            $("#EndDate").getCurrday();
+
+            $("#mesState").yayigj_downlist({    //状态
+                _hiddenID:'clinicid2',
+                _valtype:'text',
+                _data:[
+                    {'key':'全部'},
+                    {'key':'已发送'},
+                    {'key':'未发送'},
+                    {'key':'草稿'}
+                ]	 
+            });
+        })
+    </script>
+</html>

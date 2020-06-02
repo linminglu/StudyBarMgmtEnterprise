@@ -1,0 +1,60 @@
+/*=======================
+	整个分站表单控件样式  zlb 2016-11-20
+	线色，背景色在此控制，考虑后期风格切换
+	在此添加样式须经 曾令兵||李琴||范明亮 许可
+/*=======================*/
+
+/*---------------------------------------
+  总控设置
+ ----------------------------------------*/ 
+input,button{font-family:微软雅黑; outline:none;}
+ 
+/*---------------------------------------
+ 文本框
+ ----------------------------------------*/ 
+::-webkit-input-placeholder { color: #b0b0b0; } 
+:-moz-placeholder { color: #b0b0b0; } 
+::-moz-placeholder { color: #b0b0b0; } 
+:-ms-input-placeholder { color: #b0b0b0; } 
+input[type='text']{ box-sizing:border-box; padding:5px 5px 5px 15px; border:solid 1px #e0e0e0; color:#696969;border-radius:2px !important;}
+input[type='text']:focus{border:solid 1px #00c5b5;}
+/*---------------------------------------
+ 复选按钮
+ ----------------------------------------*/ 
+input[type="checkbox"] {-webkit-appearance: none;background: #fff url(../img/chk.png);height: 20px;vertical-align: middle;width: 20px;	}
+input[type="checkbox"]:focus,
+input[type="checkbox"]:hover {background-position: -22px 0; outline: none;}
+input[type="checkbox"]:checked {background-position: -43px 0;}
+input[type="checkbox"][disabled] {background-position: -65px 0;}
+input[type="checkbox"][disabled]:checked {background-position: -96px 0;}	
+/*---------------------------------------
+ 按钮
+ ----------------------------------------*/ 
+ input[type='button'],button{border-radius:2px !important; min-width:80px;}
+.fillBtn{height:30px; background-color:#00c5b5;color:#fff;border:solid 1px #00c5b5}   /*实色类似确定按钮*/
+	.fillBtn:hover{background-color:#00d4c3;border:solid 1px #00d4c3} 
+	.fillBtn:active{background-color:#00bcaa;border:solid 1px #00bcaa} 
+	.fillBtn:disabled{background-color:#b2ede9;border:solid 1px #b2ede9} 
+.frmeBtn{height:30px; background-color:#fff;color:#a4a4a4;border:solid 1px #e0e0e0;}	 /*白底线框按钮*/
+	.frmeBtn:hover{color:#888;border:solid 1px #b0b0b0;}
+	.frmeBtn:active{color:#696969;border:solid 1px #a0a0a0;}
+	.frmeBtn:disabled{color:#ccc;border:solid 1px #f7f7f7;}
+.fillredBtn{height:30px; background-color:#f86d5a; color:#fff;border:solid 1px #f86d5a;}	/*红颜色实色按钮 比如删除*/
+	.fillredBtn:hover{background-color:#ff5d40;border:solid 1px #ff5d40;}
+	.fillredBtn:active{background-color:#f85748;border:solid 1px #f85748;}
+	.fillredBtn:disabled{background-color:#dce5f9;border:solid 1px #dce5f9;}
+.frmeRedBtn{height:30px; background-color:#f86d5a; color:#f86d5a;}									/*红颜色空框按钮 比如删除*/
+	.frmeRedBtn:hover{color:#f86d5a;border:solid 1px #ff5d40;}
+	.frmeRedBtn:active{color:#ff5d40;border:solid 1px #f85748;}
+	.frmeRedBtn:disabled{color:#888;border:solid 1px #dce5f9;}	
+.blueBtn{height:30px; background-color:#8aa8ec; color:#fff;border:solid 1px #8aa8ec}												   /*颜色空框按钮 比如查询*/	
+	.blueBtn:hover{background-color:#7397e8; color:#fff;border:solid 1px #7397e8}
+	.blueBtn:active{background-color:#678ee6; color:#fff;border:solid 1px #678ee6}
+	.blueBtn:disabled{background-color:#DCE5F9; color:#fff;border:solid 1px #DCE5F9}
+	
+/*上传按钮*/
+.uploadBtn {position:relative;display: inline-block;background: #FFF;border: 1px solid #00c5b5;border-radius: 2px;font-size:14px;overflow: hidden;color: #00c5b5;text-decoration: none;line-height: 30px; height:30px;}
+.uploadBtn input {position: absolute;right: 0px;top: 0px;height: 100%;left: 0px;width: 100%; height:100%; font-size:20px; opacity:0}
+.uploadBtn:hover {background: #00c5b5;border-color: #00c5b5;color: #FFF;text-decoration: none;}
+.uploadBtn:active{background: #00bcaa;}
+.uploadBtn[data-disabled='1']{background: #fff; color:#F1FBF9}

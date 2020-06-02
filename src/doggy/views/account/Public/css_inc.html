@@ -1,0 +1,16 @@
+<link rel="stylesheet" type="text/css" href="/static/account/css/borderBgBtn.css">
+<link rel="stylesheet" type="text/css" href="/static/account/css/common.css">
+<link rel="stylesheet" type="text/css" href="/static/account/css/cssReset.css">
+<link rel="stylesheet" type="text/css" href="/static/account/css/public.css">
+<link rel="stylesheet" href="/static/public/css/public/r_header.css">
+
+<script>
+    var getLeftSta=localStorage.getItem("left_close_open");
+	//alert(getLeftSta);
+	if(getLeftSta=='open') {
+	document.write('<style type="text/css">#leftFrme{width:60px;}.main_left{display:block;}.left_nav_hide{display:none;}</style>');}
+	else{
+	document.write('<style type="text/css">#leftFrme{width:60px;}.main_left{display:none;}.left_nav_hide{display:block!important;}</style>');
+	}
+</script>
+<script>var ispc=parseInt('{{.PCLoad}}');if(!isNaN(ispc) && ispc==1){document.write('<style type="text/css">.headArea{display:none;}.outerFrame{padding:20px!important;}</style>');};</script>

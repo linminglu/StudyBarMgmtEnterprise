@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>注册</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+     	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+     	<meta charset="UTF-8">
+        <meta content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" name="viewport">
+        <meta content="yes" name="apple-mobile-web-app-capable">
+        <meta content="black" name="apple-mobile-web-app-status-bar-style">
+        <meta content="telephone=no" name="format-detection">
+        <meta http-equiv="Cache-Control" content="no-transform ">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+        <!--<include file="Public:css_inc"/>-->
+        {{template "/account/Public/css_inc.html" .}} 
+        <link rel="stylesheet" type="text/css" href="/static/account/css/register.css">        
+    </head>
+    <body>
+        <div class="topbar">
+            <div class="topbarIn">
+                <div class="logo"><a href="http://www.dental360.cn/" target="_blank"><img src="/static/ant/img/logo.png" alt="牙医管家"></a></div>
+                <div class="logoDes">欢迎注册</div>
+                <div class="loginAndRegister">
+                    <a href="#" >已有账号?</a>
+                    <a href="/login" class="login_a">请登录</a>
+                </div>
+            </div>
+        </div>
+       <div class="reg_con">
+            <div class="check_phone">
+                <div class="phone_input">
+                    <div class="sub_tips reg_pw_tips"><img src="/static/account/img/red_exclam.png"><label></label></div>
+                    <div class="set_pw"><span>设置密码</span><input type="password" placeholder="请输入登录密码" class="box_w288_h18" id="reg_set_pw"></div>
+                    <div class="pw_safe"><span class="safe_rang"></span><span class="safe_rang"></span><span class="safe_rang"></span>
+                    <label id="pw_safe_rang">弱</label></div>
+                    <div class="pw_tip">您的密码有风险，请使用数字、字母或标点符号的组合</div>
+                    <div class="confime_pw"><span>确认密码</span><input type="password" placeholder="请再次输入密码" class="box_w288_h18" id="reg_set_rpw"></div>
+                    <div class="reg_pw_sub_tips"><img src="/static/account/img/red_exclam.png"><label></label></div>
+                    <div class="user_agree"><label><img src="/static/account/img/checked.png" id="selte_agress"></label><label>我已阅读并同意<a href="/member/serviceterms" target="_blank">《牙医管家用户注册协议》</a></label></div>
+                    <div><input type="button" value="下一步" id="next_step2" class="next_step  acb ac_btn_bf w196h30"></div>
+                </div>
+            </div>
+       </div>
+       <!--<include file="Public:footer_new"/>-->
+       {{template "/account/Public/footer_new.html" .}} 
+       <script type="text/javascript" src="/static/account/js/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript" src="/static/account/js/placeholade.min.js"></script>
+       <script type="text/javascript" src="/static/account/js/reg_set_pw.js"></script>
+       <!--IE支持placeholder-->
+       <script type="text/javascript">  
+            $(function(){ $('input, textarea').placeholder(); });
+        </script>
+    </body>
+</html>

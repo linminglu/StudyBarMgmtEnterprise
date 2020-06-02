@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>登录</title>
+<!--<include file="Public:css_inc" />-->
+ {{template "/account/Public/css_inc.html"  .}}
+<link rel="stylesheet" type="text/css" href="/static/account/css/login_pop.css">
+</head>
+<body>
+	<div class="form_pic">
+	<form  id="pop_form">
+    	<div class="login_head">
+        	欢迎登录牙医管家<img class="close_pop_form" src="/static/account/img/close.png"/>
+        </div>
+        <!-- 隐藏的input域 -->
+        <!--<input type="hidden" name="redirect_url" id="redirect_url" value="<{$redirect_url}>">-->
+        <!-- -->
+        <div class="login_user">
+        	<p id="err_info"><img src="/static/account/img/red_exclam.png"></p>
+            <img class="mobile_ico" src="/static/account/img/mobile.png" />
+            <input type="text" placeholder="请输入手机号码" id="mobile" disableautocomplete name="mobile" />
+        </div>
+        <div class="login_pw">
+             <img src="/static/account/img/pw.png" />
+            <input type="text" onFocus="this.type='password'" placeholder="请输入密码" name="password"  id="password" disableautocomplete autocomplete="off"/>
+        </div>
+        <div class="login_txt">
+        	<span class="ch_box">
+				<img src="/static/account/img/checked.png">
+				<span id="forlabel">记住用户名</span> 
+			</span>	
+            <a href="/Account/index.php?m=Login&a=psw_find" target="_blank">忘记密码</a>
+        </div>
+        <input type="button" value="立即登录" id="sub" class="ac_btn_bf acb">
+        <div class="login_footer">
+        	<a href="/Account/index.php?m=Register"  target="_blank">没有账号？&nbsp;立即注册!</a>
+        </div>
+    </form>
+</div>
+<script language="javascript" src="/static/account/js/jquery-1.9.1.min.js"></script>
+<script language="javascript" src="/static/account/js/placeholade.min.js"></script>
+<script language="javascript" src="/static/account/js/jquery.cookie.js"></script>
+<script language="javascript" src="/static/account/js/login_pop.js"></script>
+</body>
+</html>

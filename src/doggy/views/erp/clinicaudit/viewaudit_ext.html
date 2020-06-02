@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>门诊审核</title>
+		{{template "../public/link/css_inc.html" .}}
+		<link href="/static/erp/css/user.css" rel="stylesheet" />
+		<link href="/static/erp/css/clinicaudit.css" rel="stylesheet" />	
+        <style>
+            .backPage{top:15px;right:20px;}
+            .search{padding:14px 14px 0 14px;}
+			.search label,.search div{margin-bottom:20px;}
+			.excel{float:left;margin-left:14px;}
+            .sendState,.sendType,.sendStage{width: 80px;height: 28px;line-height: 28px;border: solid 1px #00c5b5;float: left;text-indent: 10px;}
+            .sendStage{width:180px;}
+			#BeginDate{width: 120px;}
+			#EndDate{width: 120px;}
+            html,body{background-color: #f4f4f4;}
+            .cont {width: 80%; margin: 0 auto!important;}
+        </style>
+	</head>
+	<body>
+
+					<div class="cont">
+						<!--<div class="pageHeader">门诊审核
+						</div>-->
+                        <ul class="pf_index">
+                            <li class="cur_index"><a href="">门诊基本信息</a></li>
+                            <!--<li><a href="">用户评分</a></li>-->
+                        </ul>
+                        <div class="pf_cont">
+                            <div class="pf_cont_t">基本评分<i></i></div>
+                            <div class="pf_cont_b">
+                                <li><span class="l_span">* 门诊名称名称：</span><span class="pf_info w400" id="name">菲森牙科</span></li>
+                                <li><span class="l_span">* 所属账号：</span><span class="pf_info w400 mr10" id="mobile">广东省</span></li>
+                                <li><span class="l_span">* 申请时间：</span><span class="pf_info w400" id="time">13800138000</span></li>
+                                <li><span class="l_span">* 门诊地址：</span><span class="pf_info w400" id="address">815844356772545</span></li>
+                                <li><span class="l_span">* 联系人：</span><span class="pf_info w400" id="contact">3244521454.jpg</span></li>
+                                <li><span class="l_span">* 星级：</span><span class="pf_info w400" id="starLv">3244521454.jpg</span></li>
+                                <li><span class="l_span">* 签约产品：</span>
+                                    <div class="l" id="product">
+                                        
+                                    </div>
+                                </li>
+                            </div>
+                        </div>
+                        <div class="black_area"></div>
+                        <div class="pf_cont_b mt30 sign_view" style="padding-bottom:30px;">
+                            <span class="l_span">* 签约记录：</span>
+                            <!--<span id="signStatus"></span><span id="signDate" class="ml30">2016.12.14   ~   2018.12.14
+
+                                </span>
+                            <div class="ml60" id="Imgs_view">
+                                <img src="" alt="">
+                            </div>-->
+                            <div id="record">
+
+                            </div>
+                        </div>
+					</div>
+				</div>
+			</div>
+		
+	</body>
+	{{template "../public/link/js_inc.html" .}}
+	<script type="text/javascript" src="/static/public/yayigj_pop_window.js"></script>
+	<script type="text/javascript" src="/static/account/js/area_val.js"></script>  <!--input输入框的省份城市和地区-->
+    <script type="text/javascript">
+		$(function(){
+            var InfoID=getUrlParam("InfoID");
+            var UserID=getUrlParam("UserID");
+            var DentalID=getUrlParam("DentalID");
+            var ClinicID=getUrlParam("ClinicID");
+         //   console.log("UserID=",UserID);
+            getdata(InfoID,UserID,DentalID,ClinicID);
+		});
+        // getdata();
+function getdata(InfoID,UserID,DentalID,ClinicID){
+    var parmas={
+        "InfoID":InfoID, //主键ID
+        "UserID":UserID,//用户ID
+        "DentalID":DentalID,//管家号
+        "ClinicID":ClinicID, //诊所id
+    }
+    jQuery.loading();
+    $.get("/butlerp/clinic/viewaudit",parmas,function(json){
+        jQuery.loading_close();
+        if(json.code==1){
+            if(json.list){
+                var data=json.list.basedata[0];
+                 $("#name").text(data.clinicname);
+                 $("#mobile").text(data.usermobile);
+                 $("#time").text(data.createtime);
+                 $("#address").text(data.addr);
+                 $("#contact").text(data.contact);
+                 $("#starLv").text(data.starrating);
+                 var product="";
+                 if(json.list.combo){
+                     $.each(json.list.combo,function(k,v){
+                          product+="<p>"+v.comboname+"</p>";
+                     })
+                 }
+                 $("#product").html(product);
+                 var  signRecord="<div>";
+                 if(json.list.signhistory){
+                     $.each(json.list.signhistory,function(k,v){
+                        var signdocument=v.signdocument;
+                        var imgs="<p><span>签约文件：</span><div class='l_align'>";
+                        var arr=[];
+                        if(signdocument){
+                            arr=signdocument.split("|");
+                            for(var i=0;i<arr.length;i++){
+                                imgs+="<img src='"+arr[i]+"' />";
+                            };
+                        }
+                            imgs+="</div></p>";
+                        var time="<div>"+v.progressstatus+"：<span>"+v.startdate+" ~ "+v.enddate+"</span>";
+                        if(v.progressstatus=="取消签约"){
+                            time=""+v.progressstatus+"：<span>"+v.remark+"</span>";
+                            signRecord+=time+"</div>";
+                        }else{
+                            signRecord+=time+imgs+"</div>";
+                        }
+                     })
+                 }
+                 $("#record").html(signRecord)
+            }
+        }else{
+            jQuery.postFail("fadeInup",json.info);
+        }
+    })
+}
+        //获取url中的参数
+function getUrlParam(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+    var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+    if (r != null) return unescape(r[2]); return null; //返回参数值
+}
+	</script>
+</html>

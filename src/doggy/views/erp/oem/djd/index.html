@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>百度度金贷</title>
+		{{template "../public/link/css_inc.html" .}}
+		<link href="/static/erp/oem/djd/css/djd_active.css" rel="stylesheet" />
+		<link href="/static/erp/oem/djd/css/user.css" rel="stylesheet" />
+	</head>
+	<body>
+		{{template "../public/public/header.html" .}}
+		<div class="mainFrme">
+			{{template "../public/public/left.html" .}}
+			<div class="rightFrme">
+				<div class="crumbs"><a href="###">主页</a> > <a href="###">门诊列表</a></div>
+				<input type="hidden" name="htag" value="0">
+				<div class="cont" id="home_info">
+					<div class="pageHeader">门诊列表</div>
+					<div class="search">
+						<label>申请时间</label>
+						<input id="begintime" type="text" class="sendState" readonly>
+						<label>至</label>
+						<input id="endtime" type="text" class="sendState" readonly>
+						<label>状态</label>
+						<input id="djd_active" type="text" class="sendState djd_active" readonly>
+						<label></label>
+						<input name="condition" class="ml20 w240" type="text" placeholder="输入手机号/管家号/诊所名称查找" id="searchtext" />
+						<input type="button" name="userlist_btn" value="查询" id="userlist_btn" />
+						<div class="excel" id="excel">导出excel</div>
+					</div>
+					<div class="f_data" id="scroll_div_1">
+						<table id="js_userlist_data">
+							<thead>
+								<tr>
+									<th>诊所绑定手机号</th>
+									<th>管家号</th>
+									<th>诊所名称</th>
+									<th class="text_right">额度</th>
+									<th>期限</th>
+									<th>状态</th>
+									<th>操作</th>
+								</tr>
+							</thead>
+							<tbody id="baidubody">
+                                
+							</tbody>
+						</table>
+					</div>
+					<div id="pager_home"></div>
+				</div>
+			</div>
+		</div>
+		{{template "../public/public/footer.html" .}}
+	</body>
+	{{template "../public/link/js_inc.html" .}}
+	<script>
+		var list1=null,list2=null,list3=null,pageApi1=null;
+        var begintime=getUrlParam('begintime');
+        var endtime=getUrlParam('endtime');
+		var data=[
+                {key: "全部",val: ""},
+                {key: "未处理",val: "0"},
+		 		{key: "已通过",val: "1"},
+                {key: "未达标",val: "2"},
+		 		{key: "已拒绝",val: "3"},
+		]
+        $(function(){
+            $("#begintime").yayigj_date_Sel({
+                    varType:'val'
+                });
+            $("#begintime").getCurrday();
+            $("#endtime").yayigj_date_Sel({
+                    varType:'val'
+                });
+            $("#endtime").getCurrday();
+            $('#djd_active').yayigj_downlist({
+                    _data:data
+            },function(api){
+                   list3 = api;
+            });
+            console.log(begintime)
+            if (begintime){
+                console.log(begintime)
+                $('#begintime').val(begintime)
+                $('#endtime').val(endtime)
+                console.log($('#begintime').val())
+            }
+            $('#pager_home').pagination({
+                  totalData:0,
+                  showData:0,
+                  pageCount:0,
+                  coping:true,
+                  count:2,
+                  jumpCallBack:jump,        //跳转回调
+                  callback:function(index){
+                      swhereObj.page=index.getCurrent();  //更改请求的当前页即可
+                      getjson(swhereObj);   //点页码后的回调
+                      $(".main_content").scrollTop(0);   //分页切换，回到顶部
+                      }
+            },function(api){      
+                  pageApi1=api;
+                });
+            function jump(params){    
+                  console.log(params)
+                  swhereObj.per_page=params;      //1-更改条件值
+                  swhereObj.page=1;
+                  pageApi1.reSetPageSize(params);    //3-调用api刷新页码信息
+                  getjson(swhereObj);            //2-重新请求第一页数据
+                  $(".main_content").scrollTop(0);
+            }
+            var swhereObj={
+                    "condition":$('#searchtext').val(),
+                    "startdate":$('#begintime').val()+' 00:00:00',
+                    "enddate":$('#endtime').val()+' 23:59:59',
+                    "status":$('#djd_active').attr('data-val'),
+                    "page":1,
+                    "per_page":10,
+                    "totalcount":-1
+            }
+            //删除数据
+            $('#baidubody').off('click','.delete').on('click','.delete',function(){
+                var obj={"infoid":$(this).parent().attr('data-id')}
+                jQuery.showDel('确定删除当前数据?', '删除提醒',
+                        function() {
+                            jQuery.pop_window_modal_dialog_close({
+                                _closemothod: 'fadeOutUp'
+                            });
+                            $.post('/butlerp/djd/deldata',obj,function(data){
+                                    if (data.code==1) {
+                                        var swhereObj={
+                                                "condition":$('#searchtext').val(),
+                                                "startdate":$('#begintime').val()+' 00:00:00',
+                                                "enddate":$('#endtime').val()+' 23:59:59',
+                                                "status":$('#djd_active').attr('data-val'),
+                                                "page":1,
+                                                "per_page":10,
+                                                "totalcount":-1
+                                        }
+                                        getjson(swhereObj)
+                                    }else{
+                                        jQuery.postFail('fadeInUp', data.info);
+                                    }
+                                })
+                        },
+                        function() {
+                            jQuery.pop_window_modal_dialog_close({
+                                _closemothod: 'fadeOutUp'
+                            });
+                }, 0);
+
+            })
+            //移除白名单
+            $('#baidubody').off('click','.delmove').on('click','.delmove',function(){
+                var obj={"infoid":$(this).parent().attr('data-id')}
+                jQuery.showDel('是否移除白名单?', '移除提醒',
+                        function() {
+                            jQuery.pop_window_modal_dialog_close({
+                                _closemothod: 'fadeOutUp'
+                            });
+                            $.post('/butlerp/djd/removedata',obj,function(data){
+                                if (data.code==1) {
+                                    var _swhereObj={
+                                            "condition":$('#searchtext').val(),
+                                            "startdate":$('#begintime').val()+' 00:00:00',
+                                            "enddate":$('#endtime').val()+' 23:59:59',
+                                            "status":$('#djd_active').attr('data-val'),
+                                            "page":1,
+                                            "per_page":10,
+                                            "totalcount":-1
+                                    }
+                                    getjson(_swhereObj)
+                                }else{
+                                    jQuery.postFail('fadeInUp', data.info);
+                                }
+                            })
+                        },
+                        function() {
+                            jQuery.pop_window_modal_dialog_close({
+                                _closemothod: 'fadeOutUp'
+                            });
+                }, 0);
+                
+            })
+            //导出excel
+            $('#excel').off('click').on('click',function(){
+                var condition=$('#searchtext').val();
+                var startdate=$('#begintime').val()+' 00:00:00';
+                var enddate=$('#endtime').val()+' 23:59:59';
+                var status=$('#djd_active').val()
+                var obj={
+                    "condition":$('#searchtext').val(),
+                    "startdate":$('#begintime').val()+' 00:00:00',
+                    "enddate":$('#endtime').val()+' 23:59:59',
+                    "status":$('#djd_active').val(),
+                };
+                // $.post('/butlerp/djd/exportexcel',obj,function(data){
+                //     if (data.code==1) {
+                        
+                //     }else{
+                //         jQuery.postFail('fadeInUp', data.info)
+                //     }
+                // })
+                window.location.href="/butlerp/djd/exportexcel?condition="+condition+"&startdate="+startdate+"&enddate="+enddate+"&status="+status;
+            })
+            //查看
+            $('#js_userlist_data').off('click','.see').on('click','.see',function(){
+                var infoid=$(this).parent().attr('data-id');
+                var num=$(this).parent().attr('data-val');
+                var begintime=$('#begintime').val();
+                var endtime=$('#endtime').val();
+                window.location.href="/butlerp/djd/datadetailpage?infoid="+infoid+"&num="+num+"&begintime="+escape(begintime)+"&endtime="+escape(endtime);
+            });
+            //修改
+            $('#js_userlist_data').off('click','.modify').on('click','.modify',function(){
+                var infoid=$(this).parent().attr('data-id');
+                var num=$(this).parent().attr('data-val');
+                var begintime=$('#begintime').val();
+                var endtime=$('#endtime').val();
+                window.location.href="/butlerp/djd/datadetailpage?infoid="+infoid+"&num="+num+"&begintime="+escape(begintime)+"&endtime="+escape(endtime);
+            });
+            $('#userlist_btn').off('click').on('click',function(){
+                var condition=$('#searchtext').val()
+                var beginDate=$("#begintime").val(); 
+                var endDate=$("#endtime").val(); 
+                var d1 = new Date(beginDate.replace(/\-/g, "\/")); 
+                var d2 = new Date(endDate.replace(/\-/g, "\/")); 
+
+                  if(beginDate!=""&&endDate!=""&&d1 >d2) 
+                 { 
+                  jQuery.postFail('fadeInUp',"开始时间不能大于结束时间！");
+                  return false; 
+                 }
+                if (condition.length>0) {
+                    swhereObj.startdate='';
+                    swhereObj.enddate='';
+                    swhereObj.status=$('#djd_active').attr('data-val');
+                    swhereObj.condition=condition;
+                    var _swhereObj={
+                        "status":$('#djd_active').attr('data-val'),
+                        "condition":condition
+                    }
+                }else{
+                    swhereObj.startdate=$('#begintime').val()+' 00:00:00';
+                    swhereObj.enddate=$('#endtime').val()+' 23:59:59';
+                    swhereObj.status=$('#djd_active').attr('data-val');
+                    swhereObj.condition=condition;
+                    // _swhereObj={
+                    //     "startdate":$('#begintime').val()+' 00:00:00',
+                    //     "enddate":$('#endtime').val()+' 23:59:59',
+                    //     "status":$('#djd_active').attr('data-val'),
+                    //     "condition":condition
+                    // }
+                }
+                
+                getjson(swhereObj)
+            })
+            getjson(swhereObj)
+        })
+        function getjson(swhereObj){
+            $.ajax({
+              type:"post",
+              url:"/butlerp/djd/searchdata",
+              dataType:"json",
+              data :swhereObj,
+              beforeSend:function(){  
+                jQuery.loading('',-1);
+              },
+              complete: function(json){jQuery.loading_close(-1);},
+              success: function(json){
+                    if(json.code==1){
+                      pageApi1.ReSet(parseInt(json.totalcount),parseInt(json.pagesize));
+                      if(parseInt(json.totalcount)>0){
+                          $("#pager_home").show();
+                      }else{
+                          $("#pager_home").hide();
+                      }
+                       Setcolumn(json);
+                    }
+              }
+            })
+        }
+        function Setcolumn(json){
+            var _tr='';
+            var _list=json.list
+            if (_list) {
+                $.each(_list,function(k,v){
+                    _tr+='     <tr>'+
+                         '        <td>'+v.clinicmobile+'</td>'+
+                         '        <td>'+v.dentalid+'</td>'+
+                         '        <td>'+v.clinicname+'</td>'+
+                         '        <td>'+v.maxmoney+'</td>'+
+                         '        <td>'+v.items+'</td>'
+                   if(v.checkstatus=='0'){
+                         _tr+='        <td>未处理</td>'+
+                             '        <td data-id="'+v.infoid+'" data-val="'+v.checkstatus+'"><i class="see">查看</i><i class="delete">删除</i></td>'+
+                             '</tr>'
+                   }
+                   else if(v.checkstatus=='1') {
+                        _tr+='        <td>已通过</td>'+
+                             '        <td data-id="'+v.infoid+'" data-val="'+v.checkstatus+'"><i class="modify">修改</i><i class="delmove">移除白名单</i><i class="delete">删除</i></td>'+
+                             '</tr>'
+                    }else if(v.checkstatus=='2') {
+                        _tr+='        <td>未达标</td>'+
+                             '        <td data-id="'+v.infoid+'" data-val="'+v.checkstatus+'"><i class="see">查看</i><i class="delete">删除</i></td>'+
+                             '</tr>'
+                    }else if(v.checkstatus=='3') {
+                        _tr+='        <td>已拒绝</td>'+
+                             '        <td data-id="'+v.infoid+'" data-val="'+v.checkstatus+'"><i class="see">查看</i><i class="delete">删除</i></td>'+
+                             '</tr>'
+                    }
+                })
+            }else{
+                _tr='<tr class="no_data"><td colspan="7"></td></tr>'
+                $('#pager_home').hide();
+            }
+            $('#baidubody').html(_tr)
+        }
+        function getUrlParam(name) {
+                  var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+                  var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+                  if (r != null) return unescape(r[2]);
+                    return null; //返回参数值
+        }
+	</script>
+</html>

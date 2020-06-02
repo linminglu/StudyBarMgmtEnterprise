@@ -1,0 +1,172 @@
+<template id="consultcourselist_id">
+    <div>
+         <!-- 添加选择课程 -->
+         <addedt-modal :paramcnf="courseDialogParam">
+                <div slot='modal_body' id="modal_courseDialog">
+    
+                    <div class="h60  bg-white  boxsz pl10 c_both pt10 pb5">
+                        <span style="float:left">
+                            <span class="switch_btn switch_btn_sel" id="single_btn"
+                                @click='switchCourseType(0)'>单课程</span><span class="switch_btn mal10" id="series_btn"
+                                @click='switchCourseType(1)'>系列课</span>
+                        </span>
+                        <div>
+                            <input type="button" value="查询" class="inc_solid f_right mal20" @click="searchlist">
+                            <input type="text" placeholder="请输入课程/直播间名称" value="" class="f_right mal20"
+                                v-model="searchcondition">
+                        </div>
+    
+                    </div>
+                    <div v-if='curIndex == 0' class="addseriescourse_table">
+                        <table class="wp100 unite_table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <input type="checkbox" name="checkAll" id="singlecourse_checkbox"  v-model="isallselected" @click="chooseall">
+                                    </th>
+                                    <th>封面</th>
+                                    <th>课程名称</th>
+                                    <th>课程分类</th>
+                                    <th>类型</th>
+                                    <th>定价</th>
+                                    <th>售价</th>
+                                    <th>开播时间</th>
+                                    <th>结束时间</th>
+                                    <th>课程状态</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="(item,index) in course_list">
+                                    <td>
+                                        <input type="checkbox" name="listcheck" v-model="item.isselected"
+                                            v-on:click="alocked(index)">
+                                    </td>
+                                    <td>
+                                        <dl class="classname" style="float:left; width:100px;">
+                                            <img style="height:100%;margin-top:-10px;margin-left:-103px;"
+                                                v-bind:src="item.banner" />
+                                        </dl>
+                                    </td>
+                                    <td>
+                                        <{item.title}>
+                                    </td>
+                                    <td>
+                                        <{getShowTypeStr(item.tag)}>
+                                    </td>
+                                    <td>
+                                        <{coursetype(item.type)}>
+                                    </td>
+                                    <td>
+                                        <{item.orifee}>
+                                    </td>
+                                    <td>
+                                        <{item.fee}>
+                                    </td>
+                                    <td>
+                                        <{item.begintime}>
+                                    </td>
+                                    <td>
+                                        <{item.endtime}>
+                                    </td>
+                                    <td v-if="item.datastatus == 1">正常</td>
+                                    <td v-else if="item.datastatus == 2" style="color: red;">已下架</td>
+                                    <td v-else="item.datastatus == 0" style="color: red;">已删除</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div id="addsinglecoursepage" class="vuepage" v-show='pageparam.single.total != 0'>
+                            <yayigj-downlist v-model="pageparam.single.pagesize" :arrslist="pageparam.valueList"
+                                :sizeparam="pageparam.attribute" v-on:getseled="singlePagesizechange"></yayigj-downlist>
+                            <page-bar :cur.sync="pageparam.single.page"
+                                :all.sync="Math.ceil(pageparam.single.total/pageparam.single.pagesize)"
+                                v-on:btnclick="singlePagechange"></page-bar>
+                        </div>
+                    </div>
+                    <div v-else class="addseriescourse_table">
+                        <table class="wp100 unite_table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <input type="checkbox" name="checkAll" id="singlecourse_checkbox"  v-model="isallselected" @click="chooseall">
+                                    </th>
+                                    <th>封面</th>
+                                    <th>系列课名称</th>
+                                    <th>直播间名称</th>
+                                    <th>价格</th>
+                                    <th>课程状态</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="(item,index) in course_list">
+                                    <td>
+                                        <input type="checkbox" name="listcheck" v-model="item.selected"
+                                            v-on:click="alocked(index)">
+                                    </td>
+                                    <td>
+                                        <dl class="classname" style="float:left; width:100px;">
+                                            <img style="height:100%;margin-top:-10px;margin-left:-103px;"
+                                                v-bind:src="item.banner" />
+                                        </dl>
+                                    </td>
+                                    <td v-html="item.title"></td>
+                                    <td v-html="item.anchorname"></td>
+                                    <td v-html="item.fee"></td>
+                                    <td v-if="item.datastatus == 1">正常</td>
+                                    <td v-else if="item.datastatus == 2" style="color: red;">已下架</td>
+                                    <td v-else="item.datastatus == 0" style="color: red;">已删除</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div id="addseriescoursepage" class="vuepage" v-show='pageparam.series.total != 0'>
+                            <yayigj-downlist v-model="pageparam.series.pagesize" :arrslist="pageparam.valueList"
+                                :sizeparam="pageparam.attribute" v-on:getseled="seriesPagesizechange"></yayigj-downlist>
+                            <page-bar :cur.sync="pageparam.series.page"
+                                :all.sync="Math.ceil(pageparam.series.total/pageparam.series.pagesize)"
+                                v-on:btnclick="seriesPagechange"></page-bar>
+                        </div>
+                    </div>
+    
+                </div>
+            </addedt-modal>
+
+         <div class="wp100 bline h35 boxsz pl10 fz-14 lh35 bg-white">直播间管理 ><span style="cursor: pointer;"
+            @click="goback">客服设置 ></span><span style="cursor: pointer;"
+            >设置课程</span></div>
+          <!-- 列表 -->
+            <div class="h60  bg-white  lh60 ">
+                <input type="button" value="选择课程" class="inc_solid f_left mal10 mat15" @click="addCourses()">
+                <span class="f_right">
+                        <input class="mal10" v-model="condition" placeholder="请输入课程名称查询" type="text" />
+                        <input v-on:click="refreshList" type="button" value="查询" class="inc_solid mar15">
+                </span>
+            </div>
+            <div class="bg-white" id='consultlist'>
+                <table class="wp100 unite_table">
+                    <thead>
+                        <tr>
+                            <th>课程名称</th>
+                            <th>直播间名称</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="(item,index) in data_list">
+                            <td v-html="item.coursename"></td>
+                            <td v-html="item.anchorname"></td>
+                            <td class="inc_operation">
+                                <span @click="delAction(index)">删除</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div id="allanchorstollegehomepage" class="vuepage">
+                        <yayigj-downlist v-model="details.maxPageNum" :arrslist="pageValueList" :sizeparam="sizepageparam"
+                            v-on:getseled="refreshList(1)"></yayigj-downlist>
+                        <page-bar :cur.sync="details.curPage" :all.sync="details.totalPage" v-on:btnclick="listenpage">
+                        </page-bar>
+                </div>
+            </div>
+            </div>
+
+    </div>    
+</template>

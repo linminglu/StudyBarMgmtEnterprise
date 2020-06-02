@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+<head>
+<title>我的服务(未开通)</title>
+<meta charset="utf-8" />
+<!--<include file="Public:css_inc"/>-->
+{{template "/account/Public/css_inc.html" .}}
+<link rel="stylesheet" type="text/css" href="/static/account/css/memberCenter.css">
+</head>
+
+
+<body>
+<!-- 头部 -->
+<include file="Public:memberCen_hea_new" />
+<div class="main_con">
+  <div class="main_left">
+    <include file="Public:left_nav"/>
+  </div>
+  
+  <!-- 未开通的服务 -->
+  <div class="main_right">
+    <div class="right_box">
+      <div class="service" id="useNo">
+      <h2><span class="h_icon"><img src="/static/account/img/useNo.png" alt=""/></span>未开通的服务</h2> 
+      <ul class="fix">
+          <li class="ser_item">
+              <img src="/static/account/img/plat_logo.png" alt="">
+              <div id="item_name">义齿加工平台</div>
+              <a class="sub_serv">开通服务</a>
+          <!--   创建诊所弹出框 --> 
+          <div class="cre_receptionist" id="cre_receptionist">
+            <div class="receptionist_header">
+              <h3><img src="/static/account/img/u3751.png">创建诊所</h3>
+              <div class="receptionist_close" id="receptionistClose" data-close="&#10006;"> 
+                <!--  这是关闭按钮 --> 
+              </div>
+            </div>
+            <div class="receptionist_body">
+              <div class="receptionist">
+                <div class="receptionist_logo" data-logo="&#10010;"></div>
+                <p>请上传诊所LOGO标志</p>
+                <p>文件大小不超过2M(.jpg或.png格式)</p>
+              </div>
+              <div class="receptionist">
+                <p>诊所名称<span>*</span></p>
+                <input type="text">
+              </div>
+              <div class="receptionist">
+                <p>诊所联系人<span>*</span></p>
+                <input type="text">
+              </div>
+              <div class="receptionist">
+                <p>诊所电话<span>*</span></p>
+                <input type="text">
+              </div>
+              <div class="receptionist">
+                <p>诊所地址<span>*</span></p>
+                <ul class="selc">
+                  <li>
+                    <select name="省份">
+                      <option>省份</option>
+                    </select>
+                  </li>
+                  <li>
+                    <select name="城市">
+                      <option>城市</option>
+                    </select>
+                  </li>
+                  <li>
+                    <select name="地区">
+                      <option>地区</option>
+                    </select>
+                  </li>
+                </ul>
+                <input type="text" name="" id="">
+              </div>
+              <div class="receptionist">
+                <p>诊所简介<span>*</span></p>
+                <textarea>
+                        
+                      </textarea>
+              </div>
+            </div>
+            <div class="receptionist_footer">
+              <input class="input_active" type="button" id="receptionistCreates" value="创建">
+              <input  type="button" id="receptionistClose" value="取消">
+            </div>
+          </div> 
+          <!--  -->
+          </li>
+          <li class="ser_item">
+              <img src="/static/account/img/plat_logo.png" alt="">
+              <div id="item_name">义齿加工平台</div>
+              <a class="stay">敬请期待</a>
+          </li>
+          <li class="ser_item">
+              <img src="/static/account/img/plat_logo.png" alt="">
+              <div id="item_name">义齿加工平台</div>
+              <a class="stay">敬请期待</a>
+          </li>
+      </ul>
+     </div>     
+    </div>
+  </div>
+</div>
+<!--<include file="Public:footer_new"/>-->
+ <!--<include file="Public:js_inc"/> -->
+ {{template "/account/Public/footer_new.html" .}}
+ {{template "/account/Public/js_inc.html" .}}
+<script type="text/javascript">
+   $(function(){   
+          $("#star_serv").click(function(){
+            $("#cre_receptionist").css("display","block")
+          })
+          $("#receptionistClose,#receptionistClose").click(function(){
+            $("#cre_receptionist").css("display","none");
+          }) 
+   })
+   </script>
+</body>
+</html>

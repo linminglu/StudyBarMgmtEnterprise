@@ -1,0 +1,72 @@
+<template id="accountlist_id">
+    <div>
+           <!-- 添加管理员 -->
+           <addedt-modal :paramcnf="addManagers">
+                <div slot='modal_body' id="modal_content">
+                    <div class="popanchors_search" id="popanchors_search">
+                        <input type="text" placeholder="请输入11位手机号码" value="" v-model="addManagerInfo.mobile" class="mar20">
+                        <input type="button" value="查询" class="inc_solid" @click="searUserPhone()">
+                    </div>
+                    <div class="resurtsearch" id="resurtsearch">
+                        <p>确定要添加其为管理员吗？</p>
+                        <ul class="resurtsearchinfo">
+                            <li>
+                                <img style="width:16%;
+                                border-radius: 50%;
+                                margin-left: -22px;
+                                margin-top: -15px;
+                                position: absolute;" v-bind:src="addManagerInfo.picture"></img>
+                            </li>
+                            <li>
+                               <dl class="">
+                                    <dt v-html="addManagerInfo.name"></dt>
+                                    <dd v-html="addManagerInfo.mobile"></dd>
+                                </dl> 
+                            </li>
+                        </ul>
+                    </div>
+                    
+                </div>
+            </addedt-modal>
+
+    <div class="bline wp100 h35 boxsz pl10 fz-14 lh35 bg-white">主播管理>账号管理</div>
+    <div class="h60  bg-white  lh60 boxsz pl10">
+        <input type="button" value="新增管理员" class="inc_solid" @click="addManager()">
+    </div>
+    <div class="bg-white">
+        <table class="wp100 unite_table">
+            <thead>
+                <tr>
+                    <th>账号</th>
+                    <th>角色</th>
+                    <th>姓名</th>
+                    <th>上次登录时间</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(item,index) in data_list">
+                    <td><{item.mobile}></td>
+                    <td><{item.roledesc}></td>
+                    <td><{item.name}></td>
+                    <td><{item.lastlogintime}></td>
+                    <td v-if="item.role == 1||item.userid == userData.userid" class="inc_operation">
+                            <span style="color:#f86d5a">不可操作</span>
+                    </td>
+                    <td v-else class="inc_operation">
+                        <span v-if="item.datastatus==0" @click="edtAccount(index,1)">启用</span>
+                        <span v-else @click="edtAccount(index,0)">停用</span>
+                        <i>|</i>
+                        <span @click="edtAccount(index,2)">删除</span>
+                    </td>
+                 
+                </tr>
+            </tbody>
+        </table>
+        <div id="allanchorstollegehomepage" class="vuepage">
+            <yayigj-downlist v-model="details.maxPageNum" :arrslist="pageValueList" :sizeparam="sizepageparam" v-on:getseled="refreshList(1)"></yayigj-downlist>
+            <page-bar :cur.sync="details.curPage" :all.sync="details.totalPage" v-on:btnclick="listenpage"></page-bar>
+        </div>
+    </div>
+    </div>
+</template>

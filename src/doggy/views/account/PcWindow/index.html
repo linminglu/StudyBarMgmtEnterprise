@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="UTF-8">
+        <meta content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" name="viewport">
+        <meta content="yes" name="apple-mobile-web-app-capable">
+        <meta content="black" name="apple-mobile-web-app-status-bar-style">
+        <meta content="telephone=no" name="format-detection">
+        <meta http-equiv="Cache-Control" content="no-transform ">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+        <include file="Public:css_inc"/>
+        <link rel="stylesheet" type="text/css" href="__APP__/public/css/calendarCommon.css">
+        <link rel="stylesheet" type="text/css" href="__APP__/public/css/loading.css">
+        <link rel="stylesheet" type="text/css" href="__APP__/public/css/pcWindow.css">
+    </head>
+    <body>
+        <!--加载提示开始-->
+         <div class="think-loading loading-gear loading-active" id="loading">
+            <span class="loading-inner">
+                <i class="loading-image">&nbsp;</i>
+                <b class="loading-text">页面正在加载中</b>
+            </span>
+        </div>
+        <!--加载提示结束-->
+        <div class="main_con" style="display:none;" id="main_con">
+            <div class="con_left">
+                <div class="left_1">
+                   <!--  <div class="tit">
+                       <img src="__APP__/public/img/den_logo.png"><span>牙医管家-个人中心</span>
+                   </div> -->
+                    <div class="img">
+                        <img src="__APP__/public/img/pc_default_pho.png">
+                    </div>
+                    <div class="name">
+                        <img src="__APP__/public/img/hea_den.png">
+                        <span id="pc_doc_name"></span><!-- <span class="level"><i>LV.2</i></span> -->
+                    </div>
+                </div>
+                <div class="left_2">
+                    <!-- <p class="up_grade">升级可获得&nbsp;<span>2</span>&nbsp;次抽奖机会~</p> -->
+                    <img src="__APP__/public/img/img_line.png" class="line">
+                   <!--  <div class="grow">
+                       <span class="grow_num">成长值</span><span class="num">600/1000</span>
+                   </div> -->
+                    <div class="mon_med mon_med1">
+                        <div class="money" id="butler">
+                            <img src="__APP__/public/img/man_corn.png" class="man_con"><p 
+                            class="money_num">0</p>
+                            <p class="up_grade up_grade1">即将上线哦~</p>
+                        </div>
+                        <div class="medel medel2" id="medals">
+                            <img src="__APP__/public/img/medel_24.png" ><p class="money_num">0</p>
+                            <p class="up_grade up_grade1">即将上线哦~</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="left_3">
+                    <ul> 
+                        <li id="luck_draw"><img src="__APP__/public/img/luck.png"><span>抽奖</span></li>
+                        <!-- <li id="my_communit"><img src="__APP__/public/img/community.png"><span>社区</span></li> -->
+                    </ul>
+                </div>
+                 <div class="left_2 left_4">
+                    <div class="mon_med mon_med2">
+                        <div class="money" id="money">
+                            <img src="__APP__/public/img/achieve.png"><p>业绩榜</p>
+                            <p class="up_grade up_grade2">即将上线哦~</p>
+                        </div>
+                        <div class="medel" id="lv">
+                            <img src="__APP__/public/img/level_cro.png"><p>等级榜</p>
+                            <p class="up_grade up_grade2">即将上线哦~</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="con_right">
+                <!--现金红包弹窗-->
+                <div class="reb_bag_win">                    
+                    <div class="total_div">
+                        <div class="total_t">
+                            <span class="pc_clsoe"></span>
+                            <p class="get_red_bag">恭喜您获得</p>
+                            <P class="money_num"><span>5</span>元现金奖</P>
+                        </div>
+                        <div class="total_b">
+                            <p>请关注微信公众号领取现金红包</p>
+                            <img src="__APP__/public/img/img_ode.png">
+                        </div>
+                    </div>
+                </div>
+                <!-- 勋章墙 -->
+                <div class="luck_draw_window" id="medals_r">
+                    <div class="slider_box" >
+                        <div class="ul_title fix">
+                            <img class="tit_logo l" src="__APP__/public/img/tit_logo1.png">
+                            <div class="tit_span l">
+                                <p>深圳致美口腔诊所勋章馆</p><p class="y_num">你已经为诊所贡献了<span>2</span>枚勋章，再接再厉哦~</p>
+                            </div>
+                            <span id="close_medals" class="close_slider"><img src="__APP__/public/img/close.png"></span>
+                        </div>
+                        <div class="mdl_lists">
+                            <ul class="fix">
+                                <li>
+                                    <img class="mdl_img" src="__APP__/public/img/purchase_lv1.png" alt="">
+                                    <img class="get" src="__APP__/public/img/mdlHad_s.png" alt="">
+                                    <div class="mdl_status">我的勋章<img  src="__APP__/public/img/mdl_bg2.png" alt=""></div>
+                                    <p>采购小能手</p>
+                                </li>
+                                <li>
+                                    <img class="mdl_img" src="__APP__/public/img/manege_lv4.png" alt="">
+                                    <img class="get" src="__APP__/public/img/mdlHad_s.png" alt="">
+                                    <div class="mdl_status">我的勋章<img  src="__APP__/public/img/mdl_bg2.png" alt=""></div>
+                                    <p>处置小能手</p>
+                                </li>
+                                <li>
+                                    <img class="mdl_img" src="__APP__/public/img/appoint_lv1.png" alt="">
+                                    <div class="mdl_status">未领取<img  src="__APP__/public/img/mdl_bg1.png" alt=""></div>
+                                    <p>诊疗小能手</p>
+                                </li>
+                                <li>
+                                    <img class="mdl_img" src="__APP__/public/img/ClinicLV1.png" alt="">
+                                    <div class="mdl_status">已过期<img  src="__APP__/public/img/mdl_bg3.png" alt=""></div>
+                                    <p>手机控</p>
+                                </li>
+                                <li>
+                                    <img class="mdl_img" src="__APP__/public/img/more_medel.png" alt="">
+                                    <div class="mdl_status"><img  src="" alt=""></div>
+                                    <p>敬请期待~</p>
+                                </li>
+                            </ul>
+                        </div>      
+                    </div>
+                </div>
+                <!-- 勋章详情 -->
+                <div class="luck_draw_window" id="medal_detail">
+                    <div class="slider_box" >
+                        <div class="medal_detail">
+                            <div class="ul_title detail_title fix">
+                                <span id="tit_logo" class="tit_logo l"><img src="__APP__/public/img/return.png"></span>
+                                <span id="close_detail" class="close_slider"><img src="__APP__/public/img/close.png"></span>
+                            </div>
+                            <div class="mdl_detail">
+                                    <div class="mdl_img"><img src="__APP__/public/img/purchase_lv1.png" alt=""></div>
+                                    <img class="get" src="__APP__/public/img/mdlHad_l.png" alt="">
+                                    <div class="mdl_status">我的勋章<img  src="__APP__/public/img/mdl_bg2.png" alt=""></div>
+                                    <p>采购小能手</p>
+                            </div>
+                            <div class="mdl_intr fix">
+                                <p><label>勋章名称：</label><span>采购小能手</span></p>
+                                <p><label>勋章状态：</label><span id="status">已领取</span></p>
+                                <p><label>勋章属性：</label><span>诊所业绩都离不开我的采购，从今天起请叫我采购小能手。</span></p>
+                            </div>
+                            <div class="mdl_intr">
+                                <ol class="fix">
+                                    <li><img src="__APP__/public/img/lottery.png"><p>现金抽奖（2次）</p><a href="">立即抽奖</a></li>
+                                    <li><img src="__APP__/public/img/school.png"><p>商学院课程9折</p><a href="">立即兑换</a></li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--  等级排名榜 -->
+                <div class="luck_draw_window" id="lv_r">
+                    <div class="slider_box">
+                        <div class="ul_title fix">
+                            <img class="tit_logo l" src="__APP__/public/img/lv_rank.png">
+                            <div class="tit_span l">
+                                <p>等级排名榜</p>
+                                <p class="y_num">你目前位列排名榜第<span>5</span>名</p> 
+                            </div>
+                            <span id="close_lv" class="close_slider"><img src="__APP__/public/img/close.png"></span>
+                        </div>
+                        <div class="scroll">
+                            <ul class="ul_lv">
+                                <li class="fix">
+                                    <span class="rank first">1</span><span class="fgline">|</span>
+                                    <img class="photo l" src="__APP__/public/img/u5148.png" alt="头像">
+                                    <div class="user l"><p class="name">李良医生</p> <p class="position">主任</p></div>
+                                    <div class="lv r"><img src="__APP__/public/img/lv_7.png" alt="等级"></div>
+                                </li>
+                                <li class="fix">
+                                    <span class="rank second">2</span><span class="fgline">|</span>
+                                    <img class="photo l" src="__APP__/public/img/u5148.png" alt="头像">
+                                    <div class="user l"><p class="name">李良医生</p> <p class="position">主任</p></div>
+                                    <div class="lv r"><img src="__APP__/public/img/lv_6.png" alt="等级"></div>
+                                </li>
+                                <li class="fix">
+                                    <span class="rank third">3</span><span class="fgline">|</span>
+                                    <img class="photo l" src="__APP__/public/img/u5148.png" alt="头像">
+                                    <div class="user l"><p class="name">李良医生</p> <p class="position">主任</p></div>
+                                    <div class="lv r"><img src="__APP__/public/img/lv_5.png" alt="等级"></div>
+                                </li>
+                                <li class="fix">
+                                    <span class="rank">4</span><span class="fgline">|</span>
+                                    <img class="photo l" src="__APP__/public/img/u5148.png" alt="头像">
+                                    <div class="user l"><p class="name">李良医生</p> <p class="position">主任</p></div>
+                                    <div class="lv r"><img src="__APP__/public/img/lv_4.png" alt="等级"></div>
+                                </li>
+                                <li class="fix">
+                                    <span class="rank">5</span><span class="fgline">|</span>
+                                    <img class="photo l" src="__APP__/public/img/u5148.png" alt="头像">
+                                    <div class="user l"><p class="name">李良医生</p> <p class="position">主任</p></div>
+                                    <div class="lv r"><img src="__APP__/public/img/lv_3.png" alt="等级"></div>
+                                </li>
+                                <li class="fix">
+                                    <span class="rank">6</span><span class="fgline">|</span>
+                                    <img class="photo l" src="__APP__/public/img/u5148.png" alt="头像">
+                                    <div class="user l"><p class="name">李良医生</p> <p class="position">主任</p></div>
+                                    <div class="lv r"><img src="__APP__/public/img/lv_3.png" alt="等级"></div>
+                                </li>
+                                <li class="fix">
+                                    <span class="rank">7</span><span class="fgline">|</span>
+                                    <img class="photo l" src="__APP__/public/img/u5148.png" alt="头像">
+                                    <div class="user l"><p class="name">李良医生</p> <p class="position">主任</p></div>
+                                    <div class="lv r"><img src="__APP__/public/img/lv_2.png" alt="等级"></div>
+                                </li>
+                                <li class="fix">
+                                    <span class="rank">8</span><span class="fgline">|</span>
+                                    <img class="photo l" src="__APP__/public/img/u5148.png" alt="头像">
+                                    <div class="user l"><p class="name">李良医生</p> <p class="position">主任</p></div>
+                                    <div class="lv r"><img src="__APP__/public/img/lv_1.png" alt="等级"></div>
+                                </li>
+                                <li class="fix">
+                                    <span class="rank">9</span><span class="fgline">|</span>
+                                    <img class="photo l" src="__APP__/public/img/u5148.png" alt="头像">
+                                    <div class="user l"><p class="name">李良医生</p> <p class="position">主任</p></div>
+                                   <div class="lv r"><img src="__APP__/public/img/lv_1.png" alt="等级"></div>
+                                </li>
+                                <li class="fix">
+                                    <span class="rank">10</span><span class="fgline">|</span>
+                                    <img class="photo l" src="__APP__/public/img/u5148.png" alt="头像">
+                                    <div class="user l"><p class="name">李良医生</p> <p class="position">主任</p></div>
+                                    <div class="lv r"><img src="__APP__/public/img/lv_1.png" alt="等级"></div>
+                                </li>
+                            </ul> 
+                        </div>   
+                    </div>
+                </div>
+                <!-- 业绩排名榜 -->
+                <div class="luck_draw_window" id="money_r" >
+                    <div class="slider_box">
+                        <div class="ul_title fix">
+                            <img class="tit_logo l" src="__APP__/public/img/lv_rank.png">
+                            <div class="tit_span l">
+                                <p>业绩排名榜</p>
+                                <p class="y_num">你目前位列排名榜第<span>5</span>名</p> 
+                            </div>
+                            <span id="close_money" class="close_slider"><img src="__APP__/public/img/close.png"></span>
+                        </div>
+                            <div class="scroll">
+                                <ul class="ul_lv">
+                                    <li class="fix">
+                                        <span class="rank first">1</span><span class="fgline">|</span>
+                                        <img class="photo l" src="__APP__/public/img/u5148.png" alt="头像">
+                                        <div class="user l"><p class="name">李良1医生</p> <p class="position">主任</p></div>
+                                        <div class="lv r">￥32,432.40</div>
+                                    </li>
+                                    <li class="fix">
+                                        <span class="rank second">2</span><span class="fgline">|</span>
+                                        <img class="photo l" src="__APP__/public/img/u5148.png" alt="头像">
+                                        <div class="user l"><p class="name">李良2医生</p> <p class="position">主任</p></div>
+                                        <div class="lv r">￥32,432.40</div>
+                                    </li>
+                                    <li class="fix">
+                                        <span class="rank third">3</span><span class="fgline">|</span>
+                                        <img class="photo l" src="__APP__/public/img/u5148.png" alt="头像">
+                                        <div class="user l"><p class="name">李良3医生</p> <p class="position">主任</p></div>
+                                        <div class="lv r">￥32,432.40</div>
+                                    </li>
+                                    <li class="fix">
+                                        <span class="rank">4</span><span class="fgline">|</span>
+                                        <img class="photo l" src="__APP__/public/img/u5148.png" alt="头像">
+                                        <div class="user l"><p class="name">李良医生</p> <p class="position">主任</p></div>
+                                        <div class="lv r">￥2,172.40</div>
+                                    </li>
+                                    <li class="fix">
+                                        <span class="rank">5</span><span class="fgline">|</span>
+                                        <img class="photo l" src="__APP__/public/img/u5148.png" alt="头像">
+                                        <div class="user l"><p class="name">李良医生</p> <p class="position">主任</p></div>
+                                        <div class="lv r">￥12,932.40</div>
+                                    </li>
+                                    <li class="fix">
+                                        <span class="rank">6</span><span class="fgline">|</span>
+                                        <img class="photo l" src="__APP__/public/img/u5148.png" alt="头像">
+                                        <div class="user l"><p class="name">李良医生</p> <p class="position">主任</p></div>
+                                        <div class="lv r">￥321,492.40</div>
+                                    </li>
+                                    <li class="fix">
+                                        <span class="rank">7</span><span class="fgline">|</span>
+                                        <img class="photo l" src="__APP__/public/img/u5148.png" alt="头像">
+                                        <div class="user l"><p class="name">李良医生</p> <p class="position">主任</p></div>
+                                        <div class="lv r">￥372,432.40</div>
+                                    </li>
+                                    <li class="fix">
+                                        <span class="rank">8</span><span class="fgline">|</span>
+                                        <img class="photo l" src="__APP__/public/img/u5148.png" alt="头像">
+                                        <div class="user l"><p class="name">李良医生</p> <p class="position">主任</p></div>
+                                        <div class="lv r">￥52,492.40</div>
+                                    </li>
+                                    <li class="fix">
+                                        <span class="rank">9</span><span class="fgline">|</span>
+                                        <img class="photo l" src="__APP__/public/img/u5148.png" alt="头像">
+                                        <div class="user l"><p class="name">李良医生</p> <p class="position">主任</p></div>
+                                        <div class="lv r">￥332,432.40</div>
+                                    </li>
+                                    <li class="fix">
+                                        <span class="rank">10</span><span class="fgline">|</span>
+                                        <img class="photo l" src="__APP__/public/img/u5148.png" alt="头像">
+                                        <div class="user l"><p class="name">李良医生</p> <p class="position">主任</p></div>
+                                        <div class="lv r">￥132,432.40</div>
+                                    </li>
+                                </ul> 
+                            </div>   
+                    </div>
+                </div>
+                <!-- 管家币-->
+                <div class="luck_draw_window" id="butler_r" >
+                    <div class="slider_box fix">
+                        <div class="ul_title">
+                            <img class="tit_logo l" src="__APP__/public/img/butler.png"> 
+                            <div class="tit_span l">
+                                <p>你有<span id="num">567</span>枚管家币</p>
+                                <p class="y_num">一大波礼品可以兑换哦</p>
+                            </div>
+                            <span id="close_butler"  class="close_slider"><img src="__APP__/public/img/close.png"></span>
+                        </div>
+                        <div class="butler_box">
+                               <ol class="fix">
+                                    <li data-f="1">收支明细</li><li class="line">|</li>
+                                    <li data-f="0">管家币收入</li><li class="line">|</li>
+                                    <li data-f="0">管家币支出</li>
+                               </ol>
+                               <div class="date_select">
+                                        <input id="dateStart" class="time" type="text"><span>至</span>
+                                        <input id="dateEnd" class="time" type="text">
+                                        <input type="button" value="查询">
+                                </div>
+                                <div class="butler_tb">  
+                                    <div class="butler_h fix">
+                                            <span class="date">时间</span><span class="category">类别</span>
+                                            <span class="num">支/收</span><span class="balancs">余额</span>
+                                    </div>
+                                    <ul class="butler_lists">
+                                        <li class="fix">
+                                            <span class="date">2016-06-02 04:23:43</span><span class="category">升级赠送</span>
+                                            <span class="num a5d">+80</span><span class="balancs">787</span></li>
+                                        <li class="fix">
+                                            <span class="date">2016-06-02 04:23:43</span><span class="category">兑换礼品</span>
+                                            <span class="num f58">-200</span><span class="balancs">456</span></li>
+                                        <li class="fix">
+                                            <span class="date">2016-06-02 04:23:43</span><span class="category">勋章加管家币</span>
+                                            <span class="num a5d">+20</span><span class="balancs">234</span></li>
+                                        <li class="fix">
+                                            <span class="date">2016-06-02 04:23:43</span><span class="category">每日签到奖励</span>
+                                            <span class="num a5d">+8</span><span class="balancs">623</span></li>
+                                        <li class="fix">
+                                            <span class="date">2016-06-02 04:23:43</span><span class="category">升级赠送</span>
+                                            <span class="num a5d">+180</span><span class="balancs">563</span></li>
+                                        <li class="fix">
+                                            <span class="date">2016-06-02 04:23:43</span><span class="category">升级新版</span>
+                                            <span class="num a5d">+280</span><span class="balancs">113</span></li>
+                                        <li class="fix">
+                                            <span class="date">2016-06-02 04:23:43</span><span class="category">升级新版</span>
+                                            <span class="num a5d">+280</span><span class="balancs">113</span></li>
+                                        <li class="fix">
+                                            <span class="date">2016-06-02 04:23:43</span><span class="category">升级新版</span>
+                                            <span class="num a5d">+280</span><span class="balancs">113</span></li>
+                                        <li class="fix">
+                                            <span class="date">2016-06-02 04:23:43</span><span class="category">每日签到奖励</span>
+                                            <span class="num a5d">+8</span><span class="balancs">623</span></li>
+                                        <li class="fix">
+                                            <span class="date">2016-06-02 04:23:43</span><span class="category">每日签到奖励</span>
+                                            <span class="num a5d">+8</span><span class="balancs">623</span></li>
+                                    </ul>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+                <!--抽奖-->
+                <div class="luck_draw_window" id="luck_draw_window">
+                    <div class="draw_white">
+                        <div class="draw_top">
+                            <div class="draw_img"><img src="__APP__/public/img/luck_draw2.png"></div>
+                            <div class="draw_dec">
+                                <p class="p_luck">来抽奖,拼手气!</p>
+                                <p class="p_num">今日还有&nbsp;<span class="chance"></span>&nbsp;次抽奖机会哦~</p>
+                            </div>
+                            <div class="draw_close"><img src="__APP__/public/img/close.png"></div>
+                        </div>
+                        <div class="draw_middle">
+                            <ul>
+                                <li id="random_1"><img src="__APP__/public/img/money_bag.png" 
+                                class="red_bag"></li>
+                                <li id="random_2"><img src="__APP__/public/img/course_90.png"><p>商学院课程9折</p></li>
+                                <li id="random_3"><img src="__APP__/public/img/integral_50.png"><p>50积分</p></li>
+                                <li id="random_4"><img src="__APP__/public/img/course.png"><p>商学院课程</p></li>
+                                <li id="random_10"><img src="__APP__/public/img/thanks.png"><p>谢谢参与</p></li>
+                                <li class="word_dec"  id="draw_now"><p class="draw_now">立即抽奖</p><p
+                                class="draw_chance">您今天还有<span id="chance_num" class="chance"> &nbsp;&nbsp;</span>次抽奖机会</p></li>
+                                <li  id="random_5"><img src="__APP__/public/img/integral_100.png"><p>100积分</p></li>
+                                <li id="random_9"><img src="__APP__/public/img/integral_100.png"><p>100积分</p></li>
+                                <li id="random_8"><img src="__APP__/public/img/course.png"><p>商学院课程</p></li>
+                                <li  id="random_7"><img src="__APP__/public/img/integral_50.png"><p>50积分</p></li>
+                                <li  id="random_6"><img src="__APP__/public/img/money_bag.png" 
+                                class="red_bag"></li>
+                            </ul>
+                        </div>
+                        <div class="draw_bottom">
+                            <div class="statement">
+                                <p>抽奖规则说明</p>
+                                <ul>
+                                    <li>1、每月按时完成门诊升级所有任务量即可获得抽奖机会。</li>
+                                    <li>2、红包发放：现金红包仅支持微信红包形式兑换，只需扫描一下中奖二维码即可完成兑换。</li>
+                                    <li>3、本次活动最终解释权归牙医管家所有。</li>
+                                </ul>
+                            </div>
+                            <div class="name_list">
+                                <p>本月中奖名单</p>
+                                <ul id="lotterRecord">
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="r_nav">
+                    <ul>
+                        <li class="index" data-select="1"><img class="word_img" src="__APP__/public/img/index1.png"><span>首页</span></li>
+                        <li class="shop"  data-select="0"><img class="word_img" src="__APP__/public/img/shop_car2.png"><span>商城</span></li>
+                        <!-- <li class="close"><img src="__APP__/public/img/close.png"></li>
+                        <li class="task_pro">—</li> -->
+                    </ul>
+                </div>
+                <div class="right_con">
+                    <div class="basic_sis">
+                        <div class="bas_l" id="medal_picture"><img src=""></div>
+                        <div class="bas_r">
+                            <p class="p1">您目前诊所等级为:&nbsp;<span id="reserve_medal"></span></p>
+                            <P class="p2"><span></span></P>
+                            <P class="p3">距离升级&nbsp;<span class="mext_medal" id="next_medal">
+                            </span>&nbsp;还需完成&nbsp;
+                            <span class="left_misson mext_medal" id="left_mission"></span><span 
+                            class="total_misson" id="total_mission"></span>&nbsp;个任务，任务完成周期还剩&nbsp;<span class="mext_medal" id="left_day"></span>&nbsp;天</P>
+                            <!-- <p class="p4"><a href="#">查看升级及权益详情</a></p> -->
+                        </div>
+                    </div>
+                    <div class="dep_task">
+                        <div class="nav">
+                            <ul>
+                                <li data-type="1" class="li_click">门诊任务</li>
+                                <li class="line">|</li>
+                                <li data-type="0" class="li_click">我的任务</li>
+                            </ul>
+                        </div>
+                        <div class="task_con">
+                            <ul id="task_ul">                            
+                            </ul>
+                        </div>
+                        <div class="task_con"></div>
+                        <div class="task_con task_con2">
+                            <img src="__APP__/public/img/no_any_task.png">
+                        </div>
+                    </div>
+                </div>
+                <div class="right_con right_con2">
+                    <!-- <div class="word">
+                        <p>亲爱的会员：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;您在牙医管家账户还有 <span>567</span> 管家币未使用，请及时登录app至管家商城兑换使用！可用来兑换话费、商学院课程等物品哦~</p>
+                    </div>
+                    <div class="img">
+                        <img src="__APP__/public/img/shop_town.png">
+                    </div> -->
+                    <img src="__APP__/public/img/producing.png">
+                </div>
+            </div>
+        </div>
+        <script language="javascript">
+            var i=j=k=0;
+            function loadScript(url, index,callback){ 
+                var result=function(p){
+                    switch(p){
+                        case 1:
+                            i=1;
+                            break;
+                        case 2:
+                            j=1;
+                            break;
+                        case 3:
+                            k=1;
+                            break;  
+                    }
+                }
+                var script = document.createElement("script") 
+                script.type = "text/javascript"; 
+                
+                if (script.readyState){ //IE 
+                    script.onreadystatechange = function(){ 
+                if (script.readyState == "loaded" || 
+                    script.readyState == "complete"){ 
+                    script.onreadystatechange = null; 
+                    result(index);
+                    callback(); 
+                    } 
+                }; 
+                } else { 
+                script.onload = function(){ 
+                    result(index);
+                    callback(); 
+                }; 
+                } 
+                script.src = url; 
+                document.body.appendChild(script); 
+            }   
+            
+            function finish(){
+                    var nResult=i+j+k;
+                    if(nResult==3){
+                    }
+            }
+            loadScript('__APP__/public/js/jquery-1.9.1.min.js',1,finish);
+            loadScript('__APP__/public/js/kindeditor-min.js',2,finish);
+            loadScript('__APP__/public/js/pc_window.js',3,finish);
+        </script>
+        <script language="javascript">
+            document.onreadystatechange = subSomething;//当页面加载状态改变的时候执行这个方法. 
+              function subSomething() { 
+                if(document.readyState == "complete"){ //当页面加载状态为完全结束时进入 
+                  
+                    document.getElementById("main_con").style.display='block';
+                
+                  window.setTimeout(function(){   
+                    document.getElementById("loading").style.display='none';
+                    },400); 
+
+                  get_data_list();
+                  lotter_operat();
+                  event_bind();
+              } 
+            } 
+        </script>
+    </body>
+</html>

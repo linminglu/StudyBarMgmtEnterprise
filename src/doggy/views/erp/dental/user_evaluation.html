@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>用户评价</title>
+		{{template "../public/link/css_inc.html" .}}
+		<link href="/static/erp/css/dental.css" rel="stylesheet" />
+	</head>
+	<body>
+		{{template "../public/public/header.html" .}}
+		<div class="mainFrme">
+			{{template "../public/public/left.html" .}}
+			<div class="rightFrme">
+				<div class="crumbs"><a href="###">主页</a> > <a href="###">门诊分级管理</a> > <a href="###">用户评价</a></div>
+				<div class="cont">
+                    <div class="cont1">
+                        <ul class="out_ul">
+                            <li>
+                                <ul class="in_ul">
+                                    <li>平均得分</li>
+                                    <li><span>总分：</span><span>4.3</span></li>
+                                    <li><span>效果：</span><span>4.3</span></li>
+                                    <li><span>服务：</span><span>4.3</span></li>
+                                    <li><span>环境：</span><span>4.3</span></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <ul class="in_ul">
+                                    <li>1星~2星</li>
+                                    <li><span>占比：</span><span>5%</span></li>
+                                    <li><span>评论人数：</span><span>423</span></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <ul class="in_ul">
+                                    <li>2星~3星</li>
+                                    <li><span>占比：</span><span>5%</span></li>
+                                    <li><span>评论人数：</span><span>423</span></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <ul class="in_ul">
+                                    <li>3星~4星</li>
+                                    <li><span>占比：</span><span>5%</span></li>
+                                    <li><span>评论人数：</span><span>423</span></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <ul class="in_ul">
+                                    <li>4星~5星</li>
+                                    <li><span>占比：</span><span>5%</span></li>
+                                    <li><span>评论人数：</span><span>423</span></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="cont2">
+                        <div class="cont2_tit">用户评分列表</div>
+                        <div class="cont2_con">
+                            <div class="search_div">
+                                <label>评分时间：</label>
+                                <div id="BeginDate" class="calendar"></div>
+                                <label>至</label>
+                                <div id="EndDate" class="calendar"></div>
+                                <label>评价总分：</label>
+                                <div class="command_tot" id="command_tot"></div>
+                                <input name="condition" class="ml20 w240" type="text" placeholder="请输入用户名/手机等关键词查询" />
+                                <input type="button" name="userlist_btn" value="查询" />
+                                <div class="excel">导出excel</div>
+                            </div>
+                            <div>
+                                <table class="user_com_table">
+                                    <thead>
+                                        <tr>
+                                            <th>用户名称</th>
+                                            <th>评价时间</th>
+                                            <th align="left">评分</th>
+                                            <th align="left" class="comment_con_th">评价内容</th>
+                                            <th>操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody align="center">
+                                        <tr>
+                                            <td>13800138000</td>
+                                            <td><p>2016.12.15</p><p>12:15:26</p></td>
+                                            <td align="center" class="score_td">
+                                                <p>
+                                                    <span class="pf_tit">总分</span>
+                                                    <span class="pf_star"></span>
+                                                    <span class="pf_star"></span>
+                                                    <span class="pf_star"></span>
+                                                    <span class="pf_star"></span>
+                                                    <span class="pf_star"></span>
+                                                </p>
+                                                 <p>
+                                                    <span class="pf_tit">效果</span>
+                                                    <span class="pf_star"></span>
+                                                    <span class="pf_star"></span>
+                                                    <span class="pf_star"></span>
+                                                    <span class="pf_star"></span>
+                                                    <span class="pf_star"></span>
+                                                </p>
+                                                 <p>
+                                                    <span class="pf_tit">服务</span>
+                                                    <span class="pf_star"></span>
+                                                    <span class="pf_star"></span>
+                                                    <span class="pf_star"></span>
+                                                    <span class="pf_star"></span>
+                                                    <span class="pf_star"></span>
+                                                </p>
+                                                 <p>
+                                                    <span class="pf_tit">环境</span>
+                                                    <span class="pf_star"></span>
+                                                    <span class="pf_star"></span>
+                                                    <span class="pf_star"></span>
+                                                    <span class="pf_star"></span>
+                                                    <span class="pf_star"></span>
+                                                </p>
+                                            </td>
+                                            <td align="left" class="comment_con"> 
+                                                <p>前台接待和医护人员的态度很好很亲和，洗牙时是在一间单独的洗牙室，洗牙室里很明亮干净，还放有音乐，让人感觉很舒适放松。洗牙前会进行口腔检查，指出牙齿的问题，做洗牙前后的对比。洗牙的过程中医护人员很有耐心的讲解护牙知识。洗牙时不痛，洗的也干净，洗完之后会几进行抛光。</p>
+                                                <p><span><img src="/static/erp/img/tips.png"></span><span><img src="/static/erp/img/tips.png"></span></p>
+                                            </td>
+                                            <td class="del_comment"><span>删除</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>13800138000</td>
+                                            <td><p>2016.12.15</p><p>12:15:26</p></td>
+                                            <td align="center" class="score_td">
+                                                <p>
+                                                    <span class="pf_tit">总分</span>
+                                                    <span class="pf_star"></span>
+                                                    <span class="pf_star"></span>
+                                                    <span class="pf_star"></span>
+                                                    <span class="pf_star"></span>
+                                                    <span class="pf_star"></span>
+                                                </p>
+                                                 <p>
+                                                    <span class="pf_tit">效果</span>
+                                                    <span class="pf_star"></span>
+                                                    <span class="pf_star"></span>
+                                                    <span class="pf_star"></span>
+                                                    <span class="pf_star"></span>
+                                                    <span class="pf_star"></span>
+                                                </p>
+                                                 <p>
+                                                    <span class="pf_tit">服务</span>
+                                                    <span class="pf_star"></span>
+                                                    <span class="pf_star"></span>
+                                                    <span class="pf_star"></span>
+                                                    <span class="pf_star"></span>
+                                                    <span class="pf_star"></span>
+                                                </p>
+                                                 <p>
+                                                    <span class="pf_tit">环境</span>
+                                                    <span class="pf_star"></span>
+                                                    <span class="pf_star"></span>
+                                                    <span class="pf_star"></span>
+                                                    <span class="pf_star"></span>
+                                                    <span class="pf_star"></span>
+                                                </p>
+                                            </td>
+                                            <td align="left" class="comment_con"> 
+                                                <p>前台接待和医护人员的态度很好很亲和，洗牙时是在一间单独的洗牙室，洗牙室里很明亮干净，还放有音乐，让人感觉很舒适放松。洗牙前会进行口腔检查，指出牙齿的问题，做洗牙前后的对比。洗牙的过程中医护人员很有耐心的讲解护牙知识。洗牙时不痛，洗的也干净，洗完之后会几进行抛光。</p>
+                                                <p><span><img src="/static/erp/img/tips.png"></span><span><img src="/static/erp/img/tips.png"></span></p>
+                                            </td>
+                                            <td class="del_comment"><span>删除</span></td>
+                                        </tr>
+                                                                                <tr>
+                                            <td>13800138000</td>
+                                            <td><p>2016.12.15</p><p>12:15:26</p></td>
+                                            <td align="center" class="score_td">
+                                                <p>
+                                                    <span class="pf_tit">总分</span>
+                                                    <span class="pf_star"></span>
+                                                    <span class="pf_star"></span>
+                                                    <span class="pf_star"></span>
+                                                    <span class="pf_star"></span>
+                                                    <span class="pf_star"></span>
+                                                </p>
+                                                 <p>
+                                                    <span class="pf_tit">效果</span>
+                                                    <span class="pf_star"></span>
+                                                    <span class="pf_star"></span>
+                                                    <span class="pf_star"></span>
+                                                    <span class="pf_star"></span>
+                                                    <span class="pf_star"></span>
+                                                </p>
+                                                 <p>
+                                                    <span class="pf_tit">服务</span>
+                                                    <span class="pf_star"></span>
+                                                    <span class="pf_star"></span>
+                                                    <span class="pf_star"></span>
+                                                    <span class="pf_star"></span>
+                                                    <span class="pf_star"></span>
+                                                </p>
+                                                 <p>
+                                                    <span class="pf_tit">环境</span>
+                                                    <span class="pf_star"></span>
+                                                    <span class="pf_star"></span>
+                                                    <span class="pf_star"></span>
+                                                    <span class="pf_star"></span>
+                                                    <span class="pf_star"></span>
+                                                </p>
+                                            </td>
+                                            <td align="left" class="comment_con"> 
+                                                <p>前台接待和医护人员的态度很好很亲和，洗牙时是在一间单独的洗牙室，洗牙室里很明亮干净，还放有音乐，让人感觉很舒适放松。洗牙前会进行口腔检查，指出牙齿的问题，做洗牙前后的对比。洗牙的过程中医护人员很有耐心的讲解护牙知识。洗牙时不痛，洗的也干净，洗完之后会几进行抛光。</p>
+                                                <p><span><img src="/static/erp/img/tips.png"></span><span><img src="/static/erp/img/tips.png"></span></p>
+                                            </td>
+                                            <td class="del_comment"><span>删除</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+				</div>
+			</div>
+		</div>
+		{{template "../public/public/footer.html" .}}
+	</body>
+	{{template "../public/link/js_inc.html" .}}
+    <script type="text/javascript">
+        $(function(){
+            $("#BeginDate").yayigj_date_Sel();
+            $("#EndDate").yayigj_date_Sel();
+            
+            //加载页面获取当天日期
+            $("#BeginDate").getCurrday();
+            $("#EndDate").getCurrday();
+
+            $("#command_tot").yayigj_downlist({    //评价总分
+                _hiddenID:'clinicid2',
+                _valtype:'text',
+                _data:[
+                    {'key':'一星'},
+                    {'key':'二星'},
+                    {'key':'三星'},
+                    {'key':'四星'},
+                    {'key':'五星'}
+                ]	 
+            });
+        })
+    </script>
+</html>

@@ -1,0 +1,18 @@
+@charset "utf-8";
+/* CSS Document */
+
+#div_bg{background-color:#000; opacity:0.7; z-index:5; width:100%; height:100%; display:none; position:absolute; left:0px; top:0px}
+#fileUpload{width:750px; height:650px; position:absolute; display:none; left:220px; top:110px; z-index:8; background-color:#FFF;box-shadow:3px 3px 15px #000;}
+#fileUpload .selFileTitleU{ width:100%; height:35px; background-color:#F4F5F9;  user-select: none; padding-top:10px; border-bottom:solid 1px #eee; position:relative}
+#fileUpload .selFileTitleU span{padding-left:20px;}
+#fileUpload #tool_area{width:100%; overflow:hidden; margin:5px 0px 5px 0px; position:relative; height:40px;}
+#uploadbtn{background-color:#093; outline:none; transition:all ease-in .4s;  color:#fff; font-family:微软雅黑; font-size:14px; border-radius:5px; border:none; width:100px; height:30px; position:absolute; right:5px;}
+#uploadbtn:hover{background-color:#F63}
+#preview{width:90%; height:400px; margin:auto; }
+.file-box{position:absolute;width:80px;border:solid 0px #ccc; right:120px; height:auto !important; min-height:30px; height:30px; overflow:hidden; }
+.file{ position:absolute; top:0px; left:0px;opacity:0;width:80px; border:solid 1px #ccc; }
+::-webkit-file-upload-button {line-height: 30px;border: 1px solid #a0b3d6;background: #f0f3f9;color: #34538b;}
+#updateview{position:absolute; z-index:10000; right:10px; bottom:10px; box-shadow:2px 2px 5px #000; border:solid 1px #000}
+#thumb_up{width:80px; height:30px; border:none; margin:0px 5px 0px 5px; border-radius:5px; outline:none}
+#thumb_up:hover{background-color:#0C0; color:#fff;}
+#thumb_up:active{background-color:#090; color:#fff;}

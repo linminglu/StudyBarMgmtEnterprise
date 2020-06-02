@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>牙医口腔平台单店版首页</title>
+<include file="Public:css_inc" />
+</head>
+
+<body>
+<!--头部-->
+ <include file="Public:OneStrom_head" />
+ <!---->
+<div class="strom_box">
+  <div class="strom_content">
+    <div class="strom_name">
+      <h2>深圳致美口腔诊所</h2>
+      <span class="name_ico">牙医管家标准版</span> <span><img src="__APP__/public/img/u4867.png" /></span></div>
+    <ul class="strom_lists">
+      <h3>深圳致美口腔诊所</h3>
+      <li>
+        <ul class="strom_item">
+          <li><p>50</p><p>今日初诊</p></li>
+          <li><p>520</p> <p>今日复诊</p> </li>
+          <li> <p>220</p><p>昨日就诊患者</p></li>
+          <li><p class="FF9900">￥120,256.00</p><p>昨日实收</p></li>
+          <li><p class="FFBB9C">￥120,256.00</p><p>今日实收</p></li>
+          <li><p class="FF0000">￥30,240.00</p><p>累计欠款</p></li>
+        </ul>
+      </li>
+    </ul>
+    <ul class="strom_lists ">
+      <h3>推荐服务</h3>
+      <li>
+        <ul class="strom_item service_lists">
+          <li class="services_icn"><p>耗材商城</p></li>
+          <li class="services_icn"><p>义齿加工平台</p></li>
+          <li class="services_icn"><p>牙医管家商学院</p></li>
+          <li class="services_icn"><p>医疗硬件</p></li>
+        </ul>
+      </li>
+    </ul>
+    <!-- 经营建议-->
+    <ul class="strom_lists">
+      <h3>经营建议</h3>
+      <li>
+        <ul class="strom_item manage_lists">
+          <li class="mg_sug"><p class="p_strong">管家小报</p> <p class="g9">7月12日，如何管理诊所更加高效？</p></li>
+          <li class="mg_sug"> <p class="p_strong">运营手册</p><p class="g9">快速上手，成为诊所管理高手</p></li>
+          <li class="mg_sug"><p class="p_strong">微信营销</p><p class="g9">这个年代还不使用微信营销，块OUT了</p></li>
+          <li class="mg_sug"><p class="p_strong">同行高见</p><p class="g9">与牙医管家高手聊诊所运营</p></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+<include file="Public:js_inc" /> 
+<script type="text/javascript" src="__APP__/public/js/OneStrom.js"></script>
+<script>
+	$(document).ready(function(e) {
+		$("#ul_list li").click(function(){
+			console.log(this);
+			$("li[data-s='1']").attr("data-s","0");
+			$(this).attr("data-s","1");	
+		})
+        $("#strom_user").click(function(){
+			$("#user_lists").slideToggle("40px").show();
+		})
+		/*退出按钮*/
+		$("#exit").click(function(event){
+			$("#user_lists").slideUp("40px");
+			event.stopPropagation();
+		})
+    });
+</script>
+</body>
+</html>

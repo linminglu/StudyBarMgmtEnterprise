@@ -1,0 +1,176 @@
+<template id="courselist_id">
+    <div>
+        <!-- 单课程复制推流 -->
+        <addedt-modal :paramcnf="pushurl_modal">
+            <div slot='modal_body' id="modal_content_push">
+                <div class="fz-14" style="display:flex;">
+                    <div style="min-width:70px;margin-top: 10px;">
+                        推流地址:
+                    </div>
+                    <div style="margin-top: 10px;flex:1;display:flex;flex-direction:column;">
+                        <div id="push_url" v-html='pushurl'></div>
+                        <span class="inc_solid" style="width:100px;margin-top: 10px" @click="copyPushurl">复制地址</span>
+                        <div style="margin-top: 10px;border-bottom: 1px solid #f1f1f1;"></div>
+                        <span style="margin-top: 10px;color:#888888">注:该地址获取30分钟内有效,超时后无法推流,请重新获取</span>
+                    </div>
+                </div>
+            </div>
+        </addedt-modal>
+
+        <div class="bline wp100 h35 boxsz pl10 fz-14 lh35 bg-white">首页管理>课程列表</div>
+        <div class="bline h60 lh60 bg-white boxsz pl10">
+            <div id="yayigjDateDownListTest">
+                <span style="float:left">
+                    <span :class='["switch_btn",curIndex == 0?"switch_btn_sel":""]' id="single_btn" @click='switchCourseType(0)'>单课程</span>
+                    <span :class='["switch_btn","mal10",curIndex == 1?"switch_btn_sel":""]'  id="series_btn" @click='switchCourseType(1)'>系列课</span>
+                    <span :class='["switch_btn","mal10",curIndex == 2?"switch_btn_sel":""]' id="offlineCourse_btn" @click='switchCourseType(2)'>线下课程</span>
+                </span>
+                <span style="float:right" class="fz-14">
+                    <span class="mal10" v-if='curIndex == 0'>课程类型</span>
+                    <yayigj-downlist v-if='curIndex == 0' :value="condition.type.key" :arrslist="typeList"
+                        :sizeparam="sizepageparam1" v-on:selitem="selectCoursetype"></yayigj-downlist>
+                    <span v-if='curIndex == 0'>
+                        <label for="">开播时间</label>
+                        <yayigj-Datesel v-model="condition.startDate" :sizeparam="{'width':'160px','type':'date'}">
+                        </yayigj-Datesel>
+                        <label for="">至</label>
+                        <yayigj-Datesel v-model="condition.endDate" :sizeparam="{'width':'160px','type':'date'}">
+                        </yayigj-Datesel>
+                    </span>
+                    <span class="mal10">上架状态</span>
+                    <yayigj-downlist :value="condition.status.key" :arrslist="stateList" :sizeparam="sizepageparam1"
+                        v-on:selitem="selectstatus"></yayigj-downlist>
+                        <span class="mal10">审核状态</span>
+                    <yayigj-downlist :value="condition.auditStatus.key" :arrslist="auditeStateList" :sizeparam="sizepageparam1"
+                        v-on:selitem="selectAuditstatus"></yayigj-downlist>
+                    <input class="mal10" v-model="condition.searchkey" placeholder="请输入课程/直播间名称" type="text" />
+                    <input id="searchBtn" v-on:click="searchData" type="button" value="查找" class="inc_solid mar20">
+                </span>
+
+
+            </div>
+            <!-- <input type="text" readonly class="ma10 w130" value="2017年01月16日">至<input type="text" readonly class="mal10 mar20 w130">主播<input type="text" readonly class="w80 mal10"><input type="button" value="查找" class="inc_solid mal20"> -->
+        </div>
+        <div class="bg-white">
+            <table :class="['unite_table','wp100']">
+                <thead>
+                    <tr>
+                        <th>封面</th>
+                        <th>课程名称</th>
+                        <th v-if='curIndex == 0'>课程分类</th>
+                        <th v-if='curIndex == 0'>类型</th>
+                        <th>直播间名称</th>
+                        <th>课程ID</th>
+                        <th>课程费用</th>
+                        <th v-if='curIndex == 0'>访问人次</th>
+                        <th v-if='curIndex == 0'>访问人数</th>
+                        <th v-if='curIndex != 2'>学习次数</th>
+                        <th v-if='curIndex != 2'>购买人数</th>
+                        <th v-if='curIndex == 0'>开播时间</th>
+                        <th v-if='curIndex == 0'>结束时间</th>
+                        <th v-if='curIndex == 2'>报名截止时间</th>
+                        <th v-if='curIndex == 2'>浏览数</th>
+                        <th v-if='curIndex == 2'>购买次数</th>
+                        <th>上架状态</th>
+                        <th>审核状态</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(item,index) in data_list">
+                        <td>
+                            <div class="courselist_banner">
+                                <img width="100%" height="100%" :src="item.banner" alt="">
+                            </div>
+                        </td>
+                        <td>
+                            <dt v-html="item.title"></dt>
+                        </td>
+                        <td v-if='curIndex == 0'>
+                            <dt v-html='item.tagname'></dt>
+                        </td>
+                        <td v-if='curIndex == 0'>
+                            <dt v-if="item.type==0">幻灯片</dt>
+                            <dt v-else-if="item.type==1">视频录播</dt>
+                            <dt v-else="item.type==2">视频直播</dt>
+                        </td>
+                        <td v-html="item.anchorname"></td>
+                        <td>
+                            <dt v-if="item.signleid" v-html="item.signleid"></dt>
+                            <dt v-else-if="item.seriesid" v-html="item.seriesid"></dt>
+                        </td>
+                        <td v-html="item.fee"></td>
+                        <td v-if='curIndex == 0' v-html="item.visitcount"></td>
+                        <td v-if='curIndex == 0' v-html="item.visitnum"></td>
+                        <td v-html="item.clicknum" v-if='curIndex != 2'></td>
+                        <td v-html="item.buynum" v-if='curIndex != 2'></td>
+                        <td v-if='curIndex == 0' v-html="item.begintime"></td>
+                        <td v-if='curIndex == 0' v-html="item.autoendtime"></td>
+
+                        <th v-if='curIndex == 2' v-html="item.enrollendtime"></th>
+                        <th v-if='curIndex == 2' v-html="item.clicknum"></th>
+                        <th v-if='curIndex == 2' v-html="item.buynum"></th>
+
+                        <td v-if="item.auditstatus!=1">
+                            <yayigj-downlist :selcolor='item.color' :value="item.selectstatus"
+                                :arrslist="item.showstatusarr" :sizeparam="sizepageparam1"
+                                v-on:getseled="changeCourseStatus($event,index,item.auditstatus)"></yayigj-downlist>
+                        </td>
+                        <td v-else-if="item.datastatus == 1">已上架</td>
+                        <td v-else-if="item.datastatus == 2" style="color: red;">未上架</td>
+                        <td v-else-if="item.datastatus == 0" style="color: red;">已删除</td>
+                        <td v-else-if="item.datastatus == -1" style="color: red;">已隐藏</td>
+                        <td v-else-if="item.datastatus == -4" style="color: red;">已锁定</td>
+                        <td v-else></td>
+                         <td v-if='item.auditstatus==0'></td>
+                         <td v-else-if="item.auditstatus==1">
+                            <yayigj-downlist   :selcolor='item.auditcolor' :value="item.selectAuditstatus"
+                                :arrslist="item.showAuditstatusarr" :sizeparam="sizepageparam1"
+                                v-on:getseled="changeCourseAuditStatus($event,index,item.status,item.alterdata)"></yayigj-downlist>
+                         </td>
+                         <td v-else-if="item.auditstatus==2" style="color: #333333;">审核通过</td>
+                         <td v-else-if="item.auditstatus==3" style="color: red;">审核失败</td>
+                         <td v-else></td>
+                        
+                        <td class="inc_operation">
+                            <!-- <span v-if='curIndex == 0'>
+                                            <span v-if="item.datastatus == -1" @click="changeSaleState(index,'1')">显示</span>
+                                            <span v-else @click="changeSaleState(index,'-1')">隐藏</span>&nbsp;
+                                            <i style="color:#ccc">|</i>&nbsp;
+                                    </span> -->
+                            <span v-if='item.type == 2' @click="showPushAlert(index)">推流 <i
+                                    style="color: #ccc">&nbsp;|&nbsp;</i></span>
+                            <span @click='edtCourse(index)'>修改&nbsp;<i
+                                    style="font-style: initial;padding: 0px 5px;;color:#ccc">|</i></span>
+                            <!-- <span v-if="item.datastatus == 1" @click="changeSaleState(index,'2')">下架</span>
+                                        <span v-else @click="changeSaleState(index,'1')">上架</span>
+                                        -->
+                            <span v-if='curIndex == 0' @click="pushToStatMain(index)">统计</span><i v-if='curIndex == 0'>|</i> 
+                            <span @click="changeSaleState(index,'0','0')">删除</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div v-if='curIndex==0' id="allanchorstollegehomepage" class="vuepage">
+                <yayigj-downlist v-model="details.maxPageNum" :arrslist="pageValueList" :sizeparam="sizepageparam"
+                    v-on:getseled="refreshList(1)"></yayigj-downlist>
+                <page-bar :cur.sync="details.curPage" :all.sync="details.totalPage" v-on:btnclick="listenpage">
+                </page-bar>
+            </div>
+            <div v-else-if='curIndex==1' id="allanchorstollegehomepage" class="vuepage">
+                <yayigj-downlist v-model="details2.maxPageNum" :arrslist="pageValueList" :sizeparam="sizepageparam"
+                    v-on:getseled="refreshList(1)"></yayigj-downlist>
+                <page-bar :cur.sync="details2.curPage" :all.sync="details2.totalPage" v-on:btnclick="listenpage">
+                </page-bar>
+            </div>
+            <div v-else id="allanchorstollegehomepage" class="vuepage">
+                <yayigj-downlist v-model="details3.maxPageNum" :arrslist="pageValueList" :sizeparam="sizepageparam"
+                    v-on:getseled="refreshList(1)"></yayigj-downlist>
+                <page-bar :cur.sync="details3.curPage" :all.sync="details3.totalPage" v-on:btnclick="listenpage">
+                </page-bar>
+            </div>
+
+        </div>
+
+    </div>
+</template>

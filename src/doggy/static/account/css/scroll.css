@@ -1,0 +1,45 @@
+		
+.clinic_box .scroll_container{
+	overflow: hidden;
+	position: relative;
+	background-color: #F8F8F8;
+}
+
+.clinic_box .scroll_absolute{
+    position: absolute;
+}
+
+.clinic_box .scroll_vertical_bar{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 16px;
+    height: 100%;
+    background: green;
+    margin: 0;
+    padding: 0;
+}
+
+.clinic_box .scroll_track{
+	position: relative;
+	background-color: #BFEBFF;
+}
+
+.clinic_box .scroll_drag{
+	position: relative;
+	top: 0;
+	left: 0;
+	cursor: pointer;
+	background-color: #075E92;
+}
+
+.clinic_box .scroll_arrow{
+	text-indent: -20000px;
+	display: block;
+	cursor: pointer;
+	background-color: #369DB4;
+}
+
+.clinic_box .scroll_vertical_bar .scroll_arrow{
+    height: 16px;
+}

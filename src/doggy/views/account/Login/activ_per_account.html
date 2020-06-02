@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>激活个人账号</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+     	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+     	<meta charset="UTF-8">
+        <meta content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" name="viewport">
+        <meta content="yes" name="apple-mobile-web-app-capable">
+        <meta content="black" name="apple-mobile-web-app-status-bar-style">
+        <meta content="telephone=no" name="format-detection">
+        <meta http-equiv="Cache-Control" content="no-transform ">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+        <!--<include file="Public:css_inc"/>-->
+         {{template "/account/Public/css_inc.html"  .}}
+        <link rel="stylesheet" type="text/css" href="/static/account/css/register.css">        
+    </head>
+    <body>
+        <div class="topbar">
+            <div class="topbarIn">
+                <div class="logo"><a href="http://www.dental360.cn/" target="_blank"><img src="/static/account/img/logo_pg8.png" alt="牙医管家"></a></div>
+            </div>
+        </div>
+       <div class="reg_con">
+            <div class="create_cli_acc active_per_acc">
+                <a href="index.php?m=Login"><img src="/static/account/img/back.png" class="back_btn"></a>
+                <div class="create_tit">
+                    <p class="tit_p1">激活账号</p>
+                    <p class="tit_p2">员工可凭诊所管家号激活个人账号</p>
+                </div>
+                <div class="input_div input_div_fir">
+                    <p class="input_p">管家号</p>
+                    <input type="text" class="box_w348" id="clinic_contacts" placeholder="请输入管家号">
+                </div>
+                <div class="sub_btn_div active_btn_div">
+                    <div class="sub_tips"><img src="/static/account/img/red_exclam.png"><label>管家号错误,请重新输入</label></div>
+                    <input type="button" value="立即激活" id="create_btn" class="acb ac_btn_bf w360h40">
+                </div>
+            </div>
+       </div>
+       <!--<include file="Public:footer_new"/>-->
+        {{template "/account/Public/footer_new.html"  .}}
+       <script type="text/javascript" src="/static/account/js/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript" src="/static/account/js/placeholade.min.js"></script>
+        <script>
+            //激活个人账号
+            $("#create_btn").click(function(){
+                if($("#clinic_contacts").val()==""){
+                    $(".sub_tips").show();
+                    $("#clinic_contacts").css("border-color","#f86d5a");
+                    return false;
+                }
+                $.ajax({
+                    type:"POST",
+                    url:"/member/activeaccount",
+                    dataType:"json",
+                    data:{
+                        dentalid:$("#clinic_contacts").val()
+                    },
+                    beforeSend: function(){},
+                    success: function(json){
+                        console.log(json);
+                        if(json.code==1){
+                            window.location.href="/member/resetpassword";
+                        }else{
+                            $(".sub_tips").show();   
+                            $("#clinic_contacts").css("border-color","#f86d5a");
+                             $(".sub_tips label").text(json.info);
+                        }
+                    },
+                    error: function(json){console.log(json);},
+                    complete: function(json){
+                        //console.log(json);
+                    }
+                })
+            })
+
+            $("#clinic_contacts").focus(function(){
+                $(".sub_tips").hide();
+                    $("#clinic_contacts").css("border-color","#00c5b5");
+                    $("#clinic_contacts").css("outline","none");
+            })
+            $("#clinic_contacts").blur(function(){
+                $("#clinic_contacts").css("border-color","#e0e0e0");
+            })
+        </script>
+       <!--IE支持placeholder-->
+       <script type="text/javascript">  
+            $(function(){ $('input, textarea').placeholder(); });
+        </script>
+    </body>
+</html>

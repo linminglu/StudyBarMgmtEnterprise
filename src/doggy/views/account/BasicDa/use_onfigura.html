@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+    <head>
+        <title>使用配置</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="UTF-8">
+        <meta content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" 
+        name="viewport">
+        <meta content="yes" name="apple-mobile-web-app-capable">
+        <meta content="black" name="apple-mobile-web-app-status-bar-style">
+        <meta content="telephone=no" name="format-detection">
+        <meta http-equiv="Cache-Control" content="no-transform ">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+        <!--<include file="Public:css_inc"/>-->
+        {{template "account/Public/css_inc.html" .}}
+        <link rel="stylesheet" type="text/css" href="/static/account/css/chain_strom.css">
+        <link rel="stylesheet" type="text/css" href="/static/account/css/basicData.css">
+    </head>
+    <body>
+        <!--<include file="Public:clinic_header"/>-->
+        {{template "account/Public/clinic_header.html" .}}
+        <div class="main_con">
+            <!--<include file="Public:clinic_left_nav"/>-->
+            {{template "account/Public/clinic_left_nav.html" .}}
+            <div class="main_right">
+                <div class="right_nav">
+                    <div class="clinic_tit">
+                        <img src="/static/account/img/sys_setting.png">
+                        <span>系统设置</span>
+                        <span class="use_set_tit">(部分参数设置完成后重启软件生效)</span>
+                    </div>
+                    <div class="sue_set_right">
+                        <input type="button" class="acb ac_btn_bf w100h30" id="sue_set_save" 
+                        value="保存" />
+                    </div>
+                </div>
+                <div class="use_cli_name">
+                    <ul id="usecon_cli_name"></ul>
+                </div>
+                <div class="use_set_items">
+                    <div class="use_login_way"><span class="sel_login_way">选择登录方式</span>
+                    <span class="staff_name_login login_way" data-sel="1">员工姓名登录</span>
+                    <span class="phone_num_login login_way" data-sel="0">手机号码登录</span></div>
+                    <div class="use_box_sel">
+                        <ul>
+                            <li id="Schedule" class="FirstNeedID">
+                                <span><img src="/static/account/img/checkbox.png"></span>
+                                <span >初诊预约默认临时患者 （* 临时患者即不分配病例号）</span>
+                            </li>
+                            <li id="FeeSet" class="PayChangeDiscount">
+                                <span><img src="/static/account/img/checkbox.png"></span>
+                                <span>前台收费允许填写折扣</span>
+                            </li>
+                            <li id="Registe" class="RegTriage">
+                                <span><img src="/static/account/img/checkbox.png"></span>
+                                <span>新增患者时选择医生后直接分诊</span>
+                            </li>
+                            <li id="Patient" class="TodayWorkFilter">
+                                <span><img src="/static/account/img/checkbox.png"></span>
+                                <span>今日工作显示筛选条件</span>
+                            </li>
+                            <li id="Registe" class="ArriveRegFee">
+                                <span><img src="/static/account/img/checkbox.png"></span>
+                                <span>预约到达收取挂号费</span>
+                            </li>
+                            <li id="Stat" class="StatArrea">
+                                <span><img src="/static/account/img/checkbox.png"></span>
+                                <span>统计期末期初欠款</span>
+                            </li>
+                            <li id="Bill" class="PayNoByBillNo">
+                                <span><img src="/static/account/img/checkbox.png"></span>
+                                <span>收费单号与账单号对应</span>
+                            </li>
+                            <li id="Schedule" class="LostSchkReturn">
+                                <span><img src="/static/account/img/checkbox.png"></span>
+                                <span>预约取消制订回访</span>
+                            </li>
+                            <li id="Hospital" class="ConsultMode">
+                                <span><img src="/static/account/img/checkbox.png"></span>
+                                <span>启用接诊模式</span>
+                            </li>
+                            <li id="Hospital" class="AddHandleToPlan">
+                                <span><img src="/static/account/img/checkbox.png"></span>
+                                <span>导入治疗计划后可添加处置</span>
+                            </li>
+                            <li id="Stat" class="StatNurseByEMR">
+                                <span><img src="/static/account/img/checkbox.png"></span>
+                                <span>护士搭台按病历统计</span>
+                            </li>
+                            <li id="Hospital" class="AutoMoifyEMR">
+                                <span><img src="/static/account/img/checkbox.png"></span>
+                                <span>修改病例/新增咨询授权：<span>72</span>小时后锁定病例/咨询 （* 超过时限修改病例需要授权）</span>
+                            </li>
+                            <li id="Patient" class="AutoDelTria">
+                                <span><img src="/static/account/img/checkbox.png"></span>
+                                <span>今日工作，允许删除已分诊的患者（未写处置时生效）</span>
+                            </li>
+                            <li id="Patient" class="StopAsFinish">
+                                <span><img src="/static/account/img/checkbox.png"></span>
+                                <span>今日工作，点击治疗完成后患者跳转至已完成 （* 开启后跳转至已完成，否则跳转至未成交）</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript" src="/static/account/js/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript" src="/static/account/js/chain_strom.js"></script>
+        <script type="text/javascript" src="/static/account/js/use_onfigura.js"></script>
+    </body>
+</html>

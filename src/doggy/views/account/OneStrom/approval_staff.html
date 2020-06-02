@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="UTF-8">
+        <meta content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" name="viewport">
+        <meta content="yes" name="apple-mobile-web-app-capable">
+        <meta content="black" name="apple-mobile-web-app-status-bar-style">
+        <meta content="telephone=no" name="format-detection">
+        <meta http-equiv="Cache-Control" content="no-transform ">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+        <!--<include file="Public:css_inc"/>-->
+        {{template "/account/Public/css_inc.html" .}}
+        <link rel="stylesheet" type="text/css" href="/static/account/css/chain_strom.css">
+        <link rel="stylesheet"  type="text/css" href="/static/account/css/ClinicArchives.css" />  
+        <title>单店版--审批员工</title>      
+    </head>
+    <body>
+        <!--遮罩层-->
+        <div class="sta_man_bg"></div>
+        <!---->
+        <!--<include file="Public:clinic_header"/>-->
+        {{template "/Public/public/r_header.html" .}}
+        <div class="main_con">
+           <!--<include file="Public:one_left_nav"/>-->
+           {{template "/account/Public/one_left_nav.html" .}}
+           <div class="main_right approval_right">
+                <div class="export_staff_list" id="resume_pop">
+                    <div class="export_tit">
+                        <span class="export_listz_sp">系统提示</span>
+                        <span class="close_alert"><img src="/static/account/img/close.png"></span>
+                    </div>
+                    <div class="export_con">
+                        <img src="/static/account/img/qh_pop_info.png" class="qh_pop_info">
+                        <p><span>审批不通过的员工信息将被删除丢弃</span></p>
+                    </div>
+                    <div class="export_save">
+                      <input type="button" class="acb ac_btn_bf w90h30" value="残忍拒绝" id="resume_confim" />
+                    </div>
+                </div>
+                <!--<include file="Public:one_main_right_nav"/>-->
+                {{template "/account/Public/one_main_right_nav.html" .}}
+                <div class="import_content">
+                    <div class="approval_tit approval_head">
+                        <ul class="appraval_content">
+                          <li class="approval_name">姓名</li>
+                          <li class="approval_sex">性别</li>
+                          <li class="approval_birth">生日</li>
+                          <li class="approval_pho">手机</li>
+                          <li class="approval_clinic">工作诊所</li>
+                          <li class="approval_date">申请时间</li>
+                          <li class="approval_actioin">操作</li>
+                        </ul>
+                    </div>
+                    <div id="info_s">
+                    
+                    </div>
+               
+           </div>
+       </div>
+       <script type="text/javascript" src="/static/account/js/jquery-1.9.1.min.js"></script>
+       <script type="text/javascript" src="/static/account/js/chain_strom.js"></script>
+       <script type="text/javascript" src="/static/account/js/approval_staff.js"></script>
+       <!--<include file="Public:clinic_js_inc" />-->
+       {{template "/account/Public/clinic_js_inc.html" .}}
+        <script type="text/javascript">
+            $(".nav ."+cur_Line).css("color","#00c5bd");
+        </script>
+    </body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>门诊审核</title>
+		{{template "../public/link/css_inc.html" .}}
+		<link href="/static/erp/css/user.css" rel="stylesheet" />
+		<link href="/static/erp/css/product.css" rel="stylesheet" />	
+        <style>
+            .backPage{top:15px;right:20px;}
+            .search{padding:14px 14px 0 14px;}
+			.search label,.search div{margin-bottom:20px;}
+			.excel{float:left!important;margin-left:14px;}
+            .sendState,.sendType,.sendStage{width: 80px;height: 28px;line-height: 28px;border: solid 1px #00c5b5;float: left!important;text-indent: 10px;}
+            .sendStage{width:180px;}
+			#BeginDate{width: 120px;float:left!important;}
+			#EndDate{width: 120px;float:left!important;}
+			#province{width: 120px;float:left!important;}
+			#city{width: 120px;float:left!important;}
+        </style>
+	</head>
+	<body>
+		{{template "../public/public/header.html" .}}
+			<div class="mainFrme">
+				{{template "../public/public/left.html" .}}
+				<div class="rightFrme">
+					<div class="crumbs"><a href="###">产品管理</a> > <a href="" id="isModifyTitle">新增产品</a></div>
+					<div class="cont product_con">
+                        <input type="hidden" name="htag" value="2"> <!--隐藏的标记，用来判断左边的显影-->
+						<h2>基本信息</h2>
+                        <div class="pro_li">
+                            <li id="isModify"><span class="l_span">产品编号：</span><span id="proID"></span></li>
+                            <li><span class="l_span">产品名称：</span><input type="text" maxlength="20" id="proName"><b id="proNameTips">0/20</b></li>
+
+                            <li><span class="l_span vt">平安编号：</span><input type="text" id="proPAid" maxlength="20"><b id="proCusTips">0/100</b></li>
+                            <!--<li><span class="l_span vt">购买须知：</span><textarea id="proBuy" maxlength="100"></textarea><b id="proBuyTips">0/100</b></li>
+                            
+                            <input type="text" id="Hours2" class="w60" readonly> <input type="text" id="Minutes2" class="w60" readonly></li>
+                            <li><span class="l_span">适用范围：</span><input type="text" id="ApplicableScope" readonly></li>
+                            <li><span class="l_span">原价：</span><input type="text" id="price" min="1"> 元</li>
+                            <li><span class="l_span">展示图：</span><span class="uploadBtn"><img src="/static/account/img/u1910.png" id="sImg" alt=""><a href="javascript:;"><input type="file" id="upload"></a></span><b class="upload_tips">图片尺寸为240x150px,大小不超过5M(jpg格式)，图片请确保信息清晰可见</b></li>-->
+                            <!--<input type="text" id="Hours" class="w60" readonly> <input type="text" id="Minutes" class="w60" readonly>-->
+                            <input type="hidden" id="h_img">
+                            <!--<li><span class="l_span">有效时间：</span><input type="text" id="Stime" readonly>  <input type="text" id="Etime" readonly>-->
+                            <li id="ckPlatform"><span class="l_span">*发布平台：</span><input type="radio" id="release_platform1" name="release_platform" value="100"><label for="release_platform1">平安好医生</label>
+                                <input type="radio" id="release_platform2" name="release_platform" value="200"><label for="release_platform2">看牙</label>
+                        </div>
+                        <div class="pro_cz_list">
+                            <h2>产品服务项</h2>
+                            <div id="proA" class="pro_list">
+
+                            </div>
+                            <input type="button" class="add_btn" value="添加处置" onclick="addProCz(1)">
+                            <!--<li><span class="l_span l_span_l">*服务项A使用次数：</span><input type="number" id="Ausenum"  min="1">次</li>-->
+                        </div>
+                        <!--<div class="pro_cz_list">
+                            <h2>产品服务项B</h2>
+                            <div id="proB" class="pro_list">
+                               
+			                </div>
+                            <input type="button" class="add_btn" value="添加处置" onclick="addProCz(2)">
+                            <li><span class="l_span l_span_l">*服务项B使用次数：</span><input type="number" id="Busenum" min="1">次</li>
+                        </div>-->
+                        <div class="pro_price_result">
+                            <p><span class="l_span">*套餐总价：</span><span id="TotalMoney">0元</span></p>
+                           
+                            <!--<-->
+                            </p>
+                        </div>
+                        <div class="tc">
+                            <input type="button" value="取消" class="cancelBtn" onclick="history.go(-1)"><input type="button" value="确定" onclick="addProBtn(this)">
+                        </div>
+					</div>
+				</div>
+			</div>
+		{{template "../public/public/footer.html" .}}
+	
+	</body>
+	{{template "../public/link/js_inc.html" .}}
+    <script src="/static/public/yayigj_dialog_box.js"></script>
+    <script src="/static/public/yayigj_date_sel.js"></script>
+    <script src="/static/public/yayigj_downlist.js"></script>
+	<script type="text/javascript" src="/static/erp/js/addprotpl.js"></script>
+</html>

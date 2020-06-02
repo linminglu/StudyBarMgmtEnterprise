@@ -1,0 +1,27 @@
+.backPage{top:15px;right:20px;}
+.search{padding:14px 14px 0 20px;}
+.search label,.search div{margin-bottom:20px;}
+.search label:first-child{padding-left:0;}
+.excel{margin:20px 0;}
+.sendState,.sendType,.sendStage{width:70px;height: 28px;line-height: 28px;border: solid 1px #00c5b5;float: left;text-indent: 10px;}
+.sendStage{width:150px;}
+#condition{width:180px;}
+.search_btn{background-color: #00c5b5!important;color: #fff!important;width:60px!important;height: 28px!important;}
+.search_btn:hover{background-color:#00d4c3!important;}
+.search_btn:active{background-color:#00bcaa!important;}
+/*.f_data{overflow: initial;}*/
+table tbody{overflow: auto;}
+table td p{width:140px;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;max-width:140px;}
+li{list-style:none;}
+input[type='button']{float: none;width:auto;color: #696969;background-color: #fff;height: auto;}
+/*分页样式*/
+#pagerRow{width:60px;outline:none;border:solid 1px #e0e0e0; height:28px;padding-left:5px;}
+.Pager{ width: auto; height: 30px; float: right; margin: 20px 20px 20px 0;}
+.Pager span.pagerSP1,.Pager span.pagerSP3{ width: auto; height: 30px; overflow: hidden; line-height: 30px; font-size: 14px; color: #888; float: left; margin-right: 10px;}
+.Pager span.pagerSP3{ margin-right: 0px; display: block;}
+.pagerSP3 label{ float: left; padding-right: 5px;}
+.pagerSP3 select{ width: 60px; height: 30px; float: left; padding: 0 0 0 5px;}
+.Pager span.pagerSP2{ width: auto; height: 30px; overflow: hidden; float: left;}
+.pagerSP2 a{ height: 28px; line-height: 28px; border: 1px solid #E0E0E0; float: left; margin: 0 0 0 10px; padding: 0px 10px; font-size: 14px; color: #ADADAD; background: #fff; text-decoration: none; cursor: pointer;}
+.pagerSP2 a:hover{ border: 1px solid #00c5b5; background: #00c5b5; color: #fff; border-radius: 2px; -webkit-border-radius: 2px; -moz-border-radius: 2px;}
+.pagerSP2 .pagerAct{ border: 1px solid #00c5b5; background: #00c5b5; color: #fff; border-radius: 2px; -webkit-border-radius: 2px; -moz-border-radius: 2px;}

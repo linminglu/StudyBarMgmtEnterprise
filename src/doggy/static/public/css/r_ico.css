@@ -1,0 +1,73 @@
+/*=======================
+	整个分站图标配置
+	zlb 2016-12-11
+	在此添加样式须经 曾令兵||李琴||范明亮 许可
+/*=======================*/
+.viewinfo_ico{ background-image:url(/static/netconsult/img/yuyue_ico/h_view.png); width:16px; height:16px;}  				/*搜索图标*/
+.viewinfo_ico:hover{background-image:url(/static/netconsult/img/yuyue_ico/h_view_d.png);}
+.close_ico{ background-image:url(/static/public/ico/close_icon.png); width:12px; height:12px;}  		/*关闭图标*/
+.close_ico:hover{background-image:url(/static/public/ico/close_over.png);}
+.close_ico:active{background-image:url(/static/public/ico/close_over.png);}
+.return_ico{ background-image:url(/static/public/ico/return_icon.png); width:12px; height:12px;}  	/*返回图标*/
+.return_ico:hover{background-image:url(/static/public/ico/return_over.png);}
+.return_ico:active{background-image:url(/static/public/ico/return_over.png);}
+.returnc_ico{ background-image:url(/static/public/ico/returnc_icon.png); width:24px; height:24px;}  	/*返回圆图标*/
+.returnc_ico:hover{background-image:url(/static/public/ico/returnc_over.png);}
+.returnc_ico:active{background-image:url(/static/public/ico/returnc_over.png);}
+.delb_ico{ background-image:url(/static/public/ico/delb_icon.png); width:13px; height:17px;}  		/*删除大图标*/
+.delb_ico:hover{background-image:url(/static/public/ico/delb_over.png);}
+.delb_ico:active{background-image:url(/static/public/ico/delb_over.png);}
+.delm_ico{ background-image:url(/static/public/ico/delm_icon.png); width:14px; height:14px;}  		/*删除小图标*/
+.delm_ico:hover{background-image:url(/static/public/ico/delm_over.png);}
+.delm_ico:active{background-image:url(/static/public/ico/delm_over.png);}
+.umove_ico{ background-image:url(/static/public/ico/umove_icon.png); width:14px; height:14px;}  		/*上移图标*/
+.umove_ico:hover{background-image:url(/static/public/ico/umove_over.png);}
+.umove_ico:active{background-image:url(/static/public/ico/umove_over.png);}
+.dmove_ico{ background-image:url(/static/public/ico/dmove_icon.png); width:14px; height:14px;}  	/*下移图标*/
+.dmove_ico:hover{background-image:url(/static/public/ico/dmove_over.png);}
+.dmove_ico:active{background-image:url(/static/public/ico/dmove_over.png);}
+.add_ico{ background-image:url(/static/public/ico/add_icon.png); width:14px; height:14px;}  			/*添加小图标*/
+.add_ico:hover{background-image:url(/static/public/ico/add_over.png);}
+.add_ico:active{background-image:url(/static/public/ico/add_over.png);}
+.addb_ico{ background-image:url(/static/public/ico/addb_icon.png); width:15px; height:15px;}  		/*添加大图标*/
+.addb_ico:hover{background-image:url(/static/public/ico/addb_over.png);}
+.addb_ico:active{background-image:url(/static/public/ico/addb_over.png);}
+.expand_ico{ background-image:url(/static/public/ico/expand_icon.png); width:13px; height:13px;}  	/*展开图标*/
+.expand_ico:hover{background-image:url(/static/public/ico/expand_over.png);}
+.expand_ico:active{background-image:url(/static/public/ico/expand_over.png);}
+.expanddir_ico{ background-image:url(/static/public/ico/expanddir_icon.png); width:11px; height:7px;}  	/*展开图标 尖括号*/
+.expanddir_ico:hover{background-image:url(/static/public/ico/expanddir_over.png);}
+.expanddir_ico:active{background-image:url(/static/public/ico/expanddir_over.png);}
+.fold_ico{ background-image:url(/static/public/ico/fold_icon.png); width:13px; height:13px;}  						/*折叠图标*/
+.fold_ico:hover{background-image:url(/static/public/ico/fold_over.png);}
+.fold_ico:active{background-image:url(/static/public/ico/fold_over.png);}
+.folddir_ico{ background-image:url(/static/public/ico/folddir_icon.png); width:11px; height:7px;}  			  /*折叠图标 尖括号*/
+.folddir_ico:hover{background-image:url(/static/public/ico/folddir_over.png);}
+.folddir_ico:active{background-image:url(/static/public/ico/folddir_over.png);}
+.search_ico{ background-image:url(/static/public/ico/search_icon.png); width:16px; height:16px;}  				/*搜索图标*/
+.search_ico:hover{background-image:url(/static/public/ico/search_over.png);}
+.search_ico:active{background-image:url(/static/public/ico/search_over.png);}
+.downlist_ico{ background-image:url(/static/public/ico/search_icon.png); width:12px; height:12px;}  				/*搜索图标*/
+.downlist_ico:hover{background-image:url(/static/public/ico/search_over.png);}
+.downlist_ico:active{background-image:url(/static/public/ico/search_over.png);}
+.member_ico{background-image:url(/static/public/ico/member.png); width:28px; height:28px;}  				/*会员图标*/
+.clinicname_ico{background-image:url(/static/public/ico/clinicname.png);width:32px; height:32px;}   			/*诊所图标*/
+.delx_ico{ background-image:url(/static/public/ico/delx_icon.png); width:15px; height:15px;}  				  /*删除圆图标 用在弹窗内*/
+.delx_ico:hover{background-image:url(/static/public/ico/delx_over.png);}
+.delx_ico:active{background-image:url(/static/public/ico/delx_over.png);}
+.seled_ico{ background-image:url(/static/public/ico/seled_icon.png); width:15px; height:15px;}  			   /*选中圆图标 用在弹窗内*/
+.seled_ico:hover{background-image:url(/static/public/ico/seled_over.png);}
+.seled_ico:active{background-image:url(/static/public/ico/seled_over.png);}
+.edit_ico{ background-image:url(/static/public/ico/edit_icon.png); width:14px; height:14px;}  			        /*修改图标*/
+.edit_ico:hover{background-image:url(/static/public/ico/edit_over.png);}
+.edit_ico:active{background-image:url(/static/public/ico/edit_over.png);}
+.excel_ico{ background-image:url(/static/public/ico/excel_export.png); width:20px; height:20px;}  			/*修改图标*/
+.add_more{ background-image:url(/static/public/ico/add_more.png); width:20px; height:17px;}  			/*批量添加图标*/
+.clinic_logo{background-image:url(/static/public/ico/clinic_logo.png); width:80px; height:80px;}				/*诊所图标*/
+.add_user{background-image:url(/static/public/ico/employee_add.png); width:22px; height:17px;}			/*添加用户或雇员*/
+.chart_none{background-image:url(/static/public/ico/employee_add.png); width:240px; height:289px;}			/*bi图表无数据图片*/
+.dept_none{background-image:url(/static/public/ico/dept_none.png); width:240px; height:280px;}			/*科室无数据图片*/
+.down_close{background-image:url(/static/public/ico/down_close.png);width:9px; height:5px;}				/*向下展开*/
+.down_open{background-image:url(/static/public/ico/down_open.png);width:9px; height:5px;}				/*向上展开*/
+.nav_hide{background-image:url(/static/public/ico/nav_hide.png);width:9px; height:5px;}							/*左折叠展开*/
+.nav_show{background-image:url(/static/public/ico/nav_show.png);width:9px; height:5px;}						/*左折叠折叠*/

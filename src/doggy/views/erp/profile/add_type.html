@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>添加类别</title>
+		{{template "../public/link/css_inc.html" .}}
+		<link href="/static/erp/css/profile.css" rel="stylesheet" />
+        <link href="/static/erp/css/user.css" rel="stylesheet" />
+	</head>
+	<body>
+		{{template "../public/public/header.html" .}}
+			<div class="mainFrme">
+				{{template "../public/public/left.html" .}}
+				<div class="rightFrme">
+                    <div class="crumbs"><a href="###">主页</a> > <a href="###">产品订单中心</a> > <a href="###">产品中心</a> > <a href="###">添加类别</a></div>
+                    <div class="cont">
+                        <div class="orderInfo">
+                            <span class="orderInfoTit">添加类别</span>
+                             <ul>
+                                <li><span class="of_sp1">*类别名称：</span>
+                                    <span class="of_sp2">
+                                        <input type="text" id="proName" placeholder="请输入类别名称">
+                                        <div class="wordNum"><label>0</label>/<label>20</label></div>
+                                    </span>
+                                </li>
+                                 <li>
+                                    <span class="of_sp1">*类别icon：</span>
+                                    <span class="of_sp2 showpic_of_sp2">
+                                        <img src="/static/erp/img/profile/add_pic.png">
+                                        <label>图片尺寸为240x150px,大小<br>不超过5M(jpg格式)，图片请<br>确保信息清晰可见</label>
+                                    </span>
+                                </li>
+                                 <li>
+                                    <span class="of_sp1">*状态：</span>
+                                    <span class="of_sp2">
+                                        <input type="radio" id="safeDoc" name="showhide">显示
+                                        <input type="radio" id="seeTeeth" name="showhide">隐藏
+                                    </span>
+                                </li>
+                             </ul>
+                        </div>
+                        <div class="add_save">
+                            <input type="button" id="add_cancel" value="取消">
+                            <input type="button" id="add_confim" value="确定添加">
+                        </div>
+					</div>
+				</div>
+			</div>
+		{{template "../public/public/footer.html" .}}
+	</body>
+	{{template "../public/link/js_inc.html" .}}
+</html>

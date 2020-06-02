@@ -1,0 +1,64 @@
+/*门诊管理主页*/
+.cont{ background: #F2F2F2;}
+.content1{ width: 100%; height: 301px; float: left; background: #fff;}
+.contentHead{ width: 100%; height: 40px; float: left; border-bottom: 1px solid #E2E2E2; line-height: 40px; font-size: 14px; color: #21C1AA;}
+.contentHead span{ padding-left: 20px;}
+.contentHead a{ font-size: 12px; float: right; margin-right: 20px; color: #333;}
+.contentHead a:hover{ color: #21C1AA; text-decoration: none;}
+#container{ width: 480px; height: 260px; float: left;}
+.chart1Info{ width: calc(100% - 480px); height: 260px; float: left;}
+.chart1Info li{ width: 20%; height: 140px; float: left; margin-top: 60px; border-left: 1px solid #E2E2E2; box-sizing:border-box;}
+.chart1Info li i{ width: 18px; height: 18px; float: left; background: url(/static/erp/img/xx_null.png);}
+.chart1Info li i.xxfull{ background: url(/static/erp/img/xx_full.png);}
+.chart1Info li div{ width: 100%; height: auto; overflow: hidden; float: left; text-align: center;}
+.chart1Info li div > span{ width: 90px; height: 18px; margin: 0 auto; display: block;}
+.chart1Info li div.d1{ height: 40px; font-size: 16px; color: #333; line-height: 40px;}
+.chart1Info li div.d2{ height: 18px; margin: 0 0 14px 0;}
+.chart1Info li div.d3{ height: 30px; font-size: 14px; color: #555; line-height: 30px;}
+.chart1Info li div.d4{ height: 30px; font-size: 14px; line-height: 30px; margin-top: 8px;}
+.chart1Info li div.d4 a{ color: #21C1AA;}
+.chart1Info li div.d4 a:hover{ color: #21C1AA; text-decoration: none;}
+
+.content2,#container2{ width: 100%; height: auto; float: left; background: #fff; margin-top: 10px;}
+.content2_tit{margin: 20px 0 10px 20px;overflow: hidden;}
+.content2_tit span,.content2_tit label,.content2_tit div,.content2_tit input{float: left;}
+.content2_tit span{margin:6px 10px 0 0;cursor: pointer;}
+.content2_tit label{margin: 6px 10px 0 10px;}
+
+#container3{width: 100%;height: auto;float: left;margin-top: 10px;}
+#container3 table{width: 100%;border-collapse:collapse;}
+#container3 table th{height: 40px;background: #e4e4e4;}
+#container3 table td{height: 40px;}
+#container3_left{float: left;width: calc(50% - 10px);margin-right: 10px;background: #fff;}
+#container3_right{float: right;width: calc(50% - 10px);margin-left: 10px;background: #fff;}
+.container3_lr_t{height: 40px;line-height: 40px;}
+.container3_lr_t .spa1{float: left;margin-left: 20px;color: #00c5b5;font-size: 14px;}
+.container3_lr_t .spa2{float: right;margin-right: 20px;font-size: 14px;}
+
+/*用户评价*/
+.cont1{overflow: hidden;}
+.out_ul{width: 100%;}
+.out_ul li{float: left; width: calc((100% - 60px)/5);margin-right: 15px;background: #fff;height: 151px;}
+.out_ul li:last-child{margin-right: 0;}
+.out_ul li .in_ul{width: 100%;}
+.out_ul li .in_ul li{float: none;text-align: center;width: 100%;width: 100%;height: 30px;line-height: 30px;font-size: 14px;color: #696969;}
+.out_ul li .in_ul li:first-child{border-bottom: 1px solid #f0f0f0;color: #333;font-weight: 800;}
+.cont2{width:100%;height:auto;background: #fff;overflow: hidden;margin-top: 15px;}
+.cont2_tit{height: 59px;line-height: 59px;border-bottom: 1px solid #f0f0f0;font-size: 14px;color: #333;font-weight: 800;padding-left: 20px;}
+.comment_con{width: 420px;padding: 20px 40px;}
+.comment_con_th{width: 420px;padding: 0 40px;}
+.score_td{width: 190px;}
+.search_div{margin-top: 20px;overflow: hidden;}
+.search_div label,.search_div div,.search_div input{float: left;}
+.search_div .excel{float: right;line-height: 30px;font-size: 14px;}
+.search_div label{margin: 6px 10px 0 10px;font-size: 14px;color: #333;}
+.command_tot{width: 70px;height: 28px;line-height:28px;border:1px solid #e0e0e0;padding: 0 5px;font-size: 14px;color: #333;}
+.user_com_table{width: 100%;border-collapse:collapse;margin-top: 20px;}
+.user_com_table tbody tr{border-bottom: 1px solid #f0f0f0;}
+.user_com_table th{height: 40px;background: #e4e4e4;}
+.user_com_table td p{overflow: hidden;}
+.user_com_table td p span{display: block;float: left;}
+.pf_tit{font-size: 14px;margin-right: 30px;position: relative;bottom: 2px;}
+.pf_star{width:15px;height: 15px;background: url(../img/xx_full.png);margin-left: 5px;background-size: 100%;}
+.del_comment{cursor: pointer;}
+.del_comment:hover span{color: #00c5b5;}

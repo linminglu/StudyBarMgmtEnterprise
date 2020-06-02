@@ -1,0 +1,723 @@
+<script type="text/x-template" id="vyayigjDateSelcom">
+    <div style="display: inline-block">
+        <div class="vyayigjDateSelcom_vDt"><input type="text" :style='getSizeParam' v-model="currentValue" ref="vyayigjDateSelcom_Dt" @click="open_down_list" :class="[{bottomRset:showList}, 'showValue']" readonly/></div>
+        <div class="vyayigj_plus_date_sel_css" ref="vyayigj_plus_date_sel_panel" v-show="showList" :style="'z-index:'+paneSizePos.z_index">
+            <div class="top_over_line" ref="top_over_line" v-show="showList" :style="'width:'+(paneSizePos.width-2)+'px;top:-1px;left: 0px;right: initial'"></div>
+            <div class="title"><span class="pre dir" @click.stop="preEvent($event)"></span><span class="title_txt"><b class="i_year" ref="txt_year" @click.stop="openYearpanel"><{data_cy}>年</b><b class="i_month" ref="txt_month" @click.stop="openMonthpanel"><{data_cm|getCnMonth}>月</b></span>
+                <span class="next dir" @click.stop="nextEvent($event)"></span><span class="to_day" ref="txt_tday" @click.stop="tday_event">今</span></div>
+            <div class="mainArea" ref="allpanelArea">
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" height="210" class="date_cn" ref="datepanelArea" :style="'border-bottom:solid '+isDtimeNum+'px #e0e0e0'">
+                    <thead class="week_head">
+                        <tr>
+                            <th>一</th>
+                            <th>二</th>
+                            <th>三</th>
+                            <th>四</th>
+                            <th>五</th>
+                            <th>六</th>
+                            <th>日</th>
+                        </tr>
+                    </thead>
+                    <tbody ref="data_panel_td" id="data_panel_td" @click="date_panel_clk($event)">
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="monthPanel ymPanel" ref="monthPanel">
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%" height="100%" ref="year">
+                        <tbody ref="monthPanelContent" @click.stop="setMonthInfo($event)">
+                            <tr>
+                                <td data-m='0'>一月</td>
+                                <td data-m='1'>二月</td>
+                                <td data-m='2'>三月</td>
+                                <td data-m='3'>四月</td>
+                            </tr>
+                            <tr>
+                                <td data-m='4'>五月</td>
+                                <td data-m='5'>六月</td>
+                                <td data-m='6'>七月</td>
+                                <td data-m='7'>八月</td>
+                            </tr>
+                            <tr>
+                                <td data-m='8'>九月</td>
+                                <td data-m='9'>十月</td>
+                                <td data-m='10'>十一月</td>
+                                <td data-m='11'>十二月</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="yearPanel ymPanel" ref="yearPanel">
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%" height="100%" ref="yearPanelArea">
+                        <tbody ref="yearPanelContent" @click.stop="setYearInfo($event)">
+                            <tr>
+                                <td class="cEEE"></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td class="cEEE"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="vdate_time_css_zk" v-show="isDtime"><span class="_timehint">时间</span><span class="_timeval"><input type="text" readonly="" class="h before" v-model="hour" @click.stop="getHour"><i>:</i><input type="text" readonly="" class="m before" v-model="minute" @click.stop="getMinute"><i style="display:none">:</i><input type="text" style="display:none" readonly="" class="s" value="59"></span></div>
+            <div class="vlaydate_time vlaydate_show" id="vlaydate_time" ref="vlaydate_time">
+                <!-- document.getElementById('vlaydate_time').style.display='none' -->
+                <div class="vlaydte_hsmtex">小时<span @click.stop="hidehours">×</span></div>
+                <div id="vlaydate_hmsno" class="vlaydate_hmsno" @click.stop="setHour($event)"><span class="sw">0</span><span class="sw">1</span><span class="sw">2</span><span class="sw">3</span><span class="sw">4</span><span class="sw">5</span><span class="sw">6</span><span class="sw">7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span>
+                    <span class="sw">21</span><span class="sw">22</span><span class="sw">23</span></div>
+            </div>
+            <div class="vlaydate_time vlaydate_time1 vlaydate_show" id="vlaydate_time1" ref="vlaydate_time1">
+                <div class="vlaydte_hsmtex"><em>分钟</em><span @click.stop="hideminutes">×</span></div>
+                <div id="vlaydate_hmsno" class="vlaydate_hmsno" @click.stop="setMintue($event)"><span class="cy">0</span><span>1</span><span>2</span><span>3</span><span>4</span><span class="cy">5</span><span>6</span><span>7</span><span>8</span><span>9</span><span class="cy">10</span><span>11</span><span>12</span><span>13</span><span>14</span>
+                    <span class="cy">15</span><span>16</span><span>17</span><span>18</span><span>19</span><span class="cy">20</span><span>21</span><span>22</span><span>23</span><span>24</span><span class="cy">25</span><span>26</span><span>27</span><span>28</span><span>29</span>
+                    <span class="cy">30</span><span>31</span><span>32</span><span>33</span><span>34</span><span class="cy">35</span><span>36</span><span>37</span><span>38</span><span>39</span><span class="cy">40</span><span>41</span><span>42</span><span>43</span><span>44</span>
+                    <span class="cy">45</span><span>46</span><span>47</span><span>48</span><span>49</span><span class="cy">50</span><span>51</span><span>52</span><span>53</span><span>54</span><span class="cy">55</span><span>56</span><span>57</span><span>58</span><span>59</span></div>
+            </div>
+            <div class="enterbtn" @click="enterbtnEvt" v-show="isDtime">确定</div>
+        </div>
+    </div>
+</script>
+<script type="text/javascript">
+function isValidDate(date) {
+  return date instanceof Date && !isNaN(date.getTime())
+}
+Date.prototype.Format = function (fmt) {
+    var o = {
+        "M+": this.getMonth() + 1, //月份 
+        "d+": this.getDate(), //日 
+        "h+": this.getHours(), //小时 
+        "m+": this.getMinutes(), //分 
+        "s+": this.getSeconds(), //秒 
+        "q+": Math.floor((this.getMonth() + 3) / 3), //季度 
+        "S": this.getMilliseconds() //毫秒 
+    };
+    if (/(y+)/.test(fmt))
+fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+    for (var k in o){
+    if (new RegExp("(" + k + ")").test(fmt)) {
+fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+}
+    }
+    return fmt;
+}
+    var vyayigjDateSelcom = {
+        template: '#vyayigjDateSelcom',
+        delimiters: ['<{', '}>'],
+        created: function() {
+            if (this.currentValue !== "") {
+                // debugger
+                var tmpDt = new Date(this.currentValue.replace(/-/g, '/'))
+                 if(!isValidDate(tmpDt)){
+                    tmpDt = new Date()
+                }
+                this.data_cy = tmpDt.getFullYear()
+                this.data_cm = tmpDt.getMonth()
+                this.data_cd = tmpDt.getDate()
+            }
+        },
+
+        props: {
+            id:{
+                type:String,
+                default: function() {
+                    return ''
+                }
+            },
+            sizeparam: {
+                type: Object,
+                default: function() {
+                    return {
+                        "width": "120px",
+                        "type": "date"
+                    }
+                }
+            },
+            disbGtToday: {
+                type: String,
+                default: function() {
+                    return null
+                }
+            },
+            value: {
+                type: String,
+                default: function() {
+                    return ''
+                }
+            }
+        },
+        computed: {
+            getSizeParam: function() {
+                return "width:" + this.sizeparam.width + ';background-color:#fff !important'
+            },
+            isDtime: function() {
+                if (this.sizeparam.type === 'dtime') {
+                    return true
+                } else {
+                    return false
+                }
+            },
+            isDtimeNum: function() {
+                if (this.sizeparam.type === 'dtime') {
+                    return 1
+                } else {
+                    return 0
+                }
+            },
+            currentValue: {
+                get: function() {
+                
+                    return this.value
+                },
+                set: function(val) {   
+                    this.$emit('input', val)
+                }
+            }
+        },
+        filters: {
+            getCnMonth: function(m) {
+                var _m = m + 1
+                return _m < 10 ? '0' + _m : _m
+            }
+        },
+        mounted: function() {
+            this.initparams()
+            this.GenDates()
+            this.genYearArrs()
+            this.eventBind()
+                // console.log('this.paneSizePos=', this.paneSizePos)
+        },
+        methods: {
+            getWinWH: function() {
+                var h = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight
+                var w = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth
+                return {
+                    'w': w,
+                    'h': h
+                }
+            },
+            //事件绑定
+            eventBind: function() {
+                var _vm = this
+                document.documentElement.addEventListener('click', function(e) {
+                    try {
+                        var cssNameObj = e.target.parentElement
+                            // console.log('cssNameObj.className=', cssNameObj.className)
+                        if (cssNameObj === null || cssNameObj.className !== 'vyayigjDateSelcom_vDt') {
+                            if (_vm.showList === true) {
+                                _vm.showList = false;
+                            }
+                        }
+                    } catch (e) {
+                        _vm.showList = false;
+                    }
+                    // e.stopPropagation()
+                }, false);
+            },
+            //日期面板点击事件
+            date_panel_clk: function(e) {
+                var oldObj = this.$refs['data_panel_td'].querySelector('.plus_td_is_down')
+                this.removeClass(oldObj, 'plus_td_is_down')
+                this.addClass(e.target, 'plus_td_is_down')
+                this.data_cd = parseInt(e.target.innerText) < 10 ? '0' + e.target.innerText : e.target.innerText
+                this.enterbtnEvt()
+            },
+            //确定按钮事件
+            enterbtnEvt: function() {
+                this.showList = false
+                var _m = this.data_cm + 1
+                _m = _m < 10 ? '0' + _m : _m
+                if (this.sizeparam.type === 'dtime') {
+                    this.currentValue = this.data_cy + '-' + _m + '-' + this.data_cd + ' ' + this.hour + ':' + this.minute
+                } else {
+                    this.currentValue = this.data_cy + '-' + _m + '-' + this.data_cd
+                }
+    
+                this.noticefather(this.currentValue)
+            },
+            //打开下拉区域
+            open_down_list: function() {
+                var cur_txtv = this.$refs['vyayigjDateSelcom_Dt'].value
+                var tmp = []
+                if (cur_txtv !== "") {
+                    var ndt = new Date(cur_txtv)
+                    var cdt = new Date()
+                    if (ndt == 'Invalid Date') {
+                        this.data_cy = cdt.getFullYear()
+                        this.data_cm = cdt.getMonth()
+                        this.data_cd = cdt.getDate()
+                    } else {
+                        this.data_cy = ndt.getFullYear()
+                        this.data_cm = ndt.getMonth()
+                        this.data_cd = ndt.getDate()
+                    }
+                    if (this.sizeparam.type === 'dtime') {
+                        if (ndt == 'Invalid Date') {
+                            this.hour = this.formatToTwoDigits(cdt.getHours())
+                            this.minute = this.formatToTwoDigits(cdt.getMinutes())
+                        } else {
+                            this.hour = this.formatToTwoDigits(ndt.getHours())
+                            this.minute = this.formatToTwoDigits(ndt.getMinutes())
+                        }
+                    }
+                }
+                this.initparams()
+                var myPanelObj = this.$refs['vyayigj_plus_date_sel_panel']
+                var winSize = this.getWinWH()
+                var myposSize = {
+                    'w': 282,
+                    'h': 287
+                }
+                if (this.sizeparam.type === 'dtime') {
+                    myposSize.h = 287
+                } else {
+                    myposSize.h = 250
+                }
+                var fix_dom_sizpos = this.$refs['vyayigjDateSelcom_Dt'].getBoundingClientRect()
+                myPanelObj.style.left = fix_dom_sizpos.left + 'px'
+                myPanelObj.style.top = fix_dom_sizpos.bottom + 'px'
+                var overtype = ''
+                if (fix_dom_sizpos.left + myposSize.w > winSize.w) {
+                    overtype = 'r'
+                    if (fix_dom_sizpos.bottom + myposSize.h > winSize.h) {
+                        overtype += 't'
+                    }
+                } else {
+                    overtype = 'l'
+                    if (fix_dom_sizpos.bottom + myposSize.h > winSize.h) {
+                        overtype += 't'
+                    } else {
+                        overtype = ''
+                    }
+                }
+                // console.log('overtype=', overtype)
+                var top_line_obj = this.$refs['top_over_line']
+                myPanelObj.style.height = myposSize.h + 'px'
+                switch (overtype) {
+                    case '':
+                        myPanelObj.style.left = fix_dom_sizpos.left + 'px'
+                        myPanelObj.style.top = fix_dom_sizpos.bottom + 'px'
+                        top_line_obj.style.top = '-1px'
+                        top_line_obj.style.left = '0px'
+                        break;
+                    case "r":
+                        myPanelObj.style.left = (fix_dom_sizpos.left - (myposSize.w - fix_dom_sizpos.width)) + 'px'
+                        myPanelObj.style.top = fix_dom_sizpos.bottom + 'px'
+                        top_line_obj.style.top = '-1px'
+                        top_line_obj.style.right = "0px"
+                        top_line_obj.style.left = 'initial'
+                        break;
+                    case "rt":
+                        myPanelObj.style.left = (fix_dom_sizpos.left - (myposSize.w - fix_dom_sizpos.width)) + 'px'
+                        myPanelObj.style.top = (-(myposSize.h - fix_dom_sizpos.top) + 2) + 'px'
+                        top_line_obj.style.right = "0px"
+                        top_line_obj.style.left = 'initial'
+                        top_line_obj.style.top = (myposSize.h - 2) + 'px'
+                        break;
+                    case "lt":
+                        myPanelObj.style.left = fix_dom_sizpos.left + 'px'
+                        myPanelObj.style.top = (-(myposSize.h - fix_dom_sizpos.top) + 2) + 'px'
+                        top_line_obj.style.right = "initial"
+                        top_line_obj.style.left = '0px'
+                        top_line_obj.style.top = (myposSize.h - 2) + 'px'
+                        break;
+                }
+                this.showList = true
+            },
+            //初始化参数设置
+            initparams: function() {
+                var valObj = this.$refs['vyayigjDateSelcom_Dt']
+                this.paneSizePos.left = valObj.offsetLeft
+                this.paneSizePos.top = valObj.offsetTop
+                this.paneSizePos.width = valObj.offsetWidth
+                this.paneSizePos.height = valObj.offsetHeight
+                this.paneSizePos.newTop = valObj.offsetTop + valObj.offsetHeight
+            },
+            // 通知父级
+            noticefather: function(param) {
+                
+                this.$emit('getseled', param)
+            },
+            //取周几
+            getWeek: function(date) {
+                var nD = new Date(date);
+                return nD.getDay() > 0 ? nD.getDay() : 7;
+            },
+            //日期计算
+            GetDateStr: function(date, AddDayCount) {
+                var dd = new Date(date);
+                dd.setDate(dd.getDate() + AddDayCount);
+                return dd;
+            },
+            //月份最后一天
+            getMonthLast: function(y, m) {
+                var date = new Date(y + '/' + parseInt(m + 1) + '/01'),
+                    currentMonth = date.getMonth(),
+                    nextMonth = ++currentMonth,
+                    nextMonthFirstDay = new Date(date.getFullYear(), nextMonth, 1);
+                return new Date(nextMonthFirstDay);
+            },
+            // //格式化日期可以设置含时间
+            formatDate: function(date, mset) {
+                // debugger
+                var _m = date.getMonth(),
+                    _d = date.getDate();
+                _m = _m < 10 ? '0' + _m : _m;
+                _d = _d < 10 ? '0' + _d : _d;
+                if (typeof(mset) == 'undefined') {
+                    return date.getFullYear() + '/' + _m + '/' + _d;
+                } else {
+                    _m = parseInt(_m) + 1;
+                    if (_m > 12) {
+                        _m = '01';
+                    }
+                    _m = _m < 10 ? '0' + _m : _m;
+                    return date.getFullYear() + '/' + _m + '/' + _d;
+                }
+            },
+            openYearpanel: function() {
+                this.data_focusType = 'y'
+                this.$refs['yearPanel'].style.display = 'block'
+                this.$refs['monthPanel'].style.display = 'none'
+            },
+            openMonthpanel: function() {
+                this.data_focusType = 'm'
+                this.$refs['monthPanel'].style.display = 'block'
+                this.$refs['yearPanel'].style.display = 'none'
+                this.genMonthArrs()
+            },
+            setYearInfo: function(e) {
+                this.data_cy = e.target.innerText
+                this.$refs['yearPanel'].style.display = 'none'
+                this.data_focusType = 'd'
+            },
+            setMonthInfo: function(e) {
+                var tmp = parseInt(e.target.getAttribute('data-m'))
+                this.data_cm = tmp
+                this.$refs['monthPanel'].style.display = 'none'
+                this.data_focusType = 'd'
+            },
+            //生成月份面板
+            genMonthArrs: function() {
+                var _vm = this
+                _vm.$refs['monthPanelContent'].querySelectorAll('td').forEach(function(item, index) {
+                    _vm.removeClass(item, 'ymSeled')
+                    if (_vm.data_cy === new Date().getFullYear() && index === _vm.data_cm) {
+                        _vm.addClass(item, 'ymSeled')
+                    }
+                })
+            },
+            //生成年面板年份
+            genYearArrs: function() {
+                var _vm = this
+                var yearArrs = new Array()
+                var genArrs = function(curYear) {
+                    var tmpYear = curYear.toString()[3],
+                        endNum = parseInt(tmpYear),
+                        oldYear = curYear,
+                        oldLen = 0;
+                    while (endNum > -2) {
+                        yearArrs.push(curYear--)
+                            --endNum;
+                    }
+                    yearArrs.reverse();
+                    oldLen = yearArrs.length;
+                    for (var i = 0; i < 12 - oldLen; i++) {
+                        yearArrs.push(++oldYear);
+                    }
+                    var ypc_obj_tds = _vm.$refs['yearPanelContent'].querySelectorAll('td');
+                    for (var index = 0, len = ypc_obj_tds.length; index < len; index++) {
+                        // _vm.$refs['yearPanelContent'].querySelectorAll('td').forEach(function(item, index) {
+                        var item = ypc_obj_tds[index];
+                        item.innerText = yearArrs[index]
+                        _vm.removeClass(item, 'ymSeled')
+                        if (yearArrs[index] === new Date().getFullYear()) {
+                            _vm.addClass(item, 'ymSeled')
+                        }
+                    }
+                    // })
+                }
+                genArrs(this.data_cy)
+            },
+            //分钟面板点击事件
+            setMintue: function(e) {
+                // console.log(e.target)
+                var tmp = parseInt(e.target.innerText)
+                this.minute = tmp < 10 ? '0' + tmp : tmp
+                this.$refs['vlaydate_time1'].style.display = 'none'
+            },
+            hidehours(){
+                this.$refs['vlaydate_time'].style.display = 'none'
+            },
+            hideminutes(){
+                this.$refs['vlaydate_time1'].style.display = 'none'
+            },
+            //时钟面板点击事件
+            setHour: function(e) {
+                // console.log(e.target)
+                var tmp = parseInt(e.target.innerText)
+                this.hour = tmp < 10 ? '0' + tmp : tmp
+                this.$refs['vlaydate_time'].style.display = 'none'
+            },
+            //取小时界面显示
+            getHour: function() {
+                this.$refs['vlaydate_time'].style.display = 'block'
+            },
+            //取分钟界面显示
+            getMinute: function() {
+                this.$refs['vlaydate_time1'].style.display = 'block'
+            },
+            //定位到今天
+            tday_event: function() {
+                this.data_cy = new Date().getFullYear()
+                this.data_cm = new Date().getMonth()
+                this.GenDates()
+                this.genYearArrs()
+                this.data_focusType = 'd'
+                this.$refs['monthPanel'].style.display = 'none'
+                this.$refs['yearPanel'].style.display = 'none'
+            },
+            anislide: function(sourceobj, cssstr, fx, addcss, ymd) {
+                var _vm = this
+                var aniObj = sourceobj.cloneNode(true)
+                aniObj.setAttribute("id", "clone_" + ymd)
+                aniObj.setAttribute("class", cssstr + ' clone_ani')
+                fx == 'next' ? aniObj.style.left = "280px" : aniObj.style.left = '-280px'
+                _vm.$refs['allpanelArea'].appendChild(aniObj)
+                sourceobj.setAttribute("class", cssstr + ' clone_ani')
+                window.setTimeout(function() {
+                    aniObj.style.left = "0px"
+                    fx == 'next' ? sourceobj.style.left = "-280px" : sourceobj.style.left = "280px"
+                }, 0);
+                window.setTimeout(function() {
+                    sourceobj.setAttribute("class", cssstr)
+                    _vm.$refs['allpanelArea'].removeChild(aniObj)
+                    sourceobj.style.left = "0px"
+                }, 200);
+            },
+            //向前翻
+            preEvent: function(e) {
+                var _vm = this
+                switch (this.data_focusType) {
+                    case 'd':
+                        this.anislide(this.$refs['datepanelArea'], 'date_cn', 'pre', 'clone_ani', 'd')
+                            --this.data_cm
+                        if (this.data_cm < 0) {
+                            --this.data_cy
+                            this.data_cm = 11
+                        }
+                        // this.setCurYM()
+                        this.GenDates()
+                        break;
+                    case 'm':
+                        this.anislide(this.$refs['monthPanel'], 'monthPanel ymPanel', 'pre', 'clone_ani', 'm')
+                            --this.data_cy
+                        this.genMonthArrs()
+                        break;
+                    case 'y':
+                        this.anislide(this.$refs['yearPanel'], 'monthPanel ymPanel', 'pre', 'clone_ani', 'y')
+                        this.data_cy -= 10
+                        this.genYearArrs()
+                        break;
+                }
+            },
+            //向后翻
+            nextEvent: function(e) {
+                var _vm = this
+                switch (this.data_focusType) {
+                    case 'd':
+                        this.anislide(this.$refs['datepanelArea'], 'date_cn', 'next', 'clone_ani', 'd')
+                            ++this.data_cm
+                        if (this.data_cm >= 12) {
+                            ++this.data_cy
+                            this.data_cm = 0
+                        }
+                        // this.setCurYM()
+                        this.GenDates()
+                        break;
+                    case 'm':
+                        this.anislide(this.$refs['monthPanel'], 'monthPanel ymPanel', 'next', 'clone_ani', 'm')
+                            ++this.data_cy
+                        this.genMonthArrs()
+                        break;
+                    case 'y':
+                        this.anislide(this.$refs['yearPanel'], 'monthPanel ymPanel', 'next', 'clone_ani', 'y')
+                        this.data_cy += 10
+                        this.genYearArrs()
+                        break;
+                }
+            },
+            //显示信息
+            setCurYM: function() {
+                var tmpMth = this.data_cm + 1
+                this.$refs['txt_year'].innerText = this.data_cy + '年'
+                this.$refs['txt_month'].innerText = tmpMth < 10 ? '0' + tmpMth + '月' : tmpMth + '月'
+            },
+            //生成日期面板
+            GenDates: function() {
+                // debugger
+               var _vm = this
+               var date = this.currentValue
+               var tmpDt = new Date(date.replace(/-/g, '/'))    
+                 if(!isValidDate(tmpDt)){
+                    tmpDt = new Date()
+                    date = tmpDt.Format("yyyy-MM-dd hh:mm:ss");
+                 }
+                var FirstDate = this.data_cy + '/' + parseInt(this.data_cm + 1) + '/01',
+                    f_date_obj = new Date(FirstDate),
+                    e_date_obj = this.getMonthLast(this.data_cy, this.data_cm),
+                    curWeek = this.getWeek(FirstDate),
+                    startDay = this.GetDateStr(FirstDate, -curWeek + 1),
+                    posDate = new Date(this.currentValue),
+                    curDay = startDay
+
+                // document.getElementById('data_panel_td').querySelectorAll("td").forEach(function(item) {
+                var dpt_obj_tds = this.$refs['data_panel_td'].querySelectorAll("td");
+                for (var i = 0, len = dpt_obj_tds.length; i < len; i++) {
+                    var item = dpt_obj_tds[i];
+                    //     console.log(i, dpt_obj_tds[i]);
+                    // }
+                    // this.$refs['data_panel_td'].querySelectorAll("td").forEach(function(item) {
+                    // console.log('item', item)
+                    var _tmpDt = _vm.formatDate(curDay, 'a'),
+                        _curDayGd = curDay.getDate()
+                    if (curDay < f_date_obj || curDay >= e_date_obj) {
+                        if (this.disbGtToday != null || this.disbLtToday != null) {
+                            item.innerHTML = "<em class='null' data-dt='" + _tmpDt + "'>&nbsp;</em>"
+                        } else {
+                            item.innerHTML = "<em  data-dt='" + _tmpDt + "'>" + _curDayGd + "</em>"
+                        }
+                    } else {
+                        if (_vm.formatDate(curDay) == _vm.formatDate(_vm.today)) {
+                            item.innerHTML = "<i class='plus_td_is_today'  data-dt='" + _tmpDt + "'>" + _curDayGd + "</i>"
+                        } else {
+                            if (_vm.formatDate(posDate) == _vm.formatDate(curDay)) {
+                                item.innerHTML = "<i class='plus_td_is_down'  data-dt='" + _tmpDt + "'>" + _curDayGd + "</i>"
+                            } else {
+                                if (this.disbGtToday != null && curDay > _vm.today || this.disbLtToday != null && curDay < _vm.today) {
+                                    item.innerHTML = "<span  data-dt='" + _tmpDt + "'>" + _curDayGd + "</span>"
+                                } else {
+                                    item.innerHTML = "<i  data-dt='" + _tmpDt + "'>" + _curDayGd + "</i>"
+                                }
+                            }
+                        }
+                    }
+                    curDay.setDate(curDay.getDate() + 1);
+                }
+
+            },
+            hasClass: function(obj, cls) {
+                try {
+                    return obj.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));
+                } catch (e) {
+                    console.log('hasClass error:', e)
+                }
+            },
+            addClass: function(obj, cls) {
+                try {
+                    if (!this.hasClass(obj, cls)) obj.className += " " + cls;
+                } catch (e) {
+                    console.log('addClass error:', e)
+                }
+            },
+            removeClass: function(obj, cls) {
+                try {
+                    if (this.hasClass(obj, cls)) {
+                        var reg = new RegExp('(\\s|^)' + cls + '(\\s|$)');
+                        obj.className = obj.className.replace(reg, ' ');
+                    }
+                } catch (e) {
+                    console.log('removeClass error:', e)
+                }
+            },
+            formatToTwoDigits: function(n) {
+                return n < 10 ? '0' + n : n
+            }
+        },
+        data: function() {
+            return {
+                showList: false,
+                today: new Date(),
+                data_cy: new Date().getFullYear(),
+                data_cm: new Date().getMonth(),
+                data_cd: new Date().getDate(),
+                data_focusType: 'd',
+                hour: this.formatToTwoDigits(new Date().getHours()),
+                minute: this.formatToTwoDigits(new Date().getMinutes()),
+                paneSizePos: {
+                    left: 0,
+                    top: 0,
+                    width: 200,
+                    height: 200,
+                    newTop: 0,
+                    z_index: 10
+                }
+            }
+        }
+    }
+</script>

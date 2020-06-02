@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="UTF-8">
+        <meta content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" name="viewport">
+        <meta content="yes" name="apple-mobile-web-app-capable">
+        <meta content="black" name="apple-mobile-web-app-status-bar-style">
+        <meta content="telephone=no" name="format-detection">
+        <meta http-equiv="Cache-Control" content="no-transform ">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+        <!--<include file="Public:css_inc"/>-->
+        {{template "/account/Public/css_inc.html" .}}
+        <link rel="stylesheet" type="text/css" href="/static/account/css/chain_strom.css">
+        <link rel="stylesheet" type="text/css" href="/static/public/css/publicFrame.css">    
+        <title>指定管理员</title>     
+    </head>
+    <body>
+        <!--弹出框背景-->
+        <div class="sta_man_bg"></div>
+        <div class="headArea"><!--头部-->
+            	{{template "/Public/public/r_header.html" .}}
+        </div>
+        <div class="outerFrame"><!--外层主框架s-->        	
+            <div class="mainFrme"><!--主框架s-->
+            	<div class="leftFrme" id="leftFrme">
+                	{{template "/account/Public/one_left_nav.html" .}}
+                </div>
+                <div class="rightFrme"><!--右框架s-->
+                        <div class="main_right">
+                            {{template "/account/Public/one_main_right_nav.html" .}}
+                            <div class="add_admin"><span id="addAdmin"><img src="/static/account/img/add_admin_1.png"> 添加管理员</span></div>
+                            <div class="import_content" id="adminList">
+                                <div class="import_tit turn_tit appoint_tit">
+                                    <ul>
+                                    <li>姓名</li>
+                                    <li>工作诊所</li>
+                                    <li>工号</li>
+                                    <li class="tc">所属角色</li>
+                                    <li class="resume_it">操作</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+       <div class="staff_edit turn_edit" id="admin_add_box">
+            <div class="system_tip">
+                <span>深圳致美口腔诊所</span>
+                <img src="/static/account/img/close.png">
+            </div>
+            <div class="sel_clinic">
+               <p>请选择工作诊所</p>
+                <select class="clincis" id="clincis">
+                    <option>广州致美口腔诊所</option>
+                </select> 
+            </div>
+            <div class="staff_list staff_list2">
+                <!--左边的 请选择员工列表-->
+                <div class="list_l">
+                    <p>请选择工作交接人</p>
+                    <div class="l_box l_box2" id="admin_box">
+                        <div class="box_h">
+                            <input type="text" placeholder="搜索员工"/>
+                            <span id="staff">所有人</span>
+                            <span id="depart">科室</span>
+                            <span id="selc" style="display:none"></span>
+                            <span id="close"></span>
+                        </div>
+                        <div class="box_c">
+                            <div id="staff_list">
+                                <p>按拼音A-Z排序</p>
+                                <ul class="all_doctors">
+
+                                </ul>
+                            </div>
+                            <div id="depart_list">
+                                <ol  class="dept_doctors">
+                                    <!--<li>
+                                        <label class="dep_kind">治疗部(4)
+                                        <img src="/static/account/img/clinic_show_direct.png">
+                                        </label>
+                                        <ul>
+                                            <li><i></i><span class="doc_name">王医生</span></li>
+                                            <li><i></i><span class="doc_name">王医生</span></li>
+                                            <li><i></i><span class="doc_name">王医生</span></li>
+                                        </ul>
+                                    </li>
+                                    <li class="dep_kind">
+                                        <label>财务部(2)
+                                        <img src="/static/account/img/clinic_show_direct.png">
+                                        </label>
+                                    </li>-->
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+             </div>
+            <div class="turn_han_ope">
+                <input type="button" value="确定" class="acb ac_btn_bf w100h30"  id="turn__han_con" />
+                <input type="button" value="取消" class="acb ac_btn_nf w100h30"  id="turn__han_refu" />
+            </div></div>
+        <div class="export_staff_list" id="delete_pop" style="display:none" >
+            <div class="export_tit">
+                <span class="export_listz_sp">删除提示</span>
+                <span class="close_alert"><img src="/static/account/img/close.png"></span>
+            </div>
+            <div class="export_con">
+              <img src="/static/account/img/wonder_icon.png" class="wonder_icon">
+                <p>
+                  <span>确定该管理员？</span><br><span>管理员信息删除后，数据将不可恢复</span>
+                </p>
+               </div>
+          <div class="export_save">
+            <input type="button" class="acb ac_btn_bf_y w90h30" value="确定删除" id="delete_staff_confim" />
+          </div>
+        </div>
+
+          {{template "/account/Public/clinic_js_inc.html" .}}
+       
+       <script type="text/javascript" src="/static/account/js/chain_strom.js"></script>
+       <script type="text/javascript" src="/static/account/js/appoint_adminsrater.js"></script>
+       <script type="text/javascript">
+	   		$("#addAdmin").click(function(){
+                $("#admin_add_box").show();
+                $(".sta_man_bg").show();
+                $("body").css("overflow","hidden");
+
+            });
+			
+            $("#turn__han_refu").click(function(){
+                $("#admin_add_box").hide();
+                $(".sta_man_bg").hide();
+                $("body").css("overflow","scroll");
+            });
+			
+       </script>
+    </body>
+</html>

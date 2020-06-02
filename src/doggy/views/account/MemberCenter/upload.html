@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="UTF-8">
+        <meta content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" name="viewport">
+        <meta content="yes" name="apple-mobile-web-app-capable">
+        <meta content="black" name="apple-mobile-web-app-status-bar-style">
+        <meta content="telephone=no" name="format-detection">
+        <meta http-equiv="Cache-Control" content="no-transform ">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+        <link href="__APP__/public/js/css/jquery.Jcrop.min.css" type="text/css"  rel="stylesheet"/>   
+        <title>会员中心-牙医管家</title>   
+    </head>
+    <body>
+    <span class="send_pho"> 
+        <label class="ui_button ui_button_primary" for="upload1">上传头像</label>
+        <input type="file" id="upload1" value="上传" class='uploadsq' accept="image/*" required style="position:absolute;clip:rect(0 0 0 0);"/>
+     </span>  
+	   <script language="javascript" src="__APP__/public/js/jquery-1.9.1.min.js"></script>
+       <script language="javascript" src="__APP__/public/js/jquery.Jcrop.min.js"></script>
+       <script type="text/javascript" src="__APP__/public/js/local_upload.js"></script>
+
+       
+        <!--IE支持placeholder-->
+       <script type="text/javascript">  
+            $("#upload1").localUploadYaYigj({
+                imgPathID:'#TeacherPicture1',
+                imgPathPIC:'#Img1',
+                uploadPath:'__APP__/index.php?m=Upload&a=picUpload'
+                },function(){
+                  up_api=this;
+            });
+             /*$("#upload2").localUploadYaYigj({
+                imgPathID:'#TeacherPicture2',
+                imgPathPIC:'#Img2',
+                uploadPath:'__APP__/index.php?m=Upload&a=picUpload'
+                },function(){
+                  up_api=this;
+            });   */
+
+        </script>
+    </body>
+</html>

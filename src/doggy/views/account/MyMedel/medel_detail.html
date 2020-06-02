@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>我的勋章-查看详情</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="UTF-8">
+        <meta content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" name="viewport">
+        <meta content="yes" name="apple-mobile-web-app-capable">
+        <meta content="black" name="apple-mobile-web-app-status-bar-style">
+        <meta content="telephone=no" name="format-detection">
+        <meta http-equiv="Cache-Control" content="no-transform ">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+        <!--<include file="Public:css_inc"/>-->
+        {{template "/account/Public/css_inc.html" .}}
+        <link rel="stylesheet" type="text/css" href="/static/account/css/memberCenter.css">
+    </head>
+    <body>
+        <!--<include file="Public:memberCen_hea_new"/>-->
+        {{template "/account/Public/memberCen_hea_new.html" .}}
+        <div class="main_con">
+            <div class="main_left">
+                <!--<include file="Public:left_nav"/>-->
+                {{template "/account/Public/left_nav.html" .}}
+            </div>
+            <!-- 查看详情 -->
+            <div class="main_right">
+                <div class="medel_box fix">
+                    <div class="mdl_wall">
+                        <div class="mdl_img l">
+                            <div ><img class="mdlBG" src="/static/account/img/mdlBG.png"></div>
+                            <div ><img class="lv_pic" src="/static/account/img/purchase_lv1.png"></div>
+                        </div>
+                        <p class="mdl_name l">采购小能手<span id="clinc_name">(深圳志美口腔)</span></p>
+                    </div>
+                    <div class="mdl_lv">
+                        <label>0</label><span><b class="prog_0"></b></span>
+                        <label><img src="/static/account/img/lv11.png"></label><span><b class="prog_0"></b></span>
+                        <label><img src="/static/account/img/lv22.png"></label><span><b class="prog_0"></b></span>
+                        <label><img src="/static/account/img/lv33.png"></label><span><b class="prog_0"></b></span>
+                        <label><img src="/static/account/img/lv44.png"></label>
+                    </div>
+                </div>
+                <div class="medel_lv">
+                    <div id="lv_cursor">  
+                        <div class="lv_item lv1">
+                            <h2><em>LV.1</em>等级介绍</h2>
+                            <p><span>获得条件：</span>完成完成门诊分配任务即可获得奖励</p>
+                            <p><span>勋章属性：</span>诊所业绩都离不开我的采购，从今天起请叫我采购小能手</p>
+                            <p><span>享受权益：</span><label>+200</label> 管家币，可登录APP管家商城兑换礼品</p>
+                            <img id="status" src="/static/account/img/mdlHad_l.png">  
+                        </div>
+                        <div class="lv_item lv2">
+                            <h2><em>LV.2</em>等级介绍</h2>
+                            <p><span>获得条件：</span>完成完成门诊分配任务即可获得奖励</p>
+                            <p><span>勋章属性：</span>诊所业绩都离不开我的采购，从今天起请叫我采购小能手</p>
+                            <p><span>享受权益：</span><label>+400</label> 管家币，可登录APP管家商城兑换礼品</p>
+                            <img id="status" src="/static/account/img/mdlHad_l.png">  
+                        </div>
+                        <div class="lv_item lv3">
+                            <h2><em>LV.3</em>等级介绍</h2>
+                            <p><span>获得条件：</span>完成完成门诊分配任务即可获得奖励</p>
+                            <p><span>勋章属性：</span>诊所业绩都离不开我的采购，从今天起请叫我采购小能手</p>
+                            <p><span>享受权益：</span><label>+600</label> 管家币，可登录APP管家商城兑换礼品</p>
+                            <img id="status" src="/static/account/img/mdlHad_l.png">  
+                        </div>
+                        <div class="lv_item lv4">
+                            <h2><em>LV.4</em>等级介绍</h2>
+                            <p><span>获得条件：</span>完成完成门诊分配任务即可获得奖励</p>
+                            <p><span>勋章属性：</span>诊所业绩都离不开我的采购，从今天起请叫我采购小能手</p>
+                            <p><span>享受权益：</span><label>+800</label> 管家币，可登录APP管家商城兑换礼品</p>
+                            <img id="status" src="/static/account/img/mdlHad_l.png">  
+                        </div>
+                        <ul class="fix" id="ul_cir">
+                            <li data-cir="1"></li>
+                            <li data-cir="0"></li>
+                            <li data-cir="0"></li>
+                            <li data-cir="0"></li>
+                        </ul> 
+                    </div> 
+                    <div id="prev" class="btn"><img src="/static/account/img/prev.png"></div>
+                    <div id="next" class="btn"><img src="/static/account/img/next.png"></div>
+                    <div id="mdl_status" class="fix"><span>继续努力</span></div>
+                </div>
+
+            </div>
+            <div class="main_right mt20">
+                <div class="info_tit">
+                    <img src="/static/account/img/my_medel.png" class="medel_img">
+                    <span>其他已获取勋章</span>
+                    <!-- <span class="now_have">当前拥有<span class="count">3</span>枚勋章</span> -->
+                </div>
+                <div class="medel_level">
+                    <ul>
+                        <li>
+                            <img src="/static/account/img/purchase_lv3.png">
+                            <p class="purchase">采购小能手</p>
+                            <p class="condition">条件：完成门诊分配规定任务量即可获得奖励</p>
+                            <p class="received" data-bg="0">已领取</p>
+                            <img src="/static/account/img/received_small.png" class="rec_img">
+                        </li>
+                        <li>
+                            <img src="/static/account/img/manege_lv1.png">
+                            <p class="purchase">采购小能手</p>
+                            <p class="condition">条件：完成门诊分配规定任务量即可获得奖励</p>
+                            <p class="received" data-bg="0">已领取</p>
+                            <img src="/static/account/img/received_small.png" class="rec_img">
+                        </li>
+                        <li>
+                            <img src="/static/account/img/moreMedel.png">
+                            <p class="purchase">敬请期待</p>
+                            <p class="condition">更多成就勋章近期上架，请密切关注哦！</p>  
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+       <include file="Public:footer_new"/>
+       <include file="Public:js_inc"/>
+       <!--<script type="text/javascript" src="/static/account/js/member_center.js"></script>-->
+        <!--IE支持placeholder-->
+       <script type="text/javascript">  
+            $(function(){ 
+                 $("#lv_cursor .lv_item").eq(0).attr("data-cir","1").siblings("li").attr("data-cir","0");
+                //设置点击方向默认标
+                var flag=0;
+                $("#prev").click(function(){
+                    // clearInterval(Cour);
+                    flag=0;
+                    move(flag);   
+                    // console.log("left4: "+lv4_L);
+                })
+                $("#next").click(function(){
+                     flag=1;
+                    move(flag);
+                    // console.log("left4: "+lv4_L);
+                    // clearInterval(Cour);
+                   
+                })
+                // var Cour=setInterval(function(){move(flag);},3000);
+                $('input, textarea').placeholder(); 
+            });
+            // 动画函数
+            function move(flag){
+                console.log("ok")
+                    var lv1_L=$("#lv_cursor .lv1").position().left;
+                    var lv4_L=$("#lv_cursor .lv4").position().left;
+                    var lvs=$("#lv_cursor .lv_item");//获取所有的滑动div
+                    var oLis=$("#ul_cir li");//获取所有的右下角小圆圈
+                    var index=0;//获取小圆圈索引值
+                    if (flag==0) {
+                        if (lv1_L==0) {
+                            lvs.stop(false,true).animate({left:"-=2988px"});
+                        }
+                        else{
+                            $("#lv_cursor .lv_item").stop(false,true).animate({left:"+=996px"})
+                        };
+                    } 
+                    else if(flag==1) {
+                        if (lv4_L==0) {
+                            lvs.stop(false,true).animate({left:"+=2988px"});
+                        }
+                        else{
+                            $("#lv_cursor .lv_item").stop(false,true).animate({left:"-=996px"})
+                        };
+                    };  
+                    for (var i = 0; i < lvs.length; i++) {
+                            if(lvs.eq(i).position().left==0){    
+                                $("#ul_cir li[data-cir='1']").eq(i).attr("data-cir","0");
+                                if (flag==1) {
+                                    index=i+1;
+                                    if(index==4){
+                                        index=0; 
+                                    } 
+                                }
+                                else if (flag==0) {
+                                    index=i-1;
+                                    if (index==-1) {
+                                        index=3;
+                                    }
+                                }
+                                oLis.eq(index).attr("data-cir","1").siblings("li").attr("data-cir","0"); 
+                          }
+                    }
+                }
+        </script>
+    </body>
+</html>

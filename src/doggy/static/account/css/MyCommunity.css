@@ -1,0 +1,64 @@
+/*会员中心主页*/
+.main_con{padding: 20px 98px;overflow: hidden;}
+
+/*左边部分样式*/
+.main_left{width: 200px;border:1px solid #cecece;float: left;}
+.main_left ul li{height: 30px;padding: 20px 30px;border-bottom: 1px solid #cecece;cursor: pointer;}
+.main_left ul li:last-child{border-bottom: none;}
+.now_item{background: #00bb9c;}
+.main_left ul li img{width: 30px;float: left;}
+.main_left ul li span{float: left;margin:2px 0 0 15px; font-size: 18px;}
+
+/*右边的帖子样式*/
+.main_right{margin-left: 220px;border:1px solid #cecece;}
+.main_right .right_box{margin: 35px;position: relative;overflow: visible;min-height:600px;}
+.right_box .no_note{display:none;}
+.right_box #notes_ul{border-bottom: 2px solid #eee;}
+#notes_ul li{display: inline-block;margin-right:30px;}
+#notes_ul li[f="1"] a{color:#00bb9c;border-bottom:4px solid #00bb9c;}
+#notes_ul li a{display: block;padding: 8px 0;color:#333;}
+/*我要发帖按钮样式*/
+#notes_ul #notePost{float: right;width:100px;background:#00bb9c;color: #fff;padding: 6px;}
+#notes_ul #notePost span{display: block;color: #fff;background:url(../img/u3133.png) no-repeat  5px center;background-size: 24px 24px;font-size: 14px;text-align: right;margin:3px 0;margin-right: 10px;}
+
+/*发表帖子弹出框样式*/
+.right_box .note_post{ display:none; position: absolute;top:-10px;left:10px;width:700px;background-color:#fff;border:1px solid #999;border-radius: 4px;box-shadow:2px 2px 2px #999;z-index:13;}
+.note_post .note_post_content{margin: 15px;}
+.note_post_content .note_post_header{overflow: hidden;}
+.note_post_header .l{margin-left: 0;}
+.note_post_header .r{ position: relative;margin-right: 0; cursor: pointer;}
+.note_post_header .r:before{content: attr(data-close);width: 20px;  height: 20px;position: absolute;top:-16px;color: #999;right: 0;}
+.note_post_content .post_list{display: flex;width:100%;margin: 20px 0;}
+.post_list input{flex:4.0;border: 1px solid #ccc;}
+.post_list select{flex: 1.0;border: 1px solid #ccc;color: #999;-webkit-box-sizing: border-box;}
+.post_list .m2{margin:0 2%;}
+.note_post_content .post_textarea{width:100%;border:1px solid #eee;line-height: 50px;}
+.post_textarea textarea{width: 100%;height:320px;-webkit-box-sizing: border-box;height: 300px;display: block}
+.note_post_content .note_post_btn{text-align: right;margin-top: 20px;}
+.note_post_content .note_post_btn input{width: 116px;height: 36px; background-color: #fff; color: #00BB9C; margin-left: 16px;padding: 0; border:1px solid #00BB9C;cursor: pointer;}
+.note_post_content .note_post_btn .btn_active{background-color:#00BB9C;color: #fff; }
+
+.right_box ol#note_items{display: none;}
+/*载入更多内容按钮样式*/
+#note_items #more{width: 100%;display: inline-block;text-align: center;padding: 12px 0;color: #666;display: none;}
+#note_items #more:hover{background-color:#00bb9c;}
+/**/
+
+#note_items li{ border-bottom: 2px solid #eee;margin:20px 0px;overflow: hidden;padding-bottom: 10px;}
+#note_items li img{vertical-align: middle;}
+#note_items li .note{font-size: 14px;color:#666;margin-left: 40px;overflow: hidden;margin-top: -32px;}
+#note_items li img{width: 32px;height: 32px;}
+#note_items li .note_left{float: left;}
+.note_left a{color: #666;}
+.note_left a:hover{color:#00bb9c;}
+.note_left p{}
+#note_items li .note_right{text-align: right;}
+#note_items .note_right b {}
+#note_items .note_right b img{width: 20px;height: 20px;}
+#note_items .note_right b span{margin-left: 14px;}
+
+
+
+
+
+

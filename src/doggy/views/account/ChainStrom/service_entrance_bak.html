@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>牙医管家口腔管理平台</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta charset="UTF-8">
+    <meta content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta http-equiv="Cache-Control" content="no-transform ">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+    <!--<include file="Public:css_inc"/>-->
+    {{template "/account/Public/css_inc.html" .}}
+    <link rel="stylesheet" type="text/css" href="/static/account/css/chain_strom.css" />
+    <link rel="stylesheet" type="text/css" href="/static/account/css/oneStrom.css" />  
+    <style type="text/css">
+	*{font-family:微软雅黑; font-size:18px;}	
+	body,html{width:100%; height:100%; margin:0px; padding:0px}
+	/*------------------------------------------------------------------------------------*/
+	.bg1{background-image:url(/static/public/img/plus.png);background-position:top; background-repeat:repeat-x; background-color:#fff;}/*专业版*/
+	#header{width:100%; height:40px; box-sizing:border-box; padding:16px 20px 0px 20px; position:relative}	
+	#header .right{ position:absolute; right:20px; top:16px; margin:0px; padding:0px; list-style:none; display:table-cell; }
+	#header .right li{ float:left;} .t_hover{cursor:pointer}
+	#header .right .right_li{margin:auto 24px auto 25px; width:22px; height:22px; }	
+	#header .right .vline{ width:1px; height:20px; border-left:solid 1px #fff; opacity:0.3; font-size:1px; margin-right:24px;}	
+	#header img,#header span{float:left}
+	#userface{margin-top:-5px}
+	.clinicLogo{ margin-top:-2px;}
+	#clincname{font-size:18px; color:#fff; margin-left:12px;}
+	#mycreate{ width:59px; height:22px; background-image:url(/static/public/img/mycreate.png); margin-left:8px; font-size:12px; margin-top:3px; line-height:22px; text-align:center; color:#fff;}
+	
+	#outerFrmeMain{ position:absolute; left:0px;  right:0px;  bottom:0px; top:50px; }
+	.tdimg{height:138px; vertical-align:middle; display:table; width:100%;}
+	.tdimg .imgCell{display:table-cell; vertical-align:middle; text-align:center}
+	#content{width:100%; height:100%; box-sizing:border-box; /*padding-top:150px; */display:table-cell; vertical-align:middle;}
+	#maintable td{ vertical-align:middle; text-align:center; width:25%;background-repeat:no-repeat; background-position:center 66%; cursor:pointer;  position:relative}
+	p{line-height:40px;}
+	.td1{background-image:url(/static/public/img/homeImg/Outpatient_s.png)}
+	.td2{background-image:url(/static/public/img/homeImg/powernet_s.png)}
+	.td3{background-image:url(/static/public/img/homeImg/market_s.png)}
+	.td4{background-image:url(/static/public/img/homeImg/Outpatient_s.png)}
+	.td5{background-image:url(/static/public/img/homeImg/finance_s.png)}
+	.td6{background-image:url(/static/public/img/homeImg/store_s.png)}
+	.td7{background-image:url(/static/public/img/homeImg/system_s.png)}	
+	/*------------------------------------------------------------------------------------*/
+    </style>
+    
+</head>
+<body class="bg1">
+    <!--头部 start-->
+    <div id="header">
+            <img src="/static/public/img/grouplogo.png" class="clinicLogo">
+            <span id="clincname">深圳菲森口腔</span>
+            <span id="mycreate">我创建</span>
+            <ul class="right">
+                <li class="r_add t_hover"><img src="/static/public/img/relation.png"></li>
+                <li class="right_li  t_hover"><img src="/static/public/img/message.png"></li>
+                <li class="vline"></li>
+                <li><img id="userface" src="/static/account/img/default_pho.png"></li>
+            </ul>
+    </div>
+    <!--头部 end-->
+    
+    <!--正文 start-->
+    <div id="outerFrmeMain">
+        <div style="display:table; width:100%; height:100%">
+            <div style="display:table-cell;vertical-align:middle">
+                <table border="0" width="1000" height="500" align="center" id="maintable" valign="middle" style="padding-bottom:0;">
+                    <tbody>
+                        <tr height="50%">
+                            <td class="td1">
+                                <div class="tdimg"><div class="imgCell"><img src="/static/public/img/homeImg/Outpatient.png" /></div></div>
+                                <p class="txtfot">门诊业务</p>
+                            </td>
+                            <td class="td2">
+                                <div class="tdimg"><div class="imgCell"><img src="/static/public/img/homeImg/powernet.png" /></div></div>
+                                <p class="txtfot">电网中心</p>
+                            </td>
+                            <td class="td3">
+                                <div class="tdimg"><div class="imgCell"><img src="/static/public/img/homeImg/market.png" /></div></div>
+                                <p class="txtfot">市场营销</p>
+                            </td>
+                            <td class="td4">
+                                <div class="tdimg"><div class="imgCell"><img src="/static/public/img/homeImg/Operation.png" /></div></div>
+                                <p class="txtfot">运营中心</p>
+                            </td>
+                        </tr>
+                        <tr  height="50%">
+                            <td class="td5">
+                                <div class="tdimg"><div class="imgCell"><img src="/static/public/img/homeImg/finance.png" /></div></div>
+                                <p class="txtfot">财务管理</p>
+                            </td>
+                            <td class="td6">
+                                <div class="tdimg"><div class="imgCell"><img src="/static/public/img/homeImg/store.png" /></div></div>
+                                <p class="txtfot">库存管理</p>
+                            </td>
+                            <td class="td7">
+                                <div class="tdimg"><div class="imgCell"><img src="/static/public/img/homeImg/system.png" /></div></div>
+                                <p class="txtfot">系统管理</p>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>  
+        </div>        
+    <!--正文 end-->
+    <script type="text/javascript" src="/static/account/js/jquery-1.9.1.min.js"></script>
+    <script>
+    $(".imgCell img").hover(
+        function(){
+            $(this).stop().animate({"width":"128px","height":"128px"},200).animate({"width":"118px","height":"118px"},100);
+        },
+        function(){
+            $(this).stop().animate({"width":"113px","height":"113px"},100);
+        }
+    );
+
+
+
+    /*unction changeSize(){
+        var viewWidth= $(window).width();
+        console.log(viewWidth);
+        if(viewWidth>=1900){
+            $("table").attr("width","1040");
+            $("table").attr("height","560");
+            //$("table").css("margin-top","182px");
+        }
+        if(viewWidth>=1600&&viewWidth<1900){
+            $("table").attr("width","976");
+            $("table").attr("height","516");
+            //$("table").css("margin-top","126px");
+        }
+        if(viewWidth>=1440&&viewWidth<1600){
+            $("table").attr("width","968");
+            $("table").attr("height","516");
+            //$("table").css("margin-top","118px");
+        }
+        if(viewWidth>=1366&&viewWidth<1440){
+            $("table").attr("width","976");
+            $("table").attr("height","516");
+            //$("table").css("margin-top","100px");
+        }
+        if(viewWidth>=1280&&viewWidth<1366){
+            $("table").attr("width","856");
+            $("table").attr("height","516");
+            //$("table").css("margin-top","96px");
+            $("table img").css("width","96px")
+        }
+        if(viewWidth>=1024&&viewWidth<1288){
+            $("table").attr("width","808");
+            $("table").attr("height","490");
+            //$("table").css("margin-top","80px");
+            $("table img").css("width","96px")
+        }
+    }*/
+    function changeSize(){
+        var viewHeight= $(window).height()+90;
+        console.log(viewHeight);
+        if(viewHeight>=1080){
+            $("table").attr("width","1040");
+            $("table").attr("height","560");
+            //$("table").css("margin-top","182px");
+        }
+        if(viewHeight>=1050&&viewHeight<1080){
+            $("table").attr("width","976");
+            $("table").attr("height","516");
+            //$("table").css("margin-top","126px");
+        }
+        if(viewHeight>=900&&viewHeight<1050){
+            $("table").attr("width","968");
+            $("table").attr("height","516");
+            //$("table").css("margin-top","118px");
+        }
+        if(viewHeight>=800&&viewHeight<900){
+            $("table").attr("width","976");
+            $("table").attr("height","516");
+            //$("table").css("margin-top","100px");
+        }
+        if(viewHeight>=768&&viewHeight<800){
+            $("table").attr("width","856");
+            $("table").attr("height","516");
+            //$("table").css("margin-top","96px");
+            $("table img").css("width","96px")
+        }
+        if(viewHeight>=600&&viewHeight<768){
+            $("table").attr("width","808");
+            $("table").attr("height","490");
+            //$("table").css("margin-top","80px");
+            $("table img").css("width","96px")
+        }
+    }
+    changeSize();
+    $(window).resize(function(){
+        changeSize();
+    })
+    /*function genSize(){
+        var _H=$(window).height();
+        if(_H>1000){
+
+        }
+    }*/
+    </script>
+</body>
+</html>

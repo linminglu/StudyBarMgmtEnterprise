@@ -1,0 +1,28 @@
+@charset "utf-8";
+/* CSS Document */
+.equip_box{}
+.equip_box .equip_l{float:left;width:220px;border-right:1px solid #e0e0e0;}
+.equip_l h2{width:170px;margin-left:30px;font-weight:normal; font-size:15px;color:#333; height:46px; line-height:46px;border-bottom:1px solid #e0e0e0;}
+.equip_l .equi_ls{ font-size:13px;}
+.equip_l .equi_ls p{ padding-left:30px; height:40px; line-height:40px;color:#696969; cursor:pointer;}
+.equip_l .equi_ls p img{ float:right; margin-right:20px; margin-top:16px;}
+.equip_l .equi_ls ol li{ padding-left:30px; height:40px; line-height:40px; color:#aaa; cursor:pointer;}
+.equip_l .equi_ls ol li:hover{background-color:#edf0f2;color:#333;}
+
+.equip_box .equip_r{ margin-left:221px;padding:0 30px;}
+.equip_r .r_head{border-bottom:1px solid #e0e0e0; height:46px; line-height:46px; font-size:14px;}
+.equip_r .r_con{margin:56px; margin-left:36px;}  
+.equip_r .r_con dl{ overflow:hidden;}
+.equip_r .r_con dl dt{ float:left;}
+.equip_r .r_con dl dt .pc{ position:relative;top:0;left:0;margin-bottom:28px; width:149px; text-align:center;}
+.equip_r .r_con dl dt .pc .pc_ico{ position:absolute;top:15px;left:80px;}
+.equip_r .r_con dl dt p{color:#333; font-size:14px;}
+.equip_r .r_con dl dt p span{color:#696969; margin-left:8px;}
+.equip_r .r_con dl dd{ float:left; margin-left:60px;}
+.equip_r .r_con dl dd li{ list-style:none; margin-bottom:20px; font-size:14px;}
+.equip_r .r_con dl dd label{ text-align:right; margin-right:12px; color:#333; display:inline-block;width:90px;}
+.equip_r .r_con dl dd input{ width:250px; height:30px; line-height:30px; padding:0; padding-left:10px;}
+.equip_r .r_con dl dd select{ width:262px; height:32px; line-height:32px; padding:0; padding-left:10px;}
+.equip_r .r_con dl dd .readol{border:1px solid #fafafa; background-color:#fafafa;}
+.equip_r .r_con dl dd .readol:focus{outline:1px solid #fafafa;}
+.equip_r .r_con dl dd textarea{ width:260px;height:200px;}

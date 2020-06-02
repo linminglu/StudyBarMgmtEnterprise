@@ -1,0 +1,53 @@
+.headerBtnWrap{ width: 36px; height: 18px; float: left; border-right: 1px solid #E6E6E6; margin: 16px 14px 0 0; -ms-user-select:none; -moz-user-select: none; -webkit-user-select: none;}
+.headerBtn{ width: 22px; height: 18px; float: left;  cursor: pointer;}
+.headerBtnShow{ background: url(/static/public/img/r_header/nav_show.png) no-repeat;}
+.headerBtnHide{ background: url(/static/public/img/r_header/nav_hide.png) no-repeat;}
+.headerMenu{ width: 80px; height: 28px; float: left; margin: 11px 0 0 0; line-height: 28px; font-size: 14px; color: #333; padding-left: 40px; cursor: pointer; position: relative; -ms-user-select:none; -moz-user-select: none; -webkit-user-select: none;}
+.headerMenuDown::after{ width: 11px; height: 7px; content: ''; background: url(/static/public/img/r_header/clinic_show_direct.png); position: absolute; top: 12px; right: 8px;}
+.headerMenuUp::after{ width: 11px; height: 7px; content: ''; background: url(/static/public/img/r_header/clinic_show_direct_t.png); position: absolute; top: 12px; right: 8px;}
+.headerUser{ width: 28px; height: 28px; float: right; margin: 11px 0 0 0; background: url(/static/public/img/r_header/default_pho.png); cursor: pointer;}
+.headerOperation{ width: auto; height: 26px; border-right: 1px solid #E0E0E0; margin: 12px 20px 0 0; float: right;}
+.headerOperation .ho1{ width: 22px; height: 22px; background: url(/static/public/img/r_header/enter_rel_clinic1.png); margin: 2px 30px 0 0; float: left; cursor: pointer;}
+.headerOperation .ho2{ width: 22px; height: 22px; background: url(/static/public/img/r_header/enter_mes1.png); margin: 2px 20px 0 0; float: left; cursor: pointer;}
+
+/*个人信息头像下拉菜单*/
+.per_pho_select{position: absolute;top: 45px;right: 20px;overflow: hidden;width: 120px;
+box-shadow: 0 0 12px #888888;z-index: 200;display: none;background: #fff;}
+.per_pho_select p{height: 40px;line-height: 40px;padding-left: 24px;border-bottom: 1px solid #fafafa;}
+.per_pho_select p:hover{background: #fafafa!important;}
+.per_pho_select p a{font-size: 14px;color: #333;display: block;}
+.per_pho_select p span{color: #00c5b5;}
+
+.head_mes_tip{width: 260px;height: 150px;background: #fff;box-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);position: absolute; top: 47px; right: 0; border-radius: 2px;z-index: 100;display: none;}
+.head_mes_tip_default{ width: 100%; height: 150px; text-align: center; font-size: 14px; color: #696969; background: url(/static/public/img/r_header/enter_no_mes.png) center 22px no-repeat; line-height: 30px; padding-top: 80px;}
+
+.clinic_select{width:340px;height: 152px;padding: 20px 10px 10px 10px;background: #fff;box-shadow: 0 0 12px #888888;position: absolute;top: 45px;left: 108px;z-index: 100;display: none;}
+.clinic_select ul{ width: 100%; height: auto; overflow: hidden; float: left;}
+.clinic_select ul li{ width:48px; height: 30px; float: left;margin: 0 10px; cursor: pointer; font-size: 12px;color: #333; padding-top: 50px; text-align: center;}
+
+.leftNav{ width: 200px; height: auto; overflow: hidden; float: left; display: none;}
+.leftNavSmall{ width: 56px; height: auto; float: left; display: none;}
+.leftHead{ width: 100%; height: 59px; overflow: hidden; float: left; border-bottom: 1px solid #F0F0EE; position: relative;}
+.leftHead:before{ width: 30px; height: 30px; background:url(/static/public/img/r_left/default_clinic_pho.png); content: ''; position: absolute; left: 14px; top: 14px;}
+.leftHead p{ width: 130px; height: 16px; line-height: 16px; white-space:nowrap;overflow: hidden;text-overflow: ellipsis;  float: left;}
+.leftHead p.p1{ color: #00C5B5; margin: 13px 10px 0 60px; font-size: 14px;}
+.leftHead p.p2{ color: #969696; font-size: 12px; margin: 0 10px 0 60px;}
+#js_left_nav{ width: 100%; height: auto; overflow: hidden; float: left;}
+.left_nav_item{ width: 100%; height: auto; overflow: hidden; float: left;}
+.left_nav_item_second{ width: 100%; height: auto; overflow: hidden; float: left; display: none;}
+.left_nav_item > span{ width: 100%; height: 46px; overflow: hidden; float: left; line-height: 46px; color: #aaa; position: relative; text-indent: 64px; font-size: 14px; background: url(/static/public/img/r_left/tot_acc1.png) 168px 17px no-repeat; cursor: pointer; -ms-user-select:none; -moz-user-select: none; -webkit-user-select: none;}
+.left_nav_item span[data-tags='1']{ background: url(/static/public/img/r_left/tot_acc2.png) 168px 17px no-repeat;}
+.left_nav_item_second a{ width: 100%; height: 40px; display: block; line-height: 40px; font-size: 14px; text-indent: 64px; color: #696966; text-decoration: none;}
+.left_nav_item_second a:hover{ background: #fafafa;}
+.left_nav_item_second a.act{ background: #edf0f2;}
+.Employee_pe:before{ width: 24px; height: 24px; content: ''; position: absolute; left: 16px; top: 12px; background: url(/static/public/img/r_left/finance/employee_pe.png);}
+.Clinic_income:before{ width: 24px; height: 24px; content: ''; position: absolute; left: 16px; top: 12px; background: url(/static/public/img/r_left/finance/cli_income.png);}
+
+#js_left_nav_small{ width: 100%; height: auto; float: left;}
+.left_nav_small_item{ width: 100%; height: 46px; float: left; position: relative; cursor: pointer;}
+.left_nav_small_item_second{ width: 118px; height: auto; overflow: hidden; position: absolute; top: 0; left: 56px; background: #fff; text-align: center; box-shadow: 0 0 10px #888888; z-index: 100; display: none;}
+.left_nav_small_item_second a{ width: 100%; height: 46px; line-height: 46px; font-size: 14px; color: #696966; text-decoration: none; display: block;}
+.left_nav_small_item_second a.act{ background: #edf0f2;}
+.left_nav_small_item_second a:hover{ background: #fafafa;}
+.left_nav_small_item:hover .left_nav_small_item_second{ display: block;}
+

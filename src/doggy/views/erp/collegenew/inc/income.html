@@ -1,0 +1,90 @@
+<template id="income_id">
+    <div>
+        <div class="bline wp100 h35 boxsz pl10 fz-14 lh35 bg-white">统计>收入</div>
+        <div class="h40 bg-white fc-21c1aa fz-16 boxsz pl10 pt10">
+            <!-- 收入 -->
+            <input id="gather"   v-on:click="switchPageToGather" type="button" value="汇总" class="dinb h30 lh30 w80 al-center alv-middle radius_noleft mal20 inc_solid " style="float: left">
+            <input id="turnover" v-on:click="switchPageToTurnover" type="button" value="流水" class="dinb h30 lh30 w80 al-center radius_noright mal20 inc_hollow">
+        </div>
+        <div class="bline h60 lh60 bg-white boxsz pl10">
+            <div id="yayigjDateDownListTest">
+                <label for="">起止时间</label>
+                <yayigj-Datesel v-model="date" :sizeparam="{'width':'160px','type':'date'}"></yayigj-Datesel>
+                <label for="">至</label>
+                <yayigj-Datesel v-model="date1" :sizeparam="{'width':'160px','type':'date'}"></yayigj-Datesel>
+                主播名字
+                <input v-model="anchor" type="text" />
+                <!-- <yayigj-downlist v-model="anchor" :arrslist="anchorarr" :sizeparam="sizeparam" v-on:getseled="setChdAdsSeledVal"></yayigj-downlist> -->
+                <input id="searchBtn" v-on:click="searchData" type="button" value="查找" class="inc_solid mal20">
+                <a v-if='current_page == 1' id="downloadCsv" class="inc_solid pl5 pr5 mat15 mab15 mar15 f_right fz-14">导出数据</a>
+            </div>
+            <!-- <input type="text" readonly class="ma10 w130" value="2017年01月16日">至<input type="text" readonly class="mal10 mar20 w130">主播<input type="text" readonly class="w80 mal10"><input type="button" value="查找" class="inc_solid mal20"> -->
+        </div>
+        <!-- <div class="h60  bg-white  lh60 boxsz pl10"><input type="button" value="选择系列课" class="inc_solid"></div> -->
+        <div class="bg-white">
+            <table id="gather_table" class="wp100 unite_table">
+                <thead>
+                    <tr>
+                        <th>主播名称</th>
+                        <th>收入</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="item in data_list">
+                        <td v-html="item.name"></td>
+                        <td v-html="item.earnings"></td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>合计</th>
+                        <th v-html="getTotalEarnings()"></th>
+                    </tr>
+                </tfoot>
+            </table>
+            <table id="turnover_table" class="wp100 unite_table" style="display: none;">
+                <thead>
+                    <tr>
+                        <th>主播名称</th>
+                        <th>时间</th>
+                        <th>交易编号</th>
+                        <th>课程名称</th>
+                        <th>购买用户</th>
+                        <th>总金额</th>
+                        <th>主播分佣</th>
+                        <th>平台分佣</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="item in data_list">
+                        <td v-html="item.anchorname"></td>
+                        <td v-html="item.buytime"></td>
+                        <td v-html="item.orderid"></td>
+                        <td v-html="item.title"></td>
+                        <td v-html="item.mobile"></td>
+                        <td v-html="item.paidfee"></td>
+                        <td v-html="item.earnings"></td>
+                        <td v-html="item.platformfee"></td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>合计</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th v-html="getTotalTurnoverPaidfee()"></th>
+                        <th v-html="getTotalTurnoverEarnings()"></th>
+                        <th v-html="getTotalTurnoverPlatformfee()"></th>
+                    </tr>
+                </tfoot>
+            </table>
+            <div id="allanchorstollegehomepage" class="vuepage">
+                <yayigj-downlist v-model="details.number_of_data_per_page" :arrslist="number_of_data_per_page_arr" :sizeparam="sizepageparam" v-on:getseled="setNumberOfDataPerPage"></yayigj-downlist>
+                <page-bar :cur.sync="details.cur" :all.sync="details.all" v-on:btnclick="listenpage"></page-bar>
+                <p style="margin-left:40px; display: none;"><{msg1}></p>
+            </div>
+        </div>
+    </div>
+</template>

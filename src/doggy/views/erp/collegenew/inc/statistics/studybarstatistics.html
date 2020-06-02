@@ -1,0 +1,75 @@
+<template id="studybarstatistics_id">
+    <div class="hp100 bg-white">
+        <!-- 头部 -->
+        <div class="bline wp100 h50 lh50  boxsz pl10 fz-14  bg-white">统计中心><span class="c_pointer"
+                @click='goback'>学习吧数据统计</span>
+            <!-- <input class="inc_solid f_right mat10 mar10" type="button" value="选择课程" @click="showCourseDialog()"> -->
+        </div>
+        <div class="h50 lh50 bg-white  boxsz pl10 fz-14">
+            <div id="yayigjDateDownListTest">
+                <span style="float:left">
+                    <span class="bg-cb0202 mal5 mar5 lh20">&nbsp;</span>学习吧数据统计
+                </span>
+                <span style="float:right" class="fz-14">
+                    <span class="mal10">时间</span>
+                    <yayigj-Datesel v-model="condition.begintime" :sizeparam="{'width':'160px','type':'date'}">
+                    </yayigj-Datesel>
+                    <label for="">至</label>
+                    <yayigj-Datesel v-model="condition.endtime" :sizeparam="{'width':'160px','type':'date'}">
+                    </yayigj-Datesel>
+                    <input id="searchBtn" class="inc_hollow mar10" type="button" value="查找" v-on:click="searchAction">
+                    <a id="downloadCsv" class="inc_solid pall5 mat15 mab15 mar15">导出数据</a>
+                </span>
+                
+            </div>
+        </div>
+        <!-- 表格 -->
+        <div class="bg-white">
+            <table class="wp100 unite_table">
+                <thead>
+                    <tr>
+                        <th>日期</th>
+                        <th>app访问人次</th>
+                        <th>微信访问人次</th>
+                        <th>app访问人数</th>
+                        <th>微信访问人数</th>
+                        <th>访问人次汇总</th>
+                        <th>访问人数汇总</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(item,index) in data_list" :class="[item.visitdate=='页汇总'?'f_weight' :'']">
+                        <td>
+                            <{item.visitdate}>
+                        </td>
+                        <td>
+                            <{item.appnum}>
+                        </td>
+                        <td>
+                            <{item.wechatnum}>
+                        </td>
+                        <td>
+                            <{item.appcount}>
+                        </td>
+                        <td>
+                            <{item.wechatcount}>
+                        </td>
+                        <td>
+                            <{item.totalnum}>
+                        </td>
+                        <td>
+                            <{item.totalcount}>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div v-show='homeparam.total != 0' id="boutiquecourse_homepage" class="vuepage">
+                <yayigj-downlist v-model="homeparam.pagesize" :arrslist="homeparam.valueList"
+                    :sizeparam="homeparam.attribute" v-on:getseled="homePagesizeChange"></yayigj-downlist>
+                <page-bar :cur.sync="homeparam.page" :all.sync="Math.ceil(homeparam.total/homeparam.pagesize)"
+                    v-on:btnclick="homePageChange">
+                </page-bar>
+            </div>
+        </div>
+    </div>
+</template>

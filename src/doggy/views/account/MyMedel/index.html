@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="UTF-8">
+        <meta content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" name="viewport">
+        <meta content="yes" name="apple-mobile-web-app-capable">
+        <meta content="black" name="apple-mobile-web-app-status-bar-style">
+        <meta content="telephone=no" name="format-detection">
+        <meta http-equiv="Cache-Control" content="no-transform ">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+        <!--<include file="Public:css_inc"/>-->
+        {{template "/account/Public/css_inc.html" .}}
+        <link rel="stylesheet" type="text/css" href="/static/account/css/memberCenter.css">
+    </head>
+    <body>
+        <!--<include file="Public:memberCen_hea_new"/>-->
+        {{template "/account/Public/memberCen_hea_new.html" .}}
+        <div class="main_con">
+            <div class="main_left">
+                <!--<include file="Public:left_nav"/>-->
+                {{template "/account/Public/left_nav.html" .}}
+            </div>
+           <div class="main_right">
+                <div class="info_tit">
+                    <img src="__APP__/public/img/my_medel.png" class="medel_img">
+                    <span>我的勋章</span>
+                    <span class="now_have">当前拥有<span class="count">3</span>枚勋章</span>
+                </div>
+                <div class="medel_level">
+                    <div class="re_medel_alerte">
+                        <img src="__APP__/public/img/purchase_lv3.png">
+                        <p>恭喜您！!获得采购小能手LV.3勋章</p>
+                    </div>
+                	<ul>
+                		<li>
+                			<img src="__APP__/public/img/purchase_lv3.png">
+                			<p class="purchase">采购小能手</p>
+                			<p class="condition">条件：完成门诊分配规定任务量即可获得奖励</p>
+                			<p class="received get_medel_now" data-bg="1">立即领取</p>
+                            <img src="__APP__/public/img/received_small.png" class="rec_img">
+                		</li>
+                		 <li>
+                			<img src="__APP__/public/img/manege_lv1.png">
+                			<p class="purchase">采购小能手</p>
+                			<p class="condition">条件：完成门诊分配规定任务量即可获得奖励</p>
+                			<p class="received get_medel_now" data-bg="1">立即领取</p>
+                			<img src="__APP__/public/img/received_small.png" class="rec_img">
+                		</li>
+                		 <li>
+                			<img src="__APP__/public/img/appoint_lv4.png">
+                			<p class="purchase">采购小能手</p>
+                			<p class="condition">条件：完成门诊分配规定任务量即可获得奖励</p>
+                			<p class="received get_medel_now" data-bg="1">立即领取</p>
+                            <img src="__APP__/public/img/received_small.png" class="rec_img">
+                		</li>
+                		 <li>
+                			<img src="__APP__/public/img/purchase_lv2.png">
+                			<p class="purchase">采购小能手</p>
+                			<p class="condition">条件：完成门诊分配规定任务量即可获得奖励</p>
+                			<a href="index.php?m=MyMedel&a=medel_detail"><p class="received" data-bg="1">查看详情</p></a>
+                		</li>
+                		<li>
+                			<img src="__APP__/public/img/appoint_lv1.png">
+                			<p class="purchase">采购小能手</p>
+                			<p class="condition">条件：完成门诊分配规定任务量即可获得奖励</p>
+                			<p class="received" data-bg="0">已过期</p>
+                			<img src="__APP__/public/img/overdued.png" class="rec_img_outtime">
+                		</li>
+                	</ul>
+                </div>
+            </div>
+            <div class="bg_div"></div>
+            <div class="main_right">
+                <div class="info_tit">
+                    <img src="__APP__/public/img/task_medel.png" class="medel_img">
+                    <span>任务勋章</span>
+                    <span class="now_have">战胜挑战，赢取奖励</span>
+                </div>
+                <div class="task_medel">
+                    <ul>
+                        <li>
+                            <div class="li_left">
+                                <img src="__APP__/public/img/purchase_lv3.png">
+                                <p>采购小能手</p>
+                            </div>
+                            <div class="li_right">
+                                <p class="p1">任务奖励</p>
+                                <p class="p2"><span class="sp1">50</span>管家币，<span class="sp2">100</span>成长值</p>
+                                <p class="p1">任务目标</p>
+                                <p class="p2">完成门诊分配任务即可获得奖励</p>
+                                <p class="p1">完成时间</p>
+                                <p class="p2">2106.08.01-2016.08.31</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="li_left">
+                                <img src="__APP__/public/img/appoint_lv4.png">
+                                <p>预约小能手</p>
+                            </div>
+                            <div class="li_right">
+                                <p class="p1">任务奖励</p>
+                                <p class="p2"><span class="sp1">50</span>管家币，<span class="sp2">100</span>成长值</p>
+                                <p class="p1">任务目标</p>
+                                <p class="p2">完成门诊分配任务即可获得奖励</p>
+                                <p class="p1">完成时间</p>
+                                <p class="p2">2106.08.01-2016.08.31</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="li_left">
+                                <img src="__APP__/public/img/manege_lv1.png">
+                                <p>处置小能手</p>
+                            </div>
+                            <div class="li_right">
+                                <p class="p1">任务奖励</p>
+                                <p class="p2"><span class="sp1">50</span>管家币，<span class="sp2">100</span>成长值</p>
+                                <p class="p1">任务目标</p>
+                                <p class="p2">完成门诊分配任务即可获得奖励</p>
+                                <p class="p1">完成时间</p>
+                                <p class="p2">2106.08.01-2016.08.31</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="li_left">
+                                <img src="__APP__/public/img/more_medel.png">
+                                <p>处置小能手</p>
+                            </div>
+                            <div class="li_right">
+                                <p class="p3">更多任务勋章，敬请期待！</p>
+                            </div>
+                        </li>  
+                    </ul>
+                </div>
+            </div>
+            <div class="bg_div"></div>
+            <div class="main_right main_right_coupon">
+                <div class="info_tit">
+                    <img src="__APP__/public/img/medel_coupon.png" class="medel_img">
+                    <span data-medel="1" class="medel_sp">勋章优惠券</span>
+                    <span data-medel="0" class="medel_sp my_mdel">我的优惠券</span>
+                </div>
+                <div class="task_medel">
+                    <ul>
+                        <li>
+                            <div class="li_left">
+                                <img src="__APP__/public/img/coupon50.png">
+                            </div>
+                            <div class="li_right">
+                                <p class="p1">牙医商学院之牙周专业商道课程（基础）5折优惠券</p>
+                                <P class="p2">采购小能手勋章Lv.1及以上用户可领取</P>
+                                <P class="p2">门诊券：广州致美口腔医院</P>
+                                <P class="p3">立即领取</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="li_left">
+                                <img src="__APP__/public/img/coupon68.png">
+                            </div>
+                            <div class="li_right">
+                                <p class="p1">牙医商学院之牙周专业商道课程（基础）5折优惠券</p>
+                                <P class="p2">采购小能手勋章Lv.1及以上用户可领取</P>
+                                <P class="p2">门诊券：广州致美口腔医院</P>
+                                <P class="p2">有效期：2016.08.01 - 2016.08.31</P>
+                                <p class="p3">立即领取</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="li_left">
+                                <img src="__APP__/public/img/coupon75.png">
+                            </div>
+                            <div class="li_right">
+                                <p class="p1">牙医商学院之牙周专业商道课程（基础）5折优惠券</p>
+                                <P class="p2">采购小能手勋章Lv.1及以上用户可领取</P>
+                                <P class="p2">门诊券：广州致美口腔医院</P>
+                                <P class="p2">有效期：2016.08.01 - 2016.08.31</P>
+                                <p class="p3">立即领取</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="li_left">
+                                <img src="__APP__/public/img/coupon68.png">
+                            </div>
+                            <div class="li_right">
+                                <p class="p1">牙医商学院之牙周专业商道课程（基础）5折优惠券</p>
+                                <P class="p2">采购小能手勋章Lv.1及以上用户可领取</P>
+                                <P class="p2">门诊券：广州致美口腔医院</P>
+                                <P class="p2">有效期：2016.08.01 - 2016.08.31</P>
+                                <p class="p3">立即领取</p> 
+                            </div>
+                        </li> 
+                    </ul>
+                    <div class="popup"><img src="__APP__/public/img/coupon_rev.png"></div>
+                </div>
+                <div class="task_medel">
+                    <ul>
+                        <li>
+                            <div class="li_left">
+                                <img src="__APP__/public/img/coupon50.png">
+                            </div>
+                            <div class="li_right">
+                                <p class="p1">牙医商学院之牙周专业商道课程（基础）5折优惠券</p>
+                                <P class="p2">采购小能手勋章Lv.1及以上用户可领取</P>
+                                <P class="p2">门诊券：广州致美口腔医院</P>
+                                <P class="p4">已领取</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="li_left">
+                                <img src="__APP__/public/img/coupon68.png">
+                            </div>
+                            <div class="li_right">
+                                <p class="p1">牙医商学院之牙周专业商道课程（基础）5折优惠券</p>
+                                <P class="p2">采购小能手勋章Lv.1及以上用户可领取</P>
+                                <P class="p2">门诊券：广州致美口腔医院</P>
+                                <P class="p2">有效期：2016.08.01 - 2016.08.31</P>
+                                <p class="p4">已领取</p>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="popup"><img src="__APP__/public/img/coupon_rev.png"></div>
+                </div>               
+            </div>
+        </div>
+       <include file="Public:footer_new"/>
+       <include file="Public:js_inc"/>
+       <script type="text/javascript" src="__APP__/public/js/member_center.js"></script>
+        <!--IE支持placeholder-->
+       <script type="text/javascript">  
+            $(function(){ $('input, textarea').placeholder(); });
+        </script>
+    </body>
+</html>

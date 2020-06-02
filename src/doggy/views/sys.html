@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>插件测试</title>
+<script src="/static/public/jquery-1.9.1.min.js"></script>
+<style>
+input{margin:10px 0;}
+</style>
+</head>
+
+<body>
+<div id="exeTime"><div class="t" style="margin-bottom:10px">执行文件更新时间 :</div><span></span></div>
+<div id="status"><div class="t">布署状态 :</div><span></span></div>
+<div><input type="button" value="提交打包" onclick="pack()"></div>
+<div>
+	<table id="dataTable">
+		<thead>
+			<th>logid</th><th>目录</th><th>更新时间</th><th>版本</th><th>备注</th>
+		</thead>
+	</table>
+</div>
+<script>
+var tiemer=null;
+tiemer=setInterval(function (){
+	update()
+},1000)
+
+function update(){
+	$.get('/admin/fileinfo',function(data){
+		if(data.code=="1"){
+			$("#exeTime span").text(data.list)
+		}
+	})
+
+	$.get('/admin/packinfo',function(data){
+		if(data.code=="1" && data.main!=null){
+			var info=data.main;
+			var str="";
+			str='buildid:'+info.buildid+'<br>'+
+				'memo:'+info.memo+"<br>"+
+				'soft:'+info.soft+"<br>"+
+				'status:'+getStatus(info.status)+"<br>"+
+				'updatetime:'+info.updatetime+"<br>"+
+				'version:'+info.version+"<br>"
+			$("#status span").html(str)
+		}
+		if(data.code=="1" && data.list!=null){
+			var infolist=data.list;
+			var str="";
+			$.each(infolist,function(index,el){
+				str+='<tr><td>'+el.logid+'</td>'+
+					'<td>'+el.soft+'</td>'+
+					'<td>'+el.updatetime+'</td>'+
+					'<td>'+el.version+'</td>'+
+					'<td>'+el.memo+'</td></tr>'
+			})
+			$("#dataTable tbody").html(str)
+		}
+
+	})
+
+}
+
+function pack(){
+	$.get('admin/startpack',function(data){
+		if(data.code=="1"){
+			
+		}
+	})
+}
+
+function getStatus(str){
+	var re="";
+	switch(str){
+		case "1":
+			re="提交部署任务";
+			break;
+		case "2":
+			re="开始打包";
+			break;
+		case "3":
+			re="上传更新包";
+			break;
+		case "4":
+			re="部署完成";
+			break;
+		case "-1":
+			re="编译失败";
+			break;
+	}
+	return re;
+}
+</script>
+</body>
+</html>

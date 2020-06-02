@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>登录</title>
+		{{template "../public/link/css_inc.html" .}}
+		<link href="/static/erp/css/login.css" rel="stylesheet" />
+	</head>
+	<body class="login_body">
+		<div class="login_main">
+			<div class="login_head">
+				<img src="/static/erp/img/login/login_icon.png">
+				<span class="back_man">后台管理系统</span>
+			</div>
+			<div class="input_area">
+				<ul>
+					<li class="user_icon"><input type="text" id="user_input" placeholder="请输入账号"><img src="/static/erp/img/login/user_icon.png"></li>
+					<li class="pw_icon"><input type="password" id="pw_input" placeholder="请输入密码"><img src="/static/erp/img/login/pw_icon.png"></li>
+				</ul>
+				
+			</div>
+			<div class="pw_operate">
+				<ul>
+					<li class="rem_pw"><input type="checkbox" id="rem_pw"><span>记住密码</span></li>
+					<!--<li class="for_pw">忘记密码？</li>-->
+				</ul>
+			</div>
+			<div>
+				<input type="button" id="login_button" value="登录">
+			</div>
+		</div>
+	</body>
+	{{template "../public/link/js_inc.html" .}}
+	<script type="text/javascript" src="/static/erp/js/login.js"></script>
+</html>

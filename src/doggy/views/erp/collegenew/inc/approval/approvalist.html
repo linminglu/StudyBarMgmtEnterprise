@@ -1,0 +1,119 @@
+<template id="approvalist_id">
+    <div>
+        <!-- 拒绝弹窗 -->
+        <addedt-modal :paramcnf="askrefuse_modal">
+            <div slot='modal_body' id="modal_content_push">
+                <div class="fz-14" style="display:flex;">
+                    <span style="width:80px;">拒绝原因:&nbsp;</span>
+                    <textarea class="mal10" cols="2" rows="6" v-model="refuse"
+                        style="margin-right: 20px;overflow: hidden;width:90%;"></textarea>
+                </div>
+            </div>
+        </addedt-modal>
+
+        <!-- 拒绝弹窗 -->
+        <addedt-modal :paramcnf="refuse_modal">
+            <div slot='modal_body' id="modal_content_push">
+                <span>
+                    <{activeItem.remark}>
+                </span>
+            </div>
+        </addedt-modal>
+
+        <div class="bline wp100 h35 boxsz pl10 fz-14 lh35 bg-white">首页管理>审批管理</div>
+        <div class="bline h60 lh60 bg-white boxsz pl10">
+            <div id="yayigjDateDownListTest">
+                <span style="float:left">
+                    <span :class='["switch_btn",curIndex == 0?"switch_btn_sel":""]' id="single_btn" @click='switchCourseType(0)'>单课程</span>
+                    <span :class='["switch_btn","mal10",curIndex == 1?"switch_btn_sel":""]'  id="series_btn" @click='switchCourseType(1)'>系列课</span>
+                </span>
+                <span style="float:right" class="fz-14">
+                        <span class="mal10">审核状态</span>
+                        <yayigj-downlist :value="auditStatus.key" :arrslist="auditeStateList" :sizeparam="sizepageparam1"
+                            v-on:selitem="selectAuditstatus"></yayigj-downlist>
+                    <input class="mal10" v-model="condition" placeholder="请输入课程/直播间名称" type="text" />
+                    <input id="searchBtn" v-on:click="searchData" type="button" value="查找" class="inc_solid mar20">
+                </span>
+            </div>
+            <!-- <input type="text" readonly class="ma10 w130" value="2017年01月16日">至<input type="text" readonly class="mal10 mar20 w130">主播<input type="text" readonly class="w80 mal10"><input type="button" value="查找" class="inc_solid mal20"> -->
+        </div>
+        <div class="bg-white">
+            <table :class="['unite_table','wp100']">
+                <thead>
+                    <tr>
+                        <th>封面</th>
+                        <th>课程名称</th>
+                        <th v-if='curIndex==0'>课程分类</th>
+                        <th v-if='curIndex==0'>类型</th>
+                        <th>直播间名称</th>
+                        <th>费用</th>
+                        <th>上架状态</th>
+                        <th>审核状态</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(item,index) in data_list">
+                        <td>
+                            <div class="courselist_banner">
+                                <img width="100%" height="100%" :src="item.banner" alt="">
+                            </div>
+                        </td>
+                        <td>
+                            <dt v-html="item.title"></dt>
+                        </td>
+
+                        <td v-if='curIndex==0'>
+                            <dt v-html="item.tagname"></dt>
+                        </td>
+                        <td v-if='curIndex==0'>
+                            <dt v-if="item.type==0">幻灯片</dt>
+                            <dt v-else-if="item.type==1">视频录播</dt>
+                            <dt v-else="item.type==2">视频直播</dt>
+                        </td>
+                        <td v-html="item.anchorname"></td>
+                        <td v-html="item.fee"></td>
+                        </td>
+                        <td v-if="item.datastatus == 1">已上架</td>
+                        <td v-else-if="item.datastatus == 2" style="color: red;">未上架</td>
+                        <td v-else-if="item.datastatus == 0" style="color: red;">已删除</td>
+                        <td v-else-if="item.datastatus == -1" style="color: red;">已隐藏</td>
+                        <td v-else></td>
+                        <td v-if='item.applystatus==0'></td>
+                        <td v-else-if="item.applystatus==1" style="color: #ff94a0;">
+                            待审核
+                        </td>
+                        <td v-else-if="item.applystatus==2" style="color: #21c1aa;">审核通过</td>
+                        <td v-else-if="item.applystatus==3" style="color: red;">审核失败</td>
+                        <td v-else></td>
+
+
+                        <td v-else></td>
+                        <td class="inc_operation">
+                            <span v-if="item.applystatus!=2" @click="showPushAlert(index)">同意 </span>
+                            <i v-if="item.applystatus!=2" style="color: #ccc">&nbsp;|&nbsp;</i>
+                            <span v-if="item.applystatus!=3" @click='refuseAction(index)'>拒绝&nbsp;</span>
+                            <i v-if="item.applystatus!=3" style="color: #ccc">&nbsp;|&nbsp;</i>
+                            <span @click='pushtoDetail(index)'>详情</span>&nbsp;</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div v-if='curIndex==0' id="allanchorstollegehomepage" class="vuepage">
+                <yayigj-downlist v-model="details.maxPageNum" :arrslist="pageValueList" :sizeparam="sizepageparam"
+                    v-on:getseled="refreshList(1)"></yayigj-downlist>
+                <page-bar :cur.sync="details.curPage" :all.sync="details.totalPage" v-on:btnclick="listenpage">
+                </page-bar>
+            </div>
+            <div v-else id="allanchorstollegehomepage" class="vuepage">
+                <yayigj-downlist v-model="details2.maxPageNum" :arrslist="pageValueList" :sizeparam="sizepageparam"
+                    v-on:getseled="refreshList(1)"></yayigj-downlist>
+                <page-bar :cur.sync="details2.curPage" :all.sync="details2.totalPage" v-on:btnclick="listenpage">
+                </page-bar>
+            </div>
+
+
+        </div>
+
+    </div>
+</template>

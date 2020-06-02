@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+	<head>
+		<title>欢迎登录 - 牙医管家</title>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE10" />
+		<meta http-equiv="X-UA-Compatible" content="edge" />
+		<!--<include file="Public:css_inc" />-->
+		{{template "/account/Public/css_inc.html"  .}}
+		<!--<link rel="stylesheet" type="text/css" href="/static/account/css/login.css">-->
+        <link rel="stylesheet" type="text/css" href="/static/account/css/login_pc.css">
+        <script type="text/javascript" >
+			var isBind=parseInt('{{.isBind}}');
+			if(isBind==1){
+				document.write('<style type="text/css">.logo_pop{display:none;}.no_bind_phone1,mask{display:block;}</style>');
+			}else{
+				document.write('<style type="text/css">.login_form:last-child{display:block;}</style>');
+			}
+		</script>
+	</head>
+	<body>
+		<!--弹窗背景-->
+		<div class="mask"></div>
+		<!--未绑定手机弹窗1-->
+		<div class="no_bind_phone1">
+			<div class="bind_tip_tit">信息提示</div>
+			<div class="tips_content">
+				<div class="tips_img"><img src="/static/account/img/qh_pop_info.png"></div>
+				<div class="tips_word">
+					<p class="p_33">您的账号尚未绑定手机号,请先绑定手机号哦!</p>
+					<p class="p_69">1.绑定后可直接使用牙医管家App</p>
+					<p class="p_69">2.绑定手可直接通过手机号找回密码</p>
+					<input type="hidden" name="clinicid" id="clinicid" value="{{.clinicid}}">
+					<input type="hidden" name="koalaid" id="koalaid" value="{{.koalaid}}">
+					<input type="hidden" name="ps" id="ps" value="{{.psw}}">
+				</div>
+			</div>
+			<div><input type="button" class="acb ac_btn_bf w200" id="login_bind_phone" value="绑定手机号码"></div>
+		</div>
+		<!--绑定手机弹窗2-->
+		<div class="no_bind_phone2">
+			<div class="bind_tip_tit">绑定手机</div>
+			<div class="phone_input">
+				<div><span>手机号码</span><input type="text" placeholder="请输入您的手机号" class="box_w248_h18" oninput="check_mb(this)" id="reg_phonenum"></div>
+				<div>
+					<span id="send_word_num">验&nbsp;证&nbsp;码</span><input type="text" placeholder="请输入短信验证码" id="reg_phone" class="box_160"><input type="button" value="获取验证码" id="reg_sendnum" class="acb ac_btn_bf w96h30">
+				</div>
+				<div class="sub_tips sub_tips_index"><img src="/static/account/img/red_exclam.png"><label></label></div>
+				<div><input type="button" value="确定" id="next_step1" class="next_step acb ac_btn_bf w196h30"></div>
+			</div>
+		</div>
+		<!--<div class="topbar">
+			<div class="topbarIn">
+				<div class="logo"><a href="http://www.dental360.cn"><img src="/static/account/img/logo_pg8.png" alt="牙医管家"></a></div>
+				<div class="logoDes">欢迎登录</div>
+				<div class="loginAndRegister">
+					<a href="#" >没有账号？</a>
+					<a href="/member/userreg" class="login_a">马上注册</a>
+				</div>
+			</div>
+		</div>-->
+		<div class="login_box logo_pop">	
+			<!--<div class="box_center fix">-->
+			<form  class="r" id="form1" action="" method="">
+                <h1>欢迎登陆牙医管家<span class="close"></span></h1>
+				<h2><li  id="mobile_login"  >手机号登录</li><li id="staff_login" class="stafcus">员工登录</li></h2>
+				<input type="hidden" name="redirect_url" id="redirect_url" value="{{.redirect_url}}">
+				<div class="login_form">            
+					<div class="tel"> 
+					<img src="/static/account/img/mobile.png" />
+						<input type="text" placeholder="请输入手机号" disableautocomplete="" name="mobile" id="mobile" >
+					</div>
+					<div class="psw">
+					<p id="error_w"><i></i><span id="err_info"></span></p>  
+					<p id="error_tel"><i></i><span id="err_tel_info"></span></p>
+					<img src="/static/account/img/pw.png" />
+						<input type="password"  placeholder="请输入密码" name="password" id="password" disableautocomplete=""  autocomplete="off">
+					</div>
+					<div class="remb_user fix">
+					</div>
+					<div class="login_btn">
+						<input type="button" class="acb ac_btn_bf" value="登录" id="sumbit">
+					</div>
+				</div>
+				<!-- 员工登录 -->
+				<div class="login_form">
+					<div class="houseNo">
+						<div id="err_info2">121212312</div> 
+						<input type="text" name="houseID" id="houseID" placeholder="诊所管家号" value="{{.dentalid}}" readonly>
+					</div>
+					<div class="clinicNo">
+						<input type="text" name="staffID" id="staffID" placeholder="诊所员工姓名" value="{{.docname}}" readonly>
+					</div> 
+					<div class="clinicPw">
+						<input type="password" name="clinicPW" id="clinicPW" placeholder="请输入密码" disableautocomplete=""
+						autocomplete="off" />
+					</div> 
+					<div class="rember fix">
+					</div>
+					<div class="clinic_btn">
+						<input type="button" class="acb ac_btn_bf" value="登录" id="clinic_btn">
+					</div> 
+				</div>
+			</form>
+			<!--<div class="theme l">
+				<img src="/static/account/img/index_illu2.png" alt="诊所管理中心插画">			
+			</div>-->
+		<!--</div>	-->
+		</div>
+		<script type="text/javascript" src="/static/account/js/jquery-1.9.1.min.js"></script>
+		<script type="text/javascript" src="/static/account/js/placeholade.min.js"></script>
+		<script type="text/javascript" src="/static/account/js/jquery.cookie.js"></script>
+		<script type="text/javascript" src="/static/account/js/login_pc_js.js"></script>
+		<script>
+			var _hmt = _hmt || [];
+			(function() {
+			  var hm = document.createElement("script");
+			  hm.src = "https://hm.baidu.com/hm.js?a61a9dd0e0b727ff05d633849193e930";
+			  var s = document.getElementsByTagName("script")[0]; 
+			  s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+	</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>新增签约</title>
+		{{template "../public/link/css_inc.html" .}}
+		<link href="/static/erp/css/profile.css" rel="stylesheet" />
+        <link href="/static/erp/css/user.css" rel="stylesheet" />
+	</head>
+	<body>
+		{{template "../public/public/header.html" .}}
+        <div class="mainFrme">
+            {{template "../public/public/left.html" .}}
+            <div class="rightFrme">
+                <div class="crumbs"><a href="###">主页</a> > <a href="###">产品订单中心</a> > <a href="###">签约门诊</a> > <a href="###">新增签约</a></div>
+                <div class="cont">
+                    <div class="orderInfo orderInfo_nct">
+                        <span class="orderInfoTit">基本信息</span>
+                        <ul>
+                            <li><span class="of_sp1">*门诊名称：</span>
+                                <span class="of_sp2">
+                                    <input type="text" id="proName" placeholder="请输入门诊名称" class="300input">
+                                    <div class="wordNum"><label>0</label>/<label>20</label></div>
+                                </span>
+                            </li>
+                            <li>
+                                <span class="of_sp1">*门诊管家号：</span>
+                                <input type="text" id="cliManaNum" placeholder="请输入门诊管家号" class="w_300_input">
+                            </li>
+                            <li>
+                                <span class="of_sp1">*门诊电话：</span>
+                                <input type="text" id="cliPhoNum" placeholder="请输入门诊电话" class="w_300_input">
+                            </li>
+                            <li>
+                                <span class="of_sp1">*门诊星级：</span>
+                                <span class="of_sp2">
+                                    <div id="cliStar" class="slectDiv"></div>
+                                </span>
+                            </li>
+                            <li>
+                                <span class="of_sp1">*门诊地址：</span>
+                                <span class="of_sp2 add_of_sp2">
+                                    <div id="cliProvice" class="slectDiv1"></div>
+                                    <div id="cliCity" class="slectDiv2"></div>
+                                </span>
+                            </li>
+                            <li>
+                                <span class="of_sp1">&nbsp;</span>
+                                <span class="of_sp2">
+                                    <input type="text" id="cliAddress" placeholder="请输入详细地址" class="w_300_input">
+                                </span>
+                            </li>
+                            <li>
+                                <span class="of_sp1">*地图定位：</span>
+                                <span class="of_sp2">
+                                        <input type="text" id="addj" placeholder="请输入经度" class="addjw">
+                                        <input type="text" id="addw" placeholder="请输入纬度" class="addjw">
+                                </span>
+                            </li>
+                            <li>
+                                <span class="of_sp1">*营业时间：</span>
+                                <span class="of_sp2 add_of_sp2">
+                                    <div id="BeginDateWeek" class="slectDivSpe"></div>
+                                    <label>至</label>
+                                    <div id="EndDateWeek" class="slectDivSpe"></div><br><br>
+                                    <div id="BeginDateTime" class="slectDivSpe"></div>
+                                    <label>至</label>
+                                    <div id="EndDateTime" class="slectDivSpe"></div><br><br>
+                                    <div class="addNewTime">+新增营业时间</div>
+                                </span>
+                            </li>
+                            <li>
+                                <span class="of_sp1">*合同期限：</span>
+                                <span class="of_sp2 add_of_sp2">
+                                    <div id="BeginDate" class="calendar"></div>
+                                    <label>至</label>
+                                    <div id="EndDate" class="calendar"></div>
+                                </span>
+                            </li>
+                            <li>
+                                <span class="of_sp1">*合同产品包：</span>
+                                <span class="of_sp2 of_sp2_pac">
+                                    <input type="checkbox" id="packge1"><label>年度牙齿健康维护套餐</label>
+                                    <input type="checkbox" id="packge2"><label>年度牙齿健康高级维护套餐</label><br>
+                                    <input type="checkbox" id="packge3"><label>年度牙齿健康家庭维护套餐</label>
+                                </span>
+                            </li>
+                        </ul>
+                        <div class="add_save add_save_nct">
+                            <input type="button" id="add_cancel" value="取消">
+                            <input type="button" id="add_confim" value="确定">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+		{{template "../public/public/footer.html" .}}
+	</body>
+	{{template "../public/link/js_inc.html" .}}
+    <script type="text/javascript">
+		$(function(){
+            $("#BeginDate").yayigj_date_Sel();
+			$("#EndDate").yayigj_date_Sel();
+			
+			//加载页面获取当天日期
+			$("#BeginDate").getCurrday();
+			$("#EndDate").getCurrday();
+
+             $("#cliProvice").yayigj_downlist({    //门诊地址省份
+                _hiddenID:'clinicid2',
+                _valtype:'text',
+                _data:[
+                    {'key':'北京'},
+                    {'key':'上海'}
+                ]	 
+            });
+             $("#cliCity").yayigj_downlist({    //门诊地址城市
+                _hiddenID:'clinicid2',
+                _valtype:'text',
+                _data:[
+                    {'key':'城市A'},
+                    {'key':'城市B'}
+                ]	 
+            });
+            $("#BeginDateWeek,#EndDateWeek").yayigj_downlist({    //营业时间
+                _hiddenID:'clinicid2',
+                _valtype:'text',
+                _data:[
+                    {'key':'星期一'},
+                    {'key':'星期二'},
+                    {'key':'星期三'},
+                    {'key':'星期四'},
+                    {'key':'星期五'},
+                    {'key':'星期六'},
+                    {'key':'星期天'},
+                ]	 
+            });
+
+             $("#BeginDateTime,#EndDateTime").yayigj_downlist({    //营业时间
+                _hiddenID:'clinicid2',
+                _valtype:'text',
+                _data:[
+                    {'key':'12:44:40'},
+                    {'key':'15:44:40'}
+                ]	 
+            });
+
+             $("#cliStar").yayigj_downlist({    //门诊星级
+                _hiddenID:'clinicid2',
+                _valtype:'text',
+                _data:[
+                    {'key':'三星级'},
+                    {'key':'四星级'},
+                    {'key':'五星级'}
+                ]	 
+            });
+        })
+	</script>
+</html>

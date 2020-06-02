@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>支付宝申请用户列表</title>
+	<link href="/static/ant/css/calendarCommon.css" rel="stylesheet" type="text/css">
+	<link href="/static/ant/css/antManage.css" rel="stylesheet" type="text/css">
+	<script type="text/javascript" src="/static/ant/js/jquery-1.9.1.min.js"></script>
+    <style type="text/css">
+    	html,body{width:100%; height:100%;}
+    	body{background-color: #3c3c3c;}
+    </style>
+</head>
+<body>
+	<div class="container">
+		<!-- 左边：头部，左侧栏 -->
+		{{template "/ant/Public/antManLeftNav.html"}}
+		<!-- 右边：主体内容 -->
+		<div id="body_right">
+			{{template "/ant/Public/adminUserBtn.html"}}
+			<div id="mainBody">
+				<!-- 面包碎 -->
+				<ul class="breadcrumb">
+					<li>主页</li>
+					<li>支付宝申请账户列表</li>
+				</ul>
+				<div  id="mainContent">
+					<div class="title">
+						<h1>支付宝申请用户列表
+						<a id="excelUrl" href="/member/AlipayListTable?sendTimeStar=&sendTimeEnd=">Excel导出</a>
+						</h1>
+					</div>
+					<div id="search">
+							申请时间：<input name="sendTimeStar" id="sendTimeStar" type="text" data-f="cla2">至&nbsp;<input name="newsSendTime1" id="sendTimeEnd" type="text" data-f="cla2">
+							&nbsp;&nbsp;&nbsp;
+							套餐：<select name="type" value="" id="terminal">
+								<option value="" selected="selected">全部</option>
+								<option value="1">套餐一</option>
+								<option value="2">套餐二</option>
+								<option value="3">套餐三</option>
+								<option value="4">套餐四</option>
+								<option value="5">套餐五</option>
+								<option value="6">套餐六</option>
+								</select>
+							&nbsp;&nbsp;&nbsp;
+							单位性质：<select name="type" id="package">
+							<option value=""  selected="selected">全部</option>
+							<option value="1">个体工商户</option>
+							<option value="2">企业</option>
+							</select>
+							&nbsp;&nbsp;&nbsp;
+							状态：<select name="state" id="status">
+							<option value="" selected="selected">全部</option>
+							<option value="0">未开通</option>
+							<option value="1">已开通</option>
+							</select>
+							<br>
+							<input type="hidden" name="m" value="Admin">
+							<input name="newsTitle" type="text" id="txtFind" placeholder="请输入诊所名称/管家号/联系人/联系方式等关键词搜索" value=""><input type="submit" class="btn_find" value="搜索">
+					</div>
+					<div id="m">
+						<table border="0" cellspacing="1">
+							<thead>
+							<tr>
+								<th>申请编号</th>
+								<th>申请诊所/管家号</th>
+								<th>套餐</th>
+								<th>单位性质</th>
+								<th>申请时间</th>
+								<th>状态</th>
+								<th>联系人</th>
+								<th>联系方式</th>
+								<th>操作</th>
+							</tr>
+							</thead>
+							<tbody id="list">
+
+							<tbody>
+						</table>
+					</div>
+					<div class="table_footer">{{template "/ant/Public/pageInfo.html"}}</div>
+				</div>
+				<!-- title -->
+
+			</div>
+		</div>
+	</div>
+	<!--  -->
+	<div class="copyright">
+		<p>Copyright 2016  ©  www.dental360.cn. All Rights Reserved.</p>
+	</div>
+
+	<!-- 确定开通弹窗 -->
+	<input type="hidden" id="tmp"/>
+	<!-- 添加弹窗 -->
+	<div class="carrousel">
+		<div class="addDiv">
+			<h4>添加</h4>
+			<p>请在下方输入该用户的订单申请编号，该订单必须为未填写申请信息的订单！</p>
+			<input type="text" placeholder="订单申请编号">
+			<a href="javscript:void(0);" class="btn-default">下一步</a>
+			<a href="javscript:void(0);" class="btn-default-rev">取消</a>
+		</div>
+	</div>
+
+    <script type="text/javascript" src="/static/ant/js/placeholade.min.js"></script>
+	<script type="text/javascript" src="/static/ant/js/lyz.calendar.min.js"></script>
+	<script type="text/javascript" src="/static/ant/js/yg_call_ui_dialog.js"></script>
+	<script type="text/javascript" src="/static/ant/js/antManage.js"></script>
+
+
+	<script type="text/javascript">
+	isCurr_left(0);
+	$(document).ready(function(e) {
+	     var cj_api=null;
+	     var thisID='';
+	     var thisObj="";
+		 searchInfo(1,10);		//默认第一页
+
+		 $('.btn_find').click(function(){
+		 	searchInfo(1,10);
+			$(".pageCurr").val(1)
+		 })
+	});
+	//查询列表-渲染数据
+	function searchInfo(num,val){
+		var data={};
+		data.start_time=$("#sendTimeStar").val();	//起始时间
+		data.end_time=$("#sendTimeEnd").val();		//结束时间
+		data.per_page=val;	//每页数量
+		// data.page=parseInt($("#pageCurr").val());//页数
+		data.page=num;								//页数
+		data.ordertype=$("#terminal").val();			//套餐类型
+		data.type=$("#package").val();				//单位性质
+		data.status=$("#status").val();				//状态
+		data.conditon=$("#txtFind").val();			//输入框搜索条件
+
+		//清空没有数据的搜索条件
+		for(name in data){
+ 			if( data[name] == ''){
+ 				delete data[name];
+ 			}
+ 		}
+		$.ajax({
+            url: '/member/GetAlipaylist',
+            type: 'post',
+            dataType: 'json',
+            data:data
+        })
+        .done(function(re) {
+            if(re["code"]=='1' && re["list"]){
+            	var str='';
+            	console.log(re['list']);
+            	$("#list").empty();
+				$.each(re['list'],function(index,el){
+
+					var package = '套餐一';
+					var type = '个人商户';
+					var status = '';
+					var status_link = '';
+					var uid = '' +el.uid ;
+					var detail = '';
+					switch(el.ordertype){
+						case "1":
+						package = '套餐一';
+						break;
+						case "2":
+						package = '套餐二';
+						break;
+						case "3":
+						package = '套餐三';
+						break;
+						case "4":
+						package = '套餐四';
+						break;
+						case "5":
+						package = '套餐五';
+						break;
+						case "6":
+						package = '套餐六';
+						break;
+						case '':
+						package = '';
+						break;
+						default:
+						package = '';
+						break;
+					}
+					if(el.type == 1){
+						type = '个人商户';
+						detail = 'AlipayIndiDet';
+					}else{
+						type = '企业';
+						detail = 'AlipayCompDet';
+					};
+					if(el.status == 0){
+						status = '未开通';
+						status_link = '<p><a href="javascript:void(0);" onclick="Articledel(this,\''  + uid +  '\')">确认开通</a>';
+					}else{
+						status = '已开通';
+						status_link = '';
+					}
+
+
+					str+='<tr><td class="uid">'+el.uid+'</td>'+
+							'<td>'+
+								'<p>'+el.clinicname+'</p>'+
+								'<p>'+el.dentalid+'</p>'+
+							'</td>'+
+							'<td>'+	package + '</td>'+
+							'<td>'+ type + '</td>'+
+							'<td>'+ el.createtime + '</td>'+
+							'<td>'+  status +'</td>'+
+							'<td>'+ el.contact_name + '</td>'+
+							'<td>'+ el.contact_mobile + '</td>'+
+							'<td>'+
+								'<p><a href="/member/AlipayModify?uid=' + el.uid +'">修改</a></p><p><a href="/member/' + detail +'?uid=' + el.uid +'">查看详情</a></p>'+
+								status_link +
+							'</td>'+
+						'</tr>'
+				})
+				setPageList(re['totalcount']);
+				$("#list").empty().append(str);
+            }else{
+            	setPageList(re['totalcount']);
+            	$("#list").empty();
+            }
+		  })
+	}
+
+	//确定开通的弹窗
+	 $("#tmp").uiDialog({
+		  //digText:'已添加成功是否返回上一页',
+		  buttons:{
+		  	'width':'400px',
+		  	'no_btn_title':'取消',
+		  	"no_btn_event":function(){
+		  		cj_api.close();
+		  	},
+		  	'ok_btn_title':"确定开通",
+		  	'ok_btn_event':function(){
+		  		statusChange(thisObj,thisID);
+		  		cj_api.close();
+		  	}
+			}// end buttons
+			},function(){
+				cj_api=this;
+			});
+
+	function Articledel(obj,id){
+	 	thisObj=obj;
+	 	thisID=id;
+	 	cj_api.show({content:"提交后该申请状态将变为已开通，请确定是否开通",leftBtnTitle:"取消",rightBtnTitle:"确定开通"});
+	 }
+
+	function statusChange(obj,id){
+	 	var _this = $(obj);
+	 	var _status = _this.parent().parent().prev().prev().prev();
+
+	 	$.ajax({
+                url: '/member/Open',
+                type: 'POST',
+                dataType: 'json',
+                data: {uid:id}
+            })
+	 	.done(function(data) {
+	 		if(data.code ===1){
+	 			_this.addClass('hide');
+	 			_status.text("已开通");
+	 		}
+          })
+	 	.fail(function(err) {
+	 		alert("开通失败:"+err);
+	 	})
+	 	.always(function() {
+	 		_this.removeClass('load');
+	 	});
+
+	 }
+
+	//Calender插件
+	$("#sendTimeStar").on({
+		focus:function(){$(".calendar_ico").attr("src","/static/ant/img/calendar_ico2.png")},
+		blur:function(){$(".calendar_ico").attr("src","/static/ant/img/calendar_ico.png")},
+	})
+	$("#sendTimeStar").calendar({
+		callback: function () {
+			detectionDate();
+			$("#sendTimeStar").removeClass('active');
+		}
+	});
+	$("#sendTimeEnd").on({
+		focus:function(){$(".calendar_ico").attr("src","/static/ant/img/calendar_ico2.png")},
+		blur:function(){$(".calendar_ico").attr("src","/static/ant/img/calendar_ico.png")},
+	})
+	$("#sendTimeEnd").calendar({
+		callback: function () {
+			$("#sendTimeEnd").removeClass('active');
+			detectionDate();
+			//更新excelUrl参数
+			$("#excelUrl").attr("href","/member/AlipayListTable?sendTimeStar=" + $("#sendTimeStar").val() +"&sendTimeEnd=" +  $("#sendTimeEnd").val())
+		}
+
+	});
+
+	function GetQueryString(name){
+		var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+		var r = window.location.search.substr(1).match(reg);
+		if(r!=null)return  unescape(r[2]); return null;
+	}
+	function detectionDate(){
+		if($("#sendTimeStar").val() != '' && $("#sendTimeEnd").val()!=''){
+			var reg = new RegExp("-","g")
+			var start = $("#sendTimeStar").val().replace(reg,"");
+			console.log(start);
+			var end = $("#sendTimeEnd").val().replace(reg,"");
+			console.log(end);
+			if(start > end){
+				alert("结束时间不应可以早于开始时间!");
+				$("#sendTimeStar").val('');
+				$("#sendTimeEnd").val('');
+			}
+		}
+	}
+
+
+
+	</script>
+</body>
+</html>

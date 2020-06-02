@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>微课堂--上传</title>
+		{{template "../public/link/css_inc.html" .}}
+		<link href="/static/erp/college/css/user.css" rel="stylesheet" />
+		<link href="/static/erp/college/css/micro_upload.css" rel="stylesheet" />
+	</head>
+	<body>
+		{{template "../public/public/header.html" .}}
+		<div class="mainFrme">
+			{{template "../public/public/left.html" .}}
+			<div class="rightFrme">
+				<div class="crumbs"><a href="###">主页</a> > <a href="###">微课堂</a></div>
+				<input type="hidden" name="htag" value="0">
+				<div class="cont">
+					<div class="pageHeader"><a href="/butlerp/college/weclasspage">微课堂</a><span>BANNER</span></div>
+					<input type="hidden" id="TeacherPicture_chain" name="TeacherPicture_chain"  value="" />
+					    <img  id="ImgChain" src="/static/erp/college/img/login/play.png" width="500px" style="padding:30px;"/>
+						<input type="hidden" id="pic_lince" name="pic_lince" /><br>
+						<a href="javascript:;" class="file" style="padding:30px;color: #000;text-decoration: none;">上传图片2&nbsp;&nbsp;&nbsp;&nbsp;<input type="file" id="upload2" /></a> 
+					    <!-- <a href="javascript:;" class="file" style="padding:30px;color: #000;text-decoration: none;">上传图片&nbsp;&nbsp;&nbsp;&nbsp;<input type="file" id="upload" /></a> -->
+					    <div id='img_url' data-id="" style="display: none">aaaa</div>
+					<div class="submit_from">
+		             <input type="submit" class="fillBtn" id="fillBtn_set" name="" value="确定">
+		             <!-- <input type="submit" class="cancelBtn" id="cancelBtn_set" name="" value="取消"> -->
+		        </div>
+				</div>
+			</div>
+
+		</div>
+		{{template "../public/public/footer.html" .}}
+	</body>
+	{{template "../public/link/js_inc.html" .}}
+	<link rel="stylesheet" type="text/css" href="/static/account/js/css/jquery.Jcrop.min.css" />
+	<script src="/static/account/js/jquery.Jcrop.min.js"></script><!--必须库-->
+    <script src="/static/public/yayigj_upload_crop.js"></script><!--上传核心代码-->
+    <script src="/static/public/yayigj_date_sel.js"></script>
+    <script src="/static/market/js/coupon.js"></script>
+	<script>
+	var cropApi=null;
+			$("#upload2").localUploadYaYigj({
+				//picWidth:400,
+				//picHeight:300,
+                imgPathID:'#TeacherPicture_chain',  //上传成功后返回路径放到哪个控件
+                imgPathPIC:'#ImgChain',							  //上传成功后预览图片控件
+                pic_ext:'#pic_lince',						
+                uploadPath:'',
+                scaleRatio:1.75,
+                //aspectRatio:5.5,
+                uploadCallBack:uploadBackFuc,
+				isCrop:true  //是否支持裁剪
+            },function(){
+                cropApi=this;
+            });	
+
+    $('#fillBtn_set').off('click').on('click',function(){
+    	var url11 = $('#img_url').attr('data-id');
+        $.ajax({
+	        type:"POST",
+	        url: '/butlerp/college/savebanner',
+	        dataType:"json",
+	        data:{
+	            "url":url11
+	        },
+	        beforeSend: function(){},
+	        success: function(json){
+	            if(json.code==1){
+	            	jQuery.postFail('fadeInUp','上传成功');
+	            }
+	        },
+	        error:function(json){
+	            jQuery.postFail("fadeInUp",json.info);
+	        }
+	    });
+    })
+    // $("#upload2").localUpfileNoGzip({
+    //     uploadCallBack:function(data){
+    //        // console.log('data=',data);	
+    //        uploadBackFuc(data);
+    //     }
+    //     },function(api){
+    //         console.log(api);
+    //     });
+
+//function uploadBackFuc(parmas){
+function uploadBackFuc(parmas){
+     var imgsrc=parmas.picdata,
+         imgext=parmas.type;
+        //console.log(parmas);
+    $.ajax({
+        type:"POST",
+        url:"/butlerp/college/imageupload",
+        dataType:"json",
+        data:{
+            picdata:imgsrc,
+            ext:imgext
+        },
+        beforeSend: function(){
+            jQuery.loading('加载中',1);
+        },
+        success: function(json){
+            var terType=$("input[name='HTerminal']").val();//终端
+            var secType=$("input[name='HSection']").val();//版块
+            var url=json.list.url.replace(/\u0026/g,"&");
+            $('#img_url').attr('data-id',url);
+            $("#banner"+terType+secType).attr("src",url);
+            $("#TeacherPicture"+terType+secType).val(json.list.id);
+            $("#TeacherPicture"+terType+secType).attr("data-url",url);
+        },
+        error: function(json){jQuery.postFail("fadeInUp",json.info)},
+        complete: function(json){
+            jQuery.loading_close();
+        }
+    })
+}
+
+
+	</script>
+</html>

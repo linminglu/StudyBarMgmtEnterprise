@@ -1,0 +1,35 @@
+<div class="r_header">
+	<div class="r_headerMenu r_headerMenuDown">
+		<input id="RightList" type="hidden" value="{{.RightList}}" />
+	</div>
+	<div class="r_user r_userDown">{{.ChainUserName}}</div>
+	
+		<div class="r_login r_loginType2">{{.ChainName}}</div>
+
+    <div class="r_select">
+	    <ul></ul>
+	</div>
+	<div class="r_userInfo">
+		<div class="r_userDetail">
+			<p>{{.ChainName}}</p>
+			<p>{{.ChainUserName}}</p>
+		</div>
+		<div class="r_userTitle">个人中心</div>
+		<div class="r_userImg" onclick="javascript:window.open('/member/GetPerinfo')">
+			
+				<span class="sp1"><img src="{{.HeadImg}}"></span>
+		
+			<span class="sp2">
+				<p>上次登录</p>
+				<p class="p1">{{.LastLoginTime}}</p>
+			</span>
+		</div>
+		<div class="r_userOperation">
+			<div class="r_uoItem1"><a href="/member/member_per_info" target="_blank">个人信息</a></div>
+			<div class="r_uoItem2"><a href="/member/change_per_phone" target="_blank">更换手机</a></div>
+			<div class="r_uoItem3"><a href="/member/ChangePwdEnter" target="_blank">修改密码</a></div>
+			<div class="r_uoItem4"><a href="/logout">退出登录</a></div>
+		</div>
+		<div class="r_userFooter"></div>
+	</div>
+</div>

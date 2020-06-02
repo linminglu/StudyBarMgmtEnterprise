@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>微信申请用户列表</title>
+	<link href="/static/ant/css/calendarCommon.css" rel="stylesheet" type="text/css">
+	<link href="/static/ant/css/antManage.css" rel="stylesheet" type="text/css">
+	<script type="text/javascript" src="/static/ant/js/jquery-1.9.1.min.js"></script>
+    <style type="text/css">
+    	html,body{width:100%; height:100%;}
+    	body{background-color: #3c3c3c;}
+    </style>
+</head>
+<body>
+	<div class="container">
+		<!-- 左边：头部，左侧栏 -->
+		{{template "/ant/Public/antManLeftNav.html"}}
+		<!-- 右边：主体内容 -->
+		<div id="body_right">
+			{{template "/ant/Public/adminUserBtn.html"}}
+			<div id="mainBody">
+				<!-- 面包碎 -->
+				<ul class="breadcrumb">
+					<li>主页</li>
+					<li>微信申请用户列表</li>
+				</ul>
+				<div  id="mainContent">
+					<div class="title">
+						<h1>微信申请用户列表
+							<a id="excelUrl" href="/member/WechatListTable?sendTimeStar=&sendTimeEnd=">Excel导出</a>
+						</h1>
+					</div>
+					<div id="search">
+							申请时间：<input name="sendTimeStar" id="sendTimeStar" type="text" data-f="cla2">至&nbsp;<input name="newsSendTime1" id="sendTimeEnd" type="text" data-f="cla2">
+							&nbsp;&nbsp;&nbsp;
+							套餐：<select name="type" value="" id="terminal">
+								<option value="" selected="selected">全部</option>
+								<option value="1">套餐一</option>
+								<option value="2">套餐二</option>
+								<option value="3">套餐三</option>
+								<option value="4">套餐四</option>
+								<option value="5">套餐五</option>
+								<option value="6">套餐六</option>
+								</select>
+							&nbsp;&nbsp;&nbsp;
+							状态：<select name="state" id="status">
+							<option value="" selected="selected">全部</option>
+							<option value="0">待绑定</option>
+							<option value="1">已绑定</option>
+							</select>
+							<input type="hidden" name="m" value="Admin">
+							<input name="newsTitle" type="text" id="txtFind" placeholder="请输入诊所名称/管家号/联系人/联系方式等关键词" value=""><input type="submit" class="btn_find" value="搜索">
+					</div>
+					<div id="m">
+						<table border="0" cellspacing="1">
+							<thead>
+							<tr>
+								<th>申请编号</th>
+								<th>申请诊所/管家号</th>
+								<th>套餐</th>
+								<th>服务号</th>
+								<th>申请时间</th>
+								<th>状态</th>
+								<th>联系人</th>
+								<th>联系方式</th>
+								<th>操作</th>
+							</tr>
+							</thead>
+							<tbody id="list"></tbody>
+						</table>
+					</div>
+					<div class="table_footer">{{template "/ant/Public/pageInfo.html"}}</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<!-- copyright -->
+	<div class="copyright">
+		<p>Copyright 2016  ©  www.dental360.cn. All Rights Reserved.</p>
+	</div>
+
+	<!-- 确定开通弹窗 -->
+	<input type="hidden" id="tmp" />
+
+
+	<script type="text/javascript" src="/static/ant/js/placeholade.min.js"></script>
+	<script type="text/javascript" src="/static/ant/js/lyz.calendar.min.js"></script>
+	<script type="text/javascript" src="/static/ant/js/table2Excel/jquery.base64.js"></script>
+	<script type="text/javascript" src="/static/ant/js/table2Excel/tableExport.js"></script>
+	<script type="text/javascript" src="/static/ant/js/yg_call_ui_dialog.js"></script>
+	<script type="text/javascript" src="/static/ant/js/antManage.js"></script>
+	<script type="text/javascript">
+	isCurr_left(1);
+	$(document).ready(function(e) {
+	     var cj_api=null;
+	     var thisID='';
+	     var thisObj="";
+		 searchInfo(1,10);		//默认第一页
+
+		 $('.btn_find').click(function(){
+		 	searchInfo(1,10);
+			$(".pageCurr").val(1)
+		 })
+	});
+	//查询列表-渲染数据
+	function searchInfo(num,val){
+		var data={};
+		data.start_time=$("#sendTimeStar").val();	//起始时间
+		data.end_time=$("#sendTimeEnd").val();		//结束时间
+		data.per_page=parseInt($("#rows_n").val());	//每页数量
+		// data.page=parseInt($("#pageCurr").val());//页数
+		data.page=num;								//页数
+		data.ordertype=$("#terminal").val();			//套餐类型
+		data.type=$("#package").val();				//单位性质
+		data.status=$("#status").val();				//状态
+		data.conditon=$("#txtFind").val();			//输入框搜索条件
+
+		//清空没有数据的搜索条件
+		for(name in data){
+ 			if( data[name] == ''){
+ 				delete data[name];
+ 			}
+ 		}
+		$.ajax({
+            url: '/member/GetWechatList',
+            type: 'post',
+            dataType: 'json',
+            data:data
+        })
+        .done(function(re) {
+        	$("#list").empty();
+            if(re["code"]=='1'  && re["list"]){
+            	var str='';
+            	console.log(re['list']);
+				$.each(re['list'],function(index,el){
+
+					var package = '套餐一';
+					var status = '';
+					var status_link = '';
+					var uid = '' +el.uid ;
+					switch(el.ordertype){
+						case "1":
+						package = '套餐一';
+						break;
+						case "2":
+						package = '套餐二';
+						break;
+						case "3":
+						package = '套餐三';
+						break;
+						case "4":
+						package = '套餐四';
+						break;
+						case "5":
+						package = '套餐五';
+						break;
+						case "6":
+						package = '套餐六';
+						break;
+						case '':
+						package = '';
+						break;
+						default:
+						package = '';
+						break;
+					}
+					if(el.status == 0){
+						status = '待绑定';
+						status_link = '<p><a href="javascript:void(0);" onclick="Articledel(this,\''  + uid +  '\')">确认绑定</a>';
+					}else{
+						status = '已绑定';
+						status_link = '';
+					}
+
+					str+='<tr><td class="uid">'+el.uid+'</td>'+
+							'<td>'+
+								'<p>'+el.clinicname+'</p>'+
+								'<p>'+el.dentalid+'</p>'+
+							'</td>'+
+							'<td>'+	package +'</td>'+
+							'<td>'+	el.wechatid +'</td>'+
+							'<td>'+ el.createtime + '</td>'+
+							'<td>'+ status +'</td>'+
+							'<td>'+ el.contactname + '</td>'+
+							'<td>'+ el.contactmobile + '</td>'+
+							'<td>'+
+								'<p><a href="/member/WechatModify?uid=' + el.uid +'">修改</a></p><p><a href="/member/WechatDetail?uid=' + el.uid +'">查看详情</a></p>'+
+								status_link +
+							'</td>'+
+						'</tr>'
+				})
+				setPageList(re['totalcount']);
+				$("#list").empty().append(str);
+            }else{
+            	setPageList(re['totalcount']);
+            	$("#list").empty();
+            }
+		  })
+	}
+
+	//确定开通的弹窗
+	 $("#tmp").uiDialog({
+		  //digText:'已添加成功是否返回上一页',
+		  buttons:{
+		  	'width':'400px',
+		  	'no_btn_title':'取消',
+		  	"no_btn_event":function(){
+		  		cj_api.close();
+		  	},
+		  	'ok_btn_title':"确定绑定",
+		  	'ok_btn_event':function(){
+		  		statusChange(thisObj,thisID);
+		  		cj_api.close();
+		  	}
+			}// end buttons
+			},function(){
+				cj_api=this;
+			});
+
+	function Articledel(obj,id){
+	 	thisObj=obj;
+	 	thisID=id;
+	 	cj_api.show({content:"提交后该申请状态将变为已绑定，请确定是否绑定",leftBtnTitle:"取消",rightBtnTitle:"确定绑定"});
+	 }
+
+	function statusChange(obj,id){
+	 	var _this = $(obj);
+	 	var _status = _this.parent().parent().prev().prev().prev();
+	 	console.log(id);
+	 	$.ajax({
+                url: '/member/Bind',
+                type: 'POST',
+                dataType: 'json',
+                data: {uid:id}
+            })
+	 	.done(function(data) {
+	 		console.log(data);
+	 		if(data.code ===1){
+	 			_this.addClass('hide');
+	 			_status.text("已绑定");
+	 		}
+          })
+	 	.fail(function(err) {
+	 		alert("绑定失败:"+err);
+	 	})
+	 	.always(function() {
+	 		_this.removeClass('load');
+	 	});
+
+	 }
+
+	//Calender插件
+	$("#sendTimeStar").on({
+		focus:function(){$(".calendar_ico").attr("src","/static/ant/img/calendar_ico2.png")},
+		blur:function(){$(".calendar_ico").attr("src","/static/ant/img/calendar_ico.png")},
+	})
+	$("#sendTimeStar").calendar({
+		callback: function () {
+			detectionDate();
+			$("#sendTimeStar").removeClass('active');
+		}
+	});
+	$("#sendTimeEnd").on({
+		focus:function(){$(".calendar_ico").attr("src","/static/ant/img/calendar_ico2.png")},
+		blur:function(){$(".calendar_ico").attr("src","/static/ant/img/calendar_ico.png")},
+	})
+	$("#sendTimeEnd").calendar({
+		callback: function () {
+			detectionDate();
+			$("#sendTimeEnd").removeClass('active');
+			//更新excelUrl参数
+			$("#excelUrl").attr("href","/member/WechatListTable?sendTimeStar=" + $("#sendTimeStar").val() +"&sendTimeEnd=" +  $("#sendTimeEnd").val())
+		}
+	});
+	function detectionDate(){
+		if($("#sendTimeStar").val() != '' && $("#sendTimeEnd").val()!=''){
+			var reg = new RegExp("-","g")
+			var start = $("#sendTimeStar").val().replace(reg,"");
+			console.log(start);
+			var end = $("#sendTimeEnd").val().replace(reg,"");
+			console.log(end);
+			if(start > end){
+				alert("结束时间不应可以早于开始时间!");
+				$("#sendTimeStar").val('');
+				$("#sendTimeEnd").val('');
+			}
+		}
+	}
+
+
+	function GetQueryString(name){
+		var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+		var r = window.location.search.substr(1).match(reg);
+		if(r!=null)return  unescape(r[2]); return null;
+	}
+	</script>
+</body>
+</html>

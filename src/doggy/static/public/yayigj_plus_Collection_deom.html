@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>插件拖动</title>
+<style type="text/css">
+*{font-family:微软雅黑}
+</style>
+</head>
+<body>
+		<button id="loading_doing" style="position:absolute;z-index:110;left:330px; top:10px">正在加载</button>
+		<button id="loading_close" style="position:absolute;z-index:110;left:400px; top:10px">关闭加载</button>
+        <button id="pop_window" style="position:absolute;z-index:110;left:150px; top:10px">弹窗</button>
+        <button id="pop_window_close" style="position:absolute;z-index:110;left:200px; top:10px">关弹窗</button>
+        <button id="pop_div_info" style="position:absolute;z-index:110;left:260px; top:10px">信息bar</button>
+        <button id="pop_div_type" style="position:absolute;z-index:110;left:480px; top:10px">div打开</button>
+        <button id="pop_div_type_close" style="position:absolute;z-index:110;left:540px; top:10px">div关闭</button>
+        
+        <div id="zlb_div" style="width:500px; height:400px; border:solid 1px #ccc; border-radius:5px; margin:100px auto; box-shadow:2px 2px 5px #ccc" class="mydiv"></div>        
+		<script src="jquery-1.9.1.min.js"></script>
+		<script language="javascript" src="yayigj_plus_Collection.js"></script>
+        <script language="javascript">
+		
+		  //var suCs=jQuery.isIE();  
+		  //alert(suCs);
+		
+		    //预先创建动画样式
+			jQuery.createAniCss();
+			
+			//div套用动画样式
+			$("#pop_div_type_close").click(function(){
+				jQuery.setDivPopEffectClose({
+					id:'zlb_div',
+					closeMothod:'fadeOutUp'
+					});
+			});
+			
+			//div套用动画样式关闭
+			$("#pop_div_type").click(function(){
+				jQuery.setDivPopEffect({
+					id:'zlb_div',
+					openMothod:'fadeInDown'
+					});
+			});
+			
+			//加载进度插件 demo
+			$("#loading_doing").click(function(){
+				jQuery.pop_info_loading({
+				width:'200px',
+				height:'100px',
+				_isAutoClose:false
+				}); 
+				});	    
+			
+			
+			//关闭加载	
+			$("#loading_close").click(function(){
+				jQuery.pop_info_loading_close({_closemothod:'fadeOutUp'});
+				});	
+				
+			//模式弹出窗	
+			$("#pop_window").click(function(){
+				$("#loading_close").trigger('click');
+				
+				jQuery.pop_window_modal_dialog({
+					_popmothod:'fadeInUp', //bounceInDown,fadeInUp,fadeInDown',
+					_closemothod:'fadeOutUp', //fadeOutUp,fadeOutDown
+					_okEvent:function(){
+						alert('ok');
+						},
+					_cancelEvent:function(){
+						alert('取消');
+						jQuery.pop_window_modal_dialog_close({_closemothod:'fadeOutUp'});
+						}	
+					});
+				});		
+				
+			//关闭弹出窗		
+			$("#pop_window_close").click(function(){
+				jQuery.pop_window_modal_dialog_close({
+					_closemothod:'fadeOutUp'
+					});
+				});		
+				
+				
+				$("#pop_div_info").click(function(){
+					//参数:bounceInDown,fadeInUp,fadeInDown
+					jQuery.popdivAnim('fadeInUp','您的验证码已发送，请耐心等待。'); 
+					});
+					
+					function getTime() {  
+					var ts = arguments[0] || 0;  
+					var t,y,m,d,h,i,s;  
+					t = ts ? new Date(ts*1000) : new Date();  
+					y = t.getFullYear();  
+					m = t.getMonth()+1;  
+					d = t.getDate();  
+					h = t.getHours();  
+					i = t.getMinutes();  
+					s = t.getSeconds();  
+					return y+'-'+(m<10?'0'+m:m)+'-'+(d<10?'0'+d:d)/*+' '+(h<10?'0'+h:h)+':'+(i<10?'0'+i:i)+':'+(s<10?'0'+s:s)*/;  
+				} 
+				
+				//alert(getTime(1404276301)); 
+		</script>
+</body>
+</html>

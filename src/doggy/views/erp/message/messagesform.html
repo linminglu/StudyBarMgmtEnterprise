@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>新建消息</title>
+		{{template "../public/link/css_inc.html" .}}
+		<link rel="stylesheet" type="text/css" href="/static/account/js/css/jquery.Jcrop.min.css" />
+		<link href="/static/erp/css/message.css?ver=2018122001" rel="stylesheet" />
+	</head>
+	<body>
+		<div class="pop_bg"></div>
+		<div id="Tabpop" class="pop_div">
+			<p>消息类型切换后，编辑内容将被清空，请确定是否切换？</p>
+			<p><input type="button" value="取消" class="btn_nf" onclick="closepop()"><input type="button" value="确定" class="btn_bf" onclick="tabclear()"></p>
+		</div>
+		{{template "../public/public/header.html" .}}
+			<div class="mainFrme">
+				{{template "../public/public/left.html" .}}
+				<div class="rightFrme">
+					<!--我是主体内容-->
+                    <div class="crumbs"><a href="/butlerp/dashboard">主页</a> > <a href="/butlerp/message">消息推送</a> > <a href="javascript:;" id="editA">新建消息</a></div>
+					<input type="hidden" name="htag" value="3"> <!--隐藏的标记，用来判断左边的显影-->
+					<div class="container">
+						 <h2>基本信息</h2>
+						 <div class="basicinfo">
+							 <div id="MsgType">
+								 <b>*消息类型：</b>
+								 <!--<span class="mstype"><img src="/static/erp/img/sex_radios2.png" alt="">文字消息</span>-->
+							 	 <!-- <span class="mstype"><img src="/static/erp/img/sex_radios.png" alt="">图文链接</span> -->
+								  <input type="radio" name="mstype" checked="true"  value="1"/><span style = "margin-right: 15px; margin-left:  5px; ">图文链接</span>
+								  <input type="radio" name="mstype"  value="2" /><span style = "margin-right: 15px; margin-left:  5px; ">系列课</span>
+								  <input type="radio" name="mstype"  value="3" /><span style = "margin-right: 15px; margin-left:  5px; ">单课程</span>
+							</div>
+							 <div><b>*消息标题：</b><textarea placeholder="请添加标题" id="title" rows="1" maxlength="20" wrap="nowrap"></textarea><span class="tips">20/20</span></div>
+							 <div><b>*描述：</b><textarea maxlength="50" name="textarea" id="description"></textarea><span class="tips">50/50</span></div>
+							 <!--<div><b>*信息内容：</b><textarea  maxlength="500" id="info"></textarea><span class="tips">500/500</span></div>-->
+							 <div><b id="Alink">*链接：</b><input type="text" id="hiddenHref" /><a href="javascript:;" class="file" id="file_a" target="_blank">预览</a>
+								<input class="new_button" type="button" id="xlserver" style="display: none;" onclick="addseries('1')" value="选择系列课"/>
+								<input class="new_button" type="button" id="dserver" style="display: none;" onclick="addseries('2')" value="选择单课程"/>
+							</div>
+						 </div>
+					</div>
+					<div class="container">
+						<h2>发送选择</h2>
+						<div class="sendinfo">
+							<div class="sendtime" id="Sendselec">
+								<!--<b>发送时间：</b><input type="radio" name="time" value="0" id="Now" checked='checked'><label for="Now">手动发送</label><input type="radio" id="Regularly" value="1" name="time"><label for="Regularly">定时发送</label>-->
+								<!--<input type="text" id="SendTime" readonly="true" name="calendar"><input  class="hours" name="hours" type="text" id="Hours" readonly/><input type="text" name="minutes" id="Minutes" class="minutes" readonly/>-->
+							</div>
+							<div class="info_valid">	
+								<li><b>信息有效时间：</b><input type="text"  readonly name="calendar" id="InfoStime">&nbsp;&nbsp;--&nbsp;&nbsp;<input type="text" id="InfoEtime" readonly name="calendar">
+							</div>
+							<!-- 发送对象 -->
+							<div class="send_obj">
+								<div class="obj_title">发送对象:</div>
+								<div class="obj_content">
+								   <div>
+									  <input type="radio" name="sendobj" id="sendobj1" checked value="sendobj1" onclick="changeObj()">
+									  <label for="sendobj1">所有APP端用户<span>(注册过牙医管家app的用户)</span></label>
+								   </div>
+								   <div>
+									   <input type="radio" name="sendobj" id="sendobj2" value="sendobj2" onclick="changeObj()">
+									   <label for="sendobj2">指定门诊角色</label>
+								   </div>
+								</div>
+						   </div>
+						   	<!--门诊筛选、pc端使用情况、排除选择-->
+						    <div class="select_div" id="SelecOl" style="display:none">
+								<ul class="tab_div" id="TabLi">
+									<li data-flag='1'>门诊筛选</li>
+									<!--<li>PC端使用情况</li>-->
+									<!--<li>排除选择</li>-->
+								</ul>
+								<!--门诊筛选-->
+								<ol class="clinic">
+									<li id="PVersion"><b>发布版本：</b><input type="radio" name="version" id="v1" value="0"><label for="v1">全部</label><input type="radio" name="version" id="v2" value="1"><label for="v2">标准版</label><input type="radio" name="version" id="v3" 
+												value="2"><label for="v3">专业版</label></li>
+									<!--<li class="sendtype">
+										<b>经销商选择：</b><input type="text" id="Dealers" readonly>
+									</li>-->
+									<!--<li><b>创建时间：</b><input type="text" id="Stime" readonly name="calendar">&nbsp;&nbsp;--&nbsp;&nbsp;<input type="text" id="Etime" readonly name="calendar"></li>-->
+									<!--<li>
+										<b>地区：</b>
+										<div class="area">
+											<div class="area_selc">
+												<div id="province" class="place_selc"></div>
+												<div id="city" class="place_selc"></div>
+												<input type="button" value="确认添加" class="c5b5" id="Addarea" />
+												<input type="button" value="Excel导入" id="Excel" />-->
+												<!--<input type="file" id="ExcelFile">
+											</div>
+											<div class="area_result" id="area_result">
+												
+											</div>
+											<div class="area_num">您选择的地区共<span id="AreaNum">0</span>个<span id="ClearAll" class="clear">清空全部</span></div>
+										</div>
+									</li>-->
+									<li>
+										<b>管家号：</b>
+										<div class="area">
+											<div class="area_selc">
+												<input type="text" id="ButlerNo" placeholder="请输入管家号"  id="Addnum" ><input type="button" class="c5b5" value="确认添加" id="Addnum"><input type="file" id="ExcelFile2">
+												<input type="button" value="Excel导入" />
+											</div>
+											<div class="area_result" id="DentalID">
+											
+											</div>
+											<div class="area_num">您选择的门诊共<span id="DentalNum">51138</span>家（注意：展示框最多展示20家诊所）<span id="ClearAll" class="clear">清空全部</span></div>
+										</div>
+									</li>
+									<li>
+										<b>门诊角色：</b>
+										<div class="role" id="role">
+											<!--<span class="role_item"><input type="checkbox" id="All" value="1"><label for="All">服务器</label></span>-->
+											<span class="role_item"><input type="checkbox" id="All" value="1"><label for="All">全部</label></span>
+											<span class="role_item"><input type="checkbox" id="c1" value="100"><label for="c1">老板</label></span>
+											<span class="role_item"><input type="checkbox" id="c2" value="200"><label for="c2">主任</label></span>
+											<span class="role_item"><input type="checkbox" id="c3" value="300"><label for="c3">医生</label></span>
+											<span class="role_item"><input type="checkbox" id="c4" value="400"><label for="c4">咨询师</label></span>
+											<span class="role_item"><input type="checkbox" id="c10" value="500"><label for="c10">护士</label></span>
+											<span class="role_item"><input type="checkbox" id="c11" value="600"><label for="c11">前台</label></span>
+											<span class="role_item"><input type="checkbox" id="c5" value="700"><label for="c5">客服</label></span>
+											<span class="role_item"><input type="checkbox" id="c6" value="800"><label for="c6">库房</label></span>
+											<span class="role_item"><input type="checkbox" id="c7" value="900"><label for="c7">技工</label></span>
+											<span class="role_item"><input type="checkbox" id="c8" value="1000"><label for="c8">人事</label></span>
+											<span class="role_item"><input type="checkbox" id="c9" value="1100"><label for="c9">行政</label></span>
+											<span class="role_item"><input type="checkbox" id="c12" value="1200"><label for="c12">财务</label></span>
+											<span class="role_item"><input type="checkbox" id="c13" value="1300"><label for="c13">市场  </label></span>
+										</div>
+									</li>
+								</ol>
+								<!--pc端使用情况-->
+								<!--<ol class="pc">
+									<li><b>使用日期：</b><input type="text" readonly name="calendar">&nbsp;&nbsp;--&nbsp;&nbsp;<input type="text" readonly name="calendar"></li>
+									<li>
+										<b>数据提交天数：</b>
+										<select name="" id=""><option>1</option></select>天
+										<b class="ml93">患者数据提交天数：</b><select name="" id=""><option>2</option></select>
+									</li>
+									<li>
+										<b>通信天数：</b><select name="" id=""><option>1</option></select>
+									</li>
+									<li><b>增值产品使用：</b>
+										<div class="role"  id="Product">
+											<span class="role_item"><input type="checkbox" id="All"><label for="All">全部</label></span>
+											<span class="role_item"><input type="checkbox" id="1"><label for="1">医患沟通</label></span>
+											<span class="role_item"><input type="checkbox" id="2"><label for="2">电话盒</label></span>
+										</div>
+									</li>
+								</ol>-->
+								<!--排除选择-->
+								<!--<ol class="select_exclude">
+									
+									<li><b>已发送用户：</b>从今日起<input type="text" id="ExceptS" readonly class="except_selc">天  <b class="ml33">已发送信息数</b><input class="except_selc" type="text" id="ExceptE" readonly>条</li>
+								</ol>-->
+								<!--总计-->
+								<!--<div class="total_num">
+									<b>总计：</b>
+									<p class="total">
+										<span id="Cnum" >2381</span>家门诊&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										&nbsp;&nbsp;&nbsp;&nbsp;<span id="Receiver">2381</span>个接收端
+									</p>
+									<p class="detail">
+										PC端标准版-消息中心<span id="Ms">(7423)</span>
+										PC端标准版-弹窗提醒<span id="Pop">(7423)</span>
+										web-系统消息<span id="Web">(5432)</span>
+									</p>
+								</div>-->
+							</div>
+							<div class="sendselect">
+								<b class="fl">*发送渠道：</b>
+								<div class="sendchannel fl">
+									<div class="select_li fl" id="TabContent">
+										<input type="hidden" name="HTerminal" value="1" />
+										<input type="hidden" name="HSection" value="1"/>
+										<input type="hidden" name="HNum" value="0"/>
+										<li>
+											<b>渠道选择：</b><input type="text" name="Terminal" id="Terminal" class="input_select" readonly='true'><input type="text" name="Section" id="Section" class="input_select" readonly='true'><input type="button" value="取消" /><input type="button" id="AddChannel" value="确认添加" class="c5b5 mr0"/> 
+										</li>
+										<!--文字-->
+										<!-- <div class="select_types">
+											<li>
+												<b>置顶显示：</b><input type="radio" value="1" name="top" id="Y"><label for="Y">是</label><input type="radio" value="2" name="top" id="N" class="ml36"><label for="N" class="mr75">否</label>
+												注意：置顶显示默认为2天
+											</li>
+										</div> -->
+										
+										<!--PC端登录页海报/ (消息中心/弹窗提醒)/服务器弹窗提醒-->
+										<div class="select_types" id="PC11"> 
+											<li>
+												<b>海报图：</b>
+												<input type="hidden"  name="pic_ext"  value="" />
+												<img src="/static/erp/img/profile/add_pic.png" id="banner11" class="show_img">
+												<a href="javascript:;" class="up_img"><input type="file" name="up_load" id="up_load11"  accept="image/jpeg" class="up_load" /></a>
+												<input type="hidden"  name="TeacherPicture"  id="TeacherPicture11" />
+												<span class="btips">提供照片尺寸为<span id="PBtips">560*445</span>px,不超过5M(.jpg 格式)</span></li>
+										</div>
+										<div class="select_types" id="PC14"> 
+											<li>
+												<b>海报图：</b>
+												<input type="hidden"  name="pic_ext"  value="" />
+												<img src="/static/erp/img/profile/add_pic.png" id="banner14" class="show_img">
+												<a href="javascript:;" class="up_img"><input type="file" name="up_load" id="up_load14" class="up_load" /></a>
+												<input type="hidden"  name="TeacherPicture"  id="TeacherPicture14" />
+												<span class="btips">提供照片尺寸为<span id="PBtips">260*240</span>px,不超过5M(.jpg 格式)</span></li>
+										</div>
+
+										<!--app登录广告/消息中心/首页广告-->
+										<div class="select_types" id="App21">
+											<li>
+												<b>*活动封面：</b>
+												<input type="hidden"  name="pic_ext"  value="" />
+												<img src="/static/erp/img/profile/add_pic.png" id="banner21" class="show_img" >
+												<a href="javascript:;" class="up_img"><input type="file"  class="up_load" id="up_load21"  name="up_load" /></a>
+												<input type="hidden"  name="TeacherPicture"  id="TeacherPicture21" />
+												<span class="btips">提供照片尺寸为<span id="ABtips">640*916</span>px,不超过5M(.jpg格式)</span>
+											</li>
+										</div>
+										<div class="select_types" id="App22">
+											<li>
+												<b>*活动封面：</b>
+												<input type="hidden"  name="pic_ext"  value="" />
+												<img src="/static/erp/img/profile/add_pic.png" id="banner22" class="show_img" >
+												<a href="javascript:;" class="up_img"><input type="file"  class="up_load" id="up_load22"  name="up_load" /></a>
+												<input type="hidden"  name="TeacherPicture"  id="TeacherPicture22" />
+												<span class="btips">提供照片尺寸为<span id="ABtips">600*240</span>px,不超过5M(.jpg格式)</span>
+											</li>
+										</div>
+										<div class="select_types" id="App23">
+											<li>
+												<b>*活动封面：</b>
+												<input type="hidden"  name="pic_ext"  value="" />
+												<img src="/static/erp/img/profile/add_pic.png" id="banner23" class="show_img" >
+												<a href="javascript:;" class="up_img"><input type="file"  class="up_load" id="up_load23"  name="up_load" /></a>
+												<input type="hidden"  name="TeacherPicture"  id="TeacherPicture23" />
+												<span class="btips">提供照片尺寸为<span id="ABtips"> 640*90</span>px,不超过5M(.jpg格式)</span>
+											</li>
+										</div>
+									</div>
+
+									<!--官网首页海报/登陆页海报-->
+									<div class="select_types" id="OffWeb" style="display:none">
+										<li>
+											<b>*海报图：</b>
+											<input type="hidden"  name="pic_ext"  value="" />
+											<img src="/static/erp/img/profile/add_pic.png" alt="" class="show_img" >
+											<a href="javascript:;" class="up_img"><input type="file"  class="up_load" data-id="1"  name="up_load" /></a>
+											<input type="hidden"  name="TeacherPicture"  value="" />
+											<span class="btips">提供照片尺寸为<span id="Btips">450x320</span>px,不超过5M(.jpg格式)</span>
+										</li>
+									</div>
+									<!--web端活动中心补充信息-->
+									<div class="select_types" id="Web" style="display:none">
+										<li><b>*活动地点：</b><input type="text" name="place" id="place"></li>
+										<li><b>*活动时间：</b><input type="text" name="calendar">&nbsp;&nbsp;--<input type="text" name="calendar"></li>
+										<li>
+											<b>*活动封面：</b>
+											<input type="hidden"  name="pic_ext"  value="" />
+											<img src="/static/erp/img/profile/add_pic.png" alt="" class="show_img" >
+											<a href="javascript:;" class="up_img"><input type="file"  class="up_load" data-id="1"  name="up_load" /></a>
+											<input type="hidden"  name="TeacherPicture"  value="" />
+											<span class="btips">提供照片尺寸为450x320px,不超过5M(.jpg格式)</span>
+										</li>
+										<li><b>*活动简介：</b><textarea name="textarea" id="IntroAct" maxlength="200" ></textarea><span class="tips">200/200</span></li>
+									</div>
+
+
+									<div class="select_result fl">
+										<b class="ml">已选择渠道：</b>
+										<ul id="ChannelList">
+											<!--<li><p>PC端标准版-消息中心<input type="button" value="修改" class="btn_modify"><input type="button" value="删除" class="f86d"></p><p class="c5b5 action">立即发送</p></li>
+											<li><p>PC端标准版-消息中心<input type="button" value="修改" class="btn_modify"><input type="button" value="删除" class="f86d"></p><p class="c5b5 action">2016.12.14 12 22：00</p></li>-->
+							
+										</ul>
+									</div>
+								</div> 
+							</div>
+						</div>
+					
+					</div>
+					<!--<div class="b_action">-->
+						<input type="button" id="Save" value="保存" class="btn_action">
+						<input type="button" value="取消" id="Cancel" class="btn_action">
+						<!--<input type="button" value="确定并发送" id="Send" class="btn_action">-->
+					<!--</div>-->
+					
+				</div>
+			</div>
+		{{template "../public/public/footer.html" .}}
+	</body>
+	{{template "../public/link/js_inc.html" .}}
+    <script type="text/javascript" src="/static/public/yayigj_public_pwdcall.js"></script>
+	<script type="text/javascript" src="/static/public/yayigj_date_sel.js"></script>
+	<script type="text/javascript" src="/static/public/yayigj_date_seltm.js?ver=2018122001"></script>
+	<!--<script type="text/javascript" src="/static/public/yayigj_upload_crop.js"></script>-->
+	<script type="text/javascript" src="/static/public/yayigj_upfile_noGzip.js"></script>
+	<!--<script type="text/javascript" src="/static/account/js/jquery.Jcrop.min.js"></script>-->
+	<script type="text/javascript" src="/static/public/yayigj_downlist.js"></script>
+	<script type="text/javascript" src="/static/erp/js/public/area.js" ></script>
+	<script type="text/javascript">_init_area();</script>
+	
+    <script type="text/javascript" src="/static/erp/js/sendmessage.js?ver=2019011402"></script>
+	<script type="text/javascript" src="/static/erp/js/editmessage.js?ver=2019011402"></script>
+</html>

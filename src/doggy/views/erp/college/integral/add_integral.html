@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>积分管理</title>
+		{{template "../public/link/css_inc.html" .}}
+		<link href="/static/erp/college/css/add_user.css" rel="stylesheet" />
+		<link href="/static/erp/college/css/add_integral.css" rel="stylesheet" />
+	</head>
+	<body>
+		<div class="add_integral">
+             <label><span>交易日期：</span><input type="text" name="" readonly class="ml20 w240" id="transaction_data"></label>
+             <label><span>手机号：</span><input type="text" name="" class="ml20 w240" id="tele"></label>
+             <label><span>姓名：</span><input type="text" name="" class="ml20 w240" id="user_name"></label>
+             <label><span>类型：</span><input type="text" name="" readonly class="ml20 w240" id="typeof"></label>
+             <label><span>课程类型：</span><input type="text" name="" readonly class="ml20 w240" id="curriculum"></label>
+             <label><span>课程名称：</span><input type="text" name="" class="ml20 w240" id="coursename"></label>
+             <label><span>本次消费：</span><input type="text" name="" class="ml20 w240" id="consumefee"></label>
+             <label><span>本次积分：</span><input type="text" name="" class="ml20 w240" id="integral"></label>
+             <label><span>推荐人：</span><input type="text" name="" class="ml20 w240" id="referrermobile"></label>
+		</div>
+
+		<div class="submit_from">
+             <input type="submit" class="fillBtn" id="fillBtn_set" name="" value="确定">
+             <input type="submit" class="cancelBtn" id="cancelBtn_set" name="" value="取消">
+        </div>
+	</body>
+	{{template "../public/link/js_inc.html" .}}
+	<script type="text/javascript" src="/static/erp/college/js/add_integral.js"></script>
+</html>

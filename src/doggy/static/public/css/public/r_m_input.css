@@ -1,0 +1,29 @@
+ input[type='button'],button{border-radius:5px !important; min-width:80px;}
+.fillBtn{height:30px; line-height: 30px; background-color:#47a6a0  !important;color:#fff;border:solid 1px #47a6a0  !important; cursor:pointer}   /*实色类似确定按钮*/
+	.fillBtn:hover{background-color:#55c6bf  !important;border:solid 1px #55c6bf  !important;color:#fff;} 
+	.fillBtn:active{background-color:#328b83  !important;border:solid 1px #328b83  !important} 
+	.fillBtn:disabled{background-color:#c7e4e2  !important;border:solid 1px #c7e4e2  !important} 
+.frmeBtn{height:30px; background-color:#fff;color:#a4a4a4;border:solid 1px #e0e0e0; cursor:pointer}	 /*白底线框按钮*/
+	.frmeBtn:hover{color:#888;border:solid 1px #b0b0b0;}
+	.frmeBtn:active{color:#696969;border:solid 1px #a0a0a0;}
+	.frmeBtn:disabled{color:#ccc;border:solid 1px #f7f7f7;}
+.fillredBtn{height:30px; background-color:#f86d5a; color:#fff;border:solid 1px #f86d5a; cursor:pointer}	/*红颜色实色按钮 比如删除*/
+	.fillredBtn:hover{background-color:#ff5d40;border:solid 1px #ff5d40;color:#fff;}
+	.fillredBtn:active{background-color:#f85748;border:solid 1px #f85748;}
+	.fillredBtn:disabled{background-color:#dce5f9;border:solid 1px #dce5f9;}
+.frmeRedBtn{height:30px; background-color:#fff; color:#f86d5a;border:solid 1px #f86d5a; cursor:pointer}									/*红颜色空框按钮 比如删除*/
+	.frmeRedBtn:hover{color:#fff;border:solid 1px #ff5d40;}
+	.frmeRedBtn:active{color:#fff;border:solid 1px #f85748;}
+	.frmeRedBtn:disabled{color:#888;border:solid 1px #dce5f9;}	
+.blueBtn{height:30px; background-color:#47a6a0; color:#fff;border:solid 1px #47a6a0; cursor:pointer}	/*蓝色空框按钮 比如查询*/	
+	.blueBtn:hover{background-color:#55c6bf; color:#fff;border:solid 1px #55c6bf}
+	.blueBtn:active{background-color:#328b83; color:#fff;border:solid 1px #328b83}
+	.blueBtn:disabled{background-color:#c7e4e2; color:#fff;border:solid 1px #c7e4e2}
+.cancelBtn{height:30px; line-height: 30px;background-color:#fff7e0;color:#333;border:solid 1px #f1cf66; cursor:pointer}   /*取消按钮*/
+	.cancelBtn:hover{background-color:#ffefe0;border:solid 1px #ea8800; color:#333} 
+	.cancelBtn:active{background-color:#F52D00;border:solid 1px #F52D00;color:#fff;} 
+	.cancelBtn:disabled{background-color:#fffdf6;border:solid 1px #fbf1d1;color:#333} 
+.frmeGreenBtn{height:30px; background-color:#fff; color:#00c5b5;border:solid 1px #00c5b5; cursor:pointer}									/*红颜色空框按钮 比如删除*/
+	.frmeGreenBtn:hover{color:#00c5b5;border:solid 1px #00c5b5;}
+	.frmeGreenBtn:active{color:#00c5b5;border:solid 1px #00c5b5;}
+	.frmeGreenBtn:disabled{color:#888;border:solid 1px #00c5b5;}	

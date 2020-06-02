@@ -1,0 +1,50 @@
+<template id="operation_id">
+    <div class="bg-white wp100 hp100">
+        <div class="bline wp100 h35 boxsz pl10 fz-14 lh35 bg-white">首页管理>运营中心</div>
+        <div class="mat15 fc-333333 fz-14 mal10">
+            <span class="bg-cb0202 mal10 mar10 ">&nbsp;</span>运营方式一
+            <div id="modal_content_signchoose">
+                <div class="flex">
+                    <div class="dflex1 pall10" @click='chooseOperation(1)'>
+                        <div class="chooseclass boxsz ">
+                            <dl class="boutiquecourse_bg">
+                                <dt>精品好课</dt>
+                            </dl>
+                        </div>
+                    </div>
+                    <div class="dflex1 pall10" @click='chooseOperation(2)'>
+                        <div class="chooseclass boxsz chooseclassvidow">
+                            <dl class="superanchor_bg">
+                                <dt>明星主播</dt>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mat15 fc-333333 fz-14 mal10">
+            <span class="bg-cb0202 mal10 mar10 ">&nbsp;</span>运营方式二
+            <div id="modal_content_signchoose">
+                <div class="flex">
+                    <div class="dflex1 pall10">
+                        <div class="chooseclass boxsz" @click='chooseOperation(3)'>
+                            <dl class="freecourse_bg">
+                                <dt>免费课程</dt>
+                            </dl>
+                        </div>
+                    </div>
+                    <div class="dflex1 pall10">
+                        <div class="chooseclass boxsz chooseclassvidow" @click='chooseOperation(4)'>
+                            <dl class="limitdiscount_bg">
+                                <dt>限时低价</dt>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <span></span>
+        <span></span>
+
+    </div>
+</template>

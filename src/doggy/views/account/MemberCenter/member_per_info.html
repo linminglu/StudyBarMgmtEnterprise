@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="UTF-8">
+        <meta content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" name="viewport">
+        <meta content="yes" name="apple-mobile-web-app-capable">
+        <meta content="black" name="apple-mobile-web-app-status-bar-style">
+        <meta content="telephone=no" name="format-detection">
+        <meta http-equiv="Cache-Control" content="no-transform ">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+        <!--<include file="Public:css_inc"/>-->
+        {{template "/account/Public/per_css_inc.html" .}}
+        <link href="/static/account/css/memberCenter.css" rel="stylesheet" type="text/css" >
+        <link href="/static/account/css/upfile.css" rel="stylesheet" type="text/css">  
+        <link href="/static/account/js/css/jquery.Jcrop.min.css" rel="stylesheet" type="text/css" id="jcrop_css"> 
+        <title>个人信息-牙医管家</title>   
+    </head>
+    <body>
+        <input type="hidden" name="navtags" value="1">
+        <!--添加项目弹出框开始-->
+        <div class="add_item_alert">
+            <div class="add_tit"><span><img src="/static/account/img/add_item.png">添加项目</span><span id="item_name_more">（最多可选择10个项目类型）</span><span id="add_close"><img src="/static/account/img/close.png"></span>
+            </div>
+            <div class="item_content">
+                <div class="search">
+                    <input type="text" placeholder="搜索" />
+                    <img src="/static/account/img/search.png">
+                </div>
+                <div class="item_list">
+                    <ul class="sel_letter" id="sel_letter">
+                        <li>#</li>
+                        <li data-letter="1"><a href="#c">C</a></li>
+                        <li data-letter="1"><a href="#d">D</a></li>
+                        <li data-letter="1"><a href="#f">F</a></li>
+                        <li data-letter="1"><a href="#g">G</a></li>
+                        <li data-letter="1"><a href="#h">H</a></li>
+                        <li data-letter="1"><a href="#j">J</a></li> 
+                        <li data-letter="1"><a href="#k">K</a></li>
+                        <li data-letter="1"><a href="#l">L</a></li>
+                        <li data-letter="1"><a href="#p">P</a></li>
+                        <li data-letter="1"><a href="#q">Q</a></li>
+                        <li data-letter="1"><a href="#r">R</a></li> 
+                        <li data-letter="1"><a href="#s">S</a></li>
+                        <li data-letter="1"><a href="#t">T</a></li>
+                        <li data-letter="1"><a href="#w">W</a></li>
+                        <li data-letter="1"><a href="#x">X</a></li> 
+                        <li data-letter="1"><a href="#y">Y</a></li>
+                        <li data-letter="1"><a href="#z">Z</a></li>   
+                    </ul>
+                    <!-- <div class="item_ul_div"> -->
+                        <ul class="item_ul" id="c">
+                            <li>C</li>
+                            <li><span>超声波洁牙美白</span><img src="/static/account/img/no_select.png"></li>
+                            <li><span>瓷贴面修复</span><img src="/static/account/img/no_select.png"></li>
+                        </ul>
+                        <ul class="item_ul" id="d">
+                            <li>D</li>
+                            <li><span>多颗牙种植</span><img src="/static/account/img/no_select.png"></li>
+                            <li><span>单颗牙种植</span><img src="/static/account/img/no_select.png"></li>
+                            <li><span>多生牙</span><img src="/static/account/img/no_select.png"></li>
+                        </ul>
+                        <ul class="item_ul" id="f">
+                            <li>F</li>
+                            <li><span>覆盖义齿</span><img src="/static/account/img/no_select.png"></li>
+                            <li><span>非龋齿</span><img src="/static/account/img/no_select.png"></li>
+                            <li><span>复杂智齿</span><img src="/static/account/img/no_select.png"></li>
+                        </ul>
+                        <ul class="item_ul" id="g">
+                            <li>G</li>
+                            <li><span>个别牙反颌</span><img src="/static/account/img/no_select.png"></li>
+                            <li><span>固定修复</span><img src="/static/account/img/no_select.png"></li>
+                            <li><span>钢丝托槽</span><img src="/static/account/img/no_select.png"></li>
+                        </ul>
+                        <ul class="item_ul" id="h">
+                            <li>H</li>
+                            <li><span>皓齿美白</span><img src="/static/account/img/no_select.png"></li>
+                            <li><span>活动修复</span><img src="/static/account/img/no_select.png"></li>
+                        </ul>
+                        <ul class="item_ul" id="j">
+                            <li>J</li>
+                            <li><span>激光美白</span><img src="/static/account/img/no_select.png"></li>
+                        </ul>
+                        <ul class="item_ul" id="k">
+                            <li>K</li>
+                            <li><span>烤瓷牙</span><img src="/static/account/img/no_select.png"></li>
+                        </ul>
+                        <ul class="item_ul" id="l">
+                            <li>L</li>
+                            <li><span>冷光美白</span><img src="/static/account/img/no_select.png"></li>
+                        </ul>
+                        <ul class="item_ul" id="p">
+                            <li>P</li>
+                            <li><span>抛光</span><img src="/static/account/img/no_select.png"></li>
+                            <li><span>喷砂洁牙美白</span><img src="/static/account/img/no_select.png"></li>
+                            <li><span>普通拔牙</span><img src="/static/account/img/no_select.png"></li>
+                        </ul>
+                        <ul class="item_ul" id="q">
+                            <li>Q</li>
+                            <li><span>龋病</span><img src="/static/account/img/no_select.png"></li>
+                            <li><span>全口义齿</span><img src="/static/account/img/no_select.png"></li>
+                            <li><span>青少年牙周炎</span><img src="/static/account/img/no_select.png"></li>
+                            <li><span>前牙美学种植</span><img src="/static/account/img/no_select.png"></li>
+                        </ul>
+                        <ul class="item_ul" id="r">
+                            <li>R</li>
+                            <li><span>乳牙拔出</span><img src="/static/account/img/no_select.png"></li>
+                        </ul>
+                        <ul class="item_ul" id="s">
+                            <li>S</li>
+                            <li><span>舌侧矫正</span><img src="/static/account/img/no_select.png"></li>
+                            <li><span>双层牙</span><img src="/static/account/img/no_select.png"></li>
+                            <li><span>时代天使</span><img src="/static/account/img/no_select.png"></li>
+                            <li><span>树脂及烤瓷冠修复</span><img src="/static/account/img/no_select.png"></li>
+                        </ul>
+                        <ul class="item_ul" id="t">
+                            <li>T</li>
+                            <li><span>陶瓷托槽</span><img src="/static/account/img/no_select.png"></li>
+                            <li><span>涂氟</span><img src="/static/account/img/no_select.png"></li>
+                        </ul>
+                        <ul class="item_ul" id="w">
+                            <li>W</li>
+                            <li><span>窝沟封闭</span><img src="/static/account/img/no_select.png"></li>
+                        </ul>
+                        <ul class="item_ul" id="x">
+                            <li>X</li>
+                            <li><span>洗牙</span><img src="/static/account/img/no_select.png"></li>
+                        </ul>
+                        <ul class="item_ul" id="y">
+                            <li>Y</li>
+                            <li><span>牙髓病</span><img src="/static/account/img/no_select.png"></li>
+                            <li><span>隐适美</span><img src="/static/account/img/no_select.png"></li>
+                            <li><span>药物美白</span><img src="/static/account/img/no_select.png"></li>
+                            <li><span>牙龈病</span><img src="/static/account/img/no_select.png"></li>
+                            <li><span>牙周创伤</span><img src="/static/account/img/no_select.png"></li>
+                            <li><span>牙周萎缩</span><img src="/static/account/img/no_select.png"></li>
+                            <li><span>牙周炎</span><img src="/static/account/img/no_select.png"></li>
+                        </ul>
+                        <ul class="item_ul" id="z">
+                            <li>Z</li>
+                            <li><span>自锁托槽</span><img src="/static/account/img/no_select.png"></li>
+                            <li><span>种植义齿</span><img src="/static/account/img/no_select.png"></li>
+                        </ul>
+                    <!-- </div> -->
+                </div>
+            </div>
+            <div class="save_exit">
+                <span class="refuse">取消</span><span class="confim">确定</span>
+            </div>
+        </div>
+        <!--添加项目弹出框结束-->
+
+        <!--具体案例弹窗开始-->
+        <div class="specific_case">
+            <img src="/static/account/img/mem_con_example.png">
+            <img src="/static/account/img/close.png" id="close_del">
+        </div>
+        <!--具体案例弹窗结束-->
+        <!--<include file="Public:memberCen_hea_new"/>-->
+       {{template "/account/Public/memberCen_hea_new.html" .}}
+        <div class="mask"></div> 
+        <div class="main_con">
+            <div class="main_left">
+                <!--<include file="Public:left_nav"/>-->
+                {{template "account/Public/left_nav.html" .}}
+            </div>
+           <!-- 个人信息页面 -->
+           <div class="main_right">
+                <div class="info_tit">
+                    <img src="/static/account/img/per_mes_small.png">
+                    <span>个人信息</span>
+                </div>
+                <div class="info_select">
+                    <form class="save_info">
+                        <input type="hidden" name="pic_ext" id="pic_ext"  value=""/>
+                        <input type="hidden" name="pic_ext2" id="pic_ext2"  value=""/>
+                        <div class="per_photo">
+                            <span class="pho_tit">头像</span>
+                            <img data-type="0" id="Img1" src=""  class="circle"/>
+                            <span class="send_pho1"> 
+                                <!--<label class="ui_button ui_button_primary" for="upload1">上传头像</label>
+                                <input type="file" id="upload1" value="上传" class='uploadsq'  required style="position:absolute;clip:rect(0 0 0 0);"/>-->
+                                <a href="javascript:;" class="file" style="cursor:pointer;" >上传头像<input type="file"  name="aa" id="upload1"></a>
+                             </span>                      
+                            <input type="hidden" id="TeacherPicture1" name="TeacherPicture1"  value="" />
+                        </div>
+                        <div class="input_select">
+                            <ul>
+                                <li><span>姓名</span>
+                                    <input type="text" id="per_name" value="" class="box_w248_h18" style="margin-left:10px;"/>
+                                </li>
+                                <li>
+                                    <span>性别</span>
+                                    <input type="radio" name="sex" class="sex_type" id="man" value="男" checked="checked"/><span style="padding:0;">男</span>
+                                    <input type="radio" name="sex" id="woman" value="女" /><span  style="padding:0;">女</span>
+                                </li>
+                                <li> <span>年龄</span><input type="text" id="per_age" class="box_w248_h18" /></li>
+                                <li>
+                                    <span class="baby_setplace" style="padding-left:12px;float:left;margin-top:5px;">所在地</span>
+                                    <!--<select id="per_province" class="box_w260_h32"></select>-->
+                                   <div id="per_province" style="width:248px; height:20px; border:solid 1px #e0e0e0; padding:5px;float:left;color:#333;margin-left:5px;font-size:14px;">省份</div>
+                                </li>
+                                <li>
+                                    <!--<select id="per_city" class="city_place box_w260_h32"></select>-->
+                                    <div id="per_city" style="width:248px; height:20px; border:solid 1px #e0e0e0; padding:5px;float:left;color:#333;margin-left:66px;font-size:14px;">城市</div>
+                                </li>
+                                <li style="display:none">
+                                    <select class="city_place box_w260_h32" id="s_county"></select>
+                                </li>
+                                <li>
+                                    <span style="float:left;margin-top:7px;">职称</span>
+                                    <input type="hidden" id="clinicid2" />
+                                    <div id="per_grade" style="width:248px; height:20px; border:solid 1px #e0e0e0; padding:5px;float:left;color:#333;margin-left:13px;font-size:14px;"></div>
+                                    <!--<select  class="title_job box_w260_h32" id="per_grade">
+                                        <option>请选择职称</option>
+                                        <option>执业助理医师</option>
+                                        <option>执业医师</option>
+                                        <option>主治医师</option>
+                                        <option>副主任医师</option>
+                                        <option>主任医师</option>
+                                    </select>-->
+                                </li>
+                                <li>
+                                    <span style="padding-left:0" class="work_time" >工作年限</span>
+                                    <input class="input_worktime box_w248_h18" id="per_work_year" type="text" placeholder="请输入工作年限" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" value="{{.personal_info.work_year}}"/>
+                                    <span class="input_year">年</span>
+                                </li>
+                            </ul>
+                            <div class="qua_cer">
+                                <div class="qua_tit">资格认证</div>
+                                <div class="onload_doc">
+                                    <img data-type="0"  id="Img2" src=""/>
+                                    <!--<label class="ui_button ui_button_primary onload_lable" for="upload2"></label>
+                                    <input type="file" id="upload2" value="上传" class='uploadsq'  required style="position:absolute;clip:rect(0 0 0 0);"/>-->
+                                    <a href="javascript:;" class="file" style="width:80px;height:80px;opacity:0!important;cursor:pointer;" ><input type="file"  name="aa" id="upload2"></a>
+                                    <input type="hidden" id="TeacherPicture2" name="TeacherPicture2"  value="" />
+                                </div>
+                                <div class="wonder_mes">
+                                    <p>上传的照片仅用于认证，患者和第三方不会看您的信息</p>
+                                    <p>提供医师执业证书/胸牌的正面信息，不超过5M（.jpg或.png格式）
+                                    </p>
+                                    <p>(需要确保姓名、照片、编号、执业范围等信息清晰可见)<span id="spe_case_btn">具体案例</span></p>
+                                </div>
+                            </div>
+                            <div class="best_maj">
+                                <div class="best_tit">擅长项目</div>
+                                <div class="con_maj" id="con_maj">
+                                    <span class="add_maj" id="add_maj">+添加项目</span>
+                                </div>
+                            </div>
+                            <div class="save_fami">
+                                <input type="button" value="保存" name="button" id="per_sava" onclick="saveData()" class="acb ac_btn_bf w100h30" />
+                            </div>   
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+       <!--<include file="Public:footer_new"/>-->
+       <!--<include file="Public:js_inc"/> -->     
+       {{template "account/Public/footer_new.html" .}}
+       {{template "account/Public/js_inc.html" .}} 
+       <script type="text/javascript" src="/static/account/js/jquery.Jcrop.min.js"></script>
+       <script type="text/javascript" src="/static/public/yayigj_upload_crop.js"></script>
+       <script type="text/javascript" src="/static/account/js/jQuery.Hz2Py-min.js"></script>
+       <script type="text/javascript" src="/static/public/yayigj_dialog_box.js"></script>
+       <script type="text/javascript" src="/static/public/yayigj_downlist.js"></script>
+       <script type="text/javascript" src="/static/public/yayigj_date_sel.js"></script>
+       <script type="text/javascript" src="/static/account/js/area.js"></script>   
+       <script type="text/javascript">_init_area();</script>
+        <!--IE支持placeholder-->
+       <script type="text/javascript">
+            $('input, textarea').placeholder();
+       </script>  
+       <script type="text/javascript" src="/static/account/js/member_per_info.js"></script>    
+    </body>
+</html>

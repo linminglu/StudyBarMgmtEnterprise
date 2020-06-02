@@ -1,0 +1,103 @@
+<template id="code_id">
+	<div id="out">
+        <!-- 添加分佣 -->
+        <addedt-modal :paramcnf="addproportion">
+            <div slot='modal_body' id="modal_addproportion">
+                <div class="setproportion">
+                    <div><span>兑换码</span><input type="text" maxlength="6" v-model="addCodeText" placeholder="兑换码"></div>
+                    <div><span>数量</span><input @focus="focusRate()" @blur="blurRate()" type="text" onpaste="return false"  v-model='addRateText' class="w120 mal20"><span v-if="addRateText_Flag==true" style="color:red;">正整数</span><span style="color:blue;" v-else>正整数</span></div>
+                </div>
+            </div>
+        </addedt-modal>
+        <!-- 修改分佣比例 -->
+        <addedt-modal :paramcnf="modifyproportion">
+            <div slot='modal_body' id="modal_modifyproportion">
+                <!-- <div class="setproportion">修改比例<input type="text" v-model='addproportiontext' class="w120 mal20"></div> -->
+                <div class="chooseproportion">
+                    修改比例<yayigj-downlist v-model="addproportiontext" :arrslist="pgetroportionarr" :sizeparam="sizeparam" v-on:getseled="setChdAdsSeledVal"></yayigj-downlist>
+                </div>
+                <div class="classetsign">一个主播只能分配在一个规则下</div>
+            </div>
+        </addedt-modal>
+
+
+     	<div id="back_main_navi" class="bline wp100 h35 boxsz pl10 fz-14 lh35 bg-white">
+            <span>主播管理</span>
+            <span style="cursor: pointer;" id="backmainpage" > > 兑换码管理</span>
+            </div>
+        <div class="setmanage" id="setmanage" style="display: block;">
+            <div class="h60 bline_21c1aa bg-white fc-21c1aa fz-16 lh60 boxsz pl10">兑换码管理</div>
+            <div class="h60  bg-white  lh60 boxsz pl10"><input type="button" value="添加" class="inc_solid" @click="addpoproportion"></div>
+            <div class="bg-white">
+                <table class="wp100 unite_table">
+                    <thead>
+                        <tr>
+                            <th>兑换码</th>
+                            <th>数量</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="(item,index) in data_list">
+                            <td v-html="item.codevalue"></td>
+                            <td v-html="item.num"></td>
+                            <td class="inc_operation">
+                                <span @click="seeclassinfo(index)">查看</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="allanchorstollegehomepage" class="vuepage">
+                <yayigj-downlist v-model="details.number_of_data_per_page" :arrslist="number_of_data_per_page_arr" :sizeparam="sizepageparam" v-on:getseled="setNumberOfDataPerPage"></yayigj-downlist>
+                <page-bar :cur.sync="details.cur" :all.sync="details.all" v-on:btnclick="listenpage"></page-bar>
+                <p style="margin-left:40px; display: none;"><{msg1}></p>
+            </div>
+        </div>
+        <div class="seemanage" id="seemanage" style="display: none;">
+            <div class="h60 bline_21c1aa bg-white fc-21c1aa fz-16 lh60 boxsz pl10">
+                <span>兑换码详情</span>
+            </div>
+            <div class="h60  bg-white  lh60 boxsz pl10"><input type="text" placeholder="课程名" class="w200" v-model="condition" >
+                <input type="button" value="查询" @click="seeclassinfo(-1)" class="inc_solid mal20">
+                <input type="button"  value="添加单课程" @click="seeclassinfo(-1)" class="inc_solid mal20">
+            </div>
+            <div class="bg-white">
+                <table class="wp100 unite_table">
+                    <thead>
+                        <tr>
+                            <th>封面</th>
+                            <th>课程名</th>
+                            <th>类型</th>
+                            <th>付费类型</th>
+                            <th>费用</th>
+                            <th>上架状态</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="(item,index) in anchor_list">
+                            <td style="height:60px;">
+                                <img v-bind:src="item.banner+'&amp;Columns=100&amp;Rows=50'" alt="课程封面图" />
+                            </td>
+                            <td v-html="item.title"></td>
+                            <td v-if="item.type == 0" style="color:green;">幻灯直播</td>
+                            <td v-else style="color:darkviolet;">视频互动</td>
+                            <td v-if="item.fee > 0" style="color:#8e4351;">收费</td>
+                            <td v-else style="color:red;">免费</td>
+                            <td v-html="'￥'+item.fee"></td>
+                            <td v-if="item.datastatus==1" style="color:blue;">已上架</td>
+                            <td v-else-if="item.datastatus==2" style="color:red;">已下架</td>
+                            <td class="inc_operation"><span @click="deleteSignle(index)">删除</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="allanchorpage" class="vuepage">
+                <yayigj-downlist v-model="userDetails.number_of_data_per_page" :arrslist="number_of_data_per_page_arr" :sizeparam="sizepageparam" v-on:getseled="UsersetNumberOfDataPerPage"></yayigj-downlist>
+                <page-bar :cur.sync="userDetails.cur" :all.sync="userDetails.all" v-on:btnclick="userlistenpage"></page-bar>
+                <p style="margin-left:40px; display: none;"><{msg1}></p>
+            </div>
+        </div>
+    </div>
+</template>

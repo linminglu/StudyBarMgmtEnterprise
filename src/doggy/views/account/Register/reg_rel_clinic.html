@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>关联诊所</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+     	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+     	<meta charset="UTF-8">
+        <meta content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" name="viewport">
+        <meta content="yes" name="apple-mobile-web-app-capable">
+        <meta content="black" name="apple-mobile-web-app-status-bar-style">
+        <meta content="telephone=no" name="format-detection">
+        <meta http-equiv="Cache-Control" content="no-transform ">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+        <!--<include file="Public:css_inc"/>-->
+        {{template "/account/Public/css_inc.html" .}} 
+        <link rel="stylesheet" type="text/css" href="/static/account/css/register.css">        
+    </head>
+    <body>
+        <div class="topbar">
+            <div class="topbarIn">
+                <div class="logo"><a href="http://www.dental360.cn/" target="_blank"><img src="/static/ant/img/logo.png" alt="牙医管家"></a></div>
+                <!--<div class="logoDes">欢迎注册</div>
+                <div class="loginAndRegister">
+                    <a href="#" >已有账号</a>
+                    <a href="Index" class="login_a">请登录</a>
+                </div>-->
+            </div>
+        </div>
+       <div class="reg_con">
+            <div class="create_cli_acc create_rel_acc">
+                <a href="regclinicisel"><img src="/static/account/img/back.png" class="back_btn"></a>
+                <div class="create_tit">
+                    <p class="tit_p1">关联诊所员工账号</p>
+                    <p class="tit_p2">您可凭当前诊所员工账号信息关联已有诊所</p>
+                </div>
+                <div class="input_div input_div_fir">
+                    <p class="input_p">管家号</p>
+                    <input type="text" class="box_w348_h28" id="clinic_contacts" placeholder="请输入诊所管家号">
+                </div>
+                <div class="input_div">
+                    <p class="input_p">用户名</p>
+                    <input type="text" class="box_w348_h28" id="doctor_name" placeholder="请输入员工姓名">
+                </div>
+                <div class="input_div">
+                    <p class="input_p">密码</p>
+                    <input type="password" class="box_w348_h28" id="login_pw" placeholder="请输入密码">
+                </div>
+                <div class="sub_btn_div sub_btn_div2">
+                    <div class="sub_tips sub_tips2"><img src="/static/account/img/red_exclam.png"><label></label></div>
+                    <input type="button" value="关联诊所" id="create_btn" class="acb ac_btn_bf w360h40">
+                </div>
+            </div>
+       </div>
+       <!--<include file="Public:footer_new"/>-->
+       {{template "/account/Public/footer_new.html" .}} 
+       <script type="text/javascript" src="/static/account/js/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript" src="/static/account/js/placeholade.min.js"></script>
+       <script type="text/javascript" src="/static/account/js/reg_rel_clinic.js"></script>
+       <!--IE支持placeholder-->
+       <script type="text/javascript">  
+            $(function(){ $('input, textarea').placeholder(); });
+        </script>
+    </body>
+</html>

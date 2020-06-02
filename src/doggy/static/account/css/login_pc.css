@@ -1,0 +1,88 @@
+abody, html {font-family: '微软雅黑', 'Arial';width: 100%;height: 100%;}
+/*登陆页面样式*/
+/*插画图片部分*/
+a,input{ outline:none;border:none;}
+.login_header{ width: 1200px; margin: auto;}
+/*.box_center{width: 320px; height: 420px; margin:auto;}*/
+.login_box {width: 100%;overflow: hidden;}
+.login_box .theme {width: 400px;height: 300px;margin-top:-56px;position: relative;right: 30px;}
+/*右边登陆框部分*/
+.login_box .r {width:320px; height:420px;border-radius:5px;position: fixed;margin-left: -160px;margin-top: -210px;top: 50%;left: 50%;z-index: 101;box-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);}
+.login_box form {background-color: #ffffff;}
+.login_box form h1{font-size:16px;text-align:center;width:100%;line-height:90px;font-weight: normal;}
+.login_box form h2 {color: #888;font-size: 14px;text-align: center;line-height:28px;font-weight:normal;overflow:hidden;width:260px;margin:0 auto;}
+.login_box form h2 li{float:left;width:128px;list-style:none;cursor:pointer;border-radius:2px;border:1px solid #e0e0e0;}
+.login_box form h2 #mobile_login{}
+.login_box form h2 #staff_login{}
+.login_box form h2 .mobfcus{color: #fff;background-color:#00c5b5;border:1px solid #00c5b5;}
+.login_box form h2 .stafcus{color: #fff;background-color:#00c5b5;border:1px solid #00c5b5;}
+.login_form{display:none;}
+.houseNo{text-align:center;margin:26px auto 20px auto;position: relative;top:0;left:0;}
+.houseNo #houseID{background:url(/static/account/img/clinicLogin_ico.png) 10px center no-repeat;}
+.houseNo #err_info2{visibility:hidden;width: 262px;height:16px;margin:0 29px; text-align:left;color:#f86d5a; font-size: 12px;margin-bottom: 2px;
+background:url(/static/account/img/red_exclam.png) left center no-repeat;padding-left:22px;position: absolute;top:0; }
+.clinicNo{text-align:center;margin-bottom:20px;}
+.clinicNo #staffID{background:url(/static/account/img/clinicStaff.png) 10px center no-repeat;}
+.clinicPw{text-align:center;margin-bottom:20px;}
+.clinicPw #clinicPW{width: 218px;padding:10px 0 10px 40px;background:url(/static/account/img/pw_ico.png) 10px center no-repeat;}
+.rember{width:260px;color:#696969;overflow: hidden;margin:0 auto;font-size: 12px;}
+.rember #is_remember2{vertical-align:middle;}
+.rember label{cursor:pointer;}
+.rember a{color:#00c5b5; float: right;}
+.rember a:hover{color:#00d4c3;}
+.clinic_btn{margin-top:15px;text-align:center;}
+#clinic_btn{width: 260px;height: 40px;}
+
+.login_box #form1 p {position: absolute;text-align: left;top:45px;left:9px;width:100%;font-size: 12px;color:red;}
+.login_box #form1 p i {display: inline-block;width:16px;height:16px;font-style: normal; background:url(../img/red_exclam.png) center;vertical-align:top;margin-right: 6px;}
+/*.login_box #form1 p #err_info{margin-left:9px;}*/
+.login_box #form1 #error_w,#error_tel{display: none;}
+#form1 input[type=text]{width:218px; height:40px;*line-height: 40px;line-height: 40px\9;margin-left:1px;border:1px solid #e0e0e0;color: #333; border-radius:2px; padding:0 0 0 40px;}
+#form1 #sumbit{width:260px; height:40px;border-radius:2px; background-color:#00c5b5;color:#fff;}
+#form1 #sumbit:hover{background-color:#00d4c3;cursor: pointer;}
+#form1 #password{width:218px; height:40px;*line-height: 40px;line-height: 40px\9;   border:1px solid #e0e0e0; border-radius:2px; padding:0 0 0 40px;}
+#form1 .tel, .psw {margin:26px 28px 20px 28px;position: relative;top: 0;left: 0;}
+#form1 .tel img{ position:absolute; top:10px; left:10px;}
+#form1 .psw img{ position:absolute; top:10px; left:10px;}
+#form1 .remb_user {width:260px;margin: 0 auto;font-size:14px;color:#696969;overflow: hidden;margin-top: -6px;}
+
+#form1 .remb_user .ch_box{position: relative;top:2px;left:0;float: left;margin-right: 6px;}
+#form1 .remb_user input[type=checkbox], label {text-align: left;}
+#forlabel{cursor:pointer;}
+#form1 .remb_user span {float: right;cursor:pointer;margin-right:0;color:#00c5b5;}
+#form1 .remb_user .pw_lost{float:right;color: #00c5d5;*margin-top:-20px;}
+#form1 .remb_user .pw_lost:hover{color:#00d4c3;}
+#form1 .login_btn {text-align: center;margin: 29px auto;}
+
+
+/*登录首页弹窗  黄凯  2016-11-18*/
+.mask{display:block; position:fixed;top:0;left:0;width:100%;height: 100%;background-color: #000;
+opacity:0.2;filter:alpha(opacity=20);z-index:100;}
+
+.no_bind_phone1{width: 480px;height: 280px;box-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);position: fixed;
+left: 50%;top: 50%;margin-left: -240px;margin-top: -140px;background: #fff;border-radius: 2px;z-index: 101;display: none
+;}
+.bind_tip_tit{height: 44px;border-bottom: 1px solid #f0f0f0;line-height: 44px;font-size: 15px;color: #333;text-align: center}
+.bind_tip_tit img{position: absolute;right: 16px;top: 16px;cursor: pointer;}
+.tips_img{float: left;}
+.tips_word{float: right;}
+.tips_content{margin: 37px 54px 0 44px;}
+.tips_word .p_33{font-size: 14px;color: #333;margin-bottom: 10px;}
+.tips_word .p_69{font-size: 14px;color: #696969;margin-bottom: 5px;}
+#login_bind_phone{margin: 30px 0 0 152px;}
+
+.no_bind_phone2{width: 480px;height: 280px;box-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);position: fixed;
+left: 50%;top: 50%;margin-left: -240px;margin-top: -140px;background: #fff;border-radius: 2px;z-index: 101;display: none;}
+.phone_input{padding: 45px 70px 0 70px;position: relative;}
+.phone_input span{font-size: 14px;color: #333;margin-right: 20px;display: block;float: left;height: 30px;line-height: 30px;width: 56px;text-align:justify;text-justify:inter-word;}
+#reg_sendnum{margin-left: 4px;}
+.phone_input input{float: left;}
+.phone_input div{margin-bottom: 30px;overflow: hidden;}
+.sub_tips{position: absolute;width: 260px;height: 22px;line-height: 22px;left: 146px;top: 181px;
+display: none;}
+.sub_tips label{font-size: 12px!important;color: #f86d5a!important;}
+.sub_tips  img{vertical-align: middle;margin-right: 5px;margin-bottom: 2px;margin-left: 5px;}
+.next_step{margin-left: 75px;}
+#send_word_num{position: relative;left: 2px;}
+#footer ul{margin-top: 30px!important;}
+.sub_tips_index{top:137px;display: none;}

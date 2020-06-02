@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>消息推送</title>
+		{{template "../public/link/css_inc.html" .}}
+		<link href="/static/erp/css/user.css" rel="stylesheet" />
+        <style>
+            .backPage{top:15px;right:20px;}
+            .search{padding:14px 14px 0 14px;}
+			.search label,.search div{margin-bottom:20px;}
+			.excel{float:left;margin-left:14px;}
+            .sendState,.sendType,.sendStage{width: 80px;height: 28px;line-height: 28px;border: solid 1px #00c5b5;float: left;text-indent: 10px;}
+            .sendStage{width:180px;}
+        </style>
+	</head>
+	<body>
+		{{template "../public/public/header.html" .}}
+			<div class="mainFrme">
+				{{template "../public/public/left.html" .}}
+				<div class="rightFrme">
+					<div class="crumbs"><a href="###">主页</a> > <a href="###">用户管理</a> > <a href="###">用户详情</a></div>
+					<div class="cont">
+						<div class="pageHeader">消息推送
+							<div class="backPage"><input type="button" value="新建消息"></div>
+							
+						</div>
+                        <div class="search">
+							<label>发送时间</label>
+							<div id="BeginDate" class="calendar"></div>
+							<label>至</label>
+							<div id="EndDate" class="calendar"></div>
+							<label>状态</label>
+							<div id="sendState" class="sendState"></div>
+							<label>类型</label>
+							<div id="sendType" class="sendType"></div>
+							<label>发送平台</label>
+							<div id="sendStage" class="sendStage"></div>
+							<input class="ml20 w240" type="text" placeholder="请输入标题/编号等条件查询" />
+							<input type="button" value="查询" />
+							<div class="excel">导出excel</div>
+						</div>
+						<div class="f_data">
+							<table>
+								<tr>
+									<th align="center">信息编号</th>
+									<th align="left">标题</th>
+									<th align="left">类型</th>
+									<th align="left">内容/发送日期</th>
+									<th align="center">状态</th>
+									<th align="left">发送平台</th>
+									<th align="left">发送门诊量</th>
+									<th align="left">接收端量</th>
+									<th align="left">阅读量</th>
+									<th align="center">操作</th>
+								</tr>
+								<tr>
+									<td align="center">666666</td>
+									<td align="left">北京站提示信息</td>
+									<td align="left">文字信息</td>
+									<td align="left">
+                                        <p> 尊敬的用户：</br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;您好！订单接口数据8月11日晚已恢复</br>
+                                    此次恢复接口暂时只推送已支付成功的订单，</br>未支付订单暂....</p>
+                                        <p style="color:#00c5b5;"><label>2016.12.25</label>&nbsp;&nbsp;&nbsp;&nbsp;<label>12:25:30</label></p>
+                                    </td>
+									<td align="center">已发送</td>
+									<td align="left">PC端专业版-消息中心</td>
+									<td align="left">11551</td>
+									<td align="left">11551</td>
+									<td align="left">11551</td>
+									<td align="center"><a herf="#">查看</a>&nbsp;&nbsp;&nbsp;<a href="#">删除</a></td>
+								</tr>
+                                <tr>
+									<td align="center">666666</td>
+									<td align="left">北京站提示信息</td>
+									<td align="left">文字信息</td>
+									<td align="left">
+                                        <p><img src="/static/erp/img/message/pic.png" width="120"></p>
+                                        <p style="color:#00c5b5;"><label>2016.12.25</label>&nbsp;&nbsp;&nbsp;&nbsp;<label>12:25:30</label></p>
+                                    </td>
+									<td align="center">已发送</td>
+									<td align="left">PC端专业版-消息中心</td>
+									<td align="left">11551</td>
+									<td align="left">11551</td>
+									<td align="left">11551</td>
+									<td align="center"><a herf="#">查看</a>&nbsp;&nbsp;&nbsp;<a href="#">修改</a>&nbsp;&nbsp;&nbsp;<a href="#">发送</a>&nbsp;&nbsp;&nbsp;<a href="#">删除</a></td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		{{template "../public/public/footer.html" .}}
+	</body>
+	{{template "../public/link/js_inc.html" .}}
+    <script type="text/javascript">
+		$(function(){
+			$("#BeginDate").yayigj_date_Sel();
+			$("#EndDate").yayigj_date_Sel();
+			
+			//加载页面获取当天日期
+			$("#BeginDate").getCurrday();
+			$("#EndDate").getCurrday();
+
+            $("#sendState").yayigj_downlist({    //状态
+                _hiddenID:'clinicid2',
+                _valtype:'text',
+                _data:[
+                    {'key':'全部'},
+                    {'key':'已发送'},
+                    {'key':'未发送'},
+                    {'key':'草稿'},
+                ]	 
+            });
+
+            $("#sendType").yayigj_downlist({    //类型
+                _hiddenID:'clinicid2',
+                _valtype:'text',
+                _data:[
+                    {'key':'全部'},
+                    {'key':'文字消息'},
+                    {'key':'图文链接'}
+                ]	 
+            });
+
+            $("#sendStage").yayigj_downlist({    //发送平台
+                _hiddenID:'clinicid2',
+                _valtype:'text',
+                _data:[
+                    {'key':'全部'},
+                    {'key':'PC端标准版-消息中心'},
+                    {'key':'PC端标准版-弹窗'},
+                    {'key':'PC端专业版-消息中心'},
+                    {'key':'PC端标专业版-弹窗'},
+                    {'key':'牙医管家APP-消息中心'},
+                    {'key':'web端-消息中心'},
+                ]	 
+            });
+		});
+	</script>
+</html>

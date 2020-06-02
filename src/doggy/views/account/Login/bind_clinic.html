@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>重置密码</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+     	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+     	<meta charset="UTF-8">
+        <meta content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" name="viewport">
+        <meta content="yes" name="apple-mobile-web-app-capable">
+        <meta content="black" name="apple-mobile-web-app-status-bar-style">
+        <meta content="telephone=no" name="format-detection">
+        <meta http-equiv="Cache-Control" content="no-transform ">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+        {{template "/account/Public/css_inc.html"  .}}
+        <link rel="stylesheet" type="text/css" href="/static/account/css/register.css">        
+    </head>
+    <body>
+        <div class="topbar">
+            <div class="topbarIn">
+                <div class="logo"><a href="http://www.dental360.cn/" target="_blank"><img src="/static/account/img/logo_pg8.png" alt="牙医管家"></a></div>
+            </div>
+        </div>
+       <div class="reg_con">
+            <div class="create_cli_acc login_resert_pw">
+                <a href="/login"><img src="/static/account/img/back.png" class="back_btn"></a>
+                <div class="create_tit">
+                    <p class="tit_p1">重置密码</p>
+                    <p class="tit_p2">系统查询到您当前注册的手机号码已绑定多家诊所,</p>
+                    <p class="tit_p2 tit_p22">且密码不一致，请设置统一登录密码</p>
+                </div>
+                <div class="input_div input_div_fir">
+                    <p class="input_p">重置密码</p>
+                    <input type="password" class="box_w348" id="login_set_pw" placeholder="请设置统一登录密码">
+                </div>
+                <div class="pw_safe login_pw_safe login_bind_clinic"><span class="safe_rang"></span><span class="safe_rang"></span><span class="safe_rang"></span><label  id="pw_safe_rang">弱</label></div>
+                <div class="pw_tip login_pw_tip"></div>
+                <div class="input_div">
+                    <p class="input_p">确认密码</p>
+                    <input type="password" class="box_w348" id="login_confim_pw" placeholder="请再次输入统一登录密码">
+                </div>
+                <div class="sub_btn_div active_btn_div">
+                    <div class="sub_tips"><img src="/static/account/img/red_exclam.png"><label></label></div>
+                    <input type="button" value="完成并重新登录" id="create_btn" class="acb ac_btn_bf w360h40" style="font-weight:normal;">
+                </div>
+            </div>
+       </div>
+       {{template "/account/Public/footer_new.html"  .}}
+       <script type="text/javascript" src="/static/account/js/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript" src="/static/account/js/placeholade.min.js"></script>
+        <script type="text/javascript" src="/static/account/js/login_reset_pw.js"></script>
+       <!--IE支持placeholder-->
+       <script type="text/javascript">  
+            $(function(){ $('input, textarea').placeholder(); });
+        </script>
+    </body>
+</html>

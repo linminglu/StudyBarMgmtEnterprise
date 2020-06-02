@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>插件测试</title>
+</head>
+
+<body>
+	<button id="zlb">打开</button>
+	<script src="../../static/public/jquery-1.9.1.min.js"></script>
+    <script src="../../static/public/yayigj_dialog_box.js"></script>
+    <script>
+	/*
+   删除配色方案
+	_borderColor:'#F86D5A',
+	_btnbgcolor:'#F86D5A',			
+	_activeColor:'#B91D06',
+	_hoverColor:'#F73013',
+  标准配色方案
+     _borderColor:'#00c5b5',
+	_btnbgcolor:'#00c5b5',			
+	_activeColor:'#00bcaa',
+	_hoverColor:'#00AEA2',	
+	*/
+		jQuery.createAniCss();
+		$("#zlb").on("click",function(){
+				jQuery.pop_window_modal_dialog({
+					_popmothod:'fadeInUp', 
+					_warnTxt:'确定要删除么？',
+					_icotype:2,  //1警告 2提醒 3询问
+					
+					_borderColor:'#00c5b5',
+					_btnbgcolor:'#00c5b5',			
+					_activeColor:'#00bcaa',
+					_hoverColor:'#00AEA2',
+					
+					_btnText:new Array("确定停用"),
+					_closemothod:'fadeOutUp', 
+					_okEvent:function(){
+						alert('ok');
+						},
+					_cancelEvent:function(){
+						alert('取消');
+						jQuery.pop_window_modal_dialog_close({_closemothod:'fadeOutUp'});
+						}	
+					});
+ 
+			});
+	</script>
+</body>
+</html>

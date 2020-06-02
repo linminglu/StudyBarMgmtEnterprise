@@ -1,0 +1,260 @@
+<template id="edt_signlecourse_id">
+    <div>
+        <div v-if='anchorid' class="wp100 bline h35 boxsz pl10 fz-14 lh35 bg-white">主播管理><span style="cursor: pointer;"
+                @click="goBack">直播间列表</span>>单课程</div>
+
+        <div v-else class="wp100 bline h35 boxsz pl10 fz-14 lh35 bg-white">课程管理><span style="cursor: pointer;"
+                @click="goBack">课程列表</span>>修改单课程</div>
+        <div class="add_signclass bg-white" style="padding-top:20px">
+            <!-- <div class="h60 bline_146487 bg-white fz-16 lh60 boxsz pl10">
+                <span @click="tabclasstype('allanchorssignclass')" class=" dinb mar20 c_pointer">返回</span>
+            </div> -->
+            <!--  -->
+            <div class="allanchors_seeinfo_table">
+                <table class="wp100 unite_table">
+                    <tr>
+                        <td>课程分类</td>
+                        <td>
+                            <yayigj-downlist v-model='coursetype.showtype' :arrslist="coursetype.valueList"
+                                :sizeparam="coursetype.attribute" v-on:selitem="chooseCoursetype"></yayigj-downlist>
+                        </td>
+                    </tr>
+                    <tr v-if="(type == 1||type == 2) && signleid == ''">
+                        <td>启用VOD服务</td>
+                        <td>
+                            <div v-model="istovod"></div>
+                            <input v-model="istovod" type="checkbox" >
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>课程主题</td>
+                        <td><input type="text" v-model='title' placeholder="请输入课程主题、最多26个字" maxlength="26" class="w300">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>讲师头像<c/td> <td>
+                                <div class="allanclass_img prela boxsz ptb10 c_both">
+                                    <div class="w120 h120 f_left upheadiconimg  mab15"><img :src="banner1"
+                                            id="signleimg_1" width="120px" height="120px"></div>
+                                    <div class="inc_solid mal30 w100 f_left mat50">上传讲师头像</div>
+                                    <!-- chooseHeadicon -->
+                                    <input type="file" name="file" id="signlefile_2" class="pabs upheadfileimg"
+                                        accept="image/jpeg,image/png,image/jpg">
+                                </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>课程封面<c/td> <td>
+                                <div class="allanclass_img prela boxsz ptb10 c_both">
+                                    <div class="w240 h150 f_left upclassimg mab15"><img :src="banner" id="signleimg_1"
+                                            height="100%"></div>
+                                    <div class="inc_solid zupfile w80 f_left mat50">上传封面图</div>
+                                    <input type="file" name="file" id="signlefile_1" class="pabs upfileimg"
+                                        accept="image/jpeg,image/png,image/jpg">
+                                    <span id="signlestatus_1" style="  position: absolute;
+                                margin-left: -80px;
+                                margin-top: 100px;
+                                color: #ff2929;
+                                font-size: 13px;
+                                letter-spacing: 1px;
+                                font-weight: 900;
+                                padding: 3px;">
+                                        <{bannerNotice}>
+                                    </span>
+                                </div>
+                        </td>
+                    </tr>
+                    <tr v-if='type == 0'>
+                        <td>添加幻灯片</td>
+                        <td>
+                            <div class="allanclass_img prela mat10 boxsz  c_both h220">
+                                <div class="h200 f_left upallimg" v-show="pptimgarr.length>0">
+                                    <div style="height: 200px;overflow-y: auto;">
+                                        <div class="w150 f_left pptDiv mal5 mat5" v-for="(item,index) in pptimgarr"
+                                            :class="getupimgclass(index,0)" @click="changeimgindex(index,0)">
+                                            <img :src="item.url+'&amp;Rows=80&amp;Columns=150'" width="100%">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="upmoveimg">
+                                <span v-show="pptimgarr.length>0" class="inc_hollow" @click="movePic(1)">左移</span>
+                                <span v-show="pptimgarr.length>0" class="inc_hollow" @click="movePic(2)">右移</span>
+                                <span v-show="pptimgarr.length>0" class="inc_hollow" @click="removePic()">删除</span>
+                                <div style="margin-left: 25px;" class="inc_solid w80 f_left">上传ppt
+                                </div>
+                                <input style="width: 81px;margin-left: -82px;
+                                margin-top: 6px;
+                                opacity: 0;
+                                position: absolute;
+                                cursor: pointer;" type="file" name="file" id="ppt_1" @change="chooseImg()"
+                                    multiple="multiple" accept="image/*">
+
+                            </div>
+
+                            <div style="height:30px;color:#888888;margin-top: 5px;">
+                                <span>图片类型(JPG or PNG),图片Size小于2M</span>
+                            </div>
+
+                            <div v-show='operatedIndex == 0' style="position:fixed;right: 20px;bottom: 50px;width: 200px;height: 180px;background-color: #ffffff;
+                            box-shadow: 0px 3px 20px 0px 
+                                rgba(0, 0, 0, 0.2);">
+                                <div style="margin-top: 5px;color:#666666;">&nbsp;&nbsp;信息提示区</div>
+                                <div style="margin-top: 5px;border-bottom: 1px solid #f1f1f1;"></div>
+                                <div style="
+                                    margin-top:1px;
+                                    height: 150px;
+                                    width: 200px;     
+                                    overflow-y: auto;" id="pptid_status">
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr v-else-if='type == 1'>
+                        <td>添加视频</td>
+                        <td>
+                            <div class="allanclass_img prela boxsz ptb10 c_both">
+                                <div class="w240 h170 f_left upsigninfo">
+                                    <video :src="video" width="250" height="" controls="" preload=""
+                                        id="radio_url"></video>
+                                        <div v-if="videoid&&!video" class="fc-f86d5a">转码中，请点击刷新观看</div>
+                                </div>
+                                <div id="selectfiles" class="inc_solid pabs w80 choosevideo" @click="upvideo">视频上传</div>
+                                <div id="postfiles" class="inc_hollow w80 pabs uploadvideo" @click="DeleteVideo">删除
+                                </div>
+                                <div v-if="videoid&&!video" class="inc_solid pabs w80" @click="refreshVideo">刷新</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr v-else-if='type == 2 && signleid && istovod == "1"'>
+                        <td>添加剪辑视频</td>
+                        <td>
+                            <div class="allanclass_img prela boxsz ptb10 c_both">
+                                <div class="w240 h170 f_left upsigninfo">
+                                    <video :src="video" width="250" height="" controls="" preload=""
+                                        id="radio_url"></video>
+                                        <div v-if="videoid&&!video" class="fc-f86d5a">转码中，请点击刷新观看</div>
+                                </div>
+                                <div id="selectfiles" class="inc_solid pabs w80 choosevideo" @click="upvideo">视频上传</div>
+                                <div id="postfiles" class="inc_hollow w80 pabs uploadvideo" @click="DeleteVideo">删除
+                                </div>
+                                <div v-if="videoid&&!video" class="inc_solid pabs w80" @click="refreshVideo">刷新</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr v-if='type == 2 && signleid && istovod == "1"'>
+                        <td>VideoID</td>
+                        <td><input type="text" v-model='videoid' placeholder="请输入点播id" class="w300">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="pabs"><span>直播简介</span></td>
+                        <td>
+                            <textarea class="w400 h200" v-model="comment" style="resize:both;"></textarea>
+                            <div class="allanclass_img prela mat10 boxsz  c_both h120">
+                                <div class="h100 f_left upallimg" v-show="detail.length>0">
+                                    <div style="height: 100px;overflow-y: auto;">
+                                        <div class="w150 f_left pptDiv mal5 mat5" v-for="(item,index) in detail"
+                                            :class="getupimgclass(index,1)" @click="changeimgindex(index,1)">
+                                            <img :src="item.url+'&amp;Rows=80&amp;Columns=150'" width="100%">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="upmoveimg">
+                                <!-- v-show="pptimgarr.length>0" -->
+                                <div style="margin-right: 10px;" class="inc_solid w80 f_left">上传图片
+                                </div>
+                                <input
+                                    style="width: 81px;margin-left: -82px;margin-top: 6px;opacity: 0;position: absolute; cursor: pointer;"
+                                    type="file" name="file" id="intro_img" @change="chooseIntroImg()"
+                                    multiple="multiple" accept="image/jpeg,image/png,image/jpg">
+                                <span class="inc_hollow" @click="moveIntroPic(0)">左移</span>
+                                <span class="inc_hollow" @click="moveIntroPic(1)">右移</span>
+                                <span class="inc_hollow" @click="removeIntroPic()">删除</span>
+
+                            </div>
+                            <div style="height:30px;color:#888888;margin-top: 5px;">
+                                <span>图片类型(JPG or PNG),图片Size小于5M,最多可上传6张图片</span>
+                            </div>
+
+                            <div v-show='operatedIndex == 1' style="position:fixed;right: 20px;bottom: 50px;width: 200px;height: 180px;background-color: #ffffff;
+                                                            box-shadow: 0px 3px 20px 0px 
+                                                                rgba(0, 0, 0, 0.2);">
+                                <div style="margin-top: 5px;color:#666666;">&nbsp;&nbsp;信息提示区</div>
+                                <div style="margin-top: 5px;border-bottom: 1px solid #f1f1f1;"></div>
+                                <div style="
+                                                                    margin-top:1px;
+                                                                    height: 150px;
+                                                                    width: 200px;     
+                                                                    overflow-y: auto;" id="introid_status">
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>课程售价</td>
+                        <td><input type="number" placeholder="请输入价格" class="w200" v-model="fee">
+                            <span>&nbsp;&nbsp;元</span><span style="color:#888888;">&nbsp;&nbsp;(0为免费)</span></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>课程定价</td>
+                        <td><input type="number" placeholder="请输入价格" class="w200" v-model="orifee">
+                            <span>&nbsp;&nbsp;元</span><span style="color:#888888;">&nbsp;&nbsp;(0为免费)</span></td>
+                    </tr>
+                    <tr>
+                        <td>视频时长</td>
+                        <td><input type="number" placeholder="请输入视频时长" class="w200" v-model="duration">
+                            <span>&nbsp;&nbsp;分钟</span></td>
+                    </tr>
+                    <tr>
+                        <td>开始时间</td>
+                        <td>
+                            <yayigj-Datesel v-model="begintime" :sizeparam="{'width':'170px','type':'dtime'}">
+                            </yayigj-Datesel>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>结束时间</td>
+                        <td>
+                            <yayigj-Datesel v-model="autoendtime"
+                                :sizeparam="{'width':'170px','type':'dtime','_disbLtToday':'2018-03-04'}">
+                            </yayigj-Datesel>
+                        </td>
+                    </tr>
+                    <tr v-if="istovod=='1'&&status=='1'">
+                        <td>直播地址</td>
+                        <td>
+                            <a style="text-decoration:underline;" :href="playurl" target="_blank"><{playurl}></a>
+                        </td>
+                    </tr>
+                </table>
+
+                <div v-if="istovod=='1'&&status=='2'&&type=='2'" style="overflow-y: auto;position:fixed;right: 20px;bottom: 320px;width: 320px;height: 240px;background-color: #ffffff;
+                box-shadow: 0px 3px 20px 0px 
+                    rgba(0, 0, 0, 0.2);">
+                    <div style="margin-top: 5px;color:#666666;font-size: 15px;">&nbsp;&nbsp;录播列表</div>
+                    <div style="margin-top: 5px;border-bottom: 1px solid #f1f1f1;"></div>
+                    <div style="
+                        padding: 8px; ">
+                        <div v-for="(item,index) in vodPlayList">
+                            <!-- style="text-decoration: underline;" -->
+                            <a :href="item" target="_blank"><{item}></a>
+                            <div style="margin-top: 5px;margin-bottom: 5px;border-bottom:1px solid #e0e0e0"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="inc_save">
+                    <span class="inc_solid " @click="saveData()" style="margin-left:100px">保存</span>
+                    <span class="inc_hollow" @click="goBack()">取消</span>
+                </div>
+            </div>
+        </div>
+        <upload-video v-show="showVodAlert" @confirm="chooseVideo" @cancel="cancelVideo" :title="title" :videoid="videoid"></upload-video>
+    </div>
+</template>

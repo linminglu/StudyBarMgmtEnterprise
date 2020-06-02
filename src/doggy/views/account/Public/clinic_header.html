@@ -1,0 +1,67 @@
+<!--门诊管理下拉菜单开始-->
+<div class="clinic_select_hea">
+    <ul>
+      <!--<li><span><img src="/static/account/img/11.png"></span><p>门诊业务</p></li>-->
+      	<li><a href="/netconsult/netconsult"><span><img src="/static/public/img/homeImg/powernet_m.png"></span><p>电网中心</p></a></li>
+		<li><a href="/market/index"><span><img src="/static/public/img/homeImg/market_m.png"></span><p>市场营销</p></a></li>
+		<li><a href="/report/today"><span><img src="/static/public/img/homeImg/Operation_m.png"></span><p>运营中心</p></a></li>
+		<li><a href="/finance/index"><span><img src="/static/public/img/homeImg/finance_m.png"></span><p>财务管理</p></a></li>
+		<li style="margin-right:0;"><a href="/store"><span><img src="/static/public/img/homeImg/store_m.png"></span><p>库房管理</p></a></li>
+		<li><a href="/clinic/index"><span><img src="/static/public/img/homeImg/system_m.png"></span><p style="background:url(/static/public/img/homeImg/miconbg.png);width:68px;height:24px;line-height:24px;text-align:center;left:-10px;top:48px;position:absolute;">系统管理</p></a></li>
+		<li><a href="/index"><span><img src="/static/public/img/homeImg/backhp.png"></span><p>返回首页</p></a></li>
+    </ul>
+</div>
+<!--门诊管理下拉菜结束-->
+
+<div class="clinic_head">
+    <!--<div class="rel_clinic">关联诊所</div>-->
+    <!--<div class="system_mes">系统消息</div>-->
+    <div class="head_mes_tip head_mes_tip1">
+        <div class="head_mes_tip_t"><span class="sp_1">您别邀请加<label>深圳致美口腔诊所</label>...</span><span class="sp_2">2016-11-12</span></div>
+        <div class="head_mes_tip_b"><a href="#">查看更多</a></div>
+    </div>
+    <div class="head_mes_tip head_mes_tip2">
+        <div class="head_mes_tip_t head_mes_tip_t2">
+            <img src="/static/account/img/enter_no_mes.png">
+            <p>您当前还没有消息提醒</p>
+        </div>
+    </div>
+    <ul>
+      <li class="nav_btn"><img src="/static/public/img/nav_hide1.png"></li>
+      <li><img src="/static/public/img/head_fg-line.png" style="margin-top:16px;"></li>
+      <li class="clinic_icon"><img src="/static/public/img/homeImg/systemS.png"></li>
+      <li class="clinic_word">系统管理<img src="/static/account/img/clinic_show_direct.png"></li>
+      <li class="li_default_pho"><img src="/static/account/img/default_pho.png" id="thisModHea" style="border-radius:50%;" width="28" height="28"></li>
+      <li style="float:right;"><img src="/static/public/img/head_fg-line.png" style="margin-top:16px;"></li>
+      <li class="enter_mes"><img src="/static/account/img/enter_mes1.png"></li>
+      <!--<li class="enter_rel_clinic"><a href="/member/regrelclinicanother" target="_blank"><img src="/static/account/img/enter_rel_clinic1.png"></a></li>-->
+    </ul>
+</div>
+
+<!--头像下拉菜单开始-->
+<div class="per_pho_select">
+      <p><a href="/member/GetPerinfo" target="_blank">个人中心</a></p>
+      <p><a href="/member/member_per_info" target="_blank">编辑资料</a></p>
+      <!--<p><a href="#">我的社区(<span>16</span>)</a></p>-->
+      <!--<p><a href="#">下载牙医管家</a></p>-->
+      <p><a href="/logout">退出登录</a></p>
+</div>
+<!--头像下拉菜单结束-->
+
+<!--PC直接调用到这个页面时,要显示连锁名称和用户-->
+<input type="hidden" id="chainusername" value="{{.chainusername}}">
+<input type="hidden" id="chainname" value="{{.chainname}}">
+<input type="hidden" id="headInfo" value="{{.headInfo}}">
+<input type="hidden" id="clinicphoto" value="{{.clinicphoto}}">
+<!--头像下拉菜单结束-->
+<script>
+   if(document.getElementById('chainusername').value!=''){
+       localStorage.setItem("chainusername",document.getElementById('chainusername').value);
+       localStorage.setItem("clinicname",document.getElementById('chainname').value);
+       if(document.getElementById('clinicphoto').value!='')
+        localStorage.setItem("clinicphoto",document.getElementById('clinicphoto').value);
+       if(document.getElementById('headInfo').value!='')
+        localStorage.setItem("headInfo",document.getElementById('headInfo').value);   
+
+   }
+</script>

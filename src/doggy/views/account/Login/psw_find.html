@@ -1,0 +1,205 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<!--<include file="Public:css_inc" />-->
+ {{template "/account/Public/css_inc.html"  .}}
+<title>验证手机号码</title>
+<link rel="stylesheet" type="text/css" href="/static/account/css/login.css">
+</head>
+
+<body>
+<!--<include file="Public:login_header" />-->
+ {{template "/account/Public/login_header.html"  .}}
+<div id="main_pw">
+	<div class="pw_box">	
+			<div class="progressBar">
+					<ul id="ul_bg" class="step_1 fix">
+					<img src="/static/account/img/step_1.png"/>
+						<li class="li_step li_1"><b>验证手机号码</b><span>1</span></li>
+						<li class="li_2"><b>填写新密码</b><span>2</span></li>
+						<li class="li_3"><b>完成</b><span><img src="/static/account/img/step_ok.png" /></span></li>
+					</ul>
+			</div>
+			<div class="pw_input" >
+					<div id="inp_tel">
+						<label>手机号码&nbsp;:</label><input type="text" class="box_w260" placeholder="请输入手机号码" id="mobile" name="mobile" data-flag="mob">
+						<p id="errInfo" class="errInfo"></p>
+					</div>
+					<div id="inp_code">
+						<label>验&nbsp;&nbsp;证&nbsp;&nbsp;码&nbsp;:</label><input type="text" placeholder="请输入验证码" id="code" name="code">
+						<input type="button" class="acb ac_btn_bf w100h30" id="getCode" value="获取验证码"/>
+						<p id="errInfo_code" class="errInfo"></p>
+					</div>
+					<div id="inp_btn"><input type="button" value="立即验证" class="acb ac_btn_bf" id="verifi" name="verifi" data-flag="verifi"></div>		
+			</div>
+	</div> 
+</div>	  
+	<!--<include file="Public:footer_new" />-->
+	 {{template "/account/Public/footer_new.html"  .}}
+    <script language="javascript" src="/static/account/js/jquery-1.9.1.min.js"></script>
+	<script language="javascript" src="/static/account/js/jquery.cookie.js"></script>
+    <script language="javascript" src="/static/account/js/placeholade.min.js"></script>
+    <script language="javascript"  type="text/javascript">
+		/*-----------------------
+			2016-9-6 yang.luo
+		-----------------------*/
+		// 调取插件，使ie8及以上都可以使用
+		$("#getCode").click(function(){
+			if(check_ver()==false) {
+				return false;
+			}
+			$.ajax({
+				type:"POST",
+				url:"/member/checkuserexist",
+				data:{mobile:$("#mobile").val()},
+				dataType:"json",
+				beforeSend:function(){},
+				error:function(){},
+				success:function(json){
+					console.log(json);
+					if(json.code==1){
+						$("#errInfo").html("<b id='errIcon'></b>"+"该手机号尚未注册");
+						$("#mobile").css("border-color","#f86d5a");
+						return false;
+					}else if(json.code==0){
+						code_time($("#getCode"),60);
+						$.ajax({
+							type:"POST",
+							url:"/member/sendregcode",
+							data:{mobile:$("#mobile").val()},
+							dataType:"json",
+							beforeSend:function(){},
+							error:function(){},
+							success:function(result){
+								console.log(result);
+								if (result.code==1) {
+								
+								}else if (result.code==0) {
+									code_time($("#getCode"),0);
+									$("#errInfo_code").html("<b id='errIcon'></b>"+result.info);
+								};
+							},
+							complete:function(){},
+						})
+					}
+				},
+				complete:function(){},
+			})
+		})
+		
+		$("input[data-flag='mob'],#code").focus(function(){
+			$(this).html("");
+			$("#errInfo").html("");
+			$("#errInfo_code").html("");
+		});
+		/*$("#mobile").blur(function(){
+			check_ver();
+		});*/
+
+		$("#verifi").click(function(){
+			var code_value=$("#code").val();
+			var mob=$("#mobile").val();
+			if(mob==""){
+				$("#errInfo").html("<b id='errIcon'></b>"+"手机号不能为空");
+				$("#mobile").css("border-color","#f86d5a");
+				return false;
+			}
+			if (!(/^1[3|4|5|7|8]\d{9}$/.test(mob))) {
+				$("#errInfo").html("<b id='errIcon'></b>"+"请填写正确的手机号码!");
+				$("#mobile").css("border-color","#f86d5a");
+				return false;
+			}
+			if(code_value==""){
+				$("#errInfo_code").html("<b id='errIcon'></b>"+"验证码为空,请填写");
+				$("#code").css("border-color","#f86d5a");
+				return false;
+			}
+			$.ajax({
+				type:"POST",
+				url:"/member/checkregcode",
+				dataType:"json",
+				data:{
+					code:code_value,
+					mobile:$("#mobile").val()},
+				beforeSend: function(){},
+				success: function(data){
+					// console.log(data);
+					if(data.code==0){
+						$("#errInfo_code").html("<b id='errIcon'></b>"+data.info);
+					}else{
+						//window.location.href="/member/psw_new&mobile"+$("#mobile").val()+"&code="+code_value;
+						
+							var flag;
+							$.cookie("flag","true",{expires:1});
+							$.cookie("mobile",$("#mobile").val(),{expires:1});
+							$.cookie("code",code_value,{expires:1});
+							var _url=window.location.href;
+							//console.log(_url.indexOf("param=pa"))
+							//return;
+							if(_url.indexOf("param=pa")!=-1){
+								window.location.href="/member/psw_new?param=pa";
+							}else{
+								window.location.href="/member/psw_new";
+							}
+							
+					}
+				},
+				error: function(data){/*console.log(data)*/},
+				complete: function(data){}
+			})
+		})
+		
+		function check_ver(){
+			var mob=$("#mobile").val();
+			if(mob==""){
+				$("#errInfo").html("<b id='errIcon'></b>"+"手机号不能为空");
+				$("#mobile").css("border-color","#f86d5a");
+				return false;
+			}
+			if (!(/^1[3|4|5|7|8]\d{9}$/.test(mob))) {
+				$("#mobile").css("border-color","#f86d5a");
+				$("#errInfo").html("<b id='errIcon'></b>"+"请填写正确的手机号码!");
+				return false;
+			}
+		}
+		//验证码倒计时
+		var countTime=null;
+		function code_time(eleID,time){
+			clearInterval(countTime);
+			countTime=setInterval(function(){
+				if (time==0) {
+					clearInterval(countTime);
+					eleID.removeAttr("disabled");
+					eleID.removeAttr("style");
+					eleID.val("重新获取");
+				}else{
+					time-=1;
+					eleID.css("backgroundColor","#ccc").attr("disabled","disabled");
+					eleID.val(time+"秒");
+				}
+			},1000)
+		}
+		
+		$("#mobile").focus(function(){
+			$("#mobile").css("border-color","#00c5b5");
+			$("#mobile").css("outline","none");
+		})
+		$("#mobile").blur(function(){
+			$("#mobile").css("border-color","#e0e0e0");
+		})
+
+		$("#code").focus(function(){
+			$("#code").css("border-color","#00c5b5");
+			$("#code").css("outline","none");
+		})
+		$("#code").blur(function(){
+			$("#code").css("border-color","#e0e0e0");
+		})
+
+	</script>
+	<script type="text/javascript">
+		$(function(){ $('input, textarea').placeholder();});
+	</script>
+</body>
+</html>

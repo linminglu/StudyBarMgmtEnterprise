@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>无权访问</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="author" content="lock">
+<!--[if lt IE 9]>
+    <script src="/static/js/html5shiv.js"></script>
+    <script src="/static/js/respond.min.js"></script>
+<![endif]-->
+<style type="text/css">
+*{font-family:"微软雅黑";}
+.main_div{width:400px;height:360px;margin:0 auto;text-align:center;position:absolute;top:50%;left:50%;margin-left:-200px;margin-top:-180px;}
+.main_div .p1{color:#bacbf4;font-size:16px;}
+.main_div .p2{color:#696969;font-size:14px;}
+.main_div div{margin-left:120px;margin-top:30px;}
+.main_div div span{display:block;float:left;font-size:14px;color:#696969;cursor:pointer;width:68px;height:28px;border-radius:2px;border:1px solid #e0e0e0;line-height:28px;text-align:center;}
+.main_div div .sp1{margin-right:20px;}
+.main_div div span:hover{background:#f0f0f0;}
+
+</style>
+<script>var ispc=parseInt('{{.PCLoad}}');if(!isNaN(ispc) && ispc==1){document.write('<style type="text/css">#tohome{display:none;}</style>');};</script>
+
+</head>
+<body>
+<!--<div class="container">
+  <div class="row">
+    <div class="container">
+      <section class="error-wrapper text-center">
+        <h2>无权限访问或操作受限</h2>
+        <h3>你没有权限访问此页面或操作受限，请联系超级管理员！</h3>
+        <a class="back-btn" href="javascript:history.back();"> Back To Home</a> </section>
+    </div>
+  </div>
+</div>-->
+	<div class="main_div">
+		<img src="/static/public/img/img_401.png" />
+		<p class="p1">无权访问或者操作受限</p>
+		<p class="p2">您没有权限访问此页面或操作受限，请联系超级管理员！</p>
+		<div class="return"><a  href="javascript:;history.go(-1)"><span class="sp1">返回</span></a><a  id="tohome" href="/index"><span>首页</span></a></div>
+	</div>
+</body>
+<script>
+function back(myurl){
+var backUrl="/index";
+var flag=false;
+if ((navigator.userAgent.indexOf('MSIE') >= 0) && (navigator.userAgent.indexOf('Opera') < 0))
+{
+if(history.length>0){
+flag=true;
+history.back();
+}}
+else
+{
+if (navigator.userAgent.indexOf('Firefox') >= 0)
+{if(window.history.length>1)
+{ flag=true; history.back();}
+}
+else {
+if (navigator.userAgent.indexOf('Opera') >= 0)
+{if(history.length>0){flag=true;history.back();}}
+else{}
+} }
+if(flag==false)
+{window.location.href =backUrl;}}
+</script>
+</html>

@@ -1,0 +1,135 @@
+<template id="superanchor_id">
+    <div>
+        <!-- 选择主播 -->
+        <addedt-modal :paramcnf="anchorDialogParam">
+            <div slot='modal_body' id="modal_courseDialog">
+
+                <div class="h50 lh50 bg-white  boxsz  fz-14">
+                    <span class="lh20 f_left">
+                        <span class="bg-cb0202  mar5 lh30">&nbsp;</span>直播间列表
+                    </span>
+                    </span>
+                    <div>
+                        <input type="button" value="查询" class="inc_solid f_right mal20" @click="refreshSearchList">
+                        <input type="text" placeholder="请输入直播间名/手机号码" value="" class="f_right mal20 w200"
+                            v-model="searchcondition">
+                    </div>
+                </div>
+                <div class="addseriescourse_table">
+                    <table class="wp100 unite_table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <input type="checkbox" name="checkAll" id="singlecourse_checkbox"
+                                        v-model="isallselected" @click="chooseall">
+                                </th>
+                                <th>直播间头像</th>
+                                <th>直播间名称</th>
+                                <th>手机号码</th>
+                                <th>状态</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="(item,index) in search_list">
+                                <td>
+                                    <input type="checkbox" name="listcheck" v-model="item.selected"
+                                        v-on:click="alocked(index)">
+                                </td>
+                                <td>
+                                    <div class="allanchors_img"><img style="width: 100%;height:100%;border-radius: 50%;"
+                                            v-bind:src="item.picture"></img>
+                                    </div>
+                                </td>
+                                <td v-html="item.name"></td>
+                                <td v-html="item.mobile"></td>
+
+                                <td v-if="item.isanchor == 1">正常</td>
+                                <td v-else if="item.isanchor == 2" style="color: red;">已停用</td>
+                                <td v-else>未知</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div id="addSuperAnchorpage" class="vuepage" v-show='searchPageParam.total != 0'>
+                        <yayigj-downlist v-model="searchPageParam.pagesize" :arrslist="searchPageParam.valueList"
+                            :sizeparam="searchPageParam.attribute" v-on:getseled="pagesizechange2">
+                        </yayigj-downlist>
+                        <page-bar :cur.sync="searchPageParam.page"
+                            :all.sync="Math.ceil(searchPageParam.total/searchPageParam.pagesize)"
+                            v-on:btnclick="pagechange2">
+                        </page-bar>
+                    </div>
+                </div>
+
+
+            </div>
+        </addedt-modal>
+
+        <div class="hp100 bg-white">
+            <!-- 头部 -->
+            <div class="bline wp100 h50 lh50  boxsz pl10 fz-14  bg-white">首页管理><span class="c_pointer"
+                    @click='goback'>运营中心</span>>明星主播
+                <input class="inc_solid f_right mat10 mar10" type="button" value="选择直播间" @click="showCourseDialog()">
+            </div>
+            <div class="h50 lh50 bg-white  boxsz pl10 fz-14">
+                <div id="yayigjDateDownListTest">
+
+                    <span style="float:left">
+                        <span class="bg-cb0202 mal5 mar5 lh20">&nbsp;</span>明星主播
+                    </span>
+                    <span style="float:right" class="fz-14">
+                        <input class="mal10" v-model="condition" placeholder="请输入直播间名称" type="text" />
+                        <input id="searchBtn" class="inc_hollow mar10" type="button" value="查找"
+                            v-on:click="refrehHomeList">
+                    </span>
+
+
+                </div>
+            </div>
+            <div class="bg-white">
+                <table class="wp100 unite_table">
+                    <thead>
+                        <tr>
+                            <th>头像</th>
+                            <th>直播间名称</th>
+                            <th>手机号码</th>
+                            <th>状态</th>
+                            <th>操作</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="(item,index) in data_list">
+                            <td>
+                                <div class="allanchors_img"><img style="width: 100%;height:100%;border-radius: 50%;"
+                                        v-bind:src="item.roompicture"></img>
+                            </td>
+                            <td v-html="item.name"></td>
+                            <td v-html="item.mobile"></td>
+
+                            <td v-if="item.issuper == 1">正常</td>
+                            <td v-else if="item.issuper == 2" style="color: red;">已停用</td>
+                            <td v-else>未知</td>
+                            <td class="inc_operation">
+                                <span @click='operateCourse(index,0,"up")'>上移</span>
+                                <span class="fc-333333">|</span>
+                                <span @click='operateCourse(index,1,"down")'>下移</span>
+                                <span class="fc-333333">|</span>
+                                <span v-if='item.issuper==0' @click='operateCourse(index,2,1)'>上架</span>
+                                <span v-else-if='item.issuper==1' @click='operateCourse(index,2,0)'>下架</span>
+                                <span class="fc-333333">|</span>
+                                <span @click='operateCourse(index,3,2)'>删除</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div id="boutiquecourse_homepage" class="vuepage" v-show='homeparam.total!=0'>
+                    <yayigj-downlist v-model="homeparam.pagesize" :arrslist="homeparam.valueList"
+                        :sizeparam="homeparam.attribute" v-on:getseled="pagesizechange1"></yayigj-downlist>
+                    <page-bar :cur.sync="homeparam.page" :all.sync="Math.ceil(homeparam.total/homeparam.pagesize)"
+                        v-on:btnclick="pagechange1">
+                    </page-bar>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

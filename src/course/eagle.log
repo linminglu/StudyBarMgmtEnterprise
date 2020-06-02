@@ -1,0 +1,21 @@
+0,2020/05/19 15:31:56 [I] [asm_amd64.s:2086] http server Running on http://:8089
+0,2020/05/19 15:31:56 [I] [asm_amd64.s:2086] Admin server Running on :8088
+0,2020/05/19 15:35:00 [I] [asm_amd64.s:2086] http server Running on http://:8089
+0,2020/05/19 15:35:00 [I] [asm_amd64.s:2086] Admin server Running on :8088
+0,2020/06/01 11:53:29 [I] [asm_amd64.s:2086] http server Running on http://:8089
+0,2020/06/01 11:53:29 [I] [asm_amd64.s:2086] Admin server Running on :8088
+0,2020/06/02 10:31:05 [I] [asm_amd64.s:2086] http server Running on http://:8089
+0,2020/06/02 10:31:05 [I] [asm_amd64.s:2086] Admin server Running on :8088
+2,2020/06/02 10:31:19 [C] [asm_amd64.s:479] the request url is  /course/func
+2,2020/06/02 10:31:19 [C] [asm_amd64.s:479] Handler crashed with error 
+2,2020/06/02 10:31:19 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2,2020/06/02 10:31:19 [C] [asm_amd64.s:479] C:/Go/src/runtime/panic.go:458
+2,2020/06/02 10:31:19 [C] [asm_amd64.s:479] D:/Go1.2/src/course/controllers/app/appcontroller.go:129
+2,2020/06/02 10:31:19 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:479
+2,2020/06/02 10:31:19 [C] [asm_amd64.s:479] C:/Go/src/reflect/value.go:434
+2,2020/06/02 10:31:19 [C] [asm_amd64.s:479] C:/Go/src/reflect/value.go:302
+2,2020/06/02 10:31:19 [C] [asm_amd64.s:479] D:/Go1.2/src/github.com/astaxie/beego/router.go:796
+2,2020/06/02 10:31:19 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:2202
+2,2020/06/02 10:31:19 [C] [asm_amd64.s:479] C:/Go/src/net/http/server.go:1579
+2,2020/06/02 10:31:19 [C] [asm_amd64.s:479] C:/Go/src/runtime/asm_amd64.s:2086
+1,2020/06/02 10:31:19 [server.go:2315] [HTTP] http: multiple response.WriteHeader calls

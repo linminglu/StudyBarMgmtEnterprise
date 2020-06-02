@@ -1,0 +1,76 @@
+<template id="consultantsetting_id">
+    <div>
+   <!-- 添加客服 -->
+   <addedt-modal :paramcnf="addConsultant_pcom">
+        <div slot='modal_body' id="modal_content">
+            <div v-if="!userdata.userid" ref="addSearch" class="popanchors_search" id="popanchors_search">
+                   
+                <input type="text" placeholder="请输入11位手机号码" value="" v-model="userdata.mobile" class="mar20">
+                <input type="button" value="查询" class="inc_solid" @click="searchMobile()">
+            </div>
+       
+            <div v-else-if ="userdata.userid" style="width: 100%;text-align: center;">
+                <p style="margin-top: 8px;">确定添加该用户为客服吗？</p>
+                <ul class="resurtsearchinfo" style="margin-top: 15px;">
+                    <li>
+                        <img style=" width: 16%;
+                        border-radius: 50%;
+                        margin-left: -22px;
+                        margin-top: -15px;
+                        position: absolute;" v-bind:src="userdata.picture"></img>
+                    </li>
+                    <li>
+                        <dl class="">
+                            <dt v-html="userdata.name"></dt>
+                            <dd v-html="userdata.mobile"></dd>
+                        </dl>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </addedt-modal>
+
+    <div class="wp100 bline h35 boxsz pl10 fz-14 lh35 bg-white">直播间管理 ><span style="cursor: pointer;"
+        >客服设置</span></div>
+    <!-- 客服列表 -->
+    <div>
+    <div class="h60  bg-white  lh60 ">
+        <input type="button" value="添加客服" class="inc_solid f_left mal10 mat15" @click="addConsultant()">
+        <span class="f_right">
+            <input class="mal10" v-model="condition" placeholder="请输入手机号码查询" type="text" />
+            <input v-on:click="refreshList" type="button" value="查询" class="inc_solid mar15">
+        </span>
+    </div>
+    <div class="bg-white" id='consultlist'>
+        <table class="wp100 unite_table">
+            <thead>
+                <tr>
+                    <th>手机号码</th>
+                    <th>昵称</th>
+                    <th>课程数量</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(item,index) in data_list">
+                    <td v-html="item.mobile"></td>
+                    <td v-html="item.username"></td>
+                    <td v-html="item.coursenum"></td>
+                    <td class="inc_operation">
+                        <span @click="seedetail(index)">查看</span>
+                        <i>|</i>
+                        <span @click="delAction(index)">删除</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div id="allanchorstollegehomepage" class="vuepage">
+                <yayigj-downlist v-model="details.maxPageNum" :arrslist="pageValueList" :sizeparam="sizepageparam"
+                    v-on:getseled="refreshList(1)"></yayigj-downlist>
+                <page-bar :cur.sync="details.curPage" :all.sync="details.totalPage" v-on:btnclick="listenpage">
+                </page-bar>
+        </div>
+    </div>
+    </div>
+    </div>    
+</template>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>修改密码</title>
+		{{template "../public/link/css_inc.html" .}}
+		<link href="/static/erp/college/css/login.css" rel="stylesheet" />
+	</head>
+	<body>
+		{{template "../public/public/header.html" .}}
+		<div class="outerFrame">
+			<div class="mainFrme">
+				<div class="rightFrme swpass_content">
+					<!--我是主体内容-->
+                    <h2 class="swpass_title">修改密码</h2>
+                    <form action="" id="pwform">
+                        <li><label>编号：</label><span id="userid">{{.usercode}}</span></li>
+                        <li><label>用户名：</label><span id="username">{{.username}}</span></li>
+                        <li><label>新密码：</label><input type="password" id="pw" autocomplete="off" maxlength="20"/><i class="errTip" id="pwerr">密码禅读不能小于6</i><i>*注意：密码为6至20位大小写字母、数字或符号的组合</i></li>
+                        <li><label>确认密码：</label><input type="password" id="rpw"autocomplete="off" maxlength="20" /><i class="errTip" id="rpwerr">asdasdasdas</i><i>*注意：请重新输入新密码</i></li>
+                        <input type="button" class="acb ac_btn_nf" value="取消" name="cancel">
+                        <input type="button" class="acb ac_btn_nf" value="确定" name="confirm" onclick="check()">
+                    </form>
+				</div>
+			</div>
+		</div>
+		{{template "../public/public/footer.html" .}}
+	</body>
+	{{template "../public/link/js_inc.html" .}}
+    <script type="text/javascript" src="/static/erp/college/college/js/switchpass.js"></script>
+</html>

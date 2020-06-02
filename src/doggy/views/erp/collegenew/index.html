@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>商学院新后台</title>
+    {{template "/erp/collegenew/inc/css_inc.html" .}}
+    <!---->
+    {{template "/erp/collegenew/inc/js_inc.html" .}}
+</head>
+
+<body class="mall0 pall0">
+    <!--总体框架-->
+    {{template "/erp/collegenew/vcomponent/yayigj_modal.html" .}}
+    <div id="college_admin">
+        <!--顶部bar-->
+        <div class="headArea wp100 lh40 h40 bg-252a prela">
+            <div class="logo w120 boxsz pl15 dtbcell" style="vertical-align: middle;">
+                <img src="/static/erp/college/img/base/newlogo.png" width="267"  style="vertical-align:text-top;">
+            </div>
+            <!-- <span class="dinblock fc-1180b0" style="font-weight:bold;font-size:18px;">APP学习管理后台</span> -->
+            <div class="loginUser pabs  r-5 t-3  fc-white"><img src="/static/erp/img/base/user-ico.png" class="alv-f3">admin<i class="down"></i>
+                <div class="userWindow bg-white box-shadow boxsz pall5 fz-14 plr20 vhide">
+                    <p class="mall0"><a class="fc-666" href="/butlerp/account/switchpass">修改密码</a></p>
+                    <p class="mall0 tline" id="logout"><a class="fc-666" href="#">退出登录</a></p>
+                </div>
+            </div>
+        </div>
+        <!--顶部bar-->
+
+        <div class="main_frme bg-3c pabs t-40 b-0 l-0 r-0">
+            <table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+                <tr>
+                    <td width="200" valign="top" class="inx_left_nav" >
+                        <dl class="mall0" >
+                            <dt style="padding-left: 14px">
+                                <img style="margin-right:10px"  src="/static/erp/collegenew/img/bar_college_course_play.png" width="16px" height="16px" align="absmiddle">
+                                <span>主播管理</span>
+                            </dt>
+                            <dd class="" >
+                                <router-link to="/allanchors">所有主播</router-link>
+                            </dd>
+                            <dd>
+                                <router-link to="/classset">分佣设置</router-link>
+                            </dd>
+                            <!-- <dd>
+                                <router-link to="/code">兑换码管理</router-link>
+                            </dd> -->
+                            <dt style="padding-left: 14px">
+                                <img style="margin-right:10px"  src="/static/erp/collegenew/img/bar_college_course_play.png" width="16px" height="16px" align="absmiddle">
+                                <span>首页管理</span>
+                            </dt>
+                            <dd class="">
+                                <router-link to="/banner">BANNER管理</dd>
+                            <dd class="">
+                                <router-link to="/seriescourse">首页系列课</router-link>
+                            </dd>
+                            <dd>
+                                <router-link to="/singlecourse">首页单次课</router-link>
+                            </dd>
+                            <dt style="padding-left: 14px">
+                                <img style="margin-right:10px"  src="/static/erp/collegenew/img/bar_college_statics.png" width="16px" height="16px" align="absmiddle">
+                                <span>统计中心</span>
+                            </dt>
+                            <dd class="">
+                                <router-link to="/summary">业绩综述</router-link>
+                            </dd>
+                            <dd class="">
+                                <router-link to="/income">主播收入</router-link>
+                            </dd>
+                            <dd>
+                                <router-link to="/expenditure">主播提现</router-link>
+                            </dd>
+                        </dl>
+                    </td>
+                    <td class="bg-3c prela" valign="top">
+                        <div class="router_area pabs t-0 b-30 l-0 r-0 ovauto bg-f2 pall10 boxsz">
+                            <router-view></router-view>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    {{template "/erp/collegenew/vcomponent/yayigj_dowlist_v.html" .}}
+    {{template "/erp/collegenew/vcomponent/yayigj_date_sel_v.html" .}}
+    <!--所有主播html-->
+    {{template "/erp/collegenew/inc/allanchors.html" .}}
+    <!--分佣设置html-->
+    {{template "/erp/collegenew/inc/classset.html" .}}
+     <!--兑换码html-->
+     {{template "/erp/collegenew/inc/code.html" .}}
+    <!--BANNER管理html-->
+    {{template "/erp/collegenew/inc/banner.html" .}}
+    <!--系列课html-->
+    {{template "/erp/collegenew/inc/seriescourse.html" .}}
+    <!--单次课html-->
+    {{template "/erp/collegenew/inc/singlecourse.html" .}}
+    <!--概述html-->
+    {{template "/erp/collegenew/inc/summary.html" .}}
+    <!--收入html-->
+    {{template "/erp/collegenew/inc/income.html" .}}
+    <!--支出html-->
+    {{template "/erp/collegenew/inc/expenditure.html" .}}
+
+  
+     <!-- 线下课html
+    {{template "/erp/collegenew/inc/course/edt_offline_course.html" .}} -->
+
+    <!-- 分页 -->
+    <script type="text/javascript" src="/static/public/yayigj_public_pwdcall.js"></script>
+    <script type="text/javascript" src="/static/erp/collegenew/js/public.js"></script>
+    <!-- 上传图片 -->
+    <script type="text/javascript" src="/static/erp/collegenew/js/yayigjPicUploadClass.js"></script>
+    <!--总体框架-->
+    <!--所有主播组件-->
+    <script type="text/javascript" src="/static/erp/collegenew/js/lib/plupload-2.1.2/js/plupload.full.min.js"></script> 
+    <script type="text/javascript" src="/static/erp/collegenew/js/allanchors.js"></script>
+    <!--分佣设置组件-->
+    <script type="text/javascript" src="/static/erp/collegenew/js/classset.js"></script>
+    <!-- 兑换码 -->
+    <script type="text/javascript" src="/static/erp/collegenew/js/code.js"></script>
+    <!--BANNER管理组件-->
+    <script type="text/javascript" src="/static/erp/collegenew/js/banner.js"></script>
+    <!--系列课组件-->
+    <script type="text/javascript" src="/static/erp/collegenew/js/seriescourse.js"></script>
+    <!--单次课组件-->
+    <script type="text/javascript" src="/static/erp/collegenew/js/singlecourse.js"></script>
+    <!--概述组件-->
+    <script type="text/javascript" src="/static/erp/collegenew/js/summary.js"></script>
+    <!--收入组件-->
+    <script type="text/javascript" src="/static/erp/collegenew/js/income.js"></script>
+    <!--支出组件-->
+    <script type="text/javascript" src="/static/erp/collegenew/js/expenditure.js"></script>
+    
+    <!--线下课组件-->
+    <script type="text/javascript" src="/static/erp/collegenew/js/edt_offline_course.js"></script>
+    <!--主控逻辑-->
+    <script type="text/javascript" src="/static/erp/collegenew/js/index.js"></script>
+
+
+</body>
+
+</html>

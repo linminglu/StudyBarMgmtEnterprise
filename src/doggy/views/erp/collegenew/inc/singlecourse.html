@@ -1,0 +1,130 @@
+<template id="singlecourse_id">
+    <div>
+        <!-- 添加选择单课 -->
+        <addedt-modal :paramcnf="addsinglecourse">
+            <div slot='modal_body' id="modal_singlecourse">
+                <div class="h60  bg-white lh60 boxsz pl10 c_both pt15">
+                    <input type="text" placeholder="请输入课程标题/主播姓名" value="" class="f_left mal20" v-model="condition">
+                    <input type="button" value="查询" class="inc_solid f_left mal20" @click="searchlist">
+                </div>
+                <div class="addseriescourse_table">
+                    <table class="wp100 unite_table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <input type="checkbox" name="checkAll" id="singlecourse_checkbox"
+                                        v-model="isallselected" @click="chooseall">
+                                </th>
+                                <th>单课程名</th>
+                                <th>主播</th>
+                                <th>点击人数</th>
+                                <th>购买人数</th>
+                                <th>系列课状态</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="(item,index) in currentCourse_list">
+                                <td>
+                                    <input type="checkbox" name="listcheck" v-model="item.isselected"
+                                        v-on:click="alocked(index)">
+                                </td>
+                                <td>
+
+                                    <dl class="classname" style="float:left; width:100px;">
+                                        <img style="height:100%;margin-top:-10px;margin-left:-103px;"
+                                            v-bind:src="item.banner" />
+                                    </dl>
+                                    <dl class="classname">
+                                        <dt v-html="item.title"></dt>
+                                        <dd class="fc-ff94a0" v-html="'¥' + item.fee"></dd>
+                                    </dl>
+
+                                </td>
+                                <td v-html="item.anchorname"></td>
+                                <td v-html="item.clicknum"></td>
+                                <td v-html="item.buynum"></td>
+                                <td v-if="item.datastatus == 1">正常</td>
+                                <td v-else if="item.datastatus == 2" style="color: red;">已下架</td>
+                                <td v-else="item.datastatus == 0" style="color: red;">已删除</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div id="addsinglecoursepage" class="vuepage" style="display:none">
+                        <yayigj-downlist v-model="addcoursepageAttrs.maxPageNum" :arrslist="pageValueList"
+                            :sizeparam="sizepageparam" v-on:getseled="refreshAllcourse"></yayigj-downlist>
+                        <page-bar :cur.sync="addcoursepageAttrs.curPage" :all.sync="addcoursepageAttrs.totalPage"
+                            v-on:btnclick="addcourselistenpage"></page-bar>
+                        <p style="margin-left:40px; display: none;">
+                            {{.msg1}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </addedt-modal>
+        <div class="bline wp100 h35 boxsz pl10 fz-14 lh35 bg-white">首页管理>单课程管理</div>
+        <!-- <div class="h60 bline_21c1aa bg-white fc-21c1aa fz-16 lh60 boxsz pl10">单课程管理</div> -->
+        <div class="h60 bg-white lh60 boxsz pl10"><input type="button" value="选择单课程" class="inc_solid"
+                @click="addsingle()"></div>
+        <div class="bg-white">
+            <table class="wp100 unite_table">
+                <thead>
+                    <tr>
+                        <th>单课课程名</th>
+                        <th>主播</th>
+                        <th>点击人数</th>
+                        <th>购买人数</th>
+                        <th>单课状态</th>
+                        <th>是否显示</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(item,index) in data_list">
+                        <td>
+                            <dl class="classname" style="float:left; width:100px;">
+                                <img style="height:100%;margin-top:-10px;margin-left:-103px;"
+                                    v-bind:src="item.banner" />
+                            </dl>
+                            <dl class="classname">
+                                <dt v-html="item.title"></dt>
+                                <dd class="fc-ff94a0" v-html="'¥' + item.fee"></dd>
+                            </dl>
+                        </td>
+                        <td v-html="item.anchorname"></td>
+                        <td v-html="item.clicknum"></td>
+                        <td v-html="item.buynum"></td>
+                        <td v-if="item.signlestatus == 1">正常</td>
+                        <td v-else if="item.signlestatus == 2" style="color: red;">已下架</td>
+                        <td v-else="item.signlestatus == 0" style="color: red;">已删除</td>
+                        <td v-if="item.datastatus == 1">正常</td>
+                        <td v-else if="item.datastatus == 2" style="color: red;">已下架</td>
+                        <td v-else="item.datastatus == 0" style="color: red;">已删除</td>
+                        <td class="inc_operation">
+                            <span v-if="item.istop == 0" @click="movetoTop(index,'1')">置顶</span>
+                            <span v-else @click="movetoTop(index,'0')">已置顶</span>
+                            <i>|</i>
+                            <!-- class="disabled" -->
+                            <span v-if="item.datastatus == 1" @click="changeSaleState(index,'2')">下架</span>
+                            <span v-else @click="changeSaleState(index,'1')">上架</span>
+                            <i>|</i>
+                            <span @click="changeShowState(index,'up')">上移</span>
+                            <i>|</i>
+                            <span @click="changeShowState(index,'down')">下移</span>
+                            <i>|</i>
+                            <span @click="changeSaleState(index,'0')">删除</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div id="allanchorstollegehomepage" class="vuepage">
+                <yayigj-downlist v-model="details.maxPageNum" :arrslist="pageValueList" :sizeparam="sizepageparam"
+                    v-on:getseled="getpageinfo(1)"></yayigj-downlist>
+                <page-bar :cur.sync="details.curPage" :all.sync="details.totalPage" v-on:btnclick="listenpage">
+                </page-bar>
+                <p style="margin-left:40px; display: none;">
+                    <{msg1}>
+                </p>
+            </div>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,62 @@
+<div class="main_left">
+   <div class="left_tit pub_tit">
+      <div class="r_left_head menu_show_btn">菜单导航</div>
+   </div>
+   <dl id="clinic_left_nav">
+       <dt><img src="/static/account/img/chain_manage_icon.png"><span class="dt_title">连锁管理</span></dt>
+       <dd class="staff_management" id="index"><a href="/clinic/index">员工管理</a></dd>
+       <dd class="depart_manage" id="multidepartmanage"><a href="/clinic/multidepartmanage">部门管理</a></dd>
+       <dd class="per_manage" id="prichainpertmanage"><a href="/clinic/prichainpertmanage">权限管理</a></dd>
+       <dd class="clinic_management" id="chainmanage"><a href="/clinic/chainmanage">门诊管理</a></dd>
+       <dd class="chain_info" id="chaininfo"><a href="/clinic/chaininfo">连锁信息</a></dd>
+       <!--<dt><img src="/static/account/img/basci_data.png">基础数据</dt>
+       <dd class="index"><a href="index.php?m=BasicDa&a=index">收费处置</a></dd>
+       <dd class="medical_temp"><a href="index.php?m=BasicDa&a=medical_temp">病历模板</a></dd>
+       <dd class="use_onfigura"><a href="index.php?m=BasicDa&a=use_onfigura">使用配置</a></dd>
+       <dt><img src="/static/account/img/data_safe.png">数据安全</dt>
+       <dd class=""><a href="#">设备管理</a></dd>
+       <dd class=""><a href="#">患者回收站</a></dd>-->
+   </dl>
+</div>
+
+<!--导航展开开始-->
+<div class="left_nav_hide">
+    <ul>
+        <li class="default_clinic_pho menu_hide_btn"></li>
+        <li class="item_type index multidepartmanage prichainpertmanage chainmanage chaininfo"><img src="/static/account/img/chain_manage_icon.png">
+            <div>
+                <p class="index"><a href="/clinic/index">员工管理</a></p>
+                <p class="multidepartmanage"><a href="/clinic/multidepartmanage">部门管理</a></p>
+                <p class="prichainpertmanage"><a href="/clinic/prichainpertmanage">权限管理</a></p>
+                <p class="chainmanage"><a href="/clinic/chainmanage">门诊管理</a></p>
+                <p class="chaininfo"><a href="/clinic/chaininfo">连锁信息</a></p>
+            </div>
+        </li>
+        <!--<li class="item_type"><img src="/static/account/img/basci_data.png">
+            <div><p>收费处置</p><p>病例模板</p><p>使用配置</p></div>
+        </li>
+        <li class="item_type"><img src="/static/account/img/data_safe.png">
+            <div><p>设备管理</p><p>患者回收站</p></div>
+        </li>-->
+    </ul>
+</div>
+<!--导航展开结束-->
+<input type="hidden" name="ctype">
+<input type="hidden" name="clength">
+<script language="javascript" src="/static/account/js/jquery-1.9.1.min.js"></script>
+
+<script type="text/javascript">
+    var href=location.href.split("/");
+    var classname=href[href.length-1];
+    var edit=$("input[name='edit']").val();
+    if(classname=="addmember"||edit=="edit"){
+        classname='index';
+    }
+    $("#"+classname+",."+classname+"").css("backgroundColor","#edf0f2");
+    $("#clinci_chain_name").mouseover(function(){
+        $(this).find("#setting_icon").attr("src","/static/account/img/left_setting2.png");
+    }).mouseout(function(){
+        $(this).find("#setting_icon").attr("src","/static/account/img/left_setting1.png");
+    })
+    
+</script>

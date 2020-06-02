@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>门诊审核</title>
+		{{template "../public/link/css_inc.html" .}}
+		<link href="/static/erp/css/user.css" rel="stylesheet" />
+		<link href="/static/erp/css/clinicaudit.css" rel="stylesheet" />	
+        <style>
+            .backPage{top:15px;right:20px;}
+            .search{padding:14px 14px 0 14px;}
+			.search label,.search div{margin-bottom:20px;}
+			.excel{float:left;margin-left:14px;}
+            .sendState,.sendType,.sendStage{width: 80px;height: 28px;line-height: 28px;border: solid 1px #00c5b5;float: left;text-indent: 10px;}
+            .sendStage{width:180px;}
+			#BeginDate{width: 120px;}
+			#EndDate{width: 120px;}
+        </style>
+	</head>
+	<body>
+		{{template "../public/public/header.html" .}}
+			<div class="mainFrme">
+				{{template "../public/public/left.html" .}}
+				<div class="rightFrme">
+					<div class="crumbs"><a href="###">申请评分</a></div>
+                    <input type="hidden" name="htag" value="1">
+					<div class="cont">
+						<!--<div class="pageHeader">门诊审核
+						</div>-->
+                        <ul class="pf_index">
+                            <li class="cur_index"><a href="">申请评分</a></li>
+                            <!--<li><a href="">用户评分</a></li>-->
+                           <!--{{.infolist}}-->
+                        </ul>
+                        {{range .infolist}}
+                       
+                        <div class="pf_cont">
+                            <div class="pf_cont_t">基本评分<i></i></div>
+                            <input type="hidden" id="Mark" value="{{.remark}}">
+                            <input type="hidden" id="ws" value="{{.hygiene}}">
+                            <input type="hidden" id="bs" value="{{.identification}}">
+                            <input type="hidden" id="lj" value="{{.garbagedisposa}}">
+                            <input type="hidden" id="ys" value="{{.privacy}}">
+                            <input type="hidden" id="safe" value="{{.safe}}">
+                            <input type="hidden" id="staff" value="{{.staff}}">
+                            <input type="hidden" id="medqty" value="{{.medicalquality}}">
+                            <input type="hidden" id="other" value="{{.other}}">
+                            
+                            <input type="hidden" id="physicianhonorcertlevel" value="{{.physicianhonorcertlevel}}">
+                            <input type="hidden" id="physiciandutylevel" value="{{.physiciandutylevel}}">
+                            <input type="hidden" id="clinichonorcertlevel" value="{{.clinichonorcertlevel}}">
+
+
+                            <div class="pf_cont_b pf_input basic">
+                                <li><span class="l_span">* 医疗机构名称：</span><span class="pf_info w400">{{.institutionname}}</span><i class="err_ico" data-remark="3"></i><input type="text" placeholder="请输入该信息未通过审核的原因"></li>
+                                <li><span class="l_span">* 医疗机构地址：</span><span class="pf_info w126 mr10">{{.province}}</span><span class="pf_info w126 mr10">{{.city}}</span><span class="pf_info w126">{{.area}}</span><i class="err_ico" data-remark="6"></i><input type="text" placeholder="请输入该信息未通过审核的原因"></li>
+                                <li><span class="l_span hidden">* 详细地址：</span><span class="pf_info w400">{{.address}}</span><i class="err_ico" data-remark="7"></i><input type="text" placeholder="请输入该信息未通过审核的原因"></li>
+                                <li><span class="l_span">* 联系方式：</span><span class="pf_info w400">{{.mobile}}</span><i class="err_ico" data-remark="8"></i><input type="text" placeholder="请输入该信息未通过审核的原因"></li>
+                                <li><span class="l_span">* 营业执照号码：</span><span class="pf_info w400">{{.licenseid}}</span><i class="err_ico" data-remark="9"></i><input type="text" placeholder="请输入该信息未通过审核的原因"></li>
+                                <li><span class="l_span">* 企业法人营业执照：</span><span class="pf_info w400">{{.legalpersonpic}}</span><i class="err_ico" data-remark="10"></i><i class="view_img"></i><input type="text" placeholder="请输入该信息未通过审核的原因"></li>
+                                <li><span class="l_span">* 医疗机构执业许可证：</span><span class="pf_info w400" title="{{.medicallicencheck}}">{{.medicallicencheck}}</span><i class="err_ico" data-remark="11"></i><i class="view_img"></i><input type="text" placeholder="请输入该信息未通过审核的原因"></li>
+                                <li><span class="l_span hidden">* 联系方式：</span><span class="pf_info w400" title="{{.medicallicenduplicate}}">{{.medicallicenduplicate}}</span><i class="err_ico" data-remark="12"></i><i class="view_img"></i><input type="text" placeholder="请输入该信息未通过审核的原因"></li>
+                                <li><span class="l_span hidden">* 联系方式：</span><span class="pf_info w400" title="{{.medicallicenoriginal}}">{{.medicallicenoriginal}}</span><i class="err_ico" data-remark="13"></i><i class="view_img"></i><input type="text" placeholder="请输入该信息未通过审核的原因"></li>
+                                <li><span class="l_span">* 医师执业证书：</span><span class="pf_info w400">{{.physicianpracticecert}}</span><i class="err_ico" data-remark="14"></i><i class="view_img"></i><input type="text" placeholder="请输入该信息未通过审核的原因"></li>
+                            </div>
+                            <div class="pf_cont_t">经营评分<i></i></div>
+                            <div class="pf_cont_b pf_input jy">
+                                <li><span class="l_span">* 医牙椅数量：</span><span class="pf_info w400">{{.chairnum}}</span><i class="err_ico" data-remark="15"></i><input type="text" placeholder="请输入该信息未通过审核的原因"></li>
+                                <li><span class="l_span">* 执照性质：</span><span class="pf_info w400">{{.licenseproperty}}</span><i class="err_ico" data-remark="16"></i><input type="text" placeholder="请输入该信息未通过审核的原因"></li>
+                                <li><span class="l_span">* 医生最高职称：</span><span class="pf_info w400">{{.highesttitle}}</span><i class="err_ico" data-remark="17"></i><input type="text" placeholder="请输入该信息未通过审核的原因"></li>
+                                <li><span class="l_span">* 医生数量：</span><span class="pf_info w400">{{.physiciannum}}</span><i class="err_ico" data-remark="18"></i><input type="text" placeholder="请输入该信息未通过审核的原因"></li>
+                                <li><span class="l_span">* 预约流程：</span><span class="pf_info w400">{{.scheduleprocess}}</span><i class="err_ico" data-remark="19"></i><input type="text" placeholder="请输入该信息未通过审核的原因"></li>
+                                <li><span class="l_span">* 月初诊患者数量：</span><span class="pf_info w400">{{.monthpatientnum}}</span><i class="err_ico" data-remark="20"></i><input type="text" placeholder="请输入该信息未通过审核的原因"></li>
+                                <li><span class="l_span">* 诊所经营月份：</span><span class="pf_info w400">{{.businessmonth}}</span><i class="err_ico" data-remark="21"></i><input type="text" placeholder="请输入该信息未通过审核的原因"></li>
+                                <li><span class="l_span">* 诊所面积：</span><span class="pf_info w400">{{.clinicarea}}</span><i class="err_ico" data-remark="22"></i><input type="text" placeholder="请输入该信息未通过审核的原因"></li>
+                                <li><span class="l_span">* 连锁店数量：</span><span class="pf_info w400">{{.chainnum}}</span><i class="err_ico" data-remark="23"></i><input type="text" placeholder="请输入该信息未通过审核的原因"></li>
+                                <li><span class="l_span">* 牙医管家使用月份：</span><span class="pf_info w400">{{.months}}</span></li>
+                            </div>
+                        </div>
+                        <!--//环境评分-->
+                        <ul class="pf_index">
+                            <li class="cur_index"><a href="javascript:;">环境评分</a></li>
+                        </ul>
+                        <div class="pf_cont_b mt30 hj">
+                                <li>
+                                    <span class="l_span">* 卫生：</span>
+                                    <div class="r_items">
+                                        <span class="pf_info selc_span" data-val="3">墙面整洁</span><span class="pf_info selc_span" data-val="3">桌面整洁</span>
+                                        <span class="pf_info selc_span" data-val="3">地面整洁</span><span class="pf_info selc_span" data-val="3">天花板整洁</span>
+                                        <p class="ch_tips">以上项目如出现灰尘或霉迹请勿勾选</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="l_span">* 标识：</span>
+                                    <div class="r_items">
+                                        <span class="pf_info selc_span" data-val="1">标签贴</span><span class="pf_info selc_span" data-val="1">桌面物品定位</span>
+                                        <span class="pf_info selc_span" data-val="1">标识定位</span><span class="pf_info selc_span" data-val="3">清洁整理</span><span class="pf_info selc_span" data-val="3">价目表</span>
+                                        <p class="ch_tips">以上项目如未发现相应标识请勿选择</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="l_span">* 垃圾处理：</span>
+                                    <div class="r_items">
+                                        <span class="pf_info selc_span" data-val="4">医疗垃圾分开</span><span class="pf_info selc_span" data-val="4">生活垃圾分开</span>
+                                        <span class="pf_info selc_span" data-val="4">存放少于2天</span><span class="pf_info selc_span" data-val="4">垃圾封口少于1/3</span>
+                                        <p class="ch_tips">医疗垃圾存放在黄色垃圾桶，存放时长不超过2天，垃圾封口时应低于1/3，以上项目不符合请勿选择</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="l_span">* 隐私：</span>
+                                    <div class="r_items">
+                                        <span class="pf_info selc_span" data-val="5">单独诊室</span><span class="pf_info selc_span" data-val="3">叫号隐去中间字</span>
+                                        <p class="ch_tips">若无叫号机”叫号隐去中间字“目默认得分，以上项目不符合请勿选择</p>
+                                    </div>
+
+                                </li>
+                                <li>
+                                    <span class="l_span">* 安全：</span>
+                                    <div class="r_items">
+                                        <span class="pf_info selc_span" data-val="4">安全通道无杂物</span><span class="pf_info selc_span" data-val="4">安全出口标识清晰</span>
+                                        <span class="pf_info selc_span" data-val="4">烟感喷淋头正常</span><span class="pf_info selc_span" data-val="4">常用消防设备齐整</span>
+                                        <p class="ch_tips">常用消防设备指灭火器、消防栓等设备，以上项目不符合请勿选择</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="l_span">* 员工：</span>
+                                    <div class="r_items">
+                                        <span class="pf_info selc_span" id="dutyNum"></span><span class="pf_info selc_span" id="phyExa">年度体检次数</span>
+                                        <span class="pf_info selc_span" data-val="3">有无培训</span>
+                                        <p class="ch_tips">门诊数量最多为10个，培训请随机询问工作人员，以上项目不符合请勿选择</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="l_span">* 医疗质量：</span>
+                                    <div class="r_items">
+                                        <span class="pf_info selc_span" data-val="4">黄色锐器盒</span><span class="pf_info selc_span" data-val="2">洗手区</span>
+                                        <span class="pf_info selc_span" data-val="4">消毒设备</span><span class="pf_info selc_span" data-val="4">CT/全景设备</span><span class="pf_info selc_span" data-val="1">铅衣</span>
+                                        <span class="pf_info selc_span" data-val="1">内窥镜显示屏</span><span class="pf_info selc_span" data-val="1">口罩</span><span class="pf_info selc_span" data-val="1">手套</span>
+                                        <p class="ch_tips">以上项目如未发现相应标识请勿选择</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="l_span">* 其他：</span>
+                                    <div class="r_items">
+                                        <span class="pf_info selc_span" data-val="4">医保定点单位</span>
+                                        <p class="ch_tips">请确认后勾选</p>
+                                    </div>
+                                </li>
+                        </div>
+                        <!--社会影响力-->
+                        <ul class="pf_index">
+                            <li class="cur_index"><a href="javascript:;">社会影响力评分</a></li>
+                        </ul>
+                        <div class="pf_cont">
+                            <div class="pf_cont_b mt30 pf_honor">
+                                <li><span class="l_span">* 医生荣誉证书：</span><span class="pf_info w400">{{.physicianhonorcert}}</span><i class="view_img"></i><input type="text" id="dcHonor" value="{{.physicianhonorcertlevel}}" placeholder="证书级别"></li>
+                                <li><span class="l_span">* 诊所荣誉证书：</span><span class="pf_info w400">{{.clinichonorcert}}</span><i class="view_img"></i><input type="text" id="clHonor" value="{{.clinichonorcertlevel}}" placeholder="证书级别"></li>
+                                <li><span class="l_span">* 医生行业任职：</span><span class="pf_info w400">{{.physicianduty}}</span><i class="view_img"></i><input type="text" id="duHonor" value="{{.physiciandutylevel}}" placeholder="证书级别"></li>
+                            </div>
+                        </div>
+                    <div class="black_area"></div>
+                    <div class="pf_result">
+                        <h2>评分概述</h2>
+                        <!--<p><b>基础评分：</b><span id="BasicScores">88分</span></p>-->
+                            <p><b>经营评分：</b><span id="b1">0分</span>该项总分100分占比60%</p>
+                            <p><b>社会影响力评分：</b><span id="b2">0分</span>该项总分100分占比10%</p>
+                            <p><b>环境评分：</b><span id="b3">0分</span>该项总分100分占比30%</p>
+                        <!--<p><b>用户评分：</b><span id="UserScores">88</span>(<span id="sizeCount">每月统计</span>)</p>-->
+                        <p><b>测评星级：</b><span id="StarLev">五星级</span></p>
+                        <p><b>评分说明：</b><textarea id="pfTextarea" placeholder="请对您的评分进行必要的说明，基本信息未通过的可不填写">{{.ratingremarks}}</textarea></p>
+                    </div>
+                           {{else}}后端数据错误
+                    {{end}}
+                    <div class="black_area"></div>
+                    <div class="input_action">
+                        <input class="fillBtn" value="确定" type="button" onclick="postResult()">
+                    </div>
+					</div>
+				</div>
+			</div>
+		{{template "../public/public/footer.html" .}}
+		<div id="Bigimg">
+			
+        </div>
+
+	</body>
+	{{template "../public/link/js_inc.html" .}}
+	<script type="text/javascript" src="/static/public/yayigj_pop_window.js"></script>
+	<script type="text/javascript" src="/static/account/js/area_val.js"></script>  <!--input输入框的省份城市和地区-->
+	<script type="text/javascript" src="/static/erp/js/ExamineEnter_ext.js"></script>
+    <script type="text/javascript">
+		$(function(){
+			_init_area();//地区
+            var Mark=$("#Mark").val();
+            if(Mark){
+                var json=eval("("+Mark+")");
+                for(i in json){
+                    $(".err_ico[data-remark='"+i+"']").siblings("input[type='text']").val(json[i]).show();
+                    $(".err_ico[data-remark='"+i+"']").attr("data-flag","1");
+                // console.log(json[i]);
+                };
+            };
+            var ws=$("#ws").val();
+           // console.log("ws=",ws);
+            if(ws){
+               var arr=[];
+               arr=ws.split(",");
+               for(var i=0;i<arr.length;i++){
+                   $(".hj .r_items").eq(0).find(".selc_span").eq(arr[i]).attr("data-flag","1");
+               }
+            };
+            var bs=$("#bs").val();
+           // console.log("bs=",bs);
+            if(bs){
+               var arr=[];
+               arr=bs.split(",");
+               for(var i=0;i<arr.length;i++){
+                   $(".hj .r_items").eq(1).find(".selc_span").eq(arr[i]).attr("data-flag","1");
+               }
+            };
+            var lj=$("#lj").val();
+           // console.log("lj=",lj);
+            if(lj){
+               var arr=[];
+               arr=lj.split(",");
+               for(var i=0;i<arr.length;i++){
+                   $(".hj .r_items").eq(2).find(".selc_span").eq(arr[i]).attr("data-flag","1");
+               }
+            };
+            var ys=$("#ys").val();
+           //// console.log("ys=",ys);
+            if(ys){
+               var arr=[];
+               arr=ys.split(",");
+               for(var i=0;i<arr.length;i++){
+                   $(".hj .r_items").eq(3).find(".selc_span").eq(arr[i]).attr("data-flag","1");
+               }
+            };
+            var safe=$("#safe").val();
+           // console.log("safe=",safe);
+            if(safe){
+               var arr=[];
+               arr=safe.split(",");
+               for(var i=0;i<arr.length;i++){
+                   $(".hj .r_items").eq(4).find(".selc_span").eq(arr[i]).attr("data-flag","1");
+               }
+            };
+            var staff=$("#staff").val();
+            console.log("staff=",staff);
+            if(staff){
+               var arr=[];
+               arr=staff.split(",");
+               for(var i=0;i<arr.length;i++){
+                 //  console.log(arr[i]);
+                   if(arr[i].indexOf("个")!=-1){
+                       $(".hj .r_items").eq(5).find(".selc_span").eq(0).attr("data-flag","1").text(arr[i]).attr("data-val",2*parseInt(arr[i]));
+                   }else if(arr[i].indexOf("年")!=-1){
+                        $(".hj .r_items").eq(5).find(".selc_span").eq(1).attr("data-flag","1").text(arr[i]);
+                        if(arr[i]=="1年1次"){
+                            $(".hj .r_items").eq(5).find(".selc_span").eq(1).attr("data-val","2");
+                        }else if(arr[i]=="1年2次"){
+                            $(".hj .r_items").eq(5).find(".selc_span").eq(1).attr("data-val","4"); 
+                        }else{
+                            $(".hj .r_items").eq(5).find(".selc_span").eq(1).attr("data-val","0");
+                        }
+                   }else if(arr[i].indexOf("培训")!=-1){
+                       $(".hj .r_items").eq(5).find(".selc_span").eq(2).attr("data-flag","1");
+                   }
+               }
+            };
+            var medqty=$("#medqty").val();
+           // console.log("medqty=",medqty);
+            if(medqty){
+               var arr=[];
+               arr=medqty.split(",");
+               for(var i=0;i<arr.length;i++){
+                   $(".hj .r_items").eq(6).find(".selc_span").eq(arr[i]).attr("data-flag","1");
+               }
+            };
+            var other=$("#other").val();
+           // console.log("other=",other);
+            if(other){
+                $(".hj .r_items").eq(7).find(".selc_span").eq(0).attr("data-flag","1");
+            };
+            getScoreHonor();
+            jyScoreFuc();
+            hjgetScore();
+		});
+	</script>
+</html>

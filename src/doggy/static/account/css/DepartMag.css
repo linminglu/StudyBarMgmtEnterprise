@@ -1,0 +1,156 @@
+@charset "utf-8";
+/* CSS Document */
+/*科室管理样式*/
+/*头部*/
+.depart_mag h2{ line-height:30px; font-size:18px; font-weight:normal; padding:15px; border-bottom:1px solid #eee;}
+.depart_mag h2 span{ background:url(../img/u9382.png) no-repeat center; background-size:30px 30px; display:inline-block; width:30px; height:30px;
+vertical-align:top; margin-right:10px;}
+.depart_mag h2 a{ float:right; background-color:#00bb9c;color:#fff; display:inline-block; font-size:14px;padding:4px 30px;}
+/*头部*/
+/*列表第一行*/
+.depart_mag .departs{}
+.departs .depart_ul{ font-size:13px; font-weight:normal;color:#333;}
+.depart_ul input[type=checkbox]{width:13px; height:13px; margin-right:6px; vertical-align:middle; margin-left:20px;}
+.depart_ul li{line-height:90px; height:90px; display:flex;}
+.depart_ul li:nth-child(odd){ background-color:#f7f7f7;}
+.depart_ul li span{flex:1.0;}
+.depart_ul .ul_head{line-height:50px;background-color:#f7f7f7;display:flex; text-align:left;}
+.depart_ul .ul_head span{flex:1.0;}
+.ul_head .d_name i{display:inline-block; width:24px; height:24px; background:url(../img/u5104.png) no-repeat center; vertical-align:middle;}
+.ul_head .d_belong{ text-align:center;}
+.ul_head .d_person{text-align:center;}
+.ul_head span.d_handle{text-align:right; padding-right:60px; color:#333;}
+
+.depart_ul li .d_name{}
+.depart_ul li .d_belong{text-align:center;}
+.depart_ul li .d_person{text-align:center;}
+.depart_ul li .d_handle{text-align:right; padding-right:60px; color:#0066FF;cursor:pointer; position:relative;}
+.depart_ul li .d_handle:after{content:attr(data-icon);vertical-align:top; margin-left:6px;}
+.d_handle .handle_ol{ display:none;position:absolute;top:60px;border:1px solid #ccc; padding:5px; right:60px;line-height:28px; background-color:#fff; z-index:5;}
+.d_handle .handle_ol .handle_item{ width:80px; color:#333; cursor:pointer; text-align:center;}
+/**/
+/*编辑科室*/
+.departs .departs_edit{ display:none; width:550px; height:250px; border:1px solid #ccc; border-radius:8px; box-shadow:2px 2px 2px #999; position:absolute; top:30%;
+left:30%; z-index:12; background-color:#fff; padding:20px; text-align:center;}
+.departs_edit h3{color:#333; font-weight:normal; font-size:18px; text-align:left}
+.departs_edit h3 span{ float:right; line-height:25px;}
+.departs_edit h3 span:before{ content:attr(data-icon); font-size:20px; color:#666;}
+.departs_edit .edit_list{ width:80%; margin:28px auto; text-align:center; font-size:15px;}
+.edit_list select,input[type=text]{-webkit-box-sizing:border-box;border:1px solid #eee; width:250px; margin:0 0 0 10px; padding:4px;color:#999;}
+.edit_list label{ color:#333;}
+.departs_edit input[type=submit]{ padding:6px 50px; color:#fff; background-color:#00bb9c; margin-top:10px;}
+/**/
+/*编辑员工*/
+.staff_edit{ display:none;width:700px; height:500px;border:1px solid #ccc; border-radius:8px; box-shadow:2px 2px 2px #999; position:absolute; top:13%;left:20%; z-index:12; background-color:#fff; padding:20px; text-align:right;}
+.staff_edit input[type=button]{ padding:6px 40px; background-color:#00bb9c; color:#fff;}
+.staff_edit #remove{ color:#00bb9c; background-color:#fff; border:1px solid #00bb9c;}
+.staff_edit h3{color:#333; font-weight:normal; font-size:18px; text-align:left}
+.staff_edit h3 b{ font-size:14px;margin-left:12px; font-weight:normal;}
+.staff_edit h3 span{float:right; line-height:25px;}
+.staff_edit h3 span:before{content:attr(data-icon); font-size:20px; color:#666;}
+.staff_edit .staff_list{ margin:20px; display:flex; font-size:14px; color:#333;}
+.staff_list .list_l,.list_r{ flex:10}
+.staff_list .list_m{flex:1;display: -webkit-box; -webkit-box-pack:center;-webkit-box-align:center;}
+.staff_list .list_m img{cursor:pointer;width:24px; height:24px;}
+/**/
+
+/*左边列表*/
+.staff_list .list_l{  text-align:left;}
+.staff_list p{ line-height:36px;}
+.list_l .l_box{ border:1px solid #999;padding:10px; height:320px;}
+.l_box .box_h{ border-bottom:1px solid #999; margin-top:20px; height:30px;}
+.l_box .box_h input[type=text]{ width:220px; border:none; margin-left:0; display:none;}
+.l_box .box_h input[type=text]:focus{ border:none; outline:none;}
+.l_box .box_h span{ display:inline-block; text-align:center;}
+.box_h #selc{width:24px;height:24px;background:url(../img/u1985.png) no-repeat; background-size:24px 24px; vertical-align:top; margin-right:14px; cursor:pointer;}
+.box_h #staff{margin-right:40px;border-bottom:2px solid #00bb9c; height:28px; width:50px; cursor:pointer;}
+.box_h #depart{height:28px; width:50px; cursor:pointer;}
+.box_h #close{height:24px; float:right; background:url(../img/u2016.png) no-repeat;background-size:18px 18px; width:18px; height:18px; cursor:pointer;}
+.box_c{padding:15px;}
+.box_c #depart_list{ display:none;}
+.box_c p{ line-height:20px;}  
+.box_c ul{}
+.box_c ul li{padding:10px 0; cursor:pointer;}
+.box_c ul li:hover{ background-color:#00bb9c;}
+.box_c ul li i{ display:inline-block; width:22px; height:22px; background:url(../img/u5651.png) no-repeat center; background-size:22px 22px; vertical-align:middle;}
+.box_c ul li span{ margin:0 34px 0 12px;}
+.box_c ol{}
+.box_c ol li{}
+.box_c ol li b{ font-style:inherit; display:inline-block; }
+.box_c ol li b em{ display:inline-block;width:10px;height:10px; border-left:1px solid #666; border-bottom:1px solid #666;-webkit-box-sizing:border-box;box-sizing:border-box; vertical-align:middle; margin-right:8px;}
+.box_c ol li b em.fold{-webkit-transform:rotate(225deg); transform:rotate(225deg);}
+.box_c ol li b em.unfold{-webkit-transform:rotate(-45deg); transform:rotate(-45deg);}
+
+.list_r{ text-align:left;}
+.list_r #list_num{ color:#00bb9c}
+.list_r .r_box{ border:1px solid #999; padding:15px; height:320px;}
+.r_box ol{}
+.r_box ol li{ padding:10px 0;}
+.r_box li b{ display:inline-block; width:22px; height:22px; background:url(../img/u5651.png) no-repeat center; background-size:22px 22px; vertical-align:middle;}
+.r_box li span{ margin:0 34px 0 12px;}
+.r_box li i{ display:inline-block; width:16px; height:16px;background:url(../img/u5649.png) no-repeat center; background-size:16px 16px; float:right; cursor:pointer;}
+/**/
+/*删除科室*/
+#depart_remove{ display:none;border:1px solid #ccc; border-radius:8px; box-shadow:2px 2px 2px #999;position:absolute; top:30%;left:30%; z-index:12; background-color:#fff; padding:20px; font-size:14px;}
+#depart_remove h3{color:#333; font-weight:normal; font-size:18px; text-align:left}
+#depart_remove h3 span{ float:right;}
+#depart_remove h3 span:before{content:attr(data-icon); font-size:20px; color:#666; cursor:pointer;}
+#depart_remove .remove_box{ margin:60px;}
+#depart_remove .box_con{ font-style:normal;}
+#depart_remove .box_con:before{ display:inline-block;content:attr(data-icon); font-size:20px; color:#666; width:46px; height:46px; border:1px solid #f08373; color:#f08373; border-radius:50%; font-size:46px; text-align:center; line-height:46px;}
+#depart_remove .remove_box p{ margin-left:60px; margin-top:-46px;}
+.remove_box span{margin-left:8px;}
+#depart_remove #remove_sure2{ display:block; margin:20px auto;padding:6px 30px; background-color:#00bb9c; color:#fff;}
+
+/*权限管理的样式*/
+.perm_box{ border:1px solid #eee;-webkit-box-sizing:border-box;}
+.perm_box .perm_head{ padding:20px; border-bottom:1px solid #eee;}
+.perm_head h2{font-size:18px; font-style:normal; font-weight:normal;}
+.perm_head h2 span{ display:inline-block; width:30px; height:30px; background:url(../img/u9724.png) center; background-size:30px 30px; vertical-align:middle; margin-right:12px;}
+.perm_head h2 a{ font-size:14px; float:right;padding:8px 40px; background-color:#00bb9c; color:#fff;}
+/**/
+.perm_content{ overflow:hidden;}
+.perm_content .perm_l{ float:left; border-right:1px solid #eee; padding:20px 10px 20px 20px; position:relative;}
+.perm_content .perm_l h3{ font-size:18px; font-style:normal; font-weight:normal; position:relative; margin-bottom:20px;}
+.perm_content .perm_l h3:after{ display:inline-block; width:16px; height:16px; content:attr(data-icon); font-size:26px;position:absolute; top:-9px;right:10px; cursor:pointer;}
+/**/
+/*左边职位列表样式*/
+.perm_l ol{ font-size:14px;}
+.perm_l ol li { line-height:36px; width:240px; -webkit-box-sizing:border-box;}
+.perm_l ol li i{display:inline-block; width:15px; height:15px; background:url(../img/u9748.png) center; background-size:15px 15px; margin-right:8px; vertical-align:middle;}
+.perm_l ol li .unfold{ background:url(../img/u9754.png) center; background-size:15px 15px;}
+.perm_l ol li ul{}
+.perm_l ul li{ padding-left:20px;}
+.perm_l ul li:hover{ background-color:#ccf1eb;}
+.perm_l ul li b{ float:right; margin:0 2px;width: 14px;height: 13px; cursor:pointer;}
+.perm_l ul li b:before{ content:attr(data-icon);}
+/**/
+/*右边内容*/
+.perm_content .perm_r{ overflow:scroll; padding:20px 0 20px 20px; height:700px;}
+.perm_r .r_title{ border-bottom:1px solid #eee;}
+.r_title li{ display:inline-block; font-size:17px; padding:5px 20px; cursor:pointer;}
+.r_title li[data-a='1']{ color:#00bb9c; border-bottom:3px solid #00bb9c; cursor:auto;}
+.perm_r .PC_box{ padding-top:20px;}
+.perm_r .Mobile_box{ display:none; padding-top:20px;}
+.perm_r section{ font-size:14px; color:#666;}
+.perm_r section:before{ display:inline-block;content:attr(data-icon); background-color:#999; color:#fff; text-align:center; width:14px; height:15px; line-height:12px; font-size:24px;}
+.perm_r section input[type=checkbox]{ margin:0 4px;}
+.perm_r section label{ display:inline-block;width:120px;}
+.perm_r section ul{padding-left:40px;}
+.perm_r section ul li{ line-height:26px;}
+.perm_r section ul li i{ font-style:normal; position:relative;width:15px; height:15px;}
+.perm_r section ul li i:before{display:inline-block;content:attr(data-icon); background-color:#999; color:#fff; text-align:center; width:15px; height:15px; line-height:12px;font-size:16px; position:absolute; top:2px;}
+/**/
+/*弹出框样式*/
+.perm_content .ale_box{ display:none; position:absolute; top:20%; left:100%; padding:15px; width:700px; z-index:10;}
+.perm_content .ale_head{ margin-bottom:10px;}
+.perm_content .ale_head span{ float:right; cursor:pointer;}
+.perm_content .ale_head span:before{ content:attr(data-icon); width:15px; height:15px; font-size:20px; vertical-align:middle; color:#999;}
+.perm_content .ale_content{ width:90%; margin:0 auto; text-align:right;}
+.perm_content .ale_content p{text-align:left; margin:30px 0 15px 0; font-size:14px;}
+.perm_content .ale_content input[type=text]{ width:100%; margin-left:0; border:1px solid #cecece;}
+.perm_content .ale_content select{}
+.perm_content .ale_content input[type=button]{ border:1px solid #00bb9c; background-color:#00bb9c; padding:6px 40px; color:#fff; margin:40px 0; cursor:pointer;}
+/**/
+
+

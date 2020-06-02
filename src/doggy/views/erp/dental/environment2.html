@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>环境评分</title>
+		{{template "../public/link/css_inc.html" .}}
+		<link href="/static/erp/css/user.css" rel="stylesheet" />
+        <style>
+            .scorePageHeader a{color:#333;margin-right:20px;text-decoration: none;display:block;height:59px;line-height:59px;float:left;}
+            #activeLabel{color:#00c5b5;border-bottom:2px solid #0C1DEF;}
+            .cont2{height:calc(100% - 56px);}
+            .info_con li{margin-top:10px;}
+            .info_con li .sp1{width:115px;color:#333333;}
+            .info_con li .sp2{margin-right:20px;}
+            .info_con li textarea{width:300px;height:100px;resize:none;color:#696969;}
+            .info_con li select{color:#696969;}
+            .score_btn{clear:both;width:220px;margin:30px auto;overflow:hidden;}
+            .score_btn input{width:100px;height:30px;}
+            .matter{width:300px;height:50px;margin:25px auto;}
+            .matter span{width:100px;height:48px;border:1px solid #ccc;display:inline-block;text-align: center;line-height:48px;cursor:pointer;}
+        	.sp3 span{display:inline-block;width:118px;height:38px;border:1px solid #ccc;border-radius:2px;text-align:center;line-height:38px;margin-right:30px;cursor: pointer;}
+        	.info_con li div{margin-left: 115px;margin-top:45px;}
+        	.sp3 .sp_sele{border:none;line-height:20px;}
+        	.sp_sele select{width:120px;height:40px;}
+        	.sp3 .border_co{border:1px solid #006600;}
+        	.beyond{min-width:1330px;}
+        </style>
+	</head>
+	<body>
+		{{template "../public/public/header.html" .}}
+		<div class="mainFrme">
+			{{template "../public/public/left.html" .}}
+			<div class="rightFrme">
+				<div class="crumbs"><a href="###">主页</a> > <a href="###">诊所分级管理</a> > <a href="###">社会影响力评分</a></div>
+				<div class="cont">
+                    <div class="pageHeader scorePageHeader"><a href="#">基本信息</a><a href="#">经营评分</a><a href="#">社会影响力评分</a><a href="#" id="activeLabel">环境评分</a></div>
+                    <ul class="info_con">
+                        <li>
+                        	<span class="sp1">卫生：</span>
+                        	<span class="sp3">
+                        		<span>墙面整洁</span>
+                        		<span>桌面整洁</span>
+                        		<span>地面整洁</span>
+                        		<span>天花板整洁</span>
+                        	</span>
+                        	<div>以上项目如出现灰尘或霉迹请勿勾选</div>
+                        </li>
+                        <li>
+                        	<span class="sp1">标识：</span>
+                        	<span class="sp3">
+                        		<span>标签贴</span>
+                        		<span>桌面物品定位</span>
+                        		<span>标识定位</span>
+                        		<span>清洁整理</span>
+                        		<span>价目表</span>
+                        	</span>
+                        	<div>以上项目如未发现相应标识请勿选择</div>
+                        </li>
+                        <li>
+                        	<span class="sp1">垃圾处理：</span>
+                        	<span class="sp3">
+                        		<span>医疗垃圾分开</span>
+                        		<span>生活垃圾分开</span>
+                        		<span>存放少于2天</span>
+                        		<span>垃圾封口少于1/3</span>
+                        	</span>
+                        	<div>医疗垃圾存放在黄色垃圾桶，存放时常不超过两天，垃圾封口时应低于1/3，以上项目不符合请勿选择</div>
+                        </li>
+                        <li>
+                        	<span class="sp1">隐私：</span>
+                        	<span class="sp3">
+                        		<span>单独诊室</span>
+                        		<span>叫号隐去中间字</span>
+                        	</span>
+                        	<div>若无叫号机“叫号隐去中间字”目默认得分，以上项目不符合请勿选择</div>
+                        </li>
+                        <li>
+                        	<span class="sp1">安全：</span>
+                        	<span class="sp3">
+                        		<span>安全通道无杂物</span>
+                        		<span>安全出口标识清楚</span>
+                        		<span>烟感喷淋头正常</span>
+                        		<span>常用消防设备整齐</span>
+                        	</span>
+                        	<div>常用消防设备指没火气，消防栓等设备，以上项目不符合请勿选择</div>
+                        </li>
+                        <li>
+                        	<span class="sp1">员工：</span>
+                        	<span class="sp3">
+                        		<span class="sp_sele">
+                        			<select name="">
+                        				<option value="">门诊角色数</option>
+                        			</select>
+                        		</span>
+                        		<span class="sp_sele">
+                        			<select name="">
+                        				<option value="">年度体检次数</option>
+                        			</select>
+                        		</span>
+                        		<span>不定期培训</span>
+                        	</span>
+                        	<div>门诊数量最多为10个，培训请随机询问工作人员，以上项目不符合请勿选择</div>
+                        </li>
+                        <li class="beyond">
+                        	<span class="sp1">医疗质量：</span>
+                        	<span class="sp3">
+                        		<span>黄色锐器盒</span>
+                        		<span>洗手区</span>
+                        		<span>消毒设备</span>
+                        		<span>CT/全景设备</span>
+                        		<span>铅衣</span>
+                        		<span>内窥镜显示屏</span>
+                        		<span>口罩</span>
+                        		<span>手套</span>
+                        	</span>
+                        	<div>以上项目如未发现相应标识请勿选择</div>
+                        </li>
+                        <li>
+                        	<span class="sp1">其他：</span>
+                        	<span class="sp3">
+                        		<span>医保定点单位</span>
+                        	</span>
+                        	<div>请确认后勾选</div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="cont cont2">
+                    <div class="pageHeader scorePageHeader">门诊评分</div>
+                    <ul class="info_con">
+                        <li><span class="sp1">经营评分：</span><span class="sp2">89分</span><span>该项总分100分占比60%</span></li>
+                        <li><span class="sp1">社会影响力评分：</span><span class="sp2">27分</span><span>该项总分30分占比10%</span></li>
+                        <li><span class="sp1">环境评分：</span><span class="sp2">78分</span><span>该项总分80占比30%</span></li>
+                        <li><span class="sp1">总分：</span><span class="sp2">92分</span></li>
+                        <li><span class="sp1">测评星级：</span><span class="sp2">五星级</span></li>
+                        <li><span class="sp1">评分说明：</span><textarea class="sp2" >请对您的评分进行必要的说明，基本信息未通过的可不填写</textarea></li>
+                    </ul>
+                    <div class="score_btn"><input type="button" id="score_chanle" value="取消"><input type="button" id="score_confim" value="确定"></div>
+                </div>
+			</div>
+		</div>
+		{{template "../public/public/footer.html" .}}
+	</body>
+	{{template "../public/link/js_inc.html" .}}
+    <script type="text/javascript">
+    	$(".sp3 span").click(function(){
+    		if($(this).hasClass('border_co')){
+    			$(this).removeClass('border_co')
+    		}else{
+    			$(this).addClass("border_co")
+    		}
+    		
+    	})
+    </script>
+</html>

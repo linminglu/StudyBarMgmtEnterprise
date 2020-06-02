@@ -1,0 +1,16 @@
+<html>
+<style>
+    body {
+        margin: 0px;
+    }
+</style>
+
+<body>
+    <div onclick="closew()" style="position:fixed;top:3px;width:40px;height:40px;left:240px;cursor:pointer;color:#fff">&#10005</div>
+    <a onclick="givemefive()"><img style="cursor:pointer" src="{{.domain}}/image/WADO.php?action=LoadImage&FileName={{.image}}" alt="" class="show_img"><a>
+<script>function closew() { alert('{"command":"100"}'); } function givemefive() {
+        var reg = new RegExp("(^|&)msgid=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        alert('{"command":"500","url":"{{.SaasDomain}}/message/redirect?ChannelID=13&NotifyID={{.notifyid}}&MessageID={{.msgid}}"}')    
+}</script>
+</body></html>

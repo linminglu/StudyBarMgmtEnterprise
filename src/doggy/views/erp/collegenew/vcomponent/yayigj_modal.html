@@ -1,0 +1,141 @@
+<template id="yayigj_vmodal">
+    <transition name="fade">                                                                                                                                              
+        <div class="modal align-baseline winModal" v-show="paramcnf.isActive"  :class="{'is-active':paramcnf.isActive}" :style="genMsize" ref="modal_viewport">          
+            <transition :name="paramcnf.transition">
+                <div class="modal-card">
+                    <div class="modal-card-head unseled" v-if="paramcnf.showHeader" ref="wndTitle" @mousedown.stop="Dragging($event)">
+                        <slot name="header">
+                            <p class="modal-card-title"><{paramcnf.title}></p>
+                            <span class="close" @click="handleCancel">×</span>
+                        </slot>
+                    </div>
+                    <div :class="['modal-card-body',{'pall0y':paramcnf.pall0}]">
+                        <slot name="modal_body"></slot>
+                    </div>
+                    <div class="modal-card-foot" v-if="paramcnf.showFooter">
+                        <slot name="footer">                            
+                            <a class="button  fillBtn is-primary" :class="{'is-loading':paramcnf.isLoading}" @click="handleOk" v-if="paramcnf.showOk"><{paramcnf.okText}></a>
+                            <a class="button  frmeBtn  " @click="handleCancel" v-if="paramcnf.showCancel"><{paramcnf.cancelText}></a>
+                        </slot>
+                    </div>
+                </div>
+            </transition>
+        </div>
+    </transition>
+</template>
+
+<script type="text/javascript">
+    var vueModal_com = {
+        template: '#yayigj_vmodal',
+        delimiters: ['<{', '}>'],
+        props: {
+            paramcnf: {
+                type: Object,
+                require: true
+            }
+        },
+        computed: {
+            genMsize() {
+                return "width:" + this.paramcnf.width + "px;height:" + this.paramcnf.height + 'px;z-index:' + this.paramcnf.z_index + ' !important';
+            }
+        },
+        data: function() {
+            return {
+                isActive: true,
+                isLoading: false,
+            }
+        },
+        methods: {
+            Dragging: function(ev) {
+                try {
+                    var t_dragObj = this.$refs["wndTitle"];
+                    var t_pObj = t_dragObj.parentElement.parentElement;　
+                    var oevent = ev || event;　　　　
+                    var distanceX = oevent.clientX - t_pObj.offsetLeft;　　　　
+                    var distanceY = oevent.clientY - t_pObj.offsetTop;　　
+                    if (ev.target.className == 'close') {
+                        return;
+                    }
+                    document.onmousemove = function(ev) {　
+                        var omevent = ev || event;　　　
+                        event.preventDefault();　　　
+                        t_pObj.style.left = omevent.clientX - distanceX + 'px';　　　　　　
+                        t_pObj.style.top = omevent.clientY - distanceY + 'px';　
+                    };　　　　
+                    document.onmouseup = function() {　　　　　　
+                        document.onmousemove = null;　　　　　　
+                        document.onmouseup = null;　　　　
+                    };
+                } catch (e) {}
+            },
+            getWinWH: function() {
+                var h = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight
+                var w = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth
+                return {
+                    'w': w,
+                    'h': h
+                }
+            },
+            initStyle: function() {
+                var wSize = this.getWinWH()
+                var nLeft = (wSize.w - this.paramcnf.width) / 2
+                var nTop = (wSize.h - this.paramcnf.height) / 2
+                    // console.log('nLeft=', nLeft, 'nTop=', nTop, 'wSize=', wSize, wSize.w - this.paramcnf.width)
+                this.$refs['modal_viewport'].style.top = nTop + 'px'
+                this.$refs['modal_viewport'].style.left = nLeft + 'px'
+            },
+            active: function() {
+                this.isActive = true;
+            },
+            handleOk: function() {
+                this.paramcnf.isActive = false;
+                this.$emit('enter');
+                if (this.okLoading) {
+                    this.isLoading = true;
+                    this.paramcnf.onOk('ok');
+                } else {
+                    this.paramcnf.onOk('ok');
+                    // this.handleClose();
+                }
+            },
+            handleCancel: function() {
+                this.paramcnf.onCancel('no');
+                this.handleClose();
+            },
+            handleClose: function() {
+                this.paramcnf.isActive = false
+                this.$emit('close');
+            },
+            backdropClose: function() {
+                if (this.backdropClosable) {
+                    this.handleCancel();
+                }
+            }
+        },
+        watch: {
+            // isShow(val) {
+            //     this.isActive = val;
+            //     if (!val && this.isLoading) {
+            //         this.isLoading = false;
+            //     }
+            // },
+        },
+        mounted: function() {
+            this.initStyle()
+                // console.log(this.wmdCnf)
+                // console.log(this.paramcnf)
+                // this.$nextTick(() => {
+                //     document.body.appendChild(this.$el);
+                //     if (this.isShow) {
+                //         this.active();
+                //     }
+                // });
+        },
+        beforeDestroy: function() {
+            // this.$el.remove();
+        },
+        created: function() {
+
+        }
+    }
+</script>

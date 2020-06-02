@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>门诊管理</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="UTF-8">
+        <meta content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" 
+        name="viewport">
+        <meta content="yes" name="apple-mobile-web-app-capable">
+        <meta content="black" name="apple-mobile-web-app-status-bar-style">
+        <meta content="telephone=no" name="format-detection">
+        <meta http-equiv="Cache-Control" content="no-transform ">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+        {{template "/account/Public/css_inc.html" .}}
+        <link rel="stylesheet" type="text/css" href="/static/account/css/chain_strom.css">
+        <link rel="stylesheet"  type="text/css" href="/static/account/css/oneStrom.css" />
+        <!--<link rel="stylesheet" type="text/css" href="/static/account/css/upfile.css" />  -->
+        <link rel="stylesheet" type="text/css" href="/static/account/js/css/jquery.Jcrop.min.css" />
+        <link rel="stylesheet" type="text/css" href="/static/account/css/scroll.css" />
+        <link rel="stylesheet" type="text/css" href="/static/public/css/publicFrame.css">       
+    </head>
+    <body>
+    	<div class="headArea"><!--头部-->
+            	{{template "/Public/public/r_header.html" .}}
+        </div>        
+        <div class="outerFrame"><!--外层主框架s-->        	
+            <div class="mainFrme"><!--主框架s-->
+            	<div class="leftFrme" id="leftFrme">
+                	{{template "/account/Public/clinic_left_nav.html" .}}
+                </div>
+                <div class="rightFrme"><!--右框架s-->
+                    <div class="main_right">
+                        <div class="right_nav">
+                            <div class="clinic_tit">
+                                <img src="/static/account/img/clinic_mana_icon.png">
+                                <span>门诊管理</span>
+                            </div>
+                            <div class="estblish_one">创建分诊所</div>
+                            <div class="relative_clinic_son"><input type="button" class="acb ac_btn_nf w100h30" id="relative_clinic_sonbtn" value="关联分诊所"></div>
+                        </div>
+                        <div class="clinic_con">
+                            <ul id="clinic_son_list"></ul>
+                        </div>
+                    </div>
+                </div><!--右框架e-->
+            </div><!--主框架e-->
+        </div><!--外层主框架e-->
+    		
+        <!--创建分诊所开始-->
+        <div class="create_clinic_bg1">
+            <div class="clinic_box clinic_box_chain pop_sha_rad">
+                <div class="clinic_edit">
+                    创建分诊所<img src="/static/account/img/close.png">
+                </div>
+                <div id="clinic_f">
+                    <div class="tp_img mb30"> 
+                    	<input type="hidden" id="pic_ext" name="pic_ext" />
+                        <img  id="Img" src="/static/account/img/clinic_logo.png" width="80" height="80" />
+                        <!--<label id="tp_new_logo" class="ui_button ui_button_primary onload_lable tp_new_logo" 
+                        for="upload1">上传标志</label>
+                        <input type="file" id="upload1" value="上传" class='uploadsq'  required style="position:absolute;clip:rect(0 0 0 0);"/>-->
+                        <a href="javascript:;" class="file" id="tp_new_logo" style="left:85px;">上传标志<input type="file"  name="aa" id="upload1"></a>
+                        <input type="hidden" id="TeacherPicture" name="TeacherPicture"  value="" />
+                        <span class="word_state">文件大小不超过2M（.jpg 或 .png 格式）</span>
+                    </div> 
+                    <p><img src="/static/account/img/imporant.png">诊所名称</p>
+                    <input type="text" class="tm box_w360_h20" id="enter_cli_name" name="text" placeholder="诊所名称长度为2-12个字（如：地区+诊所名称）" maxlength="12"> 
+                    <label class="errinfo" id="newclinic_err">请输入诊所名称</label>
+                    <p><img src="/static/account/img/imporant.png">诊所联系人</p>
+                    <input type="text" class="tm box_w360_h20" id="enter_clinic_contact" name="text" placeholder="请输入诊所联系人">
+                    <label class="errinfo" id="newcontact_err">请输入诊所名称</label>
+                    <p><img src="/static/account/img/imporant.png">诊所电话</p>
+                    <input type="text" class="tm box_w360_h20" id="enter_clinic_pho" name="text" maxlength="18" placeholder="请输入诊所电话">
+                    <label class="errinfo" id="newphone_err">请输入诊所名称</label>
+                    <p>诊所地址</p>
+                    <ul class="selc fix">
+                        <!--<li>
+                            <select id="per_province"></select>
+                        </li>
+                        <li>
+                            <select id="per_city" ></select>
+                        </li>
+                        <li>
+                            <select id="s_county"></select>
+                        </li>-->
+                        <li>
+                            <!--<select name="省份" id="province"><option></option></select>-->
+                            <div id="per_province" style="width:106px; height:18px; border:solid 1px #e0e0e0; padding:5px;float:left;color:#333;font-size:14px;">省份</div>
+                        </li>
+                        <li>
+                            <!--<select name="城市" id="city"><option></option></select>-->
+                            <div id="per_city" style="width:106px; height:18px; border:solid 1px #e0e0e0; padding:5px;float:left;color:#333;font-size:14px;">城市</div>
+                        </li>
+                        <li>
+                            <!--<select name="地区" id="area"><option></option></select>-->
+                            <div id="s_county" style="width:81px; height:18px; border:solid 1px #e0e0e0; padding:5px 30px 5px 5px;float:left;color:#333;font-size:14px;white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">地区</div>
+                        </li>
+                    </ul>
+                    <input type="text" name="" id="enter_contact_add" class="tm box_w360_h20" placeholder="详细地址">
+                    <label class="errinfo" id="">请输入详细地址</label>
+                    <p>诊所介绍</p>
+                    <textarea  class="tm" id="enter_clinic_intro" name=""></textarea>
+                    <div class="create_btn" style="margin-top:20px;">
+                        <input type="button" id="enter_determine_part2" name="button" value="创建"
+                        class="acb ac_btn_bf w90h30">
+                        <input type="button" id="enter_cancle" name="button" value="取消" 
+                        class="acb ac_btn_nf w90h30">
+                    </div>
+                </div>
+            </div>            
+        </div>
+        <!--创建分诊所结束-->
+           
+        <!--诊所编辑开始-->
+        <div class="create_clinic_bg2">
+            <div class="clinic pop_sha_rad">
+                <div class="clinic_edit">
+                    编辑诊所信息<img src="/static/account/img/close.png">
+                </div>
+                <ul id="clinic_list">
+                    <li data-f="1" class="edit_clinic_info"><span><img src="/static/account/img/clinic_archives_1.png" /></span>诊所信息</li>
+                    <li data-f="0" class="edit_assiue_ccofim"><span><img src="/static/account/img/certification_2.png" /></span>资质认证</li>
+                    <li data-f="0" class="edit_remove_relative"><span><img src="/static/account/img/remove_relative2.png" /></span>解除关联</li>
+                </ul>
+                <div class="clinic_box">
+                    <div id="clinic_f2" class="clinic_f2">
+                          <div class="tp_img mb30"> 
+                          	<input type="hidden" id="pic_logo" name="pic_logo" />
+                            <img src="/static/account/img/clinic_logo.png" id="logo" width="80" height="80" style="border-radius:50%;"/>
+                			<!--<label id="tp_one_logo" class="ui_button ui_button_primary onload_lable tp_new_logo"  for="upload_logo" >上传新标志</label> 
+                            <input type="file" id="upload_logo" value="上传" class='uploadsq'  required style="position:absolute;clip:rect(0 0 0 0);"/>-->
+                               <a href="javascript:;" class="file" id="tp_one_logo">上传新标志<input type="file"  name="aa" id="upload_logo"></a>
+              			   <input type="hidden" id="TeacherPicture_logo" name="TeacherPicture_logo"  value="" />
+                          </div> 
+                          <p><img src="/static/account/img/imporant.png">诊所名称</p>
+                          <input type="text" class="tm box_w360_h20" id="clinciNmae" name="clinciNmae" maxlength="12"> 
+                          <label class="errinfo" id="clinic_err">请输入诊所名称</label>
+                          <p><img src="/static/account/img/imporant.png">诊所联系人</p>
+                          <input type="text" class="tm box_w360_h20" id="contact" name="contact">
+                          <label class="errinfo" id="contact_err">请输入诊所联系人</label>
+                          <p>诊所管家号</p>
+                          <input type="text" class="tm box_w360_h20" id="manage_num" name="manage_num" disabled="false">
+                          <label class="errinfo" id="">管家号</label>
+                          <p><img src="/static/account/img/imporant.png">诊所电话</p>
+                          <input type="text" class="tm box_w360_h20" id="phone" name="phone" maxlength="18">
+                          <label class="errinfo" id="phone_err">请输入电话号码</label>
+                          <p>诊所地址</p>
+                           <ul class="selc fix">
+                                <li>
+                                    <!--<select name="省份" id="province"><option></option></select>-->
+                                    <div id="province" style="width:106px; height:18px; border:solid 1px #e0e0e0; padding:5px;float:left;color:#333;font-size:14px;">省份</div>
+                                </li>
+                                <li>
+                                    <!--<select name="城市" id="city"><option></option></select>-->
+                                    <div id="city" style="width:106px; height:18px; border:solid 1px #e0e0e0; padding:5px;float:left;color:#333;font-size:14px;">城市</div>
+                                </li>
+                                <li>
+                                    <!--<select name="地区" id="area"><option></option></select>-->
+                                    <div id="area" style="width:81px; height:18px; border:solid 1px #e0e0e0; padding:5px 30px 5px 5px;float:left;color:#333;font-size:14px;white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">地区</div>
+                                </li>
+                          </ul>
+                          <input type="text"name="address" id="address" class="tm box_w360_h20" placeholder="详细地址">
+                          <label class="errinfo" id="clinic_err">请输入详细地址</label>
+                          <p>诊所介绍</p>
+                          <textarea  class="tm" id="info" name="info"></textarea>
+                        <div class="create_btn create_btn2 create_btn3">
+                            <input type="button" id="save" name="button" value="确定"
+                            class="acb ac_btn_bf w90h30">
+                            <input type="button" id="cancle" name="button" value="取消" 
+                            class="acb ac_btn_nf w90h30">
+                        </div>                      
+                    </div>
+                    <div id="clinic_s">
+                        <p><img src="/static/account/img/imporant.png">工商注册名称</p>
+                        <input type="text"  id="clinic_name" name="clinic_name" class="tm box_w360_h20" placeholder="请输入工商注册名称"/>
+                        <label class="errinfo" id="cname_err">请输入诊所名称</label>
+                        <p><img src="/static/account/img/imporant.png">营业执照注册号</p>
+                        <input type="text"  id="licenseid" name="licenseid" class="tm box_w360_h20" placeholder="请输入营业执照注册号"/>
+                        <label class="errinfo" id="cnum_err">请输入营业执照号</label>
+                        <p><img src="/static/account/img/imporant.png">营业执照扫描件</p>
+                        <div class="tm tp_img">
+                        	<input type="hidden" id="pic_lince" name="pic_lince" />
+                            <img id="img_lince" class="defalut_logo" src="/static/account/img/u1910.png" width="80" height="80">
+            				<!--<label id="tp_new_lince" class="ui_button ui_button_primary onload_lable" for="upload_lince"></label>
+           					<input type="file" id="upload_lince" value="上传" class='uploadsq'  required style="position:absolute;clip:rect(0 0 0 0);"/>-->
+                            <a href="javascript:;" class="file" id="tp_new_lince"><input type="file"  name="aa" id="upload_lince"></a>
+            				<input type="hidden" id="TeacherPicture_lince" name="TeacherPicture_lince"  value="" />
+                            <p>上传营业执照扫描件，不超过5M(.jpg或.png格式)</p>
+                        </div>
+                        <label class="errinfo" id="licen_img_err">请上传营业执照扫描件</label>
+                        <p><img src="/static/account/img/imporant.png">身份证扫描件</p>
+                        <div class="tm tp_img" id="clinic_img" >
+                        	<input type="hidden" id="pic_credit" name="pic_credit" />
+                            <img id="img_credit" class="defalut_logo" src="/static/account/img/u1910.png">
+            				<!--<label id="tp_new_credit" class="ui_button ui_button_primary onload_lable" for="upload_credit"></label>
+            				<input type="file" id="upload_credit" value="上传" class='uploadsq'  required style="position:absolute;clip:rect(0 0 0 0);"/>-->
+                            <a href="javascript:;" class="file" id="tp_new_credit"><input type="file"  name="aa" id="upload_credit"></a>
+            				<input type="hidden" id="TeacherPicture_credit" name="TeacherPicture_credit"  value="" />
+                            <p>上传身份证扫描件，不超过5M(.jpg或.png格式)</p>
+                        </div>
+                        <label class="errinfo" id="idcard_img_err">请上传身份证扫描件</label>
+                        <p><img src="/static/account/img/imporant.png">经营年限</p>
+                        <input type="text" class="tm box_w360_h20" name="experience" id="experience"  placeholder="输入经营年限，例如：10年" />
+                        <label class="errinfo" id="year_err">请输入经营年限</label>
+                        <p><img src="/static/account/img/imporant.png">牙椅数量</p>
+                        <input type="text" class="tm box_w360_h20" name="chairnumber" id="chairnumber" placeholder="输入牙椅，例如：10台"  />
+                        <label class="errinfo" id="num_err">请输入牙椅数量</label>
+                        <p><img src="/static/account/img/imporant.png">门店面积</p>
+                        <input type="text" class="tm box_w360_h20" name="space" id="space" placeholder="输入门店面积，例如：300平方米" />
+                        <label class="errinfo" id="area_err">请输入门店面积</label>
+                        <div class="create_btn create_btn2">
+                            <input type="button" id="submit" name="button" value="提交审核"
+                            class="acb ac_btn_bf w100h30">
+                            <input type="button" id="cancle2" name="button" value="取消" 
+                            class="acb ac_btn_nf w90h30">
+                        </div>  
+                    </div>
+                    <div id="clinic_remove_relative">
+                        <div class="remove_relative_con">
+                            <ul>
+                                <li><span id="bindphoneAn">已绑定手机号：</span><span id="remove_rel_phone"></span></li>
+                                <li><span>验证码</span><input type="text" class="box_w152" id="remove_get_code" placeholder="请输入验证码"><input type="button" class="acb ac_btn_bf w100h30" id="remove_getcode_btn" value="获取验证码"></li>
+                                <li><input type="button" class="acb ac_btn_bf w164" id ="remove_rel_confim" value="确定"></li>
+                                <li class="check_num_no check_num_no2"><img src="/static/account/img/red_exclam.png"><label>验证码不能为空</label></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </div>
+        <!--诊所编辑结束-->
+
+        <!--关联分诊所开始-->
+        <div class="create_clinic_bg3">
+            <div class="cli_man_relaclinic">
+                <div class="relative_cli_tit">关联分诊所<img src="/static/account/img/close.png"></div>
+                <div class="relative_cli_content">
+                    <ul>
+                        <li><span>管家号</span><input type="text" class="box_w268_h18" id="manage_num_son" placeholder="请输入分店管家号" oninput="check_mb(this)"></li>
+                        <li class="manage_num_no"><img src="/static/account/img/red_exclam.png"><label>管家号不能为空</label></li>
+                        <li class="relative_bind_phone">已绑定手机号：<span></span></li>
+                        <li><span>验证码</span><input type="text" class="box_w152" id="manage_num_code" placeholder="请输入验证码"><input  type="button" class="acb ac_btn_bf w110h30" id="relative_get_code" value="获取验证码"></li>
+                         <li class="check_num_no"><img src="/static/account/img/red_exclam.png"><label>验证码不能为空</label></li>
+                        <li><input type="button" class="acb ac_btn_bf w164" id ="relative_cli_confim" value="确定"></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--关联分诊所结束-->
+
+       <script type="text/javascript" src="/static/account/js/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript" src="/static/public/yayigj_upload_crop.js"></script>
+        <script type="text/javascript"  src="/static/public/yayigj_dialog_box.js"></script>
+        <script type="text/javascript" src="/static/public/yayigj_downlist.js"></script>
+        <script type="text/javascript" src="/static/public/yayigj_date_sel.js"></script>
+        {{template "/account/Public/clinic_js_inc.html" .}}
+       <script type="text/javascript" src="/static/account/js/chain_strom.js"></script>
+       <script type="text/javascript" src="/static/account/js/clinic_management.js"></script>
+       <!--<script type="text/javascript" src="/static/account/js/chain_info.js"></script>-->
+        <script type="text/javascript" src="/static/account/js/jquery.Jcrop.min.js"></script>
+       <!--<script type="text/javascript" src="/static/account/js/local_upload.js"></script>-->
+        <script type="text/javascript">
+			/*创建分诊所 s上传logo*/
+            var cropApi=null;		
+            $("#upload1").localUploadYaYigj({
+                //picWidth:1024,
+                //picHeight:768,
+                imgPathID:'#TeacherPicture',  //上传成功后返回路径放到哪个控件
+                imgPathPIC:'#Img',				//上传成功后预览图片控件
+                pic_ext:'#pic_ext',						
+                uploadPath:'',
+                isCrop:true  //是否支持裁剪
+            },function(){
+                cropApi=this;
+            });
+
+            /*$("#upload1").localUploadYaYigj({
+                imgPathID:'#TeacherPicture',
+                imgPathPIC:'#Img',
+                pic_ext:'#pic_ext',
+                uploadPath:'__APP__/index.php?m=Upload&a=picUpload'
+            },function(){
+                up_api=this;
+            });
+			/*档案袋诊所上传logo*/
+            $("#upload_logo").localUploadYaYigj({
+                //picWidth:1024,
+                //picHeight:768,
+                imgPathID:'#TeacherPicture_logo',  //上传成功后返回路径放到哪个控件
+                imgPathPIC:'#logo',				//上传成功后预览图片控件
+                pic_ext:'#pic_logo',						
+                uploadPath:'',
+                isCrop:true  //是否支持裁剪
+            },function(){
+                cropApi=this;
+            });
+            /*$("#upload_logo").localUploadYaYigj({
+                imgPathID:'#TeacherPicture_logo',
+                imgPathPIC:'#logo',
+				pic_ext:'#pic_logo',
+                uploadPath:'__APP__/index.php?m=Upload&a=picUpload'
+            },function(){
+                up_api=this;
+            });
+     		 /*档案袋诊所上传身份证扫描件*/
+            $("#upload_credit").localUploadYaYigj({
+                picWidth:1024,
+                //picHeight:768,
+                imgPathID:'#TeacherPicture_credit',  //上传成功后返回路径放到哪个控件
+                imgPathPIC:'#img_credit',				//上传成功后预览图片控件
+                pic_ext:'#pic_credit',						
+                uploadPath:'',
+                isCrop:false  //是否支持裁剪
+            },function(){
+                cropApi=this;
+            });
+            /*$("#upload_credit").localUploadYaYigj({
+                imgPathID:'#TeacherPicture_credit',
+                imgPathPIC:'#img_credit',
+				pic_ext:'#pic_credit',
+                uploadPath:'__APP__/index.php?m=Upload&a=picUpload'
+            },function(){
+                up_api=this;
+            });
+     		 /*档案袋诊所上传营业执照扫描件*/
+             $("#upload_lince").localUploadYaYigj({
+                picWidth:1024,
+                //picHeight:768,
+                imgPathID:'#TeacherPicture_lince',  //上传成功后返回路径放到哪个控件
+                imgPathPIC:'#img_lince',				//上传成功后预览图片控件
+                pic_ext:'#pic_lince',						
+                uploadPath:'',
+                isCrop:false  //是否支持裁剪
+            },function(){
+                cropApi=this;
+            });
+            /*$("#upload_lince").localUploadYaYigj({
+                imgPathID:'#TeacherPicture_lince',
+                imgPathPIC:'#img_lince',
+				pic_ext:'#pic_lince',
+                uploadPath:'__APP__/index.php?m=Upload&a=picUpload'
+            },function(){
+                up_api=this;
+            });
+			/*连锁机构上传logo*/
+            $("#upload_chain").localUploadYaYigj({
+                //picWidth:1024,
+                //picHeight:768,
+                imgPathID:'#TeacherPicture_chain',  //上传成功后返回路径放到哪个控件
+                imgPathPIC:'#ImgChain',				//上传成功后预览图片控件
+                pic_ext:'#pic_ext_chain',						
+                uploadPath:'',
+                isCrop:true  //是否支持裁剪
+            },function(){
+                cropApi=this;
+            });
+            /*$("#upload_chain").localUploadYaYigj({
+                imgPathID:'#TeacherPicture_chain',
+                imgPathPIC:'#ImgChain',
+                pic_ext:'#pic_ext_chain',
+                uploadPath:'__APP__/index.php?m=Upload&a=picUpload'
+                },function(){
+                up_api=this;
+            });
+        </script>
+        <script type="text/javascript"  src="/static/account/js/area.js"></script>
+        <script type="text/javascript"  src="/static/account/js/easyscroll.js"></script>
+        <script type="text/javascript"  src="/static/account/js/mousewheel.js"></script>
+        <!--<script type="text/javascript">
+            $(function(){
+                $('.clinic_box').scroll_absolute({arrows:false})
+            });
+        </script>-->
+        <script type="text/javascript">_init_area();</script>
+    </body>
+</html>

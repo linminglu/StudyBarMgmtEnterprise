@@ -1,0 +1,96 @@
+<script>
+    var vueEditor_com = {
+        delimiters: ['<{', '}>'],
+        template: '<textarea id="editor_id" name="content" data-vid="editor_idv" class="mustfill" style="width:580px;height:800px;" v-model="currentValue" ref="myVeditor"></textarea>',
+        props: {
+            sizeparam: {
+                type: Object,
+                default: function() {
+                    return null
+                }
+            },
+            value: {
+                type: String,
+                default: function() {
+                    return ''
+                }
+            }
+        },
+        data:function() {
+            return {
+                textorid: 'editor_id',
+                editor: null,
+            }
+        },
+        watch: {},
+        computed: {
+            currentValue: {
+                get: function() {
+                    try {
+                        if (this.editor !== null) {
+                            this.editor.html(this.value)
+                        }
+                    } catch (e) {
+                        console.log(e)
+                    }
+                    return this.value
+                },
+                set: function(val) {
+                    this.$emit('input', val)
+                }
+            }
+        },
+        mounted:function() {
+            // console.log('this.sizeparam=', this.sizeparam)
+            const _this = this
+            this.kedit('#editor_id')
+            this.sizeparam.edtorQuotes = this.editor
+            editor_global = this.editor
+        },
+        methods: {
+            kedit:function(kedit) {
+                this.editor = KindEditor.create('#editor_id', {
+                    width: '520px',
+                    height: '800px',
+                    resizeMode: 0,
+                    allowFileManager: false,
+                    allowPreviewEmoticons: false,
+                    allowImageUpload: false,
+                    afterChange: function() {
+                        this.sync()
+                    },
+                    items: [
+                            'undo', 'redo', '|', 'preview', 'print', 'template', 'code', 'cut', 'copy', 'paste',
+                            'plainpaste', 'wordpaste', '|', 'justifyleft', 'justifycenter', 'justifyright',
+                            'justifyfull', 'insertorderedlist', 'insertunorderedlist', 'indent', 'outdent', 'subscript',
+                            'superscript', 'clearhtml', 'quickformat', 'selectall',
+                            'formatblock', 'fontname', 'fontsize', 'forecolor', 'hilitecolor', 'bold',
+                            'italic', 'underline', 'strikethrough', 'lineheight', 'removeformat', 'upsingpic', 'upsingmpic', 'upgif',
+                            '|', 'table', 'hr', 'baidumap', 'anchor', 'link', 'unlink'
+                        ]
+                        // items: [
+                        //         'source', '|', 'undo', 'redo', '|', 'preview', 'print', 'template', 'code', 'cut', 'copy', 'paste',
+                        //         'plainpaste', 'wordpaste', '|', 'justifyleft', 'justifycenter', 'justifyright',
+                        //         'justifyfull', 'insertorderedlist', 'insertunorderedlist', 'indent', 'outdent', 'subscript',
+                        //         'superscript', 'clearhtml', 'quickformat', 'selectall', '|', 'fullscreen', '/',
+                        //         'formatblock', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold',
+                        //         'italic', 'underline', 'strikethrough', 'lineheight', 'removeformat', '|', 'upsingpic', 'upsingmpic',
+                        //         '|', 'table', 'hr', 'emoticons', 'baidumap', 'pagebreak',
+                        //         'anchor', 'link', 'unlink', '|', 'about'
+                        //     ]
+                        // items: [
+                        //     'bold', 'italic', 'underline',
+                        //     '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+                        //     'insertunorderedlist', '|', 'emoticons', 'link'
+                        // ]
+                });
+
+            }
+        },
+        destroyed:function() {
+            if (this.editor !== null) {
+                this.editor.remove('#editor_id');
+            }
+        }
+    };
+</script>

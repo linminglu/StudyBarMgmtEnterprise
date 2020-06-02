@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>查看消息</title>
+		{{template "../public/link/css_inc.html" .}}
+		<link rel="stylesheet" type="text/css" href="/static/account/js/css/jquery.Jcrop.min.css" />
+		<link href="/static/erp/css/message.css" rel="stylesheet" />
+	</head>
+	<body>
+		<!--<div class="pop_bg"></div>
+		<div id="Tabpop" class="pop_div">
+			<p>消息类型切换后，编辑内容将被清空，请确定是否切换？</p>
+			<p><input type="button" value="取消" class="btn_nf"><input type="button" value="确定" class="btn_bf"></p>
+		</div>-->
+		{{template "../public/public/header.html" .}}
+			<div class="mainFrme">
+				{{template "../public/public/left.html" .}}
+				<div class="rightFrme">
+					<!--我是主体内容-->
+                    <div class="crumbs"><a href="###">主页</a> > <a href="###">消息推送</a> > <a href="###">查看消息</a></div>
+					<div class="container view_status">
+						 <h2>基本信息</h2>
+						 <div class="basicinfo ">
+							 <div id="MsgType"><b>*消息类型：</b><span class="mstype"><img src="/static/erp/img/sex_radios.png" alt="">文字消息</span><span class="mstype"><img src="/static/erp/img/sex_radios.png" alt="">图文链接</span></div>
+							 <div><b>*消息标题：</b><textarea placeholder="请添加标题" id="title" rows="1" readonly></textarea></div>
+							 <div><b>*描述：</b><textarea maxlength="50" name="textarea" id="description" readonly></textarea></div>
+							 <div><b id="Alink">*链接：</b><input type="text" id="hiddenHref" readonly/><a href="javascript:;" class="file" id="file_a" target="_blank">预览</a></div>
+						 </div>
+					</div>
+					<div class="container view_status">
+						<h2>发送选择</h2>
+						<div class="sendinfo">
+							<div class="sendtype">
+								<b>经销商选择：</b><input type="text" id="Dealers" readonly>
+							</div>
+							<div class="sendtime" id="Sendselec">
+								<b>发送时间：</b><!--<input type="radio" name="time" value="0" id="Now" checked='checked'><label for="Now">手动发送</label><input type="radio" id="Regularly" value="1" name="time"><label for="Regularly">定时发送</label>-->
+								<input type="text" id="SendTime" readonly="true" name="calendar">
+								<!--<input  class="hours" name="hours" type="text" id="Hours" readonly/><input type="text" name="minutes" id="Minutes" class="minutes" readonly/>-->
+							</div>
+							<div class="sendselect">
+								<b class="fl">*发送渠道：</b>
+								<div class="sendchannel fl" id="ViewChannels">
+									<!--<div class="select_li fl" id="TabContent">
+										<li>
+											<b>发送渠道：</b><input type="text" name="Terminal" id="Terminal_0" class="input_select" readonly='true'>
+										</li>-->
+										<!--文字-->
+										<!--<div class="select_types">
+											<li id="PVersion"><b>发布版本：</b><input type="radio" name="version" id="v1" value="0"><label for="v1">全部</label><input type="radio" name="version" id="v2" value="1"><label for="v2">标准版</label><input type="radio" name="version" id="v3" 
+											value="2"><label for="v3">专业版</label></li>
+											<li>
+												<b>置顶显示：</b><input type="radio" value="1" name="top" id="Y"><label for="Y">是</label><input type="radio" value="2" name="top" id="N" class="ml36"><label for="N" class="mr75">否</label>
+												注意：置顶显示默认为2天
+											</li>
+										</div>-->
+										<!--PC端登录页海报/ 消息中心和弹窗提醒/服务器弹窗提醒-->
+										<!--<div class="select_types" id="PC"> 
+											<li>
+												<b>海报图：</b>
+												<input type="hidden"  name="pic_ext"  value="" />
+												<img src="/static/erp/img/profile/add_pic.png" alt="" class="show_img">
+												<a href="javascript:;" class="up_img"><input type="file" name="up_load" data-id="1" class="up_load" /></a>
+												<input type="hidden"  name="TeacherPicture"  value="" />
+										</div>-->
+										<!--官网首页海报/登陆页海报-->
+										<!--<div class="select_types" id="OffWeb">
+											<li><b>*序列号：</b><input type="text" name="xnum"></li>
+											<li>
+												<b>*海报图：</b>
+												<input type="hidden"  name="pic_ext"  value="" />
+												<img src="/static/erp/img/profile/add_pic.png" alt="" class="show_img" >
+												<a href="javascript:;" class="up_img"><input type="file"  class="up_load" data-id="1"  name="up_load" /></a>
+												<input type="hidden"  name="TeacherPicture"  value="" />
+											</li>
+										</div>-->
+										<!--web端活动中心补充信息-->
+										<!--<div class="select_types" id="Web">
+											<li><b>*活动地点：</b><input type="text" name="place" id="place"></li>
+											<li><b>*活动时间：</b><input type="text" name="calendar">&nbsp;&nbsp;--<input type="text" name="calendar"></li>
+											<li>
+												<b>*活动封面：</b>
+												<input type="hidden"  name="pic_ext"  value="" />
+												<img src="/static/erp/img/profile/add_pic.png" alt="" class="show_img" >
+												<a href="javascript:;" class="up_img"><input type="file"  class="up_load" data-id="1"  name="up_load" /></a>
+												<input type="hidden"  name="TeacherPicture"  value="" />
+											</li>
+											<li><b>*活动简介：</b><textarea name="textarea" id="IntroAct" maxlength="200" ></textarea><span class="tips">200/200</span></li>
+										</div>-->
+										<!--app登录广告/消息中心-->
+										<!--<div class="select_types" id="App">
+											<li id="AppXnum"><b>*序列号：</b><input type="text" name="xnum"></li>
+											<li>
+												<b>*活动封面：</b>
+												<input type="hidden"  name="pic_ext"  value="" />
+												<img src="/static/erp/img/profile/add_pic.png" alt="" class="show_img" >
+												<a href="javascript:;" class="up_img"><input type="file"  class="up_load" data-id="1"  name="up_load" /></a>
+												<input type="hidden"  name="TeacherPicture"  value="" />
+											</li>
+										</div>
+									</div>
+								</div> -->
+							</div>
+						</div>
+						<!--门诊筛选、pc端使用情况、排除选择-->
+						<div class="select_div" id="SelecOl">
+							<ul class="tab_div" id="TabLi">
+								<li data-flag='1'>门诊筛选</li>
+								<!--<li>PC端使用情况</li>-->
+								<li>排除选择</li>
+							</ul>
+							<!--门诊筛选-->
+							<ol class="clinic">
+								<li><b>创建时间：</b><input type="text" id="Stime" readonly name="calendar">&nbsp;&nbsp;--&nbsp;&nbsp;<input type="text" id="Etime" readonly name="calendar"></li>
+								<li>
+									<b>地区：</b>
+									<div class="area">
+										<!--<div class="area_selc">
+											<div id="province" class="place_selc"></div>
+											<div id="city" class="place_selc"></div>
+											<input type="button" value="确认添加" class="c5b5" id="Addarea" />
+										</div>-->
+										<div class="area_result" id="area_result">
+											
+										</div>
+										<div class="area_num">您选择的地区共<span id="AreaNum">0</span>个</div>
+									</div>
+								</li>
+								<li>
+									<b>管家号：</b>
+									<div class="area">
+										<!--<div class="area_selc">
+											<input type="text" id="ButlerNo" placeholder="请输入管家号"  id="Addnum" ><input type="button" class="c5b5" value="确认添加" id="Addnum"><input type="file" id="ExcelFile2">
+											<input type="button" value="Excel导入" />
+										</div>-->
+										<div class="area_result" id="DentalID">
+										
+										</div>
+										<div class="area_num">您选择的门诊共<span id="DentalNum">0</span>家（注意：展示框最多展示20家诊所）</div>
+									</div>
+								</li>
+								<li>
+									<b>门诊角色：</b>
+									<div class="role" id="role">
+										<!--<span class="role_item"><input type="checkbox" id="All" value="1"><label for="All">服务器</label></span>-->
+										<span class="role_item"><input type="checkbox" id="c1" value="100"><label for="c1">老板</label></span>
+										<span class="role_item"><input type="checkbox" id="c2" value="200"><label for="c2">主任</label></span>
+										<span class="role_item"><input type="checkbox" id="c3" value="300"><label for="c3">医生</label></span>
+										<span class="role_item"><input type="checkbox" id="c4" value="400"><label for="c4">咨询师</label></span>
+										<span class="role_item"><input type="checkbox" id="c10" value="500"><label for="c10">护士</label></span>
+										<span class="role_item"><input type="checkbox" id="c11" value="600"><label for="c11">前台</label></span>
+										<span class="role_item"><input type="checkbox" id="c5" value="700"><label for="c5">客服</label></span>
+										<span class="role_item"><input type="checkbox" id="c6" value="800"><label for="c6">库房</label></span>
+										<span class="role_item"><input type="checkbox" id="c7" value="900"><label for="c7">技工</label></span>
+										<span class="role_item"><input type="checkbox" id="c8" value="1000"><label for="c8">人事</label></span>
+										<span class="role_item"><input type="checkbox" id="c9" value="1100"><label for="c9">行政</label></span>
+										<span class="role_item"><input type="checkbox" id="c12" value="1200"><label for="c12">财务</label></span>
+										<span class="role_item"><input type="checkbox" id="c13" value="1300"><label for="c13">市场  </label></span>
+									</div>
+								</li>
+						    </ol>
+							<!--pc端使用情况-->
+							<!--<ol class="pc">
+								<li><b>使用日期：</b><input type="text" readonly name="calendar">&nbsp;&nbsp;--&nbsp;&nbsp;<input type="text" readonly name="calendar"></li>
+								<li>
+									<b>数据提交天数：</b>
+									<select name="" id=""><option>1</option></select>天
+									<b class="ml93">患者数据提交天数：</b><select name="" id=""><option>2</option></select>
+								</li>
+								<li>
+									<b>通信天数：</b><select name="" id=""><option>1</option></select>
+								</li>
+								<li><b>增值产品使用：</b>
+									<div class="role"  id="Product">
+										<span class="role_item"><input type="checkbox" id="All"><label for="All">全部</label></span>
+										<span class="role_item"><input type="checkbox" id="1"><label for="1">医患沟通</label></span>
+										<span class="role_item"><input type="checkbox" id="2"><label for="2">电话盒</label></span>
+									</div>
+								</li>
+							</ol>-->
+							<!--排除选择-->
+							<ol class="select_exclude">
+								<li><b>信息有效时间：</b><input type="text"  readonly name="calendar" id="InfoStime">&nbsp;&nbsp;--&nbsp;&nbsp;<input type="text" id="InfoEtime" readonly name="calendar">
+								<li><b>已发送用户：</b>从今日起<input type="text" id="ExceptS" readonly class="except_selc">天  <b class="ml33">已发送信息数</b><input class="except_selc" type="text" id="ExceptE" readonly>条</li>
+							</ol>
+							<!--总计-->
+							<!--<div class="total_num">
+								<b>总计：</b>
+								<p class="total">
+									<span id="Cnum" >2381</span>家门诊&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									&nbsp;&nbsp;&nbsp;&nbsp;<span id="Receiver">2381</span>个接收端
+								</p>
+								<p class="detail">
+									PC端标准版-消息中心<span id="Ms">(7423)</span>
+									PC端标准版-弹窗提醒<span id="Pop">(7423)</span>
+									web-系统消息<span id="Web">(5432)</span>
+								</p>
+							</div>-->
+						</div>
+					</div>
+					<!--<div class="b_action">-->
+						<!--<input type="button" value="取消" id="Cancel" class="btn_action"><input type="button" id="Save" value="保存" class="btn_action">-->
+						<!--<input type="button" value="确定并发送" id="Send" class="btn_action">-->
+					<!--</div>-->
+					
+				</div>
+			</div>
+		{{template "../public/public/footer.html" .}}
+	</body>
+	{{template "../public/link/js_inc.html" .}}
+	<script type="text/javascript" src="/static/public/yayigj_date_sel.js"></script>
+	<script type="text/javascript" src="/static/public/yayigj_upload_crop.js"></script>
+	<script type="text/javascript" src="/static/account/js/jquery.Jcrop.min.js"></script>
+	<script type="text/javascript" src="/static/public/yayigj_downlist.js"></script>
+	<script src="/static/erp/js/public/area.js" type="text/javascript"></script>
+	<script type="text/javascript">_init_area();</script>
+    <script type="text/javascript" src="/static/erp/js/viewmessage.js"></script>
+</html>

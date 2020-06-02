@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>用户管理</title>
+		{{template "../public/link/css_inc.html" .}}
+		<link href="/static/erp/college/css/user.css" rel="stylesheet" />
+		<link href="/static/erp/college/css/user_mang.css" rel="stylesheet" />
+	</head>
+	<body>
+		{{template "../public/public/header.html" .}}
+		<div class="mainFrme">
+			{{template "../public/public/left.html" .}}
+			<div class="rightFrme">
+				<div class="crumbs"><a href="###">主页</a> > <a href="###">用户管理</a></div>
+				<input type="hidden" name="htag" value="0">
+				<div class="cont">
+					<div class="pageHeader">用户管理</div>
+					<div class="search">
+					    <input type="button" name="" value="添加" class="" id="add">
+					     <input type="button" name="" value="导入" class="" id="import">
+						<!-- <label>注册时间</label>
+						<div id="BeginDate" class="calendar"></div>
+						<label>至</label>
+						<div id="EndDate" class="calendar"></div>
+						<label></label> -->
+						<input type="button" name="userlist_btn" value="查询" id="search_bun" class="search_bun" />
+						<input name="condition" class="ml20 w240 search_val" type="text" placeholder="请输入用户名/手机等关键词查询" id="search_val"/>
+						
+						<!-- <div class="excel">导出excel</div> -->
+					</div>
+					<div class="f_data" id="scroll_div_1">
+						<table id="js_userlist_data"></table>
+					</div>
+					<div id="pager"></div>
+				</div>
+			</div>
+		</div>
+		{{template "../public/public/footer.html" .}}
+	</body>
+	{{template "../public/link/js_inc.html" .}}
+	<script type="text/javascript" src="/static/erp/college/js/userlist.js"></script>
+</html>

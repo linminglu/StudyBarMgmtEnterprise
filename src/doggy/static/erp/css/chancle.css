@@ -1,0 +1,22 @@
+input{border-color: #e0e0e0!important;}
+input:hover{border-color: #00c5b5!important;}
+input:focus{border-color: #00c5b5!important;}
+.calendar{border-color: #e0e0e0!important;}
+.calendar:hover{border-color: #00c5b5!important;}
+.calendar:active{border-color: #00c5b5!important;}
+/*渠道管理主页*/
+.spuare_part{width: 500px;margin: 30px auto;overflow: hidden;}
+.spuare_part span{display:block;float: left; }
+.spuare_part .line_1,.spuare_part .line_2{width: 200px;height: 1px;background: #ccc;margin-top: 9px;}
+.spuare_part .spuare_name{margin: 0 20px;font-size: 16px;font-weight: 800;}
+.cha_index_tab{margin-bottom: 20px;}
+.cha_index_tab td{width: 20%;cursor: pointer;}
+.cha_index_tab p{font-size: 16px;}
+/*渠道列表*/
+.mesState{width: 70px;height: 28px;border: 1px solid #e0e0e0;line-height: 28px;padding: 0 5px;float: left;}
+.off_web_table{border-collapse:collapse;}
+.off_web_table thead{height: 50px;line-height: 50px;background: #E4DFDF;}
+.off_web_table tbody tr{height: 120px;border-bottom: 1px solid #e0e0e0;}
+.off_web_table tbody .operate span{margin-right: 10px;cursor: pointer;}
+.off_web_table tbody .operate span:hover{color: #00c5b5;}
+.off_web_table tbody .operate span:last-child{margin-right: 0;}

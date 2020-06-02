@@ -1,0 +1,210 @@
+<template id="yayigjDownlistcom">
+        <div style="display: inline-block" class="yayigjDownlistOut">
+            <div class="yayigjDownlist">
+                    <div class="showValue" @click="openDownlist" >
+                        <input type="text" v-model="currentValue" ref="yayigjDownListVobj" readonly/>
+                    </div>
+                </div>
+                <div class="v_top_ht_line" ref="v_top_ht_line" v-show="showList"></div>
+                <div class="downArea vplus_item"  v-show="showList" ref="plus_down_list_area">                 
+                    <p v-for="(item,index) in arrslist" @click.stop="noticefather(item,index)"  :class="{active:item.active,unactive:!item.active}"><{item.key}></p>
+                </div>
+        </div>
+</template>
+
+<script type="text/javascript">
+    //  Vue.component('vyayigjdownlist', {
+    var yayigjDownListCom = {
+        template: '#yayigjDownlistcom',
+        delimiters: ['<{', '}>'],
+        props: {
+            arrslist: {
+                type: Array,
+                default: function() {
+                    return []
+                }
+            },
+            sizeparam: {
+                type: Object,
+                default: function() {
+                    return {
+                        width: '180px',
+                        height: '30px',
+                        lineheight: '30px',
+                        voffset: '0px'
+                    }
+                }
+            },
+            value: {
+                type: String,
+                default: function() {
+                    return ''
+                }
+            }
+        },
+        created:function() {
+            //alert(this.initval)
+        },
+        mounted:function() {
+            this.initSetDlistStyle()
+            this.eventBind()
+        },
+        computed: {
+            currentValue: {
+                get: function() {
+                    return this.value
+                },
+                set: function(val) {
+                    this.$emit('input', val)
+                }
+            }
+        },
+        methods: {
+            eventBind:function() {
+                var _vm = this
+                document.documentElement.addEventListener('click', function(e) {
+                    var cssNameObj = e.target.parentElement
+                    if (cssNameObj === null || cssNameObj.className !== 'showValue') {
+                        if (_vm.showList === true) {
+                            _vm.showList = false;
+                            var vObj = _vm.$refs['yayigjDownListVobj']
+                            _vm.removeClass(vObj, 'bottomRset')
+                        }
+                    }
+                    // e.stopPropagation()
+                }, false);
+            },
+            noticefather:function(item, index) {
+                this.currentValue = item.key
+                this.$emit('getseled', item.val)
+                this.showList = false
+                var vObj = this.$refs['yayigjDownListVobj']
+                this.removeClass(vObj, 'bottomRset')
+                this.selectStyle(item, index)
+            },
+            getWinWH:function() {
+                var h = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight
+                var w = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth
+                return {
+                    'w': w,
+                    'h': h
+                }
+            },
+            openDownlist:function() {
+                if (this.arrslist.length > 0) {
+                    var _vm = this
+                    var vObj = this.$refs['yayigjDownListVobj']
+                    var myPanelObj = this.$refs['plus_down_list_area']
+                    var myposSize = {
+                        'w': 150,
+                        'h': 192
+                    }
+                    var winSize = this.getWinWH()
+                    var fix_dom_sizpos = vObj.getBoundingClientRect()
+                        // console.log('fix_dom_sizpos=', fix_dom_sizpos)
+                    var overtype = ''
+
+
+                    var top_line_obj = this.$refs['v_top_ht_line']
+                    this.showList = true
+
+                    window.setTimeout(function() {
+                        myposSize.w = myPanelObj.offsetWidth
+                        myposSize.h = myPanelObj.offsetHeight
+                            // var itemCount = myPanelObj.querySelectorAll("p").length
+                            // console.log('itemCount=', itemCount)
+                            // if (itemCount > 6) {
+                            //     myposSize.h = 192
+                            // } else {
+                            //     myposSize.h = itemCount * 30 + 3
+                            // }
+                            // console.log('myposSize=', myposSize)
+                        if (fix_dom_sizpos.left + myposSize.w > winSize.w) {
+                            overtype = 'r'
+                            if (fix_dom_sizpos.bottom + myposSize.h > winSize.h) {
+                                overtype += 't'
+                            }
+                        } else {
+                            overtype = 'l'
+                            if (fix_dom_sizpos.bottom + myposSize.h > winSize.h) {
+                                overtype += 't'
+                            } else {
+                                overtype = ''
+                            }
+                        }
+                        // console.log('overtype=', overtype, 'winSize=', winSize)
+                        switch (overtype) {
+                            case '':
+                                myPanelObj.style.left = fix_dom_sizpos.left + 'px'
+                                myPanelObj.style.top = fix_dom_sizpos.bottom + 'px'
+                                top_line_obj.style.top = (fix_dom_sizpos.bottom - 1) + 'px'
+                                top_line_obj.style.left = (fix_dom_sizpos.left + 1) + 'px'
+                                break;
+                            case "r":
+                                myPanelObj.style.left = (fix_dom_sizpos.left - (myposSize.w - fix_dom_sizpos.width)) + 'px'
+                                myPanelObj.style.top = fix_dom_sizpos.bottom + 'px'
+                                top_line_obj.style.top = (fix_dom_sizpos.bottom - 1) + 'px'
+                                    // top_line_obj.style.right = "0px"
+                                top_line_obj.style.left = (fix_dom_sizpos.left + 1) + 'px'
+                                break;
+                            case "rt":
+                                myPanelObj.style.left = (fix_dom_sizpos.left - (myposSize.w - fix_dom_sizpos.width)) + 'px'
+                                myPanelObj.style.top = (-(myposSize.h - fix_dom_sizpos.top) + 2) + 'px'
+                                top_line_obj.style.left = (fix_dom_sizpos.left + 1) + 'px'
+                                top_line_obj.style.top = (myposSize.h - 2) + 'px'
+                                break;
+                            case "lt":
+                                myPanelObj.style.left = fix_dom_sizpos.left + 'px'
+                                myPanelObj.style.top = (-(myposSize.h - fix_dom_sizpos.top) + 2) + 'px'
+                                top_line_obj.style.right = "initial"
+                                top_line_obj.style.left = (fix_dom_sizpos.left + 1) + 'px'
+                                top_line_obj.style.top = ((-(myposSize.h - fix_dom_sizpos.top) + 2) + myposSize.h - 2) + 'px'
+                                break;
+                        }
+                    }, 10)
+
+                    this.addClass(vObj, 'bottomRset')
+                }
+            },
+            initSetDlistStyle:function() {
+                // console.log('this.sizeparam=', this.sizeparam)
+                var obj = this.$refs['plus_down_list_area']
+                var vObj = this.$refs['yayigjDownListVobj']
+                var tWidth = parseInt(this.sizeparam.width) - 1,
+                    tHeight = parseInt(this.sizeparam.height) - 1,
+                    tvOffset = parseInt(this.sizeparam.voffset),
+                    linNewHt = tHeight + tvOffset
+
+                var lineObj = this.$refs['v_top_ht_line']
+                obj.setAttribute("style", "display:none;min-width:" + (tWidth - 2) + "px;line-height:" + this.sizeparam.height)
+                vObj.setAttribute("style", "width:" + tWidth + "px;height:" + this.sizeparam.height)
+                lineObj.setAttribute("style", "display:none;top:2px;width:" + (tWidth - 2) + "px;top:" + linNewHt + 'px')
+            },
+            selectStyle:function(item, index) {　　　
+                this.$nextTick(function() {　　　　　　　　
+                    this.arrslist.forEach(function(item) {　　　　　　　　　　
+                        Vue.set(item, 'active', false);　　　　　　
+                    });　　　　　　　　
+                    Vue.set(item, 'active', true);　　　　　　
+                });
+            },
+            hasClass:function(obj, cls) {
+                return obj.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));
+            },
+            addClass:function(obj, cls) {
+                if (!this.hasClass(obj, cls)) obj.className += " " + cls;
+            },
+            removeClass:function(obj, cls) {
+                if (this.hasClass(obj, cls)) {
+                    var reg = new RegExp('(\\s|^)' + cls + '(\\s|$)');
+                    obj.className = obj.className.replace(reg, ' ');
+                }
+            }
+        },
+        data: function() {
+            return {
+                showList: false
+            }
+        }
+    };
+</script>

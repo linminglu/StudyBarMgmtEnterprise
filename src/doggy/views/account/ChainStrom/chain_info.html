@@ -1,0 +1,119 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>连锁信息</title>
+<!--<include file="Public:css_inc" />-->
+{{template "/account/Public/css_inc.html" .}}
+<link rel="stylesheet"  type="text/css" href="/static/account/css/oneStrom.css" />
+<!--<link rel="stylesheet" type="text/css" href="/static/account/css/upfile.css" />  -->
+<link rel="stylesheet" type="text/css" href="/static/account/js/css/jquery.Jcrop.min.css" />
+<link rel="stylesheet" type="text/css" href="/static/public/css/publicFrame.css">    
+</head>
+
+<body>
+    <!--保存成功提示-->
+    <div id="save_success_div"><img src="/static/account/img/save_success.png">保存成功</div>
+    <!--弹窗背景-->
+    <div class="popup_bg"></div>
+        <div class="headArea"><!--头部-->
+            {{template "/Public/public/r_header.html" .}}
+    </div>
+    <div class="outerFrame"><!--外层主框架s-->        	
+        <div class="mainFrme"><!--主框架s-->
+            <div class="leftFrme" id="leftFrme">
+                {{template "/account/Public/clinic_left_nav.html" .}}
+            </div>
+            <div class="rightFrme"><!--右框架s-->
+                <div class="main_right">
+					<div class="clinic">
+						<div class="right_nav">
+							<div class="clinic_tit">
+								<img src="/static/account/img/chain_info.png" style="margin-top:16px;">
+								<span>连锁信息</span>
+							</div>
+							<!--<div class="estblish_one" id="save">保存</div>-->
+							<input type="button" class="acb ac_btn_bf ac_btn_bf_disable" id="save" disabled value="保存" />
+						</div>
+						<div class="clinic_box" id="clinic_box" style="border-left:none;padding-left:60px;">
+							<div id="clinic_f" class="clinci_inform">
+								<div class="tp_img mb30">
+									<input type="hidden" id="pic_logo" name="pic_logo" /> 
+									<img src="/static/account/img/clinic_logo.png" id="logo" class="defalut_logo" width="80" height="80" style="border-radius:50%;"/>
+									<a href="javascript:;" class="file" id="tp_new_logo" style="width:88px;top:-33px;padding:1px 12px;">上传企业logo<input type="file" accept="image/*" name="aa" id="upload1"></a>
+									<input type="hidden" id="TeacherPicture" name="TeacherPicture"  value="" />
+                                    <span class="word_state" style="font-size: 12px;color: #b4b4b4;margin-left: 30px;position: relative;bottom: 13px;right:147px;">文件大小不超过2M（.jpg 或 .png 格式）</span>
+								</div> 
+								<p><img src="/static/account/img/imporant.png">企业名称</p>
+								<input type="text" class="tm box_w360_h20" id="clinciNmae" name="clinciNmae" placeholder="请输入企业名称"> 
+								<label class="errinfo" id="clinic_err">请输入企业名称</label>
+								<p><img src="/static/account/img/imporant.png">企业联系人</p>
+								<input type="text" class="tm box_w360_h20" id="contact" name="contact" placeholder="请输入企业联系人">
+								<label class="errinfo" id="contact_err">请输入企业联系人</label>
+								<!--<p><img src="/static/account/img/imporant.png">企业号</p>
+								<input type="text" class="tm box_w360_h20" id="manage_num" name="manage_num" disabled="false">
+                                <label class="errinfo" id="">企业号</label>-->
+								<p><img src="/static/account/img/imporant.png">联系电话</p>
+								<input type="text" class="tm box_w360_h20" id="phone" name="phone" maxlength="18" placeholder="请输入联系电话">
+								<label class="errinfo" id="phone_err">请输入联系电话</label>
+								<p>企业地址</p>
+								<ul class="selc fix">
+									<li>
+										<!--<select name="省份" id="province"><option></option></select>-->
+										<div id="province" style="width:106px; height:18px; border:solid 1px #e0e0e0; padding:5px;float:left;color:#333;font-size:14px;">省份</div>
+									</li>
+									<li>
+										<!--<select name="城市" id="city"><option></option></select>-->
+										<div id="city" style="width:106px; height:18px; border:solid 1px #e0e0e0; padding:5px;float:left;color:#333;font-size:14px;">城市</div>
+									</li>
+									<li>
+										<!--<select name="地区" id="area"><option></option></select>-->
+										<div id="area" style="width:81px; height:18px; border:solid 1px #e0e0e0; padding:5px 30px 5px 5px;float:left;color:#333;font-size:14px;white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">地区</div>
+									</li>
+								</ul>
+								<input type="text" name="address" id="address" class="tm box_w360_h20" placeholder="详细地址">
+								<label class="errinfo" id="clinic_err">请输入详细地址</label>
+								<p>企业简介</p>
+								<textarea  class="tm" id="info" name="info"></textarea>
+							</div>
+					</div>
+  				</div>
+            </div><!--右框架e-->
+        </div><!--主框架e-->
+    </div><!--外层主框架e-->
+<script type="text/javascript" src="/static/account/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="/static/public/yayigj_dialog_box.js"></script>
+<script type="text/javascript" src="/static/public/yayigj_downlist.js"></script>
+<script type="text/javascript" src="/static/public/yayigj_date_sel.js"></script>
+<script type="text/javascript" src="/static/account/js/chain_info.js"></script>
+  {{template "/account/Public/clinic_js_inc.html" .}}
+<script type="text/javascript" src="/static/account/js/jquery.Jcrop.min.js"></script>
+<script type="text/javascript" src="/static/public/yayigj_upload_crop.js"></script>
+<script  src="/static/account/js/area.js" type="text/javascript"></script>   
+<script type="text/javascript">_init_area();</script>
+<script type="text/javascript">
+      //上传诊所logo
+        /*$("#upload1").localUploadYaYigj({
+            imgPathID:'#TeacherPicture',
+            imgPathPIC:'#logo',
+            pic_ext:'#pic_logo',
+            uploadPath:'__APP__/index.php?m=Upload&a=picUpload'
+        },function(){
+            up_api=this;
+        });*/
+
+		var cropApi=null;		
+            $("#upload1").localUploadYaYigj({
+                //picWidth:1024,
+                //picHeight:768,
+                imgPathID:'#TeacherPicture',  //上传成功后返回路径放到哪个控件
+                imgPathPIC:'#logo',				//上传成功后预览图片控件
+                pic_ext:'#pic_logo',						
+                uploadPath:'',
+                isCrop:true  //是否支持裁剪
+            },function(){
+                cropApi=this;
+            });
+</script>
+</body>
+</html>

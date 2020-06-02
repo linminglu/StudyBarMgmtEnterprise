@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!--<include file="Public:css_inc"/> -->
+{{template "/account/Public/css_inc.html" .}}
+<link rel="stylesheet" type="text/css" href="/static/account/css/chain_strom.css">
+<link rel="stylesheet" type="text/css" href="/static/account/css/DataSecurity.css">
+<title>设备管理</title>
+</head>
+
+<body>
+<!--<include file="Public:clinic_header"/>-->
+{{template "/Public/public/r_header.html" .}}
+<div class="main_con"> 
+	  <!--<include file="Public:one_left_nav"/>-->
+      {{template "/Public/public/r_header.html" .}}
+      <div class="main_right"> 
+      	  <div class="right_nav">
+             <div class="clinic_tit">
+                <img src="/Account/public/img/equip_tit.png">
+                <span>设备管理</span>
+             </div>
+             <div class="estblish_one" id="temp_save">保存</div>
+          </div>
+          <div class="equip_box">
+          	 <section class="equip_l">
+				<h2>所有设备</h2>
+                <div id="clinic_ls">
+                    <ul class="equi_ls">
+                    	<p class="clinic_name">深圳志美口腔诊所<img src="/Account/public/img/per_mana_icon_3.png" /></p>
+                        <ol>
+                            <li>主机&nbsp;[192.168.1.14]</li>
+                            <li>主机&nbsp;[192.168.1.14]</li>
+                            <li>主机&nbsp;[192.168.1.14]</li>
+                        	<li>主机&nbsp;[192.168.1.14]</li>
+                        </ol>
+                     </ul>
+                     <ul class="equi_ls">
+                    	<p class="clinic_name">深圳志美口腔诊所 <img src="/Account/public/img/per_mana_icon_3.png" /></p>
+                        <ol>
+                            <li>主机[192.168.1.14]</li>
+                            <li>主机[192.168.1.14]</li>
+                            <li>主机[192.168.1.14]</li>
+                        	<li>主机[192.168.1.14]</li>
+                        </ol>
+                     </ul>
+                </div>
+               	
+             </section>
+             <section class="equip_r">
+             	<div class="r_head">
+                	设备信息
+                </div>
+                <div class="r_con">
+                	<dl>
+                    	<dt>
+                        	<div class="pc">
+                            	<img src="/static/account/img/host.png" /><img class="pc_ico" src="/static/account/img/pc_status2.png" />
+                            </div>
+                            <p>主机<span>(已安装4台分机)</span></p>
+                        </dt>
+                        <dd>
+                        	<li><label>设备编号</label><input type="text" name="" id=""></li>
+                            <li><label>使用人</label><select id="userName">
+                            	<option>程凌凌</option>
+                            </select></li>
+                            <li><label>归属科室</label><select id="userDepart">
+                            	<option>财务部</option>
+                            </select></li>
+                            <li><label>设备名称</label><input type="text" name="" id="" value="联想台式机"></li>
+                            <li><label>当前状态</label><input type="text" name="" id="" value="在线" class="readol" readonly="true"></li>
+                            <li><label>注册安装时间</label><input type="text" name="" id="" value="2016-10-20" class="readol" readonly="true"></li>
+                            <li><label>已运行时间</label><input type="text" name="" id="" value="210天" class="readol" readonly="true"></li>
+                            <li><label class="vt">备注</label><textarea></textarea></li>
+                        </dd>
+                    </dl>
+                </div>
+             </section>
+          </div>
+      </div>
+</div>
+<script type="text/javascript" src="/static/account/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="/static/account/js/DataSecurity.js"></script>
+</body>
+</html>

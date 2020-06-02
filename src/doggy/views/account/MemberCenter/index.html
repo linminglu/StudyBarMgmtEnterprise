@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="UTF-8">
+        <meta content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" name="viewport">
+        <meta content="yes" name="apple-mobile-web-app-capable">
+        <meta content="black" name="apple-mobile-web-app-status-bar-style">
+        <meta content="telephone=no" name="format-detection">
+        <meta http-equiv="Cache-Control" content="no-transform ">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+        {{template "/account/Public/per_css_inc.html" .}}
+        <link rel="stylesheet" type="text/css" href="/static/account/css/memberCenter.css">
+        <title>个人中心-牙医管家</title>   
+    </head>
+    <body>
+        <input type="hidden" name="navtags" value="1">
+        {{template "/account/Public/memberCen_hea_new.html" .}}
+        <div class="mask"></div> 
+        <div class="main_con">
+            <div class="main_left">
+                {{template "/account/Public/left_nav.html" .}}
+            </div>
+            <!-- 主页 -->
+           <div class="main_right">
+                <div class="right_top">
+                    <div class="right_mes">
+                        <div class="mes_pho" id="men_index_pho">
+                            <img src="/static/account/img/login_pho.png" />
+                        </div>
+                        <div class="mes_con">
+                            <p class="p1"><span id="accout_pho"></span><span id="hello_time"></span></p>
+                            <!-- <p class="p3">等级：<span><i>Lv.1</i></span>成长值：256/500</p> -->
+                            <p class="p2">上次登录时间：<span>{{.LastLoginTime}}</span>
+                            <!--<a href="http://127.0.0.1:8089/member/History">查看更多</a></p>-->
+                        </div>
+                    </div>
+                    <div class="right_news">
+                        <div class="news_tit"><img src="/static/account/img/message_icon.png"><span>
+                        我的消息</span></div>
+                        <div class="news_con">
+                            <ul id="permes_ul"></ul>
+                        </div>
+                    </div>    
+                </div>
+                <div class="bg_div"></div>
+               <div class="right_con">
+                   <ul>
+                       <li>
+                            <div class="li_div">
+                                <img src="/static/account/img/per_mes.png">
+                               <p class="p1">个人信息</p>
+                               <p class="p2">可修改基本信息</p>
+                               <div class="mouse_wonder" id="mouse_wonder1">
+                                   <p id="change_perInfo">
+                                        <a href="member_per_info">修改个人信息</a>
+                                    </p>
+                               </div>
+                            </div>
+                       </li>
+                       <li>
+                            <div class="li_div">
+                                <img src="/static/account/img/relate_phone.png">
+                               <p class="p1">绑定手机</p>
+                               <p class="p2" id="mobile_sub"></p>
+                               <div class="mouse_wonder" id="mouse_wonder2">
+                                   <p id="change_phone">
+                                        <a href="change_per_phone">更改绑定手机</a>
+                                   </p>
+                               </div>
+                            </div>
+                       </li>
+                       <li>
+                            <div class="li_div">
+                                <img src="/static/account/img/login_pw.png">
+                               <p class="p1">登录密码</p>
+                               <p class="p2">定期更改密码以保护账户安全
+                                   <!--  <span>安全等级：</span>
+                                   <span class="safe_range"></span>
+                                   <span>弱</span> -->
+                                </p>
+                               <div class="mouse_wonder" id="mouse_wonder3">
+                                   <p id="change_password">
+                                        <a href="/member/ChangePwdEnter">更改登录密码</a>
+                                   </p>
+                               </div>
+                            </div>
+                       </li>
+
+                       <!--<li>
+                           <div class="li_div li_div_spe">
+                                <img src="/static/account/img/pw_pro.png">
+                               <p class="p1">密保问题</p>
+                               <p class="p2">更有效保障您密码安全</p>
+                               <div class="mouse_wonder">
+                                    
+                                   <p id="change_passSafe">
+                                        <a href="index.php?m=MemberCenter&a=propw_problem">更改密保问题</a>
+                                   </p> 
+                                   <img src="/static/account/img/no_function.png" class="no_function_img">
+                               </div>
+                               <div class="no_setting" style="display:none;">
+                                   <img src="/static/account/img/no_setting.png">
+                               </div>
+                           </div>
+                       </li>-->
+                        <li>
+                            <div class="li_div">
+                                <img src="/static/account/img/PAweb/icon_progress.png">
+                               <p class="p1">申请进度</p>
+                               <p class="p2">平安好医生定点口腔服务机构</p>
+                               <div class="mouse_wonder" id="mouse_wonder4">
+                                   <p id="change_perInfo">
+                                        <a href="/member/applyprogress">查询申请进度</a>
+                                    </p>
+                               </div>
+                            </div>
+                       </li>
+                   </ul>
+               </div>
+           </div> 
+        </div>
+       <!--<include file="Public:footer_new"/>-->
+       {{template "/account/Public/footer_new.html" .}}
+       <!--<include file="Public:js_inc"/>      -->
+       {{template "/account/Public/js_inc.html" .}}
+       <script>
+            var _hmt = _hmt || [];
+			(function() {
+			  var hm = document.createElement("script");
+			  hm.src = "https://hm.baidu.com/hm.js?b924c5407f6fd69b05783e6ba9b37061";
+			  var s = document.getElementsByTagName("script")[0]; 
+			  s.parentNode.insertBefore(hm, s);
+			})();
+        </script>
+       <script type="text/javascript" src="/static/account/js/member_center.js"></script>
+    </body>
+</html>

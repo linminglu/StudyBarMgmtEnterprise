@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>上传demo</title>
+    <link href="/static/public/css/public/r_input.css" rel="stylesheet" />
+    <script type="text/javascript" src="/static/public/vue.min.js"></script>
+    <script type="text/javascript" src="/static/public/axios.min.js"></script>
+    <script type="text/javascript" src="/static/public/vue-router.js"></script>
+    <script src="/static/erp/collegenew/js/yayigjPicUploadClass.js"></script>
+    <style type="text/css">
+        i,
+        em {
+            font-style: normal
+        }
+        
+        #pic_upload_div .title {
+            height: 40px;
+            line-height: 40px;
+            position: relative;
+            padding-left: 10px;
+            box-sizing: border-box;
+            border-bottom: solid 1px #eee;
+        }
+        
+        #pic_upload_div .title .uploadBtnE {
+            position: absolute;
+            right: 50px;
+            top: 5px;
+        }
+        
+        #pic_upload_div .closeBtn {
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+            cursor: pointer;
+            display: inline-block;
+            font-size: 20px
+        }
+        
+        #pic_upload_div .closeBtn:hover {
+            background-color: #f00;
+            color: #fff
+        }
+        
+        #pic_upload_div .closeBtn:acrive {
+            background-color: #900;
+            color: #fff
+        }
+        
+        #pic_upload_div {
+            display: block;
+            background: #fff;
+            box-shadow: 0px 0px 20px #000;
+            width: 1000px;
+            height: 600px;
+            box-sizing: border-box;
+            position: fixed;
+            z-index: 5;
+            left: 50%;
+            margin-left: -500px;
+            top: 50%;
+            margin-top: -300px;
+        }
+        
+        #pic_upload_div .title span {
+            display: inline-block;
+            font-size: 13px
+        }
+        
+        #pic_upload_div .paramarea {
+            margin-left: 20px;
+        }
+        
+        #pic_upload_div #picupinfo {
+            width: 323px;
+        }
+        
+        #pic_upload_div .pic_upload_area {
+            height: 560px;
+            box-sizing: border-box;
+            padding: 10px;
+            overflow: auto;
+            position: relative;
+        }
+        
+        #pic_upload_div .footerarea {
+            background-color: rgba(0, 0, 0, 0.7);
+            height: 40px;
+            line-height: 40px;
+            width: 100%;
+            bottom: 0;
+            left: 0;
+            position: absolute;
+            text-align: right;
+            padding-right: 10px;
+            box-sizing: border-box
+        }
+        
+        #pic_upload_div .pic_upload_area {
+            box-sizing: border-box;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            text-align: center
+        }
+        
+        #pic_upload_div .pic_upload_area img {
+            box-shadow: 0px 0px 10px #666;
+        }
+        
+        .noborder {
+            border: none !important
+        }
+        
+        .hide {
+            display: none !important
+        }
+        
+        .lvse {
+            color: #0C0
+        }
+        
+        .w70px {
+            width: 70px !important
+        }
+        
+        .ml10 {
+            margin-left: 10px
+        }
+    </style>
+</head>
+
+<body>
+    <!--主框架-->
+    <div id="main_frme">
+        <!--上传弹层 start-->
+        <div id="pic_upload_div">
+            <div class="title">
+                <span class="txt">图片上传</span>
+                <span class="paramarea">
+                <input type="file" class="w70px" id="file1" name="file" @change="getPic($event)">
+                <span class="lvse ml10 pic_setsize hide">规格:800x800</span>
+                <i class="">
+                    限宽:&nbsp;<input style="width:88px" type="number" id="lowW" value="800">&nbsp;
+                    &nbsp;<input style="width:88px" type="number" id="lowH" value="1800" class="hide">&nbsp;
+                    &nbsp;<input type="text" id="web_url" style="width:295px"  class="hide">
+                    </i>
+                </span>
+                <span id="picupinfo"></span>
+                <span class="closeBtn" onclick="document.getElementById('pic_upload_div').style.display='none';hideBgEl()">&#10005;</span>
+            </div>
+            <div class="pic_upload_area pbg1280">
+                <img src="" id="pic">
+            </div>
+            <div class="footerarea"><input type="button" value="上传" @click="savePicToWeb" class="fillBtn uploadBtnE" /></div>
+        </div>
+        <!--上传弹层 start-->
+        <div @click="aaaaa">aaaaaa</div>
+    </div>
+    <!--主框架-->
+    <script>
+        //上传文件处理模板
+        var picupObj = new Picuploadclass({
+            setWTagId: 'lowW',
+            setHTagId: 'lowH',
+            picPrivewId: 'pic',
+            picUpLoadInfo: 'picupinfo',
+            Extname: ''
+        });
+
+        var upload_demo = new Vue({
+            el: "#main_frme", //vue框架绑定到这个id下,此id不同有并列同级
+            delimiters: ['<{', '}>'], //前端vue模板变量定界符，因为vue默认的会跟go中的模板变量重复出错所以单独设置.
+            //数据中心,vue以数据为中心来驱动html dom节点
+            data: {
+
+            },
+            //方法行为定义区,所有的事件均以函数方式定义好
+            methods: {
+                aaaaa:function(){
+                    var picupObj = new Picuploadclass({
+                        setWTagId: 'lowW',
+                        setHTagId: 'lowH',
+                        picPrivewId: 'pic',
+                        picUpLoadInfo: 'picupinfo',
+                        Extname: ''
+                    });
+                },
+                //-------------------------------------
+                getPic: function(obj, otherparm) {
+                    obj = obj.target;
+                    if (otherparm === undefined) {
+                        picupObj.operat_img(obj.files[0]);
+                    } else {
+                        picupObj.operat_img(obj.files[0], otherparm);
+                    }
+                },
+                //-------------------------------------
+                savePicToWeb: function() {
+                    debugger
+                    var imgData = picupObj.getCanvasData();
+                    $.post('/admin/uploadimage', {
+                        'picdata': imgData,
+                        "ext": picupObj.getPicType()
+                    }, function(data) {
+
+                    });
+                }
+            },
+            //处理节点初始化区域，比如插件绑定
+            mounted: function() {
+
+            },
+            //先于mounted块执行，可处理初始化数据读取
+            created: function() {
+
+            }
+        });
+    </script>
+</body>
+
+</html>

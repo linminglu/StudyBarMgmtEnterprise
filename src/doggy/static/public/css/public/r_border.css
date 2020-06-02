@@ -1,0 +1,44 @@
+/*=======================
+	整个分站线色配置  zlb 2016-11-20
+/*=======================*/
+
+/*---------------------------------------
+ 背景色色控制 
+ ----------------------------------------*/
+ .outerFrame{background:#F0F0F0;border-color:#f0f0f0 !important}  				/*主框架背景/线色配置*/
+ .headArea{background-color:#F0F0F0;border-color:#f0f0f0 !important}		/*整站头部背景/线色配置*/
+ .leftFrme{background-color:#fff;border-color:#f0f0f0 !important}					/*整站内容区左部背景/线色配置*/
+ .rightFrme{background-color:#fff;border-color:#f0f0f0 !important}					/*整站内容区右部背景/线色配置*/
+
+/*---------------------------------------
+ 线色控制 
+ ----------------------------------------*/
+.bdc_EEE{border-color:#eee !important} 
+.bdc_F6{border-color:#F6F6F6 !important}
+.dbc_F0{border-color:#F0F0F0 !important}
+.dbc_E0{border-color:#e0e0e0 !important}
+.dbc_0c5b5{border-color:#00c5b5 !important}
+/*---------------------------------------
+ 线型控制 
+ ----------------------------------------*/
+.bda{border:solid 1px}
+.bdb{border-bottom: solid 1px}		/*底部线*/
+.bdt{border-top: solid 1px}				/*顶部线*/
+.bdl{border-left: solid 1px}				/*左部线*/
+.bdr{border-right: solid 1px}			/*右部线*/
+.dbw{border:solid 20px}					/*本站表格外线宽*/
+
+/*---------------------------------------
+ 圆角参数控制
+ ----------------------------------------*/
+ .bdradius{border-radius:2px 2px 2px 2px}  /*顺时针方向*/
+ 
+/*---------------------------------------
+ 滚动条样式 
+ ----------------------------------------*/
+::-webkit-scrollbar{width:12px !important;height:12px !important; }
+::-webkit-scrollbar-thumb:horizontal:hover {background-color:#c5c5c5 !important;transition: 0.5s all;}
+::-webkit-scrollbar-thumb:vertical:hover {background-color:#c5c5c5 !important;transition: 0.5s all;}
+::-webkit-scrollbar-track-piece{background-color:#fafafa !important;-webkit-border-radius: 0px;}
+::-webkit-scrollbar-thumb:vertical{height:4px;background-color:#d9d9d9 !important;-webkit-border-radius:0px  !important;}
+::-webkit-scrollbar-thumb:horizontal{width:4px;background-color:#d9d9d9 !important;-webkit-border-radius:0px  !important;}

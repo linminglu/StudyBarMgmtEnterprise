@@ -1,0 +1,220 @@
+/*=======================
+	整个分站图标配置
+	zlb 2016-12-11
+/*=======================*/
+.viewinfo_ico{ background-image:url(/static/netconsult/img/yuyue_ico/h_view.png); width:21px; height:21px; display:inline-block;cursor:pointer; background-repeat:no-repeat; background-position:left center}  				/*搜索图标*/
+.viewinfo_ico:hover{background-image:url(/static/netconsult/img/yuyue_ico/h_view_d.png);}
+.edt_ico{background-image:url(/static/netconsult/img/yuyue_ico/modify.png); width:20px; height:20px; display:inline-block;cursor:pointer; background-repeat:no-repeat; background-position:left center}
+.edt_ico:hover{background-image:url(/static/netconsult/img/yuyue_ico/modifyd.png);}
+.del_ico{background-image:url(/static/netconsult/img/yuyue_ico/del.png); width:20px; height:20px; display:inline-block;cursor:pointer; background-repeat:no-repeat; background-position:left center}
+.del_ico:hover{background-image:url(/static/netconsult/img/yuyue_ico/deld.png);}
+.log_ico{background-image:url(/static/netconsult/img/yuyue_ico/log.png); width:20px; height:20px; display:inline-block;cursor:pointer; background-repeat:no-repeat; background-position:left center}
+.log_ico:hover{background-image:url(/static/netconsult/img/yuyue_ico/logd.png);}
+
+.close_ico{ background-image:url(/static/public/ico/close_icon.png); width:12px; height:12px;display:inline-block; cursor:pointer;}  		/*关闭图标*/
+.close_ico:hover{background-image:url(/static/public/ico/close_over.png);}
+.close_ico:active{background-image:url(/static/public/ico/close_over.png);}
+
+.closefill_ico{width: 44px;height: 44px;position: absolute;right: 0px;top: 0px;line-height: 44px;text-align: center;cursor: pointer;font-size:16px;color: #000}  		/*关闭图标带底色*/
+.closefill_ico:hover{background-color: #F86D5A;color: #fff}
+.closefill_ico:active{background-color: #DF6251;color: #fff}
+
+.return_ico{ background-image:url(/static/public/ico/return_icon.png); width:12px; height:12px;display:inline-block;cursor:pointer;}  	/*返回图标*/
+.return_ico:hover{background-image:url(/static/public/ico/return_over.png);}
+.return_ico:active{background-image:url(/static/public/ico/return_over.png);}
+.returnc_ico{ background-image:url(/static/public/ico/returnc_icon.png); width:24px; height:24px;display:inline-block;cursor:pointer;}  	/*返回圆图标*/
+.returnc_ico:hover{background-image:url(/static/public/ico/returnc_over.png);}
+.returnc_ico:active{background-image:url(/static/public/ico/returnc_over.png);}
+.delb_ico{ background-image:url(/static/public/ico/delb_icon.png); width:16px; height:16px;display:inline-block;cursor:pointer;}  		/*删除大图标*/
+.delb_ico:hover{background-image:url(/static/public/ico/delb_over.png);}
+.delb_ico:active{background-image:url(/static/public/ico/delb_on.png);}
+.delm_ico{ background-image:url(/static/public/ico/delm_icon.png); width:14px; height:14px;display:inline-block;cursor:pointer;}  		/*删除小图标*/
+.delm_ico:hover{background-image:url(/static/public/ico/delm_over.png);}
+.delm_ico:active{background-image:url(/static/public/ico/delm_over.png);}
+.umove_ico{ background-image:url(/static/public/ico/umove_icon.png); width:14px; height:14px;display:inline-block;cursor:pointer;}  		/*上移图标*/
+.umove_ico:hover{background-image:url(/static/public/ico/umove_over.png);}
+.umove_ico:active{background-image:url(/static/public/ico/umove_over.png);}
+.dmove_ico{ background-image:url(/static/public/ico/dmove_icon.png); width:14px; height:14px;display:inline-block;cursor:pointer;}  	/*下移图标*/
+.dmove_ico:hover{background-image:url(/static/public/ico/dmove_over.png);}
+.dmove_ico:active{background-image:url(/static/public/ico/dmove_over.png);}
+.add_ico{ background-image:url(/static/public/ico/add_icon.png); width:14px; height:14px;display:inline-block;cursor:pointer;}  			/*添加小图标*/
+.add_ico:hover{background-image:url(/static/public/ico/add_over.png);}
+.add_ico:active{background-image:url(/static/public/ico/add_over.png);}
+.addb_ico{ background-image:url(/static/public/ico/addb_icon.png); width:15px; height:15px;display:inline-block;cursor:pointer;}  		/*添加大图标*/
+.addb_ico:hover{background-image:url(/static/public/ico/addb_over.png);}
+.addb_ico:active{background-image:url(/static/public/ico/addb_over.png);}
+.expand_ico{ background-image:url(/static/public/ico/expand_icon.png); width:13px; height:13px;display:inline-block;cursor:pointer;}  	/*展开图标*/
+.expand_ico:hover{background-image:url(/static/public/ico/expand_over.png);}
+.expand_ico:active{background-image:url(/static/public/ico/expand_over.png);}
+.expanddir_ico{ background-image:url(/static/public/ico/expanddir_inco.png); width:11px; height:7px;display:inline-block;cursor:pointer;}  	/*展开图标 尖括号*/
+.expanddir_ico:hover{background-image:url(/static/public/ico/expanddir_over.png);}
+.expanddir_ico:active{background-image:url(/static/public/ico/expanddir_over.png);}
+.fold_ico{ background-image:url(/static/public/ico/fold_icon.png); width:13px; height:13px;display:inline-block;cursor:pointer;}  						/*折叠图标*/
+.fold_ico:hover{background-image:url(/static/public/ico/fold_over.png);}
+.fold_ico:active{background-image:url(/static/public/ico/fold_over.png);}
+.folddir_ico{ background-image:url(/static/public/ico/folddir_inco.png); width:11px; height:7px;display:inline-block;cursor:pointer;}  			  /*折叠图标 尖括号*/
+.folddir_ico:hover{background-image:url(/static/public/ico/folddir_over.png);}
+.folddir_ico:active{background-image:url(/static/public/ico/folddir_over.png);}
+.search_ico{ background-image:url(/static/public/ico/search_inco.png); width:16px; height:16px;display:inline-block;cursor:pointer;}  				/*搜索图标*/
+.search_ico:hover{background-image:url(/static/public/ico/search_over.png);}
+.search_ico:active{background-image:url(/static/public/ico/search_over.png);}
+.downlist_ico{ background-image:url(/static/public/ico/dlist_icon.png); width:12px; height:12px;display:inline-block;cursor:pointer;}  				/*搜索图标*/
+.downlist_ico:hover{background-image:url(/static/public/ico/dlist_over.png);}
+.downlist_ico:active{background-image:url(/static/public/ico/dlist_over.png);}
+.member_ico{background-image:url(/static/public/ico/member.png); width:28px; height:28px;display:inline-block;cursor:pointer;}  				/*会员图标*/
+.clinicname_ico{background-image:url(/static/public/ico/clinicname.png);width:32px; height:32px;display:inline-block;cursor:pointer;}   			/*诊所图标*/
+.delx_ico{ background-image:url(/static/public/ico/delx_icon.png); width:15px; height:15px;display:inline-block;cursor:pointer;}  				  /*删除圆图标 用在弹窗内*/
+.delx_ico:hover{background-image:url(/static/public/ico/delx_over.png);cursor:pointer;}
+.delx_ico:active{background-image:url(/static/public/ico/delx_over.png);cursor:pointer;}
+.seled_ico{ background-image:url(/static/public/ico/seled_icon.png); width:15px; height:15px;display:inline-block;cursor:pointer;}  			   /*选中圆图标 用在弹窗内*/
+.seled_ico:hover{background-image:url(/static/public/ico/seled_over.png);cursor:pointer;}
+.seled_ico:active{background-image:url(/static/public/ico/seled_over.png);cursor:pointer;}
+.edit_ico{ background-image:url(/static/public/ico/edit_icon.png); width:16px; height:16px;display:inline-block;cursor:pointer;background-repeat: no-repeat;}  			        /*修改图标*/
+.edit_ico:hover{background-image:url(/static/public/ico/edit_over.png);cursor:pointer;}
+.edit_ico:active{background-image:url(/static/public/ico/edit_on.png);cursor:pointer;}
+.excel_ico{ background-image:url(/static/public/ico/excel_export.png); width:20px; height:20px;display:inline-block;cursor:pointer;}  			/*修改图标*/
+.add_more{ background-image:url(/static/public/ico/add_more.png); width:20px; height:17px;display:inline-block;cursor:pointer;}  			/*批量添加图标*/
+.clinic_logo{background-image:url(/static/public/ico/clinic_logo.png); width:80px; height:80px;display:inline-block;cursor:pointer;}				/*诊所图标*/
+.add_user{background-image:url(/static/public/ico/employee_add.png); width:22px; height:17px;display:inline-block;cursor:pointer;}			/*添加用户或雇员*/
+.chart_none{background-image:url(/static/public/ico/chart_none.png); width:240px; height:289px;display:inline-block;cursor:pointer;}			/*bi图表无数据图片*/
+.dept_none{background-image:url(/static/public/ico/dept_none.png); width:240px; height:280px;display:inline-block;cursor:pointer;}			/*科室无数据图片*/
+.down_close{background-image:url(/static/public/ico/down_close.png);width:9px; height:5px;display:inline-block;cursor:pointer;}				/*向下展开*/
+.down_open{background-image:url(/static/public/ico/down_open.png);width:9px; height:5px;display:inline-block;cursor:pointer;}				/*向上展开*/
+.nav_hide{background-image:url(/static/public/ico/nav_hide.png);width:22px; height:18px;display:inline-block;cursor:pointer;}							/*左折叠展开*/
+.nav_show{background-image:url(/static/public/ico/nav_show.png);width:22px; height:18px;display:inline-block;cursor:pointer;}						/*左折叠折叠*/
+
+/*确定修改（用于设置窗口中）*/
+.ok_ico{ background-image:url(/static/pubpopwd/img/ko.png); width:18px; height:18px;display:inline-block;cursor:pointer;vertical-align: middle;}  				
+.ok_ico:hover{background-image:url(/static/pubpopwd/img/ko1.png);}
+.ok_ico:active{background-image:url(/static/pubpopwd/img/ko1.png);}
+/*取消（用于设置窗口中）*/
+.cancel_setting{ background-image:url(/static/pubpopwd/img/quxiao.png); width:18px; height:18px;display:inline-block;cursor:pointer; vertical-align: middle;}  				
+.cancel_setting:hover{background-image:url(/static/pubpopwd/img/quxiao1.png);}
+.cancel_setting:active{background-image:url(/static/pubpopwd/img/quxiao1.png);}
+
+/*lq 20170208 */
+/*二维码图标*/
+.wechat_ico{ background-image:url(/static/public/ico/wechat_ico.png); background-repeat: no-repeat;background-position: center; width:16px; height:16px;display:inline-block; cursor:pointer;vertical-align: middle;} 
+.wechat_ico:hover{background-image:url(/static/public/ico/wechat_on.png);}
+
+/*hk 2017-2-10 电网图标开始*/
+.modfiy{background-image:url(/static/netconsult/img/modfiy_nor.png); width:24px; height:24px;display:inline-block; cursor:pointer;}
+.modfiy:hover{background-image:url(/static/netconsult/img/modify_click.png);}
+.modfiy:active{background-image:url(/static/netconsult/img/modify_click.png);}  /*修改*/
+
+.noapp{background-image:url(/static/netconsult/img/noapp_nor.png); width:24px; height:24px;display:inline-block; cursor:pointer;}
+.noapp:hover{background-image:url(/static/netconsult/img/noapp_click.png); }
+.noapp:active{background-image:url(/static/netconsult/img/noapp_click.png); }  /*取消预约*/
+
+.netdel{background-image:url(/static/netconsult/img/del_nor.png); width:24px; height:24px;display:inline-block; cursor:pointer;}
+.netdel:hover{background-image:url(/static/netconsult/img/del_click.png);}
+.netdel:active{background-image:url(/static/netconsult/img/del_click.png);}  /*删除*/
+
+.record{background-image:url(/static/netconsult/img/record_nor.png); width:24px; height:24px;display:inline-block; cursor:pointer;vertical-align: middle;}    /*录音*/
+
+.setting{background-image:url(/static/netconsult/img/setting_nor.png); width:18px; height:18px;display:inline-block; cursor:pointer;vertical-align: middle;}
+.setting:hover{background-image:url(/static/netconsult/img/setting_click.png);}
+.setting:active{background-image:url(/static/netconsult/img/setting_click.png);}  /*设置*/
+
+.sex_nor{background-image:url(/static/netconsult/img/sex_nor.png); width:16px; height:16px;display:inline-block; cursor:pointer;vertical-align: middle;}
+.sex_click{background-image:url(/static/netconsult/img/sex_click.png); width:16px; height:16px;display:inline-block; cursor:pointer;vertical-align: middle;}   /*性别选择*/
+
+.man_pho{background-image:url(/static/netconsult/img/man_pho.png); width:16px; height:16px;display:inline-block; cursor:pointer;vertical-align: middle;}
+.woman_pho{background-image:url(/static/netconsult/img/woman_pho.png); width:16px; height:16px;display:inline-block; cursor:pointer;vertical-align: middle;}   /*性别头像*/
+
+.visit{background-image:url(/static/netconsult/img/visit_nor.png); width:24px; height:24px;display:inline-block; cursor:pointer;vertical-align: middle;}
+.visit:hover{background-image:url(/static/netconsult/img/visit_click.png);}
+.visit:active{background-image:url(/static/netconsult/img/visit_click.png);}  /*回访*/
+
+.visit2{background-image:url(/static/netconsult/img/visit_click2.png); width:24px; height:24px;display:inline-block; cursor:pointer;vertical-align: middle;}
+.visit2:hover{background-image:url(/static/netconsult/img/visit_click2_over.png);}
+.visit2:active{background-image:url(/static/netconsult/img/visit_click2_over.png);}  /*新增回访*/
+
+.add_confim{background-image:url(/static/netconsult/img/add_confim_nor.png); width:24px; height:24px;display:inline-block; cursor:pointer;vertical-align: middle;}
+.add_confim:hover{background-image:url(/static/netconsult/img/add_confim_click.png);}
+.add_confim:active{background-image:url(/static/netconsult/img/add_confim_click.png);}  /*确认添加*/
+
+.add_net{background-image:url(/static/netconsult/img/add_net.png); width:20px; height:20px;display:inline-block; cursor:pointer;vertical-align: middle;}  /*新增黄色加号*/
+.down_condition{background-image:url(/static/netconsult/img/down_condition.png); width:16px; height:16px;display:inline-block; cursor:pointer;vertical-align: middle;}  /*更多刷选绿色加号*/
+.up_condition{background-image:url(/static/netconsult/img/up_condition.png); width:16px; height:16px;display:inline-block; cursor:pointer;vertical-align: middle;}  /*收起帅选绿色减号*/
+
+
+/*预约中心系列图标*/
+.net_ico_def{margin: 0px 10px 0px 0; padding: 0 0px 0 24px; height: 28px;display: inline-block;line-height: 28px;color: #696969; cursor: pointer; font-size: 14px; background-repeat: no-repeat;background-position: 0px 4px;}
+.net_addYY{background-image: url(/static/public/ico/add_btn.png);}
+.refresh_ico{background-image: url(/static/public/ico/refresh_ico.png); }
+.clearAll_ico{background-image: url(/static/public/ico/net_clearAll.png); }
+.ico_sethover:hover{color: #47a6a0;}
+
+/*hk 2017-2-10 电网图标结束*/
+
+/*ly 2017-2-27 短信图标*/
+.view_detail_ico{background-image:url(/static/public/img/detail_ico.png);background-size:16px 16px; width:16px; height:16px;display:inline-block; cursor:pointer;vertical-align: middle;}  /*查看详情*/
+.view_detail_ico:hover{background-image:url(/static/public/img/detail_ico_over.png);}  /*查看详情*/
+.view_detail_ico:active{background-image:url(/static/public/img/detail_ico_over.png);}  /*查看详情*/
+.send_now_ico{background-image:url(/static/public/img/sendnow.png);background-size:16px 16px; width:16px; height:16px;display:inline-block; cursor:pointer;vertical-align: middle;}  /*立即发送*/
+.send_now_ico:hover{background-image:url(/static/public/img/sendnow_over.png);}  /*立即发送：hover*/
+.send_now_ico:active{background-image:url(/static/public/img/sendnow_over.png);}  /*立即发送：hover*/
+
+.send_cancel_ico{background-image:url(/static/public/img/send_cancel.png);background-size:16px 16px;width:16px; height:16px;display:inline-block; cursor:pointer;vertical-align: middle;}  /*取消发送*/
+.send_cancel_ico:hover{background-image:url(/static/public/img/send_cancel_over.png);}  /*取消发送：hover*/
+.send_cancel_ico:active{background-image:url(/static/public/img/send_cancel_over.png);}  /*取消发送：hover*/
+.resend_ico{background-image:url(/static/public/img/resend_ico.png);background-size:16px 16px;width:16px; height:16px;display:inline-block; cursor:pointer;vertical-align: middle;}  /*重新发送*/
+.resend_ico:hover{background-image:url(/static/public/img/resend_ico_over.png);}  /*重新发送：hover*/
+.resend_ico:active{background-image:url(/static/public/img/resend_ico_over.png);}  /*重新发送：hover*/
+
+.sms_delet_ico{background-image:url(/static/public/img/sms_delet_ico.png);background-size:16px 16px;width:16px; height:16px;display:inline-block; cursor:pointer;vertical-align: middle;}  /*删除记录*/
+.sms_delet_ico:hover{background-image:url(/static/public/img/sms_delet_ico_over.png);}  /*删除记录：hover*/
+
+.sms_reply_ico{background-image:url(/static/public/img/sms_reply_ico.png);background-size:16px 16px;width:16px; height:16px;display:inline-block; cursor:pointer;vertical-align: middle;}  /*回复短信*/
+.sms_reply_ico:hover{background-image:url(/static/public/img/sms_reply_ico_over.png);}  /*回复短信：hover*/
+
+
+/*患者中心图标=新图标=========================s*/
+.p_del_ico{background-image:url(/static/pubpopwd/img/delb_icon.png);width:18px; height:18px;display:inline-block; cursor:pointer;vertical-align: middle;background-repeat: no-repeat;}  
+.p_del_ico:hover{background-image:url(/static/pubpopwd/img/delb_on.png);}  
+.p_del_ico:active{background-image:url(/static/pubpopwd/img/delb_over.png);}  
+
+.p_edit_ico{background-image:url(/static/pubpopwd/img/set.png);width:18px; height:18px;display:inline-block; cursor:pointer;vertical-align: middle;background-repeat: no-repeat;} 
+.p_edit_ico:hover{background-image:url(/static/pubpopwd/img/set1.png);}  
+.p_edit_ico:active{background-image:url(/static/pubpopwd/img/set1.png);} 
+
+	/*二维码图标（大）*/
+.p_wechat_ico{background-image:url(/static/public/ico/p_wechat_ico.png);width:18px; height:18px;display:inline-block; cursor:pointer;vertical-align: middle;background-repeat: no-repeat;} 
+.p_wechat_ico:hover{background-image:url(/static/public/ico/p_wechat_on.png);}  
+.p_wechat_ico:active{background-image:url(/static/public/ico/p_wechat_on.png);} 
+
+/*上移下移操作图标s*/
+.upmove_ico{ background-image:url(/static/public/ico/upmove_icon.png); width:18px; height:18px;display:inline-block;cursor:pointer;vertical-align: middle;}  		/*上移图标*/
+.upmove_ico:hover{background-image:url(/static/public/ico/upmove_over.png);}
+.upmove_ico:active{background-image:url(/static/public/ico/upmove_over.png);}
+.downmove_ico{ background-image:url(/static/public/ico/downmove_icon.png); width:18px; height:18px;display:inline-block;cursor:pointer;vertical-align: middle;}  	/*下移图标*/
+.downmove_ico:hover{background-image:url(/static/public/ico/downmove_over.png);}
+.downmove_ico:active{background-image:url(/static/public/ico/downmove_over.png);}
+/*上移下移操作图标e*/
+
+/*添加、新增按钮*/
+.newdis_ico{background-image:url(/static/pubpopwd/img/add_icon.png);width:18px; height:18px;display:inline-block; cursor:pointer;vertical-align: middle;background-repeat: no-repeat;} 
+.newdis_ico:hover{background-image:url(/static/pubpopwd/img/add_icon_on.png);}  
+.newdis_ico:active{background-image:url(/static/pubpopwd/img/add_icon_on.png);}  
+
+/*重置按钮*/
+.resetBtn{ background-image:url(/static/pubpopwd/img/reset1.png); background-repeat: no-repeat;  height:18px;display:inline-block;cursor:pointer;padding-left: 18px;background-position: 0px center;}  	/*返回图标*/
+.resetBtn:hover{background-image:url(/static/pubpopwd/img/reset2.png);color: #47a6a0}
+.resetBtn:active{background-image:url(/static/pubpopwd/img/reset2.png);}
+
+/*患者中心图标==========================end*/
+
+/*系统 新增图标*/
+.add_type_ico{display: inline-block;width: 18px;height: 18px;background: url(/static/systemSet/basicdata/img/add_type1.png) center no-repeat;cursor:pointer;}
+.add_type_ico:hover{background-image: url(/static/systemSet/basicdata/img/add_type2.png);}
+.add_type_ico:active{background-image: url(/static/systemSet/basicdata/img/add_type3.png);}
+.sure_ico{display: inline-block;width: 18px;height: 18px;background: url(/static/netconsult/img/add_confim_nor.png) center no-repeat;cursor:pointer;}
+.sure_ico:hover{background-image: url(/static/netconsult/img/add_confim_click.png);}
+.sure_ico:active{background-image: url(/static/netconsult/img/add_confim_click.png);}
+
+
+/**/
+.set_map_ico{display: inline-block;width: 18px;height: 18px;background: url(/static/public/img/weiweb/position_gray.png) center no-repeat;cursor:pointer;}
+.set_map_ico:hover{background-image: url(/static/public/img/weiweb/position.png);}
+.set_map_ico:active{background-image: url(/static/public/img/weiweb/position.png);}

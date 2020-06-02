@@ -1,0 +1,133 @@
+abody, html {font-family: '微软雅黑', 'Arial';width: 100%;height: 100%;}
+/*登陆页面样式*/
+/*插画图片部分*/
+a,input{ outline:none;border:none;}
+.login_header{ width: 1200px; margin: auto;}
+.box_center{ width:1200px; margin:auto;}
+.login_box {width: 100%;background-color:#a0ddfe;overflow: hidden;padding: 87px 0;}
+.login_box .theme {width: 400px;height: 300px;margin-top:-56px;position: relative;right: -30px;}
+/*右边登陆框部分*/
+.login_box .r {margin-top: 0; width:340px; height:376px;border-radius:5px;}
+.login_box form {background-color: #ffffff;}
+.login_box form h2 {color: #888;font-size: 16px;text-align: center;line-height: 54px;font-weight:normal;overflow:hidden;}
+.login_box form h2 li{float: left;width:169px; list-style:none;cursor:pointer;border-bottom:1px solid #f0f0f0;border-top:4px solid #fff;}
+.login_box form h2 #mobile_login{border-right:1px solid #f0f0f0;width:170px;border-top-left-radius:5px;}
+.login_box form h2 #staff_login{border-top-right-radius:5px;}
+
+/*.login_box form h2 #mobile_login[data-focus='1']{font-weight:500;color: #00c5b5;border-top:3px solid #00c5b5;
+border-top-left-radius:5px;border-bottom:1px solid #fff;}*/
+.login_box form h2 .mobfcus{font-weight:500;color: #00c5b5;border-top:3px solid #00c5b5;
+border-top-left-radius:5px;border-bottom:1px solid #fff;}
+
+/*.login_box form h2 #staff_login[data-focus='1']{font-weight:500;color: #00c5b5;border-top:3px solid #00c5b5;
+border-top-right-radius:5px;border-bottom:1px solid #fff;}*/
+.login_box form h2 .stafcus{font-weight:500;color: #00c5b5;border-top:3px solid #00c5b5;
+border-top-right-radius:5px;border-bottom:1px solid #fff;}
+
+.login_form{display:none;}
+.houseNo{text-align:center;margin:19px auto 20px auto;position: relative;top:0;left:0;}
+.houseNo #houseID{background:url(/static/account/img/clinicLogin_ico.png) 10px center no-repeat;}
+.houseNo #err_info2{visibility:hidden;width: 262px;height:16px;margin:0 29px; text-align:left;color:#f86d5a; font-size: 12px;margin-bottom: 2px;
+background:url(/static/account/img/red_exclam.png) left center no-repeat;padding-left:22px;position: absolute;top:0; }
+.clinicNo{text-align:center;margin-bottom:20px;}
+.clinicNo #staffID{background:url(/static/account/img/clinicStaff.png) 10px center no-repeat;}
+.clinicPw{text-align:center;margin-bottom:20px;}
+.clinicPw #clinicPW{width: 238px;padding:10px 0 10px 40px;background:url(/static/account/img/pw_ico.png) 10px center no-repeat;}
+.rember{width:282px;font-size: 14px;color:#696969;overflow: hidden;margin:0 28px;font-size: 12px;}
+.rember #is_remember2{vertical-align:middle;}
+.rember label{cursor:pointer;}
+.rember a{color:#00c5b5; float: right;}
+.rember a:hover{color:#00d4c3;}
+.clinic_btn{margin-top:15px;text-align:center;}
+#clinic_btn{width: 282px;height: 40px;}
+
+.login_box #form1 p {position: absolute;text-align: left;top:45px;left:9px;width:100%;font-size: 12px;color:red;}
+.login_box #form1 p i {display: inline-block;width:16px;height:16px;font-style: normal; background:url(../img/red_exclam.png) center;vertical-align:top;margin-right: 6px;}
+/*.login_box #form1 p #err_info{margin-left:9px;}*/
+.login_box #form1 #error_w,#error_tel{display: none;}
+#form1 input[type=text]{width:238px; height:40px;*line-height: 40px;line-height: 40px\9;margin-left:1px;border:1px solid #e0e0e0;color: #333; border-radius:2px; padding:0 0 0 40px;}
+#form1 #sumbit{width:280px; height:40px;border-radius:2px; background-color:#00c5b5;color:#fff;}
+#form1 #sumbit:hover{background-color:#00d4c3;cursor: pointer;}
+#form1 #password{width:238px; height:40px;*line-height: 40px;line-height: 40px\9;   border:1px solid #e0e0e0; border-radius:2px; padding:0 0 0 40px;}
+#form1 .tel, .psw {margin:40px 28px;position: relative;top: 0;left: 0;}
+#form1 .tel img{ position:absolute; top:10px; left:10px;}
+#form1 .psw img{ position:absolute; top:10px; left:10px;}
+#form1 .remb_user {width:280px;margin: 0 auto;font-size:14px;color:#696969;margin-top: -24px;overflow: hidden;}
+
+#form1 .remb_user .ch_box{position: relative;top:2px;left:0;float: left;margin-right: 6px;}
+#form1 .remb_user input[type=checkbox], label {text-align: left;}
+#forlabel{cursor:pointer;}
+#form1 .remb_user span {float: right;cursor:pointer;margin-right:0;color:#00c5b5;}
+#form1 .remb_user .pw_lost{float:right;color: #00c5d5;*margin-top:-20px;}
+#form1 .remb_user .pw_lost:hover{color:#00d4c3;}
+#form1 .login_btn {text-align: center;margin: 29px auto;}
+/*找回密码页面样式公共的button和input，label，#form1样式*/
+/*进度条样式*/
+/*#main_pw{}*/
+.pw_box{width:700px;margin:148px auto 80px auto;}
+.pw_box input{padding-left: 12px;}
+.pw_box label{color: #333;font-size: 14px;margin-right: 12px;*display: inline-block;*height: 40px;}
+#main_pw .progressBar{width:249px;margin:0px auto 80px auto;}
+.progressBar ul{position:relative;color:#b9b9b9;}
+/*.progressBar .step_1{}*/
+.progressBar li{position:absolute;top:0px; text-align:center; font-size: 14px;}
+.progressBar li.li_1{left:-13px;}
+.progressBar li.li_2{left:125px;}
+.progressBar li.li_3{right:-33px;}
+.progressBar li b{position: absolute;top:40px;left:-45px;text-align: center;width: 120px; font-weight: normal;;}
+.progressBar li span{display:block;width: 24px;height: 24px;line-height:24px;font-size: 16px; color: #fff;background-color:#b9b9b9; border-radius: 50%;}
+.progressBar li.li_step span{width: 28px;height: 28px;border-radius:50%;line-height: 28px;font-size: 18px; background-color:#00c5b5;}
+.progressBar span img{_vertical-align:bottom;vertical-align: middle;}
+/*.pw_box{}*/
+/*填写账户名*/
+.pw_box .pw_input{width:360px;margin:0 auto 50px auto;position: relative;top: 0;left: 0;/*border:1px solid red;*/}
+.pw_input #inp_tel input{width:260px;}
+.pw_input #inp_code{position: relative;top: 0;left: 0;margin:30px 0;}
+#inp_code #getCode {position:absolute;right:6px;cursor: pointer;text-align: center;}
+.pw_input .errInfo{position:absolute;top:35px;left:78px;font-size: 12px;color: red;}
+.errInfo #errIcon{display:inline-block;width:16px;height:16px;font-style:normal;background:url(../img/red_exclam.png) center;vertical-align:top;margin-right: 4px;}
+.errInfo b{vertical-align: top;}
+#inp_btn input{margin-left:78px;width: 172px;height:40px;}
+/*设置新密码*/
+.pw_input .pw_new{margin-bottom: 30px;position: relative;}
+.pw_input .pw_new input[type='password']{width: 240px;}
+.pw_input .pw_new input[type='text']{width: 240px;}
+.pw_input .pw_new .errInfo{left: 91px;width:400px;}
+.pw_input #pw_btn{margin-left:91px;}
+/*找回成功*/
+.psw_box .step .step_ok p {text-align:center; margin-top: 60px;}
+.psw_box .step .step_ok {margin:160px auto;}
+.psw_box .step .step_ok_bg{ text-align: center;}
+.step p a {font-size: 16px;text-decoration: none;color: #00bb9c;}
+
+/*登录首页弹窗  黄凯  2016-11-18*/
+.mask{display:block; position:fixed;top:0;left:0;width:100%;height: 100%;background-color: #000;
+opacity:0.2;filter:alpha(opacity=20);z-index:100;display: none;}
+
+.no_bind_phone1{width: 480px;height: 280px;box-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);position: fixed;
+left: 50%;top: 50%;margin-left: -240px;margin-top: -140px;background: #fff;border-radius: 2px;z-index: 101;display: none
+;}
+.bind_tip_tit{height: 44px;border-bottom: 1px solid #f0f0f0;line-height: 44px;font-size: 15px;color: #333;text-align: center}
+.bind_tip_tit img{position: absolute;right: 16px;top: 16px;cursor: pointer;}
+.tips_img{float: left;}
+.tips_word{float: right;}
+.tips_content{margin: 37px 54px 0 44px;}
+.tips_word .p_33{font-size: 14px;color: #333;margin-bottom: 10px;}
+.tips_word .p_69{font-size: 14px;color: #696969;margin-bottom: 5px;}
+#login_bind_phone{margin: 30px 0 0 152px;}
+
+.no_bind_phone2{width: 480px;height: 280px;box-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);position: fixed;
+left: 50%;top: 50%;margin-left: -240px;margin-top: -140px;background: #fff;border-radius: 2px;z-index: 101;display: none;}
+.phone_input{padding: 45px 70px 0 70px;position: relative;}
+.phone_input span{font-size: 14px;color: #333;margin-right: 20px;display: block;float: left;height: 30px;line-height: 30px;width: 56px;text-align:justify;text-justify:inter-word;}
+#reg_sendnum{margin-left: 4px;}
+.phone_input input{float: left;}
+.phone_input div{margin-bottom: 30px;overflow: hidden;}
+.sub_tips{position: absolute;width: 260px;height: 22px;line-height: 22px;left: 146px;top: 181px;
+display: none;}
+.sub_tips label{font-size: 12px!important;color: #f86d5a!important;}
+.sub_tips  img{vertical-align: middle;margin-right: 5px;margin-bottom: 2px;margin-left: 5px;}
+.next_step{margin-left: 75px;}
+#send_word_num{position: relative;left: 2px;}
+#footer ul{margin-top: 30px!important;}
+.sub_tips_index{top:137px;display: none;}

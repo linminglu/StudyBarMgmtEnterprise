@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>回访评论</title>
+		{{template "../public/link/css_inc.html" .}}
+		<link href="/static/erp/college/css/bootstrap.min.css" rel="stylesheet" />
+		<link href="/static/erp/college/css/reset.css" rel="stylesheet" />
+		<link href="/static/erp/college/css/user.css" rel="stylesheet" />
+		<link href="/static/erp/college/css/revisit_comments.css" rel="stylesheet" />
+	</head>
+	<body>
+		<div id="show" style="display: none;"></div>
+		<div class="comment">
+		  <div class="com_form">
+		    <textarea class="input" id="saytext" name="saytext" maxlength="150"></textarea>
+		    <p>
+		      <span class="emotion"><img src="/static/erp/college/img/micro/expression.png"></span>
+		      <span style="text-align: right;display: inline-block;float: right;padding-right: 25px;">150字以内</span>
+		    </p>
+		  </div>
+		</div>
+		<div class="submit_from">
+             <input type="submit" class="fillBtn" id="fillBtn_set" name="" value="确定">
+             <input type="submit" class="cancelBtn" id="cancelBtn_set" name="" value="取消">
+        </div>
+	</body>
+	{{template "../public/link/js_inc.html" .}}
+	<script type="text/javascript" src="/static/erp/college/js/jquery.min.js"></script>
+	<script type="text/javascript" src="/static/erp/college/js/jquery.qqFace.js"></script>
+	<script type="text/javascript" src="/static/erp/college/js/revisit_comments.js"></script>
+</html>

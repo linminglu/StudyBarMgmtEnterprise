@@ -1,0 +1,11 @@
+.user_from{width: 70%;margin: 0 auto;padding-top: 35px;position:relative;}
+#tele_error{position: absolute;top: 55%; left: 30%;}
+#name_error{position: absolute;top: 95%; left: 30%;}
+i.error{display: inline-block;width: 150px;height: 20px;color: red;}
+
+.user_from label{display: inline-block;width: 100%;margin-top: 12px;margin-bottom: 12px;}
+.user_from label input{float: left;width:250px;}
+.user_from label span{float: left;width:100px;display: inline-block;text-align: right;padding-right: 5px;box-sizing: border-box;line-height: 30px;font-size: 16px;}
+
+.submit_from{text-align: center;margin-top: 30px;}
+.submit_from input{width:100px;margin-left: 10px;margin-right: 10px;}

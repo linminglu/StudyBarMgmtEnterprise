@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>门诊评分基本信息</title>
+		{{template "../public/link/css_inc.html" .}}
+		<link href="/static/erp/css/user.css" rel="stylesheet" />
+        <style>
+            .scorePageHeader a{color:#333;margin-right:20px;text-decoration: none;display:block;height:59px;line-height:59px;float:left;}
+            #activeLabel{color:#00c5b5;border-bottom:2px solid #0C1DEF;}
+            #score_info_con {margin-top:20px;}
+            #score_info_con .sp1{width:145px;}
+            #score_info_con2 .sp1{width:145px;}
+            #score_info_con .sp3{margin:4px 20px 0 40px;cursor:pointer;}
+            #score_info_con .sp4{margin-top:6px;}
+            #score_info_con input{width:240px;}
+            .centerBgDiv{height: 20px;background: #f2f2f2;clear:both;}
+            #pfState{width:300px;min-height:80px;}
+            .score_btn{clear:both;width:220px;margin:30px auto;overflow:hidden;}
+            .score_btn input{width:100px;height:30px;}
+            .ccWin{width:100%;height: 100%;position:fixed;top:0;left:0;background-color: #000;opacity:0.2;filter:alpha(opacity=20);z-index:100;display: none;}
+            .base_info_cc{width: 360px;height: 180px;background: #fff;box-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);position: absolute;left: 50%;top: 50%;margin-left: -180px;margin-top: -90px;z-index: 101;display: none;}
+            .base_info_cc p{font-size:16px;color:#333;text-align:center;margin:50px 0;}
+            .base_info_cc input{margin-left:60px;}
+            .base_infopic_cc{width: 770px;height: 620px;line-height:620px;position: absolute;left: 50%;top: 50%;margin-left: -385px;margin-top: -310px;z-index: 101;display: none;}
+            .base_infopic_cc img{display:block;}
+            #img_close{cursor:pointer;margin-left:365px;margin-top:10px;}
+            #img_pic{margin-left:75px;}
+        </style>
+	</head>
+	<body>
+		{{template "../public/public/header.html" .}}
+		<div class="mainFrme">
+			{{template "../public/public/left.html" .}}
+			<div class="rightFrme">
+				<div class="crumbs"><a href="###">主页</a> > <a href="###">诊所分级管理</a> > <a href="###">诊所评级修改</a></div>
+				<div class="cont">
+                    <div class="pageHeader scorePageHeader"><a href="#" id="activeLabel">基本信息</a><a href="#">经营评分</a><a href="#">社会影响力评分</a><a href="#">环境评分</a></div>
+                    <ul class="info_con" id="score_info_con">
+                        <li>
+                            <span class="sp1">医疗机构名称：</span>
+                            <span class="sp2"><input type="text" value="11111"></span>
+                            <span class="sp3"><img src="/static/erp/img/del_1.png" width="24"></span>
+                            <span class="sp4">注意：若此信息未通过审核请点击该图标</span>
+                        </li>
+                        <li>
+                            <span class="sp1">医疗机构地址：</span>
+                            <span class="sp2"><input type="text" value="11111"></span>
+                            <span class="sp3"><img src="/static/erp/img/del_1.png" width="24"></span>
+                            <span class="sp4">注意：若此信息未通过审核请点击该图标</span>
+                        </li>
+                        <li>
+                            <span class="sp1">联系方式：</span>
+                            <span class="sp2"><input type="text" value="11111"></span>
+                            <span class="sp3"><img src="/static/erp/img/del_1.png" width="24"></span>
+                            <span class="sp4">注意：若此信息未通过审核请点击该图标</span>
+                        </li>
+                        <li>
+                            <span class="sp1">营业执照号码：</span>
+                            <span class="sp2"><input type="text" value="11111"></span>
+                            <span class="sp3"><img src="/static/erp/img/del_1.png" width="24"></span>
+                            <span class="sp4">注意：若此信息未通过审核请点击该图标</span>
+                        </li>
+                        <li>
+                            <span class="sp1">企业法人营业执照：</span>
+                            <span class="sp2"><input type="text" value="11111"></span>
+                            <span class="sp3"><img src="/static/erp/img/del_1.png" width="24"></span>
+                            <span class="sp4">注意：若此信息未通过审核请点击该图标</span>
+                        </li>
+                        <li>
+                            <span class="sp1">医疗机构执业许可证：</span>
+                            <span class="sp2"><input type="text" value="11111"></span>
+                            <span class="sp3"><img src="/static/erp/img/del_1.png" width="24"></span>
+                            <span class="sp4">注意：若此信息未通过审核请点击该图标</span>
+                        </li>
+                        <li>
+                            <span class="sp1">医师执业证书：</span>
+                            <span class="sp2"><input type="text" value="11111"></span>
+                            <span class="sp3"><img src="/static/erp/img/del_1.png" width="24"></span>
+                            <span class="sp4">注意：若此信息未通过审核请点击该图标</span>
+                        </li>
+                    </ul>
+                    <div class="centerBgDiv"></div>
+                    <div class="detail_tit">门诊评分</div>
+                    <ul class="info_con" id="score_info_con2">
+                        <li><span class="sp1">经营评分：</span><span class="sp2">89分   该项总分100分占比60%</span></li>
+                        <li><span class="sp1">社会影响力评分：</span><span class="sp2">89分   该项总分100分占比60%</span></li>
+                        <li><span class="sp1">环境评分：</span><span class="sp2">89分   该项总分100分占比60%</span></li>
+                        <li><span class="sp1">总分：</span><span class="sp2">89分   该项总分100分占比60%</span></li>
+                        <li><span class="sp1">测评星级：</span><span class="sp2">100星级</span></li>
+                        <li><span class="sp1">评分说明：</span><span class="sp2"><textarea id="pfState">请对您的评分进行必要的说明，基本信息未通过的可不填写</textarea></span></li>
+                    </ul>
+                    <div class="score_btn"><input type="button" id="score_chanle" value="取消"><input type="button" id="score_confim" value="确定"></div>
+                </div>
+			</div>
+		</div>
+		{{template "../public/public/footer.html" .}}
+        <div class="ccWin"></div>
+        <!--查看图片-->
+        <div class="base_infopic_cc">
+            <img src="/static/erp/img/workpic.png" width="620" id="img_pic"><img src="/static/erp/img/del_w.png" width="40" id="img_close">
+        </div>
+        <!--基本信息取消确认-->
+        <div class="base_info_cc">
+            <p>请确保已认真审核相关信息！</p>
+            <input type="button" value="取消" id="tc_chanle"><input type="button" value="确认" id="tc_confim">
+        </div>
+        <div class="base_info_cc">
+            <p>确定取消当前所有操作并返回上一页？</p>
+            <input type="button" value="取消" id="tc_chanle"><input type="button" value="确认" id="tc_confim">
+        </div>
+	</body>
+	{{template "../public/link/js_inc.html" .}}
+</html>

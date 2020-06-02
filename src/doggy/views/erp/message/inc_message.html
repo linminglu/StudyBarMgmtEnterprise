@@ -1,0 +1,198 @@
+<html>
+<title><span id="titlename"></span></title>
+<head>
+    <meta charset="utf-8">
+    <link href="/static/public/css/public/r_input.css" rel="stylesheet" />
+
+</head>
+<style>
+    .addseriescourse_table{width: 100%;height: 410px;border-bottom:1px solid #f0f0f0;overflow: auto;}
+    .popFooter{height: auto;margin-top: 15px;position: absolute;right: 30px;}
+    .wp100{width: 100%}
+    .unite_table{ background-color:#fff;border-collapse: collapse;}
+    .unite_table thead{height:35px; background-color:#fafafa; box-sizing:border-box}
+    .unite_table th{height:33px; color:#696969;font-size:14px; padding:0 10px; font-weight:normal; text-align:left; box-sizing:border-box;}
+    .unite_table td{height:30px;color:#333; font-size:13px;padding:0 10px;box-sizing:border-box;}
+    .unite_table tbody tr:nth-child(even){background:#fafafa;}
+    .unite_table tbody tr:hover{ background-color:#e4f9f7}
+    .unite_table tbody tr.table_nodata:hover{ background-color:#fff}
+    .unite_table tbody tr.table_nodata:active{ background-color:#fff}
+    .unite_table tbody tr.table_nodata.active{ background-color:#fff}
+    .unite_table tbody tr:active{ background-color:#ccf3f0}
+    .unite_table tbody tr.active{ background-color:#ccf3f0}/*liqin 2017610*/
+
+    .unite_table tbody tr td:last-child,.unite_table tr th:last-child{text-align:right; padding-right:10px;}
+    .unite_table tbody tr.last{background-color: #ededed;font-weight: bold;}
+    .unite_table tbody tr.last:hover{ background-color:#ededed}
+    .unite_table .t_r{text-align: right;}/*liqin*/
+    .unite_table.noTopborder th{border-top: none};/*去掉表格最上方的线*/
+
+    .noRBorder .unite_table th,.noRBorder .unite_table tbody td{border-right: none;}
+    .noLBorder .unite_table th,.noLBorder .unite_table tbody td{border-left: none;}
+    #myPage{margin-top:10px;}
+
+    /*表格中要用到的颜色在下面添加*/
+    .unite_table  .red{color:#F00} /*红色*/
+    .unite_table  .s55c6bf{color:#55c6bf} /*祖母绿*/
+    .unite_table  .s47a6a0{ color:#47a6a0} /*已经开始*/
+    .unite_table  .s69{ color:#696969} /*未开始*/
+    .unite_table  .ccc{ color:#cccccc} /*已失效*/
+    .unite_table  .s8aa8ec{color:#8aa8ec} /*编辑色*/
+    .unite_table  .f86d5a{color: #f86d5a;}/*待跟进*/
+
+    
+</style>
+
+<body>
+    <div class="addseriescourse_table">
+        <table class="wp100 unite_table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>单课程名</th>
+                    <th>主播</th>
+                    <th>点击人数</th>
+                    <th>购买人数</th>
+                    <th>系列课状态</th>
+                </tr>
+            </thead>
+            <tbody id="new_talsingle">
+            </tbody>
+        </table>
+    </div>
+    <div id="myPage">
+    </div>
+    <div class="popFooter">
+        <input type="button" class="fillBtn" value="确定" onclick="opencourse()">
+        <input type="button" onclick="NoticeFather(0)" class="cancelBtn closeBtn" value="取消">
+    </div>
+    <!--</div>-->
+</body>
+<script type="text/javascript" src="/static/public/jquery-1.9.1.min.js"></script>
+<script src="/static/public/yayigj_page_info.js"></script><!--分页-->
+<script type="text/javascript" src="/static/public/yayigj_downlist.js"></script>
+<script>
+    var titlename = getUrlParam("type");
+    var pageApi=null;
+    var url = "",id="";
+    var swhereObj={
+        pageno:1,
+        pagesize:10,
+        totalcount:-1,
+        isall: "1"
+    }
+    $(function(){
+        addseries();
+    })
+    $('#myPage').pagination({
+        totalData:50,//总条数
+        showData:10,//每页显示条数
+        pageCount:20,//共多少页
+        coping:true,
+        count:2,
+        jumpCallBack:jump,//跳转回调
+        callback:function(index){
+            swhereObj.pageno=index.getCurrent();//更改请求的当前页即可
+            staffList(swhereObj);//点页码后的回调
+        }
+    },function(api){			
+        pageApi=api;
+    });
+    //分页控件
+    function jump(params){
+        swhereObj.pagesize=params;			//1-更改条件值
+        swhereObj.pageno=1;
+        staffList(swhereObj);				//2-重新请求第一页数据
+        pageApi.reSetPageSize(params);		//3-调用api刷新页码信息
+    }
+    //课程选择
+    function addseries() {
+        if (titlename == "1") {
+            $("#titlename").val("系列课程选择");
+            url="/butlerp/business/serieslist";
+        } else if (titlename == "2"){
+            $("#titlename").val("单课程选择");
+            url="/butlerp/business/signlelist";
+        }
+        staffList(swhereObj);
+    }
+    function staffList(swhereObj){
+        var param={
+            page : swhereObj.pageno,
+            per_page : swhereObj.pagesize,
+            totalcount:swhereObj.totalcount,
+            isall : "0"
+        };
+        
+        $.post(url, param, function (json) {
+            console.log(json.list)
+            if (json.code== "1"){
+                if(json.list){
+                    pageApi.ReSet(parseInt(json.totalcount),parseInt(json.pagesize));
+                    var str = "";
+                    $.each(json.list,function(k,v){
+                        if(titlename=="1"){
+                            str += "<tr><td><input type='checkbox' id='"+v.seriesid+"' "
+                        }else if (titlename == "2"){
+                            str += "<tr><td><input type='checkbox' id='"+v.signleid+"' "
+                        }
+                        str+=" class='mybox' onclick='checkBox($(this))'/></td>"+
+                        "<td><dl class='classname' style='float:left;width:100px;'>"+
+                            "<img style='height:100%; max-width:80px;' src="+v.banner+"></dl>"+
+                            "<dl class='classname' style='margin-top: 20px !important;'>"+v.title+"</dl></td>"+
+                        "<td>"+v.anchorname+"</td>"+
+                        "<td>"+v.clicknum+"</td>"+
+                        "<td>"+v.buynum+"</td>"
+                        if(v.datastatus == "1"){
+                            str+="<td>正常</td>"
+                        }else if (v.datastatus == "2"){
+                            str+="<td style='color: red;'>已下架</td>"
+                        }else if (v.datastatus == "0"){
+                            str+="<td style='color: red;'>已删除</td>"
+                        }else{
+                            str+="<td></td>"
+                        }
+                        str+="</tr>"
+                    })
+                    $("#new_talsingle").empty().html(str)
+                }else{
+                    alert("为查询到相应数据");
+                }
+            }else{
+                alert(json.info);
+            }
+           
+        })
+    }
+    function checkBox(obj){
+        if (obj.is(":checked")) {
+            // 先把所有的checkbox 都设置为不选种
+            $('input.mybox').prop('checked', false);
+            id="";
+            // 把自己设置为选中
+            obj.prop('checked',true);
+            id=obj.attr("id");
+        }
+    }
+    //
+    function opencourse(){
+        // var url=""
+        NoticeFather(1,id)
+    }
+    //------------------------
+    // 通知父层关闭弹窗
+    //------------------------
+    function NoticeFather(para, pobj) {
+        parent.popApi_course.close_pop_wnd({
+            "code": para,
+            "info": pobj
+        });
+    }
+    //获取url中的参数
+    function getUrlParam(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+        var r = window.location.search.substr(1).match(reg); //匹配目标参数
+        if (r != null) return unescape(r[2]);
+        return null; //返回参数值
+    }
+</script>

@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>门诊列表</title>
+		{{template "../public/link/css_inc.html" .}}
+		<link href="/static/erp/css/user.css" rel="stylesheet" />
+        <style>
+            .selectDiv{width:80px;height:28px;border:1px solid #00c5b5;line-height:28px;padding: 0 5px;float:left;}
+            .search_clilist label,.search_clilist div{margin-bottom:14px;}
+            .search_clilist{padding:14px 14px 0 14px;}
+            .search_clilist label:first-child{padding-left:0;}
+            #clPro{margin-right:10px;}
+            .cli_f_data{max-height:calc(100% - 213px);}
+            .cli_f_data a{margin-right:10px;}
+            .cli_f_data a:last-child{margin-right:0;}
+        </style>
+	</head>
+	<body>
+		{{template "../public/public/header.html" .}}
+		<div class="mainFrme">
+			{{template "../public/public/left.html" .}}
+			<div class="rightFrme">
+				<div class="crumbs"><a href="###">主页</a> > <a href="###">门诊分级管理</a></div>
+				<div class="cont">
+					<div class="pageHeader">门诊列表</div>
+					<div class="search search_clilist">
+						<label>创建时间</label>
+						<div id="BeginDate" class="calendar"></div>
+						<label>至</label>
+						<div id="EndDate" class="calendar"></div>
+						<label>评价状态</label>
+                        <div id="comState" class="comState selectDiv"></div>
+                        <label>门诊星级</label>
+                        <div id="cliStar" class="cliStar selectDiv"></div>
+                        <label>签约诊所</label>
+                        <div id="signCli" class="signCli selectDiv"></div>
+                        <label>评价变化</label>
+                        <div id="comChange" class="comChange selectDiv"></div>
+                        <label>地区</label>
+                        <div id="clPro" class="clPro selectDiv"></div>
+                        <div id="clCity" class="clCity selectDiv"></div>
+						<input name="condition" class="ml20 w240" type="text" placeholder="请输入用户名/手机等关键词查询" />
+						<input type="button" name="userlist_btn" value="查询" />
+						<div class="excel">导出excel</div>
+					</div>
+					<div class="f_data cli_f_data">
+						<table>
+                            <tr>
+                                <th align="left">诊所名称</th>
+                                <th align="center">管家号</th>
+                                <th align="left">地区</th>
+                                <th align="left">所属账号</th>
+                                <th align="center">创建时间</th>
+                                <th align="left">评级状态</th>
+                                <th align="left">星级</th>
+                                <th align="left">星级评分</th>
+                                <th align="left">签约产品</th>
+                                <th align="left">变化趋势</th>
+                                <th align="left">变化原因</th>
+                                <th align="left">用户评分</th>
+                                <th align="center">操作</th>
+			                </tr>
+                            <tr>
+                                <td align="left">桃园美牙</td>
+                                <td align="center">80868</td>
+                                <td align="left">广东深圳</td>
+                                <td align="left">13800138000</td>
+                                <td align="center">2016.12.15</td>
+                                <td align="left">已评级</td>
+                                <td align="left">四星</td>
+                                <td align="left">88.5</td>
+                                <td align="left"><p>年度牙齿健康高级</p><p>维护套餐</p></td>
+                                <td align="center"><img src="/static/erp/img/down.png" height="30"></td>
+                                <td align="left">用户差评</td>
+                                <td align="left">4.5</td>
+                                <td align="center"><a>查看</a><a>重审</a><a>用户评价</a></td>
+			                </tr>
+                            <tr>
+                                <td align="left">桃园美牙</td>
+                                <td align="center">80868</td>
+                                <td align="left">广东深圳</td>
+                                <td align="left">13800138000</td>
+                                <td align="center">2016.12.15</td>
+                                <td align="left">已评级</td>
+                                <td align="left">四星</td>
+                                <td align="left">88.5</td>
+                                <td align="left"><p>年度牙齿健康高级</p><p>维护套餐</p></td>
+                                <td align="center"><img src="/static/erp/img/up.png" height="30"></td>
+                                <td align="left">用户差评</td>
+                                <td align="left">4.5</td>
+                                <td align="center"><a>查看</a><a>重审</a><a>用户评价</a></td>
+			                </tr>
+                             <tr>
+                                <td align="left">桃园美牙</td>
+                                <td align="center">80868</td>
+                                <td align="left">广东深圳</td>
+                                <td align="left">13800138000</td>
+                                <td align="center">2016.12.15</td>
+                                <td align="left">已评级</td>
+                                <td align="left">四星</td>
+                                <td align="left">88.5</td>
+                                <td align="left"><p>年度牙齿健康高级</p><p>维护套餐</p></td>
+                                <td align="left">--</td>
+                                <td align="left">用户差评</td>
+                                <td align="left">4.5</td>
+                                <td align="center"><a>查看</a><a>重审</a><a>用户评价</a></td>
+			                </tr>
+                             <tr>
+                                <td align="left">桃园美牙</td>
+                                <td align="center">80868</td>
+                                <td align="left">广东深圳</td>
+                                <td align="left">13800138000</td>
+                                <td align="center">2016.12.15</td>
+                                <td align="left">已评级</td>
+                                <td align="left">四星</td>
+                                <td align="left">88.5</td>
+                                <td align="left"><p>年度牙齿健康高级</p><p>维护套餐</p></td>
+                                <td align="left">--</td>
+                                <td align="left">用户差评</td>
+                                <td align="left">4.5</td>
+                                <td align="center"><a>查看</a><a>重审</a><a>用户评价</a></td>
+			                </tr>
+                             <tr>
+                                <td align="left">桃园美牙</td>
+                                <td align="center">80868</td>
+                                <td align="left">广东深圳</td>
+                                <td align="left">13800138000</td>
+                                <td align="center">2016.12.15</td>
+                                <td align="left">已评级</td>
+                                <td align="left">四星</td>
+                                <td align="left">88.5</td>
+                                <td align="left"><p>年度牙齿健康高级</p><p>维护套餐</p></td>
+                                <td align="left">--</td>
+                                <td align="left">用户差评</td>
+                                <td align="left">4.5</td>
+                                <td align="center"><a>查看</a><a>重审</a><a>用户评价</a></td>
+			                </tr>
+                             <tr>
+                                <td align="left">桃园美牙</td>
+                                <td align="center">80868</td>
+                                <td align="left">广东深圳</td>
+                                <td align="left">13800138000</td>
+                                <td align="center">2016.12.15</td>
+                                <td align="left">已评级</td>
+                                <td align="left">四星</td>
+                                <td align="left">88.5</td>
+                                <td align="left"><p>年度牙齿健康高级</p><p>维护套餐</p></td>
+                                <td align="left">--</td>
+                                <td align="left">用户差评</td>
+                                <td align="left">4.5</td>
+                                <td align="center"><a>查看</a><a>重审</a><a>用户评价</a></td>
+			                </tr>
+                             <tr>
+                                <td align="left">桃园美牙</td>
+                                <td align="center">80868</td>
+                                <td align="left">广东深圳</td>
+                                <td align="left">13800138000</td>
+                                <td align="center">2016.12.15</td>
+                                <td align="left">已评级</td>
+                                <td align="left">四星</td>
+                                <td align="left">88.5</td>
+                                <td align="left"><p>年度牙齿健康高级</p><p>维护套餐</p></td>
+                                <td align="left">--</td>
+                                <td align="left">用户差评</td>
+                                <td align="left">4.5</td>
+                                <td align="center"><a>查看</a><a>重审</a><a>用户评价</a></td>
+			                </tr>
+
+                             <tr>
+                                <td align="left">桃园美牙</td>
+                                <td align="center">80868</td>
+                                <td align="left">广东深圳</td>
+                                <td align="left">13800138000</td>
+                                <td align="center">2016.12.15</td>
+                                <td align="left">已评级</td>
+                                <td align="left">四星</td>
+                                <td align="left">88.5</td>
+                                <td align="left"><p>年度牙齿健康高级</p><p>维护套餐</p></td>
+                                <td align="left">--</td>
+                                <td align="left">用户差评</td>
+                                <td align="left">4.5</td>
+                                <td align="center"><a>查看</a><a>重审</a><a>用户评价</a></td>
+			                </tr>
+                             <tr>
+                                <td align="left">桃园美牙</td>
+                                <td align="center">80868</td>
+                                <td align="left">广东深圳</td>
+                                <td align="left">13800138000</td>
+                                <td align="center">2016.12.15</td>
+                                <td align="left">已评级</td>
+                                <td align="left">四星</td>
+                                <td align="left">88.5</td>
+                                <td align="left"><p>年度牙齿健康高级</p><p>维护套餐</p></td>
+                                <td align="left">--</td>
+                                <td align="left">用户差评</td>
+                                <td align="left">4.5</td>
+                                <td align="center"><a>查看</a><a>重审</a><a>用户评价</a></td>
+			                </tr>
+                             <tr>
+                                <td align="left">桃园美牙</td>
+                                <td align="center">80868</td>
+                                <td align="left">广东深圳</td>
+                                <td align="left">13800138000</td>
+                                <td align="center">2016.12.15</td>
+                                <td align="left">已评级</td>
+                                <td align="left">四星</td>
+                                <td align="left">88.5</td>
+                                <td align="left"><p>年度牙齿健康高级</p><p>维护套餐</p></td>
+                                <td align="left">--</td>
+                                <td align="left">用户差评</td>
+                                <td align="left">4.5</td>
+                                <td align="center"><a>查看</a><a>重审</a><a>用户评价</a></td>
+			                </tr>
+                             <tr>
+                                <td align="left">桃园美牙</td>
+                                <td align="center">80868</td>
+                                <td align="left">广东深圳</td>
+                                <td align="left">13800138000</td>
+                                <td align="center">2016.12.15</td>
+                                <td align="left">已评级</td>
+                                <td align="left">四星</td>
+                                <td align="left">88.5</td>
+                                <td align="left"><p>年度牙齿健康高级</p><p>维护套餐</p></td>
+                                <td align="left">--</td>
+                                <td align="left">用户差评</td>
+                                <td align="left">4.5</td>
+                                <td align="center"><a>查看</a><a>重审</a><a>用户评价</a></td>
+			                </tr>
+                             <tr>
+                                <td align="left">桃园美牙</td>
+                                <td align="center">80868</td>
+                                <td align="left">广东深圳</td>
+                                <td align="left">13800138000</td>
+                                <td align="center">2016.12.15</td>
+                                <td align="left">已评级</td>
+                                <td align="left">四星</td>
+                                <td align="left">88.5</td>
+                                <td align="left"><p>年度牙齿健康高级</p><p>维护套餐</p></td>
+                                <td align="left">--</td>
+                                <td align="left">用户差评</td>
+                                <td align="left">4.5</td>
+                                <td align="center"><a>查看</a><a>重审</a><a>用户评价</a></td>
+			                </tr>
+                             <tr>
+                                <td align="left">桃园美牙</td>
+                                <td align="center">80868</td>
+                                <td align="left">广东深圳</td>
+                                <td align="left">13800138000</td>
+                                <td align="center">2016.12.15</td>
+                                <td align="left">已评级</td>
+                                <td align="left">四星</td>
+                                <td align="left">88.5</td>
+                                <td align="left"><p>年度牙齿健康高级</p><p>维护套餐</p></td>
+                                <td align="left">--</td>
+                                <td align="left">用户差评</td>
+                                <td align="left">4.5</td>
+                                <td align="center"><a>查看</a><a>重审</a><a>用户评价</a></td>
+			                </tr>
+                        </table>
+					</div>
+					<div id="pager"></div>
+				</div>
+			</div>
+		</div>
+		{{template "../public/public/footer.html" .}}
+	</body>
+	{{template "../public/link/js_inc.html" .}}
+    <script type="text/javascript">
+		$(function(){
+            $("#BeginDate").yayigj_date_Sel();
+			$("#EndDate").yayigj_date_Sel();
+			
+			//加载页面获取当天日期
+			$("#BeginDate").getCurrday();
+			$("#EndDate").getCurrday();
+
+             $("#comState").yayigj_downlist({    //评价状态
+                _hiddenID:'clinicid2',
+                _valtype:'text',
+                _data:[
+                    {'key':'全部'},
+                    {'key':'未申请'},
+                    {'key':'已评级'},
+                    {'key':'申请中'},
+                    {'key':'申请未通过'},
+                    {'key':'申请重评'},
+                    {'key':'评级变化'}
+                ]	 
+            });
+             $("#cliStar").yayigj_downlist({    //门诊星级
+                _hiddenID:'clinicid2',
+                _valtype:'text',
+                _data:[
+                    {'key':'全部'},
+                    {'key':'一星级'},
+                    {'key':'二星级'},
+                    {'key':'三星级'},
+                    {'key':'四星级'},
+                    {'key':'五星级'}
+                ]	 
+            });
+            $("#signCli").yayigj_downlist({    //签约诊所
+                _hiddenID:'clinicid2',
+                _valtype:'text',
+                _data:[
+                    {'key':'全部'},
+                    {'key':'已签约'},
+                    {'key':'未签约'}
+                ]	 
+            });
+             $("#comChange").yayigj_downlist({    //评价变化
+                _hiddenID:'clinicid2',
+                _valtype:'text',
+                _data:[
+                    {'key':'全部'},
+                    {'key':'增长'},
+                    {'key':'下降'},
+                    {'key':'平级'}
+                ]	 
+            });
+            $("#clPro").yayigj_downlist({    //地区省份
+                _hiddenID:'clinicid2',
+                _valtype:'text',
+                _data:[
+                    {'key':'广东'}
+                ]	 
+            });
+            $("#clCity").yayigj_downlist({    //地区城市
+                _hiddenID:'clinicid2',
+                _valtype:'text',
+                _data:[
+                    {'key':'深圳'}
+                ]	 
+            });
+        })
+	</script>
+</html>

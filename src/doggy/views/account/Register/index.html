@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>注册</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+     	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+     	<meta charset="UTF-8">
+        <meta content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" name="viewport">
+        <meta content="yes" name="apple-mobile-web-app-capable">
+        <meta content="black" name="apple-mobile-web-app-status-bar-style">
+        <meta content="telephone=no" name="format-detection">
+        <meta http-equiv="Cache-Control" content="no-transform ">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+        <!--<include file="Public:css_inc"/>-->
+        {{template "/account/Public/css_inc.html" .}} 
+        <link rel="stylesheet" type="text/css" href="/static/account/css/register.css">        
+    </head>
+    <body>
+        <div class="topbar">
+            <div class="topbarIn">
+                <div class="logo"><a href="http://www.dental360.cn/" target="_blank"><img src="/static/ant/img/logo.png" alt="牙医管家"></a></div>
+                <div class="logoDes">欢迎注册</div>
+                <div class="loginAndRegister">
+                    <a href="#" >已有账号?</a>
+                    <a href="/login" class="login_a">请登录</a>
+                </div>
+            </div>
+        </div>
+       <div class="reg_con">
+            <div class="check_phone">
+                <div class="phone_input">
+                    <div><span>手机号码</span><input type="text" placeholder="请输入您的手机号" class="box_w288_h18" oninput="check_mb(this)" id="reg_phonenum"></div>
+                    <div>
+                        <span id="send_word_num">验&nbsp;证&nbsp;码</span><input type="text" placeholder="请输入短信验证码" id="reg_phone" class="box_w196"><input type="button" value="获取验证码" id="reg_sendnum" class="acb ac_btn_bf w100h30">
+                    </div>
+                    <div class="sub_tips sub_tips_index1"><img src="/static/account/img/red_exclam.png"><label></label></div>
+                    <div class="sub_tips sub_tips_index2"><img src="/static/account/img/red_exclam.png"><label></label></div>
+                    <div><input type="button" value="下一步" id="next_step1" class="next_step acb ac_btn_bf w196h30"></div>
+                </div>
+            </div>
+       </div>
+       <!--<include file="Public:footer_new"/>-->
+       {{template "/account/Public/footer_new.html" .}} 
+       <script type="text/javascript" src="/static/account/js/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript" src="/static/account/js/placeholade.min.js"></script>
+       <script type="text/javascript" src="/static/account/js/register_js.js"></script>
+       <!--IE支持placeholder-->
+       <script type="text/javascript">  
+            $(function(){ $('input, textarea').placeholder(); });
+        </script>
+    </body>
+</html>

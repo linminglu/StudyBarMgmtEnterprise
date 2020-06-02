@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>后台管理仪表板</title>
+		{{template "../public/link/css_inc.html" .}}
+		<link href="/static/erp/css/login.css" rel="stylesheet" />
+	</head>
+	<body>
+		{{template "../public/public/header.html" .}}
+		<div class="outerFrame">
+			<div class="mainFrme">
+				<div class="rightFrme">
+					<div class="board_items">
+                        <ul>
+                            <li class="low_one row_one"><a href="/butlerp/users"><img src="/static/erp/college/img/login/enter1.png"><p>平台/官网后台管理</p></a></li>
+                            <li class="low_one"><a href="#"><img src="/static/erp/college/img/login/enter2.png"><p>商学院后台管理</p></a></li>
+                            <li class="row_one"><a href="#"><img src="/static/erp/college/img/login/enter3.png"><p>在线商城后台管理</p></a></li>
+                            <li><a href="#"><img src="/static/erp/college/img/login/enter4.png"><p>PC端后台管理</p></a></li>
+                        </ul>
+                    </div>
+				</div>
+			</div>
+		</div>
+		{{template "../public/public/footer.html" .}}
+	</body>
+	{{template "../public/link/js_inc.html" .}}
+</html>

@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="UTF-8">
+        <meta content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" 
+        name="viewport">
+        <meta content="yes" name="apple-mobile-web-app-capable">
+        <meta content="black" name="apple-mobile-web-app-status-bar-style">
+        <meta content="telephone=no" name="format-detection">
+        <meta http-equiv="Cache-Control" content="no-transform ">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+        <link rel="stylesheet" type="text/css" href="/static/account/css/chain_strom.css">   
+        <link rel="stylesheet"  type="text/css" href="/static/account/css/oneStrom.css" />
+        <link rel="stylesheet" type="text/css" href="/static/account/css/upfile.css" />  
+        <link rel="stylesheet" type="text/css" href="/static/account/js/css/jquery.Jcrop.min.css" />
+        {{template "account/Public/css_inc.html" .}}
+        <link rel="stylesheet" type="text/css" href="/static/public/css/publicFrame.css">    
+        <title>员工管理</title>     
+    </head>
+    <body>
+    	<div class="headArea"><!--头部-->
+            	{{template "/Public/public/r_header.html" .}}
+        </div>        
+        <div class="outerFrame"><!--外层主框架s-->        	
+            <div class="mainFrme"><!--主框架s-->
+            	<div class="leftFrme" id="leftFrme">
+                	{{template "/account/Public/clinic_left_nav.html" .}}
+                </div>
+                <div class="rightFrme"><!--右框架s-->
+                			<div class="main_right">
+                                   {{template "account/Public/chain_main_right_nav.html" .}}
+                                   <!--加载中-->
+                                    <div id="loading_info"></div>
+                               <div class="screen_condition">
+                                   <div class="first_letter">
+                                       <label>首字母筛选</label>
+                                       <span class="pl0">A</span><span>B</span><span>C</span><span>D</span><span>E</span><span>F</span><span>G</span><span>H</span><span>I</span><span>J</span><span>K</span><span>L</span><span>M</span><span>N</span><span>O</span><span>P</span><span>Q</span>
+                                       <span>R</span><span>S</span><span>T</span><span>U</span><span>V</span><span>W</span><span>X</span><span>Y</span><span>Z</span>
+                                       
+                                       <label class="open_it">更多筛选<img src="/static/account/img/more_filter.png"></label>
+                                   </div>
+                                   <div class="open_condition" data-showhide="1">
+                                        <div class="clinics_filter">
+                                            <label>工作场所筛选</label>
+                                            <span id="clinicSelc"></span>
+                                        </div>
+                                         <div class="jobs_filter">
+                                           <label>所属职位筛选</label>
+                                           <ol id="dutylist">
+                                                <span class="pl0">超级管理员</span>
+                                           </ol>
+                                        </div> 
+                                        <div class="status_filter">
+                                           <label>账号状态筛选</label><span id="1" class="pl0">已激活</span><span id="0">未激活</span>
+                                        </div>
+                                   </div>  
+                                   <div class="filter_result">
+                                       <div class="filter_key" id="filter_code"><span class="key_code">首字母:</span><span class="key_name" id="key_name"></span>&nbsp;&nbsp;<img src="/static/account/img/close.png"></div>
+                                       <div class="filter_key" id="filter_clinic"><span class="key_code">工作场所:</span><span class="key_name" id="key_clinic"></span>&nbsp;&nbsp;<img src="/static/account/img/close.png"></div>
+                                       <div class="filter_key" id="filter_duty"><span class="key_code">所属职位:</span><span class="key_name" id="key_duty">主任</span>&nbsp;&nbsp;<img src="/static/account/img/close.png"></div> 
+                                      <div class="filter_key" id="filter_status"><span class="key_code">状态:</span><span class="key_name" id="key_status"></span>&nbsp;&nbsp;<img src="/static/account/img/close.png"></div>
+                                   </div>
+                                </div>
+                                <div class="batch_operate">
+                                    <ul class="ul_l">
+                                        <li><span>批量</span></li>
+                                        <li class="alert_operate"><a href="javascript:;">导出员工列表</a></li>
+                                        <!-- <li class="alert_operate"><a href="#">设置科室</a></li> -->
+                                        <!--<li class="alert_operate"><a href="javascript:;">群发短信</a></li>-->
+                                        <li class="alert_operate"><a href="javascript:;">发送激活短信</a></li>
+                                    </ul>
+                                    <ul class="ul_r">
+                                        <li><a href="addmember"><img src="/static/account/img/add_staff.png">新增员工</a></li>
+                                        <!--<li><a href="__APP__/index.php?m=ChainStrom&a=batch_import"><img src="/static/account/img/add_lots.png">批量添加</a></li>
+                                        <li><a href="__APP__/index.php?m=ChainStrom&a=excel_import"><img src="/static/account/img/excel_Import.png">Excel导入</a></li>-->
+                                    </ul>
+                                </div>
+                                <table class="info_table">
+                                    <thead  id="info_head">
+                                        <tr>
+                                            <td class="tl"><b class="checkboxbg"><input type="checkbox" id="select_all"><label for="select_all"></label></b><label for="select_all">员工姓名</label></td><td class="info_place">工作场所</td><td>工号</td><td>性别</td><td>生日</td><td>手机号</td><td>所属职位</td><td>所属部门</td>
+                                            <td>在职状态</td><td>账号状态</td><td class="tr"><b class="mr30">操作</b></td>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="lists_info">
+                
+                                    </tbody>
+                                </table>
+                                <!--分页-->
+                                <div class="Pager">
+                                    <input type="hidden" id="pageCurr" VALUE="1">
+                                    <span class="pagerSP1"></span>
+                                    <span class="pagerSP3">
+                                        <label>每页显示</label>
+                                       <div id="pagerRow" style="width:60px; outline:none; float:left; border:solid 1px #e0e0e0; height:28px; padding-left:5px;" autocomplete="off">
+
+                                       </div>
+                                       <input type="hidden" id="pageid" value="20">
+                                      
+                                    </span>
+                                    <span class="pagerSP2"></span>
+                                </div>
+                           </div>
+                       </div>
+                </div><!--右框架e-->
+            </div><!--主框架e-->
+        </div><!--外层主框架e-->
+        
+        <!--弹出框背景-->
+        <div class="sta_man_bg"></div>
+        <!--离职弹窗提示-->
+        <div class="export_staff_list" id="leave_pop">
+            <div class="export_tit">
+                <span class="export_listz_sp">系统提示</span>
+                <span class="close_alert"><img src="/static/account/img/close.png"></span>
+            </div>
+            <div class="export_con">
+                <img src="/static/account/img/wonder_icon.png" class="qh_pop_info">
+                <p><span>确定该员工已处于离职状态吗？</span></p>
+            </div>
+            <div class="export_save">
+                <input type="button" class="acb ac_btn_bf w90h30" value="确定" id="leaving_staff_confim" />
+            </div>
+        </div>
+        <!--删除弹窗提示-->
+        <div class="export_staff_list" id="delete_pop" >
+            <div class="export_tit">
+                <span class="export_listz_sp">删除提示</span>
+                <span class="close_alert"><img src="/static/account/img/close.png"></span>
+            </div>
+            <div class="export_con">
+                <img src="/static/account/img/wonder_icon.png" class="wonder_icon">
+                <p>
+                    <span>确定删除该员工？</span><br><span>员工信息删除后，数据将不可恢复</span>
+                </p>
+                </div>
+            <div class="export_save">
+            <input type="button" class="acb ac_btn_bf_y w90h30" value="确定删除" id="delete_staff_confim" />
+            </div>
+        </div>
+        <!--导出员工列表-->
+        <div class="export_staff_list export_staff_list2">
+            <div class="export_tit">	
+                <span class="export_listz_sp">导出员工列表</span>
+                <span class="close_alert"><img src="/static/account/img/close.png"></span>
+            </div>
+            <div class="staff_list">
+                <span>员工列表:</span>
+                <span class="total_span">
+                    <span class="selected_taff sta_cli_sp">
+                    <img src="/static/account/img/circle_sel.png"  id="circle_sel_png"></span>
+                    <span>已选择的员工</span>
+                </span>
+                <span class="total_span">
+                    <span class="all_staff sta_cli_sp">
+                    <img src="/static/account/img/circle_nor.png"></span>
+                    <span>所有员工</span>
+                </span>
+            </div>
+          <div class="staff_name staff_name1">
+                <ul class="add_doctor_name add_doctor_name3"></ul>
+                <ul class="add_clinic_popup"></ul>
+          </div>
+          <p class="errinfo" id="sxr">请选择员工</p>
+          <div class="export_save">
+             <div id="ifrmePop" style="display:none;">
+                <form name="myForm" id="myForm" target="myIfrme" method="post">  
+                    <input type="hidden" id="aaa" val="" />
+                    <input type="hidden" id="bbb" val="" />
+                </form>  
+                <iframe src="" name="myIfrme" width="100%" height="40"></iframe>    
+             </div>
+            <input type="button" class="acb ac_btn_bf w90h30" value="确定" id="exp_staff_confim" />
+            <input type="button" class="acb ac_btn_nf w90h30 exp_staff_clsoe" value="取消" 
+            id="exp_staff_clsoe" />
+          </div>
+        </div>
+        <!--群发短信-->
+        <!--<div class="export_staff_list export_staff_list2">
+                <div class="export_tit">
+                    <span class="export_listz_sp">群发短信</span>
+                    <span class="close_alert"><img src="/static/account/img/close.png"></span>
+                </div>
+                <div class="staff_list">
+                    <span>收信人:</span>
+                    <span class="total_span">
+                        <span class="selected_taff sta_cli_sp">
+                        <img src="/static/account/img/circle_sel.png" id="circle_sel_png"></span>
+                        <span>已选择的收信人</span>
+                    </span>
+                    <span class="total_span">
+                        <span class="all_staff sta_cli_sp"><img src="/static/account/img/circle_nor.png"></span><span>所有员工</span>
+                    </span>
+                </div>
+                <div class="staff_name staff_name2">
+                    <ul class="add_doctor_name add_doctor_name1"></ul>
+                    <ul class="add_clinic_popup"></ul>
+                </div>
+                <p class="errinfo" id="sxr2">请选择收信人</p>
+                <div class="send_content">
+                <span class="mess_num">发送内容:</span><span class="red_cost">注:0.09元每条</span>
+                </div>
+                <div class="tex">
+                    <textarea id="bulk_messaage">请输入短信内容</textarea>
+                    <p class="errinfo" id="import">输入短信内容</p>
+                </div>
+                <div class="export_save">
+                    <input type="button" class="acb ac_btn_bf w90h30" value="确定" id="exp_staff_confim2" />
+                    <input type="button" class="acb ac_btn_nf w90h30 exp_staff_clsoe" value="取消" 
+                    id="exp_staff_clsoe2" />
+                </div>
+        </div>-->
+        <!--发送激活短信-->
+        <div class="export_staff_list export_staff_list2">
+            <div class="export_tit">
+                <span class="export_listz_sp">发送激活短信</span>
+                <span class="close_alert"><img src="/static/account/img/close.png"></span>
+            </div>
+            <div class="staff_list">
+                <span>收信人:</span>
+                <span class="total_span">
+                    <span class="selected_taff sta_cli_sp">
+                    <img src="/static/account/img/circle_sel.png"  id="circle_sel_png"></span><span>已选择的员工</span>
+                </span>
+               <span class="total_span">
+                    <span class="all_staff sta_cli_sp"><img src="/static/account/img/circle_nor.png"></span><span>所有员工</span>
+                </span>
+            </div>
+            
+            <div class="staff_name staff_name3">
+                <ul class="add_doctor_name add_doctor_name2"></ul>
+                <ul class="add_clinic_popup"></ul>
+            </div>
+            <p class="errinfo" id="sxr3">请选择收信人</p>
+            <div class="export_save">
+                <input type="button" class="acb ac_btn_bf w90h30" value="确定" id="exp_staff_confim3" />
+                <input type="button" class="acb ac_btn_nf w90h30 exp_staff_clsoe" value="取消" 
+                id="exp_staff_clsoe3" />
+            </div>
+        </div>
+        
+          <!--设置科室-->
+        <!-- <div class="staff_edit pop_sha_rad export_staff_list">
+             <div class="edit_staff_title edit_staff_title1">
+                 <span class="ed_sp1">设置科室</span>
+                 <span class="ed_sp3 close_alert"><img src="/static/account/img/close.png"></span>
+             </div>
+             <div class="staff_list">
+                 右边的 当前科室员工
+                 <div class="list_r">
+                     <p>已选择员工</p>
+                     <div class="r_box">
+                         <ol>
+                             <li><b></b><span class="doc_name">黄医生</span><span class="job_name">医生</span><i></i></li>
+                             <li><b></b><span class="doc_name">陈医生</span><span class="job_name">主任</span><i></i></li>
+                             <li><b></b><span class="doc_name">张护士</span><span class="job_name">护士</span><i></i></li>
+                             <li><b></b><span class="doc_name">孙先生</span><span class="job_name">财务</span><i></i></li>
+                         </ol>
+                     </div>
+                 </div>
+                 中间的箭头
+                 <div class="list_m">
+                     <img src="/static/account/img/middle_dep_dirct.png" alt=""/>
+                 </div>
+                 左边的 请选择员工列表
+                 <div class="list_l">
+                     <p>将员工移动到</p>
+                     <div class="l_box">
+                         <div class="box_c box_c1">
+                             <div id="staff_list staff_list1">
+                                 <ul>
+                                     <li>
+                                         <span class="setting_cli_name">深圳致美口腔</span>
+                                         <span><img src="/static/account/img/clinic_show_direct.png"></span>
+                                         <ul>
+                                             <li>治疗部</li>
+                                             <li>康复部</li>
+                                             <li>财务部</li>
+                                         </ul>
+                                     </li>
+                                     <li>
+                                         <span class="setting_cli_name">广州致美口腔</span>
+                                         <span><img src="/static/account/img/clinic_show_direct.png"></span>
+                                     </li>
+                                     <li>
+                                         <span class="setting_cli_name">惠州致美口腔</span>
+                                         <span><img src="/static/account/img/clinic_show_direct.png"></span>
+                                     </li>
+                                     <li>
+                                         <span class="setting_cli_name">梅州致美口腔</span>
+                                         <span><img src="/static/account/img/clinic_show_direct.png"></span>
+                                     </li>
+                                 </ul>
+                             </div>
+                             <div id="depart_list">
+                                 <ol>
+                                     <li>
+                                         <label class="dep_kind">治疗部(4)
+                                         <img src="/static/account/img/clinic_show_direct.png">
+                                         </label>
+                                         <ul>
+                                             <li><i></i><span class="doc_name">王医生</span></li>
+                                             <li><i></i><span class="doc_name">王医生</span></li>
+                                             <li><i></i><span class="doc_name">王医生</span></li>
+                                         </ul>
+                                     </li>
+                                     <li class="dep_kind">
+                                         <label>财务部(2)
+                                         <img src="/static/account/img/clinic_show_direct.png">
+                                         </label>
+                                     </li>
+                                 </ol>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+             <div class="dep_input">
+                 <input type="button" value="确定" class="acb ac_btn_bf w100h30 dep_confim" />
+                 <input type="button" value="取消" onclick="closeStaff()" class="acb ac_btn_nf w100h30 exp_staff_clsoe"/>
+             </div>
+         </div>  --> 
+
+
+        <!--{{template "account/Public/clinic_js_inc.html" .}}   -->
+        <!--<script type="text/javascript">
+            $(".nav ."+cur_Line).css("color","#00c5bd");
+        </script>-->
+         {{template "/account/Public/clinic_js_inc.html" .}}
+        <script src="/static/public/jquery.pagination.js"></script>
+        <script src="/static/public/yayigj_dialog_box.js"></script>
+        <script src="/static/public/yayigj_downlist.js"></script>
+       <script type="text/javascript" src="/static/account/js/chain_strom.js"></script>
+       <script type="text/javascript" src="/static/account/js/staff_manage.js"></script>
+       <script>
+	   				$("#nav_top_1 a").css("color","#00c5b5");
+	   				$("#nav_top_1").css("border-bottom","solid 2px #00c5b5");
+                    jQuery.createAniCss();
+       </script>
+    </body>
+</html>

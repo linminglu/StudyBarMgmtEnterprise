@@ -1,0 +1,403 @@
+<!doctype html>
+<html>
+<head>
+<title>我的社区</title>
+<meta charset="utf-8"/>
+<!--<include file="Public:css_inc"/>-->
+{{template "/account/Public/per_css_inc.html" .}}
+<link rel="stylesheet" type="text/css" href="/static/account/css/memberCenter.css">
+</head>
+
+<body>
+<!-- 头部 -->
+	<!--<include file="Public:memberCen_hea_new" />-->
+	{{template "/account/Public/memberCen_hea_new.html" .}}
+    <div class="mask">
+    </div>
+    <form name="form1" id="form1" onSubmit="return checkform()" method="post"  action="__APP__/index.php?m=MyCommunity&a=addPostsBBS" >
+     
+                    <div class="note_post">
+                        <div class="note_post_content">
+                            <div class="note_post_header">
+                                <div class="l">
+                                    <img class="vm" src="/static/account/img/post_logo.png" alt=""/><span class="f16 vm">发表帖子</span>
+                                </div>
+                                <span class="r" id="noteClose"><img src="/static/account/img/close.png" /></span>
+                            </div>
+                            <div class="post_list">
+                                <input type="text" placeholder="标题" id="subject" name="subject"/>
+                                <select class="m2" id="top_forum">                                  
+                                    <option>选择主版块</option>
+                                    <volist name='forum_bk' id='vo'>
+                                    <option value="<{$vo.fid}>"><{$vo.name}></option>
+                                    </volist>
+                                </select>
+                                <select id="chdForum" name="fid">
+                                    <option>子版块</option>
+                                    <option value=""></option>
+                                </select>
+                            </div>
+                            <div class="post_textarea">
+                                    <textarea name="content" id="content" placeholder="输入想要发布的内容" >
+                                        
+                                    </textarea>
+                            </div>
+                            <div class="note_post_btn">
+                                <input type="submit" value="发布" id="sub" class="btn_active ac_btn_bf"/>
+                                <input type="button" value="取消" class="ac_btn_nf" id="noteClose2"/>
+                            </div>
+                        </div>
+                    </div>
+                    </form>
+       <div class="main_con">
+       		<div class="main_left">
+                <include file="Public:left_nav"/>
+            </div>
+			<!-- 未开通的服务 -->
+			<div class="main_right">
+				<div class="right_box">
+                <div class="marg30">
+					<ul id="notes_ul" class="fix">
+						<li data-f="1"><a href="javascript:;">全部动态</a></li>
+						<li data-f="0"><a href="javascript:;">我发布的帖子(<span id="myPo_num"><{$number_list['personal_nb']}></span>)</a></li>
+						<li data-f="0"><a href="javascript:;">我的回复(<span id="myRe_num"><{$number_list['personal_re_nb']}></span>)</a></li>
+						<li data-f="0"><a href="javascript:;">通知(<span id="myNo_num"><{$number_list['personal_no_nb']}></span>)</a></li>
+						<a id="notePost" href="javascript:;"><span>我要发帖</span></a>
+					</ul>						
+						<li class="no_note" id="no_note">当前暂无消息</li>
+                    <!-- 全部动态-->
+					<ol class="note_items">
+                    	<volist name="forum_all_list" id="vo">
+						<li>   
+                       <!-- <i class="hot_icon"><img src="/static/account/img/hot_icon.png" /></i>  -->                  
+							<div id="post_img"><img src="/static/account/img/post_head.png"></div>
+                            <div class="post_cont">
+                            	 <p><a target="_blank"  href="../Discuz/bbs/forum.php?mod=viewthread&tid=<{$vo.tid}>"><{$vo.subject}></a></p>
+        						 <p class="dash_p"><span id="post_user"><{$vo.author}></span><span id="post_date"><{$vo.dateline|genForumDate=###}></span></p>
+                            </div>
+                            <div id="post_num">
+        						<b class="num_icon"> <img src="/static/account/img/view_num.png"/></b>
+                                <span id="view_num"><{$vo.views}></span>
+                                <b class="num_icon"><img src="/static/account/img/reply_num.png"/></b>
+                                <span id="reply_num"><{$vo.replies}></span>
+     						</div>
+						</li> 
+                        <span class="hidden_id">1</span>
+                        </volist>  	
+                    </ol>
+                    <!--我发布的帖子-->
+                    <ol class="note_items">
+                    	<volist name="forum_list" id="vo">
+						<li>    
+                        <!--<i class="hot_icon"><img src="/static/account/img/hot_icon.png" /></i>  -->                 
+							<div id="post_img"><img src="/static/account/img/post_head.png"></div>
+                            <div class="post_cont">
+                            	 <p><a target="_blank" href="../Discuz/bbs/forum.php?mod=viewthread&tid=<{$vo.tid}>"><{$vo.subject}></a></p>
+        						 <p class="dash_p"><span id="post_user"><{$vo.author}></span><span id="post_date"><{$vo.dateline|genForumDate=###}></span></p>
+                            </div>
+                            <div id="post_num">
+        						<b class="num_icon"> <img src="/static/account/img/view_num.png"/></b>
+                                <span id="view_num"><{$vo.views}></span>
+                                <b class="num_icon"><img src="/static/account/img/reply_num.png"/></b>
+                                <span id="reply_num"><{$vo.replies}></span>
+     						</div>	
+						</li> 
+                        <span class="hidden_id">1</span>
+                        </volist>	
+                    </ol>   
+                    <!--我的回复-->
+                    <ol class="note_items">
+                        <volist name="re_list" id="vo">
+                        <li>    
+                       <!-- <i class="hot_icon"><img src="/static/account/img/hot_icon.png" /></i>  -->                 
+                            <div id="post_img"><img src="/static/account/img/post_head.png"></div>
+                            <div class="post_cont">
+                                 <p><a href="../Discuz/bbs/forum.php?mod=viewthread&tid=<{$vo.tid}>&#postmessage_<{$vo.pid}>">Re&nbsp;:&nbsp;<{$vo.subject}></a></p>
+                                 <p class="dash_p"><span id="post_user"><{$vo.author}></span><span id="post_date"><{$vo.dateline|genForumDate=###}></span></p>
+                            </div>
+                          <!--  <div id="post_num">
+                                <b class="num_icon"> <img src="/static/account/img/view_num.png"/></b>
+                                <span id="view_num"><{$vo.views}></span>
+                                <b class="num_icon"><img src="/static/account/img/reply_num.png"/></b>
+                                <span id="reply_num"><{$vo.replies}></span>
+                            </div>  -->
+                        </li> 
+                        <span class="hidden_id">1</span>
+                        </volist>   
+                    </ol> 
+                    <!--通知-->     
+                    <ol class="note_items">
+                        <volist name="note_list" id="vo">
+                        <li>                       
+                            <div id="post_img"><img src="/static/account/img/notice_head.png"></div>
+                            <div class="post_cont">
+                                 <p><{$vo.note}></p>
+                                 <p class="dash_p"><span id="post_user">系统提醒</span><span id="post_date"><{$vo.dateline|genForumDate=###}></span></p>
+                            </div>
+                           <!-- <div id="post_num">
+                                <b class="num_icon"> <img src="/static/account/img/view_num.png"/></b>
+                                <span id="view_num">555</span>
+                                <b class="num_icon"><img src="/static/account/img/reply_num.png"/></b>
+                                <span id="reply_num"><{$vo.replies}></span>
+                            </div>  -->
+                        </li> 
+                        <span class="hidden_id">1</span>
+                        </volist>   
+                    </ol>  
+                </div> 
+                <b id="more">载入更多内容<!-- <img src="/static/account/img/more.png" /> --></b>
+				</div>				
+			</div>
+       </div>
+    
+  <!--<include file="Public:footer_new"/>-->
+  {{template "/account/Public/footer_new.html" .}}
+  <!--<include file="Public:js_inc"/>-->
+   {{template "/account/Public/js_inc.html" .}}
+ <script charset="utf-8" src="/static/account/js/kindeditor-min.js"></script>
+ <script charset="utf-8" src="/static/account/js/zh_CN.js"></script>
+  	<script type="text/javascript">		
+      $(function(){
+		$("textarea[name=content]").css("width","100%");
+		$(".note_items").eq(0).show();
+		/*最后一个帖子没有下边虚线*/
+		for(var i=0;i<4;i++){
+			var len=$(".note_items").eq(i).find(".dash_p").length-1;
+			$(".note_items").eq(i).find(".dash_p").eq(len).css("border-bottom","none");
+		}
+		
+		$("#top_forum").change(function(){
+			var thisv=$(this).val();
+			$.ajax({
+				type:"GET",
+				url:"__APP__/index.php?m=MyCommunity&a=getChdForum&fid="+thisv,
+				dataType:"json",
+				error: function(data){},
+				complete: function(data){},
+				beforeSend: function(data){},
+				success: function(data){
+					var tmp=[];
+					$.each(data,function(k,v){
+						tmp.push("<option value='"+v.fid+"'>"+v.name+"</option>");
+						});					
+					var sectItems="<option value='0'>子版块</option>";	
+					$("#chdForum").empty().append(sectItems+tmp.join(''));
+				}
+			});
+		});
+	
+		$("#notes_ul li").click(function(){  				
+			$("#notes_ul li[data-f='1']").attr("data-f",'0');
+			$(this).attr("data-f","1");	
+			var index=$(this).index();				
+			$(".note_items").eq(index).show().siblings('.note_items').hide();
+			var ids=$(".note_items").eq(index).children(".hidden_id");
+			var len=ids.length;
+			var hidden_id=$(ids[len-1]).text();//找到最后一个隐藏的hidden_id的value
+			/*console.log(len);
+			console.log(hidden_id);*/
+			
+			if(len==0){
+				$("#no_note").show();
+				$("#more").hide();	
+			}
+			if(0<len&&len<10){	
+				$("#more").hide();
+				$("#no_note").hide();	 
+			}else if(len>9){
+				if(hidden_id==1){
+					$("#more").show();
+					$("#no_note").hide();
+				}else{
+					$("#more").hide();
+					$("#no_note").hide();
+				}		
+			}
+		});
+		
+		GotoPosition();
+		
+		
+  	})
+	/*发帖前进行验证 2016-11-1 罗杨*/
+	function checkform(){
+				var fid=$("#chdForum").val();
+				var message=$("#content").val();
+				var subject=$("#subject").val();
+				if(subject==""){
+					alert("主题不能为空");
+					return false;	
+				}
+				if(fid=="子版块"||fid==""||fid==undefined||fid=="0"){
+					alert("未选择子板块");	
+					return false;
+				}
+				if(message==""||message==undefined){
+					alert("内容不能为空");
+					return false;	
+				}
+		}
+		/*发帖子按钮*/
+        $("#notePost").click(function () {
+            $(".note_post").toggle();
+            $(".mask").toggle();
+        })
+		
+        $("#noteClose,#noteClose2").click(function () {
+            $(".note_post").hide();
+            $(".mask").hide();
+        })
+//        发帖子插件
+        var editor;
+        KindEditor.ready(function(K){
+            editor= K.create('textarea[name="content"]',{
+			height:'300px',
+			resizeType : 1,
+			allowPreviewEmoticons : false,
+			//uploadJson : '__APP__/index.php?m=Upload&a=bbspicUpload',
+			//allowImageUpload : false,
+			items : [
+			'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+			'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+			'insertunorderedlist', '|', 'emoticons', 'image', 'link']
+		})
+        })
+	    $('input, textarea').placeholder();
+		/*点击加载更多*/	
+			$("#more").unbind("click").click(function(){
+				var index=$("#notes_ul li[data-f='1']").index();
+				var tid_last=$(".note_items").eq(index).children(".hidden_id").length-1;
+				var tid=$(".note_items").eq(index).children(".hidden_id").eq(tid_last).text();
+				if(index==0){
+					ajax_post("/Account/index.php?m=MyCommunity&a=getAll_Dynamic",0);
+				}if(index==1){
+					ajax_post("/Account/index.php?m=MyCommunity&a=getPersonal_Dynamic",1);	
+				}if(index==2){
+					ajax_post("/Account/index.php?m=MyCommunity&a=getPersonal_Reply",2);
+				}if(index==3){
+					ajax_post("/Account/index.php?m=MyCommunity&a=getPersonal_Notice",3);	
+				}	
+			});
+			
+			var basicNum=1;
+			
+			function ajax_post(url,index){
+				basicNum+=1;
+				$.ajax({
+					type:"POST",
+					url:url,
+					data:{number:5,page:basicNum},
+					dataType:"json",
+					error: function(data){
+						//console.log(data);
+					},
+					complete: function(data){
+						$("#more").html("载入更多内容");
+					;},
+					beforeSend: function(data){
+						$("#more").html("载入更多内容...");
+					},
+					success: function(data){
+						var post_li="";
+						var len=data.length;
+						var last_tid="";//最后一个帖子的标记
+						if(len<5){
+							$("#more").hide();
+							last_tid=0;
+						}else{
+							$("#more").show();
+							last_tid=1;
+						}
+						var hot_img='';
+						if(index==0||index==1){
+							hot_img="<img src='/Account/public/img/hot_icon.png'/>";
+						}
+						$.each(data,function(k,v){
+							// "<i class='hot_icon'>"+hot_img+"</i>"+
+							if(index==0||index==1){
+								post_li+="<li>"+
+						"<div id='post_img'>"+"<img src='/Account/public/img/post_head.png'>"+"</div>"+
+						"<div class='post_cont'>"+"<p>"+"<a target='_blank'	href='../Discuz/bbs/forum.php?mod=viewthread&tid="+v.tid+"'>"+v.subject+"</a>"+"</p>"+
+"<p class='dash_p'>"+"<span id='post_user'>"+v.author+"</span>"+"<span id='post_date'>"+getTime(v.dateline)+"</span>"+"</p>"+"</div>"+
+"<div id='post_num'>"+"<b class='num_icon'>"+"<img src='/Account/public/img/view_num.png'/>"+"</b>"+"<span>"+v.views+"</span>"+"<b class='num_icon'>"+"<img src='/Account/public/img/reply_num.png'/>"+"</b>"+"<span>"+v.replies+"</span>"+
+"</div>"+"</li>"+"<span class='hidden_id'>"+last_tid+"</span>";	
+							}
+							if(index==2||index==3){
+								var re="";
+								// "<i class='hot_icon'>"+hot_img+"</i>"+
+								if(index==2){re="Re&nbsp;:&nbsp;"}
+								post_li+="<li>"+
+							"<div id='post_img'>"+"<img src='/Account/public/img/post_head.png'>"+"</div>"+
+							"<div class='post_cont'>"+"<p>"+"<a target='_blank'	href='../Discuz/bbs/forum.php?mod=viewthread&tid="+v.tid+"'>"+re+v.subject+"</a>"+"</p>"+
+"<p class='dash_p'>"+"<span id='post_user'>"+v.author+"</span>"+"<span id='post_date'>"+getTime(v.dateline)+"</span>"+"</p>"+"</div>"+"</li>"+"<span class='hidden_id'>"+last_tid+"</span>";	
+							}
+						});
+						
+						$(".note_items").eq(index).append(post_li);
+					}	
+				})
+			}
+	
+				
+				  /*.show(); 	*/		
+	function getTime() {  
+		var ts = arguments[0] || 0;  
+		var t,y,m,d,h,i,s;  
+		t = ts ? new Date(ts*1000) : new Date();  
+		y = t.getFullYear();  
+		m = t.getMonth()+1;  
+		d = t.getDate();  
+		h = t.getHours();  
+		i = t.getMinutes();  
+		s = t.getSeconds();  
+		return y+'-'+(m<10?'0'+m:m)+'-'+(d<10?'0'+d:d)/*+' '+(h<10?'0'+h:h)+':'+(i<10?'0'+i:i)+':'+(s<10?'0'+s:s)*/;  
+	} 
+	
+	//tab切换通用函数 		 zlb 2016-10-08
+	function gotoTab(index){			
+		$(".note_items").eq(index).show().siblings('.note_items').hide();
+		var len=$(".note_items").eq(index).children("li").length; 
+		var tid_last=$(".note_items").eq(index).children(".hidden_id").length-1;
+		var tid=$(".note_items").eq(index).children(".hidden_id").eq(tid_last).text();
+	}	
+	//切换到我发布的帖子 zlb 2016-10-08
+	function gotoMyForum(){
+		$("#notes_ul li").attr('data-f','0');
+		$("#notes_ul li:eq(1)").attr('data-f','1');
+		gotoTab(1);
+	}	
+	//切换到我的回复 zlb 2016-10-08
+	function gotoMyReply(){
+		$("#notes_ul li").attr('data-f','0');
+		$("#notes_ul li:eq(2)").attr('data-f','1');
+		gotoTab(2);
+	}	
+	//切换到我的通知 zlb 2016-10-08
+	function gotoMyNotice(){
+		$("#notes_ul li").attr('data-f','0');
+		$("#notes_ul li:eq(3)").attr('data-f','1');
+		gotoTab(3);
+	}
+	//取地址栏参数 zlb 2016-10-08
+	function GetQueryString(name){
+		var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+		var r = window.location.search.substr(1).match(reg);
+		if(r!=nil)return unescape(r[2]); return '';
+	}	
+	//处理从论坛过来的链接 zlb 2016-10-08
+	function GotoPosition(){
+		var  goto=GetQueryString('goto');
+		switch(goto){
+			case "myforum":
+					gotoMyForum();
+					break;
+			case "mynotice":
+					gotoMyNotice();
+					break;		
+		}
+	}
+	
+	
+  	</script>
+</body>
+</html>

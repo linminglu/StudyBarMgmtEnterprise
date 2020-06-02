@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>用户管理</title>
+		{{template "../public/link/css_inc.html" .}}
+		<link href="/static/erp/college/css/add_user.css" rel="stylesheet" />
+		<link href="/static/erp/college/css/user.css" rel="stylesheet" />
+	</head>
+	<body>
+		<div class="user_from">
+             <label><i class="tiprequire" style="margin-left: -350px;vertical-align: -7px;"></i><span>手机号：</span><input type="text" name="" placeholder="请输入手机号" class="ml20 w240"  id="add_tele"></label>
+             <i id="tele_error" class="error"></i>
+             <label><i class="tiprequire" style="margin-left: -337px;vertical-align: -7px;"></i><span>姓名：</span><input type="text" name="" placeholder="请输入姓名" class="ml20 w240" id="add_user"></label>
+             <i id="name_error" class="error"></i>
+             <!-- <label><span>门诊：</span><input type="text" name="" placeholder="请输入门诊名称" class="ml20 w240" id="add_room"></label> -->
+		</div>
+
+		<div class="submit_from">
+             <input type="submit" class="fillBtn" id="fillBtn_set" name="" value="确定">
+             <input type="submit" class="cancelBtn" id="cancelBtn_set" name="" value="取消">
+        </div>
+		
+		
+	</body>
+	{{template "../public/link/js_inc.html" .}}
+	<script type="text/javascript" src="/static/erp/college/js/adduser.js"></script>
+</html>

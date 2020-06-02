@@ -1,0 +1,191 @@
+<template id="edt_offlinecourse_id">
+    <div>
+        <div v-if='anchorid' class="wp100 bline h35 boxsz pl10 fz-14 lh35 bg-white">主播管理><span style="cursor: pointer;"
+                @click="goBack">直播间列表</span>>线下课程</div>
+
+        <div v-else class="wp100 bline h35 boxsz pl10 fz-14 lh35 bg-white">课程管理><span style="cursor: pointer;"
+                @click="goBack">课程列表</span>>修改线下课程</div>
+        <div class="add_signclass bg-white" style="padding-top:20px">
+            <!-- <div class="h60 bline_146487 bg-white fz-16 lh60 boxsz pl10">
+                <span @click="tabclasstype('allanchorssignclass')" class=" dinb mar20 c_pointer">返回</span>
+            </div> -->
+            <!--  -->
+            <div class="allanchors_seeinfo_table">
+                <table class="wp100 unite_table">
+                    <tr>
+                        <td>课程分类</td>
+                        <td>
+                            <yayigj-downlist v-model='coursetype.showtype' :arrslist="coursetype.valueList"
+                                :sizeparam="coursetype.attribute" v-on:selitem="chooseCoursetype"></yayigj-downlist>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>课程名称</td>
+                        <td><input type="text" v-model='title' placeholder="请输入课程主题、最多26个字" maxlength="26" class="w300">
+                        </td>
+                    </tr>
+               
+                    <tr>
+                        <td>讲师头像<c/td> <td>
+                                <div class="allanclass_img prela boxsz ptb10 c_both">
+                                    <div class="w120 h120 f_left upheadiconimg  mab15"><img :src="banner1"
+                                            id="signleimg_1" width="120px" height="120px"></div>
+                                    <div class="inc_solid mal30 w100 f_left mat50">上传讲师头像</div>
+                                    <!-- chooseHeadicon -->
+                                    <input type="file" name="file" id="signlefile_2" class="pabs upheadfileimg"
+                                        accept="image/jpeg,image/png,image/jpg">
+                                </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>课程封面<c/td> <td>
+                                <div class="allanclass_img prela boxsz ptb10 c_both">
+                                    <div class="w240 h150 f_left upclassimg mab15"><img :src="banner" id="signleimg_1"
+                                            height="100%"></div>
+                                    <div class="inc_solid zupfile w80 f_left mat50">上传封面图</div>
+                                    <input type="file" name="file" id="signlefile_1" class="pabs upfileimg"
+                                        accept="image/jpeg,image/png,image/jpg">
+                                    <span id="signlestatus_1" style="  position: absolute;
+                                margin-left: -80px;
+                                margin-top: 100px;
+                                color: #ff2929;
+                                font-size: 13px;
+                                letter-spacing: 1px;
+                                font-weight: 900;
+                                padding: 3px;">
+                                        <{bannerNotice}>
+                                    </span>
+                                </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>讲师姓名</td>
+                        <td><input type='text' placeholder="请输入讲师姓名" class="w200" v-model="teachername">
+                            </td>
+                    </tr>
+           
+                    <tr>
+                        <td>开始时间</td>
+                        <td>
+                            <yayigj-Datesel :value="begintime" v-model="begintime" :sizeparam="{'width':'170px','type':'dtime'}">
+                            </yayigj-Datesel>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>结束时间</td>
+                        <td>
+                            <yayigj-Datesel :value="autoendtime" v-model="autoendtime"
+                                :sizeparam="{'width':'170px','type':'dtime','_disbLtToday':'2018-03-04'}">
+                            </yayigj-Datesel>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>开课地址</td>
+                        <td> <select-citys :province="province" :city="city" :area="district" @province="changeProvince" @city="changeCity" @area="changeArea">
+                        </select-citys>
+                        <input id="address_check" style="margin-left: 20px;" type="checkbox" name="checkNone"  v-model="isNoneAddress" @click="restAddress"><span style="margin-left: 5px;">暂未确定</span>
+                    </td>
+                        
+                        
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type='text' placeholder="请输入具体地址" class="w200" v-model="address">
+                        </td>
+                    </tr>
+
+                  
+                    <tr>
+                        <td>课程价格</td>
+                        <td><input type="number" placeholder="请输入课程价格" class="w200" v-model="fee">
+                            <span>&nbsp;&nbsp;元</span><span style="color:#888888;">&nbsp;&nbsp;(0为免费)</span></td>
+                    </tr>
+                    <tr>
+                        <td>最多报名数</td>
+                        <td><input type="number" placeholder="不填写则表示无数量限制" class="w200" v-model="maxenroll">
+                           </td>
+                    </tr>
+
+                    <tr>
+                        <td>报名截止时间</td>
+                        <td>
+                            <yayigj-Datesel id="enrollendtime" :value="enrollendtime" v-model="enrollendtime"
+                                :sizeparam="{'width':'170px','type':'dtime','_disbLtToday':'2018-03-04'}">
+                            </yayigj-Datesel>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="pabs"><span>课程简介</span></td>
+                        <td>
+                            <textarea class="w400 h200" v-model="comment" style="resize:both;"></textarea>
+                            <div class="allanclass_img prela mat10 boxsz  c_both h120">
+                                <div class="h100 f_left upallimg" v-show="detail.length>0">
+                                    <div style="height: 100px;overflow-y: auto;">
+                                        <div class="w150 f_left pptDiv mal5 mat5" v-for="(item,index) in detail"
+                                            :class="getupimgclass(index,1)" @click="changeimgindex(index,1)">
+                                            <img :src="item.url+'&amp;Rows=80&amp;Columns=150'" width="100%">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="upmoveimg">
+                                <!-- v-show="pptimgarr.length>0" -->
+                                <div style="margin-right: 10px;" class="inc_solid w80 f_left">上传图片
+                                </div>
+                                <input
+                                    style="width: 81px;margin-left: -82px;margin-top: 6px;opacity: 0;position: absolute; cursor: pointer;"
+                                    type="file" name="file" id="intro_img" @change="chooseIntroImg()"
+                                    multiple="multiple" accept="image/jpeg,image/png,image/jpg">
+                                <span class="inc_hollow" @click="moveIntroPic(0)">左移</span>
+                                <span class="inc_hollow" @click="moveIntroPic(1)">右移</span>
+                                <span class="inc_hollow" @click="removeIntroPic()">删除</span>
+
+                            </div>
+                            <div style="height:30px;color:#888888;margin-top: 5px;">
+                                <span>图片类型(JPG or PNG),图片Size小于5M,最多可上传6张图片</span>
+                            </div>
+
+                            <div v-show='operatedIndex == 1' style="position:fixed;right: 20px;bottom: 50px;width: 200px;height: 180px;background-color: #ffffff;
+                                                            box-shadow: 0px 3px 20px 0px 
+                                                                rgba(0, 0, 0, 0.2);">
+                                <div style="margin-top: 5px;color:#666666;">&nbsp;&nbsp;信息提示区</div>
+                                <div style="margin-top: 5px;border-bottom: 1px solid #f1f1f1;"></div>
+                                <div style="
+                                                                    margin-top:1px;
+                                                                    height: 150px;
+                                                                    width: 200px;     
+                                                                    overflow-y: auto;" id="introid_status">
+                                </div>
+                            </div>
+                        </td>
+                      
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            关于不可抗力的特别约定 <br>
+                            不可抗力是指甲乙双方不能合理控制、不可预见或即使预见亦无 法避免的事件，该事件妨碍、影响或延误任何一方根据协议履行其全 部或部分义务。该事件包括但不限于政府行为、自然灾害、战争或任 何其它类似事件。<br>
+                            1. 鉴于互联网之特殊性质，不可抗力事件亦包括下列影响互 联网正常运行之情形：<br>
+                            1.1 黑客攻击；<br>
+                            1.2 电信部门技术调整导致之重大影响，因该方管理不善造 成的损失不包含在内；<br>
+                            1.3 因政府管制而造成之暂时性关闭，因该方之过错导致的 管制除外；<br>
+                            1.4 病毒侵袭。<br>
+                            2 鉴于线下课程之特殊性质，不可抗力亦包括下列影响线下 课程正常开展之情形：<br>
+                            2.1 大规模病毒肆虐或传染病流行；<br>
+                            2.2 提供线下课程和/或培训服务的主讲人突发重大健康问 题（以三甲医院开具的医疗证明为准）导致无法如约提供课程服务；<br>
+                            3 出现不可抗力事件时，知情方应及时、充分地向对方以书 面形式发通知，并告知对方该类事件对本协议可能产生的影响，并应 当在合理期限内提供相关证明。<br>
+                            4 由于以上所述不可抗力事件致使协议的部分或全部不能履<br>
+                        </td>
+                    </tr>
+                </table>
+                <div class="inc_save">
+                    <span class="inc_solid " @click="saveData()" style="margin-left:100px">保存</span>
+                    <span class="inc_hollow" @click="goBack()">取消</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

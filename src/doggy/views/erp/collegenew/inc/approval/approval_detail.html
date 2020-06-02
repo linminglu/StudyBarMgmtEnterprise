@@ -1,0 +1,250 @@
+<template id="approval_detail_id">
+    <div>
+        <div v-if='currentIndex == 0' class="wp100 bline h35 boxsz pl10 fz-14 lh35 bg-white">首页管理><span
+                style="cursor: pointer;" @click="goBack">审批管理</span>>单课程审批详情</div>
+        <div v-else class="wp100 bline h35 boxsz pl10 fz-14 lh35 bg-white">首页管理><span style="cursor: pointer;"
+                @click="goBack">审批管理</span>>系列课审批管理</div>
+        <div v-if='currentIndex == 0' class="add_signclass bg-white" style="padding-top:20px">
+            <div class="allanchors_seeinfo_table">
+                <table class="wp100 unite_table">
+                    <tr>
+                        <td>课程分类:</td>
+                        <td>
+                            <span>
+                                <{coursetype.showtype}>
+                            </span>&nbsp;<span v-if='alterobject.showtype&&alterobject.showtype.length>0&&alterobject.showtype!=coursetype.showtype' style="color: #ff2929">->&nbsp;
+                                <{alterobject.showtype}></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>课程主题:</td>
+                        <td><span>
+                                <{title}>
+                            </span>&nbsp;<span v-if='alterobject.title&&alterobject.title.length>0&&alterobject.title!=title' style="color: #ff2929">->&nbsp;<{alterobject.title}></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>讲师头像:<c/td> <td>
+                                <div class="allanclass_img prela boxsz ptb10 c_both">
+                                    <span class="w120 h120 mab15"><img :src="banner1" id="signleimg_1" width="120px"
+                                            height="120px">
+                                        &nbsp;<span v-if='alterobject.banner1&&alterobject.banner1.length>0&&alterobject.banner1!=banner1' class="" style="color: #ff2929;">-><span>&nbsp;
+                                                <img v-if='alterobject.banner1&&alterobject.banner1.length>0&&alterobject.banner1!=banner1' :src="alterobject.banner1" id="signleimg_1" width="120px"
+                                                    height="120px">
+                                </div>
+
+            </div>
+            </td>
+            </tr>
+            <tr>
+                <td>课程封面:</td> <td>
+                        <div class="allanclass_img prela boxsz ptb10 c_both">
+                            <span class="w240 h150  mab15"><img :src="banner" id="signleimg_1" 
+                                    height="120px;">
+                                    &nbsp;<span v-if='alterobject.banner&&alterobject.banner.length>0&&alterobject.banner!=banner' class="" style="color: #ff2929;">-><span>&nbsp;
+                                            <img  v-if='alterobject.banner&&alterobject.banner.length>0&&alterobject.banner!=banner' :src="alterobject.banner" id="signleimg_1" 
+                                            height="120px;">
+                                    </span>
+    
+                        </div>
+                </td>
+            </tr>
+            <tr v-if='type == 0'>
+                <td>幻灯片:</td>
+                <td>
+                    <div class="allanclass_img prela mat10 boxsz  c_both h220" v-show="(pptimgarr&&pptimgarr.length>0)&&(alterobject.pptimgarr&&pptimgarr.length==alterobject.pptimgarr.length||!alterobject.pptimgarr)">
+                        <div class="h200 f_left upallimg" >
+                            <div style="height: 200px;overflow-y: auto;">
+                                <div class="w150 f_left pptDiv mal5 mat5" v-for="(item,index) in pptimgarr"
+                                    :class="getupimgclass(index,0)" @click="changeimgindex(index,0)">
+                                    <img :src="item.url+'&amp;Rows=80&amp;Columns=150'" width="100%">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+           
+                    <div class="allanclass_img prela mat10 boxsz  c_both h220" v-show="alterobject.pptimgarr&&alterobject.pptimgarr.length>0&&pptimgarr.length!=alterobject.pptimgarr.length">
+                            <div class="h200 f_left upallimg" >
+                                <div style="height: 200px;overflow-y: auto;">
+                                    <div class="w150 f_left pptDiv mal5 mat5" v-for="(item,index) in alterobject.pptimgarr"
+                                        :class="getupimgclass(index,0)" @click="changeimgindex(index,0)">
+                                        <img :src="item.url+'&amp;Rows=80&amp;Columns=150'" width="100%">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        &nbsp;<span v-show="alterobject.pptimgarr&&pptimgarr.length!=alterobject.pptimgarr.length" class="" style="color: #ff2929;">(幻灯片有改动)<span>&nbsp;
+                </td>
+            </tr>
+
+            <tr v-else-if='type == 1'>
+                <td>录播视频:</td>
+                <td>
+                    <div class="allanclass_img prela boxsz ptb10 c_both">
+                        <video :src="video" width="250" height="" controls="" preload="" id="radio_url"></video>
+                        &nbsp;<span v-if='alterobject.video&&alterobject.video.length>0&&video!=alterobject.video' class="" style="color: #ff2929;">-><span>&nbsp;
+                        <video v-if='alterobject.video&&alterobject.video.length>0&&video!=alterobject.video' :src="alterobject.video" width="250" height="" controls="" preload="" id="radio_url"></video>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="pabs"><span>直播简介:</span></td>
+                <td>
+                    <!-- <textarea class="w400 h200" v-model="comment" style="resize:both;"></textarea> -->
+                    <span>
+                        <{comment}>&nbsp;<span v-if='alterobject.comment&&alterobject.comment.length>0&&alterobject.comment!=comment' class="" style="color: #ff2929;">-></span>&nbsp;<span v-if='alterobject.comment&&alterobject.comment.length>0&&alterobject.comment!=comment' style="color: #ff2929;"><{alterobject.comment}></span>
+                    </span>
+                    <div class="allanclass_img prela mat10 boxsz  c_both h120" v-show="(detail&&detail.length>0)&&(alterobject.detail&&alterobject.detail.length==detail.length||!alterobject.detail)&&alterobject.detail.length!=0">
+                        <div class="h100 f_left upallimg" >
+                            <div style="height: 100px;overflow-y: auto;">
+                                <div class="w150 f_left pptDiv mal5 mat5" v-for="(item,index) in detail"
+                                    :class="getupimgclass(index,1)" @click="changeimgindex(index,1)">
+                                    <img :src="item.url+'&amp;Rows=80&amp;Columns=150'" width="100%">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  
+                            <div class="allanclass_img prela mat10 boxsz  c_both h220" v-show="alterobject.detail&&alterobject.detail.length>0&&alterobject.detail.length!=detail.length">
+                                    <div class="h100 f_left upallimg" >
+                                            <div style="height: 100px;overflow-y: auto;">
+                                                <div class="w150 f_left pptDiv mal5 mat5" v-for="(item,index) in alterobject.detail"
+                                                    :class="getupimgclass(index,1)" @click="changeimgindex(index,1)">
+                                                    <img :src="item.url+'&amp;Rows=80&amp;Columns=150'" width="100%">
+                                                </div>
+                                            </div>
+                                        </div>
+                             </div>
+                             &nbsp;<span v-show="alterobject.detail&&alterobject.detail.length!=detail.length" class="" style="color: #ff2929;">(直播简介有改动)<span>&nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td>课程售价:</td>
+                <td><span>
+                        <{fee}>&nbsp;<span v-if='alterobject.fee&&alterobject.fee.length>0&&alterobject.fee!=fee' class="" style="color: #ff2929;">-></span>&nbsp;<span v-if='alterobject.fee&&alterobject.fee.length>0&&alterobject.fee!=fee' style="color: #ff2929;"><{alterobject.fee}></span>
+                    </span>
+                    <span>&nbsp;&nbsp;元</span><span style="color:#888888;">&nbsp;&nbsp;(0为免费)</span></td>
+            </tr>
+            <!-- <tr>
+                <td>课程定价:</td>
+                <td><span>
+                        <{orifee}>&nbsp;<span v-if='alterobject.orifee&&alterobject.orifee.length>0&&alterobject.orifee!=orifee' class="" style="color: #ff2929;">-></span>&nbsp;<span v-if='alterobject.orifee&&alterobject.orifee.length>0&&alterobject.orifee!=orifee' style="color: #ff2929;"><{alterobject.orifee}></span>
+                    </span>
+                    </span>
+                    <span>&nbsp;&nbsp;元</span><span style="color:#888888;">&nbsp;&nbsp;(0为免费)</span></td>
+            </tr> -->
+            <tr>
+                <td>开始时间:</td>
+                <td>
+                    <span>
+                        <{begintime}>&nbsp;<span v-if='alterobject.begintime&&alterobject.begintime.length>0&&alterobject.begintime!=begintime' class="" style="color: #ff2929;">-></span>&nbsp;<span v-if='alterobject.begintime&&alterobject.begintime.length>0&&alterobject.begintime!=begintime' style="color: #ff2929;"><{alterobject.begintime}></span>
+                    </span>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td>结束时间:</td>
+                <td>
+                    <span>
+                        <{autoendtime}>&nbsp;<span v-if='alterobject.autoendtime&&alterobject.autoendtime.length>0&&alterobject.autoendtime!=autoendtime' class="" style="color: #ff2929;">-></span>&nbsp;<span v-if='alterobject.autoendtime&&alterobject.autoendtime.length>0&&alterobject.autoendtime!=autoendtime' style="color: #ff2929;"><{alterobject.autoendtime}></span>
+                    </span>
+                </td>
+            </tr>
+            </table>
+            <div class="inc_save">
+                <span class="inc_solid " @click="saveData()" style="margin-left: 100px;">通过</span>
+                <span class="inc_hollow" @click="refuseAction()" >拒绝</span>
+            </div>
+        </div>
+    </div>
+    <div v-if='currentIndex == 1' class="add_signclass bg-white" id="add_allclass">
+            <div class="allanchors_seeinfo_table">
+                <table class="wp100 unite_table">
+                    <tr>
+                        <td>系列课主题:</td>
+                        <td><span>
+                                <{title}>
+                            </span>&nbsp;<span v-if='alterobject.title&&alterobject.title.length>0&&alterobject.title != title ' style="color: #ff2929">->&nbsp;<{alterobject.title}></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>系列课展示封面:<c/td> <td>
+                                <div class="allanclass_img prela boxsz ptb10 c_both">
+                                        <span class="w240 h150  mab15"><img :src="banner1" id="signleimg_1" width="120px;"
+                                                height="120px;">
+                                                &nbsp;<span v-if='alterobject.banner1&&alterobject.banner1.length>0&&banner1!=alterobject.banner1' class="" style="color: #ff2929;">-><span>&nbsp;
+                                                        <img  v-if='alterobject.banner1&&alterobject.banner1.length>0&&banner1!=alterobject.banner1' :src="alterobject.banner" id="signleimg_1" width="120px;"
+                                                        height="120px;">
+                                        </span>
+                                </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>系列课封面</td>
+                        <td>
+                                <div class="allanclass_img prela boxsz ptb10 c_both">
+                                        <span class="w240 h150  mab15"><img :src="banner" id="signleimg_1" 
+                                                height="120px;">
+                                                &nbsp;<span v-if='alterobject.banner&&alterobject.banner.length>0&&alterobject.banner!=banner' class="" style="color: #ff2929;">-><span>&nbsp;
+                                                        <img  v-if='alterobject.banner&&alterobject.banner.length>0&&alterobject.banner!=banner' :src="alterobject.banner" id="signleimg_1" 
+                                                        height="120px;">
+                                                </span>
+                
+                                    </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="pabs">系列课简介</td>
+                        <td>
+                                <span>
+                                        <{comment}>&nbsp;<span v-if='alterobject.comment&&alterobject.comment.length>0&&alterobject.comment!=comment' class="" style="color: #ff2929;">-></span>&nbsp;<span v-if='alterobject.comment&&alterobject.comment.length>0&&alterobject.comment!=comment' style="color: #ff2929;"><{alterobject.comment}></span>
+                                    </span>
+                                    <div class="allanclass_img prela mat10 boxsz  c_both h120" v-show="detail.length>0&&(alterobject.detail&&detail.length == alterobject.detail.length||!alterobject.detail)&&alterobject.detail.length!=0">
+                                        <div class="h100 f_left upallimg" >
+                                            <div style="height: 100px;overflow-y: auto;">
+                                                <div class="w150 f_left pptDiv mal5 mat5" v-for="(item,index) in detail"
+                                                    :class="getupimgclass(index,1)" @click="changeimgindex(index,1)">
+                                                    <img :src="item.url+'&amp;Rows=80&amp;Columns=150'" width="100%">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                
+          
+                                    <div class="allanclass_img prela mat10 boxsz  c_both h220" v-show="alterobject.detail&&alterobject.detail.length>0&&alterobject.detail.length != detail.length">
+                                        <div class="h100 f_left upallimg" >
+                                                <div style="height: 100px;overflow-y: auto;">
+                                                        <div class="w150 f_left pptDiv mal5 mat5" v-for="(item,index) in alterobject.detail"
+                                                                    :class="getupimgclass(index,1)" @click="changeimgindex(index,1)">
+                                                            <img :src="item.url+'&amp;Rows=80&amp;Columns=150'" width="100%">
+                                                    </div>
+                                                </div>
+                                        </div>
+                                    </div>
+                                    &nbsp;<span v-show="alterobject.detail&&alterobject.detail.length != detail.length" class="" style="color: #ff2929;">(系列课简介有改动)<span>&nbsp;
+                          
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>当前课程总价</td>
+                        <td><span style="font-size:18px;font-weight:200;">
+                                <{totalfee}>元&nbsp;&nbsp;
+                            </span><span class="fc-888888">(仅含所有上架单课程)</span></td>
+                    </tr>
+                    <tr>
+                        <td>课程定价</td>
+                        <td>
+                            <span><{fee}>&nbsp;&nbsp;<span v-if='alterobject.fee&&alterobject.fee.length>0&&alterobject.fee!=fee' class="" style="color: #ff2929;">-></span>&nbsp;<span v-if='alterobject.fee&&alterobject.fee.length>0&&alterobject.discount!=discount' style="color: #ff2929;"><{alterobject.fee}></span>&nbsp;元&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                            <span>折扣&nbsp;<{discount}><span v-if='alterobject.discount&&alterobject.discount.length>0&&alterobject.discount!=discount' class="" style="color: #ff2929;">&nbsp;-></span>&nbsp;<span v-if='alterobject.discount&&alterobject.discount.length>0&&alterobject.discount!=discount' style="color: #ff2929;"><{alterobject.discount}></span>&nbsp;%</span>
+                            <span class="fc-888888">&nbsp;&nbsp;(支持0-100整数)</span>
+                        </td>
+                    </tr>
+                </table>
+                <div class="inc_save">
+                    <span class="inc_solid" @click="saveData" >通过</span>
+                    <span class="inc_hollow" @click="refuseAction">拒绝</span>
+                </div>
+            </div>
+    </div>
+    </div>
+</template>

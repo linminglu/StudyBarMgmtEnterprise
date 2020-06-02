@@ -1,0 +1,28 @@
+	body{-webkit-user-select: none;-ms-user-select: none; -khtml-user-select: none; user-select: none;}
+	#login_pop{ width:100%; height:100%;background-color:rgba(0,0,0,.2); position:absolute;top:0;left:0;
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#33000000,endColorstr=#33000000);}
+	.form_pic{position:absolute; top:50%;left:50%; margin-left:-205px; margin-top:-220px; width:520px; height:450px; background:url(/static/account/img/pop_form.png) no-repeat;}
+	#pop_form{ width:380px; height:400px; position:absolute;top:0; left:16px;}
+	#pop_form input[type='text']{ width:262px; height:42px; padding:0; padding-left:36px;line-height: 42px\9;}
+	#pop_form input[type='password']{ width:262px; height:42px; padding:0; padding-left:36px;line-height: 42px\9;}
+	#pop_form .login_head{text-align:center; font-size:20px; color:#333; height:96px; line-height:117px;}
+	#pop_form .login_head img{ position:absolute;top:24px; right:12px; cursor:pointer;}
+	#pop_form .login_user{ width:300px; height: 68px;margin:0 auto 30px auto; position:relative;top:-10px; left:0;}
+	#pop_form .login_txt,.login_footer,.login_pw{ width:300px; margin:0 auto; position:relative;top:0; left:0;}
+	#pop_form .login_user #err_info{visibility:hidden;background-color:#ffeded; height:25px; margin:0;margin-bottom:8px; font-size: 12px;
+		color:red; line-height:25px;border-radius: 2px;}
+	#err_info img{margin-right:8px; margin-left:8px;position: relative;top:3px;}
+	.login_user .mobile_ico{ position:absolute; bottom:4px; left:10px;height: 20px;}
+	.login_pw img{ position:absolute; bottom:12px; left:10px; width: 17px;}
+	#pop_form .login_txt{margin-top:12px;font-size:14px; color:#696969; overflow:hidden;}
+	#pop_form .login_txt label{ float:left;}
+	#pop_form .login_txt input{ float:left;}
+	#pop_form .login_txt a{float:right; text-decoration:none;}
+	#pop_form .login_txt a:hover{color:#00c5b5;}
+	#pop_form .login_txt .ch_box{float: left;}
+	.login_txt .ch_box img{ margin-right:6px; position: relative;top:2px;}
+	.login_txt .ch_box span{cursor: pointer;}
+	#pop_form #sub{ display:block;width:300px; height:42px; margin:0 auto; cursor:pointer; margin-top:40px; font-size:16px;}
+	#pop_form .login_footer{ text-align:right; font-size:14px; margin-top:12px;}
+	.login_footer span{color:#696969; margin-right:10px;}
+	.login_footer a{color:#00c5b5;}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta charset="UTF-8">
+    <meta content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta http-equiv="Cache-Control" content="no-transform ">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+    {{template "/account/Public/per_css_inc.html" .}}
+        <link rel="stylesheet" type="text/css" href="/static/account/css/memberCenter.css">
+    <!--{{template "/account/Public/css_inc.html" .}} -->
+    <link rel="stylesheet" type="text/css"  href="/static/public/css/public/r_input.css" >
+    <link rel="stylesheet" type="text/css"  href="/static/public/css/public/r_border.css" >  
+    <link rel="stylesheet" type="text/css"  href="/static/public/css/public/r_common.css" >  
+    <link rel="stylesheet" type="text/css"  href="/static/public/css/public/r_reset.css" >    
+    <link rel="stylesheet"  type="text/css" href="/static/account/css/PAweb.css" />  
+    <title>修改资料-牙医管家</title>    
+</head>
+<body>
+    <input type="hidden" name="navtags" value="1">
+        {{template "/account/Public/memberCen_hea_new.html" .}}
+        <div class="mask"></div> 
+        <div class="main_con">
+            <div class="main_left">
+                {{template "account/Public/left_nav.html" .}}
+            </div>
+            <!-- 加入联盟进度查询页面 -->
+            <div class="main_right">
+                <div class="sub_progress">
+                    <span class="progress_title">查询诊所申请进度</span>
+                    <div class="apply_result">
+                        <p>牙医管家账号： <span id="username"></span></p>
+                        <p>审核状态：<span class="red">审核失败</span>
+                        
+                        </p>
+                        <p id="errDiv">
+                            
+                        </p>
+                    </div>
+                </div>
+                <div class="f4_area"></div>
+                <div class="modify_cont">
+                    {{template "/account/PAweb/subDtat_inc.html" .}}
+                </div>  
+            </div>
+            <div class="mt">
+                <input type="button" value="保存并提交审核" class="fillBtn" id="saveAsubt">
+            </div>
+        </div>
+        <!--<div id="popBg"></div>-->
+       {{template "account/Public/footer_new.html" .}}
+       <script type="text/javascript" src="/static/account/js/pa_modData.js"></script>
+</body>
+</html>

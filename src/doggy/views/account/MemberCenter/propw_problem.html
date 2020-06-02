@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="UTF-8">
+        <meta content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" name="viewport">
+        <meta content="yes" name="apple-mobile-web-app-capable">
+        <meta content="black" name="apple-mobile-web-app-status-bar-style">
+        <meta content="telephone=no" name="format-detection">
+        <meta http-equiv="Cache-Control" content="no-transform ">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+        <!--<include file="Public:css_inc"/>-->
+        {{template "/account/Public/per_css_inc.html" .}}
+        <link rel="stylesheet" type="text/css" href="/static/account/css/memberCenter.css">
+        <title>密保问题-牙医管家</title>   
+    </head>
+    <body>
+        <input type="hidden" name="navtags" value="1">
+        <!--<include file="Public:memberCen_hea_new"/>-->
+         {{template "/account/Public/memberCen_hea_new.html" .}}
+        <div class="mask"></div> 
+        <div class="main_con">
+            <div class="main_left">
+                <!--<include file="Public:left_nav"/>-->
+                {{template "/account/Public/left_nav.html" .}}
+            </div>
+            <!-- 密保问题页面 -->
+            <div class="main_right">
+                <div class="info_tit">
+                    <img src="/static/account/img/pw_pro_small.png">
+                    <span>密保问题</span>
+                </div>
+                <div class="prompt">
+                    <div><img src="/static/account/img/red_exclam.png"></div>
+                    <div>
+                        <p>提示：为了您的业务安全，您先设置您的账户密保问题：</p>
+                        <p>账户密保问题作为牙管家会员系统的安全验证保障技术手段，当您在业务转移、信息修改等重要操作时，需要回答此问题。</p>
+                    </div>
+                </div>
+                <div class="safe_problem">
+                    <ul>
+                        <li>
+                            <select>
+                                <option>请选择安全问题1</option>
+                            </select>
+                            <input type="text" placeholder="答案"/>
+                        </li>
+                        <li>
+                            <select>
+                                <option>请选择安全问题2</option>
+                            </select>
+                            <input type="text" placeholder="答案"/>
+                        </li>
+                        <li>
+                            <select>
+                                <option>请选择安全问题3</option>
+                            </select>
+                            <input type="text" placeholder="答案"/>
+                        </li>
+                        <li>
+                        <input type="button" value="确定" name="button" id="pw_pro_confim" 
+                        class="acb ac_btn_bf w130h30" />
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+       <!--<include file="Public:footer_new"/>
+       <include file="Public:js_inc"/>-->
+       {{template "account/Public/footer_new.html" .}}
+       {{template "account/Public/js_inc.html" .}}        
+       <script type="text/javascript" src="/static/account/js/member_center.js"></script>       
+        <!--IE支持placeholder-->
+        <script type="text/javascript">
+            $(function(){ 
+                $('input, textarea').placeholder(); 
+            });
+        </script>
+    </body>
+</html>

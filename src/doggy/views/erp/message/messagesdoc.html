@@ -1,0 +1,205 @@
+欢迎来到文档界面
+<div>
+<input id='timg' type='file' />
+<input id='doup' type='button' />
+<div id='uped'></div>
+</div>
+<div>
+<input id='txls' type='file' />
+<input id='doupx' type='button' />
+</div>
+{{template "../public/link/js_inc.html" .}}
+<script>
+$().ready(function() {
+
+    $("#doup").click(function(){
+
+        var v = $("#timg").val();
+        timg = document.getElementById("timg")
+        var reader = new FileReader();
+        var readerBase64 = new FileReader();
+        var typeimg = "unknown";
+        reader.readAsArrayBuffer(timg.files[0]);
+        reader.onloadend = function(e){
+            var imgContent = e.target.result
+
+            var arr = (new Uint8Array(e.target.result)).subarray(0, 4);
+            console.log(arr)
+            
+            var header = "";
+            for(var i = 0; i < arr.length; i++) {
+                header += arr[i].toString(16);
+            }
+            console.log(header);
+
+            switch (header) {
+                case "89504e47":
+                    typeimg = "image/png";
+                    break;
+                case "47494638":
+                    typeimg = "image/gif";
+                    break;
+                case "ffd8ffe0":
+                case "ffd8ffe1":
+                case "ffd8ffe2":
+                    typeimg = "image/jpeg";
+                    break;
+                default:
+                    typeimg = "unknown"; // Or you can use the blob.type as fallback
+                    break;
+            }
+
+            if (typeimg != "unknown") {
+                readerBase64.readAsDataURL(timg.files[0])
+            }
+        };
+
+        readerBase64.onloadend = function(e){
+            var imgContent = e.target.result.split(",")
+
+            $.ajax({
+            type:"POST",
+            url:"/butlerp/uploadimage",
+            dataType:"json",
+            data:{
+                picdata:imgContent[1],
+                ext:typeimg
+            },
+            beforeSend: function(){},
+            success: function(json){
+                console.log(json);
+                picture=json.info;
+            },
+            error: function(json){
+                console.log(json);
+            },
+            complete: function(json){
+                console.log(json);
+            }
+            })
+        };
+
+    });
+
+    // $("#doupx").click(function(){
+
+    //     var v = $("#txls").val();
+    //     timg = document.getElementById("txls")
+    //     var reader = new FileReader();
+    //     reader.readAsDataURL(timg.files[0]);
+    //     reader.onload = function(e){
+    //         var imgData = e.target.result.split(',');
+    //         console.log(e.target.result);
+    //         var imgContent = imgData[1]
+
+    //         $.ajax({
+    //         type:"POST",
+    //         url:"/butlerp/message/dentalexcel",
+    //         dataType:"json",
+    //         data:{
+    //             filedata:imgContent,
+    //             extname:"xls"
+    //         },
+    //         beforeSend: function(){},
+    //         success: function(json){
+    //             console.log(json);
+    //             picture=json.info;
+    //         },
+    //         error: function(json){
+    //             console.log(json);
+    //         },
+    //         complete: function(json){
+    //             console.log(json);
+    //         }
+    //         })
+    //     };
+
+    // });
+
+    // $.post("/butlerp/message/doadd",{
+    //     Title:'魔鬼小太偷', // 标题
+    //     Content:'这是一个愉快的节日，我们都出去和疯子们一起玩耍，这个世界一团混乱，以至于我看不见你，也看不清你，无论是面容还是心灵', // 描述
+    //     DetailUrl:'google.com', // 打开浏览器的链接
+    //     PushType:0,
+    //     PushTiming:'2017-01-01 00:00:00',
+    //     MsgType:1,
+    //     PCVersion:0,
+    //     PCMerchantID:0,
+    //     PCCreatedDateBegin:'2017-01-01 00:00:00',
+    //     PCCreatedDateEnd:'2017-01-01 00:00:00',
+    //     PCProvinces:"[]",
+    //     PCCities:"['东京']",
+    //     PCRoles:"[]",
+    //     ExceptAlreadyDay:3,
+    //     ExceptAlreadySent:10,
+    //     Channels:'{"2":{"MainImage":"sdk.jpg","ExtraText":"","DateBegin":"2017-01-01","DateEnd":"2017-01-09"},"10":{"MainImage":"apps.jpg","ExtraText":"","DateBegin":"2017-01-01","DateEnd":"2017-01-09"}}',
+    //     Dentals:'[13992,999,1111]'
+    // }, function(result){
+    //     console.log(result);
+    // });
+
+    // $.post("/butlerp/message/33647218187571200/doedit",{
+    //     Title:'魔鬼老太偷', // 标题
+    //     Content:'这是一个愉快的节日，我们都出去和疯子们一起玩耍，这个世界一团混乱，以至于我看不见你，也看不清你，无论是面容还是心灵', // 描述
+    //     DetailUrl:'google.com', // 打开浏览器的链接
+    //     PushType:0,
+    //     PushTiming:'2017-01-01 00:00:00',
+    //     MsgType:1,
+    //     PCVersion:0,
+    //     PCMerchantID:0,
+    //     PCCreatedDateBegin:'2017-01-01 00:00:00',
+    //     PCCreatedDateEnd:'2017-01-01 00:00:00',
+    //     PCProvinces:"[]",
+    //     PCCities:'["深圳"]',
+    //     PCRoles:'[]',
+    //     ExceptAlreadyDay:3,
+    //     ExceptAlreadySent:10,
+    //     Channels:'{"1":{"MainImage":"b.jpg","ExtraText":"","DateBegin":"2017-01-01","DateEnd":"2017-01-09"}}',
+    //     Dentals:'[15031,999,2222]'
+    // }, function(result){
+    //     console.log(result);
+    // });
+
+    // $.post("/butlerp/message/getmerchant",{},function(result){
+    //     console.log(result)
+    // });
+
+    // $.post("/butlerp/message/37295319049834496/send",{},function(result){
+    //     console.log(result)
+    // })
+
+    // $.post("/butlerp/message/dentalname",{DentalID:10006},function(result){
+    //     console.log(result)
+    // })
+
+    $.post("http://http://test.dental360.cn:8189//butlerp/message/api/appdoctor",
+        {username:"FussenAdmin",password:"123456789",ChannelID:10,LimitNum:0,rowLimitNum:5,RowOffsetNum:1,NotifySelected:"34778733126619136"},
+        function(result){
+            console.log(result)
+        }
+    )
+
+      $.post("/butlerp/message/api/appdoctor",
+        {username:"FussenAdmin",password:"123456789",ChannelID:10,APPUserID:"38582453069495626",ClinicUniqueID:"38592344573186292",LimitNum:1,rowLimitNum:5,OnlyUnread:0},
+        function(result){
+            console.log(result)
+        }
+     )
+
+
+    // $.post("/butlerp/message/api/pcdental",{username:"test",password:"123456",ChannelID:1,ClinicUniqueID:"20639604013010944"},function(result){
+    //     console.log("信息抓取：")
+    //     console.log(result)
+    // })
+
+    // $.post("/butlerp/message/api/pcdoctor",{username:"test",password:"123456",ChannelID:2,ClinicUniqueID:"20639604013010944",DoctorID:"20639608152788992"},function(result){
+    //     console.log("信息抓取：")
+    //     console.log(result)
+    // })
+
+    // $.post("/butlerp/message/api/clicked",{username:"test",password:"123456",ChannelID:2,NotifyID:"36112595790336000",MessageID:"586b4f3c5e3e7e334815f8c5"},function(result){
+    //     console.log("信息抓取：")
+    //     console.log(result)
+    // })
+});
+</script>

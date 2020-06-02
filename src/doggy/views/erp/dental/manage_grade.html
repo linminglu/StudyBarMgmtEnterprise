@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>经营评分</title>
+		{{template "../public/link/css_inc.html" .}}
+		<link href="/static/erp/css/user.css" rel="stylesheet" />
+        <style>
+            .scorePageHeader a{color:#333;margin-right:20px;text-decoration: none;display:block;height:59px;line-height:59px;float:left;}
+            #activeLabel{color:#00c5b5;border-bottom:2px solid #0C1DEF;}
+            .info_con li{margin-top:10px;}
+            .info_con li .sp1{width:115px;color:#333333;}
+            .info_con li .sp2{margin-right:20px;}
+            .info_con li textarea{width:300px;height:100px;resize:none;color:#696969;}
+            .score_btn{clear:both;width:220px;margin:30px auto;overflow:hidden;}
+            .score_btn input{width:100px;height:30px;}
+            .matter{width:300px;height:50px;margin:25px auto;}
+            .matter span{width:100px;height:48px;border:1px solid #ccc;display:inline-block;text-align: center;line-height:48px;cursor:pointer;}
+        </style>
+	</head>
+	<body>
+		{{template "../public/public/header.html" .}}
+		<div class="mainFrme">
+			{{template "../public/public/left.html" .}}
+			<div class="rightFrme">
+				<div class="crumbs"><a href="###">主页</a> > <a href="###">诊所分级管理</a> > <a href="###">经营评分</a></div>
+				<div class="cont">
+                    <div class="pageHeader scorePageHeader"><a href="#">基本信息</a><a href="#" id="activeLabel">经营评分</a><a href="#">社会影响力评分</a><a href="#">环境评分</a></div>
+                    <ul class="info_con">
+                        <li><span class="sp1">医牙椅数量：</span><input type="text" class="" value="16"></li>
+                        <li><span class="sp1">执照性质：</span><input type="text" class="" value="个体工商户"></li>
+                        <li><span class="sp1">医生最高职称：</span><input type="text" class="" value="主任"></li>
+                        <li><span class="sp1">医生数量：</span><input type="text" class="" value="10"></li>
+                        <li><span class="sp1">预约流程：</span><input type="text" class="" value="请选择预约流程"></li>
+                        <li><span class="sp1">月初诊患者数量：</span><input type="text" class="" value="1250"></li>
+                        <li><span class="sp1">诊所经营月份：</span><input type="text" class="" value="12"></li>
+                        <li><span class="sp1">诊所面积：</span><input type="text" class="" value="560"></li>
+                    	<li><span class="sp1">连锁店数量：</span><input type="text" class="" value="1"></li>
+                    </ul>
+                </div>
+                <div class="cont">
+                    <div class="pageHeader scorePageHeader">门诊评分</div>
+                    <ul class="info_con">
+                        <li><span class="sp1">经营评分：</span><span class="sp2">89分</span><span>该项总分100分占比60%</span></li>
+                        <li><span class="sp1">社会影响力评分：</span><span class="sp2">27分</span><span>该项总分30分占比10%</span></li>
+                        <li><span class="sp1">环境评分：</span><span class="sp2">78分</span><span>该项总分80占比30%</span></li>
+                        <li><span class="sp1">总分：</span><span class="sp2">92分</span></li>
+                        <li><span class="sp1">测评星级：</span><span class="sp2">五星级</span></li>
+                        <li><span class="sp1">评分说明：</span><textarea class="sp2" >请对您的评分进行必要的说明，基本信息未通过的可不填写</textarea></li>
+                    </ul>
+                    <div class="score_btn"><input type="button" id="score_chanle" value="取消"><input type="button" id="score_confim" value="确定"></div>
+                </div>
+			</div>
+		</div>
+		{{template "../public/public/footer.html" .}}
+	</body>
+	{{template "../public/link/js_inc.html" .}}
+    
+</html>

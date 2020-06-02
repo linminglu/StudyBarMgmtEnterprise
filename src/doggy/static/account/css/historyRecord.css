@@ -1,0 +1,54 @@
+/*历史记录页面样式*/
+.main_con{overflow: hidden;clear: both;}
+
+.h_main_left{width: 190px;float: left;background: #fff;}
+.h_main_left ul li{height: 60px;line-height:60px;cursor: pointer;}
+.h_main_left ul li:last-child{border-bottom: none;}
+.h_main_left ul li[data-flag="1"]{background: #00c5b5;}
+.h_main_left ul li[data-flag="0"] span{color: #333;}
+.h_main_left ul li img{float: left;margin: 16px 10px 0 42px;}
+.h_main_left ul li span{float: left; font-size: 18px;color: #fff;}
+
+.h_main_right{overflow: hidden;padding: 30px;float: right;width: 936px;background: #fff;}
+.h_main_right[data-con="1"]{display: block;}
+.h_main_right[data-con="0"]{display: none;}
+.search_condition{overflow: hidden; margin-top:2px;}
+.search_condition div{float: left;margin-right: 10px;}
+
+.account_num,.type_use{margin-left: 5px;}
+#pop_info1{text-align: center;color: #999;line-height:300px;display:none;}
+#pop_info2{text-align: center;color: #999;line-height:300px;display:none;}
+.time_select .cal_ico{position:relative;top:3px;right:0;margin-left: -28px;margin-right: 6px;display:none;}
+.type_use select{ width:125px;height:30px;padding:0 10px;}
+.search{float: right !important;margin-right: 0 !important;width:100px; height:30px; line-height:30px;}
+.search_condition div span{font-size: 14px;color: #696969;}
+.search_condition div input[type=text]{width:139px;color: #ccc;height: 20px;margin: 0 5px;}
+.search_condition div input[data-f='cla']{background:url(/static/account/img/calendar_ico.png) no-repeat 128px center;}
+.search_condition div input[type=text]:focus{outline:none;}
+.search_condition div input[type=text].active{border-bottom:none;background:url(/static/account/img/calendar_ico2.png) no-repeat 128px center;}
+.search_condition input[type=text]{ width: 125px;height: 28px;}
+.search_condition div input[type=submit]{color: #fff;font-size:14px;background:#00c5b5;
+cursor: pointer;width: 98px;height: 30px;border-radius: 3px;line-height:30px;border:none;}
+.search_condition div input[type=submit]:hover{background: #00d4c3;}
+table.hisRec{font-size: 14px;color: #999;width: 100%;border-collapse:collapse;margin-top: 20px;overflow: hidden;}
+.hisRec thead{background: #f0f0f0;}
+.hisRec th{font-weight: normal;margin: 0;padding:8px 0;text-align:center;color: #787878;}
+.hisRec th:first-child{text-align: left;padding-left: 20px;width: 170px;}
+.hisRec td{text-align:center;padding: 15px 0;}
+.hisRec tr td:first-child{text-align: left;padding-left: 20px;}
+/*.hisRec tbody{min-height:100px;}*/
+.hisRec tbody tr{border-bottom: 1px dotted #cecece;}
+.hisRec tbody #pop_info{text-align: center;display: none;}
+.page_select{float: right;margin-top: 20px;}
+.page_select  .span_a{margin-left:10px;border:1px solid #ccc;font-size: 14px;color: #999;border-radius:2px;display:inline-block;
+width: 32px;height: 32px;text-align:center;line-height: 32px;vertical-align:middle;}
+.page_select p{ display:inline-block; float:left; vertical-align:middle; font-size:14px;}
+.page_select span{/*float: left;*/margin-left:10px;border:1px solid #ccc;font-size: 14px;
+/*padding: 5px 12px;*/color: #999;cursor: pointer; vertical-align:middle;border-radius:2px;display:inline-block;
+width: 32px;height: 32px;text-align:center;line-height: 32px;}
+.page_select span[data-f='1']{ background-color:#00c5b5;color:#fff;border-color:#00c5b5;}
+.page_select select{ padding:0 0 0 6px; width:60px; border:1px solid #ccc;height:30px; line-height:30px; margin:0 8px;}
+#pageNum_h{font-weight: normal;}
+#pageNum_a{font-weight: normal;}
+.loading_info{width:66px; height:66px; background-image:url(../img/loading.gif); z-index:100; position:absolute;left:50%;margin-left: -33px;top:50%;margin-top: -33px;position: fixed !important; display: none;}
+

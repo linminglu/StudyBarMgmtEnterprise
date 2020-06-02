@@ -1,0 +1,55 @@
+/*会员中心主页*/
+.main_con{padding: 20px 98px;overflow: hidden;}
+
+/*左边部分样式*/
+.main_left{width: 200px;border:1px solid #cecece;float: left;}
+.main_left ul li{height: 30px;padding: 20px 30px;border-bottom: 1px solid #cecece;cursor: pointer;}
+.main_left ul li:last-child{border-bottom: none;}
+.now_item{background: #00bb9c;}
+.main_left ul li img{width: 30px;float: left;}
+.main_left ul li span{float: left;margin:2px 0 0 15px; font-size: 18px;}
+
+/*右边的服务列表样式*/
+.main_right{margin-left: 220px;border:1px solid #cecece;}
+.main_right .right_box{margin:40px;}
+.main_right .right_box h2{font-weight: 400;font-style: normal;font-size: 18px;color: rgba(0, 0, 0, 0.788235294117647);}
+.right_box ul{margin:15px 0;overflow: visible;}
+.right_box ul li{text-align: center;display: inline-block;margin-right: 30px;}
+.right_box li .border_eee{border: 1px solid #eeeeee;width:301px;height:171px;position: relative;}
+.right_box li .note_items{margin:18px 0 38px 0;}
+/*单个的项目的样式*/
+.right_box .border_eee img{width:90px;height: 72px;vertical-align:middle;margin-top:34px;}
+.right_box .border_eee p{line-height: 30px;}
+.right_box .border_eee .li_mark{width: 301px;height: 171px;position: absolute;top:0;left:0;background-color: #000000;opacity:.6; visibility: hidden;}
+.right_box .border_eee span{color: #ffffff;font-size: 14px;position: relative;padding:15px;top:0;visibility: hidden;top: -86px;}
+.right_box .border_eee em{color: #00bb9c;margin:0 2px;}
+.right_box .border_eee #star_serv{background:url(../img/u1775.png) no-repeat center;cursor: pointer;}
+.right_box .border_eee .no_serv{visibility: hidden;}
+
+.right_box .border_eee:hover .li_mark{visibility: visible;}
+.right_box .border_eee:hover span{visibility: visible;}
+.right_box .border_eee:hover #star_sevr{visibility: visible;} 
+
+/*弹出框的样式*/
+.cre_receptionist{display: none;width: 640px;height: 600px;overflow:scroll;border:1px solid #999;position: absolute;z-index: 12;background-color: #fff;top: 20px;text-align: left;border-radius: 4px;box-shadow:2px 2px 2px #999;}
+.cre_receptionist .receptionist_header{border-bottom: 1px dotted #999;text-align: center;line-height:60px;} 
+.receptionist_header h3{font-weight: 700;color: #333;font-size: 20px;}
+.receptionist_header h3 img{width: 26px;height: 26px;vertical-align: middle;margin-right: 6px;color: #666;}
+.receptionist_header .receptionist_close{position: relative;float: right;cursor: pointer;}
+.receptionist_header .receptionist_close:before{content: attr(data-close);width: 20px;height: 20px;position: absolute;	right: 10px;top: -60px;color: #999;}
+.cre_receptionist .receptionist_body{width: 60%;margin: 0 auto;}
+.receptionist_body .receptionist{margin: 16px auto;color: #666;width: 100%;}
+.receptionist .receptionist_logo{float: left;width: 64px;height: 64px;border:1px dotted #999;margin-right: 6px;position: relative;cursor: pointer;}
+.receptionist .receptionist_logo:before{position: absolute;content: attr(data-logo);font-size: 64px;left: 5px;top: -12px;}
+.receptionist p{line-height: 30px;}
+.receptionist p span{color: red;}
+.receptionist input{width: 100%;border:1px solid #ccc;-webkit-box-sizing:border-box;-moz-box-sizing: border-box;}
+.receptionist select{border: 1px solid #ccc;color: #666;margin-bottom: 16px;}
+.receptionist ul.selc{width: 100%; display:flex;display:-webkit-flex; /* Safari and Chrome */ display:-moz-box; -webkit-box-sizing:border-box; -moz-box-sizing:border-box;}
+ul.selc li{-webkit-flex:1.0;text-align: center;margin-right: 0;text-align: left; -moz-box-flex:1.0;}
+ul.selc li select{width: 100%;-webkit-box-sizing:border-box;}
+ul.selc li:nth-child(2){margin: 0 5%;}
+.receptionist textarea{width: 100%;height: 80px;border: 1px solid #ccc;-webkit-box-sizing:border-box;-moz-box-sizing: border-box;}
+.cre_receptionist .receptionist_footer{width: 60%;margin: 20px auto;overflow: hidden;}
+.receptionist_footer input{float: right;width: 116px;height: 36px;color: #00BB9C;text-align: center;line-height: 36px;margin-left: 16px;margin-right: 0;padding: 0;border:1px solid #00BB9C;cursor: pointer;}
+.receptionist_footer .input_active{background-color: #00BB9C;color: #fff;}

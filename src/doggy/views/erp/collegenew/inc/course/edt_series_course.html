@@ -1,0 +1,118 @@
+<template id="edt_seriescourse_id">
+    <div>
+        <div class="add_signclass bg-white" id="add_allclass">
+            <div v-if='anchorid' class="wp100 bline h35 boxsz pl10 fz-14 lh35 bg-white">主播管理><span
+                    style="cursor: pointer;" @click="goBack">直播间列表</span>
+                <span>
+                    <{seriesid?'>编辑系列课':'>新增系列课'}>
+                </span>
+            </div>
+            <div v-else class="wp100 bline h35 boxsz pl10 fz-14 lh35 bg-white">课程管理><span style="cursor: pointer;"
+                    @click="goBack">课程列表</span>>修改系列课</div>
+            <div class="allanchors_seeinfo_table">
+                <table class="wp100 unite_table">
+                    <tr>
+                        <td>系列课主题</td>
+                        <td><input type="text" placeholder="请输入课程主题、最多20个字" maxlength="20" class="w300" v-model="title">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>系列课展示封面<c/td> <td>
+                                <div class="allanclass_img prela boxsz ptb10 c_both">
+                                    <div class="w120 h120 f_left upheadiconimg  mab15"><img :src="banner1" width="120px"
+                                            height="120px"></div>
+                                    <div class="inc_solid mal30 w100 f_left mat50">上传展示封面</div>
+                                    <input type="file" name="file" id="seriesfileid_2" class="pabs upheadfileimg"
+                                        accept="image/jpeg,image/png,image/jpg">
+                                </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>系列课封面</td>
+                        <td>
+                            <div class="allanclass_img prela boxsz ptb10 c_both">
+                                <div class="w240 h150 f_left upclassimg"><img :src="banner" id="seriesimgid"
+                                        height="100%"></div>
+                                <div class="inc_solid zupfile w80 f_left mat50">上传封面图</div>
+
+                                <input type="file" name="file" id="seriesfileid" value="修改图像" class="pabs upfileimg" accept="image/jpeg,image/png,image/jpg">
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td></td>
+                        <td><label id="seriesprogressid" style="color:#ff2929;" v-html='bannerNotice'></label></td>
+                    </tr>
+                    <tr>
+                        <td class="pabs">系列课简介</td>
+                        <td><textarea class="w300 h200" style="margin-top: 20px;resize:both;"
+                                v-model="comment"></textarea>
+                            <div class="allanclass_img prela mat10 boxsz  c_both h120">
+                                <div class="h100 f_left upallimg" v-show="detail.length>0">
+                                    <div style="height: 100px;overflow-y: auto;">
+                                        <div class="w150 f_left pptDiv mal5 mat5" v-for="(item,index) in detail"
+                                            :class="getupimgclass(index)" @click="changeimgindex(index)">
+                                            <img :src="item.url+'&amp;Rows=80&amp;Columns=150'" width="100%">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="upmoveimg">
+                                <!-- v-show="pptimgarr.length>0" -->
+                                <div style="margin-right: 10px;" class="inc_solid w80 f_left">上传图片
+                                </div>
+                                <input
+                                    style="width: 81px;margin-left: -82px;margin-top: 6px;opacity: 0;position: absolute; cursor: pointer;"
+                                    type="file" name="file" id="intro_img" @change="chooseIntroImg()"
+                                    multiple="multiple" accept="image/jpeg,image/png,image/jpg">
+                                <span class="inc_hollow" @click="moveIntroPic(0)">左移</span>
+                                <span class="inc_hollow" @click="moveIntroPic(1)">右移</span>
+                                <span class="inc_hollow" @click="removeIntroPic()">删除</span>
+
+                            </div>
+                            <div style="height:30px;color:#888888;margin-top: 5px;">
+                                <span>图片类型(JPG or PNG),图片Size小于5M,最多可上传6张图片</span>
+                            </div>
+
+                            <div style="position:fixed;right: 20px;bottom: 50px;width: 200px;height: 180px;background-color: #ffffff;
+                                                            box-shadow: 0px 3px 20px 0px 
+                                                                rgba(0, 0, 0, 0.2);">
+                                <div style="margin-top: 5px;color:#666666;">&nbsp;&nbsp;信息提示区</div>
+                                <div style="margin-top: 5px;border-bottom: 1px solid #f1f1f1;"></div>
+                                <div style="
+                                                                    margin-top:1px;
+                                                                    height: 150px;
+                                                                    width: 200px;     
+                                                                    overflow-y: auto;" id="introid_status">
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>当前课程总价</td>
+                        <td><span style="font-size:18px;font-weight:200;">
+                                <{totalfee}>元&nbsp;&nbsp;
+                            </span><span class="fc-888888">(仅含所有上架单课程)</span></td>
+                    </tr>
+                    <tr>
+                        <td>课程定价</td>
+                        <td>
+                            <input type="number" placeholder="" v-on:input="changePrice" class="w80 al-center"
+                                v-model="fee">&nbsp;元&nbsp;&nbsp;&nbsp;&nbsp;
+                            折扣&nbsp;<input type="number" v-on:input="changeRate" placeholder="" class="w80 al-center"
+                                v-model="discount">
+                            <span>&nbsp;%</span><span class="fc-888888">&nbsp;&nbsp;(支持0-100整数)</span>
+                        </td>
+                    </tr>
+                </table>
+                <div class="inc_save">
+                    <span class="inc_solid" @click="saveData">保存</span>
+                    <span class="inc_hollow" @click="goBack">取消</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

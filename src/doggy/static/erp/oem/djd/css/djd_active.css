@@ -1,0 +1,57 @@
+.c{clear: both;}
+
+i.see, i.delete, i.modify, i.delmove{display: inline-block;width: 45px;cursor: pointer;color: #466dc4;}
+i.delmove{width: 90px;}
+
+.m_line{width: 100%;height: 8px;background: #f2f2f2;border: none;}
+
+.djd_active{width: 85px;}
+.text_right{text-align: right;}
+.f_data table th{text-align: left;}
+.f_data table td{text-align: left;}
+
+.f_data dl{width: 100%;font-size: 14px;box-sizing: border-box;margin-bottom: 8px;}
+.f_data dl dt{color: #000;height: 45px;line-height: 45px;border-bottom: 1px solid #f0f0f0;text-indent: 55px;background: url(/static/erp/oem/djd/img/abc.png) no-repeat center 35px;}
+.f_data dl dd{width: 100%;height:40px;line-height:40px;color: #333;box-sizing: border-box;}
+.f_data dl dd .title_info{width: 170px;text-align: right;float: left;padding-right: 10px;}
+.f_data dl dd .content_info{float: left;text-align: left;height:40px;}
+.f_data dl dd .content_info input{margin-top: 5px;}
+
+.f_data table td {padding: 0 20px;}
+
+input[type=button].uploadBtn {width:70px;position: relative;display: inline-block;background: #FFF;border: 1px solid #47a6a0;border-radius: 2px;font-size: 14px;overflow: hidden;color: #47a6a0;text-decoration: none;line-height: 30px;height: 30px;min-width: 80px;text-align: center;cursor: pointer;}
+input[type=button].uploadBtn:hover {background: #55c6bf;border-color: #55c6bf;color: #FFF;text-decoration: none;}
+input[type=button].uploadBtn:active {background: #328b83;}
+
+dl.table_info{width: 100%;}
+dl.table_info dd{width: 90%;margin:0 auto;box-sizing: border-box;height: auto;overflow-y: hidden;margin-left: 55px;}
+
+dl.table_info dd table{width: 100%;}
+
+.m_button{width: 100%;display: inline-block;text-align: center;}
+.m_button .m_input{width: 340px;height:50px;margin: 20px auto;}
+.m_button input{margin-left: 10px;margin-right: 10px;width: 140px;height: 50px;font-size: 24px;}
+input[type=button].del{width: 140px;height: 50px;font-size: 24px;}
+
+.f_data input[type='file'] {opacity: 0;cursor: pointer;}
+input[type=text] {height: 30px;}
+a.uploadBtn{float: left;margin-top: 6px;margin-left: 8px;height: 28px;}
+
+#centerDiv{position:fixed;background-color:#fff;text-align: center;width:100%;height:100%;z-index: 1000000;top: 0;left: 0;}
+#centerDiv img{vertical-align:middle;}
+
+#close_ico{width:40px;height:40px;display:block;cursor:pointer;background: url(/static/oem/djd/img/img_pop.png) center no-repeat;
+background-size:40px;position:absolute;top: 20px;right:20px;}
+#close_ico:hover{background-image:url(/static/oem/djd/img/img_pop_over.png);}
+
+.m_success{width: 400px;margin: 165px auto;text-align: center;}
+.wait_img img{height: 125px;margin-bottom: 10px;}
+.wait_title{font-size: 22px;color: #000;line-height: 50px;}
+
+.m_success dl dt{font-size: 18px;color: #000;line-height: 30px;}
+.m_success dl dd{font-size: 14px;color: #696969;}
+.m_success dl dd span{color: #47a6a0;}
+
+.backhome{width: 120px;height: 40px;margin:0 auto;text-align: center;;color: #fff;background: #47a6a0;line-height: 40px;}
+.backhome:hover{background: #55c6bf;}
+.m_success .backhome{text-decoration : none;text-align: center;cursor: pointer;}

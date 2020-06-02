@@ -1,0 +1,96 @@
+input{border-color: #e0e0e0!important;}
+input:hover{border-color: #00c5b5!important;}
+input:focus{border-color: #00c5b5!important;}
+.calendar{border-color: #e0e0e0!important;}
+.calendar:hover{border-color: #00c5b5!important;}
+.calendar:active{border-color: #00c5b5!important;}
+/*订单中心*/
+.backPage{top:15px;right:20px;}
+.pageHeader a{color: #696969;margin-right: 20px;}
+.pageHeader #nowPage{color: #00c5b5;}
+.search{padding:14px 14px 0 14px;}
+.search label,.search div{margin-bottom:20px;}
+.excel{float:left;margin-left:14px;}
+.buyPro,.orderState,.buyStage,.payWay{width: 150px;height: 28px;line-height: 28px;border: solid 1px #e0e0e0;float: left;text-indent: 10px;}
+.orderState{width:110px;}
+
+/*退款弹窗*/
+.reFoundWin{width:100%;height: 100%;position:fixed;top:0;left:0;background-color: #000;opacity:0.2;filter:alpha(opacity=20);z-index:100;display: none;}
+.reFoundCon{width: 460px;height: 280px;background: #fff;box-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);position: absolute;left: 50%;top: 50%;margin-left: -230px;margin-top: -140px;z-index: 101;display: none;}
+.rfc_tit{height: 44px;line-height:44px;border-bottom: 1px solid #f0f0f0;text-align: center;font-size: 16px;color: #333;position: relative;}
+.rfc_tit img{position: absolute;right: 15px;top: 15px;cursor: pointer;}
+.reFoundCon ul{margin-left: 20px;overflow: hidden;margin-top: 20px;}
+.reFoundCon ul li{margin-bottom: 15px;overflow: hidden;}
+.reFoundCon ul li span{font-size: 14px;color: #696969;display: block;float: left;margin-right: 25px;}
+.rfc_sp1{width: 115px;text-align: right;}
+#refoundConfim{width: 120px;height: 30px;clear: both;margin-left: 170px;margin-top: 20px;}
+
+/*订单中心查看详情*/
+.orderInfo{overflow: hidden;}
+.orderInfoTit{font-size: 16px;color: #000;font-weight: 800;margin:20px 0 0 20px;display: block;}
+.orderInfo ul{margin: 20px 0 0 25px;overflow: hidden;}
+.orderInfo ul li{margin-bottom: 25px;overflow: hidden;}
+.orderInfo ul li span{display: block;font-size: 14px;color: #696969;margin-right: 40px;float: left;}
+.of_sp1{width: 110px;text-align: right;}
+.centerBgDiv{height: 20px;background: #f2f2f2;}
+table{border-collapse: collapse;}
+.vd_table{border-color: #e0e0e0;}
+.vd_table thead{background: #E4DFDF;}
+.vd_table th,.vd_table td{height: 30px;}
+
+/*产品中心*/
+.proDep,.proState{width: 80px;height: 28px;line-height: 28px;border: solid 1px #e0e0e0;float: left;text-indent: 10px;}
+.search_pro label,.search_pro div{margin-bottom: 0;}
+
+/*新增产品*/
+#proName,#originPrice,.w_300_input{width: 300px;}
+.of_sp2{position: relative;}
+.wordNum{position: absolute;right: 10px;top: 10px;}
+.wordNum label{font-size: 14px;color: #696969;}
+.slectDiv{width: 300px;height: 28px;border: 1px solid #e0e0e0;line-height: 28px;padding: 0 5px;}
+.textImport{width: 300px;padding: 5px;height: 90px;border: 1px solid #e0e0e0}
+.textWordNum{top: 80px;}
+.priWordNum{top: 5px;}
+.add_of_sp2 label,.add_of_sp2 div{float: left;margin-right: 10px;}
+.add_of_sp2 label{margin-top: 5px;}
+.showpic_of_sp2 img{width: 90px;margin-right: 15px;}
+.showpic_of_sp2 img,.showpic_of_sp2 label{float: left;}
+.of_sp2 input[type=checkbox]{-webkit-appearance: checkbox;position:relative;top: 2px;}
+.of_sp2 input[type=radio]{-webkit-appearance: radio;position:relative;top: 2px;}
+#seeTeeth{margin-left: 40px;}
+.proSeviceTit{border-bottom:1px solid #e0e0e0;overflow: hidden;}
+.proSeviceTit ul li{float: left;margin: 30px 40px 0 25px;font-size: 16px;padding-bottom: 15px;cursor: pointer;}
+#addPackge{width: 100px;height: 30px;margin-top: 45px;margin-left: 130px;}
+.packgeNum:first-child{border-bottom: 2px solid #696969;}
+.prosev_ofsp1{margin-top: 6px;}
+.proSeviceCon{overflow: hidden;border-bottom: 1px solid #e0e0e0;}
+#packgeName{width: 300px;}
+.proSeviceCon ul li .of_sp3{margin: 6px 20px 0 0;}
+.proSeviceCon ul li .of_sp4{margin-right: 10px;}
+.proSeviceCon ul li .of_sp4 input{width: 80px;}
+.proSeviceCon ul li  .of_sp5{margin-top: 6px;}
+.proSeviceCon ul li .of_sp6,.proSeviceCon ul li .of_sp7{margin: 6px 10px 0 10px;cursor: pointer;}
+.packgeSum .of_sp2,.packgeSum .of_sp4{margin: 6px 15px 0 0;}
+.packgeSum .of_sp3 input,.packgeSum .of_sp5 input{width: 100px;}
+.add_save{width: 280px;margin: 0 auto;padding-bottom: 30px;overflow: hidden;clear: both;}
+.add_save input{width: 100px;height: 30px;float: left;}
+.add_save #add_cancel{margin-right: 60px;}
+
+/*类别管理*/
+.type_man_table thead{height: 50px;line-height:50px;background: #E4DFDF;}
+.type_man_table tbody tr{border-bottom: 1px solid #f0f0f0;}
+.type_man_table tbody span{margin-right: 10px;cursor: pointer;}
+.type_man_table tbody span:last-child{margin-right: 0;}
+
+/*签约门诊*/
+.slectDiv1,.slectDiv2,.slectDivSpe{width: 139px;height: 28px;border: 1px solid #e0e0e0;line-height: 28px;padding: 0 5px;}
+#addj{margin-right: 10px;}
+.orderInfo_nct .slectDiv2,.orderInfo_nct #EndDateWeek,.orderInfo_nct #EndDateTime,.orderInfo_nct #EndDate{margin-right: 0;}
+.addjw{width: 139px;}
+.slectDivSpe{width: 128px;}
+.calendar{width: 138px;}
+.addNewTime{cursor: pointer;color:#00c5b5;}
+.add_save_nct{margin: 50px 0 0 40px;}
+.of_sp2_pac label{margin-right: 30px;}
+.vcd_table{border:1px solid #e0e0e0;margin: 40px 0 40px 50px;}
+.vcd_table th,.vcd_table td{height: 35px;}

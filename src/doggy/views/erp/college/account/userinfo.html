@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>用户查看详情</title>
+		{{template "../public/link/css_inc.html" .}}
+		<link href="/static/erp/college/css/user.css" rel="stylesheet" />
+	</head>
+	<body>
+		{{template "../public/public/header.html" .}}
+		<div class="mainFrme">
+			{{template "../public/public/left.html" .}}
+			<div class="rightFrme">
+				<div class="crumbs"><a href="###">主页</a> > <a href="###">用户管理</a> > <a href="###">查看详情</a></div>
+				<input type="hidden" name="htag" value="0">
+				<div class="cont">
+					<div class="pageHeader">查看详情
+						<!--<div class="backPage"><a href="javascript:history.back();">返回上一页</a></div>-->
+					</div>
+					<div class="detail_con" id="detail_con">
+						
+						<ul class="info_con">
+							<!-- <li><span class="sp1">创建时间：</span><span class="sp2">{{.info.user_no}}</span></li>
+							<li><span class="sp1">手机号码：</span><span class="sp2">{{.info.regist_time}}</span></li>
+							<li><span class="sp1">姓名：</span><span class="sp2">{{.info.name}}</span></li>
+							<li><span class="sp1">诊所：</span><span class="sp2">{{.info.sex}}</span></li>
+							<li><span class="sp1">当前积分：</span><span class="sp2">{{.info.age}}</span></li>
+							<li><span class="sp1">累计消费金额：</span><span class="sp2">{{.info.mobile}}</span></li>
+							<li><span class="sp1">最近操作时间：</span><span class="sp2">{{.info.area}}</span></li>
+							<li><span class="sp1">操作人：</span><span class="sp2">{{.info.grade}}</span></li>
+							<li class="recommend"><span class="sp1">他推荐的人：</span><span class="sp2"><p></p></span></li>
+							<li class="recommend"><span class="sp1">推荐他的人：</span><span class="sp2">adsfadsfadfasdfas</span></li> -->
+							
+						</ul>
+					</div>
+					<!-- <div id="pagerinfo"></div> -->
+				</div>
+			</div>
+		</div>
+		{{template "../public/public/footer.html" .}}
+	</body>
+	{{template "../public/link/js_inc.html" .}}
+	<script type="text/javascript" src="/static/erp/college/js/userinfo.js"></script>
+</html>

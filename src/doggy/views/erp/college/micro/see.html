@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>微课堂</title>
+		{{template "../public/link/css_inc.html" .}}
+		<link href="/static/erp/college/css/user.css" rel="stylesheet" />
+		<link href="/static/erp/college/css/see.css" rel="stylesheet" />
+	</head>
+	<body>
+		{{template "../public/public/header.html" .}}
+		<div class="mainFrme">
+			{{template "../public/public/left.html" .}}
+			<div class="rightFrme">
+				<div class="crumbs"><a href="###">主页</a> > <a href="###">微课堂</a></div>
+				<input type="hidden" name="htag" value="0">
+				<div class="cont">
+					<div class="pageHeader">课程详情</div>
+					<div class="cont_title cont_title1">
+                         <div class="title_see">口腔护理种植<span>06-27</span></div>
+                         <div class="cont_video">
+                            <div class="video_left">
+                                <video src="" width="400" height="" controls preload id="radio_url"></video>
+                                 <!-- <audio src="audio.mp3" controls preload></audio> -->
+                                <!-- <video width="400" height="" controls autobuffer autoplay="autoplay" loop="loop">
+                                    <source id="radio_url" src="" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'></source >
+                                </video> -->
+                                <!-- <video controls="controls" width="400" height="" autoplay="autoplay" loop="loop" poster="/static/erp/college/img/aaa.jpg">
+										<source src="http://dtcollege.oss-cn-qingdao.aliyuncs.com/38/18/10/99/104337723422150656.mp4" type="video/mp4" id="radio_url" />
+								</video> -->
+                            </div>
+                            <div class="video_right">
+                                 <p>播放次数 ：<span id="play_num"></span></p>
+                                 <p>评论数 ：<span id="comment"></span></p>
+                                 <p>类型 ：<span id="num_type"></span></p>
+                                 <p>大小 ：<span id="type_big" style=""></span></p>
+                                 <p>创建时间 ：<span id="establish"></span></p>
+                                 <p>点赞数 ：<span id="up_peo"></span></p>
+                            </div>
+                            <div class="clear"></div>
+                         </div>
+					</div>
+					<div class="cont_title" id="hot_see">
+						<div class="hot_see">最热评论</div>
+						<!-- <div class="message">
+                            <div class="message_img"><img src="/static/erp/college/img/login/user_icon.png"></div>
+                            <div class="message_comment">
+                                <div class="message_title">
+                                    <div class="title_left">
+                                        <p>爱吃鱼的猫</p>
+                                        <p>16:35</p>
+                                    </div>
+                                    <div class="title_right">
+                                        <span class="zan">222204<i></i></span><span class="reply">回复</span><span class="delete">删除</span>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="comment_info">非常棒的课程！！！</div>
+                                <div class="author">
+                                    <div class="title_left">
+                                        <p>作者回复</p>
+                                        <p>16:35</p>
+                                    </div>
+                                    <div class="title_right">
+                                        <span class="delete">删除回复</span>
+                                    </div>
+                                    <div class="clear"></div>
+                                    <div class="author_huifu">谢谢哦</div>
+                                </div>
+                            </div>
+                            <div class="clear"></div>
+						</div> -->
+						
+					</div>
+					<div class="cont_title" id="new_see">
+						<div class="hot_see">最新评论()</div>
+						<!-- <div class="message">
+                            <div class="message_img"><img src="/static/erp/college/img/login/user_icon.png"></div>
+                            <div class="message_comment">
+                                <div class="message_title">
+                                    <div class="title_left">
+                                        <p>爱吃鱼的猫</p>
+                                        <p>16:35</p>
+                                    </div>
+                                    <div class="title_right">
+                                        <span class="zan">222204<i></i></span><span class="reply">回复</span>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="comment_info">非常棒的课程！！！</div>
+                            </div>
+                            <div class="clear"></div>
+						</div> -->
+						
+					</div>
+                    <div id="pager_micro"></div>
+				</div>
+			</div>
+		</div>
+		{{template "../public/public/footer.html" .}}
+	</body>
+	<script src="/static/public/js/jquery/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="/static/erp/college/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/erp/college/js/jquery.qqFace.js"></script>
+    <script src="/static/public/public.js"></script><!--公共-->
+    <script src="/static/public/yayigj_downlist.js"></script><!--下拉-->
+    <script src="/static/erp/college/js/base.js"></script><!--框架-->
+    <script src="/static/public/yayigj_date_sel.js"></script><!--日期-->
+    <script src="/static/public/yayigj_dialog_box.js"></script><!--提示-->
+    <script src="/static/public/yayigj_page_info.js"></script><!--分页-->
+    <script src="/static/erp/college/js/yayigj_public_pwdcall.js"></script><!--弹窗-->
+	<script src="/static/erp/college/js/see.js"></script>
+</html>

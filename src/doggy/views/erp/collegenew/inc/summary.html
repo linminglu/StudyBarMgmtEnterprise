@@ -1,0 +1,75 @@
+<template id="summary_id">
+	<div>
+         <div class="bline wp100 h35 boxsz pl10 fz-14 lh35 bg-white">统计>概述</div>
+         <!-- 累计数据显示 -->
+        <div class="wp100 plr10 boxsz bg-white">
+            <div class="dflex wp100 bg-f2 ptb10 boxsz">
+                <div class="dflex1">
+                    <dl class="al-center">
+                        <dt v-html="statistic_datas.todayfee">￥</dt>
+                        <dd>今日平台分佣</dd>
+                    </dl>
+                </div>
+                <div class="dflex1">
+                    <dl class="al-center">
+                        <dt v-html="statistic_datas.yesterdayfee">￥8000.00</dt>
+                        <dd>昨日平台分佣</dd>
+                    </dl>
+                </div>
+                <div class="dflex1">
+                    <dl class="al-center">
+                        <dt v-html="statistic_datas.platformfee">￥8000.00</dt>
+                        <dd>平台累计分佣</dd>
+                    </dl>
+                </div>
+                <div class="dflex1">
+                    <dl class="al-center">
+                        <dt v-html="statistic_datas.anchorfee">￥8000.00</dt>
+                        <dd>主播累计分佣</dd>
+                    </dl>
+                </div>
+                <div class="dflex1">
+                    <dl class="al-center">
+                        <dt v-html="statistic_datas.totafee">￥8000.00</dt>
+                        <dd>累计总收入</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        <!-- 全部课程列表 -->
+        <!-- <div class="h60 bline_21c1aa bg-white fc-21c1aa fz-16 lh60 boxsz pl10">全部课程列表</div> -->
+        <div class="bg-white">
+            <table class="wp100 unite_table">
+                <thead>
+                    <tr>
+                        <th>课程名称</th>
+                        <th>课程类型</th>
+                        <th>访客数（UV）</th>
+                        <th>报名数</th>
+                        <th>转化率</th>
+                        <th>总收入</th>
+                        <th>主播分佣</th>
+                        <th>平台分佣</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="item in data_list">
+                        <td v-html="item.title"></td>
+                        <td v-html="item.classtype"></td>
+                        <td v-html="item.clicknum"></td>
+                        <td v-html="item.buynum"></td>
+                        <td v-html="item.changeRate"></td>
+                        <td v-html="item.paidfee"></td>
+                        <td v-html="item.earnings"></td>
+                        <td v-html="item.platformfee"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="allanchorstollegehomepage" class="vuepage">
+            <yayigj-downlist v-model="details.number_of_data_per_page" :arrslist="number_of_data_per_page_arr" :sizeparam="sizepageparam" v-on:getseled="setNumberOfDataPerPage"></yayigj-downlist>
+            <page-bar :cur.sync="details.cur" :all.sync="details.all" v-on:btnclick="listenpage"></page-bar>
+            <p style="margin-left:40px; display: none;"><{msg1}></p>
+        </div>
+    </div>
+</template>

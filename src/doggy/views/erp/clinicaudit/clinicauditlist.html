@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>门诊审核</title>
+		{{template "../public/link/css_inc.html" .}}
+		<link href="/static/erp/css/user.css" rel="stylesheet" />
+		<link href="/static/erp/css/clinicaudit.css" rel="stylesheet" />	
+        <style>
+            .backPage{top:15px;right:20px;}
+            .search{padding:14px 14px 0 14px;}
+			.search label,.search div{margin-bottom:20px;}
+			.excel{float:left!important;margin-left:14px;}
+            .sendState,.sendType,.sendStage{width: 80px;height: 28px;line-height: 28px;border: solid 1px #00c5b5;float: left!important;text-indent: 10px;}
+            .sendStage{width:180px;}
+			#BeginDate{width: 120px;float:left!important;}
+			#EndDate{width: 120px;float:left!important;}
+			#province{width: 120px;float:left!important;}
+			#city{width: 120px;float:left!important;}
+        </style>
+	</head>
+	<body>
+		{{template "../public/public/header.html" .}}
+			<div class="mainFrme">
+				{{template "../public/public/left.html" .}}
+				<div class="rightFrme">
+					<div class="crumbs"><a href="###">主页</a> > <a href="###">门诊列表</a></div>
+					<div class="cont">
+						<div class="pageHeader">
+							<a class="head_link head_link_active" href="/butlerp/clinicaudit/clinics">门诊列表</a><a  class="head_link" href="/butlerp/clinicaudit/signclinic">平安验证</a>
+							
+							<div class="backPage"><a style="margin-right:20px" href="javascript:void(0)" onclick="showExeclPop()">批量导入</a><a href="/butlerp/clinicaudit/addclinic">新增门诊</a></div>
+							
+							<input type="hidden" name="htag" value="1">
+						</div>
+                        <div class="search">
+							<label>创建时间</label>
+							<input id="BeginDate" class="sendState" readonly />
+							<label>至</label>
+							<input id="EndDate"  class="sendState" readonly />
+							<label>状态</label>
+							<input id="sendState" class="sendState" readonly>
+							<label>门诊星级</label>
+							<input id="sendType" class="sendType" readonly>
+							<input class="ml20 w240" type="text" id="condition" placeholder="请输入门诊名称/管家号等关键词" />
+							<p style="width:100%;height:2px;clear:both"></p>
+                            <label style="margin-left:30px;">地区</label>
+							<input id="province" class="sendStage" style="width:120px;margin-left:10px;" readonly>
+                            <input id="city" class="sendStage"  style="width:120px;margin-left:10px;" readonly>
+							<input type="button" value="查询" id="SelcBtn" />
+							
+						</div>
+						<div class="f_data" id="scroll_div_1">
+							<table id="PAlist" class="unite_table">
+								
+							</table>
+						</div>
+						<div id="PAlistPage"></div>
+					</div>
+				</div>
+			</div>
+		{{template "../public/public/footer.html" .}}
+		<!--签约-->
+		<div class="popWnd" id="Sign">
+			<div class="title">签约</div>
+			<div class="popConent">
+				<div class="ml20 sign_1">
+					签约日期<input type="text" id="Sign_s_t" class="ml10 mr5" readonly> --<input type="text" id="Sign_e_t" class="ml5" readonly>
+				</div>
+				<div class="ml20">
+					签约文件<div id="pics" class="pics"><i>+<input type="file" id="upload1"></i></div>
+				</div>
+			</div>
+			<div class="popFooter">
+				<input type="button" class="fillBtn mr10" value="确定" onclick="signFuc('1')">
+				<input type="button" class="cancelBtn" value="取消" onclick="closesign()">
+			</div>
+		</div>
+		<!--重新签约-->
+		<div class="popWnd" id="reSign">
+			<div class="title">重新签约</div>
+			<div class="popConent">
+				<div class="ml20 sign_1">
+					签约日期<input type="text" id="re_Sign_s_t" class="ml10 mr5" readonly> --<input type="text" id="re_Sign_e_t" class="ml5" readonly>
+				</div>
+				<div class="ml20">
+					签约文件<div id="re_pics" class="pics"><i>+<input type="file" id="upload2"></i></div>
+				</div>
+			</div>
+			<div class="popFooter">
+				<input type="button" class="fillBtn mr10" value="确定" onclick="signFuc('3')">
+				<input type="button" class="cancelBtn" value="取消" onclick="closeresign()">
+			</div>
+		</div>
+		<!--确认签约详情-->
+		<!--<div class="popWnd" id="CofirmSign">
+			<div class="title">确认签约详情</div>
+			<div class="popConent">
+				<div class="ml20 sign_1">
+					签约日期：<span id="Stime" class="ml10 mr5" ></span> -- <span  id="Etime" class="ml5"></span>
+				</div>
+				<div class="ml20">
+					签约文件：<div id="Cofrmpics" class="pics"></div>
+				</div>
+			</div>
+			<div class="popFooter">
+				<input type="button" class="fillBtn mr10" value="签约" id="SignBtn">
+				<input type="button" class="cancelBtn" value="返回" onclick="closeCofrmPop()">
+			</div>
+		</div>-->
+		<!--取消签约-->
+		<div class="popWnd" id="CancelSign">
+			<div class="title">确认签约详情</div>
+			<div class="popConent">
+				<div class="ml20 sign_1">
+					取消签约，该诊所状态将改为未签约状态，将无法继续购买该诊所产品。
+				</div>
+				<div class="ml20">
+					取消原因<textarea  id="CancelTxt" maxlength="300" placeholder="请输入取消原因"></textarea>
+				</div>
+			</div>
+			<div class="popFooter">
+				<input type="button" class="fillBtn mr10" value="确认" onclick="signFuc('2')">
+				<input type="button" class="cancelBtn" value="取消" onclick="closecancel()">
+			</div>
+		</div>
+		<!--//批量导入-->
+		<div class="popWnd" id="ImportExcel">
+			<div class="title">批量导入</div>
+			<div class="popConent">
+				<p>导入格式要与导入模板一致。请先下载<a href="http://dental360.oss-cn-qingdao.aliyuncs.com/web/PA.xlsx" class="g_8aa8ec pl10">导入模板</a>导入模板</p>
+				<div class="lead-txt">
+					<div class="lead_txt">文件</div>
+					<div style="display:inline-block;position: absolute;top:104px;left:50px;">
+						<a href="#" class="labelfor">
+							<input type="file" id="uploadExcel" onchange="previewImage(this)">
+							+
+						</a>
+					</div>
+					<label for="uploadExcel"><span class="file-val"></span></label>
+				</div>
+			</div>	
+			<div class="popFooter">
+				<input type="button" class="fillBtn mr10" value="确认" onclick="closecancel5()">
+				<input type="button" class="cancelBtn" value="取消" onclick="closecancel5()">
+			</div>
+		</div>
+		<input type="hidden" name="InfoID">
+		<input type="hidden" name="UserID">
+		<input type="hidden" name="ClinicID">
+		<input type="hidden" name="DentalID">
+		<input type="hidden" name="clinicname">
+		<input type="hidden" name="h_pop">
+	</body>
+	{{template "../public/link/js_inc.html" .}}
+	<script type="text/javascript" src="/static/public/yayigj_pop_window.js"></script>
+	<script type="text/javascript" src="/static/account/js/area_val.js"></script>  <!--input输入框的省份城市和地区-->
+	<script type="text/javascript" src="/static/erp/js/clinicauditlist.js"></script>
+    <script type="text/javascript">
+		$(function(){
+			_init_area();//地区
+            $("#sendState").yayigj_downlist({    //状态
+                _data:[
+                    {'key':'全部',val:""},
+					{'key':'待完善',val:"0"},
+                    {'key':'申请中',val:"1"},
+                    {'key':'未签约',val:"4"},
+                    {'key':'已签约',val:"5"},
+					{'key':'未通过',val:"3"},
+                ]	 
+            });
+
+            $("#sendType").yayigj_downlist({    //类型
+                _data:[
+					{'key':'全部',val:""},
+                   {'key':'一星级',val:"一星级"},
+				   {'key':'二星级',val:"二星级"},
+				   {'key':'三星级',val:"三星级"},
+				   {'key':'四星级',val:"四星级"},
+				   {'key':'五星级',val:"五星级"}
+                ]	 
+            }); 
+		});
+	</script>
+</html>

@@ -1,0 +1,130 @@
+<template id="yayigj_msg_vmodal">                                                                                                                                          
+        <div class="modal align-baseline winModal" v-show="msgparamcnf.isActive"  :class="{'is-active':msgparamcnf.isActive}" :style="genMsize" ref="modal_viewport">
+                <div class="modal-card">
+                    <div class="modal-card-head unseled" v-if="msgparamcnf.showHeader" ref="wndTitle" @mousedown.stop="Dragging($event)">
+                        <slot name="header">
+                            <p class="modal-card-title"><{msgparamcnf.title}></p>
+                            <span class="close" @click="handleCancel">×</span>
+                        </slot>
+                    </div>
+                    <div class="modal-card-body" :style="setBodyBottom">
+                        <div class="msg-modal">
+                            <span class="msg-ico"><img :src='swaptoico(msgparamcnf.msgType)'></span><span class="msg-content"><{msgparamcnf.msgcontent}></span>
+                        </div>
+                    </div>
+                    <div class="modal-card-foot" v-if="msgparamcnf.showFooter">
+                        <slot name="footer">                            
+                            <a class="button  fillBtn is-primary" :class="{'is-loading':msgparamcnf.isLoading}" @click="handleOk"><{msgparamcnf.okText}></a>
+                            <a class="button  frmeBtn  " @click="handleCancel" v-if="msgparamcnf.showCancel"><{msgparamcnf.cancelText}></a>
+                        </slot>
+                    </div>
+                </div>
+        </div>
+</template>
+
+<script type="text/javascript">
+    var vueMsgModal_com = {
+        template: '#yayigj_msg_vmodal',
+        delimiters: ['<{', '}>'],
+        props: {
+            msgparamcnf: {
+                type: Object,
+                require: true
+            }
+        },
+        computed: {
+            genMsize() {
+                return "width:" + this.msgparamcnf.width + "px;height:" + this.msgparamcnf.height + 'px'
+            },
+            setBodyBottom() {
+                if (this.msgparamcnf.showFooter) {
+                    return 'bottom:40px'
+                } else {
+                    return 'bottom:0px'
+                }
+            }
+        },
+        data: function() {
+            return {
+                isActive: true,
+                isLoading: false,
+            }
+        },
+        filters: {},
+        methods: {
+            swaptoico:function(value) { // //0询问 1警告  2错误 
+                switch (value) {
+                    case 0:
+                        return '/static/hplat/img/Quest.png'
+                        break;
+                    case 1:
+                        return '/static/hplat/img/Warning.png'
+                        break;
+                    case 2:
+                        return '/static/hplat/img/Error.png'
+                        break;
+                }
+            },
+            Dragging:function(ev) {
+                try {
+                    var t_dragObj = this.$refs["wndTitle"];
+                    var t_pObj = t_dragObj.parentElement.parentElement;　
+                    var oevent = ev || event;　　　　
+                    var distanceX = oevent.clientX - t_pObj.offsetLeft;　　　　
+                    var distanceY = oevent.clientY - t_pObj.offsetTop;　　
+                    if (ev.target.className == 'close') {
+                        return;
+                    }
+                    document.onmousemove = function(ev) {　
+                        var omevent = ev || event;　　　
+                        event.preventDefault();　　　
+                        t_pObj.style.left = omevent.clientX - distanceX + 'px';　　　　　　
+                        t_pObj.style.top = omevent.clientY - distanceY + 'px';　
+                    };　　　　
+                    document.onmouseup = function() {　　　　　　
+                        document.onmousemove = null;　　　　　　
+                        document.onmouseup = null;　　　　
+                    };
+                } catch (e) {
+                    console.log(e)
+                }
+            },
+            getWinWH:function() {
+                var h = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight
+                var w = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth
+                return {
+                    'w': w,
+                    'h': h
+                }
+            },
+            initStyle:function() {
+                var wSize = this.getWinWH()
+                var nLeft = (wSize.w - this.msgparamcnf.width) / 2
+                var nTop = (wSize.h - this.msgparamcnf.height) / 2
+                this.$refs['modal_viewport'].style.top = nTop + 'px'
+                this.$refs['modal_viewport'].style.left = nLeft + 'px'
+            },
+            handleOk:function() {
+                this.$emit('msgenter');
+                if (this.okLoading) {
+                    this.isLoading = true;
+                    this.msgparamcnf.onOk('ok');
+                } else {
+                    this.msgparamcnf.onOk('ok');
+                    this.handleClose();
+                }
+            },
+            handleCancel:function() {
+                this.msgparamcnf.onCancel('no');
+                this.handleClose();
+            },
+            handleClose:function() {
+                this.msgparamcnf.isActive = false
+                this.$emit('msgclose');
+            },
+        },
+        mounted:function() {
+            this.initStyle()
+        }
+    };
+</script>

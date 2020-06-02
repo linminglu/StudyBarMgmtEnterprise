@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>设备管理</title>
+    {{template "../public/link/css_inc.html" .}}
+    <!-- <link href="/static/erp/css/device.css" rel="stylesheet" /> -->
+    <link href="/static/erp/css/product.css" rel="stylesheet" />
+    <link href="/static/erp/css/user.css" rel="stylesheet" />
+
+</head>
+
+<style>
+    .f_data tbody td {
+        text-align: left
+    }
+</style>
+
+<body>
+    {{template "../public/public/header.html" .}}
+    <div class="mainFrme">
+        {{template "../public/public/left.html" .}}
+        <div class="rightFrme">
+            <div class="crumbs"><a href="/butlerp/dashboard">主页</a> > <a href="###">设备管理</a></div>
+            <div class="cont">
+                <div class="pageHeader">
+                    <a class="head_link head_link_active" href="/butlerp/device/devicemanageview">设备管理</a><a class="head_link" href="/butlerp/device/deviceimageview">设备影像</a>
+                    <input type="hidden" name="htag" value="4">
+                    <!--隐藏的标记，用来判断左边的显影-->
+                </div>
+                <div class="search">
+                    <label>查询时间</label>
+                    <input id="BeginDate" class="calendar" readonly>
+                    <label>至</label>
+                    <input id="EndDate" class="calendar" readonly>
+                    <input class="ml20 w240" type="text" placeholder="请输入标题/编号等条件查询" id="condition" />
+                    <input type="button" value="查询" id="device_data_search" class='search_btn' />
+                </div>
+
+                <div class="f_data" id="scroll_div_1">
+                    <table id="TableList" border-spacing="1px" collection-repeat="1px">
+                        <thead id="thead_1">
+                            <tr>
+                                <th align="left" id="deviceid">设备ID</th>
+                                <th align="left" id="manufactor">生产商</th>
+                                <th align="left" id="batchno">批次号</th>
+                                <th align="left" id="spec">型　号</th>
+                            </tr>
+                        </thead>
+                        <tbody id="MList">
+
+                        </tbody>
+                    </table>
+                </div>
+                <div id="TablelistPage">
+                </div>
+            </div>
+
+        </div>
+    </div>
+    {{template "../public/public/footer.html" .}}
+</body>
+{{template "../public/link/js_inc.html" .}}
+<script type="text/javascript">
+    jQuery.createAniCss();
+    var pageApi = null,
+        popApi1;
+    var pageobj = {
+        pageSize: 10,
+        pageNo: 1,
+        totalcount: 0
+    };
+    $(function() {
+        bind();
+        datalist(pageobj);
+        // device_data_list(param);
+    });
+    // $(document).ready(function(e) {
+    //     device_data_list(); //获取数据
+    // });
+
+    function bind() {
+        $("#BeginDate").yayigj_date_Sel({
+            varType: "val"
+        });
+        $("#EndDate").yayigj_date_Sel({
+            varType: "val"
+        });
+        //加载页面获取当天日期
+        $("#BeginDate").getCurrday();
+        $("#EndDate").getCurrday();
+
+        $("#scroll_div_1").scroll(function(event) {
+            var head = $("#thead_1");
+            if ($(this).scrollTop() >= 30) {
+                head.css('transform', 'translateY(' + ($(this).scrollTop()) + 'px)');
+            } else {
+                head.css('transform', 'translateY(' + (0) + 'px)');
+            }
+        });
+        $("#device_data_search").on("click", function() {
+            pageApi.filling(1);
+            datalist(pageobj);
+        });
+        $("#TablelistPage").pagination({
+            totalData: 0,
+            showData: 0,
+            pageCount: 0,
+            coping: true,
+            count: 2,
+            jumpCallBack: jump,
+            callback: function(index) {
+                pageobj.pageNo = index.getCurrent();
+                datalist(pageobj);
+            }
+        }, function(api) {
+            pageApi = api;
+        });
+
+        function jump(params) {
+            pageobj.pageSize = params;
+            pageobj.pageNo = 1;
+            datalist(pageobj);
+            pageApi.reSetPageSize(params);
+        };
+    }
+    $("#device_data_search").on("click", function() {
+        pageApi.filling(1);
+        datalist(pageobj);
+    });
+
+    function datalist(pageobj) {
+        var s_time = $("#BeginDate").val();
+        var e_time = $("#EndDate").val();
+        s_time = new Date(s_time);
+        e_time = new Date(e_time);
+        if (s_time > e_time) {
+            jQuery.postFail("fadeInup", "查询时间错误");
+            return;
+        };
+        var parmas = {
+            "start_time": $("#BeginDate").val(), //开始时间
+            "end_time": $("#EndDate").val(), //结束时间
+            "per_page": pageobj.pageSize, //每页数量  int
+            "page": pageobj.pageNo, //页码  int
+            "condition": $("#condition").val(), //输入框条件 没有传空
+            "totalcount": pageobj.totalcount, //总数，第一次传-1 int
+        };
+        jQuery.loading();
+        $.post("/butlerp/device/getdevicelist", parmas, function(json) {
+            jQuery.loading_close();
+            if (json.code == 1) {
+                pageApi.ReSet(parseInt(json.totalcount), parseInt(json.pagesize));
+                device_data_list(json.list)
+            } else {
+                jQuery.postFail("fadeInup", json.info);
+            }
+        })
+    }
+
+    function device_data_list(json) {
+        var tmp = [];
+        if (json != null) {
+            $.each(json, function(k, v) {
+                tmp.push("<tr><td>" + v.deviceid + "</td><td>" + v.manufactor + "</td><td>" + v.batchno + "</td><td>" + v.spec + "</td></tr>");
+            });
+            $("#MList").empty().append(tmp.join(''));
+        }
+    }
+</script>
+
+</html>

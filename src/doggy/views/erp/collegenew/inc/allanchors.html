@@ -1,0 +1,1031 @@
+<template id="allanchors_id">
+    <div>
+        <!-- 添加主播 -->
+        <addedt-modal :paramcnf="addanchors">
+            <div slot='modal_body' id="modal_content">
+                <div class="popanchors_search" id="popanchors_search">
+                    <input type="text" placeholder="请输入11位手机号码" value="" v-model="addanchorobj.mobile" class="mar20">
+                    <input type="button" value="查询" class="inc_solid" @click="searchanchorslist()">
+                </div>
+                <div class="resurtsearch" id="resurtsearch">
+                    <p>确定添加该用户为主播吗？</p>
+                    <!-- <HR style="FILTER: progid:DXImageTransform.Microsoft.Shadow(color:#987cb9,direction:145,strength:15)" width="80%" color=#987cb9 SIZE=1> -->
+                    <ul class="resurtsearchinfo">
+                        <li>
+                            <img style=" width: 16%;
+                            border-radius: 50%;
+                            margin-left: -22px;
+                            margin-top: -15px;
+                            position: absolute;" v-bind:src="addanchorobj.picture"></img>
+                        </li>
+
+                        <li>
+                            <dl class="">
+                                <dt v-html="addanchorobj.name"></dt>
+                                <dd v-html="addanchorobj.mobile"></dd>
+                            </dl>
+                        </li>
+                    </ul>
+                </div>
+                <!-- <div class="inc_hollow popcancel pabs" id="popcancel" @click="cancelsearch()">取消</div> -->
+            </div>
+        </addedt-modal>
+        <!-- 单课程预览 二维码 -->
+        <addedt-modal :paramcnf="previewanchors">
+            <div slot='modal_body' id="modal_content_code">
+                <div class="signclass_code">
+                    <img src="/static/erp/collegenew/img/ceshi.png">
+                </div>
+                <div class="signclass_url">
+                    <span>链接：</span><span>http://www.baidu.com</span><span class="inc_solid w80">复制</span>
+                </div>
+            </div>
+        </addedt-modal>
+        <!-- 单课程选择添加课程类型 -->
+        <addedt-modal :paramcnf="chooseanchors">
+            <div slot='modal_body' id="modal_content_signchoose">
+                <div class="dflex">
+                    <div class="dflex1">
+                        <div class="chooseclass boxsz" @click="chooseaddtype('add_signclass')">
+                            <dl>
+                                <dt>幻灯片直播</dt>
+                                <!-- <dd>幻灯片+音频形式直播</dd> -->
+                            </dl>
+                        </div>
+                    </div>
+                    <div class="dflex1" @click="chooseaddtype('add_signclassvideo')">
+                        <div class="chooseclass boxsz chooseclassvidow">
+                            <dl>
+                                <dt>视频录播</dt>
+                                <!-- <dd>视频录播形式</dd> -->
+                            </dl>
+                        </div>
+                    </div>
+                    <div class="dflex1" @click="chooseaddtype('add_signclassonlinevideo')">
+                        <div class="chooseclass boxsz chooseonlinevidow">
+                            <dl>
+                                <dt>视频直播</dt>
+                                <!-- <dd>视频录播形式</dd> -->
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </addedt-modal>
+        <!-- 抽佣比例 -->
+        <addedt-modal :paramcnf="proportionanchors">
+            <div slot='modal_body' id="modal_content_Proportion">
+                <div class="chooseproportion">
+                    选择抽佣比例<yayigj-downlist v-model="pgetroportion" :arrslist="pgetroportionarr" :sizeparam="sizeparam"
+                        v-on:getseled="setChdAdsSeledVal"></yayigj-downlist>
+                </div>
+            </div>
+        </addedt-modal>
+        <!-- 上传图片 -->
+        <div id="pic_upload_div">
+            <div class="title">
+                <span class="txt">图片上传</span>
+                <span class="paramarea">
+                    <input type="file" class="w70px" id="file1" name="file" @change="getPic($event)">
+                    <span class="lvse ml10 pic_setsize hide">规格:800x800</span>
+                    <i class="">
+                        限宽:&nbsp;<input style="width:88px" type="number" id="lowW" value="800">&nbsp;
+                        &nbsp;<input style="width:88px" type="number" id="lowH" value="1800" class="hide">&nbsp;
+                        &nbsp;<input type="text" id="web_url" style="width:295px" class="hide">
+                    </i>
+                </span>
+                <span id="picupinfo"></span>
+                <span class="closeBtn"
+                    onclick="document.getElementById('pic_upload_div').style.display='none';">&#10005;</span>
+            </div>
+            <div class="pic_upload_area pbg1280">
+                <img src="" id="pic">
+            </div>
+            <div class="footerarea"><input type="button" value="上传" @click="savePicToWeb" class="fillBtn uploadBtnE" />
+            </div>
+        </div>
+
+        <!-- 单课程复制推流 -->
+        <addedt-modal :paramcnf="pushurl_modal">
+            <div slot='modal_body' id="modal_content_push">
+                <div class="fz-14" style="display:flex;">
+                    <div style="min-width:70px;margin-top: 10px;">
+                        推流地址:
+                    </div>
+                    <div style="margin-top: 10px;flex:1;display:flex;flex-direction:column;">
+                        <div id="push_url" v-html='pushurl'></div>
+                        <span class="inc_solid" style="width:100px;margin-top: 10px" @click="copyPushurl">复制地址</span>
+                        <div style="margin-top: 10px;border-bottom: 1px solid #f1f1f1;"></div>
+                        <span style="margin-top: 10px;color:#888888">注:该地址获取30分钟内有效,超时后无法推流,请重新获取</span>
+                    </div>
+                </div>
+            </div>
+        </addedt-modal>
+
+        <div class="wp100 bline h35 boxsz pl10 fz-14 lh35 bg-white">直播间管理 ><span style="cursor: pointer;"
+                @click="tabclasstype('allanchorstollegehome')">直播间列表</span></div>
+        <!-- 所有主播主页 -->
+        <div class="allanchorstollege" id="allanchorstollegehome" style="display:'none';">
+            <!-- <div class="h60 bline_146487 bg-white fc-1180b0 fz-16 lh60 boxsz pl10 ">所有主播</div> -->
+            <!-- boxsz pl10 c_both pt15 -->
+            <div class="h60  bg-white  lh60 ">
+                <input type="button" value="新建直播间" class="inc_solid f_left mal10 mat15" @click="addanchorslist()">
+                <span class="f_right">
+                    <!-- <span class="mal10">上架状态</span>
+                    <yayigj-downlist :value="anchortype.key" :arrslist="stateList" :sizeparam="anchortypeparam" v-on:selitem="selectstatus">
+                    </yayigj-downlist> -->
+                    <input class="mal10" v-model="anchorcondition" placeholder="请输入手机号码查询" type="text" />
+                    <input v-on:click="initAnchors" type="button" value="查询" class="inc_solid mar15">
+                </span>
+            </div>
+            <div class="bg-white" id='anchorlist'>
+                <table class="wp100 unite_table">
+                    <thead>
+                        <tr>
+                            <th>直播间头像</th>
+                            <th>直播间名称</th>
+                            <th>超级管理员</th>
+                            <th>手机号码</th>
+                            <th>当前余额</th>
+                            <th>累计收益</th>
+                            <th>累计消费金额</th>
+                            <th>状态</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="(item,index) in data_list">
+                            <td>
+                                <div class="allanchors_img"><img style="width: 100%;height:100%;border-radius: 50%;"
+                                        v-bind:src="item.roompicture"></img></div>
+                            </td>
+                            <td v-html="item.roomname"></td>
+                            <td v-html="item.username"></td>
+                            <td v-html="item.mobile"></td>
+                            <td v-html="item.surplusfee"></td>
+                            <td v-html="item.incomefee"></td>
+                            <td v-html="item.consumefee"></td>
+                            <td v-if="item.isanchor==1">正常</td>
+                            <td v-else-if="item.isanchor==2">停用</td>
+                            <td class="inc_operation">
+                                <span @click="seeallanchorstollege(index)">修改</span><i>|</i>
+                                <span v-show="item.isanchor==1"
+                                    @click="tabclasstype('allanchorssignclass',index)">课程管理</span><i
+                                    v-show="item.isanchor==1">|</i>
+                                <span @click="requestBeforeStop(2,index)" v-if="item.isanchor==1">停用</span>
+                                <span @click="allanchorsstop(1,index)" v-else-if="item.isanchor==2">激活</span>
+                                <i>|</i>
+                                <span @click="delAnchor(index)">删除</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div id="allanchorstollegehomepage" class="vuepage">
+                    <yayigj-downlist v-model="details.anchorspage" :arrslist="anchorsarr" :sizeparam="sizepageparam"
+                        v-on:getseled="initAnchors"></yayigj-downlist>
+                    <page-bar :cur.sync="details.cur" :all.sync="details.all" v-on:btnclick="pageAnchors"></page-bar>
+                </div>
+            </div>
+        </div>
+        <!-- 查看详情 -->
+        <div class="allanchorstollege" id="allanchorstollege" style="display:none;">
+            <div class="h60 bline bg-white fz-16 lh60 boxsz pl10">
+                <span class="fc-1180b0 mar20 c_pointer" id="seeanchorstinfo1"
+                    @click="seeanchorsttolloge('seeanchorstinfo')">查看详情</span>
+                <span class="dinb mar20 c_pointer" id="seeanchorstin1"
+                    @click="seeanchorsttolloge('seeanchorstin')">收入流水</span>
+                <span class="dinb mar20 c_pointer" id="seeanchorstout1"
+                    @click="seeanchorsttolloge('seeanchorstout')">提现流水</span>
+            </div>
+            <div class="allanchors_seeinfo">
+                <!-- 查看详情 -->
+                <div class="allanchors_seeinfo_table bg-white" id="seeanchorstinfo">
+                    <table class="wp100 unite_table allanchors_seeinfo_table">
+                        <tr>
+                            <td>创建时间</td>
+                            <td v-html="anchorinfo.createtime"></td>
+                        </tr>
+                        <tr>
+                            <td>成为主播时间</td>
+                            <td v-html="anchorinfo.anchortime"></td>
+                        </tr>
+                        <tr>
+                            <td>头像</td>
+                            <td>
+                                <div class="allanchors_img prela boxsz ptb10">
+                                    <div>
+                                        <img style="width: 100%;border-radius: 50%;position:absolute;margin-top:-10px;height: 50px;"
+                                            v-bind:src="anchorinfo.picture"></img>
+                                    </div>
+                                    <div style="position:absolute;" class="inc_solid zupfile w80 f_left mat0">上传头像</div>
+                                    <input type="file" name="file" id="photoid" @change="ChangePhoto" style="opacity: 0;width:80px;position:absolute;margin-left: 80px;
+                                    margin-top: 5px;cursor: pointer;" accept="image/jpeg,image/png,image/jpg" />
+                                    <span id="photostatus" style="    color: red;
+                                                position: absolute;
+                                                margin-left: 80px;
+                                                margin-top: 45px;font-size: 13px;
+                                                letter-spacing: 1px;
+                                                font-weight: 900;
+                                                padding: 3px;width:200px;"></span>
+                                    <!-- <span style="    color:blue;
+                                    position: absolute;
+                                    margin-left: 160px;
+                                    margin-top:6px;
+                                    font-size: 13px;
+                                    letter-spacing: 1px;
+                                    font-weight: 900;
+                                    padding: 3px;width:250px;">类型(PNG or JPG),大小 <50KB</span> -->
+                                     <!-- <div
+                                            class="inc_solid zupfile w80 f_left mat30">上传头像
+                                </div>
+                                <input type="file" name="file" id="ppt_1" @change="pptChangeImg()" style="margin-top: 41px;
+                                    margin-left: -71px;
+                                    position: absolute;opacity: 0;cursor: pointer;">
+                                <span id="pptstatus_1" style="    position: absolute;
+                                            margin-left: -80px;
+                                            margin-top: 73px;
+                                            color: red;
+                                            font-size: 13px;
+                                            letter-spacing: 1px;
+                                            font-weight: 900;
+                                            padding: 3px;">
+                                </span> -->
+                </div>
+                </td>
+                </tr>
+                <tr>
+                    <td>手机号</td>
+                    <td v-html="anchorinfo.mobile"></td>
+                </tr>
+                <tr>
+                    <td>直播间名称</td>
+                    <td><input type="text" name="" placeholder="请输入直播间名称" v-model="anchorinfo.roomname"></td>
+                </tr>
+                <tr>
+                    <td>超级管理员</td>
+                    <td><input type="text" name="" placeholder="请输入超级管理员" v-model="anchorinfo.username"></td>
+                </tr>
+                <tr>
+                    <td>TA的关注</td>
+                    <td v-html="anchorinfo.num+'人'"></td>
+                </tr>
+                <tr>
+                    <td>TA的粉丝数</td>
+                    <td v-html="anchorinfo.fans+'人'"></td>
+                </tr>
+                <tr>
+                    <td>最近登录时间</td>
+                    <td v-html="anchorinfo.lastlogintime"></td>
+                </tr>
+                <tr>
+                    <td>当前余额</td>
+                    <td v-html="'￥'+anchorinfo.surplusfee"></td>
+                </tr>
+                <tr>
+                    <td>累计收益金额</td>
+                    <td>￥<{anchorinfo.incomefee}>
+                    </td>
+                </tr>
+                <tr>
+                    <td>累计消费金额</td>
+                    <td>￥<{anchorinfo.consumefee}>
+                    </td>
+                </tr>
+                <tr>
+                    <td>提现绑定微信</td>
+                    <td v-html="anchorinfo.openid"></td>
+                </tr>
+                <tr>
+                    <td>平台抽取比例</td>
+                    <td><input type="text" placeholder="0表示平台不抽成" readonly="" v-model="anchorinfo.rate"><span
+                            style="display:none;" id="modificationratio" class="dinb mal40 inc_hollow w80"
+                            @click="modificationratio()">修改比例</span></td>
+                </tr>
+                <tr>
+                    <td>讲师简介</td>
+                    <td><textarea class="w300 h200" style="resize:both;"
+                            v-model="anchorinfo.anchorintroduction"></textarea></td>
+                </tr>
+                </table>
+
+                <div class="inc_save">
+                    <span id="saveallanchors" class="inc_solid" @click="saveallanchors()">保存</span>
+                    <span class="inc_hollow" @click="cancelallanchors()">取消</span>
+                </div>
+            </div>
+            <!-- 收入 -->
+            <div class="allanchors_seeinfo_in" id="seeanchorstin" style="display: none;">
+                <div class="now_monkey h60 bg-white lh60 boxsz pl10">当前金额<span class="mal20 f_weight"
+                        v-html="'￥'+anchorinfo.surplusfee">￥0.00</span></div>
+                <table class="wp100 unite_table">
+                    <thead>
+                        <tr>
+                            <th>时间</th>
+                            <th>交易编号</th>
+                            <th>内容</th>
+                            <th>交易类型</th>
+                            <th>金额</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="item in income_list">
+                            <td v-html="item.buytime"></td>
+                            <td v-html="item.orderid"></td>
+                            <td v-html="item.title"></td>
+                            <td v-html="item.paystyle"></td>
+                            <td v-html="'￥'+item.paidfee"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- 支出 -->
+            <div class="allanchors_seeinfo_out" id="seeanchorstout" style="display: none">
+                <div class="now_monkey h60 bg-white lh60 boxsz pl10">当前金额<span class="mal20 f_weight"
+                        v-html="'￥'+anchorinfo.surplusfee">￥0.00</span></div>
+                <table class="wp100 unite_table">
+                    <thead>
+                        <tr>
+                            <th>时间</th>
+                            <th>交易编号</th>
+                            <th>绑定微信号</th>
+                            <th>金额</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="item in payout_list">
+                            <td v-html="item.payment_time"></td>
+                            <td v-html="item.payment_no"></td>
+                            <td v-html="item.openid"></td>
+                            <td v-html="'￥'+item.amount"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- 单课程 -->
+    <div class="allanchorssignclass" id="allanchorssignclass" style="display:none;">
+        <div class="h60 bline_146487 bg-white fz-16 lh60 boxsz pl10">
+            <span class="fc-1180b0 mar20 c_pointer">单课程</span>
+            <span class="dinb mar20 c_pointer" @click="tabclasstype('anchorssignclass')">系列课</span>
+            <span class="dinb mar20 c_pointer" @click="tabclasstype('allanchorsofflineclass')">线下课程</span>
+        </div>
+        <div class="classtable">
+            <div class="h60  bg-white  lh60 boxsz pl10 c_both pt15">
+                <input type="button" value="新增单课程" @click="addsignchooseclass()" class="inc_solid f_left">
+                <input type="button" value="查询" class="inc_solid f_right" @click="clickanchorsignle()">
+                <input type="text" placeholder="请输入课程标题" @keyup.enter="clickanchorsignle()" v-model="signcondition"
+                    class="f_right mar20">
+            </div>
+            <div class="bg-white">
+                <table class="wp100 unite_table">
+                    <thead>
+                        <tr>
+                            <th>封面</th>
+                            <th>名称</th>
+                            <th>类型</th>
+                            <th>直播状态</th>
+                            <th>付费类型</th>
+                            <th>费用</th>
+                            <th>参加数</th>
+                            <th>开播时间</th>
+                            <th>结束时间</th>
+                            <th>上架状态</th>
+                            <th>审核状态</th>
+                            <!-- <th>转码状态</th> -->
+                            <!-- <th>标签</th> -->
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="(item,index) in anchor_signle_list">
+                            <td style="height:60px;">
+                                <img v-bind:src="item.banner+'&amp;Columns=100&amp;Rows=50'" alt="课程封面图" />
+                            </td>
+                            <td v-html="item.title"></td>
+                            <td v-if="item.type == 0">幻灯直播</td>
+                            <td v-else-if="item.type == 1">视频录播</td>
+                            <td v-else>视频直播</td>
+                            <td>
+                                <!-- 直播状态 starplay即将开始   staring正在直播  endplay结束 nodplay已禁播 -->
+                                <span v-if="item.status==0" style="color:#ff3f3f">即将开始 </span>
+                                <span v-else-if="item.status==1" style="color:#47ba5c">直播中</span>
+                                <span v-else-if="item.status==2">已结束</span>
+                                <span v-else style="color:red;">已禁播 </span>
+                            </td>
+                            <td v-if="item.fee > 0" style="color:#8e4351;">收费</td>
+                            <td v-else style="color:red;">免费</td>
+                            <td v-html="item.fee"></td>
+                            <td v-html="item.buynum"></td>
+                            <td v-html="item.begintime"></td>
+                            <td v-html="item.autoendtime"></td>
+                            <td v-if="item.datastatus==1" style="color:blue;">已上架</td>
+                            <td v-else-if="item.datastatus==-2||item.datastatus==-3||item.datastatus==2" style="color:red;">已下架</td>
+                            <td v-else-if="item.datastatus==-1" style="color:red;">已隐藏</td>
+                            <td v-if="item.applystatus==0" style="color:blue;"></td>
+                            <td v-else-if="item.applystatus==1" style="color:red;">待审核</td>
+                            <td v-else-if="item.applystatus==2" style="color:blue;">审核通过</td>
+                            <td v-else-if="item.applystatus==3" style="color:red;">审核失败</td>
+                            <!-- <td v-html="item.tag"></td> -->
+                            <td class="inc_operation">
+                                <span v-if='item.type == 2' @click="showPushAlert(index)">推流 <i
+                                        style="color: #ccc">|</i></span>
+                                <span @click="signclasslook(index)">修改</span><i>|</i>
+                                <span v-if="item.datastatus==1" @click="downsignclass(index)">下架</span>
+                                <span v-else @click="upsignclass(index)">上架</span><i>|</i>
+                                <!-- <span @click="upsignclass(index)">禁用</span><i>|</i> -->
+                                <span v-if="item.datastatus==1" style="color:gray;">删除</span>
+                                <span v-else @click="deletesignclass(index)">删除</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div id="allanchorstollegehomepage" class="vuepage">
+                    <yayigj-downlist v-model="signdetails.anchorspage" :arrslist="anchorsarr" :sizeparam="sizepageparam"
+                        v-on:getseled="signlechangepage"></yayigj-downlist>
+                    <page-bar :cur.sync="signdetails.cur" :all.sync="signdetails.all" v-on:btnclick="anchorsignle">
+                    </page-bar>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 系列课程 -->
+    <div class="allanchorssignclass" id="anchorssignclass" style="display:none;">
+        <div class="h60 bline_146487 bg-white fz-16 lh60 boxsz pl10">
+            <span class="mar20 c_pointer dinb" @click="tabclasstype('allanchorssignclass')">单课程</span>
+            <span class="fc-1180b0 dinb mar20 c_pointer">系列课</span>
+            <span class="mar20 c_pointer dinb" @click="tabclasstype('allanchorsofflineclass')">线下课程</span>
+        </div>
+        <div class="classtable">
+            <div class="h60  bg-white  lh60 boxsz pl10 c_both pt15">
+                <input type="button" value="新增系列课" class="inc_solid f_left" @click="tabclasstype('add_allclass')">
+                <input type="button" value="查询" class="inc_solid f_right" @click="clickanchorseries()">
+                <input type="text" @keyup.enter="clickanchorseries()" placeholder="请输入课程标题" v-model="seriescondition"
+                    class="f_right mar20">
+                <span class="f_right" style="color: blue;margin-right: 7px;margin-top: -13px;">请进入系列课<strong
+                        style="color:  red;">【详情】</strong>,上下架系列课</span>
+            </div>
+            <div class="bg-white">
+                <table class="wp100 unite_table">
+                    <thead>
+                        <tr>
+                            <th>系列课名称</th>
+                            <th>系列课图片</th>
+                            <th>折扣</th>
+                            <th>价格</th>
+                            <th>上架状态</th>
+                            <th>审核状态</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="(item,index) in anchor_series_list">
+                            <td v-html="item.title"></td>
+                            <td style="height:60px;">
+                                <img v-bind:src="item.banner+'&amp;Columns=100&amp;Rows=50'" alt="课程封面图" />
+                            </td>
+                            <td v-html="item.discount"></td>
+                            <td v-html="'￥'+item.fee+'元'"></td>
+                            <td v-if="item.datastatus==1" style="color:blue;">已上架</td>
+                            <td v-else style="color:red;">已下架</td>
+                            <td v-if="item.applystatus==0" style="color:blue;"></td>
+                            <td v-else-if="item.applystatus==1" style="color:red;">待审核</td>
+                            <td v-else-if="item.applystatus==2" style="color:blue;">审核通过</td>
+                            <td v-else-if="item.applystatus==3" style="color:red;">审核失败</td>
+                            <td class="inc_operation">
+                                <!-- <span v-if="item.datastatus==1" @click="downseries(index)">下架</span>
+                                    <span v-else-if="item.datastatus==2" @click="upseries(index)">上架</span>
+                                    <i>|</i> -->
+                                <span @click="seriesclasslook(index)">修改</span><i>|</i>
+                                <span @click="tabclasstype('allanchorsallclass',index)">详情</span><i>|</i>
+                                <span v-if="item.datastatus==1" @click="" style="color:gray;">删除</span>
+                                <span v-else @click="deleteallclass(index)">删除</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div id="allanchorstollegehomepage" class="vuepage">
+                    <yayigj-downlist v-model="seriesdetails.anchorspage" :arrslist="anchorsarr"
+                        :sizeparam="sizepageparam" v-on:getseled="serieschangepage"></yayigj-downlist>
+                    <page-bar :cur.sync="seriesdetails.cur" :all.sync="seriesdetails.all" v-on:btnclick="anchorSeries">
+                    </page-bar>
+                    <!-- <p style="margin-left:40px; display: none;"><{msg1}></p> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 线下课程 -->
+    <div class="allanchorssignclass" id="allanchorsofflineclass" style="display:none;">
+    <div class="h60 bline_146487 bg-white fz-16 lh60 boxsz pl10">
+        <span class="mar20 c_pointer dinb" @click="tabclasstype('allanchorssignclass')">单课程</span>
+        <span class="dinb mar20 c_pointer" @click="tabclasstype('anchorssignclass')">系列课</span>
+        <span class="fc-1180b0 mar20 c_pointer">线下课程</span>
+    </div>
+    <div class="classtable">
+        <div class="h60  bg-white  lh60 boxsz pl10 c_both pt15">
+            <input type="button" value="新增线下课程" @click="addOfflinechooseclass()" class="inc_solid f_left w100">
+            <input type="button" value="查询" class="inc_solid f_right" @click="clickanchorsignle(1)">
+            <input type="text" placeholder="请输入课程标题" @keyup.enter="clickanchorsignle()" v-model="signcondition"
+                class="f_right mar20">
+        </div>
+        <div class="bg-white">
+            <table class="wp100 unite_table">
+                <thead>
+                    <tr>
+                        <th>封面</th>
+                        <th>课程名称</th>
+                        <th>课程分类</th>
+                        <th>课程费用</th>
+                        <th>报名截止时间</th>
+                        
+                        <th>报名数</th>
+                        <th>浏览数量</th>
+                        <th>上架状态</th>
+                        <th>审核状态</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(item,index) in anchor_offline_list">
+                        <td style="height:60px;">
+                            <img v-bind:src="item.banner+'&amp;Columns=100&amp;Rows=50'" alt="课程封面图" />
+                        </td>
+                        <td v-html="item.title"></td>
+                    
+                        <td><{getTarget(item.tag).key}></td>
+                   
+                        <td v-html="item.fee"></td>
+                        <td v-html="item.enrollendtime"></td>
+                        <td v-html="item.buynum"></td>
+                        <td v-html="item.clicknum"></td>
+            
+                        <td v-if="item.datastatus==1" style="color:blue;">已上架</td>
+                        <td v-else-if="item.datastatus==-2||item.datastatus==-3||item.datastatus==2" style="color:red;">已下架</td>
+                        <td v-else-if="item.datastatus==-1" style="color:red;">已隐藏</td>
+                        <td v-if="item.applystatus==0" style="color:blue;"></td>
+                        <td v-else-if="item.applystatus==1" style="color:red;">待审核</td>
+                        <td v-else-if="item.applystatus==2" style="color:blue;">审核通过</td>
+                        <td v-else-if="item.applystatus==3" style="color:red;">审核失败</td>
+                    
+                        <td class="inc_operation">
+                          
+                            <span @click="signofflineclasslook(index)">修改</span><i>|</i>
+                            <span v-if="item.datastatus==1" @click="changeOfflineDatastatus(index,'2')">下架</span>
+                            <span v-else @click="changeOfflineDatastatus(index,'1')">上架</span><i>|</i>
+                            <span  @click="changeOfflineDatastatus(index,'0')">删除</span>
+                            
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div id="allanchorstollegehomepage" class="vuepage">
+                <yayigj-downlist v-model="offlinedetails.anchorspage" :arrslist="anchorsarr" :sizeparam="sizepageparam"
+                    v-on:getseled="offlinechangepage"></yayigj-downlist>
+                <page-bar :cur.sync="offlinedetails.cur" :all.sync="offlinedetails.all" v-on:btnclick="anchorofflinesignle">
+                </page-bar>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- 单课程-幻灯片-创建课程 -->
+    <div class="add_signclass bg-white" id="add_signclass" style="display:none;">
+        <div class="h60 bline_146487 bg-white fz-16 lh60 boxsz pl10">
+            <span @click="tabclasstype('allanchorssignclass')" class=" dinb mar20 c_pointer">返回</span>
+        </div>
+        <div class="allanchors_seeinfo_table">
+            <table class="wp100 unite_table">
+                <tr>
+                    <td>课程主题</td>
+                    <td><input type="text" placeholder="请输入课程主题、最多20个字" maxlength="20" class="w300"
+                            v-model="Signle_PPT_Title"></td>
+                </tr>
+                <tr>
+                    <td>课程封面</td>
+                    <td>
+                        <div class="allanclass_img prela boxsz ptb10 c_both">
+                            <div class="w240 h150 f_left upclassimg"><img :src="Signle_PPT_Banner" id="signleimg_1"
+                                    height="100%"></div>
+                            <div class="inc_solid zupfile w80 f_left mat50">上传封面图</div>
+                            <!-- @change="signleChangeImg()" -->
+                            <input type="file" name="file" id="signlefile_1" class="pabs upfileimg"
+                                accept="image/jpeg,image/png,image/jpg">
+
+                            <span id="signlestatus_1" style="    position: absolute;
+                                        margin-left: -80px;
+                                        margin-top: 100px;
+                                        color: red;
+                                        font-size: 13px;
+                                        letter-spacing: 1px;
+                                        font-weight: 900;
+                                        padding: 3px;">
+                            </span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>添加幻灯片</td>
+                    <td>
+                        <div class="allanclass_img prela boxsz ptb10 c_both h200">
+                            <div class="h180 f_left upallimg" v-show="upallimgarr.length>0">
+                                <div style="height: 180px;overflow-y: auto;">
+                                    <div class="w150 f_left pptDiv" v-for="(item,index) in upallimgarr"
+                                        :class="getupimgclass(index)" @click="changeimgindex(index)">
+                                        <img :src="item.url+'&amp;Rows=80&amp;Columns=150'" width="100%">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="height:13px;"><span style="color:blue;">图片类型(JPG or PNG),图片Size小于500KB</span></div>
+                        <div class="upmoveimg">
+                            <span v-show="upallimgarr.length>0" class="inc_hollow" @click="imgmoveleft()">左移</span>
+                            <span v-show="upallimgarr.length>0" class="inc_hollow" @click="imgmoveright()">右移</span>
+                            <span v-show="upallimgarr.length>0" class="inc_hollow" @click="imgdelete()">删除</span>
+                            <div style="margin-left: 25px;" class="inc_solid w80 f_left">上传ppt</div>
+                            <input type="file" name="file" id="ppt_1" @change="pptChangeImg()" style="width: 81px;margin-left: -82px;
+                                        margin-top: 6px;
+                                        opacity: 0;
+                                        position: absolute;
+                                        cursor: pointer;" multiple="multiple" accept="image/jpeg,image/png,image/jpg">
+                        </div>
+                        <div style="height: 76px;margin-top:1px;
+                            width: 562px;
+                            border: 1px solid;
+                            overflow-y: auto;" id="pptid_status">
+                        </div>
+                        <div style="color:red;">信息提示区</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>直播简介</td>
+                    <td><textarea class="w400 h200" v-model="Signle_PPT_Comment" style="resize:both;"></textarea></td>
+                </tr>
+                <tr>
+                    <td>课程费用</td>
+                    <td><input @focus="focuspptprice()" @blur="blurpptprice()" type="text" placeholder="0为免费"
+                            class="w200" v-model="Signle_PPT_Fee"><span>元</span><span style="color:red;"
+                            v-if="Signle_PPT_Flag==true">请输入数字且小数点最多两位(范例:34.56)</span></td>
+                </tr>
+                <tr>
+                    <td>开始时间</td>
+                    <td>
+                        <yayigj-Datesel v-model="Signle_PPT_DateTime" :sizeparam="{'width':'170px','type':'dtime'}">
+                        </yayigj-Datesel>
+                    </td>
+                </tr>
+                <tr>
+                    <td>结束时间</td>
+                    <td>
+                        <yayigj-Datesel v-model="Signle_PPT_AutoEndtime"
+                            :sizeparam="{'width':'170px','type':'dtime','_disbLtToday':'2018-03-04'}"></yayigj-Datesel>
+                    </td>
+                </tr>
+            </table>
+            <div class="inc_save">
+                <span class="inc_solid" @click="AddSignlePPT()">保存</span>
+                <span class="inc_hollow" @click="tabclasstype('allanchorssignclass')">取消</span>
+            </div>
+        </div>
+    </div>
+    <!-- 单课程-视频互动-创建课程 -->
+    <div class="add_signclass bg-white" id="add_signclassvideo" style="display:none;">
+        <div class="h60 bline_146487 bg-white fz-16 lh60 boxsz pl10">
+            <span @click="tabclasstype('allanchorssignclass')" class=" dinb mar20 c_pointer">返回</span>
+        </div>
+        <div class="allanchors_seeinfo_table">
+            <table class="wp100 unite_table">
+                <tr>
+                    <td>课程主题</td>
+                    <td><input type="text" placeholder="请输入课程主题、最多20个字" maxlength="20" class="w300"
+                            v-model="Signle_Video_Title"></td>
+                </tr>
+                <tr>
+                    <td>课程封面</td>
+                    <td>
+                        <div class="allanclass_img prela boxsz ptb10 c_both">
+                            <!-- <div class="w240 h150 f_left"><img src="" width="100%">建议尺寸800*500，JPG,PNG,小于2M</div>
+                                <div class="inc_solid zupfile w80 f_left mat50" @click="upimg()">上传头像</div> -->
+                            <!-- <input type="file" name="file" value="修改图像" onchange="" class="pabs upfileimg"> -->
+                            <div class="w240 h150 f_left upclassimg"><img :src="Signle_Video_Banner" id="signleimg_2"
+                                    height="100%"></div>
+                            <div class="inc_solid zupfile w80 f_left mat50">上传封面图</div>
+                            <!-- @change="videoChangeImg()" -->
+                            <input type="file" name="file" id="signlefile_2" class="pabs upfileimg"
+                                accept="image/jpeg,image/png,image/jpg">
+                            <span id="signlestatus_2" style="    position: absolute;
+                                        margin-left: -80px;
+                                        margin-top: 100px;
+                                        color: red;
+                                        font-size: 13px;
+                                        letter-spacing: 1px;
+                                        font-weight: 900;
+                                        padding: 3px;">
+                            </span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>添加视频</td>
+                    <td>
+                        <div class="allanclass_img prela boxsz ptb10 c_both">
+                            <div class="w240 h150 f_left upsigninfo">
+                                <video :src="Signle_Video_Url" width="250" height="" controls="" preload=""
+                                    id="radio_url"></video>
+                            </div>
+                            <div id="selectfiles" class="inc_solid pabs w80 choosevideo" @click="upvideo1">视频上传</div>
+                            <div id="postfiles" class="inc_hollow w80 pabs uploadvideo" @click="DeleteVideo">删除</div>
+                            <!-- <span id="videostatus" style="font-size: 13px;letter-spacing: 1px;font-weight: 900;color:red;position:absolute;margin-left: 80px;
+                                margin-top: -10px;">上传状态信息</span> -->
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>直播简介</td>
+                    <td><textarea class="w400 h200" v-model="Signle_Video_Comment" style="resize:both;"></textarea></td>
+                </tr>
+                <tr>
+                    <td>课程费用</td>
+                    <td><input @focus="focusvideoprice()" @blur="blurvideoprice()" type="text" placeholder="0为免费"
+                            class="w200" v-model="Signle_Video_Fee">元<span style="color:red;"
+                            v-if="Signle_Video_Flag==true">请输入数字且小数点最多两位(范例:34.56)</span></td>
+                </tr>
+                <tr>
+                    <td>开始时间</td>
+                    <td>
+                        <yayigj-Datesel v-model="Signle_Video_DateTime"
+                            :sizeparam="{'width':'170px','type':'dtime','_disbLtToday':'2018-03-04'}"></yayigj-Datesel>
+                    </td>
+                </tr>
+                <tr>
+                    <td>结束时间</td>
+                    <td>
+                        <yayigj-Datesel v-model="Signle_Video_AutoEndTime"
+                            :sizeparam="{'width':'170px','type':'dtime','_disbLtToday':'2018-03-04'}"></yayigj-Datesel>
+                    </td>
+                </tr>
+            </table>
+            <div class="inc_save">
+                <span class="inc_solid" @click="AddSignleVideo(1)">保存</span>
+                <span class="inc_hollow" @clikc="tabclasstype('allanchorssignclass')">取消</span>
+            </div>
+        </div>
+    </div>
+    <!-- 单课程-视频互动-创建直播课程 -->
+    <div class="add_signclass bg-white" id="add_signclassonlinevideo" style="display:none;">
+        <div class="h60 bline_146487 bg-white fz-16 lh60 boxsz pl10">
+            <span @click="tabclasstype('allanchorssignclass')" class=" dinb mar20 c_pointer">返回</span>
+        </div>
+        <div class="allanchors_seeinfo_table">
+            <table class="wp100 unite_table">
+                <tr>
+                    <td>课程主题</td>
+                    <td><input type="text" placeholder="请输入课程主题、最多20个字" maxlength="20" class="w300"
+                            v-model="Signle_Video_Title"></td>
+                </tr>
+                <tr>
+                    <td>课程封面</td>
+                    <td>
+                        <div class="allanclass_img prela boxsz ptb10 c_both">
+                            <!-- <div class="w240 h150 f_left"><img src="" width="100%">建议尺寸800*500，JPG,PNG,小于2M</div>
+                                   <div class="inc_solid zupfile w80 f_left mat50" @click="upimg()">上传头像</div> -->
+                            <!-- <input type="file" name="file" value="修改图像" onchange="" class="pabs upfileimg"> -->
+                            <div class="w240 h150 f_left upclassimg"><img :src="Signle_Video_Banner" id="signleimg_2"
+                                    height="100%"></div>
+                            <div class="inc_solid zupfile w80 f_left mat50">上传封面图</div>
+                            <!-- @change="videoChangeImg()" -->
+                            <input type="file" name="file" id="signlefile_3" class="pabs upfileimg"
+                                accept="image/jpeg,image/png,image/jpg">
+                            <span id="signlestatus_3" style="    position: absolute;
+                                           margin-left: -80px;
+                                           margin-top: 100px;
+                                           color: red;
+                                           font-size: 13px;
+                                           letter-spacing: 1px;
+                                           font-weight: 900;
+                                           padding: 3px;">
+                            </span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>直播简介</td>
+                    <td><textarea class="w400 h200" v-model="Signle_Video_Comment"
+                            style="resize:both;margin-top: 15px"></textarea></td>
+                </tr>
+                <tr>
+                    <td>课程费用</td>
+                    <td><input @focus="focusvideoprice()" @blur="blurvideoprice()" type="text" placeholder="0为免费"
+                            class="w200" v-model="Signle_Video_Fee">元<span style="color:red;"
+                            v-if="Signle_Video_Flag==true">请输入数字且小数点最多两位(范例:34.56)</span></td>
+                </tr>
+                <tr>
+                    <td>开始时间</td>
+                    <td>
+                        <yayigj-Datesel v-model="Signle_Video_DateTime"
+                            :sizeparam="{'width':'170px','type':'dtime','_disbLtToday':'2018-03-04'}"></yayigj-Datesel>
+                    </td>
+                </tr>
+                <tr>
+                    <td>结束时间</td>
+                    <td>
+                        <yayigj-Datesel v-model="Signle_Video_AutoEndTime"
+                            :sizeparam="{'width':'170px','type':'dtime','_disbLtToday':'2018-03-04'}"></yayigj-Datesel>
+                    </td>
+                </tr>
+            </table>
+            <div class="inc_save">
+                <span class="inc_solid" @click="AddSignleVideo(2)">保存</span>
+                <span class="inc_hollow" @clikc="tabclasstype('allanchorssignclass')">取消</span>
+            </div>
+        </div>
+    </div>
+    <!-- 系列课程-创建课程 -->
+    <div class="add_signclass bg-white" id="add_allclass" style="display:none;">
+        <div class="h60 bline_146487 bg-white fz-16 lh60 boxsz pl10">
+            <span @click="tabclasstype('anchorssignclass')" class="fc-1180b0 dinb mar20 c_pointer">返回</span>
+        </div>
+        <div class="allanchors_seeinfo_table">
+            <table class="wp100 unite_table">
+                <tr>
+                    <td>系列课主题</td>
+                    <td><input type="text" placeholder="请输入课程主题、最多20个字" maxlength="20" class="w300"
+                            v-model="SeriesTitle"></td>
+                </tr>
+                <tr>
+                    <td>系列课封面</td>
+                    <td>
+                        <div class="allanclass_img prela boxsz ptb10 c_both">
+                            <div class="w240 h150 f_left"><img :src="SeriesBanner" id="seriesimgid" height="100%"></div>
+                            <div class="inc_solid zupfile w80 f_left mat50">上传封面图</div>
+                            <!-- @change="changeimg()" -->
+                            <input type="file" name="file" id="seriesfileid" value="修改图像" class="pabs upfileimg">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><label>图片类型(JPG or PNG),图片Size小于500KB</label></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><label id="seriesprogressid" style="color:red;"></label></td>
+                </tr>
+                <tr>
+                    <td>课程折扣</td>
+                    <td><input type="text" @focus="focusseriesprice()" @blur="blurseriesprice()"
+                            placeholder="0表示免费,100表示全额" class="w300" v-model="SeriesDiscount"><span
+                            style="margin-left: 8px;font-size: 18px;">%</span><span style="color:red;margin-left:2px;"
+                            v-if="Series_Discount_Flag==true">取值范围[0-100]整数</span></td>
+                </tr>
+                <tr>
+                    <td>系列课简介</td>
+                    <td><textarea class="w300 h200" style="resize:both;" v-model="SeriesComment"></textarea></td>
+                </tr>
+            </table>
+            <div class="inc_save">
+                <span class="inc_solid" @click="AddSeries()">保存</span>
+                <span class="inc_hollow" @click="tabclasstype('anchorssignclass')">取消</span>
+            </div>
+        </div>
+    </div>
+    <!-- 系列课程-详情 -->
+    <div class="allanchorssignclass" id="allanchorsallclass" style="display:none;">
+        <div class="h60 bline_146487 bg-white fz-16 lh60 boxsz pl10">
+            <span @click="tabclasstype('anchorssignclass')" class="fc-1180b0 dinb mar20 c_pointer"> 返回</span>
+            <span v-if="SeriesDownorUp==1" style="float: right;font-size: 30px;font-weight: 900;color:red;"
+                id="SeriesUpID" @click="downseries" class="fc-1180b0 dinb mar20 c_pointer">下架系列课</span>
+            <span v-else style="float: right;font-size: 30px;font-weight: 900;color:blue;" id="SeriesUpID"
+                @click="upseries" class="fc-1180b0 dinb mar20 c_pointer">上架系列课</span>
+        </div>
+        <div class="classtable">
+            <div class="h60  bg-white  lh60 boxsz pl10 c_both pt15">
+                <input type="button" value="<添加单课程>" class="inc_solid f_left" @click="AddSignleList()">
+                <input type="button" value="查询" @click="initSeriesDetail()" class="inc_solid f_right">
+                <input type="text" placeholder="请输入课程标题" v-model="SerieSignleConditon" class="f_right mar20"
+                    @keyup.enter="initSeriesDetail()">
+                <input type="button" value="上架所有单课" style="margin-right:2px;" class="inc_solid f_right"
+                    @click="SetAllSignle('up')">
+                <input type="button" value="下架所有单课" style="margin-right:3px;" class="inc_solid f_right"
+                    @click="SetAllSignle('down')">
+            </div>
+            <div class="bg-white">
+                <table class="wp100 unite_table">
+                    <thead>
+                        <tr>
+                            <th>课程名称</th>
+                            <th>课程图片</th>
+                            <th>课程类型</th>
+                            <th>直播状态</th>
+                            <th>原价</th>
+                            <th>销售价</th>
+                            <th>上架状态</th>
+                            <th>审批状态</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="(item,index) in anchor_series_signle_list">
+                            <td v-html="item.title"></td>
+                            <td>
+                                <dl class="classname">
+                                    <img style="height:100%;margin-top: -10px;margin-left: -103px;"
+                                        v-bind:src="item.banner" alt="课程图片" />
+                                </dl>
+                            </td>
+                            <td v-if="item.type == 0">幻灯直播</td>
+                            <td v-else>视频互动</td>
+                            <td>
+                                <!-- 直播状态 starplay即将开始   staring正在直播  endplay结束 nodplay已禁播 -->
+                                <span v-if="item.status==0" class="sifnplayactive starplay"></span>
+                                <span v-else-if="item.status==1" class="sifnplayactive staring"></span>
+                                <span v-else-if="item.status==2" class="sifnplayactive endplay"></span>
+                                <span v-else class="sifnplayactive nodplay"></span>
+                            </td>
+                            <td v-html="item.fee"></td>
+                            <td v-html="item.soldfee"></td>
+                            <td v-if="item.datastatus==1" style="color:blue;">已上架</td>
+                            <td v-else-if="item.datastatus==2" style="color:red;">已下架</td>
+                            <td v-else style="color:gray;">已删除</td>
+                            <td v-if="item.applystatus==0" style="color:blue;"></td>
+                            <td v-else-if="item.applystatus==1" style="color:red;">待审核</td>
+                            <td v-else-if="item.applystatus==2" style="color:blue;">审核通过</td>
+                            <td v-else-if="item.applystatus==3" style="color:red;">审核失败</td>
+                            <td class="inc_operation">
+                                <span v-if="item.datastatus==1" @click="downsignclass_(index)">下架</span>
+                                <span v-else-if="item.datastatus==2" @click="upsignclass_(index)">上架</span>
+                                <span v-else @click="downsignclass_(index)">下架</span><i>|</i>
+                                <span @click="MoveSeriesDetail(index,'up')">上移</span><i>|</i>
+                                <span @click="MoveSeriesDetail(index,'down')">下移</span><i>|</i>
+                                <span @click="deleteSeriesDetail(index)">删除</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div id="allanchorstollegehomepage" class="vuepage">
+                    <yayigj-downlist v-model="SerieSignleDetail.per_page" :arrslist="anchorsarr"
+                        :sizeparam="sizepageparam" v-on:getseled="initSeriesDetail"></yayigj-downlist>
+                    <page-bar :cur.sync="SerieSignleDetail.cur" :all.sync="SerieSignleDetail.all"
+                        v-on:btnclick="ChangePageSeriesDetail"></page-bar>
+                    <!-- <p style="margin-left:40px; display: none;"><{msg1}></p> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <addedt-modal :paramcnf="model_add_series_signle">
+        <div slot='modal_body' id="add_series_signle">
+            <div class="h60  bg-white lh60 boxsz pl10 c_both pt15">
+                <input type="text" placeholder="请输入课程标题" v-model="SerieAddSignleConditon" class="f_left mal20"
+                    @keyup.enter="initSeriesAddSignle()">
+                <input type="button" value="查询" class="inc_solid f_left mal20" @click="initSeriesAddSignle()">
+            </div>
+            <div class="addseriescourse_table">
+                <table class="wp100 unite_table">
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox" id="id_choose_signle" @click="FullChooseSignle()"></th>
+                            <th>Banner</th>
+                            <th>单课程名</th>
+                            <th>直播状态</th>
+                            <th>价格</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="(item,index) in anchor_series_add_signle">
+                            <td>
+                                <input v-if="item.ischecked==1" type="checkbox" checked="checked"
+                                    @click="ChooseSignle(index,'del')" />
+                                <input v-else type="checkbox" @click="ChooseSignle(index,'add')" />
+                            </td>
+                            <td>
+                                <dl class="classname">
+                                    <img style="height:100%;margin-top: -10px;margin-left: -103px;"
+                                        v-bind:src="item.banner" alt="课程图片" />
+                                </dl>
+                            </td>
+                            <td v-html="item.title"></td>
+                            <td>
+                                <!-- 直播状态 starplay即将开始   staring正在直播  endplay结束 nodplay已禁播 -->
+                                <span v-if="item.status==0" class="sifnplayactive starplay"></span>
+                                <span v-else-if="item.status==1" class="sifnplayactive staring"></span>
+                                <span v-else-if="item.status==2" class="sifnplayactive endplay"></span>
+                                <span v-else class="sifnplayactive nodplay"></span>
+                            </td>
+                            <td v-html="item.fee"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div id="allanchorstollegehomepage" class="vuepage">
+                    <yayigj-downlist v-model="SerieAddSignle.per_page" :arrslist="anchorsarr" :sizeparam="sizepageparam"
+                        v-on:getseled="initSeriesAddSignle"></yayigj-downlist>
+                    <page-bar :cur.sync="SerieAddSignle.cur" :all.sync="SerieAddSignle.all"
+                        v-on:btnclick="ChangePageAddSignle"></page-bar>
+                    <!-- <p style="margin-left:40px; display: none;"><{msg1}></p> -->
+                </div>
+            </div>
+        </div>
+    </addedt-modal>
+    </div>
+
+
+</template>

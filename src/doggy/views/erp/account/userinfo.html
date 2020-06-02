@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>用户查看详情</title>
+		{{template "../public/link/css_inc.html" .}}
+		<link href="/static/erp/css/user.css" rel="stylesheet" />
+	</head>
+	<body>
+		{{template "../public/public/header.html" .}}
+		<div class="mainFrme">
+			{{template "../public/public/left.html" .}}
+			<div class="rightFrme">
+				<div class="crumbs"><a href="###">主页</a> > <a href="###">用户管理</a> > <a href="###">用户详情</a></div>
+				<input type="hidden" name="htag" value="0">
+				<div class="cont">
+					<div class="pageHeader">用户详情
+						<!--<div class="backPage"><a href="javascript:history.back();">返回上一页</a></div>-->
+					</div>
+					<div class="detail_con">
+						<div class="detail_tit">基本信息</div>
+						<ul class="info_con">
+							<li><span class="sp1">用户编号：</span><span class="sp2">{{.info.user_no}}</span></li>
+							<li><span class="sp1">注册时间：</span><span class="sp2">{{.info.regist_time}}</span></li>
+							<li><span class="sp1">头像：</span><span class="sp2"><img src="{{.info.picture}}"></span></li>
+							<li><span class="sp1">姓名：</span><span class="sp2">{{.info.name}}</span></li>
+							<li><span class="sp1">性别：</span><span class="sp2">{{.info.sex}}</span></li>
+							<li><span class="sp1">年龄：</span><span class="sp2">{{.info.age}}</span></li>
+							<li><span class="sp1">账号：</span><span class="sp2">{{.info.mobile}}</span></li>
+							<li><span class="sp1">所在地：</span><span class="sp2">{{.info.area}}</span></li>
+							<li><span class="sp1">职称：</span><span class="sp2">{{.info.grade}}</span></li>
+							<li><span class="sp1">工作年限：</span><span class="sp2">{{.info.work_year}}</span></li>
+							<li><span class="sp1">资格认证：</span><span class="sp2"><img src="{{.info.confirmation}}" width="120"></span></li>
+							<li><span class="sp1">擅长项目：</span><span class="sp2">{{.info.expert}}</span></li>
+							<!--<li><span class="sp1">开通服务：</span><span class="sp2"><label>牙医管家PC端</label><label>商学院</label></span></li>-->
+							<li><span class="sp1">创建的诊所：</span><span class="sp2">{{.info.found_clinic}}</span></li>
+							<li><span class="sp1">关联的诊所：</span><span class="sp2">{{.info.connected_clinic}}</span></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		{{template "../public/public/footer.html" .}}
+	</body>
+	{{template "../public/link/js_inc.html" .}}
+</html>

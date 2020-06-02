@@ -1,0 +1,86 @@
+<template id="classset_id">
+	<div id="out">
+        <!-- 添加分佣 -->
+        <addedt-modal :paramcnf="addproportion">
+            <div slot='modal_body' id="modal_addproportion">
+                <div class="setproportion">平台抽佣比例<input @focus="focusRate()" @blur="blurRate()" type="text" onpaste="return false"  v-model='addRateText' class="w120 mal20"><span v-if="addRateText_Flag==true" style="color:red;">数值范围[0,100]</span><span style="color:blue;" v-else>数值范围[0,100]</span></div>
+            </div>
+        </addedt-modal>
+        <!-- 修改分佣比例 -->
+        <addedt-modal :paramcnf="modifyproportion">
+            <div slot='modal_body' id="modal_modifyproportion">
+                <!-- <div class="setproportion">修改比例<input type="text" v-model='addproportiontext' class="w120 mal20"></div> -->
+                <div class="chooseproportion">
+                    修改比例<yayigj-downlist v-model="addproportiontext" :arrslist="pgetroportionarr" :sizeparam="sizeparam" v-on:getseled="setChdAdsSeledVal"></yayigj-downlist>
+                </div>
+                <div class="classetsign">一个主播只能分配在一个规则下</div>
+            </div>
+        </addedt-modal>
+     	<div id="back_main_navi" class="bline wp100 h35 boxsz pl10 fz-14 lh35 bg-white">
+            <span>主播管理</span>
+            <span style="cursor: pointer;" id="backmainpage" > > 分拥比例管理</span>
+            </div>
+        <div class="setmanage" id="setmanage" style="display: block;">
+            <!-- <div class="h60 bline_21c1aa bg-white fc-21c1aa fz-16 lh60 boxsz pl10">分佣比例管理</div> -->
+            <div class="h60  bg-white  lh60 boxsz pl10"><input type="button" value="添加" class="inc_solid" @click="addpoproportion"></div>
+            <div class="bg-white">
+                <table class="wp100 unite_table">
+                    <thead>
+                        <tr>
+                            <th>平台抽佣比例</th>
+                            <th>人数</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="(item,index) in data_list">
+                            <td v-html="item.rate"></td>
+                            <td v-html="item.usernum+'人'"></td>
+                            <td class="inc_operation">
+                                <span @click="seeclassinfo(index)">查看</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="allanchorstollegehomepage" class="vuepage">
+                <yayigj-downlist v-model="details.number_of_data_per_page" :arrslist="number_of_data_per_page_arr" :sizeparam="sizepageparam" v-on:getseled="setNumberOfDataPerPage"></yayigj-downlist>
+                <page-bar :cur.sync="details.cur" :all.sync="details.all" v-on:btnclick="listenpage"></page-bar>
+                <p style="margin-left:40px; display: none;"><{msg1}></p>
+            </div>
+        </div>
+        <div class="seemanage" id="seemanage" style="display: none;">
+            <div class="h60 bline_146487 bg-white fc-1180b0 fz-16 lh60 boxsz pl10">
+                <span>查看详情</span>
+            </div>
+            <div class="h60  bg-white  lh60 boxsz pl10"><input type="text" placeholder="手机号码" class="w200" v-model="condition" >
+                <input type="button" value="查询" @click="seeclassinfo(-1)" class="inc_solid mal20">
+            </div>
+            <div class="bg-white">
+                <table class="wp100 unite_table">
+                    <thead>
+                        <tr>
+                            <th>主播用户名</th>
+                            <th>手机号</th>
+                            <th>分佣比例</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="(item,index) in anchor_list">
+                            <td v-html="item.name"></td>
+                            <td v-html="item.mobile"></td>
+                            <td v-html="item.rate"></td>
+                            <td class="inc_operation"><span @click="modifyset(index)">修改</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="allanchorpage" class="vuepage">
+                <yayigj-downlist v-model="userDetails.number_of_data_per_page" :arrslist="number_of_data_per_page_arr" :sizeparam="sizepageparam" v-on:getseled="UsersetNumberOfDataPerPage"></yayigj-downlist>
+                <page-bar :cur.sync="userDetails.cur" :all.sync="userDetails.all" v-on:btnclick="userlistenpage"></page-bar>
+                <p style="margin-left:40px; display: none;"><{msg1}></p>
+            </div>
+        </div>
+    </div>
+</template>

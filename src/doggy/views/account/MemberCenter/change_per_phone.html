@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="UTF-8">
+        <meta content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" name="viewport">
+        <meta content="yes" name="apple-mobile-web-app-capable">
+        <meta content="black" name="apple-mobile-web-app-status-bar-style">
+        <meta content="telephone=no" name="format-detection">
+        <meta http-equiv="Cache-Control" content="no-transform ">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+        {{template "/account/Public/per_css_inc.html" .}}
+        <link rel="stylesheet" type="text/css" href="/static/account/css/memberCenter.css">
+        <title>绑定手机-牙医管家</title>   
+    </head>
+    <body>
+        <input type="hidden" name="navtags" value="1">
+        {{template "/account/Public/memberCen_hea_new.html" .}}
+        <div class="mask"></div> 
+        <div class="main_con">
+            <div class="main_left">
+                {{template "account/Public/left_nav.html" .}}
+            </div>
+            <!-- 绑定手机页面 -->
+            <div class="main_right">
+                <div class="info_tit">
+                    <img src="/static/account/img/relate_phone-small.png">
+                    <span>绑定手机</span>
+                </div>
+                <div class="psw_box psw_box1" id="psw_box1">
+                    <div class="step">  
+                        <div id="step_img" >
+                            <div class="progressBar">
+                                <ul id="ul_bg" class="rel_pho_bg">
+                                    <li><span class="world world1">原手机验证</span><span class="num num1">1</span></li>
+                                    <li><span class="world world2">验证绑定新手机</span><span class="num num2">2</span></li>
+                                    <li><span class="world world3">完成</span><span class="num num3"><img src="/static/account/img/step_ok.png" /></span></li> 
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="step_f" >
+                            <div id="f_tel">已绑定的手机号码：<span id="old_phone"></span></div>
+                            <div id="f_num">
+                                <label>验&nbsp;&nbsp;证&nbsp;&nbsp;码:</label>
+                                <input type="text" placeholder="请输入短信验证码" id="code1" name="code" class="box_w138_h18">
+                                <input type="button" id="btn2" value="获取验证码" class="acb ac_btn_bf w96h30">
+                                <div class="sub_tips"><img src="/static/account/img/red_exclam.png"><label>验证码不能为空</label></div>
+                            </div>
+                            <div id="step_btn">
+                                <input type="button" value="下一步" name="button" id="next_step1"
+                                class="acb ac_btn_bf w150h30">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="psw_box psw_box2" id="psw_box2">
+                    <div class="step">  
+                        <div id="step_img" >
+                            <div class="progressBar progressBar2">
+                                <ul id="ul_bg" class="rel_pho_bg2">
+                                    <li><span class="world world1">原手机验证</span><span class="num num1">1</span></li>
+                                    <li><span class="world world2">验证绑定新手机</span><span class="num num2">2</span></li>
+                                    <li><span class="world world3">完成</span><span class="num num3"><img src="/static/account/img/step_ok.png" /></span></li> 
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="step_f" >
+                            <div id="f_num1">
+                                <label class="f_num1_lable">手机号码:</label>
+                                <input type="text" placeholder="请输入您的手机号码" id="phone_num" name="text" oninput="check_mb(this)" class="box_w233_h18" />
+                                <span id="form_tip_phone"><img src="/static/account/img/red_exclam.png"><label></label></span>
+                            </div>
+                            <div id="f_num">
+                                <label>验&nbsp;&nbsp;证&nbsp;&nbsp;码:</label>
+                                <input type="text" placeholder="请输入短信验证码" id="code2" name="text" class="box_w138_h18">
+                                <input type="button" id="btn1" value="获取验证码" class="acb ac_btn_bf w96h30">
+                            </div>
+                            <div id="step_btn">
+                                <input type="button" value="下一步" name="button" id="next_step2"
+                                class="acb ac_btn_bf w150h30">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="psw_box psw_box3" id="psw_box3">
+                    <div id="step_btn_finish">
+                        <img src="/static/account/img/pw_ok.png">
+                        <p>恭喜您，新手机修改成功！</p>
+                        <input type="button" value="完成" name="button" id="next_step3" 
+                        class="acb ac_btn_bf  w150h30">
+                    </div>
+                </div>
+                <div class="psw_box psw_box4" id="psw_box4">
+                    <div id="step_btn_finish2">
+                        <img src="/static/account/img/pw_ok.png">
+                    </div>
+                    <div id="step_btn_finish2_r">
+                        <p class="ok_tit">更换手机号成功!</p>
+                        <ul>
+                            <li>系统检测到您当前的手机号码已有绑定其他诊所信息，</li>
+                            <li>现已将其合并到您的账号下。</li>
+                            <li>请登录<span>牙医管家账号-->系统管理-->门诊管理</span></li>
+                            <li>去查询了解相关信息或解除关联</li>
+                        </ul>
+                        <p class="hb_clinics">已合并的诊所列表：<span id="hb_clinic_name"></span><label id="more_clinic_cut">...</label></p>
+                        <input type="button" class="acb ac_btn_bf w150h30" value="完成" id="next_step4">
+                    </div>
+                </div>
+            </div>
+        </div>
+       {{template "account/Public/footer_new.html" .}}
+       {{template "account/Public/js_inc.html" .}}       
+       <script type="text/javascript" src="/static/account/js/member_center.js"></script>       
+        <!--IE支持placeholder-->
+        <script type="text/javascript">
+            $(function(){ 
+                $('input, textarea').placeholder(); 
+            });
+        </script>
+    </body>
+</html>

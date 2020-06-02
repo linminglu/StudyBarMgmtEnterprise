@@ -1,0 +1,188 @@
+<!doctype html>
+<html>
+<head>
+<title>设置新密码</title>
+<meta charset="utf-8" />
+<!--<include file="Public:css_inc" />-->
+ {{template "/account/Public/css_inc.html"  .}}
+<link rel="stylesheet" type="text/css" href="/static/account/css/login.css">
+</head>
+
+<body>
+<!--<include file="Public:login_header" />-->
+ {{template "/account/Public/login_header.html"  .}}
+	<!-- 身份验证 -->
+<div id="main_pw">
+	<div class="pw_box">
+			<div class="progressBar">
+				<ul id="ul_bg" class="step_1 fix">
+					<img src="/static/account/img/step_2.png"/>
+						<li class="li_step li_1"><b>验证手机号码</b><span>1</span></li>
+						<li class="li_step li_2"><b>填写新密码</b><span>2</span></li>
+						<li class="li_3"><b>完成</b><span><img src="/static/account/img/step_ok.png" /></span></li>
+				</ul>
+			</div>
+			<div class="pw_input">				
+					<div class="pw_new">
+						<label>新登录密码:</label>
+						<input type="password" autocomplete="off" id="pw_n" name="password" placeholder="设置新密码" maxlength="16" >
+					</div>
+					<div class="pw_new">
+						<label>确认新密码:</label>
+						<input type="password" autocomplete="off" id="rpw_n" name="password" placeholder="再次输入新密码" maxlength="16" >
+						<p id="errInfo"class="errInfo"></p>
+					</div>					
+					<div id="inp_btn">
+						<input type="submit" value="完成" class="acb ac_btn_bf" id="pw_btn" name="pw_btn" data-flag="pw_btn">
+					</div>
+			</div>
+		</div>
+</div>
+<!--<include file="Public:footer_new" />-->
+ {{template "/account/Public/footer_new.html"  .}}
+<script src="/static/account/js/jquery-1.9.1.min.js"></script>
+<script language="javascript" src="/static/account/js/jquery.cookie.js"></script>
+<script language="javascript" src="/static/account/js/placeholade.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		/*判断密码强度*/ 
+		function checkStrong(sValue) {
+			var modes = 0;
+			//正则表达式验证符合要求的
+			if (sValue.length < 1) return modes;
+			if (/\d/.test(sValue)) modes++; //数字
+			if (/[a-z]/.test(sValue)) modes++; //小写
+			if (/[A-Z]/.test(sValue)) modes++; //大写  
+			if (/\W/.test(sValue)) modes++; //特殊字符
+		//逻辑处理
+			switch (modes) {
+				case 1:
+					return 1;
+					//break;
+				case 2:
+					return 2;
+				case 3:
+					return sValue.length < 6 ? 2 : 3
+					//break;
+			}
+		}
+		var pwSafeNum=0;
+		$("#pw_n").bind('keyup onfocus onblur',function(){
+			var index=checkStrong($(this).val());
+			console.log(index);
+			if(index==1) {
+				pwSafeNum=1;
+			}
+			if(index==2) {
+				pwSafeNum=2;
+			}
+			if(index==3) {
+				pwSafeNum=3;
+			}
+		})
+
+		$("#pw_btn").click(function(){
+			if (check_password()==false) {return false}
+			else{
+				if($.cookie("flag")=="true"){
+					mobile=$.cookie("mobile");
+					code=$.cookie("code");
+				}
+					console.log(mobile);
+				$.ajax({
+					type:"POST",
+					url:"/member/fogetpsw",
+					data:{
+						mobile:mobile,
+						password:$("#pw_n").val(),
+						password_confirm:$("#rpw_n").val(),
+						passwordcomplexity:pwSafeNum
+					},
+					dataType:"json",
+					beforeSend:function(){
+						$("#pw_btn").val("修改中");
+					},
+					error:function(){},
+					success:function(result){
+						console.log(result);
+						if (result.code==1) {
+							//window.location='psw_ok.html';
+							var _url=window.location.href;
+							if(_url.indexOf("param=pa")!=-1){
+								window.location.href="/member/psw_ok?param=pa";
+							}else{
+								window.location.href="/member/psw_ok";
+							}
+						}else if (result.code==0) {
+							$("#errInfo").html("<b id='errIcon'></b>"+result.info).show();
+						};
+					},
+					complete:function(){},
+				})		
+			}
+		})
+		$('input, textarea').placeholder();
+	})
+
+	$("#rpw_n").focus(function(){
+		$("#errInfo").hide();
+		$("#rpw_n").css("border-color","#00c5b5");
+		$("#rpw_n").css("outline","none");
+	})
+	$("#rpw_n").blur(function(){
+		$("#rpw_n").css("border-color","#e0e0e0");
+	})
+	$("#pw_n").focus(function(){
+		$("#errInfo").hide();
+		$("#pw_n").css("border-color","#00c5b5");
+		$("#pw_n").css("outline","none");
+	})
+	$("#pw_n").blur(function(){
+		$("#pw_n").css("border-color","#e0e0e0");
+	})
+
+	function check_password(){
+		var pw=$("#pw_n").val();
+		var rpw=$("#rpw_n").val();
+		var info=$("#errInfo");
+			if (!pw) {
+				info.html("<b id='errIcon'></b>"+"新登录密码不能为空,请重新输入");
+				$("#pw_n").css("border-color","#f86d5a");
+				$("#errInfo").css("top","-27px");
+				info.show();	
+				return false;
+			}else if(!rpw) {
+				info.html("<b id='errIcon'></b>"+"确认新密码不能为空,请重新输入");
+				$("#rpw_n").css("border-color","#f86d5a");
+				$("#errInfo").css("top","35px");
+				info.show();	
+				return false;
+			}else if (pw.length<6||rpw.length>16) {
+				info.html("<b id='errIcon'></b>"+"密码长度应为6-16位，请重新输入");
+				$("#pw_n").css("border-color","#f86d5a");
+				$("#errInfo").css("top","-27px");
+				info.show();
+				return false;
+			}else if (rpw.length<6||rpw.length>16) {
+				info.html("<b id='errIcon'></b>"+"密码长度应为6-16位，请重新输入");
+				$("#rpw_n").css("border-color","#f86d5a");
+				$("#errInfo").css("top","35px");
+				info.show();
+				return false;
+			}else if(rpw!=pw){
+				info.html("<b id='errIcon'></b>"+"两次密码不一致,请重新输入");
+				$("#rpw_n").css("border-color","#f86d5a");
+				$("#errInfo").css("top","35px");
+				info.show();
+				return false;
+			}
+	}
+   //获取url中的参数
+	function getUrlParam(name) {
+		var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+		var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+		if (r != null) return unescape(r[2]); return null; //返回参数值
+	}
+</script>
+</body>
+</html>

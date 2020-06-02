@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>牙医管家口腔管理平台</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta charset="UTF-8">
+    <meta content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta http-equiv="Cache-Control" content="no-transform ">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+    <!--<include file="Public:css_inc"/>-->
+    {{template "/account/Public/css_inc.html" .}}
+    <link rel="stylesheet" type="text/css" href="/static/account/css/chain_strom.css" />
+    <link href="/static/public/css/public/r_header.css" rel="stylesheet">
+    <!--<link rel="stylesheet" type="text/css" href="/static/account/css/oneStrom.css" />-->
+    <style type="text/css">
+	/*------------------------------------------------------------------------------------*/
+	.bg1{background-image:url(/static/public/img/plus.png);background-position:top; background-repeat:repeat-x; background-color:#fff;}/*专业版*/
+	#header{width:100%; height:40px; box-sizing:border-box; padding:16px 20px 0px 20px; position:relative;z-index:100;}
+    #header .left{float:left;}
+    #header .left ul{float:left;display:none;}
+	#header .right{ position:absolute; right:20px; top:16px; margin:0px; padding:0px; list-style:none; display:table-cell; }
+	#header .right li{ float:left;} .t_hover{cursor:pointer}
+	#header .right .right_li{margin:auto 24px auto 25px; width:22px; height:22px; }	
+	#header .right .vline{ width:1px; height:20px; border-left:solid 1px #fff; opacity:0.3; font-size:1px; margin-right:24px;}	
+	#header .left img,#header span{float:left}
+	#userface{margin-top:-2px;cursor:pointer;}
+	#clinicLogo{ margin-top:-2px;width:30px;height:30px;border-radius:50%;}
+	#clincname{font-size:18px; color:#fff; margin-left:12px;}
+	#mycreate{ width:64px; height:22px; background-image:url(/static/public/img/mycreate.png); margin-left:8px; font-size:12px; margin-top:1px; line-height:22px; text-align:center; color:#fff;background-repeat:no-repeat;}
+	
+    #outerFrmeMain{ position:absolute; left:0px;  right:0px;  bottom:0px; top:50px; }
+	.tdimg{height:138px; vertical-align:middle; display:table; width:100%;position:relative;}
+	.tdimg .imgCell{display:table-cell; vertical-align:middle; text-align:center;}   
+     .tdimg .no_mission{display:table-cell; vertical-align:middle; text-align:center;position:absolute;left:0px;top:10px;display:none; width:100%;}
+	#content{width:100%; height:100%; box-sizing:border-box; padding-top:150px;position:relative; }
+    #maintable{float:left;}
+    #maintable a{display:block;}
+	#maintable td{ vertical-align:middle; text-align:center; width:25%;background-repeat:no-repeat; background-position:center 66%; cursor:pointer;  position:relative}
+	p{line-height:40px;}
+	.td1{background-image:url(/static/public/img/homeImg/Outpatient_s.png)}
+	.td2{background-image:url(/static/public/img/homeImg/powernet_s.png)}
+	.td3{background-image:url(/static/public/img/homeImg/market_s.png)}
+	.td4{background-image:url(/static/public/img/homeImg/Outpatient_s.png)}
+	.td5{background-image:url(/static/public/img/homeImg/finance_s.png)}
+	.td6{background-image:url(/static/public/img/homeImg/store_s.png)}
+	.td7{background-image:url(/static/public/img/homeImg/system_s.png)}	
+	/*------------------------------------------------------------------------------------*/
+    </style>
+</head>
+<body class="bg1">
+    <!--弹窗背景-->
+	<div class="mask"></div>
+    <!--门诊业务下载提示弹窗-->
+    <div class="clinic_download">
+        <div class="download_tit">牙医管家门诊业务PC端<img src="/static/account/img/close.png"></div>
+        <div class="download_con">
+            <img src="/static/account/img/den_logo_spe.png">
+            <p class="stand">牙医管家专业版</p>
+            <p class="st_con">ver3.3.900.13</p>
+            <input type="button" value="立即下载" class="acb ac_btn_bf w210h30" id="download_btn">
+        </div>
+    </div>
+    <!--头部 start-->
+    <div id="header">
+        <div class="left" id="clinic_info_head"></div>
+        <div class="r_index_right">
+        	<div class="r_index_info">消息</div>
+        	<div class="r_index_user r_index_userDown">{{.ChainUserName}}</div>
+        </div>
+        <div class="r_userInfo2">
+			<div class="r_userDetail">
+				<p>{{.ChainName}}</p>
+				<p>{{.ChainUserName}}</p>
+			</div>
+			<div class="r_userTitle">个人中心</div>
+			<div class="r_userImg"  onclick="javascript:window.open('/member/GetPerinfo')">
+				{{if eq .HeadImg ""}}
+					<span class="sp1"></span>
+				{{else}}
+					<span class="sp1"><img src="{{.HeadImg}}"></span>
+				{{end}}
+				<span class="sp2">
+					<p>上次登录</p>
+					<p class="p1">{{.LastLoginTime}}</p>
+				</span>
+			</div>
+			<div class="r_userOperation">
+				<div class="r_uoItem1"><a href="/member/member_per_info" target="_blank">个人信息</a></div>
+				<div class="r_uoItem2"><a href="/member/change_per_phone" target="_blank">更换手机</a></div>
+				<div class="r_uoItem3"><a href="/member/ChangePwdEnter" target="_blank">修改密码</a></div>
+				<div class="r_uoItem4"><a href="/logout">退出登录</a></div>
+			</div>
+			<div class="r_userFooter"></div>
+		</div>
+		<div class="r_index_tips r_hide">您当前还没有消息提醒</div>
+    </div>
+    <!--头部 end-->
+    <div id="outerFrmeMain">
+        <div class="enter_l"><img src="/static/account/img/enter_l.png" id="enter_left_btn"></div>
+        <div class="enter_r"><img src="/static/account/img/enter_r.png" id="enter_right_btn"></div>
+        <!--<ul class="clinic_name_top" id="enter_header"></ul>-->
+        <div class="entrace_item_list">
+            <div class="page_sel_sp" id="page_sel_sp"></div>
+            <div class="clinic_items">
+                <div class="long_div" id="move_div"></div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="/static/account/js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="/static/account/js/chain_strom.js"></script>
+    <script type="text/javascript" src="/static/account/js/enter_sevice.js"></script>
+    <script>
+        $(document).on("mouseover",".imgCell img",function(e){
+            //console.log(e);
+            if($(e.relatedTarget)[0].tagName=='IMG'){
+                return;
+            }
+           // console.log(e.relatedTarget());
+            //if(e.relatedTarget())
+            $(".no_mission").hide();
+            $(this).stop().animate({"width":"128px","height":"128px"},200).animate({"width":"118px","height":"118px"},100);
+            $(this).parent(".imgCell").siblings(".no_mission").show();
+        })
+        $(document).on("mouseleave",".no_mission",function(){
+            $(".no_mission").hide();
+        })
+        $(document).on("mouseout",".imgCell img",function(){
+               $(this).stop().animate({"width":"113px","height":"113px"},100);
+        })
+    </script>
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?3fa86f7400a135441df091c0aa2156af";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+</body>
+</html>

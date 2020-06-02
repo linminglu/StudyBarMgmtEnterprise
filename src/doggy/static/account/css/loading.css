@@ -1,0 +1,100 @@
+.think-loading {
+    display: none;
+    z-index: 1000
+}
+
+.think-loading.loading-active {
+    display: block
+}
+
+.think-loading.loading-gear {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    margin-top: -50px;
+    width: 100%;
+    text-align: center
+}
+
+.think-loading.loading-gear .loading-inner {
+    display: block
+}
+
+.think-loading.loading-gear .loading-image {
+    display: block;
+    width: 50px;
+    height: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    background: url(../img/wait.gif) no-repeat 50% 50%;
+    opacity: .8;
+    filter: alpha(opacity=80);
+}
+
+.think-loading.loading-gear .loading-text {
+    font-weight: 200;
+    color: #999
+}
+
+.think-loading.loading-ripple .loading-inner {
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: 6px
+}
+
+.think-loading.loading-ripple .loading-image {
+    display: block;
+    width: 48px;
+    height: 48px;
+    border-radius: 6px;
+    padding: 12px;
+    background: #fff;
+    margin-left: auto;
+    margin-right: auto;
+    background: url(../image/4.gif) no-repeat 50% 50%;
+    opacity: .8;
+    filter: alpha(opacity=80)
+}
+
+.think-loading.loading-ripple .loading-text {
+    font-weight: 200;
+    height: 24px;
+    line-height: 24px;
+    color: #999
+}
+
+.think-loading.loading-ripple-empty .loading-inner {
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: 6px
+}
+
+.think-loading.loading-ripple-empty .loading-image {
+    display: block;
+    width: 48px;
+    height: 48px;
+    border-radius: 6px;
+    padding: 12px;
+    background: #fff;
+    margin-left: auto;
+    margin-right: auto;
+    background: url(../image/4.gif) no-repeat 50% 50%;
+    opacity: .8;
+    filter: alpha(opacity=80)
+}
+
+.think-loading.loading-ripple-empty .loading-text {
+    font-weight: 200;
+    height: 24px;
+    line-height: 24px;
+    color: #999
+}
+
+.think-loading.loading-easy .loading-inner {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    line-height: 9;
+    overflow: hidden;
+    background: url(../image/12.gif) no-repeat 50% 50%
+}

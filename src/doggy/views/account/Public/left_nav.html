@@ -1,0 +1,68 @@
+<ul id="nav_left">
+	<li class="MemberCenter"><a href="/member/GetPerinfo">
+		<img src="/static/account/img/men_nav12.png" />
+		<span>我的信息</span></a>
+	</li>
+	<li  class="MyClinic"><a  href="/member/myclinic">
+		<img src="/static/account/img/myclinic.png" />
+		<span>我的诊所</span></a>
+	</li>
+	<li  class="Myservice" style="display:none"><a href="/account/Myservice/index.html">
+		<img src="/static/account/img/men_nav22.png" />
+		<span>我的服务</span></a>
+	</li>
+	<li  class="MemberActivity"><a onclick="pop_service();return false" href="/account/MemberActivity/index.html">
+		<img src="/static/account/img/men_nav32.png" />
+		<span>会员活动</span></a>
+	</li>
+	<li  class="MyCommunity"><a onclick="pop_service();return false" href="/account/MyCommunity/index.html">
+		<img src="/static/account/img/men_nav42.png" />
+		<span>我的社区</span></a>
+	</li>
+	
+	<!--<li  class="MyMedel" ><a onclick="pop_service();return false" href="/account/MyMedel/index.html">
+		<img src="/static/account/img/men_nav52.png" />
+		<span  class="">我的勋章</span></a>
+	</li>-->
+	<li><a href="/logout">
+		<img src="/static/account/img/men_nav62.png" />
+		<span>安全退出</span></a>
+	</li>
+</ul>
+ <div class="export_staff_list" id="leave_pop">
+        <div class="export_tit">
+            <span class="export_listz_sp">信息提示</span>
+            <span class="close_alert"><img src="/static/account/img/close.png"></span>
+        </div>
+        <div class="export_con">
+            <img src="/static/account/img/qh_pop_info.png" class="qh_pop_info">
+            <p><span>此功能暂未开放，敬请期待!</span></p>
+        </div>
+        <div class="export_save">
+          <input type="button" class="acb ac_btn_bf w90h30" value="确定" id="close_pop" />
+        </div>
+		<!--var cur_mName='{{.left_nav_tag}}';-->
+</div>
+<script language="javascript">
+ var tags=$("input[name='navtags']").val();
+ if(tags==1){
+	 $(".MemberCenter").css("backgroundColor","#00c5b5");
+	 $(".MemberCenter img").attr("src","/static/account/img/men_nav11.png");
+	 $(".MemberCenter a span").css("color","#fff");
+ }else if(tags==2){
+	 $(".MyClinic").css("backgroundColor","#00c5b5");
+	 $(".MyClinic img").attr("src","/static/account/img/myclinic2.png");
+	 $(".MyClinic >a >span").css("color","#fff");
+ }
+function pop_service(e){
+	$("#leave_pop").show();
+	$(".mask").show();
+	return false;	
+}
+
+$("#close_pop,.close_alert").click(function (){
+	$("#leave_pop").hide();
+	$(".mask").hide();
+	return false;	
+})
+</script>

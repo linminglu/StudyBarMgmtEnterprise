@@ -1,0 +1,120 @@
+<script type="text/javascript">
+    //  Vue.component('vyayigjdownlist', {
+    const yayigjDownCkListCom = {
+        template: '<div class="yayigjDownlist">' +
+            '<div class="showValue" @click="openDownCklist"><input type="text" v-model="currentValue" ref="yayigjDownListCkVobj" readonly/></div>' +
+            '<div class="top_ht_line" ref="top_ht_line" v-show="showCkList"></div>' +
+            '<div class="downArea vplus_item"  v-show="showCkList" ref="plus_downCk_list_area">  ' +
+            '    <p v-for="(item,index) in arrslist" @click.stop="noticefather(item,index)"  :class="{\'active\':item.active,\'unactive\':!item.active}"><input type="checkbox" v-model="item.selected"/><{item.key}></p>' +
+            ' </div>' +
+            '</div>',
+        delimiters: ['<{', '}>'],
+        props: {
+            arrslist: {
+                type: Array,
+                default: function() {
+                    return []
+                }
+            },
+            sizeparam: {
+                type: Object,
+                default: function() {
+                    return {
+                        width: '150px',
+                        height: '25px',
+                        lineheight: '25px'
+                    }
+                }
+            },
+            value: {
+                type: String,
+                default: function() {
+                    return ''
+                }
+            }
+        },
+        created:function() {
+            //alert(this.initval)
+        },
+        mounted:function() {
+            this.initSetDlistStyle()
+            this.eventBind()
+            this.arrslist.forEach(function(item) {　　　　　　　　　　
+                Vue.set(item, 'selected', false)
+            });　　　　　　　　
+            console.log(this.arrslist)
+        },
+        computed: {
+            currentValue: {
+                get: function() {
+                    return this.value
+                },
+                set: function(val) {
+                    this.$emit('input', val)
+                }
+            }
+        },
+        methods: {
+            eventBind:function() {
+                var _vm = this;
+                document.documentElement.addEventListener('click', function(e) {
+                    let cssNameObj = e.target.parentElement
+                    if (cssNameObj === null || cssNameObj.className !== 'showValue') {
+                        if (_vm.showCkList === true) {
+                            _vm.showCkList = false;
+                        }
+                    }
+                    // e.stopPropagation()
+                }, false);
+            },
+            noticefather:function(item, index) {
+                // this.showCkList = true
+                item.selected = !item.selected
+                this.selectStyle(item, index)
+                let keys = [],
+                    vals = []
+                this.arrslist.forEach(function(el) {　　　　　　　　　　
+                    if (el.selected === true) {
+                        keys.push(el.key)
+                        vals.push(el.val)
+                    }
+                });
+                this.currentValue = keys.join(',')
+                this.$emit('getseled', keys.join(','), vals.join(','))
+                    // console.log('this.arrlist=', this.arrslist)  
+            },
+            openDownCklist:function() {
+                if (this.arrslist.length > 0) {
+                    var _vm = this
+                    window.setTimeout(function() {
+                        // console.log(_vm.$refs['plus_downCk_list_area'].offsetWidth)
+                    }, 50)
+                    this.showCkList = true
+                }
+            },
+            initSetDlistStyle:function() {
+                var obj = this.$refs['plus_downCk_list_area']
+                var vObj = this.$refs['yayigjDownListCkVobj']
+                var tWidth = parseInt(this.sizeparam.width) - 1,
+                    tHeight = parseInt(this.sizeparam.height) - 1
+                var lineObj = this.$refs['top_ht_line']
+                obj.setAttribute("style", "display:none;min-width:" + this.sizeparam.width + ";line-height:" + this.sizeparam.height)
+                vObj.setAttribute("style", "width:" + tWidth + "px;height:" + this.sizeparam.height)
+                lineObj.setAttribute("style", "display:none;top:2px;width:" + (tWidth - 2) + "px;top:" + tHeight + 'px')
+            },
+            selectStyle:function(item, index) {　　　
+                this.$nextTick(function() {　　　　　　　　
+                    this.arrslist.forEach(function(item) {　　　　　　　　　　
+                        Vue.set(item, 'active', false);　　　　　　
+                    });　　　　　　　　
+                    Vue.set(item, 'active', true);　　　　　　
+                });
+            }
+        },
+        data:function() {
+            return {
+                showCkList: false
+            }
+        }
+    };
+</script>

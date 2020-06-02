@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>账号登录</title>    
+    <style type="text/css">
+	/**{font-family:微软雅黑}
+	body,form{margin:0px; padding:0px;}
+	.w100{width:100%}
+	.login{vertical-align:middle; margin-right:20px;}
+	.h_top_right{ position:absolute; right:0px; top:32px;}
+	.h_top_right span{margin-right:10px;}
+	#head_top{height:57px; width:1200px;  margin:auto; position:relative;  padding-top:23px}		
+	#h_main_area{height:650px; background-color:#00EAB5; }
+	#h_middle_zk{margin:auto; width:1200px; position:relative; height:650px; }
+	#h_middle_zk .c_h{position:absolute; height:425px; top:50%;margin-top: -212.5px; }
+	#fot_area{height:50px}
+	#h_login_info{background-color:#fff; width:360px; height:380px; position:absolute;  top:3%; right:0px;top:50%; margin-top:-190px}	
+	.h_input_group{width:280px;height:45px; line-height:45px; margin:auto; position:relative; overflow:hidden; font-size:13px;}
+	.h_input_group img{position:absolute; left:10px; top:12px;}
+	.h_input_group .r{position:absolute; right:0px; top:0px; }
+	.h_input_group .l{position:absolute; left:0px; _top:10px; }
+	.h_input{width:245px; height:40px; padding:0px; padding-left:30px; line-height:40px}
+	.h_login_title{width:100%; height:58px; line-height:58px; text-align:center}
+	.h_waring{width:275px; margin:auto; height:25px; line-height:25px; color:#F00; font-size:12px; }
+	.mtp20{margin-top:20px;}
+	.login_btn{width:275px; margin:auto; height:40px; background-color:#00EAB5; border:none}
+	.footerNew{width: 100%;background: #FFF;padding-bottom: 30px;text-align: center; margin-top:68px}
+	.footerNew ul{list-style:none; margin:0px; padding:0px; width:275px; margin:auto; font-size:13px;overflow:hidden; height:30px;}
+	.footerNew ul li{float:left; margin-right:5px; }
+	.footerNew p{font-size:14px; width:1200px; margin:auto; text-align:center}*/
+    </style>
+    
+    <link rel="stylesheet" type="text/css" href="__APP__/public/css/login.css">
+</head>
+
+<body>
+	<div id="h_zk">
+        <div id="head_top" class="w100">
+        		<img class="login" src="__APP__/public/img/logo.png" alt="牙医管家"><span class="log_r_txt">欢迎登录</span>
+                <div class="h_top_right">
+                	<span>没有账号</span><a href="__APP__/index.php?m=Register&a=index"><span class="register">马上注册</span></a>
+                </div>
+        </div><!--顶部-->
+        <div id="h_main_area" class="w100">
+        		<div id="h_middle_zk">
+                    <img class="c_h" src="__APP__/public/img/index_illu.png" alt="牙医管家登录">	
+                    <div id="h_login_info">  
+                    	  <div class="h_login_title">会员登录</div>
+                           <form  class="r" id="form1" action="__APP__/index.php?m=Login&a=chkLogin" method="post">
+                            	<div class="h_input_group">
+                                	 <img src="__APP__/public/img/mobile.png" height="20px;" />
+                                     <input class="h_input" type="text" placeholder="请输入手机号" disableautocomplete="" name="mobile" id="mobile" value="<{$us}>" />
+                                </div>
+                                <div class="h_waring">未填写会员名称!</div>
+                                <div class="h_input_group">
+                                	 <img src="__APP__/public/img/pw.png"  height="20px;" />
+                                     <input class="h_input" type="password" placeholder="请输入密码" name="password" id="password" disableautocomplete=""  autocomplete="off">
+                                </div>
+                                <div class="h_waring">未填写密码!</div>
+                                <div class="h_input_group">
+                                	<span class="l"><input type="checkbox">记住用户名</span>
+                                    <a class="r" href="__APP__/index.php?m=Login&a=psw_find" ><span>忘记密码?</span></a>
+                                </div>  
+                                <div class="h_input_group mtp20"> <input type="button" class="login_btn" value="登录" id="sumbit"></div>
+                           </form>   
+                    </div>
+                </div>	
+        </div>
+        <include file="Public:footer_new" />
+    </div>
+</body>
+</html>

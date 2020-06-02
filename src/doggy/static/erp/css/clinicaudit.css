@@ -1,0 +1,82 @@
+a:hover{text-decoration:none!important;}
+input{float: none!important;}
+li{list-style:none;}
+.black_area{background-color: #f2f2f2;width:100%;height:10px;}
+.hidden{visibility:hidden;}
+.w400{width:400px!important;}
+.w126{width:125px!important;}
+.mr10{margin-right: 10px!important;}
+.mt30{margin-top: 30px;}
+.popWnd{width:700px;height:500px;background-color: #fff; }
+.popWnd input{float:none!important;}
+.popWnd textarea{resize: none;vertical-align: top;width: 300px;height: 100px;margin-left: 10px;}
+.popWnd .sign_1{margin-top: 20px;margin-bottom: 20px;}
+.popWnd .sign_1 input{margin-left:10px;}
+.popWnd .pics{display:inline-block;vertical-align: top;margin-left: 10px;width: 600px;}
+.pics i{font-size:44px;margin-left: 8px;color: #696969;display: inline-block;height: 50px;line-height: 50px;vertical-align: top;cursor:pointer;
+position: relative;top: 0;left: 0;}
+.pics i:hover{color: #333;}
+.pics i input{opacity:0;position:absolute;top:0;left: 0;width:100%;height: 100%;cursor: pointer;}
+.pics span{position:relative;top: 0;left:0;z-index: 9;display:inline-block;width:120px;margin-right: 15px;margin-bottom: 15px;}
+.pics span b{font-style:normal;display:inline-block;width:12px;height: 12px;background:url(/static/public/ico/close_icon.png) no-repeat;
+position: absolute;right:-4px;top: -4px;cursor:pointer;z-index: 10}
+.popWnd img{width:120px;max-height:100px;}
+/*申请评分页面*/
+.pf_index{border-bottom:1px solid #f0f0f0;overflow:hidden;float:none;margin: 20px 0 0 20px;}
+.pf_index li{margin-right:20px;padding-bottom:15px;float: left;font-size: 16px;color: #000;overflow:hidden;}
+.pf_index li.cur_index{border-bottom: 2px solid #333;}
+.pf_cont_t{padding-left:20px;margin:30px 0;font-size: 14px;}
+.pf_cont_t i{display:inline-block;height:1px;width:90%;background-color:#f0f0f0;vertical-align:middle;}
+.pf_cont_b{padding-left: 20px;font-size:14px;}
+.pf_cont_b li{margin-bottom:20px;overflow:hidden;}
+.pf_cont_b .l_span{display: inline-block;width:180px;text-align: left;height:30px;line-height: 30px;font-size:14px;color: #999;}
+.pf_cont_b .pf_info{display:inline-block;height:28px;line-height:28px;border:1px solid #f0f0f0;overflow:hidden;
+vertical-align: middle;text-overflow:ellipsis;white-space:nowrap;}
+.pf_cont_b input[type='text']{width:240px;display:none;}
+.err_ico{background:url(/static/erp/img/del_1.png) no-repeat;background-size:28px 28px;display:inline-block;
+width:28px;height: 28px;vertical-align:middle;margin:0 8px;cursor:pointer;}
+.err_ico[data-flag='1']{background-image:url(/static/erp/img/del_2.png)}
+
+.view_img{background:url(/static/erp/img/u700.png) no-repeat;background-size:28px 28px;display:inline-block;
+width:28px;height: 28px;vertical-align:middle;margin:0 8px;cursor:pointer;}
+.hj .l_span{float: left;}
+.ch_tips{color: #696969;font-size: 12px;}
+.r_items{float: left;width: calc(100% - 180px);}
+.selc_span{width:140px;margin-right: 20px;cursor:pointer;margin-bottom: 10px;text-align:center;}
+.selc_span[data-flag='1']{color: #00c5b5;border-color: #00c5b5!important;}
+.pf_result{margin: 10px 14px;}
+.pf_result p{line-height:36px;color: #696969;font-size: 14px;}
+.pf_result p b{display:inline-block;width: 130px;}
+.pf_result p span{margin-right: 10px;}
+#pfTextarea{vertical-align:top;resize:none;width:300px;height:60px;padding: 5px;}
+.input_action{text-align:center;padding:20px 0;background-color: #f2f2f2;}
+
+#centerDiv{position:fixed;background-color:#fff;text-align: center;width:100%;height:100%;z-index: 1000000;top: 0;left: 0;}
+#centerDiv img{vertical-align:middle;}
+
+#close_ico{width:40px;height:40px;display:block;cursor:pointer;background: url(/static/account/img/PAweb/img_pop.png) center no-repeat;
+background-size:40px;position:absolute;top: 20px;right:20px;}
+#close_ico:hover{background-image:url(/static/account/img/PAweb/img_pop_over.png);}
+
+.err_ico_pop{background:url(/static/account/img/close.png) no-repeat;display:inline-block;
+width:16px;height: 16px;vertical-align:middle;cursor:pointer;position:absolute;top:0px;right:0px;}
+.pf_honor input[type='text']{display:inline;width:120px;}
+#dutyNum{position:relative;top: 0;left: 0;}
+#dutyNum ul{position:absolute;top: 0;left: 0;width: 100%;}
+
+#scroll_div_1{min-height: 320px;}
+#PAlist tr td:last-child {text-align:right;}
+#PAlist tr td:last-child span{margin:0 10px;cursor:pointer;}
+#PAlist tr td:last-child a{margin:0 10px;}
+#PAlist tr td:nth-child(3){width:200px;max-width: 200px;text-overflow:ellipsis;overflow:hidden;white-space:nowrap;}
+#record{margin-left: 80px;}
+#record .l_align{width: 900px;margin-left: 80px;margin-top:-20px;}
+#record img{width:200px;vertical-align: top;margin-right: 10px;margin-bottom:10px;}
+#record p{margin-top:15px;}
+#product{margin-top: -23px;margin-left: 180px;min-height: 30px;}
+#ImportExcel{width: 580px;height:342px;}
+#ImportExcel p{margin: 20px 0 20px 20px;}
+#ImportExcel .lead-txt{margin-left: 20px;}
+.lead_txt {display: inline-block;}
+.labelfor {position: relative;width: 98px;height: 98px;border: 1px dashed #C0C0C0; display: inline-block;font-size: 30px;text-align: center;line-height: 98px;}
+#uploadExcel {opacity: 0;position: absolute;width: 100%;height: 100%;display: inline-block; top: 0;left: 0;}

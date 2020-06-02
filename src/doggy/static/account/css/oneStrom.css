@@ -1,0 +1,147 @@
+@charset "utf-8";
+body,html{width:100%; height:100%;}
+body{display:table}
+ *{font-family:微软雅黑}
+ 	::-webkit-scrollbar {width: 8px; height:8px;} 	
+	::-webkit-scrollbar-track {background-color:#fff;-webkit-border-radius: 2em;-moz-border-radius: 2em;border-radius:2em;border:0px solid #ccc;}       
+	::-webkit-scrollbar-thumb {background-color: #eee;-webkit-border-radius: 2em;border-radius:2em; }
+/*上传图片按钮样式*/
+.file {position: relative;display: inline-block;background: #FFF;border: 1px solid #00c5b5;border-radius: 2px;padding: 3px 12px;font-family:微软雅黑;font-size:14px;overflow: hidden;color: #00c5b5;text-decoration: none; text-align:center;line-height: 25px; width:62px; opacity:1 !important}
+.file input {position: absolute;right: 0px;top: 0px;height: 100%;left: 0px;width: 100%; height:100%; font-size:20px; opacity:0}
+.file:hover {background: #00c5b5;border-color: #00c5b5;color: #FFF;text-decoration: none;}
+.file:active{background: #00bcaa;}
+
+#tp_new_logo{margin-left: 30px;top:-22px;width: 70px;}
+
+/* CSS Document */
+.popup_bg{width: 100%;background: rgba(0,0,0,0.2);position: absolute;left: 0;top: 0;
+display: none;z-index: 100;height: 100%;}
+/*门诊管理下拉框*/
+.clinic_select{width:320px;height: 152px;padding: 20px 20px 8px 20px;background: #fff;
+box-shadow: 0 0 12px #888888;position: absolute;top: 45px;left: 108px;z-index: 100;display: none;}
+.clinic_select ul{overflow: hidden;margin-right: -20px;}
+.clinic_select ul li{float: left;margin-right: 20px;cursor: pointer;}
+.clinic_select ul li span{display: block;width: 48px;height: 48px;}
+.clinic_select ul li p{font-size: 12px;color: #333;margin-bottom: 12px;margin-top: 2px;}
+
+/*诊所名字下拉菜单*/
+.clinic_name_select{overflow: hidden;position: absolute;top: 80px;left: 20px;
+box-shadow: 0 0 12px #888888;z-index: 100;display: none;}
+.clinic_name_select p{height: 40px;width: 200px;font-size: 14px;color: #333;
+line-height: 40px;background: #fff;cursor: pointer;}
+.clinic_name_select p:hover{background: #fafafa;}
+.fir_p{border:1px solid #fafafa;}
+.clinic_name_select span{margin-left: 20px;}
+.clinic_name_select span img{width: 5px;margin-left: 25px;}
+/*个人信息头像下拉菜单*/
+.per_pho_select{position: absolute;top: 45px;right: 0px;overflow: hidden;width: 120px;
+box-shadow: 0 0 12px #888888;z-index: 200;display: none;background: #fff;}
+.per_pho_select p{height: 40px;line-height: 40px;padding-left: 24px;border-bottom: 1px solid #fafafa;}
+.per_pho_select p:hover{background: #fafafa!important;}
+.per_pho_select p a{font-size: 14px;color: #333;display: block;}
+.per_pho_select p span{color: #00c5b5;}
+/*左边导航收缩*/
+.left_nav_hide{width: 59px;/*border-right:1px solid #f0f0f0;*/background: #fff;float: left;display: none;}
+.left_nav_hide ul li{text-align: center;position: relative;}
+.left_nav_hide ul li div{position: absolute;left: 57px;top: 0;z-index: 100;display: none;
+box-shadow: 0 0 10px #888888;}
+.left_nav_hide ul li div p{font-size: 14px;color: #333;width: 118px;height: 46px;line-height: 46px;
+text-align: center;background: #fff;cursor: pointer;}
+.left_nav_hide ul li div p a{display: block;}
+.left_nav_hide ul li div p:hover{background: #f7f9fa;}
+.left_nav_hide ul .item_type{height: 46px;}
+.left_nav_hide ul .item_type img{margin-top: 12px;}
+.left_nav_hide ul .item_type:hover{background: #f7f9fa;}
+.left_nav_hide ul .item_type:hover div{display: block;}
+.left_nav_hide ul .default_clinic_pho{height: 59px;border-bottom: 1px solid #f0f0f0;margin: 0 15px;}
+.left_nav_hide ul .default_clinic_pho img{margin-top: 13px; margin-left:-1px;}
+
+/*诊所档案*/
+body{background: #f6f6f6;}
+.main_con{margin:0 20px; background: #fff;overflow:hidden;box-shadow:0 2px 6px rgba(0, 0, 0, 0.07);
+/* min-height: 800px; */}
+
+/*.main_con{ display:table-cell; width:100%; height:100%; border:solid 20px #f6f6f6; background-color:#fff }
+#main_con{ display:table-cell; width:100%; height:100%; border:solid 20px #f6f6f6; }*/
+
+.main_left{float: left;/*border-right: 1px solid #f0f0f0;*/width: 199px;height: 100%;overflow: hidden;}
+.main_right{/*margin-left:199px;*/height: 100%;} 
+
+#clinicid_hide{display:none;}
+.right_nav{position: relative;top: 0;left: 0;}
+.right_nav .estblish_one{margin-right:20px;}
+.right_nav #save{float: right;margin: 16px 10px 0 0;height:32px;line-height:28px;}
+.right_nav .edit_one{background-color: #fff;border:1px solid #00c5b5;color: #00c5b5;margin-right:23px;}
+.clinic #clinic_list {float: left;}
+#clinic_list li {width: 168px; height: 40px;line-height:40px;color: #333; border-bottom: 1px solid #eee;font-size: 14px;cursor: pointer;border-left:2px solid #fff;}
+#clinic_list li[data-f='1'] {color: #00c5b5;border-left:2px solid #00c5b5;}
+#clinic_list img {vertical-align: middle;margin-right: 10px;margin-left:30px;width:21px;}
+.clinic .clinic_box {float: left;padding:30px 0 40px 40px;border-left:1px solid #f0f0f0;}
+.clinic_box .selc{margin-top:10px;}
+.clinic_box .errinfo{display: block; font-size: 12px;color: #f86d5a!important;padding-left: 20px;margin-bottom: 4px;margin-top: 4px;visibility: hidden;
+ background:url(/static/account/img/red_exclam.png) left 0px no-repeat;}/*诊所档案错误提示信息*/
+.selc li{float: left;margin-left:8px;}
+.selc li:first-child{margin-left: 0;}
+.selc select{/* color:#b4b4b4; */width: 118px;height:30px;line-height:30px;}
+.clinic_box .mb30{margin-bottom: 30px;}
+.clinic_box p {color: #333;}
+.clinic_box p img{margin-right: 6px;vertical-align: middle;}
+.clinic_box input[type='tel'] {height:30px;border:1px solid #e0e0e0;padding:0 5px;border-radius:2px;}
+.clinic_box input[type='tel']:focus{outline:1px solid #00c5b5;}
+.clinic_box input.errborder{border:1px solid #f86d5a;}
+.clinic_box textarea{width:360px;color: #696969;height: 120px;}
+.clinic_box .tm{margin-top:10px;color:#696969;}
+.clinic_box .tp_img{position: relative;top:0;left: 0;}
+.clinic_box .tp_img .uploadsq{display:none;}
+.clinic_box .tp_img p{position: absolute;top: 0;left:125px;color:#b4b4b4;line-height:normal;}
+.clinic_box .tp_img .tp_new_logo{position: absolute;top:50%;margin-top:-15px;left:110px;width:86px;height: 30px;line-height:30px;text-align:center;border:1px solid #00c5b5;display: block;color: #00c5b5;cursor: pointer;}
+.clinic_box .tp_img #tp_new_credit{display:block; position:absolute;top:0;left:0; width:100px; height:100px; cursor:pointer;padding: 0;border: none;opacity: 0!important;}
+.clinic_box .tp_img #tp_new_lince{display:block; position:absolute;top:0;left:0; width:100px; height:100px;cursor:pointer;padding: 0;border: none;opacity: 0!important;}
+
+.clinic_box #clinic_f {font-size: 14px;overflow: hidden;}
+#clinic_s {font-size: 14px;width: 400px;display: none;}
+#clinic_s .defalut_logo{width: 100px;height: 100px;cursor: pointer;}
+
+#clinic_s .receptionist_logo {cursor: pointer;}
+#clinic_s .receptionist_logo:after {width: 100px;height: 100px;content: attr(data-logo);font-size: 80px;border: 1px dotted #999;}
+#clinic_t {padding-left: 40px;font-size: 14px;color: #333;}
+#clinic_t section:first-child {border-bottom: 1px solid #999;padding-bottom: 20px;}
+#clinic_t p {line-height: 40px;}
+#clinic_t p label {display: inline-block;width: 68px;text-align: left;}
+#clinic_t p b {display: inline-block;margin-right: 2px;width: 86px;height: 9px;background: #ffa94c;}
+#clinic_t section ul li {margin: 22px 0;}
+#clinic_t section ul li:before {content: attr(data-icon);text-align: center;vertical-align: middle;color: #390;display: inline-block;font-size: 24px;line-height: 24px;width: 24px;height: 24px;margin-right: 6px;}
+#clinic_t section ul li:last-child:before {color: #999;border-radius: 50%;border: 1px solid #999;}
+#clinic_t section ul li a {float: right;}
+/*弹窗*/
+#open_chain_box{display: none;}
+#open_chain_box2{display: none;}
+.ale_box{z-index:101;width: 400px;height:512px;position: absolute;top:50%;left:50%;margin-top:-260px;margin-left:-200px;text-align: center;background-color: #fff;}
+.ale_box .box_h{height: 44px;line-height: 44px;position: relative;top: 0;left: 0;border-bottom:1px solid #e0e0e0;}
+.ale_box .box_h .icon{position: absolute;top:50%;cursor:pointer;}
+.ale_box .box_h #close_ale{right:14px;margin-top:-7px;}
+.ale_box .box_h #close_ale2{right:14px;margin-top:-7px;}
+.ale_box .box_h #return{left:14px;margin-top: -7px;}
+.ale_box .box_logo{margin-top: 50px;}
+.ale_box .p1{margin-top:44px;font-size: 14px;}
+.ale_box .p11{margin:16px auto 20px auto;width: 250px;font-size: 14px;}
+.ale_box input[type='text']{width:288px;height: 34px;line-height:34px;padding:0 0 0 10px;}
+.ale_box input[type='button']{width:300px;height: 34px;}
+.ale_box .mt30{margin-top:30px;}
+.ale_box #complete{margin-top:20px;margin-bottom: 30px;}
+.ale_box .code_box{color: #b4b4b4;position:relative;right:0px;top:0px;}
+.code_box #getCode{position:absolute;right:55px;top:2px;cursor:pointer;width:110px;height: 
+32px; color:#00c5b5;background-color:#fff;border:none;text-align:right;}
+.code_box #getCode:focus{outline:none;}
+.code_box #code_time{position:absolute;right:70px;top:8px;}
+#qh_pop_info{display: none; margin-top:-60px;margin-left:-180px;width: 360px;height: 120px;color: #333;font-size: 14px;}
+#qh_pop_info img{margin:0px 20px auto 30px;vertical-align: middle;}
+#qh_pop_info span{line-height:120px;}
+
+#manage_num{background: #f0f0f0;}
+
+/*保存成功提示*/
+#save_success_div{width: 186px;height: 64px;position: absolute;left: 50%;top: 50%;margin-left: -93px;margin-top: -32px;
+z-index: 200;background: #000;opacity: 0.6;text-align: center;line-height: 64px;color: #fff;font-size: 16px;
+border-radius: 2px;display: none;}
+#save_success_div img{vertical-align: middle;margin-right: 15px;margin-bottom: 4px;}

@@ -1,0 +1,208 @@
+<template id="boutiquecourse_id">
+    <div>
+        <!-- 添加选择单课程 -->
+        <addedt-modal :paramcnf="courseDialogParam">
+            <div slot='modal_body' id="modal_courseDialog">
+
+                <div class="h60  bg-white  boxsz pl10 c_both pt10 pb5">
+                    <span style="float:left">
+                        <span class="switch_btn switch_btn_sel" id="single_btn"
+                            @click='switchCourseType(0)'>单课程</span><span class="switch_btn mal10" id="series_btn"
+                            @click='switchCourseType(1)'>系列课</span>
+                    </span>
+                    <div>
+                        <input type="button" value="查询" class="inc_solid f_right mal20" @click="searchlist">
+                        <input type="text" placeholder="请输入课程/直播间名称" value="" class="f_right mal20"
+                            v-model="searchcondition">
+                    </div>
+
+                </div>
+                <div v-if='curIndex == 0' class="addseriescourse_table">
+                    <table class="wp100 unite_table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <!-- <input type="checkbox" name="checkAll" id="singlecourse_checkbox"  v-model="isallselected" @click="chooseall"> -->
+                                </th>
+                                <th>封面</th>
+                                <th>课程名称</th>
+                                <th>课程分类</th>
+                                <th>类型</th>
+                                <th>定价</th>
+                                <th>售价</th>
+                                <th>开播时间</th>
+                                <th>结束时间</th>
+                                <th>课程状态</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="(item,index) in course_list">
+                                <td>
+                                    <input type="checkbox" name="listcheck" v-model="item.selected"
+                                        v-on:click="alocked(index)">
+                                </td>
+                                <td>
+                                    <dl class="classname" style="float:left; width:100px;">
+                                        <img style="height:100%;margin-top:-10px;margin-left:-103px;"
+                                            v-bind:src="item.banner" />
+                                    </dl>
+                                </td>
+                                <td>
+                                    <{item.title}>
+                                </td>
+                                <td>
+                                    <{getShowTypeStr(item.tag)}>
+                                </td>
+                                <td>
+                                    <{coursetype(item.type)}>
+                                </td>
+                                <td>
+                                    <{item.orifee}>
+                                </td>
+                                <td>
+                                    <{item.fee}>
+                                </td>
+                                <td>
+                                    <{item.begintime}>
+                                </td>
+                                <td>
+                                    <{item.autoendtime}>
+                                </td>
+                                <td v-if="item.datastatus == 1">正常</td>
+                                <td v-else if="item.datastatus == 2" style="color: red;">已下架</td>
+                                <td v-else="item.datastatus == 0" style="color: red;">已删除</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div id="addsinglecoursepage" class="vuepage" v-show='pageparam.single.total != 0'>
+                        <yayigj-downlist v-model="pageparam.single.pagesize" :arrslist="pageparam.valueList"
+                            :sizeparam="pageparam.attribute" v-on:getseled="singlePagesizechange"></yayigj-downlist>
+                        <page-bar :cur.sync="pageparam.single.page"
+                            :all.sync="Math.ceil(pageparam.single.total/pageparam.single.pagesize)"
+                            v-on:btnclick="singlePagechange"></page-bar>
+                    </div>
+                </div>
+                <div v-else class="addseriescourse_table">
+                    <table class="wp100 unite_table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <!-- <input type="checkbox" name="checkAll" id="singlecourse_checkbox"  v-model="isallselected" @click="chooseall"> -->
+                                </th>
+                                <th>封面</th>
+                                <th>系列课名称</th>
+                                <th>直播间名称</th>
+                                <th>价格</th>
+                                <th>课程状态</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="(item,index) in course_list">
+                                <td>
+                                    <input type="checkbox" name="listcheck" v-model="item.selected"
+                                        v-on:click="alocked(index)">
+                                </td>
+                                <td>
+                                    <dl class="classname" style="float:left; width:100px;">
+                                        <img style="height:100%;margin-top:-10px;margin-left:-103px;"
+                                            v-bind:src="item.banner" />
+                                    </dl>
+                                </td>
+                                <td v-html="item.title"></td>
+                                <td v-html="item.anchorname"></td>
+                                <td v-html="item.fee"></td>
+                                <td v-if="item.datastatus == 1">正常</td>
+                                <td v-else if="item.datastatus == 2" style="color: red;">已下架</td>
+                                <td v-else="item.datastatus == 0" style="color: red;">已删除</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div id="addseriescoursepage" class="vuepage" v-show='pageparam.series.total != 0'>
+                        <yayigj-downlist v-model="pageparam.series.pagesize" :arrslist="pageparam.valueList"
+                            :sizeparam="pageparam.attribute" v-on:getseled="seriesPagesizechange"></yayigj-downlist>
+                        <page-bar :cur.sync="pageparam.series.page"
+                            :all.sync="Math.ceil(pageparam.series.total/pageparam.series.pagesize)"
+                            v-on:btnclick="seriesPagechange"></page-bar>
+                    </div>
+                </div>
+
+            </div>
+        </addedt-modal>
+
+        <div class="hp100 bg-white">
+            <div class="bline wp100 h50 lh50 boxsz pl10 fz-14 bg-white">首页管理><span class="c_pointer"
+                    @click='goback'>运营中心</span>>精品好课 <input type="button" v-model="uploadTitle"
+                    :class="['inc_solid f_right mat10 mar10']" @click="submitData()"></div>
+
+            <div class="bg-white">
+                <table class="wp100 unite_table">
+                    <thead>
+                        <tr>
+                            <th>位置</th>
+                            <th>课程名称</th>
+                            <th>直播间名称</th>
+                            <th>课程状态</th>
+                            <th>是否显示</th>
+                            <th>封面</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="(item,index) in data_list">
+                            <td>
+                                <div v-if='index == 0 ' class="location_bg1"></div>
+                                <div v-if='index == 1' class="location_bg2"></div>
+                                <div v-if='index == 2 ' class="location_bg3"></div>
+                            </td>
+                            <td v-html="item.title"></td>
+                            <td v-html="item.roomname"></td>
+
+                            <td v-if="item.coursestate == '1'">正常</td>
+                            <td v-else-if="item.coursestate == '2'" style="color: red;">已下架</td>
+                            <td v-else-if="item.coursestate == '0'" style="color: red;">已删除</td>
+                            <td v-else></td>
+
+                            <td v-if="item.datastatus == '1'">显示</td>
+                            <td v-else-if="item.datastatus == '2'" style="color: red;">不显示</td>
+                            <td v-else-if="item.datastatus == '0'" style="color: red;">不显示</td>
+                            <td v-else></td>
+
+                            <td>
+                                <dl v-if='item.showbanner' class="classname" style="float:left; width:100px;position:relative;">
+                                    <img style="height:100%;margin-top:-10px;margin-left:-103px;"
+                                        v-bind:src="item.showbanner" />
+                                        <!-- @click="chooseBanner(index)" -->
+                                        <input type="file" name="file" :id="'course_file'+index"
+                                        style="position: absolute;left: 0;width: 60px;top: 0;bottom: 0;opacity: 0;"
+                                         accept="image/jpeg,image/png,image/jpg">
+                                </dl>
+                                <dl v-else>
+                                    <div class="ptb10 fc-888888">
+                                        <dt class="inc_operation lh20">
+                                            <span>上传封面</span>
+                                            <!-- @click="chooseBanner(index)" -->
+                                            <input type="file" name="file" :id="'course_file'+index"
+                                                style="opacity:0;width: 100px;margin-left: -60px"
+                                                 accept="image/jpeg,image/png,image/jpg">
+                                        </dt>
+                                        <dd v-if='index == 0' class="lh20">最小尺寸580*640</dd>
+                                        <dd v-else-if='index == 1' class="lh20">最小尺寸580*320</dd>
+                                        <dd v-else-if='index == 2' class="lh20">最小尺寸580*320</dd>
+                                        <dd v-else class="lh20">最小尺寸580*320</dd>
+                                    </div>
+                                </dl>
+
+                            </td>
+                            <td class="inc_operation">
+                                <span v-if='!item.courseid' @click="editeRow(1,index)">添加</span>
+                                <!-- <span v-if='!item.courseid||item.courseid' class="fc-333333">|</span> -->
+                                <span v-if='item.courseid' @click="editeRow(2,index)">移除</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</template>

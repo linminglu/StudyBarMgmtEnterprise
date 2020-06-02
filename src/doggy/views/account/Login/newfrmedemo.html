@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<title>新结构demo</title>  
+      
+    <link href="/static/public/css/public/r_reset.css" rel="stylesheet" />
+    <link href="/static/public/css/public/r_table.css" rel="stylesheet" />
+    <link href="/static/public/css/public/r_input.css" rel="stylesheet" />
+    <link href="/static/public/css/public/r_border.css" rel="stylesheet" />
+    <link href="/static/public/css/public/r_common.css" rel="stylesheet" />
+    <link href="/static/public/css/newfrmeCss.css" rel="stylesheet" />    
+    <link href="/static/public/css/public/r_header.css" rel="stylesheet">
+    
+</head>
+
+<body>
+	<table  cellpadding="0" cellspacing="0" width="100%" height="100%" id="mainTable">
+                <tr>
+                    <td height="10">
+                        <div class="tytd_head"><!--头部区域-->
+                            {{template "/Public/public/r_header.html" .}}
+                        </div><!--end头部区域-->
+                    </td>
+                </tr>
+                <tr>
+                        <td class="content_td">
+                            <div class='td_content'>
+                                    <table  id="content_table">
+                                            <tr>
+                                                    <td nowrap="nowrap" id="newFrmeLeft" valign="top" width="56">
+                                                        <!--左部区域-->
+                                                        {{template "/account/Public/r_left.html" .}}
+                                                        <!--end左部区域-->
+                                                    </td>
+                                                     <td valign="top" id="newFrmeContent" valign="top">
+                                                        <!--右部区域--> 
+                                                        
+                                                        <!--end右部区域-->
+                                                </td>
+                                        </tr>
+                                </table>
+                        </div>
+                    </td>
+            </tr>
+	</table>	
+    <script type="text/javascript" src="/static/public/jquery-1.9.1.min.js"></script>    
+    <script type="text/javascript" src="/static/public/js/r_header.js"></script>   
+    <script type="application/javascript">
+	var date='2017-02-07';
+	alert(date.substr(5,2))
+	</script> 
+</body>
+</html>

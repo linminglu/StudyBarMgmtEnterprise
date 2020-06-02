@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>微信申请用户详情</title>
+	<link href="/static/ant/css/antManage.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+    	html,body{width:100%; height:100%;}
+    	body{
+    		background-color: #3c3c3c;
+    	}
+    </style>
+</head>
+<body>
+	<div class="container">
+		<!-- 左边：头部，左侧栏 -->
+		{{template "/ant/Public/antManLeftNav.html"}}
+		<!-- 右边：主体内容 -->
+		<div id="body_right">
+			{{template "/ant/Public/adminUserBtn.html"}}
+			<div id="mainBody">
+				<!-- 面包碎 -->
+				<ul class="breadcrumb">
+					<li>主页</li>
+					<li>微信申请用户详情</li>
+				</ul>
+				{{range $k,$vo :=.infolist}}
+				<div  id="mainInfo">
+					<div class="info">
+						<ul class="stateList">
+							<li>用户名：{{$vo.clinicname}}</li>
+							<li>管家号：{{$vo.dentalid}}</li>
+							<li>申请编号：{{$vo.uid}}</li>
+							<li>套餐：{{if eq $vo.ordertype  "1"}}
+									套餐一
+								{{else if eq $vo.ordertype  "2"}}
+									套餐二
+								{{else if eq $vo.ordertype  "3"}}
+									套餐三
+								{{else if eq $vo.ordertype  "4"}}
+									套餐四
+								{{else if eq $vo.ordertype  "5"}}
+									套餐五
+								{{else if eq $vo.ordertype  "6"}}
+									套餐六
+								{{end}}</li>
+							<li>微信状态：<span class="state">
+								{{if eq $vo.status  "1"}}
+									已开通
+									{{else}}
+									未开通
+								{{end}}
+							</span></li>
+							<li><a href="javascript:history.go(-1);">返回上一页</a></li>
+						</ul>
+						<h2>申报信息</h2>
+						<table>
+							<tr>
+								<td>*联系人：</td>
+								<td>{{$vo.contactname}}</td>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>*联系方式：</td>
+								<td>{{$vo.contactmobile}}</td>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>*微信公众号：</td>
+								<td>{{$vo.wechatid}}</td>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>*商户号：</td>
+								<td>{{$vo.merchant_no}}</td>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>*API密钥：</td>
+								<td>{{$vo.apikey}}</td>
+								<td></td>
+								<td></td>
+							</tr>
+						</table>
+					</div>
+
+				</div>
+				{{if ne $vo.status  "1"}}
+				<input type="button" class="btn-default" value="确定绑定" onclick="Articledel(this,'{{$vo.uid}}')">
+				{{end}}
+				{{end}}
+			</div>
+		</div>
+	</div>
+	<!--  -->
+	<div class="copyright">
+		<p>Copyright 2016  ©  www.dental360.cn. All Rights Reserved.</p>
+	</div>
+
+	<!-- 确定开通弹窗 -->
+	<input type="hidden" id="tmp" />
+	<!-- 图片zoom弹窗 -->
+	<!-- <div class="carrousel">
+		<span class="close entypo-cancel">&Chi;</span>
+		<div class="wrapper"> <img src="" alt="BINGOO" /> </div>
+	</div> -->
+
+    <script type="text/javascript" src="/static/ant/js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="/static/ant/js/placeholade.min.js"></script>
+	<script type="text/javascript" src="/static/ant/js/yg_call_ui_dialog.js"></script>
+	<script type="text/javascript" src="/static/ant/js/antManage.js"></script>
+	<script type="text/javascript">
+	isCurr_left(1);
+	$(document).ready(function(e) {
+		console.log({{.infolist}});
+	     var cj_api=null;
+	     var thisID='';
+	     var thisObj='';
+	});
+	//开通绑定弹窗
+	 $("#tmp").uiDialog({
+		  //digText:'已添加成功是否返回上一页',
+		  buttons:{
+		  	'width':'400px',
+		  	'no_btn_title':'取消',
+		  	"no_btn_event":function(){
+		  		cj_api.close();
+		  	},
+		  	'ok_btn_title':"确定绑定",
+		  	'ok_btn_event':function(){
+		  		statusChange(thisObj,thisID);
+		  		cj_api.close();
+		  	}
+			  }// end buttons
+			},function(){
+				cj_api=this;
+			});
+
+	 function Articledel(obj,id){
+	 	thisObj=obj;
+	 	thisID=id;
+	 	cj_api.show({content:"提交后该申请状态将变为已绑定，请确定是否绑定",leftBtnTitle:"取消",rightBtnTitle:"确定绑定"});
+	 }
+
+
+	 function statusChange(obj,id){
+	 	console.log(id);
+	 	var _this = $(obj);
+	 	console.log(obj);
+	 	var _status = $(".state");
+	 	$.ajax({
+	 		url: '/member/Bind',
+	 		type: 'POST',
+	 		dataType: 'json',
+	 		data: {uid:id},
+	 	})
+	 	.done(function(data) {
+	 		console.log(data);
+	 		if( data.code ==1){
+	 			_this.addClass('hide');
+	 			_status.text("已开通");
+	 		}
+	 	})
+	 	.fail(function() {
+	 	})
+	 	.always(function() {
+	 		//_this.removeClass('load');
+	 	});
+	 }
+
+	</script>
+</body>
+</html>

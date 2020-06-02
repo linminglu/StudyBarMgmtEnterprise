@@ -1,0 +1,31 @@
+
+<script type="text/javascript" src="/static/account/js/placeholade.min.js"></script>
+<script type="text/javascript" src="/static/public/js/r_header.js"></script>
+<script type="text/javascript">
+	//-----------------------------------------
+	//左侧导航展开收缩
+	//-----------------------------------------
+	$(".r_left_head").click(function(){
+		$("#leftFrme").stop().animate({"width":"60px"},'fast',function(){});
+		$(".main_left").hide();
+		$(".left_nav_hide").show();
+		localStorage.setItem("left_close_open","close");
+	})
+	$(".default_clinic_pho").click(function(){
+		$("#leftFrme").stop().animate({"width":"200px"},'fast',function(){
+			$(".left_nav_hide").css("cssText", "display:none!important;");
+			$(".main_left").show();
+		});
+		localStorage.setItem("left_close_open","open");
+	})
+</script>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?3fa86f7400a135441df091c0aa2156af";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+

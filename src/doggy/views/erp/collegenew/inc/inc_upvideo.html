@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+        <title>视频上传</title>
+        <link href="/static/erp/collegenew/css/base.css" rel="stylesheet" />
+        <link href="/static/public/css/public/r_ico.css" rel="stylesheet" />
+        <link href="/static/public/css/public/r_input.css" rel="stylesheet" />
+		<link href="/static/erp/collegenew/css/user.css" rel="stylesheet" />
+		<link href="/static/erp/collegenew/css/add_micro.css" rel="stylesheet" />
+        <style type="text/css">
+        .btn{width: 100px;font-size: 16px;color: #333;line-height: 30px;margin:auto 10px;}
+        </style>
+	</head>
+	<body>
+        <div style="text-align:center;">
+            <video id="videofile"  height="120" controls src="">
+            </video>
+        </div>
+        <div id="ossfile" style="width: 400px;margin:0 auto;font-size: 14px;color: #333;line-height: 30px;text-align: center;"></div>
+        <div>
+            <div id="container" style="width: 380px;height:35px;margin:0 auto;text-align: center;">
+                <a id="selectfiles" href="javascript:void(0);" style="background-color: #982929;
+                color: white;" class='btn'>选择文件</a>
+                <!-- <a id="postfiles" href="javascript:void(0);"  style="background-color: #982929;
+                color: white;" class='btn'>开始上传</a> -->
+            </div>
+        </div>
+        <pre id="console"></pre>
+        <div class="submit_from">
+            <input type="submit" class="fillBtn" id="fillBtn_set" name="" value="确定" disabled>
+            <input type="submit" class="cancelBtn" id="cancelBtn_set" name="" value="取消">
+        </div>
+    </body>
+    <script type="text/javascript" src="/static/public/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="/static/erp/collegenew/js/lib/plupload-2.1.2/js/plupload.full.min.js"></script>
+	<script type="text/javascript" src="/static/erp/collegenew/js/inc_upvideo.js"></script>
+</html>

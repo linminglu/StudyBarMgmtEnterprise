@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>登录</title>
+	{{template "../public/link/css_inc.html" .}}
+	<link href="/static/erp/collegenew/css/login.css" rel="stylesheet" />
+</head>
+
+<body class="login_body">
+	<div class="login_main">
+		<div class="login_head">
+			<img src="/static/erp/collegenew/img/login_new_logo.png">
+		</div>
+		<div class="">
+			<span class="account_btn" id="account_btn">账号密码</span><span class="code_btn code_btn_sel"
+				id="code_btn">验证码</span>
+		</div>
+		<div class="input_area" id="phone_area" style="display:none">
+			<ul>
+				<li class="user_icon"><input type="text" id="phone_input" placeholder="请输入手机号"><img
+						src="/static/erp/img/login/user_icon.png"></li>
+				<li class="pw_icon">
+					<input type="number" id="msgcode_input" placeholder="请输入验证码"><img
+						src="/static/erp/img/login/pw_icon.png">
+					<button type="button" id="send_btn" class="sendcode_btn">发送验证码</button>
+				</li>
+			</ul>
+		</div>
+		<div class="input_area" id="account_area" style="display:none">
+			<ul>
+				<li class="user_icon"><input type="text" id="user_input" placeholder="请输入账号"><img
+						src="/static/erp/img/login/user_icon.png"></li>
+				<li class="pw_icon"><input type="password" id="pw_input" placeholder="请输入密码"><img
+						src="/static/erp/img/login/pw_icon.png"></li>
+			</ul>
+		</div>
+		<div>
+			<input type="button" id="login_button" value="登录">
+		</div>
+	</div>
+</body>
+{{template "../public/link/js_inc.html" .}}
+<script type="text/javascript" src="/static/erp/collegenew/js/md5.js"></script>
+<script type="text/javascript" src="/static/erp/collegenew/js/newlogin.js"></script>
+
+</html>

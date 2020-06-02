@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>订单中心</title>
+		{{template "../public/link/css_inc.html" .}}
+		<link href="/static/erp/css/profile.css" rel="stylesheet" />
+        <link href="/static/erp/css/user.css" rel="stylesheet" />
+	</head>
+	<body>
+		{{template "../public/public/header.html" .}}
+			<div class="mainFrme">
+				{{template "../public/public/left.html" .}}
+				<div class="rightFrme">
+                    <div class="crumbs"><a href="###">主页</a> > <a href="###">平安活动管理</a></div>
+                    <div class="cont">
+						<div class="pageHeader">
+                            <a href="#" id="nowPage">订单中心</a><a href="#">产品中心</a><a href="#">签约门诊</a>
+                        </div>
+                        <div class="search">
+							<label>下单时间</label>
+							<div id="BeginDate" class="calendar"></div>
+							<label>至</label>
+							<div id="EndDate" class="calendar"></div>
+							<label>购买产品</label>
+							<div id="buyPro" class="buyPro"></div>
+							<label>订单状态</label>
+							<div id="orderState" class="orderState"></div>
+							<label>购买平台</label>
+							<div id="buyStage" class="buyStage"></div>
+                            <label>支付方式</label>
+							<div id="payWay" class="payWay"></div>
+							<input class="ml20 w240" type="text" placeholder="请输入标题/编号等条件查询" />
+							<input type="button" value="查询" />
+							<div class="excel">导出excel</div>
+						</div>
+						<div class="f_data">
+							<table>
+								<tr>
+									<th align="center">订单编号</th>
+									<th align="left">下单时间</th>
+									<th align="left">下单用户</th>
+									<th align="left">购买产品</th>
+									<th align="center">购买数量</th>
+									<th align="left">金额</th>
+									<th align="left">支付方式</th>
+									<th align="left">接单门诊</th>
+									<th align="left">就诊人/就诊时间</th>
+									<th align="center">状态</th>
+                                    <th align="center">操作</th>
+								</tr>
+								<tr>
+									<td align="center">666666</td>
+									<td align="left">
+                                        <p>2016.12.14</p>
+                                        <p>12:26:25</p>
+                                    </td>
+									<td align="left">13800138000</td>
+									<td align="left">
+                                        <p>年度牙齿健康高级</p>
+                                        <p>维护套餐</p>
+                                    </td>
+									<td align="center">平安医生</td>
+									<td align="left">34</td>
+									<td align="left">¥ 688</td>
+									<td align="left">微信支付</td>
+									<td align="left">桃园美牙</td>
+                                    <td align="left">
+                                        <p><span style="margin-right:10px;">张三</span><span style="margin-right:10px;">2016.12.14</span><span>12:12:35</span></p>
+                                         <p><span style="margin-right:10px;">张三</span><span style="margin-right:10px;">2016.12.14</span><span>12:12:35</span></p>
+                                    </td>
+									<td align="center"><a herf="#">查看</a>&nbsp;&nbsp;&nbsp;<a href="#">用户退款</a></td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		{{template "../public/public/footer.html" .}}
+        <!--确认退款弹窗-->
+        <div class="reFoundWin"></div>
+        <div class="reFoundCon">
+            <div class="rfc_tit">请核实已退款后操作<img src="/static/erp/img/close.png"></div>
+            <ul>
+                <li><span class="rfc_sp1">申请退款订单号：</span><span class="rfc_sp2">98563321410441</span></li>
+                <li><span class="rfc_sp1">申请退款时间：</span><span class="rfc_sp2">2016.12.15  12:25:30</span></li>
+                <li><span class="rfc_sp1">订单金额：</span><span class="rfc_sp2">¥ 688</span></li>
+                <li><span class="rfc_sp1">退款金额：</span><span class="rfc_sp2">¥ 688</span></li>
+            </ul>
+            <input type="button" value="确认退款" id="refoundConfim">
+        </div>
+	</body>
+	{{template "../public/link/js_inc.html" .}}
+    <script type="text/javascript">
+		$(function(){
+			$("#BeginDate").yayigj_date_Sel();
+			$("#EndDate").yayigj_date_Sel();
+			
+			//加载页面获取当天日期
+			$("#BeginDate").getCurrday();
+			$("#EndDate").getCurrday();
+
+            $("#buyPro").yayigj_downlist({    //购买产品
+                _hiddenID:'clinicid2',
+                _valtype:'text',
+                _data:[
+                    {'key':'年度牙齿健康套餐'},
+                ]	 
+            });
+
+            $("#orderState").yayigj_downlist({    //订单状态
+                _hiddenID:'clinicid2',
+                _valtype:'text',
+                _data:[
+                    {'key':'已使用'},
+                    {'key':'待使用'},
+                    {'key':'申请退款'},
+                    {'key':'申请未通过'},
+                    {'key':'退款中'},
+                    {'key':'已退款'}
+                ]	 
+            });
+
+            $("#buyStage").yayigj_downlist({    //购买平台
+                _hiddenID:'clinicid2',
+                _valtype:'text',
+                _data:[
+                    {'key':'平安医生'},
+                ]	 
+            });
+
+            $("#payWay").yayigj_downlist({    //支付方式
+                _hiddenID:'clinicid2',
+                _valtype:'text',
+                _data:[
+                    {'key':'微信支付'},
+                ]	 
+            });
+		});
+	</script>
+</html>

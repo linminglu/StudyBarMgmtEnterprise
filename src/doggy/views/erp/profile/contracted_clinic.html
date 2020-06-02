@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>签约门诊</title>
+		{{template "../public/link/css_inc.html" .}}
+		<link href="/static/erp/css/profile.css" rel="stylesheet" />
+        <link href="/static/erp/css/user.css" rel="stylesheet" />
+	</head>
+	<body>
+		{{template "../public/public/header.html" .}}
+			<div class="mainFrme">
+				{{template "../public/public/left.html" .}}
+				<div class="rightFrme">
+                    <div class="crumbs"><a href="###">主页</a> > <a href="###">平安活动管理</a></div>
+                    <div class="cont">
+						<div class="pageHeader">
+                            <a href="#">订单中心</a><a href="#">产品中心</a><a href="#"  id="nowPage">签约门诊</a>
+                        </div>
+                        <div class="search search_pro">
+							<label>签约时间</label>
+							<div id="BeginDate" class="calendar"></div>
+							<label>至</label>
+							<div id="EndDate" class="calendar"></div>
+							<label>状态</label>
+							<div id="proState" class="proState"></div>
+							<input class="ml20 w240" type="text" placeholder="请输入标题/编号等条件查询" />
+							<input type="button" value="查询" />
+							<div class="excel" style="">导出excel</div>
+						</div>
+						<div class="f_data">
+							<table>
+								<tr>
+									<th align="center">签约时间</th>
+									<th align="left">门诊名称</th>
+									<th align="left">管家号</th>
+									<th align="left">门诊星级</th>
+									<th align="center">合同期限</th>
+									<th align="left">门诊地址</th>
+									<th align="left">就诊人次</th>
+                                    <th align="center">状态</th>
+                                    <th align="center">操作</th>
+								</tr>
+								<tr>
+									<td align="center">2016.12.14   12:25:36</td>
+									<td align="left">桃园牙科</td>
+									<td align="left">25481</td>
+									<td align="left">四星级</td>
+                                    <td align="left">2016.12.14-2016.12.14</td>
+									<td align="left">
+                                        <p>广东省深圳市南山区</p>
+                                        <p>丽水路南同富裕10-3</p>
+                                    </td>
+									<td align="left">225484</td>
+									<td align="left">在售</td>
+									<td align="center"><a herf="#">查看</a>&nbsp;&nbsp;&nbsp;<a href="#">停售</a>&nbsp;&nbsp;&nbsp;<a href="#">修改</a>&nbsp;&nbsp;&nbsp;<a href="#">删除</a></td>
+								</tr>
+                                <tr>
+									<td align="center">2016.12.14   12:25:36</td>
+									<td align="left">桃园牙科</td>
+									<td align="left">25481</td>
+									<td align="left">四星级</td>
+                                    <td align="left">2016.12.14-2016.12.14</td>
+									<td align="left">
+                                        <p>广东省深圳市南山区</p>
+                                        <p>丽水路南同富裕10-3</p>
+                                    </td>
+									<td align="left">225484</td>
+									<td align="left">在售</td>
+									<td align="center"><a herf="#">查看</a>&nbsp;&nbsp;&nbsp;<a href="#">停售</a>&nbsp;&nbsp;&nbsp;<a href="#">修改</a>&nbsp;&nbsp;&nbsp;<a href="#">删除</a></td>
+								</tr>
+                                <tr>
+									<td align="center">2016.12.14   12:25:36</td>
+									<td align="left">桃园牙科</td>
+									<td align="left">25481</td>
+									<td align="left">四星级</td>
+                                    <td align="left">2016.12.14-2016.12.14</td>
+									<td align="left">
+                                        <p>广东省深圳市南山区</p>
+                                        <p>丽水路南同富裕10-3</p>
+                                    </td>
+									<td align="left">225484</td>
+									<td align="left">在售</td>
+									<td align="center"><a herf="#">查看</a>&nbsp;&nbsp;&nbsp;<a href="#">停售</a>&nbsp;&nbsp;&nbsp;<a href="#">修改</a>&nbsp;&nbsp;&nbsp;<a href="#">删除</a></td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		{{template "../public/public/footer.html" .}}
+	</body>
+	{{template "../public/link/js_inc.html" .}}
+    <script type="text/javascript">
+		$(function(){
+			$("#BeginDate").yayigj_date_Sel();
+			$("#EndDate").yayigj_date_Sel();
+			
+			//加载页面获取当天日期
+			$("#BeginDate").getCurrday();
+			$("#EndDate").getCurrday();
+
+            $("#proDep").yayigj_downlist({    //proDep
+                _hiddenID:'clinicid2',
+                _valtype:'text',
+                _data:[
+                    {'key':'洁牙'},
+                ]	 
+            });
+
+            $("#proState").yayigj_downlist({    //状态
+                _hiddenID:'clinicid2',
+                _valtype:'text',
+                _data:[
+                    {'key':'上架'},
+                ]	 
+            });
+        })
+	</script>
+</html>

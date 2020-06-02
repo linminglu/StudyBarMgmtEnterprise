@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+<title>完成</title>
+<meta charset="utf-8" />
+<!--<include file="Public:css_inc" />-->
+ {{template "/account/Public/css_inc.html"  .}}
+<link rel="stylesheet" type="text/css" href="/static/account/css/login.css">
+</head>
+
+<body>
+<!--<include file="Public:login_header" />-->
+ {{template "/account/Public/login_header.html"  .}}
+	<!-- 身份验证 -->
+	<div class="psw_box fix">
+		<div class="step">
+			<div class="step_ok">
+				<div class="step_ok_bg"><img src="/static/account/img/pw_ok.png" alt=""/></div>
+				<p>恭喜！重新找回密码，马上<a href="/login">登录</a>吧</p>
+			</div>
+		</div>
+	</div>	
+ {{template "/account/Public/footer_new.html"  .}}
+</body>
+</html>

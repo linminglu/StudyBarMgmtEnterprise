@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>推广码管理</title>
+	<link href="/static/ant/css/calendarCommon.css" rel="stylesheet" type="text/css">
+	<link href="/static/ant/css/antManage.css" rel="stylesheet" type="text/css">
+	<script type="text/javascript" src="/static/ant/js/jquery-1.9.1.min.js"></script>
+    <style type="text/css">
+    	html,body{width:100%; height:100%;}
+    	body{background-color: #3c3c3c;}
+    	#m table td{text-align: center;}
+    </style>
+</head>
+<body>
+	<div class="container">
+		<!-- 左边：头部，左侧栏 -->
+		{{template "/ant/Public/antManLeftNav.html"}}
+		<!-- 右边：主体内容 -->
+		<div id="body_right">
+			{{template "/ant/Public/adminUserBtn.html"}}
+			<div id="mainBody">
+				<!-- 面包碎 -->
+				<ul class="breadcrumb">
+					<li>主页</li>
+					<li>推广码管理</li>
+				</ul>
+				<div  id="mainContent">
+					<div class="title">
+						<h1>推广码管理
+						<a id="excelUrl" href="/member/PromoListTable?sendTimeStar=&sendTimeEnd=">Excel导出</a></h1>
+
+					</div>
+					<div id="search">
+
+							申请时间：<input name="sendTimeStar" id="sendTimeStar" type="text" data-f="cla2">至&nbsp;<input name="newsSendTime1" id="sendTimeEnd" type="text" data-f="cla2">
+							&nbsp;&nbsp;&nbsp;
+							服务归属：<select name="" id="area">
+								<option value="" selected="selected">全部</option>
+								<option value="华北1区">华北1区</option>
+								<option value="华北2区">华北2区</option>
+								<option value="华东1区">华东1区</option>
+								<option value="华东2区">华东2区</option>
+								<option value="华南区">华南区</option>
+								<option value="东北区">东北区</option>
+								<option value="西南区">西南区</option>
+								<option value="客服推广">客服推广</option>
+							</select>
+							&nbsp;&nbsp;&nbsp;
+							<input name="newsTitle" type="text" id="txtFind" placeholder="请输入地推人员名称/推广码搜索"><input type="submit" class="btn_find" value="搜索">
+
+							<a href="javascript:void(0);" class="btn-default-rev addPromCode" onclick="formWinClick()">添加推广码</a>
+					</div>
+					<div id="m">
+						<table border="0" cellspacing="1">
+							<thead>
+							<tr>
+								<th>编号</th>
+								<th>推广人名称</th>
+								<th>服务归属</th>
+								<th>推广码</th>
+								<th>申请诊所数</th>
+								<th>操作</th>
+							</tr>
+							</thead>
+							<tbody id="list">
+							</tbody>
+						</table>
+					</div>
+					<div class="table_footer">{{template "/ant/Public/pageInfo.html"}}</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<!--  -->
+	<div class="copyright">
+		<p>Copyright 2016  ©  www.dental360.cn. All Rights Reserved.</p>
+	</div>
+
+	<!-- 确定删除弹窗 -->
+	<input type="hidden" id="tmp" />
+	<!-- 表单弹窗 -->
+	<div class="formWin">
+		<div class="wrapper">
+			<ul>
+				<form  name="add" method="post" action=""></form>
+				<li class="title">推广码信息填写</li>
+				<li><span>推广人名称：</span><input type="text" id="staff" placeholder="名字"></li>
+				<li><span>服务归属：</span>
+					<select name="area" id="codeArea" value="1">
+						<option value="华北1区" selected="selected">华北1区</option>
+						<option value="华北2区">华北2区</option>
+						<option value="华东1区">华东1区</option>
+						<option value="华东2区">华东2区</option>
+						<option value="华南区">华南区</option>
+						<option value="东北区">东北区</option>
+						<option value="西南区">西南区</option>
+						<option value="客服推广">客服推广</option>
+					</select></li>
+				<li><span>推广码：</span><input type="text" id="code" placeholder="HBZS2001">
+				<span class="errTip hide">推广码已存在！</span></li>
+				<li class="tip"><span>*推广码组成：</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;区域及姓名第一个字母大写+数字编号</li>
+			</ul>
+			<input type="button" value="取消" class="btn-default-rev close">
+			<input type="submit" value="确定" class="btn-default" onclick="addCode()">
+		</div>
+	</div>
+
+
+    <script type="text/javascript" src="/static/ant/js/placeholade.min.js"></script>
+	<script type="text/javascript" src="/static/ant/js/lyz.calendar.min.js"></script>
+	<script type="text/javascript" src="/static/ant/js/table2Excel/jquery.base64.js"></script>
+	<script type="text/javascript" src="/static/ant/js/table2Excel/tableExport.js"></script>
+	<script type="text/javascript" src="/static/ant/js/yg_call_ui_dialog.js"></script>
+	<script type="text/javascript" src="/static/ant/js/antManage.js"></script>
+
+	<script type="text/javascript">
+	isCurr_left(3);
+	$(document).ready(function(e) {
+	     var cj_api=null;
+	     var thisID='';
+		 searchInfo(1,10);
+
+		 $('.btn_find').click(function(){
+		 	console.log("111");
+		 	searchInfo(1,10);
+			$(".pageCurr").val(1)
+		 })
+	});
+
+	//添加推广码
+	function addCode(){
+		if($("#staff").val()&& $("#code").val().trim()){
+			$.ajax({
+	            url: '/member/AddProm',
+	            type: 'post',
+	            dataType: 'json',
+	            data:{'area':$("#codeArea").val(),"staff":$("#staff").val().trim(),'code':$("#code").val().trim()}
+	        })
+	        .done(function(re) {
+	            if(re["code"]=='1'){
+	        		searchInfo(1,10);
+					$(".close").click();
+	            }else{
+	                $('.errTip').text(re.info);
+	                $('.errTip').removeClass('hide');
+	            }
+			  })
+		}else{
+			 $('.errTip').text("信息请填写完整");
+             $('.errTip').removeClass('hide');
+		}
+	}
+
+	//查询推广码
+	function searchInfo(num,val){
+		var data={};
+		data.start_time=$("#sendTimeStar").val();
+		data.end_time=$("#sendTimeEnd").val();
+		data.per_page=parseInt($("#rows_n").val());
+		data.page=parseInt(num);
+		data.area=$("#area").val();
+		data.conditon=$("#txtFind").val();
+
+		//清空没有数据的搜索条件
+		for(name in data){
+ 			if( data[name] == ''){
+ 				delete data[name];
+ 			}
+ 		}
+
+ 		console.log(data);
+		$.ajax({
+            url: '/member/GetPromCodeList',
+            type: 'post',
+            dataType: 'json',
+            data:data
+        })
+		.done(function(re) {
+			$("#list").empty();
+			if(re["code"]=='1'  && re["list"]){
+				var str='';
+				$.each(re['list'],function(index,el){
+					str+='<tr><td>'+el.promoid+'</td>'+
+					'<td>'+el.staff+'</td>'+
+					'<td>'+el.area+'</td>'+
+					'<td>'+el.code+'</td>'+
+					'<td>'+el.total+'</td>'+
+					'<td><a href="/member/PromCodeDetail?uid='+el.promoid+'&staff=' + el.staff +  '&area=' + el.area + '&code=' + el.code +'&total=' + el.total + '">查看</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+
+					'<a href="javascript:void(0);" onclick="Articledel(this,\''+ el.promoid+'\')">删除</a></td>'
+					'</tr>'
+				})
+				setPageList(re['totalcount']);
+				$("#list").empty().append(str);
+			}else{
+				setPageList(re['totalcount']);
+				$("#list").empty();
+			}
+		})
+	}
+	//表单弹窗
+	function  formWinClick(){
+		var formWin = $( ".formWin" );
+		formWin.fadeIn( 200 );
+
+		formWin.find( ".close" ).click( function(e){
+			formWin.fadeOut( 200 );
+		});
+	}
+	//删除的弹窗
+	 $("#tmp").uiDialog({
+		  //digText:'已添加成功是否返回上一页',
+		  buttons:{
+		  	'width':'400px',
+		  	'no_btn_title':'取消',
+		  	"no_btn_event":function(){
+		  		cj_api.close();
+		  	},
+		  	'ok_btn_title':"确定删除",
+		  	'ok_btn_event':function(){
+		  		delCode(thisObj,thisID);
+		  		searchInfo(1,10);
+		  		cj_api.close();
+		  	}
+			  }// end buttons
+			},function(){
+				cj_api=this;
+			});
+
+	function Articledel(obj,id){
+	 	thisObj=obj;
+	 	thisID=id;
+	 	cj_api.show({content:"提交后该记录将会删除，请确定是否删除",leftBtnTitle:"取消",rightBtnTitle:"确定删除"});
+	 }
+
+	 //Calender插件
+	$("#sendTimeStar").on({
+		focus:function(){$(".calendar_ico").attr("src","/static/ant/img/calendar_ico2.png")},
+		blur:function(){$(".calendar_ico").attr("src","/static/ant/img/calendar_ico.png")},
+	})
+	$("#sendTimeStar").calendar({
+		callback: function () {
+			detectionDate();
+			$("#sendTimeStar").removeClass('active');
+		}
+	});
+	$("#sendTimeEnd").on({
+		focus:function(){$(".calendar_ico").attr("src","/static/ant/img/calendar_ico2.png")},
+		blur:function(){$(".calendar_ico").attr("src","/static/ant/img/calendar_ico.png")},
+	})
+	$("#sendTimeEnd").calendar({
+		callback: function () {
+			detectionDate();
+			$("#sendTimeEnd").removeClass('active');
+			//更新excelUrl参数
+			$("#excelUrl").attr("href","/member/PromoListTable?sendTimeStar=" + $("#sendTimeStar").val() +"&sendTimeEnd=" +  $("#sendTimeEnd").val())
+		}
+	});
+	function detectionDate(){
+		if($("#sendTimeStar").val() != '' && $("#sendTimeEnd").val()!=''){
+			var reg = new RegExp("-","g")
+			var start = $("#sendTimeStar").val().replace(reg,"");
+			console.log(start);
+			var end = $("#sendTimeEnd").val().replace(reg,"");
+			console.log(end);
+			if(start > end){
+				alert("结束时间不应可以早于开始时间!");
+				$("#sendTimeStar").val('');
+				$("#sendTimeEnd").val('');
+			}
+		}
+	}
+	//删除推广码
+	function delCode(obj,id){
+
+	 	var _this = $(obj);
+
+	 	var _status = _this.parent().parent();
+
+	 	//_status.addClass('hide');
+
+	 	$.ajax({
+            url: '/member/DelProm',
+            type: 'POST',
+            dataType: 'json',
+            data: {id: id},
+        })
+	 	.done(function(data) {
+	 		if( data == 1){
+	 			return false;
+	 		}
+      	})
+	 	.fail(function() {
+	 	})
+	 	.always(function() {
+	 	});
+	}
+	</script>
+</body>
+</html>

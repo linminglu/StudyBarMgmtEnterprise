@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>平安验证</title>
+		{{template "../public/link/css_inc.html" .}}
+		<link href="/static/erp/css/user.css" rel="stylesheet" />
+		<link href="/static/erp/css/product.css" rel="stylesheet" />
+		<style>
+			.excel{margin:0;}
+			#TableList tr td:nth-child(4){width:50px;}
+			#TableList p{line-height:28px;}
+			#sendState{width: 80px;height:30px;border:1px solid #e0e0e0;padding-left:10px;float: left;}
+			#modifyPop{width:500px;height:240px;background-color: #fff;}
+			#modifyPop p{width:80%;margin:20px auto;}
+			.l_label{display: inline-block;width: 70px;margin-right: 20px;}
+		</style>
+	</head>
+	<body>
+		{{template "../public/public/header.html" .}}
+			<div class="mainFrme">
+				{{template "../public/public/left.html" .}}
+				<div class="rightFrme">
+					<div class="crumbs"><a href="###">主页</a> > <a href="###">平安验证</a></div>
+					<div class="cont">
+						<div class="pageHeader">
+							<a class="head_link" href="/butlerp/clinicaudit/clinics">门诊列表</a><a  class="head_link head_link_active" href="/butlerp/clinicaudit/signclinic">平安验证</a>
+							<!--<div class="backPage"><a href="/butlerp/product/AddNewProTpl">新增产品</a></div>-->
+							<input type="hidden" name="htag" value="1"> <!--隐藏的标记，用来判断左边的显影-->
+						</div>
+                        <div class="search">
+                            <!--<div class="search_l">-->
+                                <!--<label>创建时间</label>
+                                <input id="BeginDate" class="calendar" readonly>
+                                <label>至</label>
+                                <input id="EndDate" class="calendar" readonly>-->
+                                <!--<label>状态</label>
+                                <input id="sendState" class="sendState" readonly>-->
+                                <!--<label>类型</label>
+                                <input id="sendType" class="sendType">
+                                <label>发送渠道</label>
+                                <input id="sendStage" class="sendStage">-->
+                            <!--</div>-->
+                            <!--<div class="search_r">-->
+								 <input class="ml20 w240" type="text" placeholder="请输入门诊名称/管家号等条件查询" id="condition" />
+								 <input type="button" value="查询"  id="SelcBtn" class='search_btn'/>
+							     <!--<div class="excel">导出excel</div>-->
+                            <!--</div>-->
+						</div>
+						<div class="f_data" id="scroll_div_1">
+							<table id="TableList">
+								
+							</table>
+						</div>
+						<div id="TablelistPage">
+                                    
+                        </div>
+					</div>
+				</div>
+			</div>
+			<div id="modifyPop">
+				<div class="title">修改</div>
+				<div class="popConent">
+					<p><span class="l_label">平安检验ID</span> <input type="text" id="paID"></p>
+					<p><span class="l_label">平安密钥</span> <input type="text" id="paKey"></p>
+					<input type="hidden" id="SignID">
+				</div>
+				<div class="popFooter">
+					<input type="button" class="fillBtn mr10" value="确定" onclick="modify()">
+					<input type="button" class="cancelBtn" value="取消" onclick="closeresign()">
+				</div>
+			</div>
+
+		{{template "../public/public/footer.html" .}}
+	</body>
+	{{template "../public/link/js_inc.html" .}}
+	<script type="text/javascript" src="/static/public/yayigj_downlist.js"></script>
+	<script type="text/javascript" src="/static/public/yayigj_pop_window.js"></script>
+	<script type="text/javascript" src="/static/public/yayigj_dialog_box.js"></script>
+	<script type="text/javascript" src='/static/erp/js/signclinic.js'></script>
+</html>

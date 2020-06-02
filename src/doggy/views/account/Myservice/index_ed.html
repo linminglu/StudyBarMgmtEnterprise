@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+<head>
+<title>我的服务(已开通)</title>
+<meta charset="utf-8" />
+<!--<include file="Public:css_inc"/>-->
+{{template "/account/Public/css_inc.html" .}}
+<link rel="stylesheet" type="text/css" href="/static/account/css/memberCenter.css">
+</head>
+
+<body>
+<!-- 头部 -->
+	 <!--<include file="Public:memberCen_hea_new" />-->
+   {{template "/account/Public/memberCen_hea_new.html" .}}
+       <div class="main_con">
+       		<div class="main_left">
+                <!--<include file="Public:left_nav"/>-->
+                {{template "/account/Public/left_nav.html" .}}
+          </div>		
+			<!-- 未开通的服务 -->
+    			<div class="main_right">
+    				<div class="right_box"> 
+                <div class="service" id="using">                                 
+        					<h2><span class="h_icon"><img src="/static/account/img/using.png" alt=""/></span>正在使用的服务</h2>
+        					<ul class="fix">
+        						<li class="ser_item">											
+        								<img src="/static/account/img/hos_logo1.png" alt="">
+                        <div id="chain_mark">连锁</div>
+        								<div id="item_name">志美口腔连锁医院</div>
+                        <p class="item_num"><em>3</em>家诊所，<em>102</em>名员工正在使用</p>
+        								<a href="#" title="">进入管理</a>
+        							  <p class="myClin">我加入的诊所</p>
+        						</li> 	    
+                    <li class="ser_item">                     
+                        <img src="/static/account/img/hos_logo2.png" alt="">
+                        <!-- <div id="chain_mark">连锁</div> -->
+                        <div id="item_name">广州协达口腔连锁医院</div>
+                        <p class="item_num"><em>1</em>家诊所，<em>42</em>名员工正在使用</p>
+                        <a href="#" title="">进入管理</a>
+                        <p class="myClin">我创建的诊所</p>
+                    </li>   
+        					</ul>
+                </div>
+            </div>        
+    		  </div>
+          <div class="main_right mt20">
+             <div class="right_box">
+                <div class="service" id="useNo">                                 
+                  <h2><span class="h_icon"><img src="/static/account/img/useNo.png" alt=""/></span>未开通的服务</h2>   
+                  <ul class="fix">
+                    <li class="ser_item">                    
+                        <img src="/static/account/img/bu_sc_logo.png" alt="">
+                       <!--  <div id="chain_mark">连锁</div> -->
+                        <div id="item_name">义齿加工平台</div>
+                       <!--    <p class="item_num"><em>3</em>家诊所，<em>102</em>名员工正在使用</p>
+                        <a href="#" title="">进入管理</a>
+                        <p class="myClin">我加入的诊所</p> -->
+                        <a class="sub_serv">开通服务</a>
+                    </li>       
+                    <li class="ser_item">
+                      <img src="/static/account/img/plat_logo.png" alt="">
+                      <div id="item_name">义齿加工平台</div>
+                      <a class="stay">敬请期待</a>
+                    </li>
+                    <li class="ser_item">
+                      <img src="/static/account/img/yygj_logo.png" alt="">
+                      <div id="item_name">义齿加工平台</div>
+                      <a class="stay">敬请期待</a>
+                    </li>
+                  </ul>
+                </div>  
+              </div>			
+		      </div>
+  </div>
+
+  <!--<include file="Public:footer_new"/>
+  <include file="Public:js_inc"/>-->
+  {{template "/account/Public/footer_new.html" .}}
+   {{template "/account/Public/js_inc.html" .}}
+</body>
+</html>

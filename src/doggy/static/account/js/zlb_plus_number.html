@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>上传插件</title>
+    <style type="text/css">
+	    *{ font-family:微软雅黑}
+		body,html{margin:0px; padding:0px;  }
+	</style>    
+<!--    <link rel="stylesheet" href="css/jquery.Jcrop.min.css" type="text/css" />
+    <link rel="stylesheet" href="css/animate.css" type="text/css" />-->
+    <script language="javascript" src="jquery-1.9.1.min.js"></script>
+    <script language="javascript" src="zlb_plus_Collection.js"></script>
+</head>
+<body>
+    
+	<!--<input type="button" id="test_btn" class="btn" value="测试" />
+    <input type="button" id="test_btn2"  class="btn" value="测试2" />-->
+    <input type="button" id="cj_test" value="测试ajax请求中插件" />
+    <input type="button" id="cj_test_close" value="关闭ajax请求中插件" />
+    <input type="button" id="cj_test_modal" value="测试模态对话插件" />
+    <script language="javascript">
+	
+
+		$("#test_btn").zlbNumberSelectPlus();
+		$("#test_btn2").zlbNumberSelectPlus();
+		$("#cj_test").click(function(){
+			jQuery.pop_info_loading({
+			    _waringTxt:'正在请求数据...',
+				_isAutoClose:false
+				}); 
+			});
+			
+		$("#cj_test_close").click(function(){	
+			jQuery.pop_info_loading_close();
+		});
+		
+		$("#cj_test_modal").click(function(){	
+			jQuery.pop_window_modal({
+					_okEvent:function(){
+						 (function(a,b){
+							 alert(a+b);
+							 jQuery.pop_window_modal_close();
+							 })(4,5);					
+						},
+					_cancelEvent:function(){
+						 (function(a,b){							
+							 jQuery.pop_window_modal_close();
+							 })();	
+						}
+				});
+		});
+
+	</script>
+</body>
+</html>

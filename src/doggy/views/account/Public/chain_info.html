@@ -1,0 +1,45 @@
+<!--连锁机构信息弹窗开始（试用连锁版所有页面）-->
+<div class="create_clinic_bg4">
+    <div class="clinic_box clinic_box_chain pop_sha_rad">
+        <div class="clinic_edit">
+            连锁机构信息<img src="/static/account/img/close.png" id="chain_info_close">
+        </div>
+        <div id="clinic_f">
+            <div class="tp_img mb30"> 
+                <input type="hidden" id="pic_ext_chain" name="pic_ext_chain" />
+                <img  id="ImgChain" src="/static/account/img/clinic_logo.png" width="80" height="80" style="border-radius:50%;"/>
+                <label id="tp_new_logo" class="ui_button ui_button_primary onload_lable tp_new_logo tp_new_logo2"  
+                for="upload_chain">上传企业logo</label>
+                <input type="file" id="upload_chain" value="上传" class='uploadsq' accept="image/*" required style="position:absolute;clip:rect(0 0 0 0);"/>
+                <input type="hidden" id="TeacherPicture_chain" name="TeacherPicture_chain"  value="" />
+                <span class="word_state">文件大小不超过2M（.jpg 或 .png 格式）</span>
+            </div> 
+            <p>企业名称<img src="/static/account/img/imporant.png"></p>
+            <input type="text" class="tm box_w360_h20" id="chain_cli_name" name="text" placeholder="诊所名称长度为2-12个字（如：地区+诊所名称）" maxlength="12"> 
+            <label class="errinfo" id="chain_newclinic_err"></label>
+            <p>企业联系人<img src="/static/account/img/imporant.png"></p>
+            <input type="text" class="tm box_w360_h20" id="chain_clinic_contact" name="text" placeholder="请输入企业联系人">
+            <label class="errinfo" id="chain_newcontact_err"></label>
+            <p>企业电话<img src="/static/account/img/imporant.png"></p>
+            <input type="text" class="tm box_w360_h20" id="chain_clinic_pho" name="text" maxlength="18" placeholder="请输入企业电话">
+            <label class="errinfo" id="chain_newphone_err"></label>
+            <p>企业地址</p>
+            <ul class="selc fix">
+                <li><select id="chain_province"></select></li>
+                <li><select id="chain_city" ></select></li>
+                <li><select id="chain_county"></select></li>
+            </ul>
+            <input type="text" name="" id="chain_contact_add" class="tm box_w360_h20" placeholder="详细地址">
+            <label class="errinfo" id="">请输入详细地址</label>
+            <p>企业简介</p>
+            <textarea  class="tm" id="chain_clinic_intro" name=""></textarea>
+            <div class="create_btn" style="margin-top:15px;">
+                <input type="button" id="enter_determine_part3" name="button" value="保存"
+                class="acb ac_btn_bf w90h30">
+                <input type="button" id="enter_cancle2" name="button" value="取消" 
+                class="acb ac_btn_nf w90h30">
+            </div>
+        </div>
+    </div>            
+</div>
+<!--连锁机构信息弹窗结束-->

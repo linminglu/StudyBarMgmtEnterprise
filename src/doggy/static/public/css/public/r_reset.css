@@ -1,0 +1,31 @@
+/*-------------------------------
+整个分站样式重置
+zlb 2016-11-20
+/*-------------------------------*/
+/*body{font-family:微软雅黑,arial;}
+input,textarea,select{font-family:inherit}
+body,h1,h2,h3,h4,h5,h6,p,ul,ol,form{margin:0}
+h4,h5,h6{font-size:1em}
+ul,ol{padding-left:0;list-style-type:none}
+img{border:0}
+a{text-decoration: none;}*/
+
+
+/*fml*/
+body { font-size:12px; font-family:"Microsoft YaHei","微软雅黑","Hiragino Sans GB",tahoma,arial,simhei; }
+body,button,code,dd,dl,dt,em,fieldset,form,h1,h2,h3,h4,h5,h6,iframe,img,input,label,li,ol,p,pre,sub,sup,td,textarea,th,ul {margin: 0;padding: 0;}
+
+a:link { text-decoration:none; }
+a:visited {text-decoration:none;}
+a:hover { text-decoration:none;}
+
+em,i{font-style:normal}
+ol,ul{list-style:none;float:left;}
+
+img{-ms-interpolation-mode:bicubic}
+button,label{cursor:pointer}
+input, button, img, abbr, acronym, iframe {border: none;}
+input:focus{outline: none;}
+input[type=button]::-moz-focus-inner,input[type=file]>input[type=button]::-moz-focus-inner,input[type=reset]::-moz-focus-inner,input[type=submit]::-moz-focus-inner { padding: 0;border: 0;}
+input{ -webkit-appearance:none; font-family:"Microsoft YaHei","微软雅黑","Hiragino Sans GB",tahoma,arial,simhei;}
+a,li,input,button,section,span,div{-webkit-tap-highlight-color:rgba(0,0,0,0);tap-highlight-color:rgba(0,0,0,0)}

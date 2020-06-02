@@ -1,0 +1,445 @@
+
+<!--基本信息-->
+<div class="section">
+    <div class="s_title">
+        <span><i class="basic_info_t"></i>基本信息</span>
+    </div>
+    <div class="s_cont">
+        <li>
+            <span class="l_tr">诊所管家号*</span><input type="text" id="clinicList" name="1" class="w200" placeholder="请选择申请诊所的管家号" readonly onfocus="this.blur();"><input type="text" name="2" id="clinicName" class="w200" readonly onfocus="this.blur();">
+            <p class="hidden">请填写完整的</p>
+        </li>
+        <li>
+            <span class="l_tr">医疗机构名称*</span><input type="text" id="InstitutionName" name="3" class="w410">
+            <p>请填写完整的医疗机构名称(如企业营业执照上的企业名称)</p>
+        </li>
+        <li>
+            <span class="l_tr">医疗机构地址*</span><input type="text" id="province" name="4" class="w130" readonly onfocus="this.blur();"><input type="text" id="city" name="5" class="w130" readonly onfocus="this.blur();"><input type="text" id="area" name="6" class="w130" readonly onfocus="this.blur();"/>
+            <p class="hidden lh12">请填写完整的</p>
+            <input type="text" id="address" name="7" class="ml220 w410" >
+            <p >请填写详细联系地址，必要时我们会通过此方式联系您</p>
+        </li>
+        <li>
+            <span class="l_tr">联系方式*</span><input type="text" id="Mobile" name="8" class="w410" maxlength="22">
+            <p>请填写电话或手机号码</p>
+        </li>
+        <li>
+            <span class="l_tr">营业执照号码*</span><input type="text" id="LicenseID" name="9" class="w410" maxlength="22">
+            <p>请与企业营业执照保持一致</p>
+        </li>
+        <li>
+            <!--<input type="hidden"  id="pic_ext1" value="">-->
+            <span class="l_tr">企业法人营业执照*</span><input type="text" id="LegalPersonPic" name="10" class="w410" readonly><a href="javascript:;" class="uploadBtn">上传<input  id="upload1" type="file"></a><input type="button" class="uploadBtn v_img" value="预览">
+            <p>企业法人营业执照副本扫描件，不超过5MB（.jpg或.png格式）</p>
+        </li>
+        <li>
+            <span class="l_tr">医疗机构执业许可证*</span><input type="text" id="MedicalLicenOriginal" name="11" class="w410" readonly><a href="javascript:;" class="uploadBtn">上传<input id="upload2" type="file"></a><input type="button" class="uploadBtn v_img" value="预览">
+                <p>请上传医疗机构执业许可证-正本扫描件，不超过5MB（.jpg或.png格式）</p>
+        </li>
+        <li>
+            <input type="text" id="MedicalLicenDuplicate" name="12" class="ml220 w410" readonly><a href="javascript:;" class="uploadBtn">上传<input id="upload3" type="file"></a><input type="button" class="uploadBtn v_img" value="预览">
+                <p>请上传医疗机构执业许可证-副本首页，不超过5MB（.jpg或.png格式）</p>
+        </li>
+        <li>
+            <input type="text" id="MedicalLicenCheck" name="13" class="ml220 w410" readonly><a href="javascript:;" class="uploadBtn">上传<input id="upload4" type="file"></a><input type="button" class="uploadBtn v_img" value="预览">
+                <p>请上传医疗机构执业许可证-最新年检页，不超过5MB（.jpg或.png格式）</p>
+        </li>
+        <li>
+            <span class="l_tr">医师执业证书*</span><input type="text" id="PhysicianPracticeCert" name="14" class="w410" readonly><a href="javascript:;" class="uploadBtn">上传<input id="upload5" type="file"></a><input type="button" class="uploadBtn v_img" value="预览">
+            <p>请上传手持本人执业证的照片（最高职称），不超过5MB（.jpg或.png格式）</p>
+        </li>
+    </div>
+</div>
+<!--经营信息-->
+<div class="section">
+    <div class="s_title">
+        <span><i class="run_info_t"></i>经营信息</span>
+    </div>
+    <div class="s_cont run_cont">
+        <li>
+            <span class="l_tr">牙椅数量*</span><input type="text" id="ChairNum" name="15" readonly onfocus="this.blur();">
+            <p class="hidden">请填写完整的</p>
+        </li>
+        <li>
+            <span class="l_tr">执照性质*</span><input type="text" id="LicenseProperty"  name="16" readonly onfocus="this.blur();">
+            <p class="hidden">11111</p>
+        </li>
+        <li>
+            <span class="l_tr">医生最高职称*</span><input type="text" id="HighestTitle"  name="17" readonly onfocus="this.blur();">
+            <p class="hidden">请填写完整的</p>
+        </li>
+        <li>
+            <span class="l_tr">医生数量*</span><input type="text" id="PhysicianNum" name="18" readonly onfocus="this.blur();">
+            <p class="hidden">请填写完整的</p>
+        </li>
+        <li>
+            <span class="l_tr">预约流程*</span><input type="text" id="ScheduleProcess" name="19" readonly onfocus="this.blur();">
+            <p class="hidden">请与企业营业执照保持一致</p>
+        </li>
+        <li>
+            <span class="l_tr">月初诊患者数量*</span><input type="text" id="MonthPatientNum" name="20" readonly onfocus="this.blur();">
+            <p class="hidden">企业法人营业执照副本扫描件，不超过5MB（.jpg或.png格式）</p>
+        </li>
+        <li>
+            <span class="l_tr">诊所经营月份*</span><input type="text" id="BusinessMonth" name="21" readonly onfocus="this.blur();">
+                <p class="hidden">请上传医疗机构执业许可证-正本扫描件</p>
+        </li>
+        <li>
+            <span class="l_tr">诊所面积*</span><input type="text" id="ClinicArea" name="22" readonly onfocus="this.blur();">
+            <p class="hidden">请上传手持本人执业证的照片（最高职称）</p>
+        </li>
+        <li>
+            <span class="l_tr">连锁店数量*</span><input type="text" id="ChainNum" name="23" readonly onfocus="this.blur();">
+            <p class="hidden">请上传手持本人执业证的照片（最高职称）</p>
+        </li>
+    </div>
+</div>
+<!--荣誉信息--> 
+<div class="section">
+    <div class="s_title">
+        <span><i class="honor_info_t"></i>荣誉信息</span>
+        <div class="r r_tips">提供完整的资料信息，有助于提升审核通过率！</div>
+    </div>
+    <div class="s_cont honor_con">
+        <li>
+            <span class="l_tr">医生荣誉证书</span><input type="text" id="PhysicianHonorCert" name="24" class="w410"  readonly><a href="javascript:;" class="uploadBtn">上传<input id="upload6" type="file"></a><input type="button" class="uploadBtn v_img" value="预览">
+            <p >个人所获荣誉证书等，不超过5MB（.jpg或.png格式）</p>
+        </li>
+        <li>
+            <span class="l_tr">诊所荣誉证书</span><input type="text" id="ClinicHonorCert" name="25" class="w410" readonly><a href="javascript:;" class="uploadBtn">上传<input id="upload7" type="file"></a><input type="button" class="uploadBtn v_img" value="预览">
+            <p >某机构给诊所颁发的荣誉证书等，不超过5MB（.jpg或.png格式）</p>
+        </li>
+        <li>
+            <span class="l_tr">医生行业任职</span><input type="text" id="PhysicianDuty" name="26" class="w410"  readonly><a href="javascript:;" class="uploadBtn">上传<input id="upload8" type="file"></a><input type="button" class="uploadBtn v_img" value="预览">
+            <p >某机构任职，如口腔协会会长等，不超过5MB（.jpg或.png格式）</p>
+        </li>
+    </div>
+</div>
+<script type="text/javascript" src="/static/account/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="/static/public/yayigj_dialog_box.js"></script>
+<script type="text/javascript" src="/static/public/yayigj_downlist.js"></script>
+<script type="text/javascript" src="/static/public/yayigj_upload_crop.js"></script>
+<script type="text/javascript" src="/static/account/js/area_val.js"></script>  <!--input输入框的省份城市和地区-->
+<script type="text/javascript">
+    jQuery.createAniCss();
+    var listApi1=nulllistApi2=null,listApi3=null,listApi4=null,listApi5=null,listApi6=null,listApi7=null,listApi8=null,listApi9=null;
+    _init_area();//地区
+    $(function(){
+        bindUpload();//八个上传绑定控件
+        getDownlist();//获取下啦控件
+        $("input[type='text']").on("input propertychange",function(){
+            $(this).removeClass("err_input");
+            $(this).siblings(".err_tips").remove();
+        });
+        $(document).on("DOMMouseScroll mousewheel","#centerDiv img",function(event){
+                disable_Scroll(event,this);
+        });	
+        $(".v_img").on("click",function(){
+             $("#centerDiv").remove();
+             var src=$(this).prev().prev("input[type='text']").val();
+             var img="<img src='"+src+"' />";
+             if(src==""){
+                jQuery.loading_close();
+                return;
+             }else if(src.indexOf("http")==-1){
+                jQuery.postFail("fadeInUp",'图片地址错误！！');
+                jQuery.loading_close();
+                return;
+             }
+             jQuery.loading();
+             $(img).load(function(){
+                $("body").append("<div id='centerDiv'>"+img+"<span id='close_ico' title='关闭' onclick='closeFuc()' /></span></div>");
+                var l_h=$(window).height();
+                if($("#centerDiv img").height()>$(window).height()){
+                     $("#centerDiv img").css({width:'auto',height:$(window).height()+"px"});
+                 };
+                $("#centerDiv").css("line-height",l_h+"px");
+                jQuery.loading_close();
+             })
+        });
+    })
+    function closeFuc(){
+        $("#centerDiv").remove();
+        jQuery.loading_close();
+    }
+    //八个上传图片
+    function bindUpload(){
+        //企业法人营业执照
+        $("#upload1").on("change",function(){
+             uploadImg(this,"LegalPersonPic");
+        });
+        //医疗机构执业许可证--正本扫描件
+        $("#upload2").on("change",function(){
+            uploadImg(this,"MedicalLicenOriginal");
+        });
+        //医疗机构执业许可证---副本首页
+        $("#upload3").on("change",function(){
+            uploadImg(this,"MedicalLicenDuplicate");
+        });
+        //医疗机构执业许可证--最新年检页
+        $("#upload4").on("change",function(){
+            uploadImg(this,"MedicalLicenCheck");
+        });
+        //-本人执业证的照片（最高职称）
+        $("#upload5").on("change",function(){
+            uploadImg(this,"PhysicianPracticeCert");
+        });
+        //--医生荣誉证书
+        $("#upload6").on("change",function(){
+            uploadImg(this,"PhysicianHonorCert");
+        });
+        //--诊所荣誉证书
+        $("#upload7").on("change",function(){
+            uploadImg(this,"ClinicHonorCert");
+        });
+        //医生行业任职
+        $("#upload8").on("change",function(){
+            uploadImg(this,"PhysicianDuty");
+        });
+    }
+
+    //base64位转化
+    function uploadImg(obj,id){//传入图片路径，返回base64
+        var parmas={};
+        var base64="";
+        var file=$(obj)[0].files[0];
+        var reader = new FileReader(); 
+        var readerbase64= new FileReader(); 
+        var type=file.type;   //获取图片格式
+        // console.log("file=",file);
+        var size=file.size/(1024*1024);
+        // console.log("size=",size);
+        if(size>5||size==5){
+            jQuery.postFail("fadeInup","上传图片不能大于5M!");
+            $("input[type='file']").attr("disabled",false);
+            return;
+        }
+        if(type!="image/jpg"&&type!="image/png"&&type!="image/jpeg"){
+            jQuery.postFail("fadeInup","请选择.png或者.jpg格式的图片");
+            $("input[type='file']").attr("disabled",false);
+            return;
+        }
+        if($(obj).val()==""){
+            $("input[type='file']").attr("disabled",false);
+        }
+        reader.readAsArrayBuffer(file);
+        reader.onloadend=function(e){
+            var arr = (new Uint8Array(e.target.result)).subarray(0, 4);
+            var header = "";
+            for(var i = 0; i < arr.length; i++) {
+                header += arr[i].toString(16);
+            }	
+            // console.log("arr=",arr)
+            switch (header) {
+                case "89504e47":
+                    type = "image/png";
+                    break;
+                case "47494638":
+                    type = "image/gif";
+                    break;
+                case "ffd8ffe0":
+                case "ffd8ffe1":
+                case "ffd8ffe2":
+                    type = "image/jpeg";
+                    break;
+                default:
+                    type=file.type;
+                    break;
+            }
+            parmas.ext=type;       //"jpeg/jpg/png三种格式"  
+            readerbase64.readAsDataURL(file); 
+        }
+        $("input[type='file']").attr("disabled",true);
+        readerbase64.onload=function(e){
+            base64=e.target.result;
+            base64=base64.substr(base64.indexOf(',') + 1);
+                parmas.picdata=base64; 
+            jQuery.loading();   
+            // console.log("parmas",parmas);
+            $.post("/paweb/uploadimage",parmas,function(json){
+                jQuery.loading_close(); 
+                $("input[type='file']").attr("disabled",false); 
+                $(obj).val("");
+                if(json.code==1){
+                    if(json.list.url==""){
+                        jQuery.postFail("fadeInUp","上传图片失败！请重新上传");
+                    }else{
+                        $("#"+id).val(json.list.url);//成功或返回路径到input中
+                        $("#"+id).siblings(".v_img").next(".err_tips").remove();
+                        $("#"+id).removeClass("err_input");
+                    }
+                }else{
+                    jQuery.postFail("fadeInup",json.info)
+                }
+            })
+        }
+    }
+     //获取下拉列表
+    function getDownlist(){
+        var option1=[{key:"请选择牙椅数量",val:""}];
+        for(var i=1;i<21;i++){
+            option1.push({key:i+"&nbsp;台",val:i+"台"})
+        }
+        option1.push({key:"20 台以上",val:"20台以上"});
+        //牙医数量
+        $("#ChairNum").yayigj_downlist({
+            _data:option1,
+            _callBack:list1
+        },function(api){
+            listApi1=api;
+        });
+        //执照性质
+        $("#LicenseProperty").yayigj_downlist({
+            _data:[
+                {key:"请选择执照性质",val:""},
+                {key:"私人诊所",val:"私人诊所"},
+                {key:"门诊部",val:"门诊部"},
+                {key:"口腔医院",val:"口腔医院"},
+                {key:"连锁门诊",val:"连锁门诊"},
+                {key:"连锁医院",val:"连锁医院"}
+            ],
+            _callBack:list2
+        },function(api){
+            listApi2=api;
+        });
+        //医生最高职称
+        $("#HighestTitle").yayigj_downlist({
+            _data:[
+                {key:"请选择职称",val:""},
+                {key:"助理医师",val:"助理医师"},
+                {key:"执业医师",val:"执业医师"},
+                {key:"主治医师",val:"主治医师"},
+                {key:"副主任医师",val:"副主任医师"},
+                {key:"主任医师",val:"主任医师"}
+            ],
+            _callBack:list3
+        },function(api){
+            listApi3=api;
+        });
+        //医生数量*
+        $("#PhysicianNum").yayigj_downlist({
+            _data:[
+                {key:"请选择医生数量",val:""},
+                {key:"1 人",val:"1"},
+                {key:"2-5 人",val:"2-5"},
+                {key:"6-10 人",val:"6-10"},
+                {key:"11-20 人",val:"11-20"},
+                {key:"20 人以上",val:"20以上"}
+            ],
+            _callBack:list4
+        },function(api){
+            listApi4=api;
+        });
+        //预约流程**
+        $("#ScheduleProcess").yayigj_downlist({
+            _data:[
+                {key:"请选择预约流程",val:""},
+                {key:"没有预约",val:"没有预约"},
+                {key:"部分预约",val:"部分预约"},
+                {key:"全部预约",val:"全部预约"}
+            ],
+            _callBack:list5
+        },function(api){
+            listApi5=api;
+        });
+        //月初诊患者数量*
+        $("#MonthPatientNum").yayigj_downlist({
+            _data:[
+                {key:"请选择月初诊患者数量",val:""},
+                {key:"1-50 人",val:"1-50"},
+                {key:"51-100 人",val:"51-100"},
+                {key:"101-200 人",val:"101-200"},
+                {key:"201-300人",val:"201-300"},
+                {key:"300 人以上",val:"300以上"}
+            ],
+            _callBack:list6
+        },function(api){
+            listApi6=api;
+        });
+        //诊所经营月份**
+        $("#BusinessMonth").yayigj_downlist({
+            _data:[
+                {key:"请选择诊所经营月份",val:""},
+                {key:"1 个月",val:"1"},
+                {key:"2-6 个月",val:"2-6"},
+                {key:"7-12 个月",val:"7-12"},
+                {key:"13-24 个月",val:"13-24"},
+                {key:"25-36 个月",val:"25-36"},
+                {key:"36 个月以上",val:"36以上"}
+            ],
+            _callBack:list7
+        },function(api){
+            listApi7=api;
+        });
+        //诊所面积**
+        $("#ClinicArea").yayigj_downlist({
+            _data:[
+                {key:"请选择诊所面积",val:""},
+                {key:"1-30 ㎡",val:"1-30"},
+                {key:"31-50 ㎡",val:"31-50"},
+                {key:"51-100 ㎡",val:"51-100"},
+                {key:"101-200 ㎡",val:"101-200"},
+                {key:"200 ㎡以上",val:"200以上"}
+            ],
+            _callBack:list8
+        },function(api){
+            listApi8=api;
+        });
+        //连锁店数量**
+        $("#ChainNum").yayigj_downlist({
+            _data:[
+                {key:"请选择连锁店数量",val:""},
+                {key:"1 个",val:"1"},
+                {key:"2-3 个",val:"2-3"},
+                {key:"4-5 个",val:"4-5"},
+                {key:"6-10 个",val:"6-10"},
+                {key:"15 个",val:"15"},
+                {key:"15 个以上",val:"15以上"}
+            ],
+            _callBack:list9
+        },function(api){
+            listApi9=api;
+        });
+    }
+function list1(e,id){
+    clearerr(e,id)
+}
+function list2(e,id){
+    clearerr(e,id)
+}
+function list3(e,id){
+    clearerr(e,id)
+}
+function list4(e,id){
+    clearerr(e,id)
+}
+function list5(e,id){
+    clearerr(e,id)
+}
+function list6(e,id){
+    clearerr(e,id)
+}
+function list7(e,id){
+    clearerr(e,id)
+}
+function list8(e,id){
+    clearerr(e,id)
+}
+function list9(e,id){
+    clearerr(e,id);
+}
+function clearerr(e,id){
+    if(e!=""){
+        $("#"+id).removeClass("err_input").siblings(".err_tips").remove();
+    }
+}
+
+function disable_Scroll(evt,obj){
+    var scrollTop = obj.scrollTop,scrollHeight = obj.scrollHeight,height = obj.clientHeight;
+    var delta = (evt.originalEvent.wheelDelta) ? evt.originalEvent.wheelDelta : -(evt.originalEvent.detail || 0);  
+    if ((delta > 0 && scrollTop <= delta) || (delta < 0 && scrollHeight - height - scrollTop <= -1 * delta)) {
+        obj.scrollTop = delta > 0? 0: scrollHeight;
+        evt.preventDefault();
+    }  
+}
+</script>

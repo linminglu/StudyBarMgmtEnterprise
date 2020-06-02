@@ -1,0 +1,202 @@
+/*=======================
+	整个分站通用配置（常用的样式） zlb 2016-11-20
+/*=======================*/
+.l{float:left;}
+.r{float:right;}
+.cl{clear:both;}
+.n{font-weight:normal; font-style:normal;}
+.b{font-weight:bold;}
+.i{font-style:italic;}
+.fa{font-family:Arial;}
+.fg{font-family:Georgia;}
+.ft{font-family:Tahoma;}
+.fl{font-family:Lucida Console;}
+.fs{font-family:'宋体';}
+.fw{font-family:'微软雅黑';}
+.tc{text-align:center;}
+.t_r{text-align:right;}
+.tl{text-align:left;}
+.cu_p{cursor: pointer;}
+
+.hp30{height:30%}
+.hp33{height:33%}
+.wp33{width:33%}
+
+.tdl{text-decoration:underline;}
+.tdn,.tdn:hover,a.tdl:hover{text-decoration:none;}
+.g0{color:#000000;}
+.g3{color:#333333;}
+.g6{color:#666666;}
+.g8{color:#888888;}
+.g9{color:#999999;}
+.g69{color:#696969;}
+.g94c461{color:#94c461 !important;}
+.g70c7ca{color:#70c7ca !important;}
+.gff9b31{color:#ff9b31 !important;}
+.g7096ed{color:#7096ed !important;}
+.gff5f5f{color:#ff5f5f !important;}
+.g466dc4{color:#466dc4 !important;}
+.gf86d5a{color:#f86d5a !important;}
+.cff8000{color: #ff8000 !important;}
+
+.red{color:red;}
+.wh{color:white;}
+.f0{font-size:0;}
+.f10{font-size:10px;}
+.f12{font-size:12px;}
+.f13{font-size:13px;}
+.f14{font-size:14px;}
+.f15{font-size:15px;}
+.f16{font-size:16px;}
+.f18{font-size:18px;}
+.f20{font-size:20px;}
+.f24{font-size:24px;}
+.vm{vertical-align:middle;}
+.vtb{vertical-align:text-bottom;}
+.vt{vertical-align:top;}
+.vtt{vertical-align:text-top;}
+.vn{vertical-align:-2px;}
+.vimg{margin-bottom:-3px;}
+.m0{margin:0;}
+.ml1{margin-left:1px;}
+.ml2{margin-left:2px;}
+.ml5{margin-left:5px;}
+.ml10{margin-left:10px;}
+.ml15{margin-left:15px;}
+.ml16{margin-left:16px;}/*郭鹏飞加*/
+.ml20{margin-left:20px;}
+.mr1{margin-right:1;}
+.mr2{margin-right:2px;}
+.mr5{margin-right:5px;}
+.mr10{margin-right:10px;}
+.mr15{margin-right:15px;}
+.mr20{margin-right:20px;}
+.mr40{margin-right:40px;}/*郭鹏飞加*/
+.mt1{margin-top:1;}
+.mt2{margin-top:2px;}
+.mt5{margin-top:5px;}
+.mt10{margin-top:10px;}
+.mt15{margin-top:15px;}
+.mt20{margin-top:20px;}
+.mb1{margin-bottom:1px;}
+.mb2{margin-bottom:2px;}
+.mb5{margin-bottom:5px;}
+.mb10{margin-bottom:10px;}
+.mb15{margin-bottom:15px;}
+.mb20{margin-bottom:20px;}
+.ml-1{margin-left:-1px;}
+.mt-1{margin-top:-1px;}
+.p0{padding:0px !important;}
+.pl1{padding-left:1px;}
+.pt1{padding-top:1px;}
+.pr1{padding-right:1px;}
+.pb1{padding-bottom:1px;}
+.p2{padding:2px;}
+.pl2{padding-left:2px;}
+.pt2{padding-top:2px;}
+.pr2{padding-right:2px;}
+.pb2{padding-bottom:2px;}
+.pl5{padding-left:5px;}
+.p5{padding:5px;}
+.pt5{padding-top:5px;}
+.pr5{padding-right:5px;}
+.pb5{padding-bottom:5px;}
+.p10{padding:10px;}
+.pl10{padding-left:10px;}
+.pt10{padding-top:10px;}
+.pr10{padding-right:10px;}
+.pb10{padding-bottom:10px;}
+.p20{padding:20px;}
+.pl20{padding-left:20px;}
+.pt20{padding-top:20px;}
+.pr20{padding-right:20px;}
+.pb20{padding-bottom:20px;}
+.pb15{padding-bottom:15px;}
+.rel{position:relative;}
+.abs{position:absolute;}
+.dn{display:none!important;}
+.db{display:block;}
+.dib{-moz-inline-stack:inline-block; display:inline-block;}
+.di{display:inline;}
+.ovh{overflow:hidden;}
+.ovs{overflow:scroll;}
+.vh{visibility:hidden;}
+.vv{visibility:visible;}
+.lh14{line-height:14px;}
+.lh16{line-height:16px;}
+.lh18{line-height:18px;}
+.lh20{line-height:20px;}
+.lh22{line-height:22px;}
+.lh24{line-height:24px;}
+.lh28{line-height:28px;}/*郭鹏飞加*/
+.lh45{line-height:45px;}/*郭鹏飞加*/
+.fix{*zoom:1;}
+.fix:after,
+.fix:before{display:block; content:"clear"; height:0; clear:both; overflow:hidden; visibility:hidden;}
+.z{_zoom:1;}
+.w100{width:100px}
+.w120{width:120px}
+.w296{width:296px}
+.abs{position:absolute}
+.rel{position:relative}
+.r0{right:0px}
+.r10{right:10px}
+.r15{right:15px}
+.r20{right:20px}
+.t0{top:0px}
+.underline{text-decoration: underline;}
+.hidetxt{text-overflow:ellipsis;overflow:hidden;white-space:nowrap;max-width:150px;}/*liqin*/
+.hidetxt_200{text-overflow:ellipsis;overflow:hidden;white-space:nowrap;max-width:200px;}/*liqin*/
+.input_search{ width: 220px; margin-left: 20px; background: url(/static/public/img/search.png) no-repeat 210px center;}
+
+/*h5样式*//*水平垂直居中,搭配盒子模型使用*/
+.ali_md{	-webkit-box-orient:horizontal; 
+				-webkit-box-pack:center; 
+				-webkit-box-align:center;
+				box-orient:horizontal; 
+				box-pack:center; 
+				box-align:center;}
+				
+.w114h28{width:114px;height:28px;}/*郭鹏飞加*/
+.w118h28{width:118px !important;height:28px  !important;}/*郭鹏飞加*/
+.w270h28{width:270px  !important;height:28px  !important;}/*郭鹏飞加*/
+
+/*hk*/
+.w120{width: 120px;} 
+.w200{width: 200px;}
+.w207{width: 207px;}
+.w140{width: 140px;}
+.w100{width: 100px;}
+.w350{width: 350px;}
+.w70{width: 70px;}
+.w80{width: 80px;}
+.w90{width: 90px;}
+.w800{width: 800px;}
+.w55{width: 55px;}
+.w60{width: 60px;}
+.w180{width: 180px;}
+.w464{width: 464px;}
+.w260{width: 260px;}
+.w456{width:456px;}
+.w290{width: 290px;}
+.w150{width: 150px;}
+.w50{width: 50px;}
+/*hk*/
+
+/*弹窗最大尺寸（群发专用）lqin*/
+.maxbox{width:90%;min-width: 1071px;height: 620px;}
+
+.w120h30{width: 120px;height: 30px}
+.w200h30{width: 200px;height: 30px}
+.wp100{width: 100%}
+/*无数据*/
+.no_data {
+    background: url(/static/public/img/no-data.png) no-repeat center;
+}
+.nodataIcon{position: relative;}
+.nodataIcon:after{content: '';position: absolute;width: 100px; text-align: center;margin:auto;left: 0px; top: 100px; right: 0px; background: url(/static/public/img/no-data.png) center no-repeat;width:240px;height: 280px}
+
+/*thead 排序样式*/
+.sorted.ascending a:after{content: ' ';background: url(/static/public/img/sort.png) center no-repeat; width: 14px;height: 18px; position: absolute;	}
+.sorted.descending a:after{content: ' ';background: url(/static/public/img/sort2.png) center no-repeat; width: 14px;height: 18px; position: absolute;}
+

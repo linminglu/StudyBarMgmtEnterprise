@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>微课堂</title>
+		{{template "../public/link/css_inc.html" .}}
+		<link href="/static/erp/college/css/user.css" rel="stylesheet" />
+		<link href="/static/erp/college/css/user_mang.css" rel="stylesheet" />
+	</head>
+	<body>
+		<div class="open_code" id="open_code" style="position: absolute;z-index: 10;left:0px;top:50px; background-color: #fff">
+             <div class="set_preview">预览链接：<input type="text" name="" value='' class="see_addres" id="see_addres" readonly><input type="button" name="" value="复制" class="cope_address" id="cope_address"></div>
+             <div class="see_codeaddres">
+                 <span class="see_left">预览二维码:</span>
+                 <span class="see_right">
+                    <img src="" id="see_img">
+                    <p>通过微信扫一扫可查看手机效果</p>
+                    <input type="button" name="" value="关闭" class="close_code" id="cancelBtn_set">
+                 </span>
+                 <div class="clear"></div>
+             </div>
+		</div>
+		{{template "../public/public/header.html" .}}
+		<div class="mainFrme">
+			{{template "../public/public/left.html" .}}
+			<div class="rightFrme">
+				<div class="crumbs"><a href="###">主页</a> > <a href="###">微课堂</a></div>
+				<input type="hidden" name="htag" value="0">
+				<div class="cont">
+					<div class="pageHeader">微课堂<span><a href="/butlerp/college/bannerpage">BANNER</a></span></div>
+					<div class="search">
+					    <input type="button" name="" value="添加" class="" id="add_micro">
+					     <!-- <input type="button" name="" value="导入" class="" id="import"> -->
+						<!-- <label>注册时间</label>
+						<div id="BeginDate" class="calendar"></div>
+						<label>至</label>
+						<div id="EndDate" class="calendar"></div>
+						<label></label> -->
+						<input type="button" name="userlist_btn" value="查询" id="search_bun" class="search_bun" />
+						<input name="condition" class="ml20 w240 search_val" type="text" placeholder="请输入用户名/手机等关键词查询" id="search_val"/>
+						
+						<!-- <div class="excel">导出excel</div> -->
+					</div>
+					<div class="f_data" id="scroll_div_1">
+						<table id="js_userlist_data"></table>
+					</div>
+					<div id="pager_micro"></div>
+
+				</div>
+			</div>
+		</div>
+		{{template "../public/public/footer.html" .}}
+	</body>
+	{{template "../public/link/js_inc.html" .}}
+	<script type="text/javascript" src="/static/erp/college/js/micro.js"></script>
+</html>

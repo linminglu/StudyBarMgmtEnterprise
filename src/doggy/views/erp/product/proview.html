@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>查看产品</title>
+		{{template "../public/link/css_inc.html" .}}
+		<link href="/static/erp/css/user.css" rel="stylesheet" />
+		<link href="/static/erp/css/product.css" rel="stylesheet" />	
+        <style>
+            .backPage{top:15px;right:20px;}
+            .search{padding:14px 14px 0 14px;}
+			.search label,.search div{margin-bottom:20px;}
+			.excel{float:left!important;margin-left:14px;}
+            .sendState,.sendType,.sendStage{width: 80px;height: 28px;line-height: 28px;border: solid 1px #00c5b5;float: left!important;text-indent: 10px;}
+            .sendStage{width:180px;}
+			#BeginDate{width: 120px;float:left!important;}
+			#EndDate{width: 120px;float:left!important;}
+			#province{width: 120px;float:left!important;}
+			#city{width: 120px;float:left!important;}
+        </style>
+	</head>
+	<body>
+		{{template "../public/public/header.html" .}}
+			<div class="mainFrme">
+				{{template "../public/public/left.html" .}}
+				<div class="rightFrme">
+					<div class="crumbs"><a href="###">产品管理</a> > <a href="">查看产品</a></div>
+					<div class="cont product_con">
+                        <input type="hidden" name="htag" value="2"> <!--隐藏的标记，用来判断左边的显影-->
+						<h2>基本信息</h2>
+                        <div>
+                            <li><span class="l_span">产品编号：</span><span id="proID"></span></li>
+                            <!--<li><span class="l_span">产品销量：</span><span id="proNum"></span>份</li>-->
+                            <li><span class="l_span">签约诊所：</span><span id="SignedNum"></span>家</li>
+                            <li><span class="l_span">平安编号：</span><span id="proPAid"></span></li>
+                            <li><span class="l_span vt">产品销量：</span><span id="prNum"></span></li>
+                            <li><span class="l_span vt">总就诊数：</span><span id="proTreat"></span></li>
+                            <!--<li><span class="l_span">有效时间：</span><input type="text" id="Stime" readonly> -- <input type="text" id="Etime" readonly></li>
+                            <li><span class="l_span">适用范围：</span><input type="text" id="ApplicableScope" readonly> </li>
+                            <li><span class="l_span">原价：</span><input type="text" id="price" min="1"> 元</li>
+                            <li><span class="l_span">展示图：</span><span class="uploadBtn"><img src="/static/account/img/u1910.png" id="sImg" alt=""><a href="javascript:;"></a></span></li>-->
+                            <li><span class="l_span vt">签约诊所：</span><span id="proClinic" maxlength="100"></span></li>
+                            <li><span class="l_span">*发布平台：</span><input type="radio" id="release_platform1" name="release_platform" value="100"><label for="release_platform1">平安医生</label>
+                            <input type="radio" id="release_platform2" name="release_platform" ><label for="release_platform2">看牙</label>
+                            </li>
+                            <input type="hidden" id="h_img">
+                        </div>
+                        <div class="pro_cz_list">
+                            <h2>产品服务项</h2>
+                            <div id="proA" class="pro_list">
+                                <!--<li><span class="l_span">处置：</span><input type="text"><span class="l_span l_span_s">价格</span><input type="number">元</i><i class="delb_ico" onclick="deletProCz(this)"></i></li>-->
+                            </div>
+                           
+                            <!--<li><span class="l_span l_span_l">*服务项A使用次数：</span><span id="Ausenum"></span>次</li>-->
+                        </div>
+                        <!--<div class="pro_cz_list">
+                            <h2>产品服务项B</h2>
+                            <div id="proB" class="pro_list">
+                                
+			                </div>
+                           
+                            <li><span class="l_span l_span_l">*服务项B使用次数：</span><span id="Busenum"></span>次</li>
+                        </div>-->
+                        <div class="pro_price_result">
+                            <p><span class="l_span">*套餐总价：</span><span id="TotalMoney"></span></p>
+                        </div>
+                        <!--<div class="tc">
+                            <input type="button" value="取消" class="cancelBtn" onclick="history.go(-1)"><input type="button" value="确定" onclick="addProBtn(this)">
+                        </div>-->
+					</div>
+				</div>
+			</div>
+		{{template "../public/public/footer.html" .}}
+	
+	</body>
+	{{template "../public/link/js_inc.html" .}}
+    <script src="/static/public/yayigj_dialog_box.js"></script>
+    <script src="/static/public/yayigj_date_sel.js"></script>
+    <script src="/static/public/yayigj_downlist.js"></script>
+	<script type="text/javascript">
+        jQuery.createAniCss();
+        var id=getUrlParam("id");
+        $(function(){
+            $("input,textarea").attr("disabled",true);
+            getdata();
+            $("#proID").text(id);
+        });
+        function getdata(){
+            jQuery.loading();
+            $.post("/butlerp/product/ViewPro",{PackageInfoID:id},function(json){
+                jQuery.loading_close();
+                    if(json.code==1){
+                       if(json.list){
+                           var v=json.list[0];
+                           var proName=v.packagename,
+                               proPAid=v.paserialnum;
+                               packageinfoid=v.packageinfoid,
+                               platform=v.platform;
+                               price=v.price;
+                               $("#proName").html(proName);
+                               $("#proPAid").html(proPAid);
+                               $("#proID").html(packageinfoid);
+                               
+                               $("#TotalMoney").html(price+"元");
+                               //packageicon=packageicon==""?"/static/account/img/u1910.png":packageicon;
+                              // $("#sImg").attr("src",packageicon);
+                               if(platform==100){
+                                   $("#release_platform1").prop("checked",true);
+                               }else if(platform==200){
+                                   $("#release_platform2").prop("checked",true);
+                               }
+                               if(v.handleinfo){
+                                   var li="";
+                                   $.each(v.handleinfo,function(key,val){
+                                        $("#Ausenum").text(val.usednum);
+                                        // 项目拼音：<span>'+val.namepy+'</span>
+                                        li+='<li><span class="l_span l_name">处置'+(key+1)+'：</span><span class="mr20">'+val.handlename+'</span>项目拼音：<span>'+val.namepy+'</span><span class="ml20 mr15"><span class="l_span l_span_s">价格</span><span>'+val.handleprice+'</span>元';
+                                       
+                                   })
+                                    $("#proA").html(li);
+                               }
+                       }
+                    }else{
+                        jQuery.postFail("fadeInup",json.info);
+                    }
+                }
+            )
+        }
+        
+    </script>
+</html>

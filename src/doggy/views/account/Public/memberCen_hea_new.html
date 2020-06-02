@@ -1,0 +1,40 @@
+<div class="topbar">
+    <div class="topbarIn">
+        <div class="logo"><a href="http://www.dental360.cn" target="_blank"><img src="/static/ant/img/logo.png" alt="牙医管家"></a></div>
+        <div class="logoDes"><a href="GetPerinfo">个人中心</a></div>
+        <div class="loginAndRegister">
+            <!--<a href="http://www.dental360.cn/" target="_blank">首页</a>-->
+           <!--  <a href="index.php?m=MemberCenter&a=no_page" >口腔管理平台</a> -->
+            <!--<a onclick="pop_service();return false" href="../Discuz/bbs/forum.php" target="_blank" >社区</a>-->
+           <!--  <a href="index.php?m=MemberCenter&a=no_page" >义齿加工平台</a>
+            <a href="index.php?m=MemberCenter&a=no_page" >商学院</a> -->
+        </div>
+    </div>
+</div>
+ <div class="export_staff_list" id="leave_pop">
+        <div class="export_tit">
+            <span class="export_listz_sp">信息提示</span>
+            <span class="close_alert"><img src="/static/account/img/close.png"></span>
+        </div>
+        <div class="export_con">
+            <img src="/static/account/img/qh_pop_info.png" class="qh_pop_info">
+            <p><span>此功能暂未开放，敬请期待!</span></p>
+        </div>
+        <div class="export_save">
+          <input type="button" class="acb ac_btn_bf w90h30" value="确定" id="close_pop" />
+        </div>
+</div>
+<script language="javascript" src="/static/account/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript">
+function pop_service(e){
+	$("#leave_pop").show();
+	$(".mask").show();
+	return false;	
+}
+
+$("#close_pop,.close_alert").click(function (){
+	$("#leave_pop").hide();
+	$(".mask").hide();
+	return false;	
+})
+</script>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>消息推送</title>
+		{{template "../public/link/css_inc.html" .}}
+		<link href="/static/erp/css/user.css" rel="stylesheet" />
+		<link href="/static/erp/css/messageslist.css" rel="stylesheet" />
+	</head>
+	<body>
+		{{template "../public/public/header.html" .}}
+			<div class="mainFrme">
+				{{template "../public/public/left.html" .}}
+				<div class="rightFrme">
+					<div class="crumbs"><a href="/butlerp/dashboard">主页</a> > <a href="###">消息推送</a></div>
+					<div class="cont">
+						<div class="pageHeader">消息推送
+							<div class="backPage"><a href="/butlerp/message/addition">新建消息</a></div>
+							<input type="hidden" name="htag" value="3"> <!--隐藏的标记，用来判断左边的显影-->
+						</div>
+                        <div class="search">
+                            <!--<div class="search_l">-->
+                                <label>发送时间</label>
+                                <input id="BeginDate" class="calendar" readonly >
+                                <label>至</label>
+                                <input id="EndDate" class="calendar" readonly>
+                                <label>状态</label>
+                                <input id="sendState" class="sendState" readonly>
+                                <label>类型</label>
+                                <input id="sendType" class="sendType" readonly>
+                                <label>发送渠道</label>
+                                <input id="sendStage" class="sendStage" readonly>
+                            <!--</div>-->
+                            <!--<div class="search_r">-->
+								 <input class="ml20 w240" type="text" placeholder="请输入标题/编号等条件查询" id="condition" />
+								 <input type="button" value="查询"  onclick="getParams(0)" class='search_btn'/>
+							      <!--<div class="excel">导出excel</div>-->
+                            <!--</div>-->
+						</div>
+						<div class="f_data" id="scroll_div_1">
+							<table >
+								<thead id="thead_1">
+									<tr>
+										<th align="center">信息编号</th>
+										<th align="left">标题</th>
+										<th align="left">类型</th>
+										<th align="left">内容/发送日期</th>
+										<th align="center">状态</th>
+										<th align="left">发送平台</th>
+										<th align="left">发送门诊量</th>
+										<th align="left">接收端量</th>
+										<th align="left">阅读量</th>
+										<th align="left">点击量</th>
+										<th align="center">操作</th>
+									</tr>
+								</thead>
+								<tbody id="MList">
+									
+								</tbody>
+							</table>
+						</div>
+						<div class="Pager">
+                                    <input type="hidden" id="pageCurr" VALUE="1">
+                                    <span class="pagerSP1"></span>
+                                    <span class="pagerSP3">
+                                        <label>每页显示</label>
+                                       <input id="pagerRow" readonly autocomplete="off">
+                                       <input type="hidden" id="pageid" value="20">
+                                    </span>
+                                    <span class="pagerSP2"></span>
+                        </div>
+					</div>
+				</div>
+			</div>
+		{{template "../public/public/footer.html" .}}
+	</body>
+	{{template "../public/link/js_inc.html" .}}
+	<script type="text/javascript" src='/static/erp/js/messageslist.js?ver=2018061101'></script>
+</html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>推广码管理详情</title>
+	<link href="/static/ant/css/calendarCommon.css" rel="stylesheet" type="text/css">
+	<link href="/static/ant/css/antManage.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="/static/ant/js/jquery-1.9.1.min.js"></script>
+    <style type="text/css">
+    	html,body{width:100%; height:100%;}
+    	body{background-color: #3c3c3c;}
+    </style>
+</head>
+<body>
+	<div class="container">
+		<!-- 左边：头部，左侧栏 -->
+		{{template "/ant/Public/antManLeftNav.html"}}
+		<!-- 右边：主体内容 -->
+		<div id="body_right">
+			{{template "/ant/Public/adminUserBtn.html"}}
+			<div  id="mainBody">
+				<!-- 面包碎 -->
+				<ul class="breadcrumb">
+					<li>主页</li>
+					<li>推广码管理</li>
+				</ul>
+				<div id="mainContent">
+
+					<div class="info">
+						<ul class="stateList">
+							<li>地推名称：<span id="staff"></span></li>
+							<li>编号：<span id="promoid"></span></li>
+							<li>地区：<span id="area"></span></li>
+							<li>推广码：<span id="code"></span></li>
+							<li>申请人数：<span id="total"></span></li>
+							<li><a href="javascript:history.go(-1);">返回上一页</a></li>
+						</ul>
+					</div>
+
+					<div class="title" style="border-bottom: none;">
+							申请人列表
+							<span>申请时间：<input name="sendTimeStar" id="sendTimeStar" type="text" data-f="cla2">至&nbsp;<input name="newsSendTime1" id="sendTimeEnd" type="text" data-f="cla2">
+							</span>
+							<a id="excelUrl" href="javascript:void(0);">Excel导出</a>
+
+					</div>
+					<div id="m">
+						<table border="0" cellspacing="1">
+							<thead>
+								<tr>
+									<th>编号</th>
+									<th>申请诊所/管家号</th>
+									<th>收货人</th>
+									<th>联系方式</th>
+									<th>套餐</th>
+									<th>申请时间</th>
+								</tr>
+							</thead>
+							<tbody class="proCodeTd" id="list">
+							<tbody>
+							</table>
+							</div>
+							<div class="table_footer">{{template "/ant/Public/pageInfo.html"}}</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	<!-- copyright -->
+	<div class="copyright">
+		<p>Copyright 2016  ©  www.dental360.cn. All Rights Reserved.</p>
+	</div>
+
+
+
+    <script type="text/javascript" src="/static/ant/js/placeholade.min.js"></script>
+    <script type="text/javascript" src="/static/ant/js/lyz.calendar.min.js"></script>
+	<script type="text/javascript" src="/static/ant/js/antManage.js"></script>
+	<script type="text/javascript">
+	isCurr_left(3);
+	var staff='', code='';
+	$(document).ready(function(e){
+		var arr = getRequest();	//获取url数组
+		var uid = arr.uid;
+		staff = arr.staff;
+		var area = arr.area;
+		   code = arr.code;
+		var total = arr.total;
+		$("#uid").text(uid);
+		$("#staff").text(staff);
+		$("#area").text(area);
+		$("#code").text(code);
+		$("#total").text(total);
+		$("#promoid").text(uid);
+		searchInfo(1,10,code,staff);
+		$("#excelUrl").attr("href","/member/PromoDetailListTable?sendTimeStar=" + $("#sendTimeStar").val() +"&sendTimeEnd=" +  $("#sendTimeEnd").val() + "&code=" +code )
+	});
+	//Calender插件
+	$("#sendTimeStar").on({
+		focus:function(){$(".calendar_ico").attr("src","/static/ant/img/calendar_ico2.png")},
+		blur:function(){$(".calendar_ico").attr("src","/static/ant/img/calendar_ico.png")},
+	})
+	$("#sendTimeStar").calendar({
+		callback: function () {
+			detectionDate();
+			$("#sendTimeStar").removeClass('active');
+		}
+	});
+	$("#sendTimeEnd").on({
+		focus:function(){$(".calendar_ico").attr("src","/static/ant/img/calendar_ico2.png")},
+		blur:function(){$(".calendar_ico").attr("src","/static/ant/img/calendar_ico.png")},
+	})
+	$("#sendTimeEnd").calendar({
+		callback: function () {
+			detectionDate();
+			$("#sendTimeEnd").removeClass('active');
+			searchInfo(1,10,code,staff);
+			//更新excelUrl参数
+			$("#excelUrl").attr("href","/member/PromoDetailListTable?sendTimeStar=" + $("#sendTimeStar").val() +"&sendTimeEnd=" +  $("#sendTimeEnd").val() + "&code=" +code )
+		}
+	});
+	function detectionDate(){
+		if($("#sendTimeStar").val() != '' && $("#sendTimeEnd").val()!=''){
+			var reg = new RegExp("-","g")
+			var start = $("#sendTimeStar").val().replace(reg,"");
+			console.log(start);
+			var end = $("#sendTimeEnd").val().replace(reg,"");
+			console.log(end);
+			if(start > end){
+				alert("结束时间不应可以早于开始时间!");
+				$("#sendTimeStar").val('');
+				$("#sendTimeEnd").val('');
+			}
+		}
+	}
+
+
+	function searchInfo(num,val,code,staff){
+		var data={};
+		data.start_time=$("#sendTimeStar").val();
+		data.end_time=$("#sendTimeEnd").val();
+		data.per_page=val;	//每页数量
+		data.page=num;
+		data.code=code;
+		data.staff=staff;
+
+		//清空没有数据的搜索条件
+		for(name in data){
+ 			if( data[name] == ''){
+ 				delete data[name];
+ 			}
+ 		}
+ 		console.log(data);
+		$.ajax({
+			url: '/member/GetPromCodeDetail',
+			type: 'GET',
+			dataType: 'json',
+			data:data
+		})
+        .done(function(re) {
+			console.log(re);
+			if(re["code"]=='1'){
+				$("#list").empty();
+            if(re["code"]=='1'  && re["list"]){
+            	var str='';
+
+            	$.each(re['list'],function(index,el){
+            		var package = '';
+            		switch(el.ordertype){
+            			case '1':
+            			package='套餐一';
+            			break;
+            			case '2':
+            			package='套餐二';
+            			break;
+            			case '3':
+            			package='套餐三';
+            			break;
+            			case '4':
+            			package='套餐四';
+            			break;
+            			case '5':
+            			package='套餐五';
+            			break;
+            			case '6':
+            			package='套餐六';
+            			break;
+            			default:
+            			break;
+            		}
+            		str+='<tr><td>'+el.uid+'</td>'+
+            		'<td><p>'+el.clinicname+'<p/>'+
+            			'<p>'+el.dentalid+'<p/>'+
+            		'</td>'+
+            		'<td>'+staff+'</td>'+
+            		'<td>'+el.mobile+'</td>'+
+            		'<td>'+package+'</td>'+
+            		'<td>'+el.createtime+'</td>'
+            		'</tr>'
+            	})
+            	setPageList(re['totalcount']);
+            	$("#list").empty().append(str);
+            	}
+			}else{
+				setPageList(re['totalcount']);
+			}
+		})
+	}
+
+
+	function getRequest() {
+       var url = window.location.search; //获取url中"?"符后的字串
+       var theRequest = new Object();
+       if (url.indexOf("?") != -1) {
+          var str = url.substr(1);
+          strs = str.split("&");
+          for(var i = 0; i < strs.length; i ++) {
+              //就是这句的问题
+             theRequest[strs[i].split("=")[0]]=decodeURI(strs[i].split("=")[1]);
+             //之前用了unescape()
+             //才会出现乱码
+          }
+       }
+       return theRequest;
+    }
+
+
+	</script>
+</body>
+</html>
